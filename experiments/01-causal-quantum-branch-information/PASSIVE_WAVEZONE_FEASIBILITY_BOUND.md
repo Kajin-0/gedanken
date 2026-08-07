@@ -1,163 +1,122 @@
-# Passive Nonrelativistic Wave-Zone Feasibility Bound
+# Geometric-Aperture-Limited Passive Wave-Zone Feasibility Bound
 
-**Timestamp:** 2026-08-07 17:28 EDT  
-**Status:** Necessary-condition synthesis combining the passive quadrupole sum-rule ceiling with finite-aperture quantum reception. Not a universal quantum-gravity no-go theorem.
+**Updated:** 2026-08-07 17:25 EDT  
+**Status:** Model-specific necessary condition. **Superseded as a general passive wave-zone bound:** the $\beta_B^5$ scaling applies only when coherent collection is limited by a literal physical aperture $a_R\lesssim L_B$. A resonant quantum receiver can have an effective cross-section much larger than its geometric area, so the extra $\beta_B^2$ penalty is not universal.
 
-## 1. Ingredients
+## 1. Critical scope correction
 
-Three previously derived results are combined.
+The earlier derivation combined
 
-### A. Finite-aperture quantum range
+1. the passive nonrelativistic quadrupole oscillator-strength ceiling,
+2. a geometric spherical-cap collection fraction,
+3. the assumption
+   $$
+   a_R\le L_B.
+   $$
 
-For a small coherent receiver aperture of radius $a_R$,
+That last step is stronger than a generic quantum-receiver assumption.
 
-$$
-R_Q
-\simeq
- a_R
-\sqrt{
-\frac{5\mathcal O\kappa_g}
-{8\Gamma_{\rm th}}
-},
-$$
+A resonant quantum absorber can have an effective coherent cross-section of order the wavelength squared even when its material dimensions are much smaller than the wavelength. The optical analogue is a small resonant atom whose scattering/absorption cross-section exceeds its geometric area.
 
-where
+Therefore the result below is valid for a **geometric screen/cap-limited receiver**, not for every passive resonant quantum receiver.
 
-- $\kappa_g$ is total gravitational linewidth;
-- $\mathcal O$ is the remaining source–receiver tensor/temporal mode overlap;
-- $\Gamma_{\rm th}$ is thermal excitation injected by uncontrolled receiver channels.
-
-An NPT wave-zone region requires
+The more general passive oscillator-strength difficulty remains the earlier
 
 $$
-R_Q>R_{\rm WZ}.
-$$
-
-### B. Wave-zone lower radius
-
-Define
-
-$$
-R_{\rm WZ}
-=\zeta\frac{c}{\omega_B},
-$$
-
-where $\zeta\gtrsim1$ specifies the desired degree of radiation-zone separation.
-
-### C. Passive nonrelativistic graviton-linewidth ceiling
-
-For an ordinary passive nonrelativistic quadrupole receiver,
-
-$$
+\boxed{
 \frac{\kappa_g}{\omega_B}
-\le
-\frac23
-\mathcal C_B\beta_B^3,
-$$
-
-where
-
-$$
-\boxed{
-\mathcal C_B
-=\frac{r_{s,B}}{L_B}
+\lesssim
+\frac23\mathcal C_B\beta_B^3,
 }
 $$
 
-is receiver compactness and
+with source-mode overlap treated independently.
+
+---
+
+## 2. Ingredients of the geometric-aperture model
+
+For a small ideal coherent absorbing cap of radius $a_R$ at distance $R$ from the source,
 
 $$
-\boxed{
-\beta_B
-=\frac{\omega_BL_B}{c}
-}
+\beta_{\rm cap}
+\simeq\frac58\frac{a_R^2}{R^2}.
 $$
 
-is the receiver's internal relativistic-speed parameter.
-
-With internal quality factor $Q_B$,
+Let $\mathcal O$ collect tensor, temporal, and other normalized mode matching. Then
 
 $$
-\kappa_i=\frac{\omega_B}{Q_B}.
+\kappa_\Delta(R)
+\simeq
+\frac58\frac{a_R^2}{R^2}\mathcal O\kappa_g.
 $$
 
-For a single dominant thermal internal bath of occupation $\bar n_B$,
+For a stationary thermal bath,
 
 $$
-\Gamma_{\rm th}=\bar n_B\kappa_i.
+\Gamma_{\rm th}=\bar n_B\kappa_i,
+\qquad
+\kappa_i=\omega_B/Q_B.
 $$
 
-Therefore
+A wave-zone NPT region requires
 
 $$
-\boxed{
-\frac{\kappa_g}{\Gamma_{\rm th}}
-\le
-\frac23
-\frac{Q_B\mathcal C_B\beta_B^3}{\bar n_B}.
-}
+\kappa_\Delta(R)>\Gamma_{\rm th}
+$$
+
+for some
+
+$$
+R\gtrsim\zeta c/\omega_B.
 $$
 
 ---
 
-## 2. Geometry assumption
+## 3. Passive nonrelativistic graviton-linewidth ceiling
 
-For a single coherent material receiver, take its effective aperture radius to be no larger than its characteristic size,
+For the passive nonrelativistic receiver class,
+
+$$
+\frac{\kappa_g}{\omega_B}
+\le
+\frac23\mathcal C_B\beta_B^3,
+$$
+
+where
+
+$$
+\mathcal C_B=\frac{r_{s,B}}{L_B},
+\qquad
+\beta_B=\frac{\omega_BL_B}{c}.
+$$
+
+Hence
+
+$$
+\frac{\kappa_g}{\Gamma_{\rm th}}
+\le
+\frac23
+\frac{Q_B\mathcal C_B\beta_B^3}{\bar n_B}.
+$$
+
+---
+
+## 4. Additional geometric-aperture assumption
+
+Only now impose
 
 $$
 \boxed{a_R\le L_B.}
 $$
 
-This is the step that turns the channel bound into a material-receiver feasibility condition.
-
-A distributed externally phased array can violate this simple identification and must be analyzed separately as a larger composite receiver.
-
----
-
-## 3. Necessary wave-zone condition
-
-The requirement
+Then requiring an NPT region at
 
 $$
-R_Q>\zeta c/\omega_B
+R\ge\zeta c/\omega_B
 $$
 
-implies
-
-$$
- a_R
-\sqrt{
-\frac{5\mathcal O}{8}
-\frac{\kappa_g}{\Gamma_{\rm th}}
-}
->
-\zeta\frac{c}{\omega_B}.
-$$
-
-Using
-
-$$
-a_R\le L_B
-$$
-
-and
-
-$$
-\frac{\omega_BL_B}{c}=\beta_B,
-$$
-
-we need
-
-$$
-\beta_B
-\sqrt{
-\frac{5\mathcal O}{8}
-\frac{\kappa_g}{\Gamma_{\rm th}}
-}
->\zeta.
-$$
-
-Now insert the passive sum-rule ceiling:
+gives
 
 $$
 \boxed{
@@ -167,13 +126,12 @@ $$
 }
 $$
 
-Define the dimensionless passive wave-zone figure of merit
+Define
 
 $$
 \boxed{
-\mathfrak W_B
-\equiv
-\frac{5\mathcal O}{12}
+\mathfrak W_B^{\rm geom}
+=\frac{5\mathcal O}{12}
 \frac{Q_B\mathcal C_B\beta_B^5}{\bar n_B}.
 }
 $$
@@ -181,16 +139,14 @@ $$
 Then
 
 $$
-\boxed{
-\mathfrak W_B>\zeta^2
-}
+\mathfrak W_B^{\rm geom}>\zeta^2
 $$
 
-is a **necessary condition** for a nonempty NPT wave-zone interval in this receiver class.
+is a necessary condition for this **geometrically aperture-limited** receiver.
 
 ---
 
-## 4. Why five powers of $\beta_B$ appear
+## 5. Origin of the extra $\beta_B^2$
 
 The passive graviton oscillator-strength ceiling contributes
 
@@ -198,143 +154,96 @@ $$
 \beta_B^3.
 $$
 
-The need to intercept a finite fraction of a propagating spherical wave with a receiver no larger than $L_B$ contributes an additional
+The geometric assumption contributes
 
 $$
-(a_R\omega_B/c)^2
+\left(\frac{a_R\omega_B}{c}\right)^2
 \lesssim\beta_B^2.
 $$
 
-Thus the true wave-zone receiver problem is parametrically harder than the already severe local gravitational-coupling problem:
+Hence
+
+$$
+\beta_B^3\to\beta_B^5.
+$$
+
+This extra factor should **not** be attributed to gravitational quantum reception universally. It is the price of insisting that effective coherent collection area is bounded by the receiver's literal geometric area.
+
+---
+
+## 6. Resonant-receiver alternative
+
+For a compact resonant receiver, the far-field source-to-receiver overlap is instead expected to have the generic form
 
 $$
 \boxed{
-\beta_B^3
-\rightarrow
-\beta_B^5.
+\mathcal O_{SB}(R)
+\sim
+\frac{C_{\rm ang}}{(kR)^2},
+\qquad
+k=\omega/c,
 }
 $$
 
-For ordinary mechanical systems with
+where $C_{\rm ang}$ contains tensor/polarization/directivity factors.
+
+This corresponds to an effective coherent cross-section of order
 
 $$
-\beta_B\ll1,
+A_{\rm eff}\sim C_{\rm ang}/k^2,
 $$
 
-this suppression is enormous.
+which can exceed the physical material area when $kL_B\ll1$.
+
+In this model the condition for a wave-zone NPT region is controlled by
+
+$$
+\frac{\kappa_g}{\Gamma_{\rm th}}
+$$
+
+and angular mode overlap, without the additional universal $\beta_B^2$ penalty.
+
+This is consistent with the earlier local far-zone response calculation, whose coupling decayed as $(kR)^{-2}$ rather than $(L_B/R)^2$.
 
 ---
 
-## 5. High-temperature form
+## 7. What remains robust
 
-At
-
-$$
-k_BT\gg\hbar\omega_B,
-$$
-
-$$
-\bar n_B
-\simeq
-\frac{k_BT}{\hbar\omega_B}.
-$$
-
-Define the thermal length
+The correction does **not** remove the severe passive-matter limitation
 
 $$
 \boxed{
-\lambda_T
-=\frac{\hbar c}{k_BT}.
+\frac{\kappa_g}{\kappa_i}
+\lesssim
+\frac23Q_B\mathcal C_B\beta_B^3.
 }
 $$
 
-Since
+It only says that finite wave-zone access does not necessarily multiply that difficulty by another $\beta_B^2$.
 
-$$
-\frac1{\bar n_B}
-\simeq
-\frac{\hbar\omega_B}{k_BT}
-=\beta_B\frac{\lambda_T}{L_B},
-$$
+Thus the robust passive question is:
 
-we obtain
+> Can source-matched resonant coupling $\mathcal O_{SB}\kappa_g$ exceed thermal injection $\Gamma_{\rm th}$?
 
-$$
-\boxed{
-\mathfrak W_B^{(\rm high\,T)}
-\simeq
-\frac{5\mathcal O}{12}
-Q_B\mathcal C_B\beta_B^6
-\frac{\lambda_T}{L_B}.
-}
-$$
-
-Thus high-temperature passive wave-zone quantum reception is suppressed simultaneously by
-
-1. tiny compactness $\mathcal C_B$;
-2. six powers of internal relativistic speed parameter $\beta_B$;
-3. small thermal-length ratio $\lambda_T/L_B$;
-4. finite quality factor;
-5. imperfect mode overlap.
+The answer still looks extremely unfavorable for ordinary matter, but the correct scaling must be evaluated with the receiver's **effective quantum cross-section**, not automatically its geometric area.
 
 ---
 
-## 6. Relation to the earlier receiver phase bound
+## 8. Status of the temperature examples
 
-The earlier full-mode passive NPT feasibility condition was
+The numerical temperature ceilings derived by inserting the $\beta_B^5$ geometric-aperture bound remain valid only for that literal aperture-limited model. They should not be quoted as universal passive receiver requirements.
 
-$$
-\frac23
-\frac{Q_B\mathcal C_B\beta_B^3}{\bar n_B}>1.
-$$
-
-The finite-aperture wave-zone condition is stronger:
-
-$$
-\frac{5\mathcal O}{12}
-\frac{Q_B\mathcal C_B\beta_B^5}{\bar n_B}
->\zeta^2.
-$$
-
-The difference is precisely the geometric price of accessing enough of a **propagating** branch-difference mode from a finite physical receiver.
+See `PASSIVE_WAVEZONE_TEMPERATURE_BOUND.md`; its scope must be read as geometric-aperture limited unless/until a receiver-specific effective cross-section is inserted.
 
 ---
 
-## 7. What this does and does not rule out
+## 9. Next strongest calculation
 
-The bound applies to a receiver satisfying all of the following:
+Derive the effective source-to-receiver coherent cross-section directly from the same quadrupole input-output coupling that gives $\kappa_g$, rather than imposing a geometric area by hand. This should reconcile
 
-- stationary/passive;
-- nonrelativistic particle-coordinate dynamics;
-- quadrupolar gravitational coupling;
-- oscillator-strength sum-rule assumptions;
-- finite physical size/aperture $a_R\le L_B$;
-- stationary thermal internal noise;
-- linear coherent wave-zone capture.
+- the local far-zone curvature receiver,
+- the finite-cap enclosing receiver,
+- resonant scattering/absorption,
+- distributed coherent arrays
 
-It does **not** rule out
-
-- active/inverted collective receivers;
-- relativistic field-theoretic receivers;
-- strongly self-gravitating/compact receivers;
-- enormous distributed coherent arrays whose aperture is treated as a larger composite system;
-- phase-sensitive/non-Gaussian receiver protocols;
-- the near-field gravitational-entanglement regime.
-
-Therefore this is a receiver-class feasibility bound, not a universal no-go theorem for gravitational quantum communication.
-
----
-
-## 8. Physical reading
-
-> **Ordinary matter is disadvantaged twice. First, its passive gravitational transition strength is suppressed by compactness and nonrelativistic internal motion. Second, a wave-zone experiment must physically collect a finite fraction of a spherical spin-2 mode, introducing another aperture penalty. Combining the two converts the already severe $\beta^3$ receiver suppression into a $\beta^5$ wave-zone suppression, or $\beta^6$ in the high-temperature form.**
-
-This strengthens the conclusion that the central challenge may not be whether gravity possesses quantum channel capacity, but whether ordinary laboratory matter can couple to that channel strongly and coherently enough in the radiation zone.
-
----
-
-## 9. Strongest next step
-
-1. Evaluate $\mathfrak W_B$ for representative mechanical, atomic, electromagnetic, and hypothetical compact receivers.
-2. Ask whether a relativistic QFT receiver has an analogous finite-aperture/KMS bound that replaces the nonrelativistic $\beta^5$ law.
-3. Determine whether distributed arrays can improve aperture access without paying an equivalent many-body oscillator-strength/noise penalty.
+within one source-mode-overlap formalism.
