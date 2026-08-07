@@ -1,7 +1,7 @@
 # Resonant Free-Space Gravitational Quantum Reception Cone
 
-**Updated:** 2026-08-07 17:36 EDT  
-**Status:** Far-zone aligned-plus-quadrupole result. The retarded cross Green function is independently checked against Hu et al. and its collective-decay part is reproduced by an explicit angular common-bath integral. This corrects an earlier factor-of-four error in the propagation efficiency.
+**Updated:** 2026-08-07 17:38 EDT  
+**Status:** Far-zone aligned-plus-quadrupole state-transfer model. The retarded Green kernel is independently cross-checked against a vacuum-graviton resonance calculation and a common-bath angular integral. This version explicitly distinguishes **coherent storage/absorption** from reciprocal scattering/extinction and restores the correct storage efficiency.
 
 ## 1. Exact normalized retarded cross response
 
@@ -45,26 +45,9 @@ See `NORMALIZED_GRAVITATIONAL_CROSS_RESPONSE.md` and `INDEPENDENT_CROSS_RESPONSE
 
 ---
 
-## 2. Exact common-bath angular check
+## 2. Common-bath consistency check
 
-For the plus quadrupole, the polarization-summed on-shell angular weight is
-
-$$
-\mathcal F(\theta,\phi)
-=2\cos^2\theta
-+\frac12\sin^4\theta\cos^2(2\phi).
-$$
-
-After azimuthal integration,
-
-$$
-\int_0^{2\pi}d\phi\,\mathcal F
-=\frac\pi2(1+6u^2+u^4),
-\qquad
-u=\cos\theta.
-$$
-
-The normalized common-bath overlap is therefore
+For the plus quadrupole, the normalized on-shell common-bath overlap is
 
 $$
 \mu(\epsilon)
@@ -86,32 +69,11 @@ $$
 }
 $$
 
-But
+Since the bracket is
 
 $$
-\operatorname{Im}[P(\epsilon)e^{i\epsilon}]
-=(\epsilon^4-3\epsilon^2+3)\sin\epsilon
-+(2\epsilon^3-3\epsilon)\cos\epsilon.
+\operatorname{Im}[P(\epsilon)e^{i\epsilon}],
 $$
-
-Hence
-
-$$
-\boxed{
-\mu(\epsilon)
-=\frac{5}{2\epsilon^5}
-\operatorname{Im}[P(\epsilon)e^{i\epsilon}].
-}
-$$
-
-The cross damping is
-
-$$
-\Gamma_{AB}
-=\sqrt{\kappa_{g,A}\kappa_{g,B}}\,\mu(\epsilon),
-$$
-
-so the exact retarded self-energy obeys
 
 $$
 \boxed{
@@ -120,104 +82,145 @@ $$
 }
 $$
 
-up to the overall retarded-sign convention.
+up to the retarded-sign convention.
 
-This is the standard open-system relation and fixes the factor relating the reciprocal retarded self-energy to a one-way cascaded propagation amplitude.
+This relation concerns the reciprocal common-bath self-energy and cross damping. It should **not** be interpreted as saying that the coherent field amplitude stored by $B$ is $2\Sigma_{AB}^{R}$.
 
 ---
 
-## 3. Correct one-way far-field propagation efficiency
+## 3. Storage/state-transfer normalization
 
-For a directional/cascaded channel with propagation amplitude $t_{AB}$, the corresponding reciprocal retarded self-energy has magnitude
+The relevant comparison for coherent quantum-memory transfer is the ordinary input-output one.
 
-$$
-|\Sigma_{AB}^{R}|
-=\frac12|t_{AB}|
-\sqrt{\kappa_{g,A}\kappa_{g,B}}.
-$$
-
-Therefore, in the wave zone,
-
-$$
-|t_{AB}|
-=\frac{2|\Sigma_{AB}^{R}|}
-{\sqrt{\kappa_{g,A}\kappa_{g,B}}}
-\simeq
-\frac{5}{2kR}.
-$$
-
-The ideal aligned source-to-receiver propagation efficiency is thus
+Let the source mode amplitude be $a_A$. Its outgoing normalized gravitational field amplitude is
 
 $$
 \boxed{
-\eta_{\rm ff}(R)
-=|t_{AB}|^2
-=\frac{25}{4(kR)^2}.
+b_{\rm out,A}
+=\sqrt{\kappa_{g,A}}\,a_A.
 }
 $$
 
-This supersedes the earlier provisional value $25/[16(kR)^2]$.
+Let the propagating source mode arrive at $B$ as
+
+$$
+b_{\rm in,B}=t_{AB}b_{\rm out,A}.
+$$
+
+The receiver equation contains the input drive
+
+$$
+\sqrt{\kappa_{g,B}}\,b_{\rm in,B}
+=t_{AB}
+\sqrt{\kappa_{g,A}\kappa_{g,B}}\,a_A.
+$$
+
+But the same retarded source drive is, by definition,
+
+$$
+\Sigma_{AB}^{R}a_A.
+$$
+
+Therefore the **coherent storage propagation amplitude** is
+
+$$
+\boxed{
+t_{AB}^{\rm store}
+=\frac{\Sigma_{AB}^{R}}
+{\sqrt{\kappa_{g,A}\kappa_{g,B}}}.
+}
+$$
+
+In the wave zone,
+
+$$
+\boxed{
+t_{AB}^{\rm store}
+\simeq
+\frac54\frac{e^{ikR}}{kR}.
+}
+$$
+
+Hence the ideal aligned source-to-receiver **storage efficiency** is
+
+$$
+\boxed{
+\eta_{\rm ff}^{\rm store}(R)
+=|t_{AB}^{\rm store}|^2
+=\frac{25}{16(kR)^2}.
+}
+$$
 
 For general tensor/polarization/temporal mismatch,
 
 $$
 \boxed{
-\eta_{\rm ff}(R)
-=\frac{25\mathcal O}{4(kR)^2},
+\eta_{\rm ff}^{\rm store}(R)
+=\frac{25\mathcal O}{16(kR)^2},
 \qquad
 0\le\mathcal O\le1.
 }
 $$
 
-The interpretation is restricted to
-
-$$
-kR\gg1,
-$$
-
-where this is safely below unity. The near-zone Green response contains reactive interactions and cannot be treated as a pure propagating transmissivity.
+This is the coefficient relevant to the source-to-memory quantum channel used in the causal-front theorem.
 
 ---
 
-## 4. Resonant cross-section consistency check
+## 4. Why the factor-four scattering coefficient is different
 
-The plus-quadrupole source radiates most strongly along its $z$ axis. Its on-axis angular power fraction is
+The reciprocal common-bath relation
 
 $$
-\boxed{
-\frac{1}{P_G}
-\frac{dP_G}{d\Omega}\bigg|_{z}
+\Gamma_{AB}=2\operatorname{Im}\Sigma_{AB}^{R}
+$$
+
+naturally introduces a factor of two in scattering/extinction amplitudes. Squaring that factor produces a cross-section four times larger than the maximal absorptive/storage cross-section.
+
+For the aligned plus quadrupole, the source's on-axis power fraction is
+
+$$
+\frac1{P_G}\frac{dP_G}{d\Omega}\bigg|_z
 =\frac{5}{8\pi}.
-}
 $$
 
-If a receiver of resonant cross-section $\sigma_{\rm res}$ sits on this axis, the captured power fraction is
+Using the **storage** efficiency
 
 $$
-\eta_{\rm ff}
-=\frac{5}{8\pi}
-\frac{\sigma_{\rm res}}{R^2}.
+\eta_{\rm ff}^{\rm store}
+=\frac{25}{16k^2R^2}
 $$
 
-Using the common-bath result
-
-$$
-\eta_{\rm ff}
-=\frac{25}{4k^2R^2}
-$$
-
-gives
+corresponds to
 
 $$
 \boxed{
-\sigma_{\rm res}
-=\frac{10\pi}{k^2}.
+\sigma_{\rm abs,max}^{(l=2)}
+=\frac{5\pi}{2k^2}.
 }
 $$
 
-This is the expected unitary-scale cross-section for an $l=2$ resonant partial wave, providing an independent physical consistency check on the factor of four.
+This is the critical-coupling absorption scale for one quadrupolar partial-wave channel.
 
-The relevant cross-section is set by wavelength and transition strength, not necessarily by the literal material area of a subwavelength receiver.
+By contrast, the factor-four larger quantity
+
+$$
+\frac{25}{4k^2R^2}
+$$
+
+corresponds to
+
+$$
+\boxed{
+\sigma_{\rm sca,max}^{(l=2)}
+=\frac{10\pi}{k^2},
+}
+$$
+
+the unitary scattering/extinction scale.
+
+For Experiment 01 the receiver is intended to **store the incoming branch mode coherently**, so the absorption/storage coefficient $25/16$ is the relevant one.
+
+This distinction is analogous to the familiar difference between maximal dipole absorption and maximal dipole scattering cross-sections.
 
 ---
 
@@ -229,25 +232,25 @@ $$
 \kappa_{g,B}
 $$
 
-is intrinsic and distance independent.
+is intrinsic and does not depend on source distance.
 
-The incoming source branch mode occupies only a fraction of that gravitational bath:
+Distance changes only the fraction of the gravitational bath occupied by the selected source mode:
 
 $$
 \boxed{
 \kappa_\Delta(R)
-=\eta_{\rm ff}(R)\kappa_{g,B}.
+=\eta_{\rm ff}^{\rm store}(R)\kappa_{g,B}.
 }
 $$
 
-All orthogonal gravitational vacuum modes contribute the remaining damping
+The orthogonal gravitational vacuum channels contribute
 
 $$
 \kappa_{g,\perp}
 =\kappa_{g,B}-\kappa_\Delta.
 $$
 
-Therefore
+Hence
 
 $$
 \boxed{
@@ -256,20 +259,22 @@ $$
 }
 $$
 
-is independent of source distance.
+is distance independent.
 
-Only occupied uncontrolled baths contribute to
+Vacuum gravitational ports broaden the receiver but do not contribute to the thermal occupation budget
 
 $$
 \Gamma_{\rm th}
-=\sum_a\bar n_a\kappa_a.
+=\sum_a\bar n_a\kappa_a
 $$
+
+when their occupation is zero.
 
 ---
 
 ## 6. Exact finite-cat NPT range
 
-For a stationary thermal receiver, every finite nontrivial binary coherent source encoding becomes NPT iff
+For a stationary thermal receiver, every nontrivial finite binary coherent source encoding becomes NPT iff
 
 $$
 \kappa_\Delta(R)>\Gamma_{\rm th}.
@@ -278,7 +283,7 @@ $$
 Thus
 
 $$
-\frac{25\mathcal O}{4(kR)^2}
+\frac{25\mathcal O}{16(kR)^2}
 \kappa_{g,B}
 >\Gamma_{\rm th}.
 $$
@@ -288,7 +293,7 @@ Define
 $$
 \boxed{
 R_Q^{\rm res}
-=\frac{5}{2k}
+=\frac{5}{4k}
 \sqrt{
 \frac{\mathcal O\kappa_{g,B}}
 {\Gamma_{\rm th}}
@@ -302,7 +307,7 @@ $$
 \boxed{R<R_Q^{\rm res}}
 $$
 
-is the exact thermal NPT-capability range within the far-zone resonant model.
+is the exact stationary-thermal NPT-capability range within the resonant far-zone model.
 
 At zero thermal injection the mathematical NPT range is unbounded, as expected for pure loss.
 
@@ -319,7 +324,7 @@ $$
 \left(1-e^{-\kappa_{\rm tot}(t-R/c)}\right).
 $$
 
-The matched time-reversed receiver ringdown saturates the ceiling.
+The matched time-reversed receiver ringdown saturates this ceiling.
 
 Since
 
@@ -363,14 +368,14 @@ $$
 R\ll R_Q^{\rm res}
 $$
 
-while still satisfying the wave-zone condition,
+while remaining in the wave zone,
 
 $$
 \boxed{
 T_{\rm NPT}^{\min}-R/c
 \simeq
 \frac1{\kappa_{\rm tot}}
-\left(\frac{R}{R_Q^{\rm res}}\right)^2.
+\left(\frac{R}{R_Q^{\rm res}}ight)^2.
 }
 $$
 
@@ -395,7 +400,7 @@ T_{\rm NPT}^{\min}-R/c
 }
 $$
 
-The logarithmic vertical asymptote survives unchanged.
+The logarithmic vertical asymptote survives.
 
 ---
 
@@ -417,7 +422,7 @@ or
 
 $$
 \boxed{
-\frac{25\mathcal O}{4}
+\frac{25\mathcal O}{16}
 \frac{\kappa_{g,B}}
 {\Gamma_{\rm th}}
 >\zeta^2.
@@ -431,7 +436,7 @@ $$
 \frac{\kappa_{g,B}}
 {\Gamma_{\rm th}}
 >
-\frac{4}{25\mathcal O}\zeta^2.
+\frac{16}{25\mathcal O}\zeta^2.
 }
 $$
 
@@ -461,24 +466,16 @@ Therefore a necessary condition for a passive nonrelativistic **resonant** wave-
 
 $$
 \boxed{
-\frac{25\mathcal O}{6}
+\frac{25\mathcal O}{24}
 \frac{Q_B\mathcal C_B\beta_B^3}
 {\bar n_B}
 >\zeta^2.
 }
 $$
 
-This is the corrected resonant passive wave-zone criterion.
+This is the robust resonant passive wave-zone criterion within the stated nonrelativistic sum-rule assumptions.
 
-It is still extremely restrictive for ordinary matter because
-
-$$
-\mathcal C_B\ll1,
-\qquad
-\beta_B\ll1,
-$$
-
-but there is no universal extra $\beta_B^2$ geometric penalty.
+The earlier $\beta_B^5$ result applies only to a literal geometric-aperture-limited receiver and is not a universal passive bound.
 
 ---
 
@@ -515,15 +512,15 @@ $$
 
 ## 12. Receiver architectures
 
-Keep two distinct models separate.
+Keep two receiver classes distinct.
 
 ### Compact resonant receiver
 
 $$
-\eta_{\rm ff}\sim(kR)^{-2},
+\eta_{\rm store}\sim(kR)^{-2},
 $$
 
-with effective resonant cross-section of order $k^{-2}$.
+with effective maximal absorption area of order $k^{-2}$.
 
 ### Literal enclosing/absorbing cap
 
@@ -531,12 +528,26 @@ $$
 \eta_{\rm cap}\sim(a_R/R)^2,
 $$
 
-set by physical angular coverage around the source.
+set by physical angular coverage.
 
-The cap model remains a legitimate Gedanken architecture but is not a universal bound on resonant matter.
+The cap architecture remains a valid Gedanken receiver but should not be used as a universal upper bound on a compact resonant absorber.
 
 ---
 
-## 13. Current remaining caveat
+## 13. Remaining derivation target
 
-The common-bath angular calculation and classical cross-section consistency strongly support the corrected coefficient. A fully explicit delayed two-system input-output derivation would still be valuable for separating reciprocal coherent exchange, collective damping, and strictly one-way state-transfer conventions in one notation.
+The next clean step is to write the fully delayed source–field–receiver input-output equations in one notation and derive
+
+$$
+t_{AB}^{\rm store}
+=\Sigma_{AB}^{R}/\sqrt{\kappa_{g,A}\kappa_{g,B}}
+$$
+
+directly from the propagating field elimination, including the distinction between
+
+- coherent storage;
+- collective damping;
+- reciprocal scattering/extinction;
+- time-reversed matched absorption.
+
+That will make the storage normalization independent of cross-section analogy.
