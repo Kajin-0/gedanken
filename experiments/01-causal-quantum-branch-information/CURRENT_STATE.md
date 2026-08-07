@@ -1,26 +1,26 @@
 # Current State — Experiment 01
 
-**Last updated:** 2026-08-07 14:05 EDT  
+**Last updated:** 2026-08-07 14:09 EDT  
 **Experiment:** Causal Transport of Quantum Branch Information by Gravity
 
-This is the compact recovery point. Detailed work is preserved in `PROGRESS_LOG.md`, `SCALAR_MATCHED_HISTORY.md`, `GRAVITY_QUADRUPOLE_LIMIT.md`, and `checkpoints/`.
+Canonical recovery point. Detailed derivations: `SCALAR_MATCHED_HISTORY.md`, `GRAVITY_QUADRUPOLE_LIMIT.md`, `TIDAL_RECEIVER.md`, `PROGRESS_LOG.md`, and `checkpoints/`.
 
-## 1. Core source-probe witness
+## Core witness
 
-For a balanced source path qubit,
+For the balanced source-path qubit,
 
 $$
-\rho_{AB}(T)=\frac12
+\rho_{AB}=\frac12
 \begin{pmatrix}
-\rho_L(T) & \Xi_T\\
-\Xi_T^\dagger & \rho_R(T)
-\end{pmatrix}.
+\rho_L & \Xi\\
+\Xi^\dagger & \rho_R
+\end{pmatrix},
 $$
 
-Define
+define
 
 $$
-C_\Xi=\|\Xi_T\|_1,
+C_\Xi=\|\Xi\|_1,
 \qquad
 D_B=\frac12\|\rho_L-\rho_R\|_1.
 $$
@@ -28,32 +28,25 @@ $$
 Every balanced separable state obeys
 
 $$
-\boxed{C_\Xi^2+D_B^2\le1.}
+C_\Xi^2+D_B^2\le1.
 $$
 
-Define
-
-$$
-\Gamma_\Xi=-\ln C_\Xi,
-\qquad
-\chi_B=-\ln(1-D_B^2),
-$$
-
-and the **history-transfer margin**
+Preferred logarithmic form:
 
 $$
 \boxed{
-\mathcal M_\Xi=\chi_B-2\Gamma_\Xi.
+\mathcal M_\Xi
+=\chi_B-2\Gamma_\Xi,
+\qquad
+\chi_B=-\ln(1-D_B^2),
+\quad
+\Gamma_\Xi=-\ln C_\Xi.
 }
 $$
 
-Then
-
 $$
-\boxed{\mathcal M_\Xi>0}
+\boxed{\mathcal M_\Xi>0\Rightarrow A\text{-}B\text{ entanglement}.}
 $$
-
-is a sufficient source-probe entanglement witness.
 
 For pure conditional global histories,
 
@@ -61,18 +54,16 @@ $$
 C_\Xi=F(\rho_E^L,\rho_E^R),
 $$
 
-so $C_\Xi$ is the indistinguishability of the unobserved complementary records. The final theorem does not require a fundamental factorization into source, gravitational field, and probe Hilbert spaces.
+so $C_\Xi$ is the fidelity of the unobserved complementary records. The final formulation therefore does not require a literal $A\otimes g\otimes B$ factorization.
 
-## 2. Causal requirement
+## Causality
 
-For a controlled source operation at $t=0$ and separation $R$,
+For a source-controlled operation at $t=0$ and receiver distance $R$,
 
 $$
 D_B(T,R)=0
-\qquad T<R/c
+\qquad T<R/c.
 $$
-
-for the source-controlled contribution.
 
 Define
 
@@ -80,21 +71,15 @@ $$
 T_*(R)=\inf\{T:\mathcal M_\Xi(T,R)>0\}.
 $$
 
-Locality requires
+A local theory requires
 
 $$
-\boxed{T_*(R)\ge R/c.}
+T_*(R)\ge R/c.
 $$
 
-## 3. Scalar-field matched-history result
+## Scalar matched-history result
 
-For a source branch-current difference
-
-$$
-\Delta J_A(\mathbf x,t)=s(\mathbf x)u(t),
-$$
-
-the weak one-way scalar model gives
+For source history $u(t)$,
 
 $$
 \chi_B=\langle u,K_Bu\rangle,
@@ -102,22 +87,15 @@ $$
 2\Gamma_\Xi=\langle u,N_Tu\rangle,
 $$
 
-with
-
-$$
-K_B=|r_T\rangle\langle r_T|.
-$$
-
-Thus
+so
 
 $$
 \boxed{
-\mathcal M_\Xi[u]
-=\langle u,(K_B-N_T)u\rangle.
+\mathcal M_\Xi[u]=\langle u,(K_B-N_T)u\rangle.
 }
 $$
 
-If $N_T$ is invertible on the relevant support,
+With $K_B=|r_T\rangle\langle r_T|$,
 
 $$
 \boxed{
@@ -125,224 +103,215 @@ $$
 }
 $$
 
-is equivalent to the existence of a source waveform with positive margin. The optimal complex-envelope history is
+is equivalent to the existence of an optimized positive-margin history in the toy model. The optimal complex envelope is
 
 $$
-\boxed{u_{\rm opt}\propto N_T^{-1}r_T.}
+u_{\rm opt}\propto N_T^{-1}r_T.
 $$
-
-This is a **noise-whitened matched history**: the source history is matched to the retarded receiver mode after whitening by the environment's ability to retain branch information.
-
-## 4. Long-time rate and finite receiver memory
 
 In the narrow-band limit,
 
 $$
-\eta_T\simeq(T-R/c)\gamma_{\rm hist},
+\gamma_{\rm hist}=rac{|\mathcal R_B|^2}{S_E},
+\qquad
+T_*\simeq\frac Rc+\gamma_{\rm hist}^{-1}.
 $$
 
-where
-
-$$
-\boxed{
-\gamma_{\rm hist}(R,\omega_B)
-=\frac{|\mathcal R_B(\omega_B,R)|^2}{S_E(\omega_B)}.
-}
-$$
-
-Hence
+With receiver damping $\kappa_B$,
 
 $$
 \boxed{
-T_*(R)\simeq\frac{R}{c}+\gamma_{\rm hist}^{-1}.
+\mathcal C_{\rm hist}=\frac{|\mathcal R_B|^2}{\kappa_BS_E}>1
 }
 $$
 
-With probe damping $\kappa_B$ define
+is the strong-witness cooperativity threshold.
+
+## Critical GR correction: receiver must be tidal
+
+The previous single-mass force receiver is not the cleanest local GR observable. A self-contained freely falling receiver cannot detect a uniform gravitational acceleration. In Fermi normal coordinates its leading local coupling is to curvature,
+
+$$
+H_{\rm curv}
+=\frac{\mu_Bc^2}{2}R_{0i0j}\xi^i\xi^j.
+$$
+
+For a one-dimensional differential quantum mode with equilibrium baseline $L_B$ and quantum displacement $x_B$,
 
 $$
 \boxed{
-\mathcal C_{\rm hist}
-=\frac{|\mathcal R_B|^2}{\kappa_BS_E}.
+H_{\rm drive}
+=\mu_BL_B\mathcal E_{nn}(t)x_B,
+\qquad
+\mathcal E_{ij}=c^2R_{0i0j}.
 }
 $$
 
-The optimized strong witness can survive finite receiver memory only if
+This is the gauge-invariant geodesic-deviation receiver used from this point forward.
 
-$$
-\boxed{\mathcal C_{\rm hist}>1.}
-$$
+## Conserved source quadrupole
 
-The threshold is a property of channel efficiency, not overall source amplitude; source strength scales both useful response and complementary leakage quadratically and cancels from the ideal ratio.
-
-## 5. Conserved gravity source: axisymmetric quadrupole
-
-To move beyond a nonconserved translating point-mass picture, use a compact source whose branch-difference STF mass quadrupole is
+Use
 
 $$
 \Delta Q_{ij}(t)
 =q(t)\left(n_in_j-\frac13\delta_{ij}\right).
 $$
 
-On-axis the Newtonian quadrupole potential difference is
+On-axis,
 
 $$
-|\Delta\Phi_Q|=\frac{G|q|}{R^3},
+\Delta\Phi_Q=\frac{Gq}{R^3},
 $$
 
-and a radial probe experiences branch force difference
+so the radial tidal field is
 
 $$
 \boxed{
-|\Delta F_B|
-=\frac{3Gm_B}{R^4}|q(t-R/c)|.
+|\Delta\mathcal E_{nn}^{\rm NZ}|
+=\frac{12G|q|}{R^5}.
 }
 $$
 
-The narrow-band coherent response coefficient is therefore
+The differential receiver force is therefore
 
 $$
-|\mathcal R_B^{(G)}|
-=\frac{3Gm_Bx_{\rm zpf}}{\hbar R^4}.
+\boxed{
+|\Delta F_B^{\rm NZ}|
+=\frac{12G\mu_BL_B}{R^5}|q(t-R/c)|.
+}
 $$
 
-The quadrupole radiation formula gives a branch-distinguishing graviton record spectrum with robust scaling
+This **supersedes the earlier $R^{-4}$ supported-force receiver scaling** for the clean free local receiver.
 
-$$
-\boxed{S_G(\omega)\propto\frac{G}{\hbar c^5}\omega^5.}
-$$
+## Corrected near-zone gravity efficiency
 
-With the axisymmetric convention used in `GRAVITY_QUADRUPOLE_LIMIT.md`,
+Using
 
 $$
 S_G(\omega)\simeq\frac{2G}{15\hbar c^5}\omega^5
 $$
 
-up to one-sided/two-sided Fourier convention factors.
-
-## 6. Gravity history-transfer rate and cooperativity
-
-Combining near-field quadrupole response with coherent graviton leakage gives
+for the clean outgoing quadrupolar graviton record in the stated convention,
 
 $$
 \boxed{
-\gamma_{\rm hist}^{(G)}
+\gamma_{\rm hist,tidal}^{\rm NZ}
 \simeq
-\frac{135}{4}
-\frac{Gm_Bc^5}{R^8\omega_B^6}
+540\frac{G\mu_BL_B^2c^5}{R^{10}\omega_B^6}.
 }
 $$
 
-within the stated convention, with robust scaling
-
-$$
-\gamma_{\rm hist}^{(G)}\propto R^{-8}\omega_B^{-6}.
-$$
-
-With probe damping,
+With $Q_B=\omega_B/\kappa_B$,
 
 $$
 \boxed{
-\mathcal C_{\rm hist}^{(G)}
+\mathcal C_{\rm hist,tidal}^{\rm NZ}
 \simeq
-\frac{135}{4}
-\frac{Gm_Bc^5}{\kappa_BR^8\omega_B^6}
-=
-\frac{135}{4}
-\frac{Gm_Bc^5Q_B}{R^8\omega_B^7}.
+540\frac{G\mu_BL_B^2c^5Q_B}{R^{10}\omega_B^7}.
 }
 $$
-
-The source quadrupole amplitude cancels from the ideal efficiency ratio.
-
-The radiation-only critical radius is
-
-$$
-\boxed{
-R_c
-\simeq
-\left[
-\frac{135}{4}
-\frac{Gm_Bc^5}{\kappa_B\omega_B^6}
-\right]^{1/8}.
-}
-$$
-
-Illustrative radiation-only values:
-
-- $m_B=1\,\mathrm g$, $f_B=1\,\mathrm{Hz}$, $Q_B=10^8$: $R_c\sim14\,\mathrm{km}$;
-- $m_B=1\,\mathrm{kg}$, $f_B=100\,\mathrm{Hz}$, $Q_B=10^6$: $R_c\sim330\,\mathrm m$.
-
-These are **efficiency** thresholds only, not detectability thresholds. Absolute branch-dependent gravitational signals may still be extraordinarily small.
-
-## 7. Near-field / wave-zone tradeoff
 
 Define
 
 $$
 \epsilon=\frac{\omega_BR}{c},
 \qquad
-\mu_G=\frac{Gm_BQ_B\omega_B}{c^3}.
+\nu_G=\frac{G\mu_BL_B^2Q_B\omega_B^3}{c^5}.
 $$
 
-Then the near-zone cooperativity can be written
+Then
 
 $$
 \boxed{
-\mathcal C_{\rm hist}^{(G)}
-\simeq
-\frac{135}{4}\mu_G\epsilon^{-8}.
+\mathcal C_{\rm hist,tidal}^{\rm NZ}
+\simeq540\nu_G\epsilon^{-10}.
 }
 $$
 
-For laboratory systems $\mu_G\ll1$. Therefore the regime in which a local receiver strongly dominates over graviton leakage is parametrically
+For laboratory systems $\nu_G\ll1$, so the local strong-witness regime is parametrically deep in the near zone.
+
+## Wave-zone local receiver
+
+The radiative curvature is
 
 $$
-\epsilon\ll1.
+\mathcal E_{ij}^{\rm GW}
+=-\frac{G}{c^4R}Q_{ij}^{(4),TT}.
 $$
 
-This exposes the central new tradeoff:
+For a transverse differential receiver with angular/polarization projection $\mathcal A$,
 
-- **near zone:** coherent/reactive branch transfer can dominate radiative leakage, but the propagation delay is tiny compared with the probe dynamics;
-- **wave zone:** retardation becomes dynamically visible, but branch information is exported into propagating gravitational modes and a local receiver captures only a fraction.
+$$
+\boxed{
+\mathcal C_{\rm hist,tidal}^{\rm WZ}
+\simeq
+\frac{15\mathcal A^2}{4}
+\nu_G\epsilon^{-2}.
+}
+$$
 
-The near-zone formula must not be extrapolated quantitatively to $\epsilon\sim1$. A full retarded TT calculation is now the main technical target.
+At the dynamical crossover $\epsilon\sim1$, the efficiency is therefore only $O(\nu_G)$, which is extraordinarily small for laboratory receivers.
 
-## 8. Ideal shell-receiver Gedanken version
+### Interpretation
 
-The tradeoff is not a logical prohibition; it is largely a mode-capture problem. An ideal enclosing quantum receiver matched to the outgoing quadrupolar gravitational mode could coherently capture a large fraction $\tau_{\rm ch}$ of the branch-distinguishing radiation.
+This is a **strong-witness local-receiver tradeoff**, not a no-go theorem for entanglement:
 
-For a pure-loss benchmark,
+- deep near zone: reactive coherent transfer can dominate clean radiative leakage, but retardation is dynamically tiny;
+- wave zone: retardation is obvious, but a single local receiver captures only a tiny fraction of the outgoing branch record.
+
+The strong witness is sufficient, not necessary, and the current $S_G$ includes only the clean radiative graviton contribution. Dressing/soft/technical records must be treated consistently in the complete theory.
+
+## Ideal enclosing receiver
+
+An ideal quantum receiver mode-matched to the outgoing quadrupolar radiation can conceptually avoid the local-mode-capture problem. In the pure-loss benchmark, if fraction $\tau_{\rm ch}$ of the branch-distinguishing outgoing mode is coherently captured,
 
 $$
 \mathcal M_\Xi=(2\tau_{\rm ch}-1)|\Delta|^2,
 $$
 
-so the strong history-transfer witness requires
+so the strong witness requires $\tau_{\rm ch}>1/2$.
 
-$$
-\boxed{\tau_{\rm ch}>1/2.}
-$$
+Thus Experiment 01 currently has two clean limits:
 
-This suggests two complementary versions of Experiment 01:
+1. **free differential near-field receiver:** optimized for coherent nonclassical transfer;
+2. **mode-matched enclosing wave-zone receiver:** optimized for explicit causal propagation.
 
-1. **near-field local-probe experiment:** optimized for strong nonclassicality with negligible retardation;
-2. **wave-zone enclosing-receiver Gedanken experiment:** optimized to make causal quantum branch-information transport conceptually explicit.
+## Literature boundary added today
 
-## 9. Novelty discipline
-
-Established ingredients include wave-particle coherence/distinguishability bounds, scalar quantum channels, matched filtering, cooperativity, pure-loss thresholds, quadrupole gravity, quadrupole radiation, retarded GIE, graviton decoherence, and gravitational-dressing subtleties.
-
-Potentially distinctive physics is their synthesis into a source-probe **history-transfer** problem and especially the quantified near-field/wave-zone tradeoff.
+Fermi-normal quantum mechanics gives the leading curvature coupling proportional to $mR_{0i0j}x^ix^j/2$. Gravitational-wave detectors fundamentally measure geodesic deviation. A July 8, 2026 PRD paper by Hirotani and Matsumura studies classical-quantum gravity specifically through geodesic deviation and predicted strain spectra. Therefore the tidal receiver itself is established physics, not a novelty claim.
 
 ## Immediate frontier
 
-1. Derive the **full retarded linearized-gravity transfer kernel** for the conserved quadrupole source, not merely the Newtonian $R^{-4}$ limit.
-2. Derive the matching TT complementary-output kernel from the same conserved stress-energy history.
-3. Compute $\mathcal M_\Xi(T,R)$ continuously through the near-zone to wave-zone crossover.
-4. Determine whether a rigorous bound exists connecting resolvable retardation to local receiver history-transfer efficiency.
-5. Compare a local receiver with the ideal mode-matched spherical receiver.
+Derive the exact retarded **electric-Weyl quadrupole transfer function**
+
+$$
+\mathcal E_{ij}(\omega,R)
+=\frac{Gq(\omega)}{R^5}\mathcal P_{ij}(\epsilon,\Omega)
+$$
+
+through the near/induction/wave crossover. The expected structure contains terms through $\epsilon^4$ and must reproduce
+
+$$
+R^{-5}
+$$
+
+in the static tidal limit and
+
+$$
+\omega^4/(c^4R)
+$$
+
+in the wave zone.
+
+Use the same conserved stress-energy history to derive the complementary TT/soft record kernel. Then calculate one gauge-invariant
+
+$$
+\mathcal C_{\rm hist}^{(G)}(\epsilon)
+$$
+
+across the full crossover and determine whether a rigorous relation exists between resolvable retardation and local quantum-history capture.
 
 ## Current conceptual compression
 
-> **A conserved mass quadrupole in two coherent histories perturbs a distant quantum probe and also radiates branch information into gravitational modes. The intended probe receives a useful record through the retarded response; everything else that can distinguish the histories reduces recoverable coherence. In the near field, the interaction is overwhelmingly reactive and the probe can outperform gravitational radiation, but the light-travel delay is dynamically tiny. In the wave zone, causal propagation is obvious, but the branch record spreads into many outgoing modes and a local receiver becomes lossy. The central question has therefore sharpened again: can gravity be shown to carry quantum branch information causally in a regime where the intended quantum receiver captures that information more coherently than the rest of spacetime does?**
+> **A freely falling quantum receiver does not measure gravity as a force; it measures curvature through geodesic deviation. Once that Einstein-level correction is imposed, the useful near-field branch signal of a conserved source quadrupole falls as $R^{-5}$. The outgoing gravitational record is quadrupolar and radiative. Their competition makes the local strong-history witness overwhelmingly a near-field phenomenon, while obvious retardation is a wave-zone phenomenon. The emerging question is whether this tension is merely technological mode capture or reflects a deeper information-theoretic constraint on how gravity can carry quantum branch information through spacetime.**
