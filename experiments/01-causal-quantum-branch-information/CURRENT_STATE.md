@@ -1,15 +1,15 @@
 # Current State — Experiment 01
 
-**Last updated:** 2026-08-07 16:21 EDT  
+**Last updated:** 2026-08-07 16:46 EDT  
 **Experiment:** Causal Transport of Quantum Branch Information by Gravity
 
 This is the canonical compact recovery point. Detailed derivations live in the experiment directory and timestamped `checkpoints/`.
 
 ---
 
-## 1. Core operational question
+## 1. Central question
 
-Can gravity transport information about a coherent source alternative to a distant quantum receiver **causally**, while preserving enough coherence between the two histories that source and receiver become entangled?
+Can gravity carry information about a coherent source alternative to a distant quantum receiver **causally**, while preserving enough coherence that source and receiver become entangled rather than merely classically correlated?
 
 For a balanced source-path qubit,
 
@@ -21,7 +21,7 @@ $$
 \end{pmatrix}.
 $$
 
-Define
+The history-coherence norm is
 
 $$
 C_\Xi=\|\Xi\|_1.
@@ -33,11 +33,11 @@ $$
 C_\Xi=F(\rho_E^L,\rho_E^R),
 $$
 
-so $C_\Xi$ is the fidelity of the unobserved complementary records. Keep the final theory operational in $(\rho_L,\rho_R,\Xi)$ rather than assuming a fundamental source-field-probe factorization.
+so $C_\Xi$ measures how indistinguishable the unobserved complementary records remain. Keep the paper-level theory operational in $(\rho_L,\rho_R,\Xi)$ rather than assuming a fundamental source-field-probe Hilbert-space factorization.
 
 ---
 
-## 2. Entanglement tests
+## 2. Operational entanglement tests
 
 Every balanced separable state obeys
 
@@ -53,23 +53,11 @@ $$
 \boxed{C_\Xi\le F(\rho_L,\rho_R)}.
 $$
 
-For the weak-cat thermal problem, a targeted PPT witness uses only
-
-$$
-P_{+,1},\quad P_{-,0},\quad Z_0=\langle-,1|\rho|+,0\rangle,
-$$
-
-with
-
-$$
-\boxed{|Z_0|^2>P_{+,1}P_{-,0}}
-$$
-
-certifying NPT entanglement exactly at the thermal channel boundary in the weak-cat limit.
+A positive violation certifies source-receiver entanglement.
 
 ---
 
-## 3. Causality and the three fronts
+## 3. Causal structure
 
 For a controlled source operation at $t=0$ and receiver distance $R$,
 
@@ -79,17 +67,17 @@ $$
 
 for the source-controlled contribution.
 
-Distinguish:
+Distinguish three fronts:
 
 1. **signal front** — first causal gravitational response;
 2. **NPT front** — first source-receiver entanglement;
-3. **global-history front** — first low-cost fidelity/coherence certification.
+3. **global-history front** — first low-cost coherence/fidelity certification.
 
 ---
 
-## 4. Gauge-invariant gravitational response
+## 4. Gauge-invariant gravitational signal
 
-A self-contained freely falling receiver couples to tidal curvature,
+A self-contained free receiver couples to tidal curvature,
 
 $$
 H_{\rm drive}=\mu_BL_B\mathcal E_{nn}x_B,
@@ -130,7 +118,7 @@ is the exact static/induction/wave-zone crossover polynomial for this geometry.
 
 ## 5. Wave-zone difference mode
 
-All branch-dependent coherent graviton radiation can be compressed into one normalized bosonic **difference mode**:
+All coherent branch-distinguishing graviton radiation can be compressed into one normalized bosonic difference mode. Define
 
 $$
 N_\Delta
@@ -138,231 +126,102 @@ N_\Delta
 |\beta^L_{\mathbf k\lambda}-\beta^R_{\mathbf k\lambda}|^2.
 $$
 
-After removing the branch-common displacement, the two field histories are equivalent to
+After subtracting the common coherent displacement, the two radiation histories are equivalent to
 
 $$
 |\pm\sqrt{N_\Delta}/2\rangle.
 $$
 
-Thus the wave-zone problem is a one-mode quantum state-transfer problem.
-
-For vacuum capture fraction $\eta$, exact source-receiver entanglement exists for every finite $N_\Delta>0$ and every $\eta>0$, although the simple global-history witness needs $\eta>1/2$.
-
-At tiny capture,
-
-$$
-\boxed{N_\Delta^{\rm opt}=4\sqrt\eta+O(\eta)},
-$$
-
-$$
-\boxed{\mathcal N_{\max}=\eta-2\eta^{3/2}+O(\eta^2)}.
-$$
-
-Therefore arbitrarily large stimulated classical response cannot parametrically beat the quantum entanglement-transfer rate.
+Thus the wave-zone problem reduces to one-mode quantum state transfer.
 
 ---
 
-## 6. Thermal channel hierarchy
+## 6. NEW strongest analytic result: exact finite-cat thermal theorem
 
-For a thermal attenuator of capture fraction $\eta$ and bath occupation $\bar n$:
-
-Fundamental weak-cat entanglement boundary:
+For the hybrid source-cat input
 
 $$
-\boxed{\eta_{\rm ent}=\frac{\bar n}{\bar n+1}}.
+|\Psi_a\rangle
+=\frac{|L\rangle|a\rangle+|R\rangle|-a\rangle}{\sqrt2},
+\qquad 0<|a|<\infty,
 $$
 
-Global fidelity-history threshold:
+send the bosonic branch-difference mode through a thermal attenuator of coherent transmissivity $\eta$ and environment occupation $\bar n$.
+
+Define the output thermal occupation generated from vacuum,
 
 $$
-\boxed{\eta_F=\frac{2\bar n+1}{2\bar n+2}}.
+m=(1-\eta)\bar n.
 $$
 
-The targeted PPT witness reaches $\eta_{\rm ent}$ in the weak-cat limit.
-
-For output thermal occupation $m=(1-\eta)\bar n$,
+Then, for **every finite nonzero cat amplitude**,
 
 $$
 \boxed{
-\mathcal N_{AB}
-=\frac{N_\Delta}{4}\frac{\eta-m}{m}+O(N_\Delta^2)
+\rho_{AB}\text{ is NPT}
+\iff
+\eta>m
+\iff
+\eta>\frac{\bar n}{\bar n+1}.
 }
 $$
 
-for $m>0$ near threshold.
+This closes the previous finite-cat numerical conjecture analytically.
 
-A reproducible truncated Fock-space scan in `numerics/thermal_cat_scan.py` gives preliminary evidence that above the EB boundary the binary coherent source-cat remains NPT for every finite branch separation tested, with negativity peaking at an intermediate $N_\Delta$ and tending back toward zero for very large cats. This is a numerical conjecture, not a theorem.
+The proof factorizes the partially transposed thermal-channel blocks and reduces them, by congruence on the analytic domain, to
+
+$$
+\frac12
+\begin{pmatrix}
+I&qD(-u)\\
+qD(u)&I
+\end{pmatrix},
+$$
+
+where $D(u)$ is unitary and
+
+$$
+\boxed{
+q=\exp\left[
+\frac{2|a|^2}{m}(\eta-m)
+\right].
+}
+$$
+
+Hence a negative direction exists exactly when $q>1$, i.e. $\eta>m$. Below that point the thermal attenuator is entanglement breaking and the output is separable for every input.
+
+Full derivation: `EXACT_FINITE_CAT_THERMAL_THEOREM.md`.
+
+**Key consequence:** cat amplitude controls the amount of entanglement, but **not the exact thermal NPT boundary**.
 
 ---
 
-## 7. Source–receiver mode overlap
+## 7. Exact causal quantum-front speed limit
 
-For complete angular access, the normalized spatial/polarization overlap of source and receiver quadrupolar graviton modes is
+For the passive Markov receiver
+
+$$
+\dot c
+=-\frac{\kappa_{\rm tot}}2c
++\sqrt{\kappa_\Delta}\,b_\Delta^{\rm in}
++\sum_a\sqrt{\kappa_a}\,b_a^{\rm in},
+$$
+
+with
+
+$$
+\kappa_{\rm tot}=\kappa_\Delta+\sum_a\kappa_a,
+$$
+
+and thermal injection
 
 $$
 \boxed{
-\mathcal O_Q
-=
-\frac{|Q_B^{ij*}Q^S_{ij}|^2}
-{(Q_B^{ij*}Q^B_{ij})(Q_S^{ij*}Q^S_{ij})}.
+\Gamma_{\rm th}=\sum_a\bar n_a\kappa_a,
 }
 $$
 
-For two plus quadrupoles rotated by $\psi$ about their common axis,
-
-$$
-\boxed{\mathcal O_Q=\cos^2(2\psi)}.
-$$
-
-Random relative orientation gives
-
-$$
-\langle\mathcal O_Q\rangle=1/5.
-$$
-
-For normalized exponential/Lorentzian temporal modes,
-
-$$
-\boxed{
-\mathcal O_t
-=\frac{4\kappa_S\kappa_B}
-{(\kappa_S+\kappa_B)^2+4\Delta^2}.
-}
-$$
-
-When factors separate,
-
-$$
-\boxed{
-\mathcal O_{SB}
-=\beta_{\rm access}\mathcal O_Q\mathcal O_t\mathcal O_{\rm other}.
-}
-$$
-
-The useful gravitational rate is
-
-$$
-\boxed{\kappa_\Delta=\mathcal O_{SB}\kappa_g.}
-$$
-
----
-
-## 8. Gravitational input-output rate
-
-The receiver's total gravitational coupling equals its spontaneous quadrupole graviton-emission linewidth,
-
-$$
-\boxed{
-\kappa_g
-=\frac{2G\omega_B^5}{5\hbar c^5}
-Q_{ij}^{10}Q_{ij}^{01}.
-}
-$$
-
-By time-reversal reciprocity, the same matrix element controls matched absorption.
-
-For an acoustic bar,
-
-$$
-\frac{\kappa_g}{\omega_l}
-=\frac{4}{l\pi}
-\left(\frac{r_s}{L}\right)
-\left(\frac{v_s}{c}\right)^3.
-$$
-
-This identifies the severe ordinary-material suppression as compactness times three powers of internal speed divided by $c$.
-
----
-
-## 9. Passive receiver bound and active loophole
-
-For any stationary **passive** nonrelativistic receiver,
-
-$$
-\boxed{
-\sum_A\sum_{m<n}
-(p_m-p_n)(E_n-E_m)|Q^A_{mn}|^2
-=\frac{10}{3}\hbar^2\langle I\rangle_\rho.
-}
-$$
-
-For a narrow band,
-
-$$
-\boxed{
-\kappa_{g,\rm net}
-\lesssim\frac{4G}{3c^5}\langle I\rangle_\rho\omega_B^4.
-}
-$$
-
-Define
-
-$$
-\mathfrak R_B
-=\frac23Q_B\mathcal C_B\beta_B^3,
-\qquad
-\mathcal C_B=r_{s,B}/L_B,
-\quad
-\beta_B=\omega_BL_B/c.
-$$
-
-Then a necessary passive thermal NPT condition is
-
-$$
-\boxed{\mathcal O_{SB}\mathfrak R_B>\bar n_i.}
-$$
-
-A necessary global-history condition is
-
-$$
-\boxed{(2\mathcal O_{SB}-1)\mathfrak R_B>2\bar n_i+1.}
-$$
-
-Known active collective atomic states can exhibit $N^2$ gravitational transition rates. In the published model the same $N^2$ factor multiplies driven/stochastic gravitational response and vacuum gravitational transitions. Thus active collectivity speeds dynamics but does not automatically improve quantum efficiency. The passive sum-rule bound does not apply to those inverted/highly excited states.
-
----
-
-## 10. Gravitational beta factor
-
-Split
-
-$$
-\kappa_g=\kappa_\Delta+\kappa_\perp.
-$$
-
-Define
-
-$$
-\boxed{
-\beta_G
-=\frac{\kappa_\Delta}
-{\kappa_\Delta+\kappa_\perp+\kappa_i}.
-}
-$$
-
-Subwavelength $N^2$ collective enhancement multiplies useful and orthogonal gravitational rates together, so it does not improve purely gravitational mode selectivity by itself.
-
-For the plus quadrupole, one ideal hemisphere contains exactly half of the full radiation mode; ideal full-$4\pi$ time-reversal matching can reach unit mode access.
-
----
-
-## 11. NEW: tight waveform-independent causal NPT speed limit
-
-For a general stationary multiport receiver, define total damping
-
-$$
-\kappa_{\rm tot}=\kappa_\Delta+\sum_a\kappa_a
-$$
-
-and total thermal injection rate
-
-$$
-\boxed{
-\Gamma_{\rm th}=\sum_a\bar n_a\kappa_a.
-}
-$$
-
-For **any normalized incoming branch-difference waveform**,
+any normalized incoming branch-difference waveform obeys
 
 $$
 \boxed{
@@ -375,15 +234,31 @@ $$
 }
 $$
 
-The bound follows from Cauchy-Schwarz and is saturated by the time-reversed receiver kernel in the ideal Markov model.
-
-Therefore a weak-cat NPT front exists only if
+The exact finite-cat theorem gives
 
 $$
-\boxed{\kappa_\Delta>\Gamma_{\rm th}.}
+\boxed{
+\rho_{AB}(t)\text{ is NPT}
+\iff
+\eta_f(t)>m(t)
+}
 $$
 
-When it exists, every normalized input waveform satisfies
+at every time where the reduced receiver channel is a thermal attenuator.
+
+For a stationary receiver,
+
+$$
+m_*=\frac{\Gamma_{\rm th}}{\kappa_{\rm tot}}.
+$$
+
+Therefore **no finite source cat** can generate an NPT front if
+
+$$
+\boxed{\kappa_\Delta\le\Gamma_{\rm th}.}
+$$
+
+Above threshold, every normalized waveform satisfies the tight causal bound
 
 $$
 \boxed{
@@ -398,16 +273,16 @@ T_{\rm NPT}
 }
 $$
 
-Define the quantum excess fraction
+The bound is saturated by the time-reversed receiver ringdown waveform.
+
+Define
 
 $$
-\boxed{
 \epsilon_Q
-=1-\Gamma_{\rm th}/\kappa_\Delta.
-}
+=1-\frac{\Gamma_{\rm th}}{\kappa_\Delta}.
 $$
 
-The optimized causal-front law is
+Then
 
 $$
 \boxed{
@@ -416,134 +291,112 @@ T_{\rm NPT}^{\min}-R/c
 }
 $$
 
-At the front,
+This is now an **exact finite-cat result within the stated thermal single-mode Markov model**, not a weak-cat approximation.
+
+Detailed theorem: `CAUSAL_FRONT_THEOREM.md`.
+
+---
+
+## 8. Source-receiver gravitational mode matching
+
+The useful branch-mode rate is
+
+$$
+\boxed{\kappa_\Delta=\mathcal O_{SB}\kappa_g.}
+$$
+
+For complete angular access, the quadrupole overlap is
 
 $$
 \boxed{
-\left.
-\frac{d\eta_{\max}}{dt}
-\right|_{T_{\rm NPT}}
-=
-\kappa_\Delta\epsilon_Q
-=
-\kappa_\Delta-\Gamma_{\rm th}.
+\mathcal O_Q
+=\frac{|Q_B^{ij*}Q^S_{ij}|^2}
+{(Q_B^{ij*}Q^B_{ij})(Q_S^{ij*}Q^S_{ij})}.
 }
 $$
 
-Thus the same distance from the EB boundary controls both the logarithmic post-light-cone delay and the vanishing post-front growth rate.
+For two plus quadrupoles rotated by $\psi$,
 
-Preliminary novelty search found related quantum-speed-limit work on the opposite process—time to **become** entanglement-breaking—and gravity-channel work on static thermal EB thresholds, but not this exact retarded waveform-optimal entanglement-onset bound. This is promising but unverified.
+$$
+\mathcal O_Q=\cos^2(2\psi).
+$$
+
+For normalized Lorentzian/exponential temporal modes,
+
+$$
+\mathcal O_t
+=\frac{4\kappa_S\kappa_B}
+{(\kappa_S+\kappa_B)^2+4\Delta^2}.
+$$
+
+When separable,
+
+$$
+\mathcal O_{SB}
+=\beta_{\rm access}\mathcal O_Q\mathcal O_t\mathcal O_{\rm other}.
+$$
 
 ---
 
-## 12. NEW: relativistic QFT correction
+## 9. Receiver gravitational coupling
 
-The nonrelativistic passive compactness ceiling does **not** extend automatically to relativistic QFT.
-
-For a smeared stress-energy receiver operator
+The total gravitational receiver coupling is its spontaneous quadrupole graviton linewidth,
 
 $$
-F_f=\int d^3x\,f_{\mu\nu}(\mathbf x)T^{\mu\nu}(\mathbf x),
+\boxed{
+\kappa_g
+=\frac{2G\omega_B^5}{5\hbar c^5}
+Q_{ij}^{10}Q_{ij}^{01}.
+}
 $$
 
-passivity gives
+Time-reversal reciprocity gives the same matrix element for matched absorption.
 
-$$
-\chi_f''(\omega)\ge0
-\qquad(\omega>0),
-$$
-
-and formally
-
-$$
-\int_0^\infty d\omega\,
-\omega\chi_f''(\omega)
-=
-\frac{\pi}{2\hbar^2}
-\langle[F_f,[H,F_f]]\rangle_{\rm ren}
-$$
-
-when the renormalized double commutator is finite.
-
-However, an explicit free-scalar test shows that smooth **spatial** smearing still permits arbitrarily energetic back-to-back pairs with small total momentum. Stress spectral functions have the expected relativistic UV growth, so no universal finite global oscillator-strength budget follows from passivity alone.
-
-A physical relativistic receiver must therefore be characterized by a finite temporal bandwidth / spacetime smearing or microscopic form factor.
+For ordinary passive nonrelativistic matter, a quadrupole oscillator-strength sum rule gives a strong receiver ceiling. Active/inverted collective states can evade that passive bound and show $N^2$ transition enhancement, but known models enhance vacuum gravitational transitions by the same collective factor, so activity does not automatically improve quantum efficiency.
 
 ---
 
-## 13. NEW: KMS mode-efficiency law
+## 10. Relativistic receiver correction
 
-For a passive Gibbs receiver and one smeared stress-energy mode,
+The nonrelativistic compactness/oscillator-strength ceiling does not extend automatically to relativistic QFT: spatially smeared stress energy still contains UV pair excitations.
+
+What survives for a passive Gibbs receiver is the mode-resolved KMS fluctuation-dissipation relation
 
 $$
 \boxed{
 S_H(\omega)
 =
-\hbar
-\coth\left(
+\hbar\coth\left(
 \frac{\hbar\omega}{2k_BT}
-\right)
-\chi''(\omega).
+\right)\chi''(\omega).
 }
 $$
 
-Thus relativistic QFT may evade the nonrelativistic **absolute response** ceiling, but it cannot evade the equilibrium **noise-to-response** ratio mode by mode.
-
-For a general multiport receiver, the universal weak-cat thermal condition becomes
-
-$$
-\boxed{
-\kappa_\Delta
->
-\sum_a\bar n_a\kappa_a.
-}
-$$
-
-The global history witness requires
-
-$$
-\boxed{
-\kappa_\Delta
->
-\sum_a(2\bar n_a+1)\kappa_a.
-}
-$$
-
-So the relativistic receiver is governed by source-matched spectral cooperativity rather than a universal compactness bound.
+Thus relativistic receivers may evade an absolute response ceiling, but not the passive equilibrium noise-to-response relation.
 
 ---
 
-## 14. Current strongest candidate paper result
+## 11. Novelty status
 
-The most theorem-like current result is the **causal quantum-front speed limit**:
+Established neighboring ingredients include thermal-attenuator entanglement-breaking thresholds, entangled coherent states in noisy channels, retarded gravity-mediated entanglement, Gaussian thermal gravity-channel tests, input-output state transfer, graviton quadrupole emission, and quantum speed limits for channels becoming entanglement breaking.
 
-$$
-\boxed{
-T_{\rm NPT}^{\min}
-=
-R/c-\kappa_{\rm tot}^{-1}\ln\epsilon_Q,
-\qquad
-\epsilon_Q
-=1-rac{\Gamma_{\rm th}}
-{\mathcal O_{SB}\kappa_g},
-}
-$$
+A targeted 2026-08-07 search did **not** locate the exact combination now obtained:
 
-within an explicitly stated stationary Markov source-mode receiver model.
+1. finite hybrid coherent cats are NPT for every nonzero finite amplitude iff the thermal attenuator is non-entanglement-breaking;
+2. combining that exact family theorem with a retarded matched receiver produces a waveform-optimal earliest NPT front after $R/c$.
 
-Its conceptual content is distinct from ordinary retardation:
-
-> The light cone fixes when gravitational influence may arrive. The receiver's quantum efficiency fixes the earliest later time at which enough coherent branch information can have accumulated to survive thermal classicalization.
+This is **promising but novelty unverified**. Do not claim originality until a broader literature review and independent proof check are completed.
 
 ---
 
-## 15. Immediate frontier
+## 12. Strongest next path
 
-1. Attempt an analytic proof of the finite-cat conjecture suggested by `FINITE_CAT_NUMERICS.md`.
-2. Extend the novelty search for causal entanglement-generation latency near EB thresholds.
-3. Develop the relativistic source-matched stress-energy spectral cooperativity explicitly for a concrete field-theoretic receiver.
-4. Formalize the causal-front speed-limit theorem with assumptions/proof suitable for a paper appendix.
+1. Independently check the finite-cat operator-factorization proof, especially infinite-dimensional domain details.
+2. Search more broadly for an equivalent finite-cat theorem in hybrid entanglement / non-Gaussian Gaussian-channel literature.
+3. If the proof survives, rewrite Experiment 01 around the exact finite-cat causal-front theorem rather than the earlier heuristic history-transfer narrative.
+4. Derive the NPT magnitude near the exact boundary and its dependence on $N_\Delta$ to obtain experimentally useful scaling.
+5. Then map the exact receiver theorem onto linearized gravity with fully explicit source and receiver wavepackets.
 
 ## Current Einstein/Feynman compression
 
-> **The speed of gravity and the speed of gravitational quantum information are not the same question. Relativity says no source-controlled influence may arrive before $R/c$. But after that, the receiver still has to accumulate the correct spin-2 branch mode faster than thermal and uncontrolled channels erase its quantum meaning. Even with the best possible waveform, that takes at least a receiver-lifetime times a logarithm set by the distance from the entanglement-breaking boundary. In ordinary passive matter there is also a severe oscillator-strength ceiling; in relativistic QFT that ceiling disappears, but KMS replaces it with a universal noise-to-response constraint.**
+> **Relativity fixes when the gravitational branch signal may first arrive: not before $R/c$. But arrival is not enough. The receiver must coherently catch the correct branch-difference mode faster than thermal noise turns that information into an ordinary classical record. For the full finite coherent-cat family, this transition is exact: every nonzero finite cat becomes entangled with the receiver if and only if coherent capture exceeds the receiver's thermal occupation. No larger cat can force an entanglement-breaking receiver to become quantum. Once the channel is quantum-capable, cat size changes how much entanglement appears, but not when the NPT front is allowed to begin.**
