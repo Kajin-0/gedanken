@@ -165,7 +165,7 @@ Established ingredients include gravitationally induced entanglement, one-deloca
 Potential novelty is therefore **not the base experiment**, but one or more of:
 
 1. a causal conditional-history coherence bound;
-2. a probe quantum-eraser protocol that isolates residual mediator branch records;
+2. a probe quantum-eraser protocol that isolates residual gravitational branch records;
 3. a quantitative coherent-near-field versus radiative-leakage optimization.
 
 ### Current conceptual compression
@@ -364,3 +364,246 @@ $$
 $$
 
 only after causal contact.
+
+---
+
+## 2026-08-07 12:38 EDT — General separable-state bound and operational witness
+
+### Stronger result: the bound is not limited to measure-and-prepare models
+
+Consider any balanced source-probe state written in the source path basis as
+
+$$
+\rho_{AB}
+=
+\frac12
+\begin{pmatrix}
+\rho_L & \Xi\\
+\Xi^\dagger & \rho_R
+\end{pmatrix},
+\qquad
+\operatorname{Tr}\rho_L=\operatorname{Tr}\rho_R=1.
+$$
+
+If $\rho_{AB}$ is separable, write
+
+$$
+\rho_{AB}=\sum_k p_k\,\tau_A^{(k)}\otimes\sigma_B^{(k)},
+$$
+
+with
+
+$$
+\tau_A^{(k)}=
+\begin{pmatrix}
+a_k&c_k\\
+c_k^*&b_k
+\end{pmatrix},
+\qquad
+a_k+b_k=1.
+$$
+
+Positivity gives
+
+$$
+|c_k|\le\sqrt{a_kb_k}.
+$$
+
+Using the balanced normalization,
+
+$$
+\rho_L=2\sum_kp_ka_k\sigma_k,
+\qquad
+\rho_R=2\sum_kp_kb_k\sigma_k,
+$$
+
+and
+
+$$
+\Xi=2\sum_kp_kc_k\sigma_k.
+$$
+
+Therefore
+
+$$
+C_\Xi=\|\Xi\|_1
+\le\sum_kp_k\,2\sqrt{a_kb_k},
+$$
+
+while
+
+$$
+D_B=\frac12\|\rho_L-\rho_R\|_1
+\le\sum_kp_k|a_k-b_k|.
+$$
+
+For every $k$,
+
+$$
+\left(2\sqrt{a_kb_k}\right)^2+(a_k-b_k)^2=(a_k+b_k)^2=1.
+$$
+
+By convexity of the Euclidean norm,
+
+$$
+\boxed{C_\Xi^2+D_B^2\le1}
+$$
+
+for **every separable balanced source-probe state**.
+
+Thus
+
+$$
+\boxed{\mathcal W_\Xi=C_\Xi^2+D_B^2-1>0}
+$$
+
+is a sufficient entanglement witness. Classical gravitational mediation that cannot generate source-probe entanglement is therefore excluded whenever this witness is positive.
+
+### Literature boundary
+
+This mathematical structure is closely related to established wave-particle duality / block-positivity results. In particular, Xin Lü (Physics Letters A 397, 127259, 2021) derives general coherence-distinguishability relations using positivity of $2\times2$ block matrices, and related work treats off-diagonal-block norms as coherence/decoherence measures. Therefore **the inequality itself should not currently be claimed as novel**. The potentially new physics is its use as a time-resolved gravitational-history witness together with retarded causal propagation and mediator-record accounting.
+
+### Direct operational measurement of $C_\Xi$
+
+Trace-norm duality gives
+
+$$
+\boxed{
+C_\Xi
+=
+\max_{U_B,\theta}
+\langle O(U_B,\theta)\rangle,
+}
+$$
+
+where $U_B$ is unitary and
+
+$$
+O(U_B,\theta)
+=
+e^{i\theta}|L\rangle\langle R|\otimes U_B
++
+e^{-i\theta}|R\rangle\langle L|\otimes U_B^\dagger.
+$$
+
+$O$ is Hermitian and dichotomic when $U_B$ is unitary. Its expectation value is
+
+$$
+\langle O\rangle
+=
+\operatorname{Re}\left[e^{-i\theta}\operatorname{Tr}(U_B^\dagger\Xi)\right].
+$$
+
+Optimizing over $\theta$ and $U_B$ gives $\|\Xi\|_1$.
+
+This gives $C_\Xi$ a concrete meaning: it is the maximum coherent correlation obtainable by optimally aligning the two conditional probe histories. For a controlled unitary, the optimal $U_B$ is the relative-history reversal associated with the polar decomposition of $\Xi$.
+
+### No full tomography is required for a witness
+
+For any chosen probe observable $M$ with $\|M\|_\infty\le1$, define
+
+$$
+d_M
+=
+\frac12\left|\operatorname{Tr}[M(\rho_L-\rho_R)]\right|
+\le D_B.
+$$
+
+For any chosen eraser unitary $U$ and phase $\theta$,
+
+$$
+c_U=|\langle O(U,\theta)\rangle|\le C_\Xi.
+$$
+
+Hence every separable state obeys
+
+$$
+\boxed{c_U^2+d_M^2\le1.}
+$$
+
+Therefore
+
+$$
+\boxed{c_U^2+d_M^2>1}
+$$
+
+is already sufficient to certify source-probe entanglement using only selected joint correlations and a branch-discrimination measurement.
+
+### Oscillator specialization
+
+For conditional coherent probe states
+
+$$
+|B_L\rangle=|\alpha\rangle,
+\qquad
+|B_R\rangle=|-\alpha\rangle,
+$$
+
+one has
+
+$$
+s_B=e^{-2|\alpha|^2},
+$$
+
+and
+
+$$
+D_B^2=1-e^{-4|\alpha|^2}.
+$$
+
+If residual unobserved mediator coherence contributes
+
+$$
+C_\Xi=s_g=e^{-\Gamma_g},
+$$
+
+then
+
+$$
+\boxed{
+\mathcal W_\Xi
+=e^{-2\Gamma_g}-e^{-4|\alpha|^2}.
+}
+$$
+
+The witness is positive exactly when
+
+$$
+\boxed{\Gamma_g<2|\alpha|^2.}
+$$
+
+For the idealized retarded oscillator response
+
+$$
+\alpha(T,R)
+=
+\frac{g}{\omega}\left(1-e^{-i\omega\tau}\right),
+\qquad
+\tau=(T-R/c)_+,
+$$
+
+this becomes
+
+$$
+\boxed{
+\Gamma_g(T,R)
+<
+\frac{8g^2}{\omega^2}
+\sin^2\left(\frac{\omega(T-R/c)}{2}\right).
+}
+$$
+
+Before causal contact the right-hand side is zero. After causal contact, a positive-witness region can emerge only if coherent probe record formation outruns irreversible/unobserved mediator record formation.
+
+### Updated conceptual interpretation
+
+The strongest simple statement is now:
+
+> **A classicalized interaction can trade source coherence for branch knowledge, but a coherent quantum interaction can make the probe branch-distinguishing while preserving recoverable coherence between the two histories. The quantity $\|\Xi\|_1$ distinguishes those situations even when ordinary source interference has vanished.**
+
+### Updated frontier
+
+1. Determine whether the specific trace-norm witness above is already explicitly known in the same form in the wave-particle/block-coherence literature; assume it is not novel until proven otherwise.
+2. Treat $\mathcal W_\Xi(T,R)$ as a gravity-specific causal witness rather than claiming novelty for the underlying quantum-information inequality.
+3. Derive $\Xi$, $D_B$, and the residual coherence exponent $\Gamma_g$ from an explicit retarded scalar-field model.
+4. Replace the scalar mediator with linearized gravity and determine the leading weak-field scaling of the positive-witness region.
