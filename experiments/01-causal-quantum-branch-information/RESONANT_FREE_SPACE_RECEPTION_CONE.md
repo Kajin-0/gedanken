@@ -1,19 +1,32 @@
 # Resonant Free-Space Gravitational Quantum Reception Cone
 
-**Timestamp:** 2026-08-07 17:25 EDT  
-**Status:** Far-zone aligned-plus-quadrupole result obtained by matching the exact retarded Green coupling to a cascaded input-output channel. This supersedes the geometric-aperture cone as the cleaner model for a compact resonant receiver.
+**Updated:** 2026-08-07 17:36 EDT  
+**Status:** Far-zone aligned-plus-quadrupole result. The retarded cross Green function is independently checked against Hu et al. and its collective-decay part is reproduced by an explicit angular common-bath integral. This corrects an earlier factor-of-four error in the propagation efficiency.
 
-## 1. Starting point: normalized retarded cross response
+## 1. Exact normalized retarded cross response
 
-For resonant aligned plus-type quadrupole transitions $A$ and $B$, the exact retarded source-receiver coefficient is
+For resonant aligned plus-type quadrupole transitions $A$ and $B$,
 
 $$
+\boxed{
 \Sigma_{AB}^{R}(\omega,R)
 =\frac54
 \sqrt{\kappa_{g,A}\kappa_{g,B}}
 \frac{P(\epsilon)e^{i\epsilon}}{\epsilon^5},
-\qquad
-\epsilon=kR=\frac{\omega R}{c}.
+}
+$$
+
+where
+
+$$
+\epsilon=kR=\frac{\omega R}{c},
+$$
+
+and
+
+$$
+P(\epsilon)
+=3-3i\epsilon-3\epsilon^2+2i\epsilon^3+\epsilon^4.
 $$
 
 In the wave zone,
@@ -28,92 +41,187 @@ $$
 }
 $$
 
-See `NORMALIZED_GRAVITATIONAL_CROSS_RESPONSE.md`.
+See `NORMALIZED_GRAVITATIONAL_CROSS_RESPONSE.md` and `INDEPENDENT_CROSS_RESPONSE_CHECK.md`.
 
 ---
 
-## 2. Match to a cascaded source-to-receiver channel
+## 2. Exact common-bath angular check
 
-For a source oscillator radiating into a normalized outgoing mode that reaches receiver $B$ with propagation efficiency $\eta_{\rm ff}$, the standard one-way cascaded drive has magnitude
-
-$$
-\sqrt{\eta_{\rm ff}\kappa_{g,A}\kappa_{g,B}}.
-$$
-
-Matching this to the far-zone retarded cross response gives
+For the plus quadrupole, the polarization-summed on-shell angular weight is
 
 $$
-\sqrt{\eta_{\rm ff}}
-=\frac{5}{4kR},
+\mathcal F(\theta,\phi)
+=2\cos^2\theta
++\frac12\sin^4\theta\cos^2(2\phi).
 $$
 
-and therefore
+After azimuthal integration,
+
+$$
+\int_0^{2\pi}d\phi\,\mathcal F
+=\frac\pi2(1+6u^2+u^4),
+\qquad
+u=\cos\theta.
+$$
+
+The normalized common-bath overlap is therefore
+
+$$
+\mu(\epsilon)
+=\frac{5}{32}
+\int_{-1}^{1}du\,
+(1+6u^2+u^4)e^{i\epsilon u}.
+$$
+
+Direct integration gives
+
+$$
+\boxed{
+\mu(\epsilon)
+=\frac{5}{2\epsilon^5}
+\left[
+(\epsilon^4-3\epsilon^2+3)\sin\epsilon
++(2\epsilon^3-3\epsilon)\cos\epsilon
+\right].
+}
+$$
+
+But
+
+$$
+\operatorname{Im}[P(\epsilon)e^{i\epsilon}]
+=(\epsilon^4-3\epsilon^2+3)\sin\epsilon
++(2\epsilon^3-3\epsilon)\cos\epsilon.
+$$
+
+Hence
+
+$$
+\boxed{
+\mu(\epsilon)
+=\frac{5}{2\epsilon^5}
+\operatorname{Im}[P(\epsilon)e^{i\epsilon}].
+}
+$$
+
+The cross damping is
+
+$$
+\Gamma_{AB}
+=\sqrt{\kappa_{g,A}\kappa_{g,B}}\,\mu(\epsilon),
+$$
+
+so the exact retarded self-energy obeys
+
+$$
+\boxed{
+\Gamma_{AB}
+=2\operatorname{Im}\Sigma_{AB}^{R}
+}
+$$
+
+up to the overall retarded-sign convention.
+
+This is the standard open-system relation and fixes the factor relating the reciprocal retarded self-energy to a one-way cascaded propagation amplitude.
+
+---
+
+## 3. Correct one-way far-field propagation efficiency
+
+For a directional/cascaded channel with propagation amplitude $t_{AB}$, the corresponding reciprocal retarded self-energy has magnitude
+
+$$
+|\Sigma_{AB}^{R}|
+=\frac12|t_{AB}|
+\sqrt{\kappa_{g,A}\kappa_{g,B}}.
+$$
+
+Therefore, in the wave zone,
+
+$$
+|t_{AB}|
+=\frac{2|\Sigma_{AB}^{R}|}
+{\sqrt{\kappa_{g,A}\kappa_{g,B}}}
+\simeq
+\frac{5}{2kR}.
+$$
+
+The ideal aligned source-to-receiver propagation efficiency is thus
 
 $$
 \boxed{
 \eta_{\rm ff}(R)
-=\frac{25}{16(kR)^2}.
+=|t_{AB}|^2
+=\frac{25}{4(kR)^2}.
 }
 $$
 
-This interpretation is restricted to the wave zone where
+This supersedes the earlier provisional value $25/[16(kR)^2]$.
+
+For general tensor/polarization/temporal mismatch,
 
 $$
-kR\gg1
-$$
-
-and therefore $\eta_{\rm ff}\ll1$. The full near-zone retarded coefficient can exceed the bounds appropriate to a propagating loss channel because there the interaction contains large reactive/virtual-field contributions and should not be interpreted as a transmissivity.
-
-The numerical coefficient applies to the aligned plus-quadrupole geometry and the stated input-output normalization. General source/receiver tensor and temporal mismatch should multiply this by a normalized factor
-
-$$
+\boxed{
+\eta_{\rm ff}(R)
+=\frac{25\mathcal O}{4(kR)^2},
+\qquad
 0\le\mathcal O\le1.
-$$
-
-Thus more generally
-
-$$
-\boxed{
-\eta_{\rm ff}(R)
-=\frac{25\mathcal O}{16(kR)^2}
 }
 $$
 
-in the far zone.
+The interpretation is restricted to
+
+$$
+kR\gg1,
+$$
+
+where this is safely below unity. The near-zone Green response contains reactive interactions and cannot be treated as a pure propagating transmissivity.
 
 ---
 
-## 3. Effective coherent cross-section
+## 4. Resonant cross-section consistency check
 
-If one formally writes
+The plus-quadrupole source radiates most strongly along its $z$ axis. Its on-axis angular power fraction is
+
+$$
+\boxed{
+\frac{1}{P_G}
+\frac{dP_G}{d\Omega}\bigg|_{z}
+=\frac{5}{8\pi}.
+}
+$$
+
+If a receiver of resonant cross-section $\sigma_{\rm res}$ sits on this axis, the captured power fraction is
 
 $$
 \eta_{\rm ff}
-=\frac{A_{\rm eff}}{4\pi R^2},
+=\frac{5}{8\pi}
+\frac{\sigma_{\rm res}}{R^2}.
 $$
 
-then
+Using the common-bath result
+
+$$
+\eta_{\rm ff}
+=\frac{25}{4k^2R^2}
+$$
+
+gives
 
 $$
 \boxed{
-A_{\rm eff}
-=\frac{25\pi\mathcal O}{4k^2}.
+\sigma_{\rm res}
+=\frac{10\pi}{k^2}.
 }
 $$
 
-This is of order the gravitational wavelength squared and can be much larger than the receiver's material area when
+This is the expected unitary-scale cross-section for an $l=2$ resonant partial wave, providing an independent physical consistency check on the factor of four.
 
-$$
-kL_B\ll1.
-$$
-
-Therefore a resonant quantum receiver cannot generally be bounded by the literal geometric area $\pi L_B^2$.
-
-This is the key correction to the earlier $\beta_B^5$ geometric-aperture argument.
+The relevant cross-section is set by wavelength and transition strength, not necessarily by the literal material area of a subwavelength receiver.
 
 ---
 
-## 4. Receiver bath decomposition
+## 5. Receiver bath decomposition
 
 The receiver's total spontaneous graviton linewidth
 
@@ -121,9 +229,9 @@ $$
 \kappa_{g,B}
 $$
 
-is an intrinsic property of the receiver and does **not** depend on the source distance.
+is intrinsic and distance independent.
 
-The incoming source branch mode occupies only a fraction of the receiver's gravitational bath. Define
+The incoming source branch mode occupies only a fraction of that gravitational bath:
 
 $$
 \boxed{
@@ -132,14 +240,14 @@ $$
 }
 $$
 
-The orthogonal gravitational vacuum channels contribute
+All orthogonal gravitational vacuum modes contribute the remaining damping
 
 $$
 \kappa_{g,\perp}
 =\kappa_{g,B}-\kappa_\Delta.
 $$
 
-Hence, with fixed internal damping $\kappa_i$ and any other fixed passive ports,
+Therefore
 
 $$
 \boxed{
@@ -148,43 +256,39 @@ $$
 }
 $$
 
-is distance independent.
+is independent of source distance.
 
-Vacuum gravitational ports broaden the receiver but do not contribute thermal occupation to
+Only occupied uncontrolled baths contribute to
 
 $$
 \Gamma_{\rm th}
-=\sum_a\bar n_a\kappa_a
+=\sum_a\bar n_a\kappa_a.
 $$
-
-when their occupation is zero.
 
 ---
 
-## 5. Exact finite-cat NPT condition
+## 6. Exact finite-cat NPT range
 
-For a stationary thermal receiver, the exact binary-coherent Gaussian theorem gives the capability condition
+For a stationary thermal receiver, every finite nontrivial binary coherent source encoding becomes NPT iff
 
 $$
-\boxed{
 \kappa_\Delta(R)>\Gamma_{\rm th}.
-}
 $$
 
-Using the far-zone propagation efficiency,
+Thus
 
 $$
-\frac{25\mathcal O}{16(kR)^2}
+\frac{25\mathcal O}{4(kR)^2}
 \kappa_{g,B}
 >\Gamma_{\rm th}.
 $$
 
-Define the resonant quantum-reception radius
+Define
 
 $$
 \boxed{
 R_Q^{\rm res}
-=\frac{5}{4k}
+=\frac{5}{2k}
 \sqrt{
 \frac{\mathcal O\kappa_{g,B}}
 {\Gamma_{\rm th}}
@@ -192,19 +296,21 @@ R_Q^{\rm res}
 }
 $$
 
-Then the mathematical NPT front exists iff
+Then
 
 $$
-\boxed{R<R_Q^{\rm res}.}
+\boxed{R<R_Q^{\rm res}}
 $$
 
-At exactly zero thermal injection, $R_Q^{\rm res}\to\infty$ as expected for a pure-loss channel: entanglement survives at arbitrarily small nonzero transmissivity, although its magnitude vanishes with distance.
+is the exact thermal NPT-capability range within the far-zone resonant model.
+
+At zero thermal injection the mathematical NPT range is unbounded, as expected for pure loss.
 
 ---
 
-## 6. Exact waveform-optimal spacetime front
+## 7. Exact waveform-optimal spacetime front
 
-For any normalized incoming temporal difference-mode waveform,
+For any normalized incoming source waveform,
 
 $$
 \tau_f(t)
@@ -213,9 +319,9 @@ $$
 \left(1-e^{-\kappa_{\rm tot}(t-R/c)}\right).
 $$
 
-The time-reversed receiver ringdown saturates this ceiling.
+The matched time-reversed receiver ringdown saturates the ceiling.
 
-Using
+Since
 
 $$
 \frac{\Gamma_{\rm th}}
@@ -223,13 +329,12 @@ $$
 =\left(\frac{R}{R_Q^{\rm res}}\right)^2,
 $$
 
-the exact optimal finite-cat NPT front is
+the exact optimal NPT front is
 
 $$
 \boxed{
 T_{\rm NPT}^{\min}(R)
-=
-\frac Rc
+=\frac Rc
 -
 \frac1{\kappa_{\rm tot}}
 \ln\left[
@@ -240,21 +345,17 @@ R<R_Q^{\rm res}.
 }
 $$
 
-No NPT front exists for
+No finite-cat NPT front exists for
 
 $$
 R\ge R_Q^{\rm res}
 $$
 
-within the stationary thermal model.
-
-This corrects the earlier geometric-cone denominator: the intrinsic receiver linewidth is fixed rather than decaying with source-mode overlap.
+at nonzero stationary thermal injection.
 
 ---
 
-## 7. Front asymptotics
-
-### Well inside the quantum range
+## 8. Front asymptotics
 
 For
 
@@ -262,13 +363,7 @@ $$
 R\ll R_Q^{\rm res}
 $$
 
-while remaining in the wave zone,
-
-$$
--\ln(1-x^2)\simeq x^2,
-$$
-
-so
+while still satisfying the wave-zone condition,
 
 $$
 \boxed{
@@ -279,25 +374,17 @@ T_{\rm NPT}^{\min}-R/c
 }
 $$
 
-Thus the post-light-cone quantum build delay scales as
+Thus the resonant post-light-cone quantum-build delay scales as
 
 $$
-\boxed{R^2}
+\boxed{R^2}.
 $$
 
-for a resonant far-zone receiver.
-
-### Near the thermal quantum range
-
-Let
+Near the quantum range,
 
 $$
 R=R_Q^{\rm res}(1-\epsilon),
-\qquad
-0<\epsilon\ll1.
 $$
-
-Then
 
 $$
 \boxed{
@@ -308,31 +395,29 @@ T_{\rm NPT}^{\min}-R/c
 }
 $$
 
-The NPT front still has a vertical logarithmic asymptote at the finite thermal range.
+The logarithmic vertical asymptote survives unchanged.
 
 ---
 
-## 8. Wave-zone existence condition
+## 9. Wave-zone existence condition
 
 Demand
 
 $$
-kR\ge\zeta
+kR\ge\zeta.
 $$
 
-for some chosen wave-zone criterion $\zeta\gtrsim1$.
-
-A nonempty resonant wave-zone NPT interval requires
+A nonempty resonant wave-zone NPT region requires
 
 $$
-kR_Q^{\rm res}>\zeta.
+kR_Q^{\rm res}>\zeta,
 $$
 
-Therefore
+or
 
 $$
 \boxed{
-\frac{25\mathcal O}{16}
+\frac{25\mathcal O}{4}
 \frac{\kappa_{g,B}}
 {\Gamma_{\rm th}}
 >\zeta^2.
@@ -346,15 +431,13 @@ $$
 \frac{\kappa_{g,B}}
 {\Gamma_{\rm th}}
 >
-\frac{16}{25\mathcal O}\zeta^2.
+\frac{4}{25\mathcal O}\zeta^2.
 }
 $$
 
-This is the clean resonant receiver criterion. It contains no additional geometric $\beta_B^2$ unless a physical-aperture limit is imposed separately.
-
 ---
 
-## 9. Combine with passive nonrelativistic oscillator-strength ceiling
+## 10. Passive nonrelativistic necessary condition
 
 For one dominant thermal internal bath,
 
@@ -363,7 +446,7 @@ $$
 =\bar n_B\frac{\omega_B}{Q_B}.
 $$
 
-The passive nonrelativistic sum-rule ceiling gives
+The passive nonrelativistic quadrupole sum-rule ceiling gives
 
 $$
 \frac{\kappa_{g,B}}
@@ -378,52 +461,30 @@ Therefore a necessary condition for a passive nonrelativistic **resonant** wave-
 
 $$
 \boxed{
-\frac{25\mathcal O}{24}
+\frac{25\mathcal O}{6}
 \frac{Q_B\mathcal C_B\beta_B^3}
 {\bar n_B}
 >\zeta^2.
 }
 $$
 
-This replaces the earlier $\beta_B^5$ condition for resonant reception.
+This is the corrected resonant passive wave-zone criterion.
 
-The difficulty remains severe because
+It is still extremely restrictive for ordinary matter because
 
 $$
 \mathcal C_B\ll1,
 \qquad
-\beta_B\ll1
+\beta_B\ll1,
 $$
 
-for ordinary material systems, but the additional geometric $\beta_B^2$ suppression is not fundamental.
+but there is no universal extra $\beta_B^2$ geometric penalty.
 
 ---
 
-## 10. Finite-strength certification cone
+## 11. Finite-strength certification range
 
-The exact three-element witness margin is
-
-$$
-\Lambda
-=\frac{N_\Delta}{m}(\tau-m).
-$$
-
-For stationary receiver noise, requiring
-
-$$
-\Lambda\ge\Lambda_{\rm req}>0
-$$
-
-is equivalent to replacing
-
-$$
-\Gamma_{\rm th}
-\rightarrow
-\Gamma_{\rm th}
-\left(1+\frac{\Lambda_{\rm req}}{N_\Delta}\right).
-$$
-
-Therefore
+For exact witness margin $\Lambda_{\rm req}>0$ and source difference-mode strength $N_\Delta$,
 
 $$
 \boxed{
@@ -452,30 +513,30 @@ $$
 
 ---
 
-## 11. Relation to the geometric-cap model
+## 12. Receiver architectures
 
-Two different receiver architectures should now be kept separate.
+Keep two distinct models separate.
 
-### Resonant compact receiver
+### Compact resonant receiver
 
 $$
-\eta_{\rm ff}\sim(kR)^{-2}.
+\eta_{\rm ff}\sim(kR)^{-2},
 $$
 
-Its effective cross-section is of order wavelength squared and its front is described by this note.
+with effective resonant cross-section of order $k^{-2}$.
 
 ### Literal enclosing/absorbing cap
 
 $$
-\eta_{\rm cap}\sim(a_R/R)^2.
+\eta_{\rm cap}\sim(a_R/R)^2,
 $$
 
-Its capture is determined by physical angular coverage around the source and is described by `FINITE_APERTURE_WAVEZONE_FRONT.md`.
+set by physical angular coverage around the source.
 
-The cap model is useful as an ideal geometric receiver; it should not be used as a universal bound on resonant matter.
+The cap model remains a legitimate Gedanken architecture but is not a universal bound on resonant matter.
 
 ---
 
-## 12. Strongest next step
+## 13. Current remaining caveat
 
-Independently derive the far-zone coefficient $25/16$ from a common-bath / Green-tensor master equation or from the gravitational resonant absorption cross-section. That will verify the cascaded-channel normalization and separate the coherent exchange and collective-damping pieces of the complex retarded kernel.
+The common-bath angular calculation and classical cross-section consistency strongly support the corrected coefficient. A fully explicit delayed two-system input-output derivation would still be valuable for separating reciprocal coherent exchange, collective damping, and strictly one-way state-transfer conventions in one notation.
