@@ -23,6 +23,8 @@ The experiment develops from a single spatially superposed source, through gravi
 
 [Read Experiment 01](experiments/01-causal-quantum-branch-information/README.md)
 
+[Research progress and candidate predictions](experiments/01-causal-quantum-branch-information/RESEARCH_PROGRESS.md)
+
 ## Status
 
 These are working theoretical notes, not claims of discovery. Each experiment should eventually contain:
