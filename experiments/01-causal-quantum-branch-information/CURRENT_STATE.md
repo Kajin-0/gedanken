@@ -1,15 +1,13 @@
 # Current State — Experiment 01
 
-**Last updated:** 2026-08-07 12:50 EDT  
+**Last updated:** 2026-08-07 12:55 EDT  
 **Experiment:** Causal Transport of Quantum Branch Information by Gravity
 
-This is the compact recovery point for active work. `PROGRESS_LOG.md` preserves the derivation history; timestamped checkpoints preserve immutable snapshots.
+This is the compact recovery point. `PROGRESS_LOG.md` and `checkpoints/` preserve the derivation history.
 
-## Central operational question
+## 1. Operational state and witness
 
-Can gravity make a distant quantum probe distinguish the two branches of a coherently delocalized source **after causal contact** while retaining more recoverable coherence between the two histories than any separable/classicalized source-probe state permits?
-
-For a balanced source path qubit, write
+For the balanced source path qubit,
 
 $$
 \rho_{AB}(T)=\frac12
@@ -22,106 +20,83 @@ $$
 Define
 
 $$
-C_\Xi(T)=\|\Xi_T\|_1,
+C_\Xi=\|\Xi_T\|_1,
 \qquad
-D_B(T)=\frac12\|\rho_L(T)-\rho_R(T)\|_1.
+D_B=\frac12\|\rho_L-\rho_R\|_1.
 $$
 
-For every separable balanced source-probe state,
+Every balanced separable source-probe state obeys
 
 $$
 \boxed{C_\Xi^2+D_B^2\le1.}
 $$
 
-Therefore
+Thus
 
 $$
-\boxed{\mathcal W_\Xi(T,R)=C_\Xi^2+D_B^2-1>0}
+\boxed{\mathcal W_\Xi=C_\Xi^2+D_B^2-1>0}
 $$
 
 certifies source-probe entanglement.
 
-## History-transfer margin
-
-Define
+The preferred logarithmic form is
 
 $$
 \Gamma_\Xi=-\ln C_\Xi,
 \qquad
-\chi_B=-\ln(1-D_B^2).
+\chi_B=-\ln(1-D_B^2),
 $$
-
-The separable bound is exactly equivalent to
-
-$$
-\boxed{\chi_B\le2\Gamma_\Xi.}
-$$
-
-Define the logarithmic **history-transfer margin**
 
 $$
 \boxed{
 \mathcal M_\Xi
-\equiv
-\chi_B-2\Gamma_\Xi
-=
-\ln\left(\frac{C_\Xi^2}{1-D_B^2}\right).
+=\chi_B-2\Gamma_\Xi
+=\ln\frac{C_\Xi^2}{1-D_B^2}.
 }
 $$
 
-Then
+Separable states require
 
 $$
-\boxed{\mathcal M_\Xi\le0}
+\boxed{\mathcal M_\Xi\le0.}
 $$
 
-for every separable balanced state, while
+For weak distinguishability this is the coherence-cost condition
 
 $$
-\boxed{\mathcal M_\Xi>0}
+\Gamma_\Xi\gtrsim D_B^2/2.
 $$
 
-certifies entanglement. For weak distinguishability,
-
-$$
-\Gamma_\Xi\gtrsim D_B^2/2
-$$
-
-is the minimum coherence-loss cost of any separable history.
-
-This logarithmic form is preferred for field theory because response and decoherence naturally appear as additive exponents.
-
-## Complementary-channel meaning of $C_\Xi$
+## 2. Meaning of $C_\Xi$
 
 For pure conditional global outputs $|\Phi_L\rangle_{BE}$ and $|\Phi_R\rangle_{BE}$,
 
 $$
-\Xi=\operatorname{Tr}_E|\Phi_L\rangle\langle\Phi_R|.
+\Xi=\operatorname{Tr}_E|\Phi_L\rangle\langle\Phi_R|,
 $$
 
-A standard Uhlmann/trace-norm identity gives
+and a standard Uhlmann/trace-norm identity gives
 
 $$
-\boxed{
-C_\Xi
-=\|\Xi\|_1
-=F(\rho_E^L,\rho_E^R),
-}
+\boxed{C_\Xi=F(\rho_E^L,\rho_E^R).}
 $$
 
-where $F$ is root fidelity and $E$ is the unobserved complementary output. Thus $C_\Xi$ is exactly how indistinguishable the **unobserved records** of the two histories remain. This interpretation does not require identifying $E$ with a separately factorized gravitational-field subsystem.
+Therefore $C_\Xi$ is the indistinguishability of the **unobserved complementary records** of the two histories.
 
-## Causality
+Do not identify $E$ automatically with a separately factorized gravitational-field Hilbert space. Gravitational dressing and gauge constraints make strict subsystem factorization nontrivial. The final theorem is to be stated only in operational $A$-$B$ quantities $(\rho_L,\rho_R,\Xi)$.
+
+## 3. Causality
 
 For a controllable source operation at $t=0$ and source-probe separation $R$,
 
 $$
 D_B(T,R)=0
-\qquad
-T<R/c
+\qquad T<R/c
 $$
 
-for the source-controlled contribution. Define the nonclassicality onset
+for the source-controlled contribution.
+
+Define
 
 $$
 T_*(R)=\inf\{T:\mathcal M_\Xi(T,R)>0\}.
@@ -133,109 +108,114 @@ $$
 \boxed{T_*(R)\ge R/c.}
 $$
 
-The target observable is therefore a **causal nonclassicality front**, not merely a delayed classical force.
+The target is a **causal nonclassicality front**, not merely a retarded classical force.
 
-## Operational witness without full tomography
+## 4. Operational measurement
 
-For a probe observable $M$ with $\|M\|_\infty\le1$ and a chosen probe eraser unitary $U$, define measurable lower bounds
-
-$$
-d_M\le D_B,
-\qquad
-c_U\le C_\Xi.
-$$
-
-Every separable state obeys
+For any chosen eraser unitary $U$ and probe branch observable $M$ with $\|M\|_\infty\le1$, measurable lower bounds $c_U\le C_\Xi$ and $d_M\le D_B$ obey
 
 $$
-\boxed{c_U^2+d_M^2\le1.}
+\boxed{c_U^2+d_M^2\le1}
 $$
 
-A useful linearized family follows because for any $\vartheta$,
+for every separable state. A violation certifies entanglement without full tomography.
+
+Equivalently, for any angle $\vartheta$,
 
 $$
-\boxed{
-c_U\cos\vartheta+d_M\sin\vartheta\le1
-}
+\boxed{c_U\cos\vartheta+d_M\sin\vartheta\le1}
 $$
 
-for separable states. This can be implemented as a conventional linear entanglement witness built from a branch-sensitive probe observable and an eraser-aligned joint coherence observable.
+is a linear entanglement-witness family.
 
-## Exact conditional-channel definitions for the field-theory calculation
+## 5. Exact conditional field maps
 
-For a mediator/environment initially in state $\rho_E$ and branch-conditioned total propagators $U_L(T),U_R(T)$,
+For branch-conditioned propagators $U_L,U_R$ on probe plus unobserved mediator/environment $E$,
 
 $$
 \Phi_j^T(\rho_B)
 =
-\operatorname{Tr}_E\!\left[
-U_j(T)(\rho_B\otimes\rho_E)U_j^\dagger(T)
-\right],
+\operatorname{Tr}_E[U_j(\rho_B\otimes\rho_E)U_j^\dagger],
 $$
-
-while the off-diagonal history map is
 
 $$
 \boxed{
 \Xi_T(\rho_B)
 =
-\operatorname{Tr}_E\!\left[
-U_L(T)(\rho_B\otimes\rho_E)U_R^\dagger(T)
-\right].
+\operatorname{Tr}_E[U_L(\rho_B\otimes\rho_E)U_R^\dagger].
 }
 $$
 
-For a Gaussian scalar field, the Feynman-Vernon influence functional separates structurally into
+These definitions are the non-Gaussian framework for the original one-cat/one-probe experiment.
+
+## 6. Scalar-field influence functional
+
+For a Gaussian scalar mediator, use forward/backward currents
 
 $$
-G_R\rightarrow\text{causal response},
+J_1=J_A^{(L)}+j_B[q],
 \qquad
-G_H\rightarrow\text{fluctuations / history-coherence loss}.
+J_2=J_A^{(R)}+j_B[q'].
 $$
 
-This is now the main calculational route.
-
-## Scalar-field drive limit
-
-Use a source current $J_A^{(s)}(x)$, $s=L,R$, and a harmonic probe coupled locally to a massless scalar field. Let
+With
 
 $$
-\Delta J_A=J_A^{(L)}-J_A^{(R)}.
+J^-=\Delta J_A+j_B^-,
+\qquad
+J^+=\bar J_A+j_B^+,
 $$
 
-The branch-dependent probe force is generated by the retarded kernel,
+the off-diagonal Feynman-Vernon influence functional has the structural form
 
 $$
 \boxed{
-\Delta F_B(t)
-=\lambda_B\int d^4x'\,G_R(x_B,t;x')\,\Delta J_A(x').
+\ln\mathcal F_{LR}
+=
+ i(\Delta J_A+j_B^-)G_R(\bar J_A+j_B^+)
+-
+\frac12(\Delta J_A+j_B^-)G_H(\Delta J_A+j_B^-),
 }
 $$
+
+in natural units with the noise-kernel normalization absorbed into $G_H$.
+
+Key consequences:
+
+- the conditional probe response is generated by the retarded cross term $j_B^-G_R\Delta J_A$;
+- this response vanishes outside causal contact;
+- the environment distinguishes the **complete source-plus-probe history difference** $\Delta J_A+j_B^-$;
+- the cross term $\Delta J_AG_Hj_B^-$ shows why source-only decoherence is not automatically irreversible: a probe eraser can recover some history coherence.
+
+This is the field-theory form of the quantum-eraser logic.
+
+## 7. Coherent-drive limit
 
 For a probe oscillator initially in its ground state,
 
 $$
-\boxed{
-\Delta\alpha_B(T)
-=
-\frac{i x_{\rm zpf}}{\hbar}
-\int_0^Tdt\,e^{i\omega_Bt}\Delta F_B(t).
-}
+\Delta F_B(t)
+=\lambda_B\int d^4x'\,G_R(x_B,t;x')\Delta J_A(x'),
 $$
 
-In the weak-backreaction coherent-drive limit,
+$$
+\Delta\alpha_B(T)
+=\frac{i x_{\rm zpf}}{\hbar}\int_0^Tdt\,e^{i\omega_Bt}\Delta F_B(t).
+$$
+
+In the weak-backreaction coherent-output limit,
 
 $$
 D_B^2=1-e^{-|\Delta\alpha_B|^2}.
 $$
 
-If the unobserved field histories differ by a coherent displacement $\Delta\beta$, then
+If the complementary output differs by coherent displacement $\Delta\beta$,
 
 $$
-C_\Xi^2=e^{-\|\Delta\beta\|^2}.
+C_\Xi^2=e^{-\|\Delta\beta\|^2},
 $$
 
-Therefore
+so
 
 $$
 \boxed{
@@ -244,69 +224,62 @@ $$
 }
 $$
 
-This is the cleanest scalar-field interpretation so far:
+Interpretation: the strong witness is positive when branch distinguishability coherently deposited in the intended probe exceeds branch distinguishability left in the unobserved output.
 
-> **the witness becomes positive when branch distinguishability coherently deposited in the probe exceeds distinguishability leaked into the unobserved complementary output.**
+## 8. Gravity-specific radiation floor
 
-For a massless scalar Green function in $3+1$ dimensions, the retarded source-dependent term is supported at the light-cone time, making $\Delta\alpha_B=0$ before causal contact.
-
-## Important gravitational-dressing correction
-
-Do **not** formulate the final theorem by assuming a fundamental Hilbert-space factorization
+For conditional oscillator states $|\pm\alpha\rangle$,
 
 $$
-\mathcal H_A\otimes\mathcal H_g\otimes\mathcal H_B.
+\mathcal M_\Xi=4|\alpha|^2-2\Gamma_\Xi.
 $$
 
-Gauge constraints and gravitational dressing make strict subsystem factorization nontrivial. The three-party picture $A\to g\to B$ is useful intuition and is legitimate in gauge-fixed/toy models, but the paper-level witness should be defined entirely through operational source-probe quantities $\rho_L$, $\rho_R$, and $\Xi_T$.
-
-This is consistent with current work emphasizing that subsystem independence in GIE proposals is nontrivial once gravitational dressing is included.
-
-## Oscillator specialization
-
-For conditional probe states $|\pm\alpha\rangle$,
+In the coherent radiative-graviton approximation, vacuum graviton decoherence satisfies $\Gamma_{\rm vac}=N_g/2$, giving
 
 $$
-D_B^2=1-e^{-4|\alpha|^2}.
+\boxed{\mathcal M_\Xi\simeq4|\alpha|^2-N_g.}
 $$
 
-If unobserved history coherence contributes $C_\Xi=e^{-\Gamma_g}$, then
+For the tidal coupling
 
 $$
-\mathcal W_\Xi=e^{-2\Gamma_g}-e^{-4|\alpha|^2},
+g=\frac{Gm_Am_Bd\,x_{\rm zpf}}{\hbar R^3},
 $$
 
-and equivalently
+at half an oscillator period
+
+$$
+4|\alpha|_{\rm max}^2
+=
+\frac{8G^2m_A^2m_Bd^2}{\hbar R^6\omega^3}.
+$$
+
+Using the 2026 smooth-trajectory vacuum-graviton result
+
+$$
+\Gamma_{\rm vac}=\frac{8}{15}\frac{Gm_A^2d^4}{\hbar c^5\tau_s^4},
+$$
+
+the radiation-limited positive-margin condition is
 
 $$
 \boxed{
-\mathcal M_\Xi=4|\alpha|^2-2\Gamma_g.
+\tau_s^4>
+\frac{2d^2R^6\omega^3}{15Gm_Bc^5}.
 }
 $$
 
-The witness is positive iff
+The sign threshold is independent of $m_A$, while the magnitude of the margin scales as $m_A^2$. Radiative graviton decoherence is expected to be vastly below technical/environmental decoherence in realistic regimes.
 
-$$
-\Gamma_g<2|\alpha|^2.
-$$
+## 9. Novelty discipline
 
-With idealized retarded response
+Do not claim novelty for the underlying coherence-distinguishability inequality, quantum communication through gravity, retarded GIE, classical minimum-noise results, graviton decoherence, or subsystem-dressing issues.
 
-$$
-\alpha(T,R)=\frac{g}{\omega}(1-e^{-i\omega(T-R/c)})
-$$
-
-for $T\ge R/c$ and zero beforehand, the positive-witness region begins only after causal contact.
-
-## Novelty discipline
-
-The underlying coherence-distinguishability mathematics is related to established wave-particle duality and block-coherence results and should **not** be claimed as new without a dedicated proof of novelty. Gravity-mediated quantum communication, entanglement-breaking channel tests, retarded GIE, classical minimum-noise bounds, gravitational decoherence, and subsystem-independence issues are established neighboring literatures.
-
-The plausible new physics target is the synthesis:
+Potential paper-level novelty remains the gravity-specific synthesis:
 
 $$
 \boxed{
-\text{retarded gravitational response}
+\text{retarded branch response}
 +
 \text{history-coherence margin}
 +
@@ -314,19 +287,16 @@ $$
 }
 $$
 
-## Current frontier
+## 10. Immediate next calculation
 
-1. Derive the scalar-field influence functional for $\Xi_T$ with finite source and probe switching.
-2. Compute the leading response exponent $\chi_B$ from $G_R$ and coherence-loss exponent $\Gamma_\Xi$ from the complementary/noise sector.
-3. Obtain an explicit weak-coupling expression for
+Because branch dependence enters the scalar Gaussian model as a linear drive, conditional global states have the same covariance and different first moments. Next derive the exact Gaussian complementary fidelity and probe distinguishability, reducing
 
 $$
-\mathcal M_\Xi(T,R)=\chi_B(T,R)-2\Gamma_\Xi(T,R).
+\mathcal M_\Xi(T,R)
 $$
 
-4. Determine the onset time $T_*(R)$ and its scaling with distance and preparation time.
-5. Only then replace the scalar mediator by linearized gravity.
+to an explicit quadratic functional of the source waveform $\Delta J_A$. Then optimize that functional over finite source switching trajectories before moving to linearized gravity.
 
 ## Current conceptual compression
 
-> **A classicalized interaction can make the probe know the branch only by spending recoverable coherence between the histories. A coherent quantum interaction can make the probe branch-distinguishing while keeping that history coherence available for erasure. The logarithmic margin $\mathcal M_\Xi$ compares those two information flows directly, using only source-probe observables, and relativity requires the branch-distinguishability term to remain zero before $R/c$.**
+> **A classicalized interaction can make the probe know the branch only by spending recoverable coherence between the histories. A coherent mediator can make the probe branch-distinguishing while keeping that history coherence available for erasure. In field theory, the useful record is carried by the retarded response kernel, while the unrecoverable record is encoded in the complementary/noise sector. The history-transfer margin compares those two quantities, and relativity forbids the probe term from turning on before the light cone arrives.**
