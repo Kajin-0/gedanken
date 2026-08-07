@@ -1,13 +1,13 @@
 # Current State — Experiment 01
 
-**Last updated:** 2026-08-07 17:02 EDT  
+**Last updated:** 2026-08-07 17:30 EDT  
 **Experiment:** Causal Transport of Quantum Branch Information by Gravity
 
-This is the canonical compact recovery point. Detailed derivations and timestamped checkpoints live in this experiment directory.
+This is the canonical compact recovery point. Detailed derivations live in the experiment directory and timestamped `checkpoints/`.
 
 ---
 
-## 1. Central operational question
+## 1. Central question
 
 Can gravity carry information about a coherent source alternative to a distant quantum receiver **causally**, while preserving enough coherence that source and receiver become entangled rather than merely classically correlated?
 
@@ -33,13 +33,13 @@ $$
 C_\Xi=F(\rho_E^L,\rho_E^R),
 $$
 
-so $C_\Xi$ is the fidelity of the unobserved complementary branch records. Keep the paper-level formulation operational in $(\rho_L,\rho_R,\Xi)$ rather than assuming a fundamental source–gravity–receiver Hilbert-space factorization.
+so $C_\Xi$ is the fidelity of the unobserved complementary branch records. Keep the paper-level theory operational in source/receiver quantities rather than assuming a fundamental source–gravity–receiver Hilbert-space factorization.
 
 ---
 
-## 2. Causality
+## 2. Causal structure
 
-For a controlled source operation at $t=0$ and receiver distance $R$,
+For a controlled source operation at $t=0$ and receiver separation $R$,
 
 $$
 D_B(T,R)=0\qquad T<R/c
@@ -47,17 +47,74 @@ $$
 
 for the source-controlled contribution.
 
-Distinguish:
+Distinguish four levels:
 
 1. **signal front** — first causal gravitational response;
 2. **NPT front** — first source-receiver entanglement;
-3. **global-history front** — first simple coherence/fidelity certification.
+3. **exact witness front** — first negative matched principal-minor witness;
+4. **finite-certification front** — first prescribed nonzero witness margin.
 
 ---
 
-## 3. Gravitational signal and wave-zone mode
+## 3. Linearized-gravity branch mode
 
-A self-contained freely falling receiver couples to tidal curvature,
+For a conserved branch stress tensor, propagating TT gravitons are displaced coherently. Define
+
+$$
+N_\Delta
+=\sum_s\int\frac{d^3k}{(2\pi)^3}
+|\Delta\alpha_s(\mathbf k)|^2.
+$$
+
+This is the squared phase-space distance between the two branch-conditioned outgoing graviton coherent states. Vacuum radiative decoherence satisfies
+
+$$
+\Gamma_{\rm vac}=N_\Delta/2.
+$$
+
+For a compact nonrelativistic quadrupole difference,
+
+$$
+\boxed{
+N_\Delta
+=\frac{G}{5\pi\hbar c^5}
+\int_0^\infty d\omega\,
+\omega^5
+|\Delta\widetilde Q_{ij}(\omega)|^2.
+}
+$$
+
+For the narrow-band plus quadrupole
+
+$$
+\Delta Q_{xx}=q_0f(t)\cos\omega_0t,
+\qquad
+\Delta Q_{yy}=-\Delta Q_{xx},
+$$
+
+$$
+\boxed{
+N_\Delta
+\simeq
+\frac{Gq_0^2\omega_0^5T_f}{5\hbar c^5},
+\qquad
+T_f=\int dt\,|f(t)|^2.
+}
+$$
+
+After a passive mode transformation all branch distinguishability resides in one normalized **difference mode**, with branch states equivalent to
+
+$$
+|\pm\sqrt{N_\Delta}/2\rangle.
+$$
+
+Detailed source mapping: `GRAVITATIONAL_DIFFERENCE_MODE_AMPLITUDE.md`.
+
+---
+
+## 4. Gauge-invariant local gravitational response
+
+A self-contained free local receiver couples to tidal curvature,
 
 $$
 H_{\rm drive}=\mu_BL_B\mathcal E_{nn}x_B,
@@ -68,7 +125,7 @@ $$
 For the conserved plus quadrupole
 
 $$
-\Delta Q_{xx}=q(t),\qquad \Delta Q_{yy}=-q(t),
+\Delta Q_{xx}=q(t),\qquad\Delta Q_{yy}=-q(t),
 $$
 
 with receiver on the $z$ axis,
@@ -82,134 +139,100 @@ $$
 \right]_{t-R/c}.
 $$
 
-All coherent branch-distinguishing outgoing graviton radiation can be compressed into one normalized bosonic **difference mode**. If
+For harmonic motion,
 
 $$
-N_\Delta
-=\sum_\lambda\int d^3k\,
-|\beta^L_{\mathbf k\lambda}-\beta^R_{\mathbf k\lambda}|^2,
+P(\epsilon)=3-3i\epsilon-3\epsilon^2+2i\epsilon^3+\epsilon^4,
+\qquad
+\epsilon=\omega R/c,
 $$
 
-then, after removing the common displacement, the two field histories are equivalent to
-
-$$
-|\pm\sqrt{N_\Delta}/2\rangle.
-$$
-
-Thus the wave-zone problem becomes one-mode quantum state transfer.
+is the exact static/induction/wave-zone crossover for this geometry.
 
 ---
 
-## 4. Strongest theorem: exact finite-cat thermal boundary
+## 5. Strongest quantum-information theorem
 
-Consider
-
-$$
-|\Psi_a\rangle
-=\frac{|0\rangle|a\rangle+|1\rangle|-a\rangle}{\sqrt2},
-\qquad 0<|a|<\infty,
-$$
-
-with the bosonic mode sent through a thermal attenuator of transmissivity $\eta$ and environmental occupation $\bar n$. Define
+Consider any nontrivial finite binary coherent hybrid state
 
 $$
-\boxed{m=(1-\eta)\bar n.}
-$$
-
-Then for **every finite nonzero cat amplitude**,
-
-$$
-\boxed{
-\rho_{AB}\text{ is NPT}
-\iff
-\eta>m
-\iff
-\eta>\frac{\bar n}{\bar n+1}.
-}
-$$
-
-Thus this hybrid family is NPT everywhere and only everywhere the thermal attenuator is non-entanglement-breaking.
-
-The sign boundary is independent of cat size. Cat size changes the amount and observability of entanglement, not whether the channel can transfer it.
-
-The proof reduces the partial transpose to a displacement-unitary block with
-
-$$
-q=\exp\left[
-\frac{2|a|^2}{m}(\eta-m)
-\right]
-$$
-
-and constructs an explicit normalizable negative vector when $q>1$, avoiding reliance on spectral equivalence under an unbounded inverse congruence.
-
-Full proof: `EXACT_FINITE_CAT_THERMAL_THEOREM.md`.
-
----
-
-## 5. Exact parameter-matched finite-cat witness
-
-The explicit negative vector gives
-
-$$
-|\omega\rangle
-=\frac{
-|0\rangle_A|0\rangle_B
--A|1\rangle_A|v\rangle_B
-}{\sqrt{1+A^2}},
+|\Psi\rangle
+=\sqrt p\,|0\rangle|\alpha\rangle
++e^{i\phi}\sqrt{1-p}\,|1\rangle|\beta\rangle,
 $$
 
 with
 
 $$
-A=\exp\left(\frac{2\eta a^2}{m^2}\right),
+0<p<1,
 \qquad
-v=\frac{2\sqrt\eta\,a}{m}.
+\alpha\neq\beta.
 $$
 
-For
+Send the bosonic subsystem through a one-mode **gauge-covariant phase-insensitive Gaussian channel** $\Phi_{\tau,m}$, where
+
+- $\tau$ is intensity gain/transmission;
+- $m$ is the mean output occupation produced by vacuum input.
+
+The channel acts on characteristic functions as
 
 $$
-W=(|\omega\rangle\langle\omega|)^{\Gamma_A},
+\chi_{\Phi(O)}(\xi)
+=\chi_O(\sqrt\tau\xi)
+\exp[-(2m+1-\tau)|\xi|^2/2].
 $$
+
+Complete positivity requires
+
+$$
+m\ge\max(0,\tau-1),
+$$
+
+and the channel is entanglement breaking iff
+
+$$
+m\ge\tau.
+$$
+
+The project now has an analytic proof that
 
 $$
 \boxed{
-\operatorname{Tr}(W\rho_{AB})<0
+(I\otimes\Phi_{\tau,m})(|\Psi\rangle\langle\Psi|)
+\text{ is NPT}
 \iff
-\eta>m.
+m<\tau.
 }
 $$
 
-The associated negativity lower bound is
+Thus **every nontrivial finite binary coherent hybrid state is a complete EB probe for the entire gauge-covariant one-mode phase-insensitive Gaussian family**: thermal attenuators, thermal amplifiers, and additive Gaussian noise.
 
-$$
-\mathcal N(\rho_{AB})
-\ge
-\frac{P(q-1)}{1+A^2},
-$$
-
-where
-
-$$
-P=\frac1{m+1}e^{-\eta a^2/(m+1)}.
-$$
-
-Full derivation: `EXACT_FINITE_CAT_WITNESS.md`.
-
----
-
-## 6. Exact three-element witness
-
-The same boundary is visible in a single $2\times2$ principal minor of $\rho^{\Gamma_A}$.
-
-Choose
+The exact sign parameter is
 
 $$
 \boxed{
-v_*=\frac{2\sqrt\eta\,a}{m}.}
+q
+=\exp\left[
+\frac{|\alpha-\beta|^2}{2m}(\tau-m)
+\right].
+}
 $$
 
-Measure
+Full theorem: `PHASE_INSENSITIVE_GAUSSIAN_BINARY_PROBE_THEOREM.md`.
+
+Special thermal-attenuator proof with explicit domain-safe negative vector: `EXACT_FINITE_CAT_THERMAL_THEOREM.md`.
+
+---
+
+## 6. Exact low-dimensional witness
+
+For the symmetric representation $|\pm a\rangle$, choose
+
+$$
+v_*=\frac{2\sqrt\tau\,a}{m}.
+$$
+
+Define
 
 $$
 p_0=\langle0,0|\rho|0,0\rangle,
@@ -231,38 +254,38 @@ $$
 |z_v|^2\le p_0p_v.
 $$
 
-For the finite thermal cat,
+For the binary coherent output,
 
 $$
 \boxed{
 \frac{|z_v|^2}{p_0p_v}
 =\exp\left[
-\frac{4a^2}{m}(\eta-m)
-\right].
+\frac{N_\Delta}{m}(\tau-m)
+\right],
 }
 $$
 
-Therefore
+with $N_\Delta=4|a|^2$ in the symmetric branch basis. Therefore
 
 $$
 \boxed{
 |z_v|^2>p_0p_v
 \iff
-\eta>m
+\tau>m
 \iff
-\rho_{AB}\text{ is NPT}.
+\rho\text{ is NPT}.
 }
 $$
 
-This detects the exact boundary using **two populations and one joint coherence**, not full tomography.
+The exact boundary therefore requires only two populations and one joint source-receiver coherence, not full tomography.
 
-Full derivation: `EXACT_THREE_ELEMENT_WITNESS.md`.
+Files: `EXACT_FINITE_CAT_WITNESS.md`, `EXACT_THREE_ELEMENT_WITNESS.md`.
 
 ---
 
-## 7. Exact causal NPT-front theorem
+## 7. Exact passive causal-front theorem
 
-For a passive stationary Markov receiver,
+For a stationary passive Markov receiver,
 
 $$
 \dot c
@@ -271,19 +294,17 @@ $$
 +\sum_a\sqrt{\kappa_a}\,b_a^{\rm in},
 $$
 
-where
+with
 
 $$
-\kappa_{\rm tot}=\kappa_\Delta+\sum_a\kappa_a
+\kappa_{\rm tot}=\kappa_\Delta+\sum_a\kappa_a,
 $$
 
-and
-
 $$
-\Gamma_{\rm th}=\sum_a\bar n_a\kappa_a.
+\Gamma_{\rm th}=\sum_a\bar n_a\kappa_a,
 $$
 
-Any normalized incoming difference-mode waveform obeys
+any normalized incoming branch-mode waveform obeys
 
 $$
 \eta_f(\tau)
@@ -294,29 +315,19 @@ $$
 \tau=t-R/c.
 $$
 
-The exact finite-cat theorem gives, at fixed time,
-
-$$
-\boxed{
-\rho_{AB}(t)\text{ NPT}
-\iff
-\eta_f(t)>m(t).
-}
-$$
-
-For a stationary thermal receiver,
-
-$$
-m_*=\Gamma_{\rm th}/\kappa_{\rm tot}.
-$$
-
-Hence no finite coherent cat can generate an NPT front if
+For every finite binary coherent source encoding, no NPT front exists if
 
 $$
 \boxed{\kappa_\Delta\le\Gamma_{\rm th}.}
 $$
 
-Above threshold, the tight waveform-independent front is
+If
+
+$$
+\kappa_\Delta>\Gamma_{\rm th},
+$$
+
+the exact waveform-optimal front is
 
 $$
 \boxed{
@@ -331,28 +342,144 @@ T_{\rm NPT}^{\min}
 }
 $$
 
-The time-reversed receiver ringdown saturates the bound in the ideal Markov model.
-
-Define
-
-$$
-\epsilon_Q=1-\Gamma_{\rm th}/\kappa_\Delta.
-$$
-
-Then
-
-$$
-T_{\rm NPT}^{\min}-R/c
-=-\kappa_{\rm tot}^{-1}\ln\epsilon_Q.
-$$
-
-This is now exact for the entire finite coherent-cat family within the stated model.
+The time-reversed receiver ringdown saturates the bound.
 
 Full theorem: `CAUSAL_FRONT_THEOREM.md`.
 
 ---
 
-## 8. Gravity-specific receiver parameters
+## 8. Finite-strength certification front
+
+Define the exact logarithmic witness margin
+
+$$
+\boxed{
+\Lambda
+=\ln\frac{|z_v|^2}{p_0p_v}.
+}
+$$
+
+For the binary coherent branch mode,
+
+$$
+\boxed{
+\Lambda
+=\frac{N_\Delta}{m}(\tau-m).
+}
+$$
+
+For the stationary passive receiver, the optimal time-dependent margin is
+
+$$
+\boxed{
+\Lambda_{\max}(\tau)
+=\frac{N_\Delta}{\Gamma_{\rm th}}
+\left[
+\kappa_\Delta(1-e^{-\kappa_{\rm tot}\tau})
+-\Gamma_{\rm th}
+\right].
+}
+$$
+
+Thus the bare NPT front is the zero-margin limit. Requiring
+
+$$
+\Lambda\ge\Lambda_{\rm req}>0
+$$
+
+gives
+
+$$
+\boxed{
+T_\Lambda^{\min}
+=
+\frac Rc
+-
+\frac1{\kappa_{\rm tot}}
+\ln\left[
+1-
+\frac{\Gamma_{\rm th}}{\kappa_\Delta}
+\left(1+\frac{\Lambda_{\rm req}}{N_\Delta}\right)
+\right].
+}
+$$
+
+It exists only if
+
+$$
+\Gamma_{\rm th}
+\left(1+\frac{\Lambda_{\rm req}}{N_\Delta}\right)
+<\kappa_\Delta.
+$$
+
+The maximum available exact margin is
+
+$$
+\boxed{
+\Lambda_\infty
+=N_\Delta
+\left(\frac{\kappa_\Delta}{\Gamma_{\rm th}}-1\right).
+}
+$$
+
+This resolves the amplitude-independence of the mathematical NPT onset: **finite certification explicitly depends on source strength $N_\Delta$.**
+
+File: `FINITE_STRENGTH_CERTIFICATION_FRONT.md`.
+
+---
+
+## 9. Active phase-insensitive receiver
+
+For a stable active receiver with loss ports $\kappa_j^-$ and gain ports $\gamma_k^+$,
+
+$$
+\kappa_{\rm eff}
+=\kappa_\Delta+\sum_j\kappa_j^-
+-\sum_k\gamma_k^+>0.
+$$
+
+The unavoidable vacuum-output occupation is driven by
+
+$$
+\boxed{
+\Gamma_+
+=\sum_j\kappa_j^-\bar n_j
++\sum_k\gamma_k^+(\bar n_k^++1).
+}
+$$
+
+Every phase-insensitive gain port contributes its spontaneous $+1$ quantum even at zero temperature.
+
+The exact NPT-capability condition becomes
+
+$$
+\boxed{
+\kappa_\Delta>\Gamma_+,
+}
+$$
+
+with front
+
+$$
+\boxed{
+T_{\rm NPT}^{\min}
+=
+\frac Rc+
+\frac1{\kappa_{\rm eff}}
+\ln\left[
+\frac{\kappa_\Delta}
+{\kappa_\Delta-\Gamma_+}
+\right].
+}
+$$
+
+Thus phase-insensitive amplification can enlarge a classical signal but cannot advance the quantum front for free.
+
+File: `ACTIVE_GAUSSIAN_CAUSAL_FRONT.md`.
+
+---
+
+## 10. Gravity-specific mode coupling
 
 The useful branch-mode rate is
 
@@ -360,7 +487,7 @@ $$
 \boxed{\kappa_\Delta=\mathcal O_{SB}\kappa_g.}
 $$
 
-The total gravitational receiver linewidth is
+The total receiver graviton linewidth is
 
 $$
 \boxed{
@@ -384,87 +511,205 @@ $$
 \mathcal O_Q=\cos^2(2\psi).
 $$
 
-The exact gravitational front is therefore
+For exponential/Lorentzian temporal modes,
 
 $$
-T_{\rm NPT}^{\min}
-=
-\frac Rc+
-\frac1{\kappa_{\rm tot}}
-\ln\left[
-\frac{\mathcal O_{SB}\kappa_g}
-{\mathcal O_{SB}\kappa_g-\Gamma_{\rm th}}
-\right]
-$$
-
-within the receiver model.
-
----
-
-## 9. Receiver limits
-
-For ordinary stationary passive nonrelativistic matter, an energy-weighted quadrupole sum rule limits net gravitational oscillator strength. Active/inverted collective states can show $N^2$ gravitational transition enhancement, but known examples enhance vacuum gravitational transitions by the same collective factor and therefore do not automatically improve quantum efficiency.
-
-The nonrelativistic absolute-response ceiling does not extend automatically to relativistic QFT because spatially smeared stress-energy operators retain UV pair excitations.
-
-For a passive Gibbs receiver, what does survive mode by mode is KMS/fluctuation-dissipation:
-
-$$
-S_H(\omega)
-=
-\hbar\coth\left(
-\frac{\hbar\omega}{2k_BT}
-\right)\chi''(\omega).
+\mathcal O_t
+=\frac{4\kappa_S\kappa_B}
+{(\kappa_S+\kappa_B)^2+4\Delta^2}.
 $$
 
 ---
 
-## 10. Novelty boundary — latest literature result
+## 11. Finite-aperture wave-zone quantum reception
 
-The closest predecessor is:
-
-**Kreis & van Loock, Phys. Rev. A 85, 032307 (2012), arXiv:1111.0478.**
-
-They study the **same hybrid state**
-
-$$
-(|0\rangle|\alpha\rangle+|1\rangle|-\alpha\rangle)/\sqrt2
-$$
-
-through the **same one-sided thermal beam-splitter channel**.
-
-They derive the exact noisy output, then use a finite-order Shchukin–Vogel moment determinant as a sufficient witness. Their witness has an amplitude-dependent detection region. Crucially, their footnote [47] explicitly compares it with the thermal channel's entanglement-breaking boundary and notes that the witness may miss entangled states below that boundary.
-
-The present theorem appears to close exactly that gap:
+For the plus-type quadrupole, the exact source difference-mode fraction in a polar spherical cap of half-angle $\theta_0$ is
 
 $$
 \boxed{
-\text{for every finite }\alpha\neq0,
-\quad
-\text{non-EB thermal channel}
-\iff
-\text{NPT hybrid output}.
+\beta_{\rm cap}
+=\frac12-
+\frac{5c+10c^3+c^5}{32},
+\qquad
+c=\cos\theta_0.
 }
 $$
 
-The present three-element witness additionally detects the complete region for this state family.
+For a small aperture of radius $a_R$ at distance $R$,
 
-Other close primary work found so far treats different two-mode non-Gaussian states or lower bounds under thermal noise, not this exact hybrid iff result.
+$$
+\boxed{
+\beta_{\rm cap}
+\simeq\frac58\frac{a_R^2}{R^2}.
+}
+$$
 
-Detailed literature note: `NOVELTY_CHECK_FINITE_CAT.md`.
+Define
 
-**Status:** promising, but novelty remains unverified until broader citation-forward searching and independent mathematical review are complete.
+$$
+K=\frac58a_R^2\mathcal O\kappa_g.
+$$
+
+Then
+
+$$
+\kappa_\Delta(R)=K/R^2.
+$$
+
+The maximum NPT range at nonzero thermal injection is
+
+$$
+\boxed{
+R_Q=\sqrt{\frac{K}{\Gamma_{\rm th}}}.
+}
+$$
+
+For a distance-independent internal linewidth $\kappa_0$,
+
+$$
+\boxed{
+T_{\rm NPT}^{\min}(R)
+=
+\frac Rc-
+\frac1{\kappa_0+K/R^2}
+\ln\left[
+1-(R/R_Q)^2
+\right],
+\qquad R<R_Q.
+}
+$$
+
+The front approaches the light cone at short range and diverges logarithmically as
+
+$$
+R\to R_Q^-.
+$$
+
+For finite witness margin,
+
+$$
+R_\Lambda
+=\frac{R_Q}{\sqrt{1+\Lambda_{\rm req}/N_\Delta}},
+$$
+
+with an identical nested front obtained by replacing $R_Q\to R_\Lambda$.
+
+Files: `FINITE_APERTURE_WAVEZONE_FRONT.md`, `QUANTUM_RECEPTION_CONE.md`.
 
 ---
 
-## 11. Strongest next path
+## 12. Passive nonrelativistic wave-zone feasibility bound
 
-1. Search for a general theorem that would imply the finite-cat iff result indirectly, especially binary coherent-state probes of entanglement-breaking Gaussian channels.
-2. Optimize/simplify the exact three-element witness for practical source-receiver measurements.
-3. Derive exact or tight near-boundary negativity scaling for arbitrary finite cat amplitude.
-4. If those survive, reorganize the main Experiment 01 paper around the exact finite-cat causal-front theorem.
-5. Then insert fully explicit linearized-gravity source and receiver wavepackets.
+For ordinary passive nonrelativistic matter, the quadrupole oscillator-strength sum rule gives
+
+$$
+\frac{\kappa_g}{\omega_B}
+\le
+\frac23\mathcal C_B\beta_B^3,
+$$
+
+where
+
+$$
+\mathcal C_B=r_{s,B}/L_B,
+\qquad
+\beta_B=\omega_BL_B/c.
+$$
+
+If the coherent receiver aperture satisfies $a_R\le L_B$, a nonempty wave-zone NPT interval requires the necessary condition
+
+$$
+\boxed{
+\mathfrak W_B
+\equiv
+\frac{5\mathcal O}{12}
+\frac{Q_B\mathcal C_B\beta_B^5}{\bar n_B}
+>\zeta^2,
+}
+$$
+
+where $R_{\rm WZ}=\zeta c/\omega_B$.
+
+At high temperature,
+
+$$
+\boxed{
+\mathfrak W_B
+\simeq
+\frac{5\mathcal O}{12}
+Q_B\mathcal C_B\beta_B^6
+\frac{\lambda_T}{L_B},
+\qquad
+\lambda_T=\hbar c/(k_BT).
+}
+$$
+
+This is a receiver-class feasibility condition, not a universal quantum-gravity no-go theorem.
+
+File: `PASSIVE_WAVEZONE_FEASIBILITY_BOUND.md`.
+
+---
+
+## 13. Receiver-theory caveats
+
+The passive nonrelativistic oscillator-strength ceiling does not automatically extend to relativistic QFT because spatially smeared stress-energy operators retain UV pair excitations.
+
+For passive Gibbs receivers, the robust mode-level statement is KMS/fluctuation-dissipation:
+
+$$
+S_H(\omega)
+=\hbar\coth\left(\frac{\hbar\omega}{2k_BT}\right)\chi''(\omega).
+$$
+
+Active/inverted collective states can show $N^2$ gravitational transition enhancement, but known examples enhance vacuum gravitational transitions as well, so activity does not automatically improve quantum efficiency.
+
+---
+
+## 14. Novelty boundary
+
+Established prior art includes:
+
+- two-coherent-state effective-entanglement tests of quantum devices;
+- the exact hybrid qubit–coherent input passed through a thermal beam-splitter channel;
+- thermal/phase-insensitive Gaussian-channel EB thresholds;
+- entanglement distribution through every non-EB phase-insensitive Gaussian channel using other input/distillation protocols;
+- graviton coherent states, quadrupole radiation, retarded GIE, input-output theory, and Gaussian thermal gravity-channel tests.
+
+Closest hybrid predecessor: **Kreis & van Loock, PRA 85, 032307 (2012)**. They study the same symmetric hybrid cat and thermal channel but use a sufficient moment witness and explicitly note that it can fail below the channel EB threshold.
+
+Earlier device-testing prior art: **Häseler, Moroder & Lütkenhaus, PRA 77, 032303 (2008)** use two coherent states and effective entanglement, with moment-based criteria.
+
+A 2023/24 result by **Mele, Lami & Giovannetti** proves that all non-EB phase-insensitive Gaussian channels have nonzero two-way quantum capacity using a different Fock-state/distillation construction.
+
+The targeted searches have **not yet located** the stronger statement now derived here:
+
+$$
+\boxed{
+\text{every nontrivial finite binary coherent hybrid input}
+\text{ is NPT iff a gauge-covariant phase-insensitive Gaussian channel is non-EB}
+}
+$$
+
+nor the matched exact three-element witness or the gravity-specific causal reception-cone construction.
+
+**Novelty remains unverified.** Do not claim originality until broader literature review and independent mathematical scrutiny are complete.
+
+Files: `NOVELTY_CHECK_FINITE_CAT.md`, `PRIOR_ART_BINARY_COHERENT_TESTS.md`, `BINARY_COHERENT_EB_PROBE_THEOREM.md`, `PHASE_INSENSITIVE_GAUSSIAN_BINARY_PROBE_THEOREM.md`.
+
+---
+
+## 15. Strongest next path
+
+1. Perform a citation-forward/general-theorem novelty check for the all-phase-insensitive binary coherent probe theorem.
+2. Evaluate the passive wave-zone figure $\mathfrak W_B$ for representative receiver classes and identify whether any plausible nonrelativistic architecture approaches the required regime.
+3. Analyze phase-sensitive/non-Gaussian active receivers as the main remaining quantum-receiver loophole.
+4. If the theorem survives, reorganize the main Experiment 01 paper around:
+   - exact binary coherent Gaussian-channel lemma;
+   - retarded gravitational difference mode;
+   - exact causal NPT front;
+   - finite-certification front;
+   - finite-aperture quantum reception cone.
 
 ## Current Einstein/Feynman compression
 
-> **Relativity fixes when a gravitational branch signal may arrive: not before $R/c$. But arrival alone does not make the receiver quantum-correlated with the source. The receiver must catch the correct branch-difference mode faster than thermal noise turns that information into an ordinary record. For the entire finite coherent-cat family this boundary is exact and independent of cat size. A larger cat cannot force an entanglement-breaking channel to transmit entanglement. If the channel is quantum-capable, every finite nonzero cat transmits some entanglement, and a matched three-element source-receiver witness can detect it exactly at the same boundary.**
+> **A gravitational branch signal and a quantum gravitational channel are not the same thing. Relativity sets the earliest arrival at $R/c$. After arrival, a receiver becomes entangled with the source only if coherent coupling to the correct gravitational difference mode outruns the receiver's own classicalizing noise. For binary coherent branch records this boundary is exact for the entire phase-insensitive Gaussian-channel family and does not depend on cat size. Cat size reappears when one asks for a finite measurable violation. A finite wave-zone receiver then has an additional geometric problem: it must physically catch enough of a spherical spin-2 mode. The result is a nested spacetime structure—light cone, NPT cone, and finite-certification cone—with a finite thermal quantum-reception range even though the classical gravitational wave continues outward indefinitely.**
