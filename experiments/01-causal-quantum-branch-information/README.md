@@ -7,21 +7,21 @@
 
 ## Abstract
 
-Place a massive quantum system \(A\) in a coherent spatial superposition,
+Place a massive quantum system $A$ in a coherent spatial superposition,
 
-\[
+$$
 |+\rangle_A=\frac{|L\rangle+|R\rangle}{\sqrt 2},
-\]
+$$
 
-and place a second quantum system \(B\) nearby. The essential question is not merely whether \(A\) attracts \(B\), but whether gravity can make the future of \(B\) depend coherently on both alternatives \(L\) and \(R\). If the conditional probe states become distinguishable while the source remains coherent, the joint state becomes entangled. In the Newtonian limit the leading entangling interaction is not the uniform gravitational force but the tidal term
+and place a second quantum system $B$ nearby. The essential question is not merely whether $A$ attracts $B$, but whether gravity can make the future of $B$ depend coherently on both alternatives $L$ and $R$. If the conditional probe states become distinguishable while the source remains coherent, the joint state becomes entangled. In the Newtonian limit the leading entangling interaction is not the uniform gravitational force but the tidal term
 
-\[
+$$
 H_{\rm ent}=\frac{2Gm_A m_B}{d^3}x_Ax_B,
-\]
+$$
 
 which couples the quantum position fluctuations of the two systems. A second prepared Schrödinger-cat state is therefore not conceptually necessary: one spatially coherent source and one ordinary quantum probe are sufficient in principle, because gravity itself can generate the conditional probe branches.
 
-The relativistic extension changes the question again. A source-controlled change performed at \(A\) cannot influence a distant probe before the future light cone of that operation reaches it. The relevant observable is therefore not the mere existence of correlations—quantum fields may possess spacelike vacuum correlations—but the change in a probe or joint witness caused by creating or modulating the source superposition. A successful experiment would ideally establish three properties simultaneously: branch information is transferred **coherently** rather than through irreversible measurement-and-feedback, **quantum mechanically** rather than through a non-entangling classical channel, and **causally** rather than through an instantaneous Newtonian potential. The resulting operational question is sharper than “is gravity quantum?”: **can the gravitational interaction act as a local quantum-information channel?**
+The relativistic extension changes the question again. A source-controlled change performed at $A$ cannot influence a distant probe before the future light cone of that operation reaches it. The relevant observable is therefore not the mere existence of correlations—quantum fields may possess spacelike vacuum correlations—but the change in a probe or joint witness caused by creating or modulating the source superposition. A successful experiment would ideally establish three properties simultaneously: branch information is transferred **coherently** rather than through irreversible measurement-and-feedback, **quantum mechanically** rather than through a non-entangling classical channel, and **causally** rather than through an instantaneous Newtonian potential. The resulting operational question is sharper than “is gravity quantum?”: **can the gravitational interaction act as a local quantum-information channel?**
 
 This note develops that question from first principles, states what is already established in the literature, and identifies the remaining conceptual target rather than claiming novelty for known gravitational-entanglement protocols.
 
@@ -31,11 +31,11 @@ This note develops that question from first principles, states what is already e
 
 Put one mass in two places coherently. Put another quantum system nearby in one ordinary state. If gravity responds only to an averaged classical mass distribution, the second system has one gravitational future. If gravity preserves the coherence of the two alternatives, the second system may instead have two conditional futures,
 
-\[
+$$
 |L\rangle|B_L\rangle+|R\rangle|B_R\rangle.
-\]
+$$
 
-If \(B_L\) and \(B_R\) become distinguishable without gravity first deciding whether \(L\) or \(R\) is real, the systems are entangled. A classical information channel can imitate the correct average force only by acquiring information and paying for it through decoherence or added noise; a coherent quantum interaction can correlate the alternatives without selecting one. General relativity then adds a second demand: the source-controlled branch information must not appear at a distant probe before the appropriate light-cone time. The Gedanken experiment therefore asks whether gravity can transmit **branch information coherently, reversibly, and causally**.
+If $B_L$ and $B_R$ become distinguishable without gravity first deciding whether $L$ or $R$ is real, the systems are entangled. A classical information channel can imitate the correct average force only by acquiring information and paying for it through decoherence or added noise; a coherent quantum interaction can correlate the alternatives without selecting one. General relativity then adds a second demand: the source-controlled branch information must not appear at a distant probe before the appropriate light-cone time. The Gedanken experiment therefore asks whether gravity can transmit **branch information coherently, reversibly, and causally**.
 
 ---
 
@@ -43,51 +43,51 @@ If \(B_L\) and \(B_R\) become distinguishable without gravity first deciding whe
 
 The clean conceptual example is a neutral spin-carrying particle such as a neutron. Electrical charge is not required for Stern–Gerlach separation. What is required is a magnetic moment in an inhomogeneous magnetic field,
 
-\[
+$$
 U=-\boldsymbol{\mu}\cdot\mathbf B,
 \qquad
 \mathbf F=\nabla(\boldsymbol{\mu}\cdot\mathbf B).
-\]
+$$
 
 A spin state such as
 
-\[
+$$
 |+x\rangle=\frac{|\uparrow_z\rangle+|\downarrow_z\rangle}{\sqrt2}
-\]
+$$
 
 can therefore be converted coherently into a spin-position state,
 
-\[
+$$
 \frac{|L,\uparrow\rangle+|R,\downarrow\rangle}{\sqrt2}.
-\]
+$$
 
 Further coherent spin manipulation can, in principle, remove the spin label so that the center-of-mass state takes the idealized form
 
-\[
+$$
 |+\rangle_A=\frac{|L\rangle+|R\rangle}{\sqrt2}.
-\]
+$$
 
 The neutron is useful conceptually because it is neutral and quantum mechanically simple at the level relevant to the experiment. It is almost certainly a poor practical gravitational source because gravity scales with mass. The practical lesson is the reverse of the conceptual one:
 
 > **Use the simplest system to understand the physics; use the largest controllable quantum mass to perform the experiment.**
 
-The Gedanken experiment will therefore use an abstract neutral massive system \(A\), while keeping the Stern–Gerlach picture as an intuitive way to understand the origin of the spatial superposition.
+The Gedanken experiment will therefore use an abstract neutral massive system $A$, while keeping the Stern–Gerlach picture as an intuitive way to understand the origin of the spatial superposition.
 
 ---
 
 # 3. The first physical question: where is the gravitational source?
 
-For a classical point mass at position \(x_A\), Newtonian gravity gives
+For a classical point mass at position $x_A$, Newtonian gravity gives
 
-\[
+$$
 U_G(x_A,x_B)=-\frac{Gm_A m_B}{|x_A-x_B|}.
-\]
+$$
 
 But the source is now in
 
-\[
+$$
 |+\rangle_A=\frac{|L\rangle+|R\rangle}{\sqrt2}.
-\]
+$$
 
 Three broad possibilities illustrate the conceptual conflict:
 
@@ -101,85 +101,85 @@ The point of the thought experiment is to translate these verbal possibilities i
 
 # 4. The minimal conditional Hamiltonian
 
-Assume \(A\)'s two spatial branches are sufficiently well separated and remain approximately stationary during the interaction. Then the most general branch-conditioned probe Hamiltonian can be written
+Assume $A$'s two spatial branches are sufficiently well separated and remain approximately stationary during the interaction. Then the most general branch-conditioned probe Hamiltonian can be written
 
-\[
+$$
 \boxed{
 H=|L\rangle\langle L|\otimes H_L+|R\rangle\langle R|\otimes H_R .
 }
-\]
+$$
 
-Let the probe begin in a pure state \(|\psi_B\rangle\). The initial state is
+Let the probe begin in a pure state $|\psi_B\rangle$. The initial state is
 
-\[
+$$
 |\Psi(0)\rangle=\frac{|L\rangle+|R\rangle}{\sqrt2}|\psi_B\rangle.
-\]
+$$
 
-After an interaction time \(t\),
+After an interaction time $t$,
 
-\[
+$$
 |\Psi(t)\rangle
 =\frac{|L\rangle U_L(t)|\psi_B\rangle+|R\rangle U_R(t)|\psi_B\rangle}{\sqrt2},
-\]
+$$
 
 where
 
-\[
+$$
 U_j(t)=e^{-iH_jt/\hbar}.
-\]
+$$
 
 Define the two conditional probe states
 
-\[
+$$
 |\psi_L\rangle=U_L|\psi_B\rangle,
 \qquad
 |\psi_R\rangle=U_R|\psi_B\rangle,
-\]
+$$
 
 and their overlap
 
-\[
+$$
 \boxed{
 \Gamma(t)=\langle\psi_L|\psi_R\rangle
 =\langle\psi_B|U_L^\dagger U_R|\psi_B\rangle.
 }
-\]
+$$
 
 For this pure bipartite state,
 
-\[
+$$
 \boxed{|\Gamma|<1\quad\Longleftrightarrow\quad A\text{ and }B\text{ are entangled}.}
-\]
+$$
 
 The same number controls the interferometric visibility of the source:
 
-\[
+$$
 \boxed{V=|\Gamma|.}
-\]
+$$
 
-The reduced density matrix of \(A\) is
+The reduced density matrix of $A$ is
 
-\[
+$$
 \rho_A=\frac12
 \begin{pmatrix}
 1&\Gamma^*\\
 \Gamma&1
 \end{pmatrix},
-\]
+$$
 
 with eigenvalues
 
-\[
+$$
 \lambda_\pm=\frac{1\pm|\Gamma|}{2}.
-\]
+$$
 
 Hence the source-probe entanglement entropy is
 
-\[
+$$
 S_A=h_2\!\left(\frac{1+|\Gamma|}{2}\right),
-\]
+$$
 
-where \(h_2\) is the binary entropy. One overlap amplitude therefore measures three related ideas at once: distinguishability of the gravitational alternatives, loss of local interference, and source-probe entanglement.
+where $h_2$ is the binary entropy. One overlap amplitude therefore measures three related ideas at once: distinguishability of the gravitational alternatives, loss of local interference, and source-probe entanglement.
 
 ---
 
@@ -187,22 +187,22 @@ where \(h_2\) is the binary entropy. One overlap amplitude therefore measures th
 
 Define
 
-\[
+$$
 \Delta H=H_R-H_L.
-\]
+$$
 
 For sufficiently short times,
 
-\[
+$$
 |\Gamma(t)|^2
 =1-\frac{t^2}{\hbar^2}\operatorname{Var}_{\psi_B}(\Delta H)+O(t^3).
-\]
+$$
 
 Therefore entanglement begins to develop whenever
 
-\[
+$$
 \boxed{\operatorname{Var}_{\psi_B}(\Delta H)>0.}
-\]
+$$
 
 This is the conceptual resource statement:
 
@@ -214,51 +214,51 @@ The gravitational interaction can create the conditional probe branches dynamica
 
 # 6. Why the tidal field is the entangling part of Newtonian gravity
 
-Let the equilibrium source-probe separation be \(d\), and let their small displacements be \(x_A\) and \(x_B\). Then
+Let the equilibrium source-probe separation be $d$, and let their small displacements be $x_A$ and $x_B$. Then
 
-\[
+$$
 U_G=-\frac{Gm_A m_B}{d+x_B-x_A}.
-\]
+$$
 
-For \(|x_A|,|x_B|\ll d\), expand:
+For $|x_A|,|x_B|\ll d$, expand:
 
-\[
+$$
 U_G\simeq
 -\frac{Gm_A m_B}{d}
 +\frac{Gm_A m_B}{d^2}(x_B-x_A)
 -\frac{Gm_A m_B}{d^3}(x_B-x_A)^2.
-\]
+$$
 
 The constant and one-body terms cannot entangle the two systems. The leading cross term is
 
-\[
+$$
 \boxed{
 H_{\rm ent}=\frac{2Gm_A m_B}{d^3}x_Ax_B.
 }
-\]
+$$
 
-The relevant scaling is therefore \(d^{-3}\), not the familiar inverse-square force law. This is physically significant. A uniform gravitational acceleration can be removed locally by going to free fall; a tidal field cannot. The leading entangling interaction is therefore associated with the spatial variation of the force—the Newtonian precursor of spacetime curvature.
+The relevant scaling is therefore $d^{-3}$, not the familiar inverse-square force law. This is physically significant. A uniform gravitational acceleration can be removed locally by going to free fall; a tidal field cannot. The leading entangling interaction is therefore associated with the spatial variation of the force—the Newtonian precursor of spacetime curvature.
 
 If the source is a two-position system,
 
-\[
+$$
 x_A=\frac{\Delta x_A}{2}\sigma_z,
-\]
+$$
 
 then
 
-\[
+$$
 H_{\rm ent}=\frac{Gm_A m_B\Delta x_A}{d^3}\sigma_zx_B
 =\frac{\delta F}{2}\sigma_zx_B,
-\]
+$$
 
-where the branch-to-branch force difference on \(B\) is approximately
+where the branch-to-branch force difference on $B$ is approximately
 
-\[
+$$
 \boxed{
 \delta F=\frac{2Gm_A m_B\Delta x_A}{d^3}.
 }
-\]
+$$
 
 Gravity has become a state-dependent force.
 
@@ -266,78 +266,78 @@ Gravity has become a state-dependent force.
 
 # 7. One cat and one oscillator
 
-Let \(B\) be a quantum harmonic oscillator initially in its ground state. Write
+Let $B$ be a quantum harmonic oscillator initially in its ground state. Write
 
-\[
+$$
 x_B=x_{\rm zpf}(a+a^\dagger),
 \qquad
 x_{\rm zpf}=\sqrt{\frac{\hbar}{2m_B\omega}}.
-\]
+$$
 
 Then
 
-\[
+$$
 H_{\rm int}=\hbar g\,\sigma_z(a+a^\dagger),
-\]
+$$
 
 with
 
-\[
+$$
 \boxed{
 g=\frac{\delta F\,x_{\rm zpf}}{2\hbar}.}
-\]
+$$
 
 Starting from
 
-\[
+$$
 |\Psi(0)\rangle=|+\rangle_A|0\rangle_B,
-\]
+$$
 
 the interaction produces, up to phases,
 
-\[
+$$
 \boxed{
 |\Psi(t)\rangle
 =\frac{|L\rangle|\alpha(t)\rangle+|R\rangle|-\alpha(t)\rangle}{\sqrt2},
 }
-\]
+$$
 
 with
 
-\[
+$$
 \alpha(t)=\frac{g}{\omega}\left(1-e^{-i\omega t}\right).
-\]
+$$
 
 The probe was not initially a cat. Gravity created two conditional coherent states.
 
 Their overlap is
 
-\[
+$$
 V(t)=|\langle-\alpha|\alpha\rangle|
 =\exp[-2|\alpha(t)|^2],
-\]
+$$
 
 or
 
-\[
+$$
 \boxed{
 V(t)=\exp\left[-\frac{8g^2}{\omega^2}
 \sin^2\left(\frac{\omega t}{2}\right)\right].
 }
-\]
+$$
 
 At half a mechanical period, the conditional oscillator states are maximally separated in phase space. At one full period,
 
-\[
+$$
 \alpha(2\pi/\omega)=0,
-\]
+$$
 
 and the source visibility revives. The sequence is
 
-\[
+$$
 \text{coherence}\rightarrow\text{entanglement}\rightarrow
 \text{local visibility loss}\rightarrow\text{disentanglement}\rightarrow\text{revival}.
-\]
+$$
 
 This is a gravitational quantum-eraser picture: which-branch information is coherently written into the probe and later erased by unitary dynamics.
 
@@ -347,17 +347,17 @@ This is a gravitational quantum-eraser picture: which-branch information is cohe
 
 Suppose instead gravity is fundamentally a classical mediator. To apply a branch-dependent force, a classical channel must somehow acquire classical information about the source and use that information to act on the probe. Schematically,
 
-\[
+$$
 \text{measure }A\rightarrow\text{classical record}\rightarrow\text{force on }B.
-\]
+$$
 
 That creates a generic information-disturbance tradeoff. Strongly learning the source branch decoheres the source; weakly learning it preserves more coherence but makes the inferred force noisy. Classical measurement-and-feedback models of gravity therefore carry irreducible noise if they are required to reproduce Newtonian attraction while remaining non-entangling.
 
 This idea was developed by Kafri, Taylor, and Milburn and has been generalized considerably. In 2026 Fabiano, Fujita, Matsumura, and Carney classified a broad family of non-quantized Newtonian models and derived minimum-noise conditions. For a hybrid two-state system plus mechanical oscillator initially in
 
-\[
+$$
 \frac{|L\rangle+|R\rangle}{\sqrt2}\otimes|0\rangle,
-\]
+$$
 
 they show that sufficiently low combined source-decoherence and probe-momentum-diffusion rates imply that the gravitational interaction is entangling. The precise inequality depends on their normalization and assumptions; the important conceptual point is model-independent in spirit:
 
@@ -371,105 +371,105 @@ Visibility loss alone is therefore not sufficient evidence for nonclassical grav
 
 The effective Newtonian interaction
 
-\[
+$$
 -\frac{Gm_A m_B}{|\hat x_A-\hat x_B|}
-\]
+$$
 
 is instantaneous. It can be an excellent low-energy effective Hamiltonian, but it hides the causal mechanism of the interaction.
 
 General relativity instead describes local spacetime dynamics. In weak-field language,
 
-\[
+$$
 g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu},
-\]
+$$
 
 and matter couples schematically through
 
-\[
+$$
 H_I=-\frac12\int d^3x\,h_{\mu\nu}(x)T^{\mu\nu}(x).
-\]
+$$
 
 The causal response of the field is governed by a retarded propagator. Schematically,
 
-\[
+$$
 D_R(x,x')\propto i\Theta(t-t')\langle[h(x),h(x')]\rangle.
-\]
+$$
 
-Microcausality requires the commutator to vanish for spacelike-separated events. Therefore a **source-controlled change** performed at \(A\) cannot change an observable at a spacelike-separated \(B\).
+Microcausality requires the commutator to vanish for spacelike-separated events. Therefore a **source-controlled change** performed at $A$ cannot change an observable at a spacelike-separated $B$.
 
-A crucial qualification is that quantum fields can possess vacuum correlations outside a light cone. Therefore the claim cannot simply be “there is no correlation or entanglement before \(R/c\).” The operational statement is narrower and stronger:
+A crucial qualification is that quantum fields can possess vacuum correlations outside a light cone. Therefore the claim cannot simply be “there is no correlation or entanglement before $R/c$.” The operational statement is narrower and stronger:
 
-\[
+$$
 \boxed{
 \text{A controllable operation at }A\text{ cannot alter local statistics at }B
 \text{ before causal contact.}
 }
-\]
+$$
 
 ---
 
 # 10. The light-cone quantum eraser
 
-Place \(A\) and \(B\) a distance \(R\) apart. At \(t=0\), create or modulate the source superposition locally at \(A\). Compare two experimental runs:
+Place $A$ and $B$ a distance $R$ apart. At $t=0$, create or modulate the source superposition locally at $A$. Compare two experimental runs:
 
 - **control:** the source operation is not performed;
 - **signal:** the source is coherently split or its branch configuration is changed.
 
-For an observable \(O_B\), define
+For an observable $O_B$, define
 
-\[
+$$
 \boxed{
 \Delta O_B(t)=\langle O_B(t)\rangle_{\rm signal}-\langle O_B(t)\rangle_{\rm control}.
 }
-\]
+$$
 
 A causal local theory requires
 
-\[
+$$
 \boxed{
 \Delta O_B(t)=0\qquad\text{for }t<R/c,
 }
-\]
+$$
 
 up to the finite spacetime support of the actual preparation and detector operations.
 
 As an intuitive approximation, replace the instantaneous conditional force with a causal switching function,
 
-\[
+$$
 H_I(t)=\hbar g\,\chi(t-R/c)\,\sigma_z(a+a^\dagger),
-\]
+$$
 
-where \(\chi\) vanishes before the retarded arrival. A sharp Heaviside step is only an idealization; a realistic field-theory calculation uses the retarded Green function and finite source/detector switching.
+where $\chi$ vanishes before the retarded arrival. A sharp Heaviside step is only an idealization; a realistic field-theory calculation uses the retarded Green function and finite source/detector switching.
 
 If one nevertheless uses the sharp idealization,
 
-\[
+$$
 \tau=(t-R/c)_+,
-\]
+$$
 
 then the oscillator amplitude becomes
 
-\[
+$$
 \alpha(\tau)=\frac{g}{\omega}\left(1-e^{-i\omega\tau}\right).
-\]
+$$
 
 Thus the source-controlled conditional displacement satisfies
 
-\[
+$$
 \alpha=0\qquad (t<R/c),
-\]
+$$
 
 and begins only after causal contact. The familiar entanglement/visibility cycle is shifted by the propagation delay.
 
 The important experimental signature is not one measured delay but the distance scaling
 
-\[
+$$
 \boxed{
 \frac{dt_{\rm onset}}{dR}=\frac1c.
 }
-\]
+$$
 
-A family of probes at different \(R\) would trace the propagation of the source-controlled quantum interaction through spacetime.
+A family of probes at different $R$ would trace the propagation of the source-controlled quantum interaction through spacetime.
 
 ---
 
@@ -497,11 +497,11 @@ None of the three alone is enough for the strongest conclusion:
 
 The conjunction is the conceptual target:
 
-\[
+$$
 \boxed{
 \text{retarded}+\text{coherent}+\text{entangling}.
 }
-\]
+$$
 
 Operationally, that would support the statement that the gravitational interaction can function as a **local quantum-information channel**.
 
@@ -513,22 +513,22 @@ The useful primitive is not “force” but **branch information**.
 
 The source begins with a coherent alternative,
 
-\[
+$$
 |L\rangle+|R\rangle.
-\]
+$$
 
 A local quantum gravitational description suggests that the nearby field becomes conditionally correlated with that alternative before a distant probe does. Schematically,
 
-\[
+$$
 |L\rangle|g_L\rangle+|R\rangle|g_R\rangle.
-\]
+$$
 
-After the causal influence reaches \(B\),
+After the causal influence reaches $B$,
 
-\[
+$$
 |L\rangle|g_L\rangle|B_L\rangle
 +|R\rangle|g_R\rangle|B_R\rangle.
-\]
+$$
 
 The field acts as an information-bearing mediator between source and probe. This motivates a deeper question than the usual yes/no question about quantization:
 
@@ -548,11 +548,11 @@ The entire Gedanken experiment can be compressed to this:
 
 Or more compactly:
 
-\[
+$$
 \boxed{
 \text{Can spacetime act as a causal quantum-information channel?}
 }
-\]
+$$
 
 ---
 
@@ -597,20 +597,20 @@ Calculate the same quantity in linearized quantum gravity and identify a paramet
 
 A result of the schematic form
 
-\[
+$$
 \boxed{
 \mathcal W_{\rm causal}[A,B]
 \leq \mathcal B_{\rm classical}
 }
-\]
+$$
 
 for every specified classical mediator, together with
 
-\[
+$$
 \boxed{
 \mathcal W_{\rm QG}>\mathcal B_{\rm classical},
 }
-\]
+$$
 
 would convert the present Gedanken experiment into a falsifiable theorem.
 
@@ -639,76 +639,76 @@ Because this is an active field, any eventual submission should include a fresh 
 
 ### Spatial alternative
 
-\[
+$$
 |+\rangle_A=\frac{|L\rangle+|R\rangle}{\sqrt2}
-\]
+$$
 
 ### Conditional gravitational evolution
 
-\[
+$$
 H=|L\rangle\langle L|\otimes H_L+|R\rangle\langle R|\otimes H_R
-\]
+$$
 
 ### Probe-history overlap
 
-\[
+$$
 \Gamma=\langle\psi_B|U_L^\dagger U_R|\psi_B\rangle
-\]
+$$
 
 ### Pure-state entanglement criterion
 
-\[
+$$
 |\Gamma|<1
-\]
+$$
 
 ### Newtonian entangling / tidal term
 
-\[
+$$
 H_{\rm ent}=\frac{2Gm_A m_B}{d^3}x_Ax_B
-\]
+$$
 
 ### Source-qubit conditional force
 
-\[
+$$
 H_{\rm ent}=\frac{\delta F}{2}\sigma_zx_B,
 \qquad
 \delta F=\frac{2Gm_A m_B\Delta x_A}{d^3}
-\]
+$$
 
 ### Oscillator coupling
 
-\[
+$$
 H_{\rm int}=\hbar g\sigma_z(a+a^\dagger),
 \qquad
 g=\frac{\delta F x_{\rm zpf}}{2\hbar}
-\]
+$$
 
 ### Conditional coherent displacement
 
-\[
+$$
 \alpha(t)=\frac{g}{\omega}(1-e^{-i\omega t})
-\]
+$$
 
 ### Visibility
 
-\[
+$$
 V=e^{-2|\alpha|^2}
-\]
+$$
 
 ### Causal control subtraction
 
-\[
+$$
 \Delta O_B(t)=\langle O_B\rangle_{\rm signal}-\langle O_B\rangle_{\rm control}
-\]
+$$
 
 ### Relativistic requirement
 
-\[
+$$
 \Delta O_B(t)=0\quad\text{outside the future light cone of the source operation}
-\]
+$$
 
 ---
 
 # 18. Final compressed version
 
-**A mass is placed in a coherent superposition of two locations. Gravity must somehow make those alternatives relevant to a distant quantum probe. If gravity is only an averaged classical field, the probe has one future. If gravity is a coherent mediator, the probe can have two conditional futures while neither source alternative is selected, and the systems become entangled. The leading Newtonian interaction that can do this is the tidal coupling \(2Gm_A m_Bx_Ax_B/d^3\), not the uniform force. A classical channel that determines which force to apply must acquire classical information and therefore pay an irreducible price in decoherence or noise; a quantum channel can correlate without deciding. Relativity then requires the source-controlled change to propagate locally: vacuum correlations may exist outside the light cone, but information about the operation that created the superposition cannot. The strongest question is therefore whether gravity can transmit branch information coherently, below classical noise bounds, and with relativistic causal propagation. In operational terms: can spacetime act as a causal quantum-information channel?**
+**A mass is placed in a coherent superposition of two locations. Gravity must somehow make those alternatives relevant to a distant quantum probe. If gravity is only an averaged classical field, the probe has one future. If gravity is a coherent mediator, the probe can have two conditional futures while neither source alternative is selected, and the systems become entangled. The leading Newtonian interaction that can do this is the tidal coupling $2Gm_A m_Bx_Ax_B/d^3$, not the uniform force. A classical channel that determines which force to apply must acquire classical information and therefore pay an irreducible price in decoherence or noise; a quantum channel can correlate without deciding. Relativity then requires the source-controlled change to propagate locally: vacuum correlations may exist outside the light cone, but information about the operation that created the superposition cannot. The strongest question is therefore whether gravity can transmit branch information coherently, below classical noise bounds, and with relativistic causal propagation. In operational terms: can spacetime act as a causal quantum-information channel?**
