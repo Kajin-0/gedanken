@@ -1,0 +1,269 @@
+# Active Collective Gravity: What the Known $N^2$ Enhancement Actually Buys
+
+**Timestamp:** 2026-08-07 16:06 EDT  
+**Status:** Active derivation / literature integration for Experiment 01
+
+This note connects the passive-receiver sum-rule discussion to the known collective gravitational-transition model of Quiñones, Oniga, Varcoe, and Wang, Phys. Rev. D 96, 044018 (2017), arXiv:1702.03905.
+
+---
+
+## 1. The known collective enhancement
+
+For $N$ identical two-level bosonic atoms, the many-body ladder states can be written
+
+$$
+|p\rangle=|N-p+1,p-1\rangle.
+$$
+
+The collective ladder matrix elements contain factors
+
+$$
+\sqrt{p(N-p+1)}
+$$
+
+or
+
+$$
+\sqrt{(p-1)(N-p+2)}.
+$$
+
+Near the middle of the ladder,
+
+$$
+p\simeq N/2,
+$$
+
+the squared collective matrix elements are $O(N^2)$.
+
+This is the gravitational analogue of a Dicke/superradiant enhancement.
+
+---
+
+## 2. Why these states lie outside the passive receiver bound
+
+The state maximizing the transition rate is centered near
+
+$$
+p_0\simeq N/2,
+$$
+
+meaning approximately half of the atoms occupy the upper level.
+
+As a many-body energy state this is highly excited: lower-energy states are unoccupied while the chosen excited state carries unit population. It is therefore not a passive population distribution.
+
+This is exactly the class for which the positive-term passive sum-rule argument no longer supplies a ceiling on the upward/downward spectral weight separately.
+
+Thus there is no contradiction between
+
+$$
+\kappa_{g,\rm passive}
+\lesssim
+\frac{4G}{3c^5}I\omega^4
+$$
+
+and the known $N^2$ collective rates.
+
+The first is a passive-response bound; the second exploits an active stored-energy resource.
+
+---
+
+## 3. Signal and vacuum rates acquire the same collective factor
+
+For the favorable middle-ladder states, the 2017 model introduces the effective stochastic-gravitational-wave transition rate
+
+$$
+\boxed{
+\Gamma_{\rm gw}
+=\frac{N^2}{4}\Gamma_0N_{\rm gw}(\omega_0),
+}
+$$
+
+and the vacuum-spacetime-fluctuation rate
+
+$$
+\boxed{
+\Gamma_{\rm vac}
+=\frac{N^2}{4}\Gamma_0N_{\rm vac}(\omega_0),
+}
+$$
+
+with
+
+$$
+N_{\rm vac}=1.
+$$
+
+Therefore
+
+$$
+\boxed{
+\frac{\Gamma_{\rm gw}}{\Gamma_{\rm vac}}
+=N_{\rm gw}(\omega_0),
+}
+$$
+
+independent of $N$.
+
+The $N^2$ collective factor speeds up **both** the externally driven/stochastic response and the vacuum gravitational transition dynamics.
+
+---
+
+## 4. What collective enhancement therefore does and does not prove
+
+The collective state can shorten the physical transition time by $N^2$ compared with one atom.
+
+But the same enhancement does not improve the stochastic-signal/vacuum-fluctuation ratio in this model.
+
+This mirrors the quantum-limited amplifier lesson:
+
+$$
+\boxed{
+\text{larger response rate}
+\not\Rightarrow
+\text{larger quantum-information margin}.
+}
+$$
+
+The amplifier and collective-atom models are not mathematically identical. The point is structural: once the receiver is active, the fluctuations associated with the gravitational coupling are enhanced together with the response.
+
+---
+
+## 5. Consequence for Experiment 01
+
+For our source-cat problem, an active collective receiver could still be extremely useful because an $N^2$ enhancement of the *gravitational coupling rate itself* could reduce the enormous capture time.
+
+However, the relevant calculation cannot stop at
+
+$$
+\kappa_g\to N^2\kappa_g.
+$$
+
+We must simultaneously include
+
+1. spontaneous gravitational transitions of the prepared active receiver;
+2. gravitational vacuum noise entering the selected receiver transition;
+3. radiation into gravitational modes that are not part of the intended source-to-receiver difference mode;
+4. the coherence cost of preparing and maintaining the active state.
+
+The right question is therefore
+
+> **Does the active $N^2$ enhancement increase the distance of the complete source-receiver channel from entanglement breaking, or does it merely speed the signal and gravitational vacuum fluctuations together?**
+
+---
+
+## 6. A useful rate-level diagnostic
+
+Define a branch-sensitive driven gravitational rate
+
+$$
+\Gamma_{\rm sig}
+$$
+
+and the receiver's spontaneous gravitational vacuum rate
+
+$$
+\Gamma_{\rm vac}.
+$$
+
+A first diagnostic is
+
+$$
+\boxed{
+\mathcal R_{\rm q}
+=\frac{\Gamma_{\rm sig}}{\Gamma_{\rm vac}}.
+}
+$$
+
+For the stochastic-GW model above,
+
+$$
+\mathcal R_{\rm q}=N_{\rm gw}(\omega_0)
+$$
+
+and is not improved by collective $N^2$ enhancement.
+
+For the coherent source-cat channel, the corresponding object should be derived from the coherent drive amplitude and the complete vacuum-noise covariance rather than stochastic rates. The Gaussian active-amplifier toy model suggests the relevant quantity will again be a signal-minus-noise or distance-to-entanglement-breaking parameter, not raw gain.
+
+---
+
+## 7. Important distinction: vacuum coupling is also the desired quantum interface
+
+The gravitational vacuum rate is not merely an engineering nuisance. It is generated by the same matter-gravity coupling that allows coherent absorption and emission of gravitons.
+
+Therefore suppressing all gravitational vacuum coupling would also suppress the desired quantum interface.
+
+The goal is more subtle:
+
+$$
+\boxed{
+\text{couple strongly to the intended gravitational mode}
+\quad\text{while minimizing coupling to orthogonal/unobserved modes.}
+}
+$$
+
+This returns the discussion to **mode matching** rather than raw transition-rate enhancement.
+
+An ideal active receiver would collectively enhance the selected source-difference mode while maintaining low spontaneous emission into orthogonal gravitational channels.
+
+---
+
+## 8. Proposed next theoretical object
+
+For an active collective receiver, decompose the gravitational reservoir into
+
+- selected difference mode $b_\Delta$;
+- orthogonal gravitational modes $b_\perp$.
+
+Define directional/selected-mode gravitational rate
+
+$$
+\kappa_\Delta
+$$
+
+and unobserved gravitational rate
+
+$$
+\kappa_\perp.
+$$
+
+Then the meaningful collective enhancement is not simply
+
+$$
+\kappa_\Delta+\kappa_\perp,
+$$
+
+but a **gravitational beta factor**
+
+$$
+\boxed{
+\beta_G
+=\frac{\kappa_\Delta}
+{\kappa_\Delta+\kappa_\perp+\kappa_i}.
+}
+$$
+
+This is the gravity analogue of mode-selective spontaneous-emission engineering in quantum optics.
+
+If collective enhancement increases all gravitational channels equally, $\beta_G$ does not improve even though the total rate scales as $N^2$.
+
+If geometry/cavity structure can enhance the desired gravitational mode preferentially, then active collectivity could provide a genuine route around the passive material receiver limitation.
+
+---
+
+## 9. Current conceptual conclusion
+
+> **The known $N^2$ gravitational collective effect is real, but it is a speedup of an active matter-gravity interaction, not automatically a speedup of quantum branch-information transfer. In the published model the same $N^2$ factor multiplies both the gravitational-wave response and vacuum spacetime fluctuations. The quantity that matters for our Gedankenexperiment is therefore mode-selective quantum efficiency: how much of the enhanced coupling goes into the one causal branch-difference mode we want, rather than into gravitational vacuum channels that carry uncontrolled records.**
+
+---
+
+## 10. Novelty discipline
+
+The $N^2$ collective transition enhancement is established prior work and must be cited as such.
+
+The potential project contribution is not the enhancement itself, but integrating it into the causal history-transfer framework and identifying **gravitational mode selectivity / beta factor** as the quantity that determines whether collective activity actually improves entanglement transfer.
+
+---
+
+## 11. Immediate next step
+
+Derive $\beta_G$ for a distributed quadrupolar receiver coupled to free-space linearized gravity. Determine whether free-space geometry imposes an upper limit on mode-selective capture, and whether an enclosing/spherical receiver can make $\beta_G\to1$ even when total coupling is collectively enhanced.
