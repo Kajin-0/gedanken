@@ -175,3 +175,192 @@ Potential novelty is therefore **not the base experiment**, but one or more of:
 ### Next derivation
 
 Characterize $\Xi_T$ for a general classical instrument / measure-and-prepare mediator and seek a rigorous fidelity or distinguishability bound relating surviving off-diagonal coherence to the distinguishability of the conditional probe channels.
+
+---
+
+## 2026-08-07 12:34 EDT — Candidate classical-record coherence inequality
+
+### Classical-record mediator model
+
+Model the complete classical transcript carried from source to probe by a variable $\lambda$. For source branch $j\in\{L,R\}$ let the transcript occur with probability $p_j(\lambda)$. Conditional on $\lambda$, the probe is prepared/evolved into a state $\sigma_\lambda$; all source-branch dependence reaching the probe is assumed to pass through the classical transcript.
+
+For each transcript value, positivity of the source instrument implies an off-diagonal coefficient $c_\lambda$ satisfying
+
+$$
+|c_\lambda|^2\le p_L(\lambda)p_R(\lambda).
+$$
+
+The reduced source-probe blocks therefore have the form
+
+$$
+\rho_B^L=\sum_\lambda p_L(\lambda)\sigma_\lambda,
+$$
+
+$$
+\rho_B^R=\sum_\lambda p_R(\lambda)\sigma_\lambda,
+$$
+
+and
+
+$$
+\Xi=\sum_\lambda c_\lambda\sigma_\lambda.
+$$
+
+Define the **history-coherence norm**
+
+$$
+\boxed{C_\Xi\equiv\|\Xi\|_1}
+$$
+
+and the probe branch distinguishability
+
+$$
+\boxed{D_B\equiv\frac12\|\rho_B^L-\rho_B^R\|_1.}
+$$
+
+Triangle inequality gives
+
+$$
+C_\Xi\le\sum_\lambda\sqrt{p_L(\lambda)p_R(\lambda)}\equiv B_C,
+$$
+
+where $B_C$ is the classical Bhattacharyya coefficient. Contractivity under the classical-to-quantum preparation map gives
+
+$$
+D_B\le\frac12\sum_\lambda|p_L(\lambda)-p_R(\lambda)|\equiv D_C.
+$$
+
+For classical probability distributions,
+
+$$
+B_C^2+D_C^2\le1.
+$$
+
+Therefore the classical-record mediator obeys the candidate bound
+
+$$
+\boxed{C_\Xi^2+D_B^2\le1.}
+$$
+
+### Quantum controlled interaction
+
+For a coherent conditional unitary
+
+$$
+U=|L\rangle\langle L|\otimes U_L+|R\rangle\langle R|\otimes U_R,
+$$
+
+acting on an arbitrary normalized probe state $\rho_B$,
+
+$$
+\rho_B^L=U_L\rho_BU_L^\dagger,
+\qquad
+\rho_B^R=U_R\rho_BU_R^\dagger,
+$$
+
+and
+
+$$
+\Xi=U_L\rho_BU_R^\dagger.
+$$
+
+Unitary invariance of the trace norm gives
+
+$$
+\boxed{C_\Xi=\|\rho_B\|_1=1.}
+$$
+
+Hence any nonzero conditional probe distinguishability $D_B>0$ gives
+
+$$
+\boxed{C_\Xi^2+D_B^2>1,}
+$$
+
+violating the classical-record bound in the ideal coherent case.
+
+Define a provisional witness
+
+$$
+\boxed{\mathcal W_\Xi=C_\Xi^2+D_B^2-1.}
+$$
+
+Then
+
+$$
+\mathcal W_\Xi\le0
+$$
+
+for the specified classical-record/measure-and-prepare mediator class, whereas an ideal coherent controlled interaction gives
+
+$$
+\mathcal W_\Xi=D_B^2>0.
+$$
+
+### Three-party interpretation
+
+For the factorized conditional field model
+
+$$
+|\Psi\rangle=\frac{|L\rangle|B_L\rangle|g_L\rangle+|R\rangle|B_R\rangle|g_R\rangle}{\sqrt2},
+$$
+
+tracing out gravity gives
+
+$$
+\Xi=\langle g_R|g_L\rangle\,|B_L\rangle\langle B_R|,
+$$
+
+so
+
+$$
+C_\Xi=s_g.
+$$
+
+For pure probe branches,
+
+$$
+D_B=\sqrt{1-s_B^2}.
+$$
+
+The classical-record bound becomes
+
+$$
+\boxed{s_g\le s_B.}
+$$
+
+Interpretation: **a classical mediator cannot leave behind a less distinguishable record than the distinguishability it has delivered to the probe.** This is a data-processing statement. A coherent quantum mediator can behave as a reversible bus: it may transfer branch dependence to the probe and later return close to the same mediator state, allowing $s_g>s_B$.
+
+### Why this differs from ordinary interferometric complementarity
+
+The ordinary source visibility is
+
+$$
+V_A=|\operatorname{Tr}\Xi|,
+$$
+
+whereas the new quantity is
+
+$$
+C_\Xi=\|\Xi\|_1.
+$$
+
+A coherent controlled interaction can drive $V_A$ toward zero while keeping $C_\Xi=1$. Thus $C_\Xi$ measures coherence retained **between the two conditional histories**, not merely locally visible source interference.
+
+This is precisely the resource needed for quantum erasure or coherent reversal.
+
+### Scope and novelty status
+
+The inequality above is currently a **derived candidate result for a clearly specified classical-record / measure-and-prepare mediator class**. It has not yet been shown to cover every LOCC, non-Markovian, nonlinear, or relativistic classical-gravity model. It also requires a dedicated literature search before any novelty claim; nearby literature already contains gravitational quantum-communication benchmarks and entanglement-breaking channel tests.
+
+### Updated frontier
+
+1. Prove the bound for the broadest possible classical causal transcript model, ideally arbitrary finite-round LOCC consistent with preservation of the $L/R$ branch basis.
+2. Determine the operational measurement protocol for $C_\Xi=\|\Xi\|_1$ using source-probe joint observables / optimized quantum erasure.
+3. Calculate $C_\Xi(T,R)$ and $D_B(T,R)$ for a scalar-field mediator, then linearized gravity.
+4. Test whether the retarded quantum-field prediction produces a spacetime region with
+
+$$
+\mathcal W_\Xi(T,R)>0
+$$
+
+only after causal contact.
