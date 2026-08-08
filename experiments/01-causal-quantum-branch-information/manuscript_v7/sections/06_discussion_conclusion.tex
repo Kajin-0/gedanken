@@ -1,0 +1,75 @@
+\section{Controlled corrections and limitations}
+\label{sec:limitations}
+
+The link budget is deliberately a leading-order benchmark. The following qualifications are important.
+
+\paragraph{Finite source size.}
+The first finite-wavelength correction to the explicit quadrupole linewidth has the form
+\begin{equation}
+\kappa_g(q,\beta)=\kappa_g^{(Q)}(q)
+\left[1-\frac{2a(q)}7\beta^2+O(\beta^4)\right],
+\end{equation}
+where
+\begin{equation}
+a(q)=\frac12+\frac{\cot q}{q}-\frac1{q^2}.
+\end{equation}
+For $q\to0$, this becomes $\kappa_g=\kappa_g^{(Q)}[1-\beta^2/21+O(\beta^4)]$.
+
+\paragraph{Controller radiation.}
+Branch-common coherent controller radiation is a common displacement and does not alter the branch-distance norm or entanglement. Thermal or nonclassical controller fluctuations are genuine channel noise.
+
+\paragraph{Source dephasing.}
+The scalar $\beta_{g,A}$ tracks coherent amplitude-damping branching, not arbitrary phase coherence. Complete phase randomization can make the reference--source state separable even with unit gravitational energy branching. Non-Gaussian dephasing must be included as a separate source map.
+
+\paragraph{Frequency dependence.}
+Constant branching fractions require a narrowband Markov regime. Outside it, Eq.~\eqref{eq:freqbeta} or the corresponding full spectral transfer kernel must replace the scalar ratios.
+
+\paragraph{Reciprocal feedback.}
+For a weak one-way link, the loop correction is small. In the audited wave-zone model,
+\begin{equation}
+|L(\nu)|\le4\eta_{\rm store}\beta_{g,A}\beta_{g,B},
+\end{equation}
+and the first source-controlled round-trip echo appears only after approximately $3R/c$. The one-way channel is therefore the leading term in a controlled weak-feedback expansion.
+
+\paragraph{Gravity-specific locality.}
+The pre-arrival replacer statement is restricted to the equal-Poincar\'e-charge encoded subspace and to the working perturbative gravitational-splitting framework. It is not an assertion of exact local tensor-factor structure in quantum gravity.
+
+\paragraph{Material model.}
+The spoke, hub, and eigenstrain controller form a closed effective linear-elastic source to the retained order. A microscopic covariant hyperelastic completion is outside the present scope.
+
+\paragraph{Readout.}
+Equation~\eqref{eq:master} terminates at the receiver memory. Operational communication or measurement requires the additional readout condition in Eq.~\eqref{eq:accesscond}.
+
+\section{Discussion}
+
+The value of Eq.~\eqref{eq:master} is not that products of efficiencies are unfamiliar. Its value is that, for this gravitational problem, the usually separated physical descriptions can be joined without silently normalizing away one of the hard interfaces.
+
+The source interface asks what fraction of an explicitly locally prepared branch record enters the gravitational output rather than uncontrolled mechanical ports. The propagation factor asks how much of that normalized gravitational mode is geometrically and tensorially accessible to the remote receiver. The receiver interface asks what fraction of its damping belongs to gravity rather than ordinary material loss. Temporal loading asks whether the actual fixed source waveform matches the receiver. Noise then determines whether the memory channel is genuinely non-entanglement-breaking, and readout determines whether that small quantum excess survives into an accessible register.
+
+This hierarchy changes how proposed improvements should be judged. Pulse shaping can improve $\Tcal_f$ only up to unity. Directional engineering can improve mode overlap only up to the normalized capture ceiling. Collective or active matter can improve gravitational branching relative to fixed internal loss, but it must also account for the associated gravitational vacuum dynamics and pump noise. A proposal that increases a classical response amplitude without increasing the complete channel's distance from the entanglement-breaking boundary has not necessarily improved quantum information transfer.
+
+The equal-charge code is also essential conceptually. Because the ten Poincar\'e generators act as scalars on the encoded doublet to the working order, the branch label is not stored in the asymptotic charge data that the first-order gravitational dressing must carry. The branch-sensitive information resides in internal multipole structure and in subsequently emitted retarded fields. This is the appropriate perturbative replacement for an overly strong claim of compact local subsystems in gravity.
+
+The passive sum-rule bound should likewise be interpreted narrowly. The EWSR method is established \cite{LuJohnson2018,Hinohara2019}, and prior analyses already show extremely weak graviton absorption by ordinary bound matter \cite{BoughnRothman2006,PalessandroSloth2020}. Its role here is to translate a passive quadrupole spectral-weight budget directly into the branching variable that appears in the serial quantum link.
+
+Finally, the exact pure-loss result makes the feasibility interpretation quantitative. In a weak link, the maximum reference--receiver negativity scales as the link transmissivity itself. Thus a fantastically small link is not rescued by choosing an arbitrarily large coherent branch separation; the optimum instead moves toward a weak branch amplitude and the deliverable entanglement remains linear in the full serial efficiency.
+
+\section{Conclusion}
+
+We have constructed a weak-field source-to-readout gravitational quantum link in which the local source, conserved support, gravitational emission, retarded propagation, resonant memory, noise, and readout are all explicitly separated. The central post-handoff coherent-transfer coefficient is
+\begin{equation}
+\boxed{
+\tau_c(t)=
+\beta_{g,A}\eta_{\rm store}(R)\beta_{g,B}\Tcal_f(t),}
+\end{equation}
+with $\eta_{\rm store}=25\Ocal/[16(kR)^2]$ for the aligned plus-quadrupole wave-zone model. The source is initialized by a local encoder whose full logical code satisfies
+\begin{equation}
+V_{\mathcal C}^\dagger P^\mu V_{\mathcal C}=p^\mu I_{\mathcal C},
+\qquad
+V_{\mathcal C}^\dagger M^{\mu\nu}V_{\mathcal C}=m^{\mu\nu}I_{\mathcal C}
+\end{equation}
+to the working perturbative order. An exact controller-empty handoff then permits the complete coherent branch information to be compressed into one virtual bosonic difference mode. This supplies the physical channel input required by the subsequent bosonic analysis rather than assuming it at the outset. Precursor radiation emitted during the encoder remains part of the complete waveform and is not reset at handoff.
+
+The memory quantum excess is $\Delta_{\rm mem}=\tau_c-m_c$; an accessible readout further requires $\Delta_{\rm acc}=\tau_r\Delta_{\rm mem}-m_r>0$. In vacuum, the exact binary-coherent negativity shows $\mathcal N_{\max}\sim\tau_c$ for weak links. For two ordinary passive nonrelativistic matter interfaces, the explicit benchmark produces an end-to-end coherent scale near $10^{-42}$, revealing that source gravitational branching is as important as receiver capture.
+
+The resulting framework is best viewed as a normalization benchmark for future gravitational quantum transducers. Any proposed improvement can be asked to identify which factor it changes, what new noise it introduces, and whether the improvement survives all the way to an accessible quantum register.
