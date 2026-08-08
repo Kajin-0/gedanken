@@ -1,46 +1,38 @@
 \begin{figure}[t]
 \centering
-\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
   >=Latex,
-  node distance=1.25cm,
-  box/.style={draw, rounded corners=2pt, align=center, minimum height=1.55cm, minimum width=3.1cm, inner sep=6pt},
-  arr/.style={->, line width=0.8pt},
+  node distance=0.72cm,
+  box/.style={draw, rounded corners=2pt, align=center, minimum height=1.65cm, text width=3.15cm, inner sep=5pt},
+  arr/.style={->, line width=0.85pt},
   lab/.style={align=center, font=\small}
 ]
 
 \node[box] (source) {\textbf{Equal-charge local code}\\
 $V_{\mathcal C}^\dagger Q_A V_{\mathcal C}=q_A I$\\
-conserved source; handoff $T_*$};
+conserved source; handoff};
 
 \node[box, right=of source] (gmode) {\textbf{Normalized graviton mode}\\
 complete encoder + tail waveform\\
 $\int |f(t)|^2dt=1$};
 
-\node[box, right=of gmode] (rport) {\textbf{Receiver gravitational port}\\
-retarded wave-zone access\\
-$R/c$ causal lower bound};
-
-\node[box, right=of rport] (memory) {\textbf{Receiver memory}\\
-$\tau_c=\eta_Q^{\rm link}\mathcal T_f$\\
+\node[box, right=of gmode] (memory) {\textbf{Receiver memory}\\
+retarded capture + loading\\
 $\Delta_{\rm mem}=\tau_c-m_c$};
 
 \node[box, right=of memory] (readout) {\textbf{Accessible register}\\
 readout $(\tau_r,m_r)$\\
 $\Delta_{\rm acc}=\tau_r\Delta_{\rm mem}-m_r$};
 
-\draw[arr] (source) -- node[lab, above] {$\displaystyle \beta_{g,A}=\frac{\kappa_{g,A}}{\kappa_A}$\\source branching} (gmode);
+\draw[arr] (source) -- node[lab, above] {$\displaystyle \beta_{g,A}$\\source branching} (gmode);
 
-\draw[arr] (gmode) -- node[lab, above] {$\displaystyle \eta_{\rm store}=\frac{25\mathcal O}{16(kR)^2}$\\mode capture} (rport);
-
-\draw[arr] (rport) -- node[lab, above] {$\displaystyle \beta_{g,B}\mathcal T_f$\\branching $\times$ loading} (memory);
+\draw[arr] (gmode) -- node[lab, above] {$\displaystyle \eta_{\rm store}\,\beta_{g,B}\,\mathcal T_f$\\capture $\times$ branching $\times$ loading} (memory);
 
 \draw[arr] (memory) -- node[lab, above] {noisy readout} (readout);
 
-\node[lab, below=0.55cm of gmode] (backbone) {$\displaystyle \eta_Q^{\rm link}=\beta_{g,A}\eta_{\rm store}\beta_{g,B}$};
+\node[lab, below=0.55cm of gmode, xshift=1.65cm] (backbone) {$\displaystyle \eta_Q^{\rm link}=\beta_{g,A}\eta_{\rm store}\beta_{g,B},\qquad \tau_c=\eta_Q^{\rm link}\mathcal T_f$};
 
-\end{tikzpicture}%
-}
+\end{tikzpicture}
 \caption{Source-resolved gravitational quantum-link architecture after the local code is instantiated. The three multiplicative factors $\beta_{g,A}$, $\eta_{\rm store}$, and $\beta_{g,B}$ form the coherent link backbone; the fixed waveform contributes $\mathcal T_f\le1$. Noise determines the memory quantum excess, and a separate readout stage determines whether that excess remains accessible. Encoder precursor radiation is retained in the complete waveform $f(t)$ rather than reset at the handoff.}
 \label{fig:link-budget}
 \end{figure}
