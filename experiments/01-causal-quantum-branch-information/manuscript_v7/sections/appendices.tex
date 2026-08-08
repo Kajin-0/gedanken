@@ -3,11 +3,11 @@
 \section{Branch-distance conservation at the encoder handoff}
 \label{app:handoff}
 
-For the damped two-mode encoder, the source amplitude is
+For the damped two-mode modal encoder, the source amplitude is
 \begin{equation}
 \alpha_s(t)=-is\zeta\frac{g}{\Omega}\ee^{-\kappa_A t/4}\sin(\Omega t).
 \end{equation}
-The branch separation of the source mode is $2\alpha_+(t)$. Each Markov output port $j$ carries branch-difference amplitude $2\sqrt{\kappa_j}\alpha_+(t)$. The branch distance emitted into port $j$ through the controller-empty time is
+The branch separation of the source mode is $2\alpha_+(t)$. Each Markov output port $j$ carries branch-difference amplitude $2\sqrt{\kappa_j}\alpha_+(t)$. The branch distance emitted into port $j$ through the controller-empty modal time is
 \begin{equation}
 \boxed{
 N_{\Delta,j}^{\rm enc}
@@ -18,7 +18,7 @@ The source branch distance remaining at handoff is
 \begin{equation}
 N_{\Delta,A}(T_*)=4|\zeta|^2\ee^{-\kappa_A T_*/2}.
 \end{equation}
-Summing all source output ports gives
+Summing all modal source output ports gives
 \begin{equation}
 N_{\Delta,A}(T_*)+
 \sum_jN_{\Delta,j}^{\rm enc}=4|\zeta|^2,
@@ -29,6 +29,7 @@ which is Eq.~\eqref{eq:distance-conservation}. In the fast-encoder limit, the em
 =1-\ee^{-\kappa_A T_*/2}
 \simeq\frac{\pi\kappa_A}{4g}.
 \end{equation}
+In the literal local controller-field completion, the same norm accounting is applied to the enlarged coherent mode vector that also contains controller-bus modes. A post-handoff virtual bosonic channel is defined only after those branch-dependent controller modes have cleared or been coherently reabsorbed.
 
 \section{Full-system Poincar\'e-charge audit}
 \label{app:charges}
@@ -39,7 +40,7 @@ D^i=\frac1{c^2}\int\dd^3x\,x^iT^{00}
 \end{equation}
 instead of fixing a boost-generator sign convention. At fixed total momentum, equality of $D^i$ is equivalent to equality of the boost charges.
 
-The branch symmetry of each subsystem is summarized in Table~\ref{tab:charges}. The crucial radiation entry uses the fact that the two branch-dependent coherent field amplitudes are related by a global sign after common displacements are removed, while the free-field Poincar\'e generators are quadratic. The graviton and ordinary bath charges can therefore be nonzero for an individual pulse while still being exactly equal between branches at the retained order.
+The branch symmetry of each subsystem is summarized in Table~\ref{tab:charges}. The crucial field entries use the fact that the two branch-dependent coherent amplitudes are related by a global sign after common displacements are removed, while the corresponding free-field Poincar\'e generators are quadratic. Field charges can therefore be nonzero for an individual pulse while still being exactly equal between branches at the retained order.
 
 \begin{table}[h]
 \centering
@@ -52,7 +53,8 @@ reference doublet & 0 & 0 & 0 & 0 \\
 endpoint pairs & 0 & 0 & 0 & 0 \\
 elastic spokes & 0 & 0 & 0 & 0 \\
 hub & 0 & 0 & 0 & 0 \\
-work/controller + interaction & 0 & 0 & 0 & 0 \\
+compact work system & 0 & 0 & 0 & 0 \\
+controller bus field + elastic interaction & 0 & 0 & 0 & 0 \\
 graviton field & 0 & 0 & 0 & 0 \\
 other linear output ports & 0 & 0 & 0 & 0 \\
 \midrule
@@ -63,14 +65,25 @@ full encoded system & 0 & 0 & 0 & 0 \\
 \label{tab:charges}
 \end{table}
 
-For the endpoint and spoke sectors, rest and kinetic/strain energies are branch even, opposite radial pairs cancel linear momentum and center-of-energy first moment, and the radial motion has zero orbital angular momentum. The hub remains at the origin. For the controller implementation, Eq.~\eqref{eq:eigenstrain} gives
-\begin{equation}
-[\epsilon_asu f_q'-\epsilon_as\lambda X_C\chi]^2
-=[u f_q'-\lambda X_C\chi]^2,
-\end{equation}
-so the local interaction/elastic energy is pointwise branch common. The controller is compact at the hub and carries no branch-dependent translational or angular momentum by construction.
+For the endpoint and spoke sectors, rest and kinetic/strain energies are branch even, opposite radial pairs cancel linear momentum and center-of-energy first moment, and the radial motion has zero orbital angular momentum. The hub remains at the origin. The compact work system has the same free energy and momentum in both logical sectors at the audited order.
 
-For the emitted linear fields,
+For the propagating controller field, the two branch solutions satisfy
+\begin{equation}
+\Phi_-=-\Phi_+
+\end{equation}
+after common fields are removed. Its free Poincar\'e generators are quadratic and therefore sign invariant. The local elastic--controller interaction is also branch common pointwise because Eqs.~\eqref{eq:phiret}--\eqref{eq:eigenstrain} give
+\begin{equation}
+\left[
+\partial_x\xi_a^{(s)}-
+\epsilon_a\lambda\chi\Phi_a^{(s)}
+\right]^2
+=
+\left[
+u f_q'-\lambda\chi X_C(t-x/v_c)\right]^2.
+\end{equation}
+Thus the controller field may carry a distinguishable branch record during the local operation without carrying different total Poincar\'e charges in the two branches.
+
+For the emitted graviton and other linear fields,
 \begin{equation}
 \alpha_-=-\alpha_+,
 \end{equation}
@@ -85,7 +98,7 @@ The table establishes equality of the two diagonal elements. Hence
 \boxed{
 V_{\mathcal C}^\dagger Q_A V_{\mathcal C}=q_A I_{\mathcal C},}
 \end{equation}
-which gives Eq.~\eqref{eq:charge-code}. This is a first-order/working-model statement; branch-dependent material asymmetry, a nondegenerate reference stress tensor, controller nonlinearities, or higher-order gravitational self-interaction can violate it.
+which gives Eq.~\eqref{eq:charge-code}. This is a first-order/working-model statement; branch-dependent material asymmetry, a nondegenerate reference stress tensor, controller nonlinearities/losses, or higher-order gravitational self-interaction can violate it.
 
 \section{Exact pure-loss partial-transpose block}
 \label{app:pureloss}
