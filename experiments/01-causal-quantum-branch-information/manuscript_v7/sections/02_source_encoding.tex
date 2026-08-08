@@ -69,7 +69,7 @@ For $q\ll1$,
 \begin{equation}
 \Ccal_\kappa(q)=1+\frac{q^2}{3}+O(q^4).
 \end{equation}
-The full source stress tensor includes endpoints, spokes, hub, and controller and is conserved to the working elastic/weak-field order. Internal stress is therefore part of the same conserved source; it is not an independent radiative contribution to be appended to the mass quadrupole after the fact.
+The full source stress tensor includes endpoints, spokes, hub, controller bus, and compact work system and is conserved to the working elastic/weak-field order. Internal stress is therefore part of the same conserved source; it is not an independent radiative contribution to be appended to the mass quadrupole after the fact.
 
 For the endpoint coordinates $X=L+u$ and $Y=L-u$, the branch-carrying plus combination obeys
 \begin{equation}
@@ -80,7 +80,7 @@ exactly. The leading $u^2$ geometric term is branch even and occupies the dc/$2\
 \section{Local equal-charge encoding and gravitational dressing}
 \label{sec:encoding}
 
-Let $S$ be a degenerate internal reference qubit, $a$ the source plus mode, and $w$ a branch-common work mode. We use the resonant normal-mode encoder
+Let $S$ be a degenerate internal reference qubit, $a$ the source plus mode, and $w$ a branch-common work mode. The dominant projected dynamics are described by the resonant normal-mode encoder
 \begin{equation}
 \boxed{
 H_{\rm enc}=\hbar g\sigma_z(a^\dagger w+a w^\dagger).}
@@ -95,7 +95,7 @@ The initial state is
 \end{equation}
 where $E$ denotes the source output ports, including the graviton vacuum.
 
-In the lossless limit, branch $s=\pm1$ evolves as
+In the lossless modal limit, branch $s=\pm1$ evolves as
 \begin{equation}
 \alpha_s(t)=-is\zeta\sin(gt),
 \qquad
@@ -111,7 +111,7 @@ Then
 \left[\cos(\Omega t)+\frac{\kappa_A}{4\Omega}\sin(\Omega t)\right],\\
 \alpha_s(t)&=-is\zeta\frac{g}{\Omega}\ee^{-\kappa_A t/4}\sin(\Omega t).
 \end{align}
-The first exact controller-empty time in this modal model is
+The first exact controller-empty time in this projected modal model is
 \begin{equation}
 \boxed{
 T_*=\frac{\pi-\arctan(4\Omega/\kappa_A)}{\Omega},}
@@ -123,39 +123,81 @@ for which
 \qquad
 \alpha_s(T_*)=-is\zeta\ee^{-\kappa_A T_*/4}.
 \end{equation}
-For coherent inputs and vacuum linear loss ports, the conditional modal network remains a product of coherent states, so the work mode is exactly branch common and factorized at the handoff.
+For coherent inputs and vacuum linear loss ports, the conditional modal network remains a product of coherent states, so the work mode is exactly branch common and factorized at the modal handoff.
 
-A local elastic realization is obtained by an actuator coordinate $X_C$ that modulates a signed eigenstrain profile on the four spokes,
+\subsection{Local controller-field completion}
+
+Equation~\eqref{eq:Henc} is not interpreted as a microscopic operator acting instantaneously across the entire source. Introduce a local controller/bus field $\Phi_a(x,t)$ on each spoke, propagating at speed $v_c\le c$. A minimal lossless continuum Hamiltonian is
 \begin{equation}
-\mathcal E_a=\frac12EA
-\left[\partial_x\xi_a-\epsilon_a\sigma_z\lambda X_C\chi(x)\right]^2,
+\boxed{
+H_{\Phi}
+=\sum_a\int_0^L\dd x
+\left[
+\frac{\Pi_a^2}{2\rho_c}
++\frac{\rho_cv_c^2}{2}(\partial_x\Phi_a)^2
+\right].}
+\label{eq:Hphi}
+\end{equation}
+The reference qubit and compact work system couple to this bus only at the hub. In the two logical branches the local hub interaction launches opposite controller-field amplitudes. For an outgoing narrowband command,
+\begin{equation}
+\boxed{
+\Phi_a^{(s)}(x,t)
+=sX_C\!\left(t-\frac{x}{v_c}\right),
+\qquad s=\pm1,}
+\label{eq:phiret}
+\end{equation}
+up to the chosen reflection/reabsorption geometry.
+
+Each spoke couples only to its controller field at the same spacetime point through the local eigenstrain density
+\begin{equation}
+\boxed{
+\mathcal E_a(x,t)
+=\frac12EA
+\left[
+\partial_x\xi_a(x,t)
+-\epsilon_a\lambda\chi(x)\Phi_a(x,t)
+\right]^2,}
 \qquad
 \epsilon_a=\begin{cases}+1,&x\text{-spokes},\\-1,&y\text{-spokes}.
 \end{cases}
 \label{eq:eigenstrain}
 \end{equation}
-For the mirrored branch trajectory $\xi_a^{(s)}=\epsilon_a s u f_q$, the square bracket equals
+For the mirrored branch trajectory $\xi_a^{(s)}=\epsilon_a s u f_q$, Eqs.~\eqref{eq:phiret}--\eqref{eq:eigenstrain} give
 \begin{equation}
-\epsilon_a s\,[u f_q'-\lambda X_C\chi],
+\partial_x\xi_a^{(s)}-
+\epsilon_a\lambda\chi\Phi_a^{(s)}
+=
+\epsilon_as
+\left[
+u f_q'-\lambda\chi X_C(t-x/v_c)\right].
 \end{equation}
-so the local elastic energy density is pointwise branch common. The construction remains an effective linear-elastic model rather than a microscopic relativistic material theory.
-
-\subsection{Finite-speed local-control correction}
-
-Equation~\eqref{eq:Henc} is a projected normal-mode description, not an assumption that a branch command switches the entire source instantaneously. Let a physical controller command propagate outward from the hub at speed $v_c\le c$. Then the local actuator variable is retarded,
+Therefore
 \begin{equation}
-X_C(x,t)=X_C\!\left(t-\frac{x}{v_c}\right),
+\boxed{
+\mathcal E_a^{(+)}(x,t)
+=\mathcal E_a^{(-)}(x,t)}
+\label{eq:pointwiseenergy}
 \end{equation}
-and projection onto the plus mode replaces the static overlap by the causal form factor
+pointwise, even after finite controller propagation is restored. The controller bus can temporarily carry branch information, but its local energy and other quadratic free-field charges are branch common under the sign reversal.
+
+Projecting the local elastic--controller interaction onto the plus elastic mode gives
+\begin{equation}
+H_{u\Phi}(t)
+=-4EA\lambda u(t)
+\int_0^L\dd x\,
+\chi(x)f_q'(x)\Phi(x,t).
+\label{eq:uphi}
+\end{equation}
+For a narrowband branch-conditioned controller component, define the normalized overlap weight $w(x)\propto\chi(x)f_q'(x)$ and the causal form factor
 \begin{equation}
 \boxed{
 F_c(\omega)=
 \int_0^L\dd x\,w(x)e^{i\omega x/v_c},
 \qquad
-\int_0^L\dd x\,w(x)=1,}
+\int_0^L\dd x\,w(x)=1.}
 \label{eq:Fc}
 \end{equation}
-where $w(x)\propto\chi(x)f_q'(x)$ is the normalized actuator--mode overlap. Define
+Let
 \begin{equation}
 q_c\equiv\frac{\omega L}{v_c}.
 \end{equation}
@@ -172,29 +214,31 @@ while
 =1-q_c^2\operatorname{Var}_w(x/L)+O(q_c^4).}
 \label{eq:Fcsmall}
 \end{equation}
-Thus finite-speed actuation produces a leading control delay, whereas the coupling-strength correction begins only at $O(q_c^2)$. For a nearly uniform long-wavelength overlap,
+Thus finite-speed control produces a leading propagation delay, whereas the coupling-strength correction begins only at $O(q_c^2)$. For a nearly uniform long-wavelength overlap,
 \begin{equation}
 F_c=e^{iq_c/2}\operatorname{sinc}(q_c/2),
 \qquad
 |F_c|^2=1-\frac{q_c^2}{12}+O(q_c^4).
 \end{equation}
-The effective coupling in Eq.~\eqref{eq:Henc} should therefore be read as $g_{\rm eff}=g_0F_c$ after absorbing its phase into the interaction timing. A complete distributed controller also requires an architecture-dependent clearing/reabsorption time,
+After projection onto the dominant controller work mode and the resonant RWA, the effective dynamics recover Eq.~\eqref{eq:Henc} with $g_{\rm eff}=g_0F_c$ after absorbing the form-factor phase into the interaction timing. Higher controller modes, counter-rotating terms, and controller loss belong to the correction Hamiltonian or to explicit additional source ports.
+
+A physical post-encoding handoff additionally requires the branch-dependent controller-bus field to clear or be coherently reabsorbed. Consequently,
 \begin{equation}
 \boxed{
-T_*^{\rm local}=T_*^{\rm modal}+O(L/v_c).}
+T_*^{\rm local}=T_*^{\rm modal}+O(L/v_c),}
 \label{eq:Tlocal}
 \end{equation}
-In the same RWA regime $g\ll\omega$ and $q_c\ll1$, this overhead is parametrically short compared with the resonant encoding time. If $v_c\simeq c_s$, then $q_c\simeq q$, so the existing long-wavelength spoke assumption also controls this locality correction. The finite-speed controller therefore shifts and slightly reshapes the source waveform rather than altering the serial gravitational link structure.
+with an architecture-dependent coefficient. In the same RWA regime $g\ll\omega$ and $q_c\ll1$, this overhead is parametrically short compared with the resonant encoding time. If $v_c\simeq c_s$, then $q_c\simeq q$, so the existing long-wavelength spoke assumption also controls the controller-locality correction. If branch-dependent controller radiation is not reabsorbed but is lost, it is an additional source environment and must be counted as a loss/dephasing channel rather than ignored.
 
 \subsection{Equal-charge code}
 
-Let the full logical codewords, including mechanics, controller, graviton field, and all other linear output ports, be
+Let the full logical codewords, including mechanics, controller field, compact work system, graviton field, and all other linear output ports, be
 \begin{equation}
 |\mathsf0\rangle=|0\rangle_S|\Phi_+\rangle,
 \qquad
 |\mathsf1\rangle=|1\rangle_S|\Phi_-\rangle.
 \end{equation}
-The reference doublet is degenerate and has branch-independent stress-energy. The endpoint and spoke energies are even under the branch sign reversal; opposite radial pairs cancel total momentum, angular momentum, and center-of-energy first moment. The hub remains central and branch common. Equation~\eqref{eq:eigenstrain} makes the controller/interaction energy branch common pointwise. Finally, the branch-dependent coherent amplitudes in the graviton and other linear output fields are related by a global sign, while their free Poincar\'e generators are quadratic and therefore sign invariant. Radiation emitted during the encoder is thus included in the same charge accounting rather than omitted from it.
+The reference doublet is degenerate and has branch-independent stress-energy. The endpoint and spoke energies are even under the branch sign reversal; opposite radial pairs cancel total momentum, angular momentum, and center-of-energy first moment. The hub remains central and branch common. Equation~\eqref{eq:pointwiseenergy} makes the elastic--controller interaction energy branch common pointwise. The two controller-field solutions satisfy $\Phi_-=-\Phi_+$ after common fields are removed, so their free Poincar\'e generators, being quadratic, are also branch common. Finally, the branch-dependent coherent amplitudes in the graviton and other linear output fields are related by a global sign, while their free Poincar\'e generators are quadratic and therefore sign invariant. Radiation emitted during the encoder is thus included in the same charge accounting rather than omitted from it.
 
 Consequently, for every total Poincar\'e generator $Q_A\in\{P^\mu,M^{\mu\nu}\}$, the diagonal code matrix elements are equal. The off-diagonal elements vanish because the orthogonal reference states carry identical stress-energy. Therefore the audited statement is
 \begin{equation}
@@ -218,22 +262,22 @@ This statement is deliberately perturbative and code restricted. We do not claim
 
 \subsection{Causal origin versus channel handoff}
 
-There are two different clocks. The local causal intervention begins at $t=t_s$. The fixed bosonic input code is established only after the physical controller has completed its branch-dependent interaction and cleared/recombined, at a handoff whose leading modal value is Eq.~\eqref{eq:Tstar} and whose local correction is Eq.~\eqref{eq:Tlocal}. During the encoder, the bosonic branch separation is still being created. In the lossless modal limit,
+There are two different clocks. The local causal intervention begins at $t=t_s$. The fixed bosonic input code is established only after the physical controller field has completed its branch-dependent interaction and cleared or been coherently reabsorbed. Its leading modal value is Eq.~\eqref{eq:Tstar}, with the local correction in Eq.~\eqref{eq:Tlocal}. During the encoder, the bosonic branch separation is still being created. In the lossless modal limit,
 \begin{equation}
 N_{\Delta,{\rm all}}(t)=4|\zeta|^2\sin^2(gt).
 \end{equation}
-At the controller-empty handoff, including precursor radiation emitted during the encoder,
+At the controller-empty modal handoff, including precursor radiation emitted during the encoder,
 \begin{equation}
 \boxed{
 N_{\Delta,A}(T_*)+
 \sum_jN_{\Delta,j}^{\rm enc}=4|\zeta|^2}
 \label{eq:distance-conservation}
 \end{equation}
-for the leading modal model; a fully local implementation replaces $T_*$ by the corresponding cleared handoff and includes the same controller degrees in the global branch-distance accounting. After handoff the total branch-distance norm is fixed and branch-independent linear dynamics only redistribute it among modes. The causal clock therefore starts at $t_s$, but the fixed-input bosonic channel used below begins only after this handoff.
+for the leading modal model. A fully local implementation replaces $T_*$ by the corresponding cleared handoff and includes the controller-bus degrees of freedom in the same global branch-distance accounting. After handoff the total branch-distance norm is fixed and branch-independent linear dynamics only redistribute it among modes. The causal clock therefore starts at $t_s$, but the fixed-input bosonic channel used below begins only after this handoff.
 
 The precursor is not discarded. The normalized gravitational waveform used later contains both radiation emitted during the encoder and radiation emitted after handoff. If the source--receiver separation is small enough, some precursor can reach and begin driving the receiver before handoff. During that early interval the physical process is a controlled qubit-to-multimode state-generation problem, not yet a fixed-input one-mode channel; its entanglement should be evaluated directly from the instantaneous coherent branch state. For any receiver state evaluated after handoff, however, the fixed global virtual mode includes all precursor modes already in flight, and the receiver amplitude includes the coherent effect of any precursor that has already arrived.
 
-For a centrally triggered finite source, a material point $\mathbf x$ cannot acquire branch dependence before the local controller signal reaches it. Thus
+For a centrally triggered finite source, a material point $\mathbf x$ cannot acquire branch dependence before the local controller field reaches it. Thus
 \begin{equation}
 t_{\rm arr}-t_s
 \ge
@@ -245,4 +289,4 @@ Since $v_c\le c$, the triangle inequality gives
 \boxed{
 t_{\rm arr}-t_s\ge\frac{|\mathbf y-\mathbf x_0|}{c}.}
 \end{equation}
-Restoring finite-speed actuation can therefore only delay the signal relative to the center-origin light-cone bound. Before the receiver's causal past intersects the branch-dependent intervention history, physical receiver observables act proportionally to the identity on the equal-charge code to the working perturbative order. Equivalently, the encoded source-to-receiver map is a replacer channel on that code before causal arrival.
+Restoring finite-speed local control can therefore only delay the signal relative to the center-origin light-cone bound. Before the receiver's causal past intersects the branch-dependent intervention history, physical receiver observables act proportionally to the identity on the equal-charge code to the working perturbative order. Equivalently, the encoded source-to-receiver map is a replacer channel on that code before causal arrival.
