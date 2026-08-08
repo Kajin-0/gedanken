@@ -1,61 +1,76 @@
 # Gedanken
 
-A repository for first-principles thought experiments and adversarial theoretical research aimed at exposing sharp conceptual tensions between established physical theories.
-
-The method is deliberately simple:
-
-1. isolate one physical principle;
-2. remove every unnecessary experimental detail;
-3. force accepted descriptions to make predictions about the same idealized situation;
-4. identify the smallest observable on which those predictions differ;
-5. distinguish established results from genuinely open questions;
-6. actively try to falsify every internally derived claim;
-7. search prior art at the theorem/equation level, including supplements and appendices;
-8. only then ask whether a result supports a practical experiment or publication.
-
-The goal is not speculative model-building for its own sake. The goal is to find situations in which nature is forced to answer a precise question, while documenting failures and prior-art collisions as aggressively as successful derivations.
+A repository for first-principles thought experiments and adversarial theoretical research. Claims are treated as hypotheses to be falsified by algebra, counterexample, numerical stress testing, or prior art.
 
 ## Start here
 
-For a new research agent or reviewer, read:
+For the current research state, read in this order:
 
-1. [`AGENTS.md`](AGENTS.md) — recovery protocol, active claims, killed claims, and continuation rules;
-2. [`CURRENT_STATE_RANK2_UPDATE.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_RANK2_UPDATE.md) — current Experiment 01 recovery state;
-3. [`NOVELTY_COLLISION_MELE_RANK_TWO.md`](experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md) — confirmed prior-art collision that retired the previous rank-two Fock novelty claim;
-4. [`CLAIM_LEDGER_POST_MELE_ADDENDUM.md`](experiments/01-causal-quantum-branch-information/CLAIM_LEDGER_POST_MELE_ADDENDUM.md) — current claim classification;
-5. [`COHERENT_PRIOR_ART_DEEP_AUDIT.md`](experiments/01-causal-quantum-branch-information/COHERENT_PRIOR_ART_DEEP_AUDIT.md) and [`COHERENT_PRIOR_ART_SECOND_PASS.md`](experiments/01-causal-quantum-branch-information/COHERENT_PRIOR_ART_SECOND_PASS.md) — active novelty audit;
-6. [`COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`](experiments/01-causal-quantum-branch-information/COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md) — independent proof rederivation.
+1. [`AGENTS.md`](AGENTS.md) — authoritative recovery protocol and exact next actions;
+2. [`NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`](experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md) — confirmed collision that retired the all-finite-binary-coherent survival theorem as novelty;
+3. [`NOVELTY_COLLISION_MELE_RANK_TWO.md`](experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md) — confirmed collision that retired the rank-two Fock theorem as novelty;
+4. [`CURRENT_STATE_RANK2_UPDATE.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_RANK2_UPDATE.md) — current Experiment 01 recovery state;
+5. [`CLAIM_LEDGER_POST_MELE_ADDENDUM.md`](experiments/01-causal-quantum-branch-information/CLAIM_LEDGER_POST_MELE_ADDENDUM.md) — current claim classification;
+6. [`EXACT_THREE_ELEMENT_WITNESS.md`](experiments/01-causal-quantum-branch-information/EXACT_THREE_ELEMENT_WITNESS.md) — strongest surviving possible standalone contribution;
+7. [`COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`](experiments/01-causal-quantum-branch-information/COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md) — independent proof rederivation;
+8. [`numerics/README.md`](experiments/01-causal-quantum-branch-information/numerics/README.md) — reproducible independent channel simulations.
 
 ## Experiment 01 — Causal Transport of Quantum Branch Information by Gravity
 
 **Original question:** If a mass is placed in a coherent spatial superposition, can gravity communicate information about the alternatives to a distant quantum system without first converting those alternatives into classical information?
 
-The experiment developed from a single spatially superposed source, through gravity-mediated which-path information and reversible entanglement, to a relativistic source→field→receiver channel model.
+The experiment developed into a relativistic source→field→receiver channel model. During that work, several continuous-variable quantum-information statements were derived and then subjected to adversarial prior-art review.
 
-During that work, a separate continuous-variable quantum-information problem emerged: how little input structure is required to expose the entanglement-breaking boundary of a one-mode Gaussian channel?
+### What was killed
 
-### Current mathematical status
+The repository independently derived a very short Schmidt-rank-two Fock proof of the phase-insensitive Gaussian entanglement-breaking boundary. The mathematics appears correct, but Mele–Lami–Giovannetti already contain the underlying finite-rank survival result. It is retained as a compact rederivation, not a discovery claim.
 
-The repository independently derived a compact Schmidt-rank-two Fock proof, but the underlying rank-two phenomenon was subsequently found in prior work by Mele, Lami, and Giovannetti. That result is therefore retained as a useful rederivation, **not** as the current discovery claim.
+The repository also independently proved that every finite nontrivial binary coherent hybrid input remains NPT exactly while a phase-insensitive Gaussian channel is non-entanglement-breaking. That broad survival theorem is likewise not a viable novelty claim: a one-sided specialization of Filippov–Ziman's 2014 coherent-state witness, combined with an invertible local filter on the untouched two-dimensional coherent-state span, implies the same finite-amplitude survival boundary.
 
-The strongest surviving standalone candidate is narrower:
+Documenting those collisions is part of the project, not a failure mode to hide.
 
-> For a known gauge-covariant phase-insensitive one-mode Gaussian channel, every finite nontrivial binary coherent hybrid input appears to have NPT output if and only if the channel is not entanglement breaking.
+### Strongest surviving possible standalone contribution
 
-For symmetric coherent branches `|±a>` and thermal parameter `m>0`, the repository derives a matched coherent-state partial-transpose minor with
+The remaining question is substantially narrower: whether the known binary-coherent survival boundary admits a **new minimal exact certificate**.
 
-$$
- v_*=\frac{2\sqrt\tau a}{m},
-$$
-
-and
+For symmetric branches `|±a>`, the repository selects a literal two-dimensional block of the actual partial transpose,
 
 $$
+M_\Gamma=
+\begin{pmatrix}
+p_0&z_v^*\\
+z_v&p_v
+\end{pmatrix}.
+$$
+
+NPT is certified by
+
+$$
+|z_v|^2>p_0p_v.
+$$
+
+For a phase-insensitive Gaussian channel with $m>0$, the matched coherent analysis displacement is
+
+$$
+\boxed{
+v_*=\frac{2\sqrt\tau\,a}{m},
+}
+$$
+
+and the exact ratio is
+
+$$
+\boxed{
 \frac{|z_{v_*}|^2}{p_0p_{v_*}}
 =\exp\left[\frac{4a^2}{m}(\tau-m)\right].
+}
 $$
 
-The internal proof has survived an independent rederivation. The dominant unresolved question is **prior art**, not current algebra. No originality claim should be made until the ongoing citation-forward search is exhausted.
+Thus two selected populations and one coherence expose the full EB boundary through one finite $2\times2$ PT minor.
+
+**This minimal-witness formulation is still under prior-art attack. It is not yet an originality claim.**
+
+The associated selected-block negative eigenvalue and weak-link optimized witness-strength formulas are also being audited as possible quantitative contributions.
 
 ### Numerical reproducibility
 
@@ -66,11 +81,11 @@ Independent executable checks are committed for
 - additive Gaussian noise — direct random-displacement integration;
 - controlled near-boundary stress scans.
 
+The additive-noise stress suite resolves the analytic sign change through at least $|\tau-m|=10^{-4}$ at the current numerical resolution.
+
 See [`numerics/README.md`](experiments/01-causal-quantum-branch-information/numerics/README.md).
 
 ## Research status policy
-
-These are working theoretical notes, not claims of discovery.
 
 Claims are explicitly classified as
 
@@ -80,4 +95,4 @@ Claims are explicitly classified as
 - **COLLISION CONFIRMED — DO NOT CLAIM**;
 - **SUPERSEDED / INCORRECT**.
 
-A claim that fails an algebraic audit or collides with prior art is not hidden; it is documented and removed from the active publication path.
+A claim that collides with prior art is removed from the active publication path immediately. The current publication decision is therefore: do not write another broad Gaussian-channel survival theorem; first determine whether the three-element exact PT witness or its quantitative strength is genuinely new and useful. If not, return the research focus to the gravity application.
