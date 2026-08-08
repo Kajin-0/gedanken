@@ -1,0 +1,29 @@
+name: TT normalization regression
+
+on:
+  push:
+    paths:
+      - 'experiments/01-causal-quantum-branch-information/numerics/tt_mode_overlap_25_16_check.py'
+      - 'experiments/01-causal-quantum-branch-information/numerics/requirements.txt'
+      - '.github/workflows/tt-normalization.yml'
+  pull_request:
+    paths:
+      - 'experiments/01-causal-quantum-branch-information/numerics/tt_mode_overlap_25_16_check.py'
+      - 'experiments/01-causal-quantum-branch-information/numerics/requirements.txt'
+      - '.github/workflows/tt-normalization.yml'
+
+jobs:
+  tt-mode-overlap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        working-directory: experiments/01-causal-quantum-branch-information/numerics
+        run: python -m pip install -r requirements.txt
+      - name: Run independent TT normalization regression
+        working-directory: experiments/01-causal-quantum-branch-information/numerics
+        run: python tt_mode_overlap_25_16_check.py
