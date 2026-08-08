@@ -1,0 +1,34 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  scale=1.0,
+  endpoint/.style={draw, circle, minimum size=6mm, inner sep=0pt},
+  hub/.style={draw, circle, minimum size=9mm, inner sep=0pt},
+  disp/.style={->, >=Latex, line width=0.9pt}
+]
+
+\node[hub] (hub) at (0,0) {hub};
+\node[endpoint] (xp) at (3,0) {$\mu$};
+\node[endpoint] (xm) at (-3,0) {$\mu$};
+\node[endpoint] (yp) at (0,3) {$\mu$};
+\node[endpoint] (ym) at (0,-3) {$\mu$};
+
+\draw[line width=0.9pt] (hub) -- (xp);
+\draw[line width=0.9pt] (hub) -- (xm);
+\draw[line width=0.9pt] (hub) -- (yp);
+\draw[line width=0.9pt] (hub) -- (ym);
+
+\draw[disp] (3.35,0) -- (4.05,0) node[right] {$+u$};
+\draw[disp] (-3.35,0) -- (-4.05,0) node[left] {$+u$};
+\draw[disp] (0,3.65) -- (0,3.05) node[midway,right] {$-u$};
+\draw[disp] (0,-3.65) -- (0,-3.05) node[midway,right] {$-u$};
+
+\draw[<->] (0.2,-0.35) -- (2.85,-0.35) node[midway,below] {$L$};
+
+\node[align=center] at (0,-4.35) {$s=+1$ branch shown; the $s=-1$ branch reverses all displacement arrows.};
+\node[align=center, font=\small] at (0,4.35) {longitudinal elastic spokes with finite rest mass $m_r$};
+
+\end{tikzpicture}
+\caption{Finite-support four-spoke plus mode used as the explicit radiative source. Opposite endpoint/spoke pairs carry equal and opposite linear momentum, the motion is radial, and the branch reversal changes the sign of the quadrupole deformation without changing the branch-even kinetic or elastic energy. The hub and internal actuator belong to the same isolated source.}
+\label{fig:source-geometry}
+\end{figure}
