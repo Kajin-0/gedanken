@@ -2,37 +2,38 @@
 
 **Repository:** `Kajin-0/gedanken`  
 **Active experiment:** `experiments/01-causal-quantum-branch-information/`  
-**Checkpoint:** 2026-08-07, after the Mele rank-two collision, two coherent-state prior-art passes, independent proof rederivation, covariance-convention repair, and numerical reproducibility upgrade.
+**Checkpoint:** 2026-08-07, after two confirmed prior-art kills: Mele–Lami–Giovannetti for rank-two Fock probes and Filippov–Ziman for all finite binary coherent-pair survival.
 
 This is the first file a new agent should read.
 
 ---
 
-## 1. Operating rule: try to kill the result
+## 1. Operating rule
 
-Do not defend repository claims because they are already written down.
+Try to kill every claim before trying to publish it.
 
-Attack every candidate with
+Attack by
 
-1. counterexamples;
-2. hidden assumptions;
-3. normalization/convention errors;
-4. singular limits;
+1. counterexample;
+2. hidden assumption;
+3. convention/normalization error;
+4. singular limit;
 5. stronger prior art under different terminology;
-6. numerical truncation artifacts;
-7. scope inflation from a model-specific statement to a general one.
+6. a general theorem that makes the result an immediate corollary;
+7. numerical truncation artifacts;
+8. scope inflation.
 
-If a claim dies, update the documentation immediately. Never leave a killed result presented elsewhere as the active publication candidate.
+If a claim dies, update the documentation immediately.
 
 ---
 
-## 2. Confirmed killed novelty: Schmidt-rank-two Fock theorem
+## 2. First confirmed kill — rank-two Fock novelty
 
-The repository independently derived, for the phase-insensitive Gaussian channel,
+The repository independently derived
 
 $$
 |\psi_s\rangle
-=\frac{|00\rangle+s|11\rangle}{\sqrt{1+s^2}},
+=\frac{|00\rangle+s|11\rangle}{\sqrt{1+s^2}}
 $$
 
 with
@@ -40,388 +41,406 @@ with
 $$
 \det M_s
 =\frac{s^2}{(1+s^2)^2}
-\frac{m-\tau}{(m+1)^3}.
+\frac{m-\tau}{(m+1)^3},
 $$
 
-Thus the output is NPT iff
+so the output is NPT iff
 
 $$
-\tau>m,
+\tau>m.
 $$
 
-the exact non-entanglement-breaking region.
+The mathematics appears correct.
 
-**The mathematics appears correct. The novelty is dead.**
+**Novelty is dead.**
 
-Mele, Lami, and Giovannetti, arXiv:2303.12867 / *Nature Photonics* (2025), already use
+Mele–Lami–Giovannetti, arXiv:2303.12867 / *Nature Photonics* (2025), already use
 
 $$
 |\Psi_{M,c}\rangle
 =c|00\rangle+\sqrt{1-c^2}|MM\rangle
 $$
 
-for arbitrary $M\ge1$ and $0<c<1$, locally project onto $\{|0\rangle,|M\rangle\}$, and prove NPT/distillability exactly in the non-EB region.
-
-Their normal-form condition
-
-$$
-(1-\lambda)g<1
-$$
-
-maps under
-
-$$
-\tau=g\lambda,
-\qquad
-m=g-1
-$$
-
-to
-
-$$
-\tau>m.
-$$
-
-Setting $M=1,c=1/\sqrt2$ gives the repository fixed Bell probe.
+for arbitrary $M\ge1$ and nonzero Schmidt weight, and prove non-PPT/distillability exactly in the non-EB phase-insensitive region after local projection.
 
 Read:
 
 - `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md`
-- `experiments/01-causal-quantum-branch-information/NOVELTY_AUDIT_SCHMIDT_RANK_TWO_GAUSSIAN_PROBE.md`
 
-Do **not** resurrect the old standalone paper title about Schmidt-rank-two sufficiency as a discovery claim.
+Do not resurrect the old rank-two standalone-paper claim.
 
 ---
 
-## 3. Active candidate theorem: every finite binary coherent pair
+## 3. Second confirmed kill — all finite binary coherent-pair survival theorem
 
-For
+The repository also independently proves that every finite nontrivial
 
 $$
 |\Psi\rangle
 =\sqrt p|0\rangle|\alpha\rangle
 +e^{i\phi}\sqrt{1-p}|1\rangle|\beta\rangle,
+\qquad
+\alpha\ne\beta,
+$$
+
+has NPT output under a phase-insensitive Gaussian channel iff
+
+$$
+\tau>m.
+$$
+
+The direct repository proof is correct and exceptionally compact, but the underlying survival theorem is already implicit in
+
+S. N. Filippov and M. Ziman, *Phys. Rev. A* **90**, 010301(R) (2014), arXiv:1405.1754.
+
+They study
+
+$$
+|\psi_\gamma\rangle
+\propto
+|\gamma\rangle_A|0\rangle_B
+-|0\rangle_A|\gamma\rangle_B
+$$
+
+under asymmetric phase-insensitive Gaussian channels and derive an exact coherent-state witness family.
+
+### One-sided specialization
+
+Leave $A$ ideal and apply the noisy channel only to $B$.
+
+In Filippov–Ziman variables, let
+
+$$
+a=\mu-\frac12|\kappa-1|
+$$
+
+be excess noise and let
+
+$$
+T=
+\begin{cases}
+1+a,&\kappa<1,\\
+\kappa+a,&\kappa>1.
+\end{cases}
+$$
+
+With
+
+$$
+t=1-\lambda>0,
+$$
+
+their exact witness expectation reduces, up to a positive prefactor, to
+
+$$
+E(t;x)=e^{-Ax}+e^{-Bx}-2e^{-Cx},
+\qquad x=|\gamma|^2,
 $$
 
 with
 
 $$
-0<p<1,
-\qquad
-\alpha\ne\beta,
+A=\frac\kappa T,
 $$
 
-the repository proves for the gauge-covariant phase-insensitive channel $\Phi_{\tau,m}$
-
 $$
-\boxed{
-(I\otimes\Phi_{\tau,m})(|\Psi\rangle\langle\Psi|)
-\text{ is NPT}
-\iff
-\tau>m.
-}
+B=1+\frac{1-T}{Tt^2},
 $$
 
-For symmetric real branches $|\pm a\rangle$ and $m>0$,
+$$
+C=1-\frac{\sqrt\kappa}{Tt}.
+$$
+
+Choose
 
 $$
 \boxed{
-v_*=\frac{2\sqrt\tau a}{m},
-}
+t^2=\frac{T-1}{T-\kappa}}
 $$
 
-and one coherent-state $2\times2$ PT principal minor gives
+for finite excess noise. Then
 
 $$
-\boxed{
-R(v_*)
-=\frac{|z_{v_*}|^2}{p_0p_{v_*}}
-=\exp\left[\frac{4a^2}{m}(\tau-m)\right].
-}
+A=B
 $$
 
-For pure loss $m=0$, use the separate finite condition
+and negativity of the witness for **every finite $\gamma\ne0$** is equivalent to
 
 $$
-\boxed{
-v>\frac{a(1-\tau)}{\sqrt\tau}}
+(T-\kappa)(T-1)<\kappa.
 $$
 
-for every $\tau>0$.
+This factors as
 
-### Internal proof status
+$$
+(a+1)(a-\kappa)<0
+\iff a<\kappa
+$$
 
-An independent rederivation has already checked
+for attenuation, and
 
-- the coherent-dyad characteristic function;
-- Weyl reconstruction;
-- the exact channel kernel;
-- all three selected matrix elements;
-- orthogonality of the compressed PT basis through the qubit label;
-- the unique global optimizer for $m>0$;
-- pure loss separately;
-- unequal branch weights;
-- relative phase;
-- arbitrary complex coherent-pair reduction by displacement/rotation covariance;
-- attenuator/amplifier/additive-noise parameter maps.
+$$
+(a+\kappa)(a-1)<0
+\iff a<1
+$$
 
-No internal mathematical failure was found.
+for amplification. The additive-noise limit is also $a<1$.
 
-Read:
+Those are exactly the complements of the Filippov–Ziman EB condition
 
-- `experiments/01-causal-quantum-branch-information/DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
-- `experiments/01-causal-quantum-branch-information/PURE_LOSS_EDGE_CASE.md`
-- `experiments/01-causal-quantum-branch-information/COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`
+$$
+a\ge\min(\kappa,1).
+$$
+
+The quantum-limited attenuation/amplification edges are handled by finite direct choices of $t$.
+
+### Mapping to the repository state
+
+The untouched reference mode occupies only
+
+$$
+\operatorname{span}\{|0\rangle,|\gamma\rangle\}.
+$$
+
+An invertible local filter on this two-dimensional support maps
+
+$$
+|\gamma\rangle_A,|0\rangle_A
+$$
+
+to orthogonal qubit labels with arbitrary nonzero weights. It commutes with the channel on $B$ and preserves PT inertia on the occupied support.
+
+A common displacement/phase rotation on $B$ maps the pair
+
+$$
+|0\rangle,|\gamma\rangle
+$$
+
+to any finite distinct coherent pair.
+
+### NPT refinement
+
+Their weighted-swap witness has finite Fock truncations satisfying
+
+$$
+W_{\lambda,N}^{T_2}
+\propto
+|\Omega_{\lambda,N}\rangle
+\langle\Omega_{\lambda,N}|
+\ge0.
+$$
+
+Thus the truncations are decomposable NPT witnesses. The one-sided Gaussian expectation converges; a negative limiting expectation implies a negative finite truncation and therefore NPT.
+
+Read the full derivation:
+
+- `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
+
+**Do not claim the all-finite-binary-coherent survival theorem as new.**
 
 ---
 
-## 4. Exact witness candidate
+## 4. Main remaining candidate — minimal exact three-element PT witness
 
-The selected PT block is
+The strongest surviving possible contribution is now much narrower.
+
+For symmetric branches $|\pm a\rangle$, the repository selects one $2\times2$ block of the actual partial transpose:
 
 $$
 M_\Gamma
-=\begin{pmatrix}
-p_0&z_v^*\\z_v&p_v
-\end{pmatrix},
+=
+\begin{pmatrix}
+p_0&z_v^*\\
+z_v&p_v
+\end{pmatrix}.
 $$
 
-with NPT certified by
+NPT is certified iff
 
 $$
 |z_v|^2>p_0p_v.
 $$
 
-At the matched $v_*$ it reaches the exact phase-insensitive EB boundary.
+For $m>0$, the exact matched coherent analysis displacement is
+
+$$
+\boxed{
+v_*=\frac{2\sqrt\tau a}{m}}
+$$
+
+and
+
+$$
+\boxed{
+\frac{|z_{v_*}|^2}{p_0p_{v_*}}
+=\exp\left[\frac{4a^2}{m}(\tau-m)\right].
+}
+$$
+
+This is valuable because it turns a known survival phenomenon into a literal finite $2\times2$ PT minor using only
+
+1. one population $p_0$;
+2. one displaced population $p_{v_*}$;
+3. one coherence $z_{v_*}$.
+
+It is substantially simpler than the Filippov–Ziman weighted integral witness.
 
 Read:
 
 - `experiments/01-causal-quantum-branch-information/EXACT_THREE_ELEMENT_WITNESS.md`
+- `experiments/01-causal-quantum-branch-information/DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
+- `experiments/01-causal-quantum-branch-information/COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`
 
-### Scope warning
+### Important scope warning
 
-This is **not** merely a two-input prepare-and-measure benchmark. The off-diagonal element contains
+The off-diagonal term contains
 
 $$
 \Phi(|a\rangle\langle-a|),
 $$
 
-so the exact criterion assumes access to the hybrid source-replacement coherence or an equivalent process-coherent measurement.
-
-Do not claim lower experimental resources than old two-/three-coherent-state benchmarks without a separate implementation argument.
+so this is not automatically a two-conditional-output prepare-and-measure benchmark. Treat it as an exact state/process-coherence witness unless a separate implementation argument is supplied.
 
 ---
 
-## 5. Prior art already checked around the coherent theorem
+## 5. Secondary candidate — exact absolute witness strength
 
-The field already contains almost every surrounding ingredient.
-
-### Rigas–Gühne–Lütkenhaus (2006)
-
-Uses exactly
+The selected block also provides the finite negativity lower bound
 
 $$
-\sqrt{p_0}|0\rangle|\alpha\rangle
-+\sqrt{p_1}|1\rangle|-\alpha\rangle
+G(v)=\frac12
+\max\left\{0,
+\sqrt{(p_0-p_v)^2+4|z_v|^2}
+-(p_0+p_v)
+\right\}.
 $$
 
-with PPT/EVM verification. In the symmetric Gaussian-noise example their necessary outer relation $\delta<2\eta$ maps to the thermal-channel non-EB boundary, but their actual detection curves remain overlap dependent and sufficient.
+The repo has additional weak-link asymptotics and exact low-dimensional strength formulas.
 
-### Häseler–Moroder–Lütkenhaus (2008)
+Potential novelty is now in **certification strength / proof compression**, not the existence of surviving entanglement.
 
-Two coherent test states, effective entanglement, PPT/EVM practical channel verification. No exact all-pair actual-state theorem located.
+Search these files after the three-element witness:
 
-### Namiki (2008)
-
-Explicitly identifies the binary coherent virtual-state criterion as NPT based and develops a two-state quantum-domain benchmark. Still a sufficient benchmark, not the exact actual-state theorem.
-
-### Killoran–Häseler–Lütkenhaus (2010)
-
-Uses the same virtual hybrid state, negativity, and a thermal beam-splitter test channel. Explicitly states its lower bounds do not give the full entanglement picture.
-
-### Killoran–Lütkenhaus (2011)
-
-Improves quantitative finite-subspace bounds and is often faithful over nearly all of the quantum domain, but still minimizes over states compatible with incomplete data rather than calculating the exact known-channel output NPT boundary.
-
-### Kreis–van Loock (2012)
-
-Studies the same balanced hybrid state under thermal photon noise. Their finite Shchukin–Vogel witness is amplitude dependent and leaves part of the non-EB region undetected.
-
-### Ivan–Sabapathy–Simon (2013)
-
-Relates Gaussian nonclassicality-breaking and entanglement-breaking channels, but no implication has been found that **every finite binary coherent pair** has the claimed NPT property.
-
-### Namiki–Azuma and related finite-alphabet benchmarks
-
-Finite coherent alphabets can strongly or optimally benchmark Gaussian channels. Therefore “few coherent states can reach an EB boundary” is not a novelty claim.
-
-Read:
-
-- `experiments/01-causal-quantum-branch-information/COHERENT_PRIOR_ART_DEEP_AUDIT.md`
-- `experiments/01-causal-quantum-branch-information/COHERENT_PRIOR_ART_SECOND_PASS.md`
-- `experiments/01-causal-quantum-branch-information/NOVELTY_CHECK_GAUSSIAN_BINARY_PROBE.md`
-- `experiments/01-causal-quantum-branch-information/NOVELTY_CHECK_FINITE_CAT.md`
-
-**Current verdict:** no exact collision found yet. This is not proof of novelty.
+- `ABSOLUTE_THREE_ELEMENT_WITNESS_GAP.md`
+- `WEAK_LINK_ABSOLUTE_GAP_ASYMPTOTIC.md`
 
 ---
 
-## 6. Gaussian canonicalization convention is now fixed
+## 6. Internal proof and convention status
 
-Use throughout
+The direct coherent-dyad proof has independently survived a line-by-line rederivation.
+
+The earlier covariance-order bug in the arbitrary Gaussian-channel audit has been fixed. Use throughout
 
 $$
 V\mapsto K^T V K+\beta.
 $$
 
-A Gaussian unitary $S$ acts as
+For input/output symplectics,
 
 $$
-V\mapsto S^T V S.
-$$
-
-With input and output symplectics,
-
-$$
-\boxed{
 K'=S_{\rm in}KS_{\rm out},
-\qquad
+$$
+
+$$
 \beta'=S_{\rm out}^T\beta S_{\rm out}.
-}
 $$
-
-For regular orientation-preserving channels choose
-
-$$
-S_{\rm out}^T\beta S_{\rm out}=yI,
-$$
-
-then
-
-$$
-\boxed{
-S_{\rm in}=\sqrt\tau\,S_{\rm out}^{-1}K^{-1},
-}
-$$
-
-so
-
-$$
-S_{\rm in}KS_{\rm out}=\sqrt\tau I.
-$$
-
-The previous matrix-order mismatch has been corrected in
-
-- `experiments/01-causal-quantum-branch-information/ONE_MODE_GAUSSIAN_CANONICAL_CLASS_PROOF_AUDIT.md`.
-
----
-
-## 7. Numerical reproducibility status
-
-Executable independent audits are now committed for
-
-1. thermal attenuation — beam splitter + thermal environment;
-2. thermal amplification — two-mode squeezer + thermal environment;
-3. additive Gaussian noise — direct random-displacement Gauss–Hermite integration;
-4. near-boundary stress scans.
 
 Read:
 
-- `experiments/01-causal-quantum-branch-information/numerics/README.md`
-- `experiments/01-causal-quantum-branch-information/NUMERICAL_AUDIT_AMPLIFIER_ADDITIVE_NOISE.md`
+- `ONE_MODE_GAUSSIAN_CANONICAL_CLASS_PROOF_AUDIT.md`
 
-Scripts:
+---
 
-- `numerics/thermal_cat_scan.py`
-- `numerics/amplifier_cat_scan.py`
-- `numerics/additive_noise_cat_scan.py`
-- `numerics/near_boundary_stress.py`
+## 7. Numerical status
 
-Finite truncations can show small spurious negative PT eigenvalues on the EB side. Require convergence, not a one-cutoff sign test.
+Executable independent checks are committed for
+
+- thermal attenuation;
+- thermal amplification;
+- additive Gaussian noise;
+- near-boundary convergence.
+
+The additive-noise stress test resolves the analytic sign change down to at least
+
+$$
+|\tau-m|=10^{-4}
+$$
+
+with the current cutoffs.
+
+Read:
+
+- `numerics/README.md`
+- `NUMERICAL_NEAR_BOUNDARY_STRESS_RESULTS.md`
 
 ---
 
 ## 8. Exact next actions
 
-A new agent should **not** redo the completed proof audit or basic numerical implementations.
+A new agent should **not** restart the rank-two or all-coherent-pairs novelty searches. Both broad claims are dead.
 
-Proceed in this order:
+Proceed in this order.
 
-### Priority 1 — continue citation-forward search for a full-state exact calculation
+### Priority 1 — kill the three-element witness novelty
 
-Look for papers/theses that retain the source coherence and explicitly diagonalize or partially transpose the qubit–coherent thermal output.
+Search for
 
-Search especially
+- $2\times2$ coherent-state principal minors of partial transposes;
+- displaced-vacuum entanglement witnesses;
+- hybrid coherent-state criteria of the form $|z|^2>p_0p_v$;
+- coherent-state process-matrix minors;
+- Husimi-Q / off-diagonal Q-kernel PPT criteria;
+- finite truncations of weighted-swap witnesses that collapse to a two-vector block;
+- exact optimized displacement witnesses under thermal attenuators/amplifiers/additive noise.
 
-- papers citing Kreis–van Loock (2012);
-- papers citing Killoran–Lütkenhaus (2011);
-- hybrid qubit–oscillator decoherence papers with exact density matrices;
-- binary-modulated CV-QKD entanglement-based proofs;
-- displaced-thermal hybrid negativity calculations;
-- coherent-state process tomography deriving $\Phi(|\alpha\rangle\langle\beta|)$;
-- Shchukin–Vogel hierarchy specializations that might reach the exact EB boundary.
+The collision need not use the repository notation.
 
-A collision counts even if notation is completely different.
+### Priority 2 — compare directly against Filippov–Ziman
 
-### Priority 2 — try to derive the coherent theorem as a corollary of an older general theorem
+Ask whether their weighted-swap witness can be analytically minimized/projected to the repository three-element principal minor. If yes, even the witness novelty may collapse to a proof simplification.
 
-Attack via
+### Priority 3 — audit absolute-strength formulas
 
-- nonclassicality-breaking/EB duality;
-- entanglement potential of nonclassical states;
-- general qubit-mode PPT criteria;
-- Gaussian-channel order/majorization arguments;
-- local filtering equivalences.
+Check whether the selected-block negative eigenvalue and weak-link optimum are genuinely new quantitative corollaries.
 
-If a known general theorem implies the all-pairs statement immediately, novelty is dead even without the same formula.
+### Priority 4 — decide publication value
 
-### Priority 3 — controlled numerical boundary data
+Only if the minimal witness or quantitative bound survives should a standalone note be drafted. The manuscript would need to present itself as a **minimal exact certification/simplification of known entanglement-survival physics**, not as a newly discovered survival theorem.
 
-Run the committed stress harness near
+### Priority 5 — gravity
 
-$$
-|\tau-m|=10^{-1},10^{-2},10^{-3},10^{-4}
-$$
-
-from both sides and record convergence. Do not mistake the numerical resolution floor for physical NPT.
-
-### Priority 4 — only if novelty survives, build a narrow manuscript
-
-The paper should be about the **exact analytic completion of the binary coherent actual-state problem**, not a new coherent-state benchmarking paradigm.
-
-### Priority 5 — gravity later
-
-Return to gravity only after the coherent theorem's novelty status is substantially resolved. The strongest remaining gravity-specific technical issue is still the complete conserved actuator/control stress-energy of the explicit source.
+If the standalone quantum-information contribution becomes too small, return to the gravity application. The strongest unresolved gravity-specific issue remains the complete conserved actuator/control stress-energy of the explicit source.
 
 ---
 
 ## 9. Canonical reading order
 
 1. `AGENTS.md`
-2. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_RANK2_UPDATE.md`
+2. `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
 3. `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md`
-4. `experiments/01-causal-quantum-branch-information/CLAIM_LEDGER_POST_MELE_ADDENDUM.md`
-5. `experiments/01-causal-quantum-branch-information/COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`
-6. `experiments/01-causal-quantum-branch-information/COHERENT_PRIOR_ART_DEEP_AUDIT.md`
-7. `experiments/01-causal-quantum-branch-information/COHERENT_PRIOR_ART_SECOND_PASS.md`
-8. `experiments/01-causal-quantum-branch-information/DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
-9. `experiments/01-causal-quantum-branch-information/EXACT_THREE_ELEMENT_WITNESS.md`
+4. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_RANK2_UPDATE.md`
+5. `experiments/01-causal-quantum-branch-information/CLAIM_LEDGER_POST_MELE_ADDENDUM.md`
+6. `experiments/01-causal-quantum-branch-information/EXACT_THREE_ELEMENT_WITNESS.md`
+7. `experiments/01-causal-quantum-branch-information/DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
+8. `experiments/01-causal-quantum-branch-information/COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`
+9. `experiments/01-causal-quantum-branch-information/NUMERICAL_NEAR_BOUNDARY_STRESS_RESULTS.md`
 10. `experiments/01-causal-quantum-branch-information/numerics/README.md`
 
 ---
 
-## 10. Current stop/go
+## 10. Stop/go
 
 ### STOP
 
 - rank-two Fock novelty paper;
+- all-finite-binary-coherent-pairs survival theorem as novelty;
 - broad claims that binary coherent effective-entanglement testing is new;
-- claims that the three-element result is automatically a minimal prepare-and-measure benchmark.
+- broad claims that a small coherent alphabet newly reaches a Gaussian EB boundary.
 
 ### GO
 
-- exact all-finite-binary-coherent-pairs novelty audit;
-- exact matched coherent principal-minor novelty audit;
-- citation-forward search for hidden full-state calculations;
-- controlled near-boundary numerics;
-- only after survival, a narrowly scoped manuscript.
+- minimal exact three-element PT witness novelty audit;
+- exact negative-eigenvalue / absolute-strength audit;
+- reduction/comparison to Filippov–Ziman's weighted-swap witness;
+- only then a narrowly scoped paper or return to gravity.
