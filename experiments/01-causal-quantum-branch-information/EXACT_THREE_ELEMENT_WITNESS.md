@@ -1,74 +1,112 @@
-# Exact Three-Element Finite-Cat Thermal Witness
+# Exact Three-Element Coherent-State PT Witness
 
-**Timestamp:** 2026-08-07 17:02 EDT  
-**Status:** Analytic consequence of the exact finite-cat theorem; independently checked numerically.
+**Updated:** 2026-08-07  
+**Status:** **STRONGEST SURVIVING POSSIBLE STANDALONE CONTRIBUTION — NOVELTY UNVERIFIED**
 
-## 1. Goal
+## 1. What is and is not being claimed
 
-The exact rank-one witness in `EXACT_FINITE_CAT_WITNESS.md` detects the entire non-entanglement-breaking region for the hybrid source cat
+The underlying entanglement-survival theorem is **not** treated as novel anymore.
 
-$$
-|\Psi_a\rangle
-=\frac{|0\rangle|a\rangle+|1\rangle|-a\rangle}{\sqrt2}
-$$
+Filippov–Ziman (2014) already provide a coherent-state witness which, after one-sided specialization and local filtering of the untouched two-dimensional coherent-state span, implies that every finite binary coherent hybrid survives exactly throughout the non-entanglement-breaking region of a phase-insensitive Gaussian channel.
 
-sent through a thermal attenuator.
+See:
 
-The same negativity can be exposed by a single $2\times2$ principal minor of the partial transpose. This reduces the certification problem to **two populations and one coherence**.
+- `NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
+
+The possible contribution in this file is narrower:
+
+> **The same full NPT boundary is exposed by one literal $2\times2$ principal minor of the actual partial transpose, requiring only two selected populations and one coherence, with a closed-form matched coherent analysis displacement.**
+
+Whether that minimal formulation already exists in the literature remains under active audit.
 
 ---
 
-## 2. Channel parameters
+## 2. Channel and state
 
-Let
-
-$$
-m=(1-\eta)\bar n>0,
-$$
+Use the one-mode gauge-covariant phase-insensitive Gaussian channel
 
 $$
-r=\frac{m}{m+1},
+\chi_{\Phi_{\tau,m}(O)}(\xi)
+=\chi_O(\sqrt\tau\,\xi)
+\exp\left[-\frac{2m+1-\tau}{2}|\xi|^2\right].
 $$
 
-$$
-s=\frac{\sqrt\eta\,a}{m+1}.
-$$
-
-Choose the receiver coherent test amplitude
+Its established entanglement-breaking boundary is
 
 $$
 \boxed{
-v_*=\frac{2s}{r}
-=\frac{2\sqrt\eta\,a}{m}.
+\Phi_{\tau,m}\in\mathrm{EB}
+\iff
+m\ge\tau.
 }
 $$
 
-This is the same coherent amplitude that appears in the explicit negative vector of the full theorem.
+By displacement and phase covariance, an arbitrary distinct finite coherent pair can be reduced to real symmetric branches
+
+$$
+|+a\rangle,\qquad|-a\rangle,\qquad a>0.
+$$
+
+Take the balanced hybrid state
+
+$$
+|\Psi_a\rangle
+=\frac{|0\rangle|a\rangle+|1\rangle|-a\rangle}{\sqrt2}.
+$$
+
+Unequal nonzero branch weights and a relative phase do not change the principal-minor ratio; see `DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`.
 
 ---
 
-## 3. Relevant matrix elements
+## 3. Three selected matrix elements
 
-Write the thermal-channel output in the source basis as
+Write the channel output in the source basis as
 
 $$
 \rho_{AB}
 =\frac12
 \begin{pmatrix}
-\rho_+&X\\
-X^\dagger&\rho_-
+A&X\\
+X^\dagger&B
+\end{pmatrix},
+$$
+
+where
+
+$$
+A=\Phi(|a\rangle\langle a|),
+$$
+
+$$
+B=\Phi(|-a\rangle\langle-a|),
+$$
+
+$$
+X=\Phi(|a\rangle\langle-a|).
+$$
+
+After partial transpose on the source qubit,
+
+$$
+\rho_{AB}^{T_A}
+=\frac12
+\begin{pmatrix}
+A&X^\dagger\\
+X&B
 \end{pmatrix}.
 $$
 
-Consider the two-dimensional subspace of the partially transposed state spanned by
+Choose the orthonormal two-vector subspace
 
 $$
 |0\rangle_A|0\rangle_B,
 \qquad
-|1\rangle_A|v_*\rangle_B.
+|1\rangle_A|v\rangle_B.
 $$
 
-Define the directly observable quantities
+The vectors are orthogonal because of the source-qubit labels even though the bosonic states need not be orthogonal.
+
+Define
 
 $$
 \boxed{
@@ -80,7 +118,7 @@ $$
 $$
 \boxed{
 p_v
-=\langle1,v_*|\rho_{AB}|1,v_*\rangle,
+=\langle1,v|\rho_{AB}|1,v\rangle,
 }
 $$
 
@@ -89,105 +127,19 @@ and
 $$
 \boxed{
 z_v
-=\langle1,0|\rho_{AB}|0,v_*\rangle.
+=\langle1,0|\rho_{AB}|0,v\rangle.
 }
 $$
 
-Partial transpose converts the off-diagonal entry of this principal block into $z_v$.
-
-The principal block is therefore
+The compressed partial-transpose block is
 
 $$
-M_\Gamma
+\boxed{
+M_\Gamma(v)
 =
 \begin{pmatrix}
-p_0&z_v^*\\z_v&p_v\end{pmatrix}.
-$$
-
-Every separable state must satisfy
-
-$$
-\det M_\Gamma\ge0,
-$$
-
-so
-
-$$
-\boxed{|z_v|^2>p_0p_v}
-$$
-
-is an NPT entanglement witness.
-
----
-
-## 4. Exact evaluation for the finite thermal cat
-
-Using the normal-ordered thermal-channel blocks,
-
-$$
-p_0=\frac P2,
-$$
-
-$$
-p_v
-=\frac P2
-\exp[-2sv_*-v_*^2(1-r)],
-$$
-
-and
-
-$$
-|z_v|
-=\frac C2
-\exp[-v_*^2/2+s v_*],
-$$
-
-where
-
-$$
-P=\frac1{m+1}
-\exp[-\eta a^2/(m+1)],
-$$
-
-and
-
-$$
-C=\frac1{m+1}
-\exp[-2a^2+\eta a^2/(m+1)].
-$$
-
-At the optimized coherent test amplitude
-
-$$
-v_*=2s/r,
-$$
-
-the ratio simplifies exactly to
-
-$$
-\boxed{
-\frac{|z_v|^2}{p_0p_v}
-=q^2,
-}
-$$
-
-where
-
-$$
-\boxed{
-q
-=\exp\left[
-\frac{2a^2}{m}(\eta-m)
-\right].
-}
-$$
-
-Hence
-
-$$
-\boxed{
-\det M_\Gamma
-=p_0p_v(1-q^2).
+p_0&z_v^*\\
+z_v&p_v\end{pmatrix}.
 }
 $$
 
@@ -195,132 +147,388 @@ Therefore
 
 $$
 \boxed{
+\det M_\Gamma(v)<0
+\iff
 |z_v|^2>p_0p_v
-\iff
-q>1
-\iff
-\eta>m
-\iff
-\eta>\frac{\bar n}{\bar n+1}.
 }
 $$
 
-This is the exact NPT boundary for every finite $a\neq0$.
+is a rigorous finite-dimensional NPT certificate.
 
 ---
 
-## 5. Why this is stronger than the earlier moment witness
+## 4. Exact channel matrix elements
 
-Kreis & van Loock (2012) study the same hybrid state and one-sided thermal beam-splitter channel. Their finite-order Shchukin–Vogel determinant provides a sufficient entanglement region whose boundary depends on $|\alpha|$ and which they explicitly note may fail to detect entangled states throughout part of the non-entanglement-breaking region.
+The coherent-dyad kernel is
 
-The present principal-minor test is channel/state matched. It satisfies
+$$
+\langle u|\Phi_{\tau,m}(|\alpha\rangle\langle\beta|)|v\rangle
+=
+\frac{\langle\beta|\alpha\rangle\langle u|v\rangle}{m+1}
+\exp\left[
+\frac{(\sqrt\tau\beta^*-u^*)(v-\sqrt\tau\alpha)}{m+1}
+\right].
+$$
+
+For real $a,v$,
 
 $$
 \boxed{
-\text{witness negative}
-\iff
-\text{state NPT}
-\iff
-\text{thermal channel non-EB}
+\langle0|A|0\rangle
+=\frac1{m+1}
+\exp\left[-\frac{\tau a^2}{m+1}\right],
 }
 $$
 
-for every finite coherent branch amplitude.
+$$
+\boxed{
+\langle v|B|v\rangle
+=\frac1{m+1}
+\exp\left[-\frac{(v+\sqrt\tau a)^2}{m+1}\right],
+}
+$$
 
-Thus the theorem does not merely establish hidden entanglement abstractly; it supplies a concrete three-element witness that exposes it.
+and
+
+$$
+\boxed{
+|\langle v|X|0\rangle|^2
+=\frac1{(m+1)^2}
+\exp\left[
+-4a^2-v^2+
+\frac{2\tau a^2+2\sqrt\tau av}{m+1}
+\right].
+}
+$$
+
+The common source factor $1/2$ cancels from the ratio
+
+$$
+R(v)
+\equiv
+\frac{|z_v|^2}{p_0p_v}.
+$$
+
+Thus
+
+$$
+\boxed{
+\ln R(v)
+=-4a^2-v^2
++\frac{4\tau a^2+4\sqrt\tau av+v^2}{m+1}.
+}
+$$
 
 ---
 
-## 6. Measurement interpretation
+## 5. Exact matched coherent analysis state
 
-The three required quantities have a simple operational meaning.
+For
+
+$$
+m>0,
+$$
+
+$$
+\frac{d}{dv}\ln R
+=-2v+\frac{4\sqrt\tau a+2v}{m+1}.
+$$
+
+Hence the unique global maximum is
+
+$$
+\boxed{
+v_*=\frac{2\sqrt\tau a}{m}.
+}
+$$
+
+The strict concavity is
+
+$$
+\frac{d^2}{dv^2}\ln R
+=-\frac{2m}{m+1}<0.
+$$
+
+Substitution gives the central closed-form identity
+
+$$
+\boxed{
+\frac{|z_{v_*}|^2}{p_0p_{v_*}}
+=
+\exp\left[
+\frac{4a^2}{m}(\tau-m)
+\right].
+}
+$$
+
+Therefore
+
+$$
+\boxed{
+|z_{v_*}|^2>p_0p_{v_*}
+\iff
+\tau>m.
+}
+$$
+
+Since $m\ge\tau$ is exactly the EB region,
+
+$$
+\boxed{
+\text{selected }2\times2\text{ PT minor negative}
+\iff
+\text{actual output NPT}
+\iff
+\text{channel non-EB}
+}
+$$
+
+for every finite $a>0$.
+
+The nontrivial part of the possible contribution is therefore **not** the survival boundary itself, but its compression into this one exact finite block.
+
+---
+
+## 6. Pure-loss edge
+
+The optimizer
+
+$$
+v_*=2\sqrt\tau a/m
+$$
+
+diverges as $m\to0^+$, so pure loss must be treated directly rather than by taking that optimizer to a limit.
+
+At
+
+$$
+m=0,
+$$
+
+$$
+\boxed{
+\ln R(v)
+=4a^2(\tau-1)+4\sqrt\tau av.
+}
+$$
+
+For every physical pure-loss channel with
+
+$$
+0<\tau\le1,
+$$
+
+any finite
+
+$$
+\boxed{
+v>\frac{a(1-\tau)}{\sqrt\tau}
+}
+$$
+
+gives
+
+$$
+R(v)>1.
+$$
+
+Thus no infinite coherent analysis state is required to certify NPT at pure loss.
+
+---
+
+## 7. Unequal branch weights
+
+For
+
+$$
+|\Psi\rangle
+=\sqrt p|0\rangle|a\rangle
++e^{i\phi}\sqrt{1-p}|1\rangle|-a\rangle,
+$$
+
+with
+
+$$
+0<p<1,
+$$
+
+the diagonal product acquires
+
+$$
+p(1-p)
+$$
+
+and the squared coherence acquires the same factor. Therefore
+
+$$
+R(v)
+$$
+
+is unchanged.
+
+The relative phase changes only the complex phase of $z_v$, not its magnitude.
+
+Thus the same exact sign criterion holds for every nonzero branch weight.
+
+---
+
+## 8. Measurement interpretation and limitation
 
 ### $p_0$
 
-Probability that the source is found in branch basis state $|0\rangle$ and the receiver in vacuum.
+Joint population for source state $|0\rangle$ and receiver vacuum.
 
 ### $p_v$
 
-Probability that the source is found in $|1\rangle$ and the receiver in coherent state $|v_*\rangle$. Operationally this can be reduced to a vacuum projection after displacement by $-v_*$.
+Joint population for source state $|1\rangle$ and receiver coherent state $|v\rangle$. Operationally, a coherent-state projection can be converted to a vacuum projection after displacement by $-v$.
 
 ### $z_v$
 
-A joint source-receiver coherence between
+Joint coherence between
 
 $$
 |1\rangle|0\rangle
 \quad\text{and}\quad
-|0\rangle|v_*\rangle.
+|0\rangle|v\rangle.
 $$
 
-Its real and imaginary parts can in principle be accessed by source-basis interferometry combined with receiver displacement/vacuum projection or an equivalent controlled-erasure measurement.
+This term contains the channel off-diagonal dyad
 
-Thus the exact criterion requires selected joint matrix elements rather than full infinite-dimensional state tomography.
+$$
+\Phi(|a\rangle\langle-a|).
+$$
+
+Therefore this exact witness is **not automatically a two-conditional-output prepare-and-measure benchmark**. Direct implementation requires coherent source-replacement access, process-coherent control, or an equivalent measurement capable of recovering that joint coherence.
+
+The safe claim is mathematical/operational:
+
+> selected joint state/process matrix elements replace full infinite-dimensional tomography.
+
+Do not claim that only two independently prepared coherent test states and ordinary output measurements suffice unless a separate protocol is derived.
 
 ---
 
-## 7. Gravity version
+## 9. Relation to prior art
 
-At receiver time $t$, replace
+### Filippov–Ziman (2014)
+
+Their weighted coherent-state swap witness already implies the broad finite-coherent-pair survival theorem in a one-sided specialization. The present candidate distinction is that the same boundary is exposed by one literal $2\times2$ PT principal minor with a closed-form matched analysis state.
+
+This distinction must be tested aggressively. If their weighted witness can be reduced immediately to this block, novelty collapses to proof simplification.
+
+### Rigas / Häseler / Namiki / Killoran / Kreis–van Loock
+
+Earlier effective-entanglement and hybrid-state papers already use
+
+- binary coherent source-replacement states;
+- PPT/NPT logic;
+- negativity;
+- displaced coherent/vacuum projections;
+- thermal beam-splitter channels;
+- finite subspace or moment witnesses.
+
+The candidate is only the **exact three-element full-boundary compression**, not those ingredients.
+
+---
+
+## 10. Exact selected-block negativity lower bound
+
+The smaller eigenvalue of
 
 $$
-\eta\rightarrow\eta_f(t),
-\qquad
-m\rightarrow m(t),
-\qquad
-a\rightarrow\sqrt{N_\Delta}/2.
+M_\Gamma(v)
 $$
 
-The optimized receiver test amplitude becomes
+is
+
+$$
+\mu_-(v)
+=\frac12
+\left[
+ p_0+p_v
+-
+\sqrt{(p_0-p_v)^2+4|z_v|^2}
+\right].
+$$
+
+Therefore
 
 $$
 \boxed{
-v_*(t)
-=\frac{\sqrt{\eta_f(t)N_\Delta}}{m(t)}.
+\mathcal N(\rho)
+\ge
+G(v)
+\equiv
+\frac12
+\max\left\{0,
+\sqrt{(p_0-p_v)^2+4|z_v|^2}
+-(p_0+p_v)
+\right\}.
 }
+$$
+
+This converts the sign witness into an absolute finite negativity lower bound.
+
+Detailed optimization is kept separately in
+
+- `ABSOLUTE_THREE_ELEMENT_WITNESS_GAP.md`
+- `WEAK_LINK_ABSOLUTE_GAP_ASYMPTOTIC.md`
+
+Those quantitative formulas require their own novelty audit.
+
+---
+
+## 11. Gravity application
+
+For the one-mode Gaussian receiver model, replace
+
+$$
+\tau\to\tau_f(t),
+\qquad
+m\to m(t),
+\qquad
+2a\to\sqrt{N_\Delta}.
 $$
 
 Then
 
 $$
 \boxed{
-|z_v(t)|^2>p_0(t)p_v(t)
-\iff
-\eta_f(t)>m(t).
+v_*(t)
+=\frac{\sqrt{\tau_f(t)N_\Delta}}{m(t)},
 }
 $$
 
-Therefore the exact causal NPT front can, within the ideal model, be certified by a three-element joint witness rather than complete tomography.
-
-For a stationary receiver the earliest possible sign change is still bounded by
+and
 
 $$
-T_{\rm NPT}^{\min}
-=\frac Rc+
-\frac1{\kappa_{\rm tot}}
-\ln\left[
-\frac{\kappa_\Delta}
-{\kappa_\Delta-\Gamma_{\rm th}}
-\right].
+\boxed{
+|z_{v_*}(t)|^2>p_0(t)p_{v_*}(t)
+\iff
+\tau_f(t)>m(t).
+}
 $$
+
+Thus, within the receiver model, the causal non-EB/NPT front can be represented by a finite joint witness rather than full state tomography.
+
+The novelty of the gravitational source→receiver construction is a separate question from the generic Gaussian-channel survival theorem.
 
 ---
 
-## 8. Numerical audit
+## 12. Current research question
 
-The determinant formula and the equivalent rank-one witness were independently checked using a direct truncated Fock-space beam-splitter dilation with an explicit thermal environmental mode.
+The next task is specifically:
 
-Above the predicted boundary the principal determinant is negative; below it the analytic determinant is positive. Small below-threshold negative eigenvalues seen at insufficient Fock cutoffs converge away, consistent with the exact entanglement-breaking property.
+> **Has an exact coherent/displaced-vacuum $2\times2$ PT principal minor of this form, or an algebraically equivalent three-matrix-element witness, already been used to reach the full phase-insensitive Gaussian EB boundary?**
 
----
+Search for
 
-## 9. Limitations
+- coherent-state principal minors of partial transpose;
+- displaced-vacuum hybrid entanglement witnesses;
+- coherent-state process-matrix minors;
+- Husimi-Q / off-diagonal coherent-kernel PPT criteria;
+- finite truncations or specializations of weighted-swap witnesses;
+- exact criteria of the form $|z|^2>p_0p_v$;
+- optimized coherent analysis displacements under Gaussian noise.
 
-- The optimized coherent test amplitude diverges as $m\to0$, so the thermal witness is not the convenient representation of the pure-loss limit. Vacuum loss should be treated separately.
-- The witness assumes accurate knowledge of $a$, $\eta$, and $m$ or their gravitational receiver equivalents.
-- It is mathematically low-dimensional but may still be experimentally demanding because $|v_*\rangle$ can be a large displacement.
-- The exact iff property is specific to the finite binary coherent-cat family and phase-insensitive thermal attenuator considered here.
-
-## 10. Next step
-
-Search for an existing exact principal-minor/hybrid witness of this form. If none is found, this is a more operational candidate contribution than the bare NPT theorem alone.
+No originality claim should be made until this search is substantially exhausted.
