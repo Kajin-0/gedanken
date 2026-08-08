@@ -1,0 +1,834 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\EB}{\mathrm{EB}}
+\newcommand{\NPT}{\mathrm{NPT}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+
+\title{An End-to-End Quantum Link Budget for a Conserved Source and Noisy Receiver in Linearized Gravity}
+\author{Anonymous}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Recent work has separately developed quantum descriptions of gravitational radiation from conserved sources, propagation-mediated matter entanglement, resonant graviton reception, and gravitational quantum communication. We construct a source-resolved weak-gravity benchmark that closes these interfaces in one normalization. A local reference qubit and a branch-common work mode prepare opposite coherent amplitudes of a finite-mass four-spoke elastic quadrupole through an internal sign-controlled interaction. The support and controller are included in the conserved source. The complete branch-dependent radiation emitted during preparation and subsequent source evolution is compressed into a normalized graviton wavepacket, propagated retardedly to a separate resonant receiver, and reduced to a noisy one-mode channel. In the ideal vacuum-source, weak-link wave-zone limit, the coherent source-to-receiver transfer factorizes as
+\begin{equation}
+\tau_{A\to B}(t)
+=
+\underbrace{\frac{\kappa_{g,A}}{\kappa_A}}_{\text{source branching}}
+\underbrace{\frac{25\mathcal O}{16(kR)^2}}_{\text{free-space mode capture}}
+\underbrace{\frac{\kappa_{g,B}}{\kappa_B}}_{\text{receiver branching}}
+\underbrace{\mathcal T_f(t)}_{\text{temporal loading}},
+\qquad
+0\le \mathcal T_f(t)\le 1.
+\end{equation}
+Established Gaussian-channel results then identify the non-entanglement-breaking and binary-coherent NPT threshold after receiver noise is included. The factorization exposes a hierarchy that is hidden in receiver-local calculations: waveform engineering changes only an order-unity temporal factor, whereas ordinary matter can be suppressed by tiny gravitational branching at both interfaces. A deliberately aggressive kilogram--meter--MHz benchmark changes from a receiver-local scale of order $10^{-22}$ to an end-to-end scale of order $10^{-42}$ once ordinary source branching is included. We derive passive-class bounds, finite-source and reciprocal-feedback corrections, and the scope of coherent source shaping and collective receivers. The construction is intended as a normalization and capability benchmark, not as a near-term experimental proposal.
+\end{abstract}
+
+\section{Introduction}
+
+The quantum character of gravity can be asked in several operationally distinct ways. One may ask how a branch-dependent matter source radiates into the quantized gravitational field, how a propagating gravitational field transfers quantum correlations between separated systems, how a quantum state of a gravitational wave is absorbed by matter, or whether an effective gravitational channel is capable of transmitting entanglement. All of these questions now have substantial prior literature.
+
+Branch-conditioned gravitational radiation from a closed conserved source and its which-path decoherence have been analyzed directly in the graviton language, including the coherent-state distance between the radiation histories and the relation between that distance and vacuum decoherence \cite{Matsui2026}. A classical stress tensor driving the quantized gravitational field has likewise been shown to produce coherent graviton radiation whose mean field reproduces the retarded classical waveform \cite{LagaSuyama2026}. Propagating gravitons have been used to generate distance-delayed entanglement between separated matter systems \cite{TrengganaZen2026}. On the receiver side, a passing quantized gravitational-wave mode has been coupled resonantly to an acoustic detector with explicit open-system and thermal dynamics \cite{ToccaceloEtAl2026}. Gravitationally mediated communication has also been framed directly in terms of whether the effective Gaussian channel is entanglement breaking \cite{MariEtAl2026,ToccaceloAndersenBrask2025,MikiLiChen2026}.
+
+Quantum graviton transduction is itself not a new concept. Recent proposals include quantum photon--graviton state conversion \cite{IkedaEtAl2025}, cavity-QED graviton transducers with backaction and pump depletion \cite{AraniLamineSoda2026}, and stimulated graviton emission or absorption by light \cite{Schutzhold2025}. At the level of bosonic channel theory, the entanglement-breaking criteria for Gaussian channels are established \cite{Holevo2008EB}, and non-Gaussian/coherent probes of attenuation and amplification have been studied in detail \cite{FilippovZiman2014}.
+
+Our purpose is therefore deliberately narrower. We ask whether one can place a \emph{locally prepared, explicitly conserved mechanical radiator}, its emitted propagating graviton mode, free-space mode transfer, a separate noisy resonant receiver, and the final entanglement-preservation test into one normalization without hiding a source or receiver interface inside an assumed ``incoming mode.'' The resulting construction is best viewed as a gravitational quantum-link budget rather than as a new quantum-information theorem.
+
+The central result is the factorization
+\begin{equation}
+\boxed{
+\tau_{A\to B}(t)
+=
+\beta_{g,A}\,\eta_{\rm store}(R)\,\beta_{g,B}\,\mathcal T_f(t)
+}
+\label{eq:master-link}
+\end{equation}
+for the vacuum-source, weak-link one-way model. Here $\beta_{g,A}$ and $\beta_{g,B}$ are the gravitational branching fractions of the source and receiver, $\eta_{\rm store}$ is the normalized free-space capture of the chosen source mode by the receiver gravitational port, and $\mathcal T_f$ contains only temporal waveform matching. This decomposition lets us distinguish three otherwise easily conflated questions: how much source branch information enters gravity, how much of that gravitational mode is accessible to the receiver, and how efficiently the received temporal mode is loaded before receiver noise destroys quantum capability.
+
+\section{Regime and notation}
+
+We work in weak linearized gravity around Minkowski spacetime, with nonrelativistic compact mechanical source and receiver modes. The source is a finite elastic system of characteristic size $L$, mechanical frequency $\omega$, and longitudinal sound speed $c_s$. The controlled regime is
+\begin{equation}
+\frac{|u|}{L}\ll1,
+\qquad
+q\equiv\frac{\omega L}{c_s}\ll1,
+\qquad
+\beta\equiv\frac{\omega L}{c}\ll1,
+\qquad
+\mathcal C\equiv\frac{2GM}{c^2L}\ll1.
+\label{eq:regime}
+\end{equation}
+We use a narrow-band rotating-wave/input-output description around one quadrupole resonance of the source and one of the receiver. When the source-to-receiver transfer is interpreted as a travelling-mode storage coefficient, the separation is taken in the wave zone. The Markov formulas below assume source and receiver loss ports whose spectral densities are approximately flat on the selected bandwidth.
+
+The construction is not a universal relativistic matter model. In particular, the passive quadrupole sum-rule bound discussed later applies only to stationary passive nonrelativistic matter, not to arbitrary active many-body states, relativistic quantum fields, or strongly self-gravitating systems.
+
+\section{A conserved finite-support quadrupole source}
+\label{sec:source}
+
+\subsection{Four-spoke plus mode}
+
+Consider four identical endpoint masses $\mu$ connected to a compact central hub by four identical longitudinal elastic spokes of reference length $L$. The spokes lie on the $\pm x$ and $\pm y$ axes. Let $u$ denote the outer-endpoint amplitude of the plus-type normal mode. For one spoke, normalized to unit endpoint displacement, write
+\begin{equation}
+ f_q(x)=\frac{\sin(qx/L)}{\sin q},
+\qquad
+q=\frac{\omega L}{c_s}.
+\end{equation}
+The endpoint traction condition fixes the spoke mass $m_r$ relative to the endpoint mass,
+\begin{equation}
+\boxed{
+\frac{m_r}{\mu}=q\tan q.
+}
+\label{eq:spoke-mass}
+\end{equation}
+Thus the endpoint-dominated regime $q\ll1$ requires a light but finite support, $m_r/\mu=q^2+O(q^4)$, rather than a massless external actuator.
+
+Choose the plus displacement pattern so that the $x$ spokes move with $+u f_q$ and the $y$ spokes with $-u f_q$. The opposite source branch is obtained by $u\to-u$. Including both endpoint and spoke rest mass, the branch-difference STF quadrupole is
+\begin{equation}
+\boxed{
+\Delta Q_{xx}
+=8\mu Lu\frac{\tan q}{q},
+\qquad
+\Delta Q_{yy}=-\Delta Q_{xx},
+\qquad
+\Delta Q_{zz}=0.
+}
+\label{eq:finite-spoke-Q}
+\end{equation}
+The finite support therefore reinforces, rather than cancels, the endpoint quadrupole in this explicit mode:
+\begin{equation}
+\frac{\tan q}{q}
+=1+\frac{q^2}{3}+\frac{2q^4}{15}+O(q^6).
+\end{equation}
+
+The generalized mode mass is
+\begin{equation}
+\boxed{
+M_{\rm eff}=4\mu A(q),
+\qquad
+A(q)=\frac12+\frac{q}{\sin 2q}.
+}
+\label{eq:Meff}
+\end{equation}
+Quantizing $u=u_{\rm zpf}(a+a^\dagger)$ with
+\begin{equation}
+ u_{\rm zpf}=\sqrt{\frac{\hbar}{2M_{\rm eff}\omega}},
+\end{equation}
+gives the one-phonon quadrupole matrix element
+\begin{equation}
+\boxed{
+q_{01}
+=4\mu L\frac{\tan q}{q}
+\sqrt{\frac{\hbar}{2M_{\rm eff}\omega}}.
+}
+\label{eq:q01}
+\end{equation}
+For the plus mode the intrinsic spontaneous gravitational linewidth is
+\begin{equation}
+\boxed{
+\kappa_g(q)
+=\frac{8G\mu L^2\omega^4}{5c^5}
+\mathcal C_\kappa(q),
+\qquad
+\mathcal C_\kappa(q)=
+\frac{(\tan q/q)^2}{A(q)}.
+}
+\label{eq:kappag}
+\end{equation}
+At small $q$,
+\begin{equation}
+\mathcal C_\kappa(q)
+=1+\frac{q^2}{3}+\frac{q^4}{9}+O(q^6).
+\end{equation}
+
+The complete source contains the endpoints, spokes, hub, and controller. To the working order of the elastic model we require
+\begin{equation}
+\partial_\mu T_{\rm tot}^{\mu\nu}=0.
+\end{equation}
+For such a compact conserved source, the familiar identity between integrated stress and the second derivative of the energy quadrupole means that internal stress is not an additional independent leading TT source to append after the mass-quadrupole calculation. This is precisely why specifying the support and actuator matters.
+
+\subsection{Exact linearity of the branch-carrying plus sector}
+
+For the endpoint geometry $X=L+u$ and $Y=L-u$,
+\begin{equation}
+Q_{xx}-Q_{yy}
+=2\mu(X^2-Y^2)
+=8\mu Lu
+\end{equation}
+exactly. The $u^2$ terms cancel from the branch-odd plus sector. The leading geometric nonlinear term is parity even and axisymmetric, and therefore occupies the dc/$2\omega$ sector rather than the branch-carrying $\omega$ plus mode. This symmetry provides a stronger justification for the one-mode Gaussian source description than a generic first-order small-displacement truncation would.
+
+\section{Local quantum preparation without a hidden controller record}
+\label{sec:encoder}
+
+The causal protocol should not begin by declaring a displaced gravitating mass distribution at $t=0$. Instead we locally create the branch-dependent source state from initially branch-common matter.
+
+Let $R$ be a degenerate internal reference qubit, $a$ the source plus mode, and $c$ a branch-common work/controller mode. Use the resonant interaction
+\begin{equation}
+\boxed{
+H_{\rm enc}
+=\hbar g\sigma_z(a^\dagger c+a c^\dagger).
+}
+\label{eq:encoder-H}
+\end{equation}
+Starting from the source vacuum and a coherent controller state $|\beta\rangle_c$, branch $s=\pm1$ evolves in the lossless limit as
+\begin{equation}
+\alpha_s(t)=-is\beta\sin(gt),
+\qquad
+\gamma_c(t)=\beta\cos(gt).
+\end{equation}
+At $gT=\pi/2$ the controller is vacuum while the source occupies opposite coherent amplitudes.
+
+With total source-mode amplitude decay rate $\kappa_A$, define
+\begin{equation}
+\Omega=\sqrt{g^2-\kappa_A^2/16}.
+\end{equation}
+Then
+\begin{align}
+\gamma_c(t)
+&=\beta e^{-\kappa_A t/4}
+\left[
+\cos(\Omega t)
++\frac{\kappa_A}{4\Omega}\sin(\Omega t)
+\right],\\
+\alpha_s(t)
+&=-is\beta\frac{g}{\Omega}
+ e^{-\kappa_A t/4}\sin(\Omega t).
+\end{align}
+The first exact controller-empty time is
+\begin{equation}
+\boxed{
+T_*
+=\frac{\pi-\arctan(4\Omega/\kappa_A)}{\Omega},
+}
+\label{eq:Tstar}
+\end{equation}
+for which
+\begin{equation}
+\gamma_c(T_*)=0,
+\qquad
+\alpha_s(T_*)=-is\beta e^{-\kappa_A T_*/4}.
+\end{equation}
+For coherent input and vacuum loss ports the entire linear network remains a branch-conditioned product of coherent states, so the controller is not merely equal in the two branches; it is factorized and in the same vacuum state at handoff.
+
+A distributed elastic realization of Eq.~\eqref{eq:encoder-H} can be obtained by letting an internal actuator coordinate $X_c$ modulate a signed eigenstrain on the four spokes,
+\begin{equation}
+\mathcal E_a
+=\frac12EA
+\left[
+\partial_x\xi_a
+-\epsilon_a\sigma_z\lambda X_c\chi(x)
+\right]^2,
+\end{equation}
+with $\epsilon_a=+1$ on the $x$ spokes and $-1$ on the $y$ spokes. Projecting onto the plus normal mode generates the bilinear sign-controlled coupling. For mirrored trajectories the leading elastic energy density is pointwise branch common. We use this only as a controlled effective elastic realization; we do not claim a microscopic covariant material model.
+
+\section{Complete emitted branch mode and source gravitational branching}
+\label{sec:source-output}
+
+Radiation emitted while the source is being prepared is part of the causal signal. It must not be discarded as an unmodelled precursor. More generally, suppose the controlled source follows mirrored coherent trajectories
+\begin{equation}
+\alpha_s(t)=s\alpha(t),
+\qquad s=\pm1,
+\end{equation}
+and is coupled linearly to independent Markov output ports $j$ with rates $\kappa_j$. The branch-difference output amplitude in port $j$ is
+\begin{equation}
+\Delta b_j^{\rm out}(t)=2\sqrt{\kappa_j}\,\alpha(t).
+\end{equation}
+Therefore the coherent-state distance carried by the complete temporal output of that port is
+\begin{equation}
+\boxed{
+N_{\Delta,j}
+=4\kappa_j\int\dd t\,|\alpha(t)|^2.
+}
+\label{eq:Npartition}
+\end{equation}
+Summing over all source ports immediately gives
+\begin{equation}
+\boxed{
+\frac{N_{\Delta,g}}
+{N_{\Delta,{\rm tot}}}
+=
+\frac{\kappa_{g,A}}{\kappa_A}
+\equiv\beta_{g,A}.
+}
+\label{eq:source-beta}
+\end{equation}
+This is independent of pulse shape, duration, and drive strength as long as the physical port couplings are unchanged.
+
+Equation~\eqref{eq:source-beta} is an important no-free-lunch result for source control. Coherent shaping can choose the normalized gravitational waveform without deliberately broadening the source dissipatively, but it cannot make ordinary source-loss ports cease carrying branch information. The source interface is therefore summarized by the gravitational branching fraction $\beta_{g,A}$.
+
+For a conserved branch-difference stress tensor, the radiated coherent-state distance can equivalently be written as
+\begin{equation}
+\boxed{
+N_\Delta
+=\frac{G}{5\pi\hbar c^5}
+\int_0^\infty\dd\omega\,
+\omega^5
+|\Delta\widetilde Q_{ij}(\omega)|^2.
+}
+\label{eq:Ndelta}
+\end{equation}
+For the gravitational vacuum,
+\begin{equation}
+\boxed{\Gamma_{\rm vac}=N_\Delta/2.}
+\label{eq:GammaN}
+\end{equation}
+These normalizations agree with the conserved-source analysis of Ref.~\cite{Matsui2026}; they are inputs to the present link construction rather than new results.
+
+\section{Retarded free-space transfer to a resonant receiver}
+\label{sec:propagation}
+
+Let source and receiver quadrupole modes be separated by $R$ and resonant near the same angular frequency $\omega$. In the aligned plus-quadrupole wave zone, the retarded cross self-energy has leading form
+\begin{equation}
+\boxed{
+\Sigma_{BA}^R
+\simeq
+\frac54
+\sqrt{\kappa_{g,A}\kappa_{g,B}}
+\frac{e^{ikR}}{kR},
+\qquad k=\omega/c.
+}
+\label{eq:Sigmafar}
+\end{equation}
+Comparing the source-generated outgoing field with the receiver input-output equation gives the normalized travelling-mode storage amplitude
+\begin{equation}
+ t_{BA}^{\rm store}
+=-i\frac{\Sigma_{BA}^R}
+{\sqrt{\kappa_{g,A}\kappa_{g,B}}},
+\end{equation}
+and therefore
+\begin{equation}
+\boxed{
+\eta_{\rm store}(R)
+=|t_{BA}^{\rm store}|^2
+=\frac{25\mathcal O}{16(kR)^2}.
+}
+\label{eq:etastore}
+\end{equation}
+The factor $0\le\mathcal O\le1$ collects normalized tensor, polarization, spatial, and residual spectral overlap factors not already absorbed into the selected travelling mode.
+
+The coefficient $25/16$ is not a new universal absorption law. It can also be reconstructed from the ordinary on-axis plus-quadrupole directivity and the standard single-channel critical-coupling $l=2$ absorption scale \cite{RuanFan2012,TobarEtAl2024}. Its role here is to bridge the retarded Green-function normalization and the travelling-mode input-output normalization consistently, including the distinction between useful storage and the larger unitary scattering/extinction scale.
+
+Finite-spoke factors cancel from the dimensionless ratio in Eq.~\eqref{eq:etastore}; they remain in the absolute intrinsic linewidths $\kappa_{g,A}$ and $\kappa_{g,B}$.
+
+\section{Receiver loading and the four-factor quantum link}
+\label{sec:receiver}
+
+Let the receiver total linewidth be $\kappa_B$ and define its gravitational branching fraction
+\begin{equation}
+\boxed{
+\beta_{g,B}=\frac{\kappa_{g,B}}{\kappa_B}.
+}
+\label{eq:receiver-beta}
+\end{equation}
+The useful source-mode loading rate is
+\begin{equation}
+\kappa_\Delta
+=\eta_{\rm store}\kappa_{g,B}
+=\eta_{\rm store}\beta_{g,B}\kappa_B.
+\label{eq:kdelta}
+\end{equation}
+For a normalized incident temporal mode $f(t)$, define the dimensionless temporal loading factor
+\begin{equation}
+\boxed{
+\mathcal T_f(t)
+=\kappa_B
+\left|
+\int_0^t\dd s\,
+ e^{-\kappa_B(t-s)/2}f(s)
+\right|^2.
+}
+\label{eq:Tf}
+\end{equation}
+The ordinary coherent channel parameter from the selected gravitational wavepacket into the receiver is then
+\begin{equation}
+\tau_{G\to B}(t)
+=\eta_{\rm store}\beta_{g,B}\mathcal T_f(t).
+\end{equation}
+Cauchy--Schwarz gives
+\begin{equation}
+0\le\mathcal T_f(t)\le1-e^{-\kappa_Bt}\le1.
+\label{eq:Tbound}
+\end{equation}
+Composing the source pure-loss stage with the receiver therefore yields Eq.~\eqref{eq:master-link},
+\begin{equation}
+\boxed{
+\tau_{A\to B}(t)
+=\beta_{g,A}\eta_{\rm store}\beta_{g,B}\mathcal T_f(t).
+}
+\end{equation}
+It is useful to define the waveform-independent ceiling
+\begin{equation}
+\boxed{
+\eta_Q^{\rm link}(R)
+\equiv
+\beta_{g,A}\eta_{\rm store}(R)\beta_{g,B},
+}
+\label{eq:etaQ}
+\end{equation}
+so that
+\begin{equation}
+\tau_{A\to B}(t)=\eta_Q^{\rm link}\mathcal T_f(t),
+\qquad
+\tau_{A\to B}(t)\le\eta_Q^{\rm link}.
+\end{equation}
+
+This is the main link-budget result. It makes clear that source branching, propagation/mode capture, receiver branching, and temporal matching are physically different limitations. In particular, no choice of pulse shape can repair a poor value of either matter--gravity branching fraction.
+
+\section{Noise and the entanglement-preservation condition}
+\label{sec:noise}
+
+For a receiver initial occupation $n_0$ and occupied Markov bath injection rate $\Gamma_{{\rm th},B}$, the branch-independent receiver occupation is
+\begin{equation}
+\boxed{
+m_B(t)
+=n_0e^{-\kappa_Bt}
++\frac{\Gamma_{{\rm th},B}}{\kappa_B}
+(1-e^{-\kappa_Bt}).
+}
+\label{eq:mB}
+\end{equation}
+If the source gravitational-output stage itself has Gaussian parameters $(\beta_{g,A},m_A)$, composition gives
+\begin{align}
+\tau_{A\to B}(t)
+&=\beta_{g,A}\eta_{\rm store}\beta_{g,B}\mathcal T_f(t),\\
+m_{A\to B}(t)
+&=m_B(t)
++\eta_{\rm store}\beta_{g,B}\mathcal T_f(t)m_A.
+\end{align}
+For a phase-insensitive one-mode Gaussian channel, the standard entanglement-breaking condition then gives \cite{Holevo2008EB}
+\begin{equation}
+\boxed{
+\eta_{\rm store}\beta_{g,B}\mathcal T_f(t)
+[\beta_{g,A}-m_A]
+>m_B(t)
+}
+\label{eq:nonEB}
+\end{equation}
+for the effective channel to remain non-entanglement-breaking in the convention used here. Defining the source quantum excess
+\begin{equation}
+\Delta_A=\beta_{g,A}-m_A,
+\end{equation}
+Eq.~\eqref{eq:nonEB} reads simply
+\begin{equation}
+\Delta_A\times\eta_{\rm store}\times\beta_{g,B}\times\mathcal T_f(t)
+>m_B(t).
+\end{equation}
+For the locally prepared finite binary-coherent probe, the corresponding source-reference/receiver state is NPT under the same condition by established continuous-variable entanglement-survival results \cite{FilippovZiman2014}. We use this as a diagnostic of the explicit gravitational channel; no new Gaussian theorem is claimed.
+
+For a passive thermal source with nongravitational bath injection $\Gamma_{{\rm th},A}$,
+\begin{equation}
+m_A\simeq
+\beta_{g,A}\frac{\Gamma_{{\rm th},A}}{\kappa_A}
+\end{equation}
+for the passive tail. Thermal noise injected during the finite local encoder adds a relative correction of order $\kappa_A/g$ in the fast-encoder regime.
+
+\section{Waveform engineering is an order-unity factor}
+\label{sec:waveforms}
+
+Equation~\eqref{eq:Tf} allows very different source protocols to be compared without changing the physical interface factors.
+
+For a passive exponential source matched to the receiver linewidth,
+\begin{equation}
+\boxed{
+\mathcal T_{\rm exp}^{\max}=4e^{-2}\simeq0.541341.
+}
+\end{equation}
+For the explicit local encoder followed by a passive tail, the finite preparation precursor slightly improves the matched result. Writing $\epsilon=\kappa/g$ and $y=\kappa T_*$, the exact post-handoff maximum in the underdamped constant-$g$ model is
+\begin{equation}
+\mathcal T_{\rm full}^{\max}
+=4e^{-2}
+\exp\left[
+\epsilon e^{-y/4}
+-\frac y2
++\frac{\epsilon^2}{2}
+\right],
+\end{equation}
+and in the fast-encoder limit
+\begin{equation}
+\mathcal T_{\rm full}^{\max}
+=4e^{-2}
+\left[
+1+\left(1-\frac\pi4\right)\frac\kappa g
++O((\kappa/g)^2)
+\right].
+\end{equation}
+
+A smooth finite $\sin^4$ branch trajectory can do better,
+\begin{equation}
+\boxed{
+\mathcal T_{\sin^4}^{\max}\simeq0.7980213.
+}
+\end{equation}
+Finally, the Cauchy-saturating target-time waveform is proportional to the time reverse of the receiver impulse response and gives
+\begin{equation}
+\boxed{
+\mathcal T_{\rm opt}(t)=1-e^{-\kappa_Bt}\to1.
+}
+\end{equation}
+Thus, after the physical source and receiver branch fractions are fixed, ideal waveform engineering can improve the matched passive exponential by at most
+\begin{equation}
+\frac{1}{4e^{-2}}=\frac{e^2}{4}\simeq1.85.
+\end{equation}
+Temporal optimization is therefore secondary to matter--gravity interface quality in the ordinary-matter regime.
+
+\section{Passive source broadening cannot cure bandwidth mismatch}
+\label{sec:passive-nogo}
+
+There is an important distinction between optimizing temporal overlap at fixed branch fractions and physically broadening a fixed weak gravitational radiator. Let
+\begin{equation}
+r=\frac{\kappa_A}{\kappa_B}
+\end{equation}
+and hold the intrinsic gravitational source linewidth $\kappa_{g,A}$ fixed. Optimizing the passive exponential receiver response over time gives
+\begin{equation}
+\boxed{
+\tau_{A\to B}^{\max}(r)
+=4\frac{\kappa_{g,A}\kappa_\Delta}{\kappa_B^2}
+F(r),
+\qquad
+F(r)=r^{2r/(1-r)}.
+}
+\label{eq:Fpassive}
+\end{equation}
+Its logarithmic derivative is
+\begin{equation}
+\frac{\dd}{\dd r}\ln F(r)
+=\frac{2(\ln r+1-r)}{(1-r)^2}<0
+\end{equation}
+for $r>0$, since $\ln r\le r-1$. Thus adding passive nongravitational source damping strictly reduces the optimized end-to-end transfer. The improvement in temporal matching never compensates the corresponding decrease in source gravitational branching.
+
+The fixed-radiator passive optimum therefore uses the smallest available total source linewidth, ideally $\kappa_A=\kappa_{g,A}$. For ordinary weak gravitational matter this makes the natural source lifetime enormous. Coherent source control is useful precisely because it can reshape the temporal mode without deliberately adding a lossy source port.
+
+For a controlled branch trajectory $\alpha(t)=\alpha_{\rm pk}g(t)$ with
+\begin{equation}
+C_g=\frac1T\int_0^T\dd t\,|g(t)|^2,
+\end{equation}
+Eq.~\eqref{eq:Npartition} gives the source energy--duration relation
+\begin{equation}
+\boxed{
+E_{\rm pk}T
+=\frac{\hbar\omega}{4\kappa_{g,A}C_g}
+N_{\Delta,g},
+}
+\label{eq:ETcost}
+\end{equation}
+where $E_{\rm pk}=\hbar\omega|\alpha_{\rm pk}|^2$. Coherent control can therefore trade larger transient source energy/excursion for a shorter gravitational wavepacket, but it cannot change the fraction of the branch record carried by gravity unless the physical source couplings themselves are changed.
+
+\section{Passive nonrelativistic matter bound}
+\label{sec:passive-bound}
+
+A passive stationary nonrelativistic quadrupole system has a finite positive-frequency oscillator-strength budget. Combining the quadrupole energy-weighted sum rule with the graviton transition formula yields the class-level estimate
+\begin{equation}
+\boxed{
+\frac{\kappa_g}{\omega}
+\lesssim
+\frac23\mathcal C\beta^3,
+}
+\label{eq:passive-kappa-bound}
+\end{equation}
+where $\mathcal C=2GM/(c^2L)$ and $\beta=\omega L/c$. For a mode with total linewidth $\kappa=\omega/Q$,
+\begin{equation}
+\boxed{
+\beta_g
+\lesssim
+\min\left[1,\frac23Q\mathcal C\beta^3\right].
+}
+\label{eq:passive-beta-bound}
+\end{equation}
+Consequently, if both source and receiver belong to this passive nonrelativistic class, even ideal temporal shaping obeys
+\begin{equation}
+\boxed{
+\eta_Q^{\rm link}
+\lesssim
+\frac{25\mathcal O}{16(kR)^2}
+\prod_{j=A,B}
+\min\left[
+1,\frac23Q_j\mathcal C_j\beta_j^3
+\right].
+}
+\label{eq:two-ended-bound}
+\end{equation}
+In the unsaturated weak-gravity regime,
+\begin{equation}
+\boxed{
+\eta_Q^{\rm link}
+\lesssim
+\frac{25\mathcal O}{36(kR)^2}
+Q_AQ_B\mathcal C_A\mathcal C_B\beta_A^3\beta_B^3.
+}
+\label{eq:two-ended-unsat}
+\end{equation}
+This result already grants optimal temporal shaping. It therefore identifies weak matter--gravity branching, rather than pulse shape, as the dominant passive-matter limitation.
+
+The scope of Eqs.~\eqref{eq:passive-kappa-bound}--\eqref{eq:two-ended-unsat} is essential. Active/inverted many-body states can evade the positive spectral-weight argument, and relativistic field-theoretic receivers require a different smeared stress-tensor analysis.
+
+\section{Active collective receivers: the precise loophole}
+\label{sec:collective}
+
+Collective gravitational transitions can scale faster than the passive single-excitation response. In particular, correlated atomic states can display $N^2$-enhanced gravitational transition rates \cite{QuinonesEtAl2017}. This does not simply invalidate the link-budget picture. Suppose a collective factor $F$ multiplies both the desired gravitational rate $\kappa_{\Delta,0}$ and orthogonal gravitational rate $\kappa_{\perp,0}$, while a nongravitational internal loss rate $\kappa_i$ remains fixed. Writing $\kappa_{g,0}=\kappa_{\Delta,0}+\kappa_{\perp,0}$ and
+\begin{equation}
+\beta_{\rm mode}=\frac{\kappa_{\Delta,0}}{\kappa_{g,0}},
+\end{equation}
+the useful total branching fraction becomes
+\begin{equation}
+\boxed{
+\beta_{\rm useful}(F)
+=\beta_{\rm mode}
+\frac{F\kappa_{g,0}}
+{F\kappa_{g,0}+\kappa_i}.
+}
+\label{eq:collective-beta}
+\end{equation}
+Collectivity can therefore make gravity dominate fixed ordinary loss and accelerate the interaction. If all gravitational modes are enhanced equally, however,
+\begin{equation}
+\beta_{\rm useful}(F)\to\beta_{\rm mode}
+\end{equation}
+as $F\to\infty$. Raw oscillator-strength enhancement does not improve the normalized source-mode selectivity.
+
+The favorable $N^2$ states of Ref.~\cite{QuinonesEtAl2017} also possess an $N^2$-enhanced gravitational vacuum decay rate, with short-time vacuum-relaxation scale proportional to $4/(N^2\Gamma_0)$. Thus their useful interaction window and their active-state vacuum-decay window shrink together. Determining whether such a non-Gaussian active receiver improves source-reference entanglement transfer requires a separate finite-level channel analysis. We therefore retain active collectivity as a genuine loophole to the passive bound, but not as an established cure for the complete link.
+
+\section{Causality and reciprocal backaction}
+\label{sec:causality}
+
+The causal statement relevant to the protocol is not that all source--receiver correlations vanish outside the light cone. Vacuum correlations and gravitational dressing make such a statement too strong. Instead, define the controllable source operation inside a compact worldtube $\mathcal W_A$. Before the receiver observation region enters the causal future of that operation, microcausality implies that the receiver reduced state is independent of the controllable source input. The source-input-to-receiver map is therefore a replacer channel and hence entanglement breaking in that spacelike region.
+
+For a centrally triggered extended source, let source point $\bm x$ be unable to respond before
+\begin{equation}
+ t_x\ge\frac{|\bm x-\bm x_0|}{c}.
+\end{equation}
+Any contribution reaching receiver point $\bm y$ then obeys
+\begin{equation}
+ t_{\rm arr}
+\ge
+\frac{|\bm x-\bm x_0|+|\bm y-\bm x|}{c}
+\ge
+\frac{|\bm y-\bm x_0|}{c}
+\end{equation}
+by the triangle inequality. Thus the center-origin $R/c$ lower bound remains valid for a causally triggered finite source. For a generic distributed intervention, the exact front should instead be stated in terms of the minimum spacetime separation of the source-operation and receiver supports.
+
+The gravitational field is reciprocal, so the one-way link must also be understood as a controlled approximation. With mode susceptibilities
+\begin{equation}
+\chi_j(\nu)=\frac1{\kappa_j/2-i\nu},
+\end{equation}
+the delayed source--receiver round-trip loop gain is
+\begin{equation}
+L(\nu)
+=\Sigma_{AB}^R\Sigma_{BA}^R
+\chi_A(\nu)\chi_B(\nu)e^{2i\nu R/c}.
+\end{equation}
+Using the same normalization as Eq.~\eqref{eq:etastore},
+\begin{equation}
+\boxed{
+|L(\nu)|
+\le4\eta_{\rm store}\beta_{g,A}\beta_{g,B}.
+}
+\label{eq:loopbound}
+\end{equation}
+Thus in the weak wave-zone link the one-way channel is the leading Born term. In addition, the first source-controlled feedback echo at the receiver requires the path $A\to B\to A\to B$ and cannot arrive before approximately $3R/c$ for compact separated devices.
+
+\section{Finite-source corrections}
+\label{sec:corrections}
+
+Several corrections can be assigned independent control parameters rather than folded into an undefined systematic error.
+
+First, elastic support inertia is already included by the exact linear-spoke factor $q=\omega L/c_s$. Second, finite gravitational retardation across the inversion-symmetric source begins at order $\beta^2$. For the slender-spoke mode the angularly integrated linewidth takes the form
+\begin{equation}
+\kappa_g(q,\beta)
+=\kappa_g^{(Q)}(q)
+\left[
+1-\frac{2a(q)}7\beta^2+O(\beta^4)
+\right],
+\end{equation}
+where
+\begin{equation}
+a(q)=\frac12+\frac{\cot q}{q}-\frac1{q^2}.
+\end{equation}
+As $q\to0$,
+\begin{equation}
+\boxed{
+\kappa_g
+=\kappa_g^{(Q)}
+\left[1-\frac{\beta^2}{21}+O(\beta^4)\right].
+}
+\end{equation}
+Third, any residual branch-asymmetric controller energy localized within a compact hub produces a quadrupole suppressed by the square of the hub size; the ideal distributed-eigenstrain model is branch common at leading order. Fourth, thermal injection during the finite encoder is suppressed relative to the passive source thermal scale by $O(\kappa_A/g)$ in the fast-encoder regime. Finally, Eq.~\eqref{eq:loopbound} controls reciprocal rescattering.
+
+These corrections do not prove that the mechanical architecture is exact outside its working regime. They make explicit which approximations would have to fail before the leading link budget ceases to be meaningful.
+
+\section{Dimensionless feasibility comparison}
+\label{sec:benchmark}
+
+To illustrate the difference between receiver-local and end-to-end performance, consider a deliberately aggressive historical benchmark:
+\begin{equation}
+M_e=4\,{\rm kg},
+\quad
+L=1\,{\rm m},
+\quad
+f=1\,{\rm MHz},
+\quad
+Q=10^{12},
+\quad
+kR=10,
+\quad
+\mathcal O=1.
+\end{equation}
+The endpoint compactness and mechanical size parameter are approximately
+\begin{equation}
+\mathcal C_e\simeq5.94\times10^{-27},
+\qquad
+\beta=\frac{\omega L}{c}\simeq2.10\times10^{-2}.
+\end{equation}
+For the explicit four-spoke mode at leading order,
+\begin{equation}
+\frac{\kappa_g}{\omega}
+=\frac15\mathcal C_e\beta^3,
+\end{equation}
+so
+\begin{equation}
+\boxed{
+\beta_g\simeq1.09\times10^{-20}.
+}
+\end{equation}
+At $kR=10$,
+\begin{equation}
+\eta_{\rm store}=1.5625\times10^{-2}.
+\end{equation}
+Table~\ref{tab:link} then isolates the role of the two matter interfaces.
+
+\begin{table}[t]
+\centering
+\caption{Waveform-independent link ceiling for the benchmark. ``Ordinary'' means $\beta_g=1.09\times10^{-20}$; ``ideal'' means $\beta_g=1$.}
+\label{tab:link}
+\begin{tabular}{lll}
+\toprule
+Source interface & Receiver interface & $\eta_Q^{\rm link}$ \\
+\midrule
+ordinary & ordinary & $1.87\times10^{-42}$ \\
+ideal & ordinary & $1.71\times10^{-22}$ \\
+ordinary & ideal & $1.71\times10^{-22}$ \\
+ideal & ideal & $1.5625\times10^{-2}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For ordinary source and receiver, the matched passive exponential yields approximately $1.01\times10^{-42}$ and the optimized $\sin^4$ waveform approximately $1.49\times10^{-42}$; even perfect temporal shaping cannot exceed $1.87\times10^{-42}$. If only the source interface is idealized, the same $\sin^4$ receiver calculation returns to the previously familiar receiver-local scale $\sim1.36\times10^{-22}$.
+
+The old $10^{-22}$ scale was therefore not algebraically wrong. It answered a different question: given an already normalized incoming graviton wavepacket, how well can the receiver capture it? A physical mechanical source adds the missing source branch factor.
+
+The timescale cost is equally severe. Here $\kappa_B=\omega/Q\simeq6.28\times10^{-6}\,\mathrm{s}^{-1}$, while the intrinsic gravitational linewidth is only
+\begin{equation}
+\kappa_g\simeq6.87\times10^{-26}\,\mathrm{s}^{-1}.
+\end{equation}
+A hypothetical purely gravitational passive source would therefore have natural lifetime of order
+\begin{equation}
+\kappa_g^{-1}\simeq4.6\times10^{17}\ {\rm yr}.
+\end{equation}
+This is why simply setting $\beta_{g,A}=1$ while keeping the original mechanical response time is not a physically innocuous idealization. Coherent control can alter the waveform at an energy/excursion cost [Eq.~\eqref{eq:ETcost}], but cannot change branch fractions unless the physical couplings themselves are engineered.
+
+\section{Discussion}
+
+The four-factor form in Eq.~\eqref{eq:master-link} is structurally familiar from quantum networking: source efficiency, channel transmission, receiver efficiency, and temporal mode matching are standard interface concepts. We do not claim that this multiplicative logic is new. The gravity-specific content is that each factor is derived from the same explicit source--field--receiver normalization rather than imported as an independent phenomenological efficiency.
+
+This matters because different partial calculations can hide different interfaces. A receiver-local graviton-wavepacket calculation effectively starts after the source branch factor has already been paid. A source-decoherence calculation can end before asking whether any remote receiver accesses the emitted branch mode. A direct Newtonian oscillator channel bypasses the normalization of a travelling gravitational radiation mode. The present construction is designed to make those distinctions explicit.
+
+The factorization also clarifies where future work should be directed. Pulse shaping is not the primary obstacle for ordinary matter. A matched passive exponential already achieves about $54\%$ of the temporal ceiling, and a smooth finite pulse can achieve about $80\%$. The dominant suppressions are the two matter--gravity branching fractions and the free-space/source-mode overlap. Improving either interface by many orders of magnitude requires a genuine change in the matter--gravity coupling or loss environment, not a more elegant pulse.
+
+Active collective receivers are consequently more interesting than passive waveform optimization, because they can in principle move a gravitational branching ratio toward unity relative to fixed ordinary loss. The price is a nonpassive prepared state with enhanced spontaneous dynamics and potentially non-Gaussian noise. Equation~\eqref{eq:collective-beta} shows that even then the useful branching saturates at the gravitational source-mode selectivity unless the angular/mode structure is also engineered. A complete active-receiver channel is therefore a natural follow-on problem.
+
+The source side has an analogous question. A closed coherent controller can synthesize a receiver-matched gravitational waveform without deliberately adding a dissipative source port, but Eq.~\eqref{eq:Npartition} shows that any pre-existing ordinary source ports still receive branch information in proportion to their physical coupling. A genuinely high-efficiency source must therefore suppress nongravitational branch leakage or enhance the gravitational port itself.
+
+\section{Conclusion}
+
+We have constructed a weak-field source-resolved gravitational quantum link in which local preparation, source conservation, graviton emission, retarded free-space propagation, receiver loading, thermal noise, and entanglement preservation can all be written in a common normalization. The central ideal-vacuum result is
+\begin{equation}
+\boxed{
+\tau_{A\to B}(t)
+=
+\beta_{g,A}
+\eta_{\rm store}(R)
+\beta_{g,B}
+\mathcal T_f(t),
+\qquad
+\mathcal T_f(t)\le1.
+}
+\end{equation}
+The usefulness of this expression is not that any factor is conceptually unprecedented. Rather, it prevents source preparation, travelling-mode capture, receiver branching, and temporal matching from being conflated.
+
+For the explicit conserved four-spoke source, every leading source quantity is finite and calculable; the local controller can return branch common; the emitted branch mode has the standard conserved-source graviton norm; and the wave-zone capture factor is consistent with both retarded Green-function and resonant-absorption normalizations. Standard Gaussian-channel theory then converts the complete link plus noise into a sharp non-EB/NPT condition.
+
+The resulting physical hierarchy is severe. In a deliberately optimistic ordinary-matter benchmark, one weak matter--gravity interface produces a $10^{-22}$ scale, while two such interfaces produce a $10^{-42}$ end-to-end ceiling. Temporal waveform engineering changes this only by factors of order unity. The central practical lesson is therefore that gravitational quantum communication with ordinary passive matter is limited primarily by branching into gravity at the source and receiver, not by the existence of a formally quantum travelling mode or by imperfect pulse shaping.
+
+This conclusion is intentionally model scoped. Active collective matter, relativistic quantum fields, and strongly self-gravitating receivers remain possible routes beyond the passive nonrelativistic bounds. The link-budget form identifies exactly what such a proposal would have to improve.
+
+\appendix
+
+\section{Full local-encoder waveform}
+
+For completeness, in the constant-$g$ underdamped encoder the normalized complete source waveform can be written
+\begin{equation}
+f_{\rm full}(t)
+=\sqrt{\kappa_A}\frac{g}{\Omega}
+ e^{-\kappa_A t/4}\sin(\Omega t),
+\qquad0<t<T_*,
+\end{equation}
+and
+\begin{equation}
+f_{\rm full}(t)
+=\sqrt{\kappa_A}
+ e^{-\kappa_AT_*/4}
+ e^{-\kappa_A(t-T_*)/2},
+\qquad t>T_*.
+\end{equation}
+It obeys $\int_0^\infty|f_{\rm full}(t)|^2\dd t=1$. The fraction of source branch distance emitted before the controller-empty handoff is
+\begin{equation}
+\epsilon_{\rm pre}
+=1-e^{-\kappa_AT_*/2}
+\simeq\frac{\pi\kappa_A}{4g}
+\end{equation}
+for $g\gg\kappa_A$.
+
+\section{Passive exponential loading}
+
+For
+\begin{equation}
+f_A(t)=\sqrt{\kappa_A}e^{-\kappa_A t/2}
+\end{equation}
+and receiver linewidth $\kappa_B$, the receiver-local transfer is
+\begin{equation}
+\tau_f(t)
+=\frac{4\kappa_\Delta\kappa_A}
+{(\kappa_B-\kappa_A)^2}
+\left(
+ e^{-\kappa_A t/2}
+-e^{-\kappa_Bt/2}
+\right)^2.
+\end{equation}
+For $\kappa_A=\kappa_B=\kappa$ this reduces to
+\begin{equation}
+\tau_f(t)=\kappa_\Delta\kappa t^2e^{-\kappa t},
+\end{equation}
+whose maximum is $4e^{-2}\kappa_\Delta/\kappa$ at $t=2/\kappa$.
+
+\section{Scope of the passive quadrupole sum rule}
+
+For a stationary passive nonrelativistic state $\rho=\sum_m p_m|m\rangle\langle m|$, the double-commutator identity for the five STF quadrupole components $Q_A$ gives a finite positive oscillator-strength budget,
+\begin{equation}
+\sum_A\sum_{m<n}
+(p_m-p_n)(E_n-E_m)|Q^A_{mn}|^2
+=\frac{10}{3}\hbar^2\langle I\rangle_\rho.
+\end{equation}
+Passivity makes every term nonnegative and leads to Eq.~\eqref{eq:passive-kappa-bound} for a narrow positive-frequency band. Nonpassive populations can evade this step because positive and negative spectral weights can cancel. This is why the resulting $\mathcal C\beta^3$ ceiling is a passive-class result rather than a universal field-theoretic theorem.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
