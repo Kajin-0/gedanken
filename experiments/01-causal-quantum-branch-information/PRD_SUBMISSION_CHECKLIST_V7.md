@@ -33,7 +33,7 @@
 - [x] At least one full manuscript PDF rendered page-by-page for visual QA.
 - [x] Initial overwide introduction equation corrected.
 - [x] Initial undersized/overlapping link figure redesigned.
-- [ ] Final current-head page-2 render visually approved after last figure-label edit.
+- [x] Final current-head page-2 render visually approved after last figure-label edit.
 
 ## C. Figures
 
@@ -42,9 +42,10 @@
 - [x] Equal-charge source/code shown.
 - [x] Graviton-mode stage shown.
 - [x] Receiver memory separated from accessible readout.
-- [x] Link factors shown.
+- [x] Link backbone equation shown cleanly below diagram.
+- [x] Caption states source branching, propagation, receiver branching, loading, and readout roles.
 - [x] Caption states precursor remains in complete waveform.
-- [ ] Final current-head visual QA.
+- [x] Final current-head visual QA passed at full-page scale.
 
 ### Figure 2 — conserved four-spoke source
 
@@ -73,12 +74,12 @@
 
 ## E. Required editorial preflight
 
-- [ ] Final current-head PDF visual QA.
+- [x] Final current-head PDF visual QA.
 - [ ] One complete prose copyedit for repeated caveats and overly long sentences.
 - [ ] Check every use of `first`, `new`, `exact`, `universal`, and `optimal`.
 - [ ] Verify all approximation qualifiers appear before, not after, strongest claims.
 - [ ] Check symbol consistency: $S,a,w,\Phi$, $\beta$, $\beta_g$, $q$, $q_c$, $\mathcal C$, $\mathcal O$.
-- [ ] Check source-time versus receiver-local-time notation one final time.
+- [x] Remove direct source-handoff/receiver-local clock comparison from the link proposition.
 - [ ] Decide whether $\sin^4$ numerical value belongs in main text or appendix.
 - [ ] Decide whether passive broadening appendix is necessary for first submission.
 - [ ] Add acknowledgments/funding statement as appropriate.
