@@ -1,0 +1,99 @@
+\section{Passive-matter ceiling and active loopholes}
+\label{sec:bounds}
+
+Energy-weighted transition sum rules and their double-commutator representation are standard many-body tools, including for electric-quadrupole and other coordinate multipoles \cite{LuJohnson2018,Hinohara2019}. We use that established machinery for the mass-quadrupole operator and combine it with the graviton transition rate. For a stationary passive nonrelativistic source or receiver, the resulting positive absorptive gravitational spectral-weight bound is derived in Appendix~\ref{app:sumrule}:
+\begin{equation}
+\boxed{
+\frac{\kappa_g}{\omega}
+\lesssim\frac23\Ccal\beta^3.}
+\label{eq:sumrule}
+\end{equation}
+This should be read as a passive-response corollary, not as a new sum-rule formalism. Severe graviton-absorption limitations for atomic or bound-state matter have also been found by other methods \cite{BoughnRothman2006,PalessandroSloth2020}; Eq.~\eqref{eq:sumrule} is useful here because it interfaces directly with the link-budget branching fraction.
+
+If $Q=\omega/\kappa_{\rm tot}$, Eq.~\eqref{eq:sumrule} implies
+\begin{equation}
+\boxed{
+\beta_g\lesssim
+\min\left[1,\frac23Q\Ccal\beta^3\right].}
+\label{eq:betabound}
+\end{equation}
+When both endpoints lie in this passive nonrelativistic class,
+\begin{equation}
+\boxed{
+\eta_Q^{\rm link}
+\lesssim
+\frac{25\Ocal}{16(kR)^2}
+\prod_{j=A,B}
+\min\left[1,\frac23Q_j\Ccal_j\beta_j^3\right].}
+\label{eq:passivebound}
+\end{equation}
+In the unsaturated regime,
+\begin{equation}
+\boxed{
+\eta_Q^{\rm link}
+\lesssim
+\frac{25\Ocal}{36(kR)^2}
+Q_AQ_B\Ccal_A\Ccal_B\beta_A^3\beta_B^3.}
+\label{eq:passiveunsat}
+\end{equation}
+This is explicitly a passive, nonrelativistic matter bound. It is not asserted for active/inverted many-body states, relativistic QFT receivers, or strongly self-gravitating systems.
+
+Known correlated matter states can exhibit collective gravitational transition rates with $N^2$ scaling \cite{QuinonesEtAl2017}. Such enhancement can be useful if ordinary internal loss is the dominant bottleneck. If a factor $F$ multiplies all gravitational receiver rates while a nongravitational internal loss rate $\kappa_i$ remains fixed, then
+\begin{equation}
+\boxed{
+\beta_{\rm useful}(F)
+=\beta_{\rm mode}
+\frac{F\kappa_{g,0}}{F\kappa_{g,0}+\kappa_i}
+\longrightarrow\beta_{\rm mode}.}
+\label{eq:activebeta}
+\end{equation}
+Collectivity can therefore remove internal-loss suppression and shorten the interaction time, but if all gravitational modes are enhanced equally it saturates at the same source-mode selectivity. Moreover, favorable active collective states have enhanced gravitational vacuum transition dynamics as well. A complete active receiver must therefore include its pump, spontaneous noise, and non-Gaussian state preparation rather than replacing $\kappa_g$ by $N^2\kappa_g$ in Eq.~\eqref{eq:master}.
+
+\section{Benchmark and hierarchy of bottlenecks}
+\label{sec:benchmark}
+
+To expose the source/receiver distinction, consider the deliberately aggressive benchmark
+\begin{equation}
+M_e=4\,{\rm kg},\quad
+L=1\,{\rm m},\quad
+f=1\,{\rm MHz},\quad
+Q=10^{12},\quad
+kR=10,\quad
+\Ocal=1.
+\end{equation}
+For the explicit four-spoke leading-order mode,
+\begin{equation}
+\beta_g\simeq1.09386\times10^{-20},
+\qquad
+\eta_{\rm store}=1.5625\times10^{-2}.
+\end{equation}
+The coherent link ceiling is therefore
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+Interfaces & $(\beta_{g,A},\beta_{g,B})$ & $\eta_Q^{\rm link}$ \\
+\midrule
+ordinary source + ordinary receiver & $(\beta_g,\beta_g)$ & $1.87\times10^{-42}$ \\
+one ideal gravitational interface & $(1,\beta_g)$ or $(\beta_g,1)$ & $1.71\times10^{-22}$ \\
+both ideal gravitational interfaces & $(1,1)$ & $1.5625\times10^{-2}$ \\
+\bottomrule
+\end{tabular}
+\caption{Separation of source and receiver gravitational interface penalties at fixed $kR=10$ and perfect residual mode overlap. ``Ideal'' means unit gravitational branching, not a claimed realizable device.}
+\label{tab:benchmark}
+\end{table}
+A matched passive exponential multiplies the ordinary/ordinary ceiling by $4\ee^{-2}$, giving
+\begin{equation}
+\tau_{\max}\simeq1.01\times10^{-42}.
+\end{equation}
+Equation~\eqref{eq:Nopt} then shows that the maximum pure-loss negativity is of the same order. The receiver-local order-$10^{-22}$ scale corresponds to starting with an already normalized incoming graviton wavepacket; the true ordinary-matter source contributes a second gravitational branching penalty.
+
+The underlying intrinsic gravitational linewidth is approximately
+\begin{equation}
+\kappa_g\simeq6.87\times10^{-26}\,{\rm s}^{-1},
+\end{equation}
+so a purely gravitational passive source would have a characteristic lifetime
+\begin{equation}
+\kappa_g^{-1}\simeq4.6\times10^{17}\,{\rm yr}.
+\end{equation}
+This illustrates the speed--efficiency tension. Adding ordinary dissipative source broadening shortens the pulse but reduces the gravitational branching fraction. Coherent shaping can improve temporal matching without adding that extra lossy port, but it cannot change the branch-distance fraction associated with fixed physical output couplings.
