@@ -70,6 +70,7 @@
 - [x] Graviton transducer literature included.
 - [x] E2/EWSR literature included.
 - [x] Atomic/bound-state graviton absorption literature included.
+- [x] Public project repository citation added for Data Availability.
 - [ ] Final DOI/journal metadata pass for every entry immediately before submission.
 
 ## E. Required editorial preflight
@@ -80,19 +81,21 @@
 - [ ] Verify all approximation qualifiers appear before, not after, strongest claims.
 - [ ] Check symbol consistency: $S,a,w,\Phi$, $\beta$, $\beta_g$, $q$, $q_c$, $\mathcal C$, $\mathcal O$.
 - [x] Remove direct source-handoff/receiver-local clock comparison from the link proposition.
+- [x] Replace unqualified ``exact controller-empty handoff'' wording in abstract/conclusion with local-controller-safe handoff wording.
 - [ ] Decide whether $\sin^4$ numerical value belongs in main text or appendix.
 - [ ] Decide whether passive broadening appendix is necessary for first submission.
 - [ ] Add acknowledgments/funding statement as appropriate.
-- [ ] Add data/code availability statement.
+- [x] Add Data Availability statement.
 - [ ] Replace `Anonymous` with author metadata only in the actual submission copy.
 
-## F. PRD formatting
+## F. PRD initial-submission format
 
-- [ ] Convert article-style source to a PRD/REVTeX submission branch or confirm journal accepts current source for initial submission.
-- [ ] Verify title/abstract under current PRD submission requirements.
-- [ ] Confirm figure and table placement in REVTeX/two-column rendering if adopted.
-- [ ] Recheck long equations in two-column format; break where needed.
-- [ ] Verify bibliography style and APS reference formatting.
+- [x] Confirmed from current APS guidance that a PDF alone is sufficient for peer review; REVTeX source is preferred but not required for initial review.
+- [x] Current article-style manuscript therefore remains an acceptable initial-review source path.
+- [ ] Verify title/abstract one final time against current PRD submission form.
+- [ ] Optional: prepare/test a REVTeX branch for production convenience or if requested by the journal.
+- [ ] If REVTeX is adopted, recheck figure/table placement and long equations in two-column format.
+- [ ] Verify final bibliography style and APS reference formatting.
 
 ## G. Submission package
 
