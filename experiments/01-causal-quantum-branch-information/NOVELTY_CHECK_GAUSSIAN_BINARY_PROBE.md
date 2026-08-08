@@ -1,11 +1,11 @@
 # Novelty Check — Binary Coherent Probe Completeness for Phase-Insensitive Gaussian Channels
 
 **Updated:** 2026-08-07  
-**Status:** **ACTIVE CANDIDATE NOVELTY — ADVERSARIAL SEARCH IN PROGRESS**
+**Status:** **COLLISION CONFIRMED — BROAD SURVIVAL THEOREM IS NOT AN ACTIVE NOVELTY CLAIM**
 
-## 1. Candidate theorem under audit
+## 1. Repository result
 
-For every finite nontrivial binary coherent hybrid state
+The repository independently proves that for every finite nontrivial binary coherent hybrid state
 
 $$
 |\Psi\rangle
@@ -21,20 +21,18 @@ $$
 \alpha\neq\beta,
 $$
 
-and every one-mode gauge-covariant phase-insensitive Gaussian channel $\Phi_{\tau,m}$,
+and every gauge-covariant phase-insensitive one-mode Gaussian channel $\Phi_{\tau,m}$,
 
 $$
 \boxed{
 (I\otimes\Phi_{\tau,m})(|\Psi\rangle\langle\Psi|)
 \text{ is NPT}
 \iff
-\tau>m,
+\tau>m.
 }
 $$
 
-where $\tau>m$ is exactly the non-entanglement-breaking region in the repository convention.
-
-For symmetric real branches $|\pm a\rangle$ and $m>0$, the direct principal-minor proof gives
+For symmetric real branches $|\pm a\rangle$ and $m>0$, the repository's direct proof gives
 
 $$
 \boxed{
@@ -51,325 +49,155 @@ $$
 }
 $$
 
-Thus the matched $2\times2$ partial-transpose principal minor is negative exactly in the non-EB region for every finite $a>0$.
+The proof has survived an independent algebraic audit and numerical stress tests. The mathematics remains useful.
 
-The pure-loss edge $m=0$ is treated separately with a finite analysis displacement.
-
----
-
-## 2. Important change after the Mele–Lami–Giovannetti audit
-
-The repository previously treated the finite Schmidt-rank-two **Fock** theorem as a possible novelty. That claim has now been killed by prior art.
-
-Mele, Lami, and Giovannetti, arXiv:2303.12867 / *Nature Photonics* (2025), use
-
-$$
-|\Psi_{M,c}\rangle
-=c|0,0\rangle+\sqrt{1-c^2}|M,M\rangle
-$$
-
-and prove in Supplementary Remark 1 that, after a local $\{|0\rangle,|M\rangle\}$ projection, the state is non-PPT/distillable exactly when their phase-insensitive channel is non-EB, independently of $M$ and $c$.
-
-Under
-
-$$
-\tau=g\lambda,
-\qquad
-m=g-1,
-$$
-
-their condition
-
-$$
-(1-\lambda)g<1
-$$
-
-is exactly
-
-$$
-\tau>m.
-$$
-
-Therefore **rank-two Fock sufficiency is prior art**.
-
-See:
-
-- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
-
-### Why this does not automatically kill the present coherent theorem
-
-The Mele input branches are orthogonal number states
-
-$$
-|0\rangle,\quad |M\rangle.
-$$
-
-The present theorem claims something different and stronger within a specific nonorthogonal family:
-
-> **every pair of distinct finite coherent states works, at every nonzero separation, with arbitrary nonzero branch weights.**
-
-No inference from existence of a Fock rank-two probe establishes that every nonorthogonal coherent pair has the same exact property.
-
-The coherent theorem therefore remains an independent novelty question.
+The underlying all-finite-pairs survival theorem is no longer considered novel.
 
 ---
 
-## 3. Häseler–Moroder–Lütkenhaus (2008): paradigm collision, not yet theorem collision
+## 2. Decisive collision: Filippov–Ziman (2014)
 
-H. Häseler, T. Moroder, and N. Lütkenhaus,
+S. N. Filippov and M. Ziman,
 
-**“Testing Quantum Devices: Practical Entanglement Verification in Bipartite Optical Systems,”**
+**“Entanglement sensitivity to signal attenuation and amplification,”**
 
-PRA 77, 032303 (2008), arXiv:0711.2709.
+*Phys. Rev. A* **90**, 010301(R) (2014), arXiv:1405.1754.
 
-Established there:
-
-- device/channel testing with nonorthogonal input states;
-- effective-entanglement reformulation;
-- a binary coherent alphabet $|\pm\alpha\rangle$;
-- partial-transpose expectation-value matrices;
-- practical coherent-state/homodyne tests.
-
-This is conceptually very close and must be cited prominently.
-
-However, their operational criterion is based on restricted measured expectation values/moments. The corresponding separability-compatible noise boundary depends on the coherent-state overlap/amplitude.
-
-The current repository result instead assumes the exact Gaussian channel and evaluates selected matrix elements of the **actual output state**. Its claimed NPT boundary is independent of every finite nonzero coherent separation.
-
-No theorem in the inspected Häseler paper has yet been found that states
+They study the non-Gaussian coherent state
 
 $$
-\forall\alpha\neq\beta:\quad
-\rho_{\rm out}\text{ NPT}\iff\Phi\text{ non-EB}.
+|\psi_\gamma\rangle
+\propto
+|\gamma\rangle_A|0\rangle_B
+-|0\rangle_A|\gamma\rangle_B
 $$
+
+under asymmetric phase-insensitive Gaussian channels and derive an exact coherent-state weighted-swap witness family.
+
+A one-sided specialization, with the $A$ channel set to the identity, can be tuned so the witness is negative for **every finite $\gamma\ne0$** exactly when the $B$ channel is non-entanglement-breaking.
+
+In their variables, with excess noise
+
+$$
+a=\mu-\frac12|\kappa-1|,
+$$
+
+the channel is EB iff
+
+$$
+a\ge\min(\kappa,1).
+$$
+
+Their witness can be tuned so its sign reduces exactly to
+
+$$
+a<\kappa
+$$
+
+for attenuation and
+
+$$
+a<1
+$$
+
+for amplification/additive noise, i.e. the exact complement of the EB condition.
+
+An invertible local filter on the untouched two-dimensional span
+
+$$
+\operatorname{span}\{|0\rangle,|\gamma\rangle\}
+$$
+
+maps their reference mode to orthogonal qubit labels with arbitrary nonzero branch weights. A common displacement/rotation on the noisy mode maps $|0\rangle,|\gamma\rangle$ to any finite distinct coherent pair.
+
+Finite Fock truncations of the Filippov–Ziman weighted-swap witness have positive partial transpose after transposition of the witnessed subsystem, so a convergent negative expectation provides NPT certification rather than merely generic entanglement detection.
+
+Full derivation:
+
+- `NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
 
 ---
 
-## 4. Kreis–van Loock (2012): strongest direct predecessor
+## 3. Claims now retired
 
-K. Kreis and P. van Loock,
+Do not claim as new:
 
-**“Classifying, quantifying, and witnessing qudit-qumode hybrid entanglement,”**
+- every finite binary coherent pair survives every non-EB thermal attenuator;
+- the corresponding amplifier/additive-noise survival statement;
+- arbitrary nonzero branch weights via local filtering;
+- the broad iff statement that the binary coherent hybrid output is NPT exactly in the phase-insensitive non-EB region.
 
-PRA 85, 032307 (2012), arXiv:1111.0478.
+The repository's proof may be substantially shorter and more transparent, but that is a **proof-compression question**, not a new survival theorem.
 
-This is currently the most dangerous coherent-state prior art because it studies the same symmetric hybrid input
+---
 
-$$
-\frac{|0\rangle|\alpha\rangle+|1\rangle|-\alpha\rangle}{\sqrt2}
-$$
+## 4. What remains under novelty audit
 
-with one-sided thermal photon noise modeled by a beam splitter with a thermal environment.
-
-They derive the noisy hybrid state and apply a finite-order Shchukin–Vogel moment witness.
-
-Their stated sufficient thermal-entanglement condition is amplitude dependent:
+The strongest possible contribution is the literal finite-dimensional PT certificate
 
 $$
-\bar n
-<
-\frac{4\eta|\alpha|^2}
-{(1-\eta)(2e^{4|\alpha|^2}-1)}.
+M_\Gamma
+=\begin{pmatrix}
+p_0&z_v^*\\z_v&p_v\end{pmatrix},
 $$
 
-They compare this with the known thermal-channel EB threshold and note that the chosen moment witness can fail to detect entanglement in part of the non-EB region.
+with
 
-### Current distinction
+$$
+|z_v|^2>p_0p_v,
+$$
 
-The repository claims to close precisely that gap:
+and the exact matched displacement
+
+$$
+\boxed{v_*=2\sqrt\tau a/m.}
+$$
+
+At that displacement,
 
 $$
 \boxed{
-\bar n<\frac{\eta}{1-\eta}
-\Longrightarrow
-\rho_{AB}\text{ NPT for every finite }\alpha\neq0,
+\frac{|z_{v_*}|^2}{p_0p_{v_*}}
+=\exp[4a^2(\tau-m)/m].
 }
 $$
 
-with the converse following from the channel being EB.
+Potentially new content, still unverified:
 
-If correct and absent from later literature, this is the strongest novelty case because the same state/channel problem was explicitly studied previously without an exact full-region result.
+1. reducing the known survival boundary to one explicit $2\times2$ principal minor of the **actual partial transpose**;
+2. requiring only two selected populations and one coherence;
+3. the closed-form matched coherent analysis state $v_*$;
+4. the associated exact selected-block negative eigenvalue / absolute negativity lower bound;
+5. optimized weak-link witness-strength asymptotics.
 
-See:
+Files:
 
-- `NOVELTY_CHECK_FINITE_CAT.md`
-
----
-
-## 5. Namiki–Azuma and coherent-state ensemble benchmarks
-
-R. Namiki and K. Azuma,
-
-**“Quantum Benchmark via an Uncertainty Product of Canonical Variables,”**
-
-PRL 114, 140503 (2015), arXiv:1404.2643.
-
-They establish a benchmark based on a Gaussian-distributed coherent-state ensemble and homodyne measurements that can verify quantum-domain performance for all one-mode Gaussian channels.
-
-Therefore do not claim that coherent states had not previously provided complete Gaussian-channel quantum benchmarks.
-
-The distinction under audit is:
-
-- their result: ensemble/average benchmark against EB channels;
-- current candidate: exact NPT of **each individual binary coherent hybrid state**, for every finite nonzero pair separation.
+- `EXACT_THREE_ELEMENT_WITNESS.md`
+- `ABSOLUTE_THREE_ELEMENT_WITNESS_GAP.md`
+- `WEAK_LINK_ABSOLUTE_GAP_ASYMPTOTIC.md`
 
 ---
 
-## 6. Other neighboring results already checked
+## 5. Prior-art search now required
 
-### Rigas–Gühne–Lütkenhaus
+Do not spend further effort asking whether the broad coherent-pair survival theorem is new.
 
-Qubit-mode separability criteria and effective-entanglement verification using covariance information / semidefinite methods. Relevant framework, but no exact all-coherent-pair thermal-channel NPT iff theorem located.
+Search instead for
 
-### Sabapathy–Ivan–Simon
+- coherent-state $2\times2$ principal minors of partial transposes;
+- displaced-vacuum hybrid entanglement witnesses;
+- state/process criteria equivalent to $|z|^2>p_0p_v$;
+- coherent-state matrix-element PPT tests;
+- finite reductions of weighted-swap / realignment witnesses;
+- exact optimized displacement tests for thermal attenuation/amplification/additive noise;
+- quantitative selected-block negativity bounds reaching Gaussian EB boundaries.
 
-Analytic non-Gaussian entanglement robustness under noisy attenuator/amplifier channels, including Fock/NOON-like families. Important technical neighborhood, but no inspected result matching the binary qubit–coherent theorem.
-
-### Ivan–Sabapathy–Simon
-
-Nonclassicality-breaking and entanglement-breaking Gaussian channels are closely related/up to Gaussian unitaries. Important structural result, but no direct implication has yet been found that forces every binary coherent hybrid state to be NPT throughout the full non-EB region.
-
-### Entangled coherent-state literature
-
-Two-bosonic-mode entangled coherent states under thermal noise are related but are not the same DV–CV hybrid state. These papers must nevertheless be searched for partial-transpose identities that may specialize to the current witness.
+Also try to derive the repository's three-element witness directly from Filippov–Ziman's weighted witness. If the reduction is immediate, the remaining novelty may be only pedagogical simplification.
 
 ---
 
-## 7. Exact theorem ingredients that a collision must reproduce or imply
+## 6. Current verdict
 
-A prior-art collision need not use the repository's notation. It counts if it proves or immediately implies all of the substantive content below.
-
-### State family
-
-Every finite pair
-
-$$
-\alpha\ne\beta
-$$
-
-and every
-
-$$
-0<p<1.
-$$
-
-### Channel family
-
-All gauge-covariant phase-insensitive one-mode Gaussian channels, including
-
-- thermal attenuation;
-- thermal amplification;
-- additive Gaussian noise;
-- pure loss as a singular edge.
-
-### Actual-state criterion
-
-Not merely a sufficient limited-moment test, but
-
-$$
-\rho_{\rm out}\text{ NPT}
-\iff
-\text{channel non-EB}.
-$$
-
-### Exact low-dimensional witness
-
-For $m>0$, a finite coherent analysis state with
-
-$$
-v_*=2\sqrt\tau a/m
-$$
-
-gives a $2\times2$ principal minor whose sign is exactly
-
-$$
-\operatorname{sgn}(m-\tau).
-$$
-
-If prior art proves these facts by another representation, the candidate novelty is dead.
-
----
-
-## 8. Pure-loss edge must remain separate in any audit
-
-The optimized thermal witness has
-
-$$
-v_*=2\sqrt\tau a/m,
-$$
-
-which diverges as $m\to0^+$.
-
-This does **not** mean an infinite-amplitude witness is required at pure loss.
-
-For $m=0$,
-
-$$
-\ln R(v)
-=4a^2(\tau-1)+4\sqrt\tau av.
-$$
-
-For every
-
-$$
-\tau>0,
-$$
-
-choose any finite
-
-$$
-\boxed{
-v>\frac{a(1-\tau)}{\sqrt\tau}.
-}
-$$
-
-Then $R(v)>1$ and the output is NPT.
-
-Any prior-art comparison that treats only $m>0$ does not automatically cover this finite pure-loss witness construction, although pure-loss survival of hybrid coherent entanglement itself is certainly not new.
-
----
-
-## 9. Current strongest novelty hypothesis
-
-The safest candidate statement is now:
-
-> **For every gauge-covariant phase-insensitive one-mode Gaussian channel, every individual finite nontrivial binary coherent hybrid input has NPT output if and only if the channel is not entanglement breaking. This iff boundary is exposed by one channel-matched $2\times2$ coherent-state principal minor.**
-
-Do not broaden this to claims about coherent-state quantum benchmarks generally.
-
----
-
-## 10. Required adversarial search
-
-Priority searches:
-
-1. citation-forward search of Kreis–van Loock (2012), especially papers computing full negativity/PPT rather than moment witnesses;
-2. citation-forward search of Häseler–Moroder–Lütkenhaus (2008), especially upgrades from EVM sufficiency to exact state criteria;
-3. binary-modulated CV-QKD entanglement proofs;
-4. hybrid qubit–oscillator entanglement under thermal amplifiers and additive Gaussian noise;
-5. coherent-state matrix-element / Husimi-Q-function partial-transpose witnesses;
-6. displaced-vacuum projection witnesses;
-7. general theorems linking coherent-state nonclassicality, nonclassicality breaking, and entanglement potential strongly enough to imply the all-pairs result.
-
-Search equations, supplements, appendices, theses, and follow-up papers. The Mele collision was buried in supplementary material and demonstrates why abstract-level searches are insufficient.
-
----
-
-## 11. Current assessment
-
-### Killed
-
-- rank-two Fock probe novelty;
-- fixed Fock Bell-state novelty as an underlying sufficiency theorem.
-
-### Still alive but unverified
-
-- every finite binary coherent pair works;
-- exact actual-state NPT/EB equivalence for the coherent hybrid family;
-- exact matched three-element coherent-state witness.
-
-### Confidence
-
-The mathematics currently appears strong, supported by a direct coherent-kernel proof, a separate pure-loss edge proof, and independent channel simulations. The dominant uncertainty is **prior art**, not internal algebra.
-
-No originality claim should be made until the citation-forward search described above is exhausted.
+**Broad theorem: killed as novelty.**  
+**Direct proof: mathematically strong and useful.**  
+**Three-element principal-minor certification: strongest surviving candidate, novelty unverified.**
