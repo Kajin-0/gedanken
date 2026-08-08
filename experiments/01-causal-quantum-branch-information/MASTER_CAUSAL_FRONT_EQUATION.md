@@ -1,195 +1,210 @@
-# Master Causal Quantum-Reception Front
+# Stationary Optimized-Envelope Causal Front
 
-**Timestamp:** 2026-08-07 18:15 EDT  
-**Status:** Closed-form wave-zone result for the aligned resonant linearized-gravity + stationary phase-insensitive Gaussian receiver model. This is the current central quantitative prediction of Experiment 01.
+**Updated:** 2026-08-07 20:04 EDT  
+**Status:** Correct but **special-case** closed-form result. This file no longer represents the universal receiver front. The general fixed-source result is in `GENERAL_FIXED_WAVEFORM_RECEIVER_FRONT.md`.
 
-## 1. Ingredients
+## 1. Scope correction
 
-The result combines four independently derived pieces.
-
-### A. Retarded propagation
-
-No source-controlled signal reaches the receiver before
+The previously derived logarithmic front
 
 $$
-t=R/c.
+T_{\rm cap}^{\rm env}(R)
+=\frac Rc+
+\frac1\kappa
+\ln\frac{\kappa_\Delta(R)}
+{\kappa_\Delta(R)-\Gamma_{\rm th}}
 $$
 
-### B. Far-zone gravitational storage coefficient
+is obtained only when **both** of the following are imposed:
 
-For aligned plus-type source and receiver quadrupoles,
+1. the receiver begins in its stationary thermal state,
+   $$
+   n_0=\Gamma_{\rm th}/\kappa;
+   $$
+2. for every target observation time, the incoming temporal mode is separately chosen to saturate the Cauchy–Schwarz loading bound.
+
+It is therefore a **protocol-optimized envelope**, not the trajectory of one fixed physical gravitational source pulse.
+
+For an actual source waveform $f$, the general criterion is instead
 
 $$
 \boxed{
-\eta_{\rm store}(R)
-=\frac{25\mathcal O}{16(kR)^2},
+\tau_f(t)>m(t),
 }
 $$
 
-where
+with
 
 $$
-k=\omega/c
+\boxed{
+\tau_f(t)
+=\kappa_\Delta
+\left|
+\int_0^t ds\,
+e^{-\kappa(t-s)/2}f(s)
+\right|^2
+}
 $$
 
-and $\mathcal O\le1$ collects tensor/polarization/temporal mode mismatch.
+and
 
-Therefore the useful source branch-mode loading rate is
+$$
+\boxed{
+m(t)
+=n_0e^{-\kappa t}
++\frac{\Gamma_{\rm th}}{\kappa}
+(1-e^{-\kappa t}).
+}
+$$
+
+See `GENERAL_FIXED_WAVEFORM_RECEIVER_FRONT.md`.
+
+---
+
+## 2. Derivation of the optimized envelope
+
+For any normalized temporal input supported up to target time $t$,
+
+$$
+\int_0^t ds\,|f(s)|^2\le1.
+$$
+
+Cauchy–Schwarz gives
+
+$$
+\tau_f(t)
+\le
+\frac{\kappa_\Delta}{\kappa}
+(1-e^{-\kappa t}).
+$$
+
+The bound is saturated by a waveform proportional to
+
+$$
+f_t(s)
+\propto
+e^{-\kappa(t-s)/2}
+$$
+
+on $0<s<t$.
+
+The subscript matters: the saturating waveform changes when the target time changes.
+
+Define
+
+$$
+\boxed{
+\tau_{\rm env}(t)
+=\frac{\kappa_\Delta}{\kappa}
+(1-e^{-\kappa t}).
+}
+$$
+
+---
+
+## 3. Arbitrary receiver initial occupation
+
+Compare the envelope with
+
+$$
+m(t)
+=n_0e^{-\kappa t}
++\frac{\Gamma_{\rm th}}{\kappa}(1-e^{-\kappa t}).
+$$
+
+The envelope can become non-entanglement-breaking only if
+
+$$
+\boxed{
+\kappa_\Delta>\Gamma_{\rm th}.
+}
+$$
+
+When this holds, the earliest optimized-envelope crossing is
+
+$$
+\boxed{
+T_{\rm cap}^{\rm env}
+=\frac1\kappa
+\ln\left[
+1+
+\frac{\kappa n_0}
+{\kappa_\Delta-\Gamma_{\rm th}}
+\right].
+}
+$$
+
+Restoring propagation delay gives
+
+$$
+\boxed{
+T_{\rm cap}^{\rm env}(R)
+=\frac Rc+
+\frac1\kappa
+\ln\left[
+1+
+\frac{\kappa n_0}
+{\kappa_\Delta(R)-\Gamma_{\rm th}}
+\right].
+}
+$$
+
+---
+
+## 4. Stationary receiver: old logarithmic formula
+
+If
+
+$$
+n_0=\Gamma_{\rm th}/\kappa,
+$$
+
+then
+
+$$
+\boxed{
+T_{\rm cap}^{\rm env}(R)
+=\frac Rc+
+\frac1\kappa
+\ln\frac{\kappa_\Delta(R)}
+{\kappa_\Delta(R)-\Gamma_{\rm th}}.
+}
+$$
+
+This is the old logarithmic result.
+
+It remains useful as a best-case stationary benchmark, but it must not be described as a universal causal gravitational front.
+
+Near
+
+$$
+\kappa_\Delta\to\Gamma_{\rm th}^{+},
+$$
+
+this optimized stationary benchmark diverges logarithmically.
+
+That divergence is **not universal**: a fixed finite pulse can instead exhibit a finite EB $\to$ non-EB $\to$ EB window whose two boundaries merge at a finite time.
+
+---
+
+## 5. Gravitational wave-zone specialization
+
+For the aligned plus-quadrupole source/receiver link used in Experiment 01,
 
 $$
 \boxed{
 \kappa_\Delta(R)
-=\frac{25\mathcal O}{16(kR)^2}\kappa_g,
+=\frac{25\mathcal O}{16(kR)^2}\kappa_g.
 }
 $$
 
-where $\kappa_g$ is the receiver's intrinsic graviton linewidth.
-
-### C. Stationary receiver noise
-
-Let
+For the stationary optimized envelope,
 
 $$
 \boxed{
-\Gamma_{\rm th}
-=\sum_a\bar n_a\kappa_a
-}
-$$
-
-be the thermal occupation-injection rate from uncontrolled receiver ports, and let
-
-$$
-\kappa_{\rm tot}
-$$
-
-be the receiver's full distance-independent linewidth, including gravitational vacuum damping and ordinary losses.
-
-### D. Exact binary coherent certification law
-
-For gravitational branch-mode coherent-state distance $N_\Delta$, define the matched exact witness margin
-
-$$
-\Lambda
-=\ln\frac{|z_v|^2}{p_0p_v}.
-$$
-
-A target finite margin $\Lambda_{\rm req}>0$ is reached optimally when
-
-$$
-\kappa_\Delta
-(1-e^{-\kappa_{\rm tot}\Delta t})
-=\Gamma_{\rm th}
-\left(1+\frac{\Lambda_{\rm req}}{N_\Delta}\right),
-$$
-
-where
-
-$$
-\Delta t=t-R/c.
-$$
-
----
-
-## 2. Master finite-certification front
-
-Substitute the gravitational loading rate into the exact receiver result.
-
-The earliest possible source-to-receiver certification time is
-
-$$
-\boxed{
-T_\Lambda^{\min}(R)
-=
-\frac Rc
--
-\frac1{\kappa_{\rm tot}}
-\ln\left[
-1-
-\frac{16(kR)^2\Gamma_{\rm th}}
-{25\mathcal O\kappa_g}
-\left(1+\frac{\Lambda_{\rm req}}{N_\Delta}\right)
-\right].
-}
-$$
-
-This is the current **master causal quantum-reception front** for the wave-zone resonant Gaussian model.
-
-It is valid when the logarithm argument lies strictly between zero and one.
-
----
-
-## 3. Existence condition
-
-A finite certification front exists iff
-
-$$
-\boxed{
-\frac{25\mathcal O\kappa_g}
-{16(kR)^2\Gamma_{\rm th}}
->
-1+\frac{\Lambda_{\rm req}}{N_\Delta}.
-}
-$$
-
-Define the dimensionless local gravitational quantum-reception ratio
-
-$$
-\boxed{
-\mathfrak Q_G(R)
-\equiv
-\frac{25\mathcal O\kappa_g}
-{16(kR)^2\Gamma_{\rm th}}.
-}
-$$
-
-Then
-
-$$
-\boxed{
-\text{finite certificate exists}
-\iff
-\mathfrak Q_G(R)
->
-1+\frac{\Lambda_{\rm req}}{N_\Delta}.
-}
-$$
-
-This separates three physical resources:
-
-- **receiver channel quality:** $\mathfrak Q_G$;
-- **source branch strength:** $N_\Delta$;
-- **required experimental confidence/margin:** $\Lambda_{\rm req}$.
-
----
-
-## 4. Bare NPT/capability front
-
-Set
-
-$$
-\Lambda_{\rm req}=0.
-$$
-
-Then
-
-$$
-\boxed{
-\mathfrak Q_G(R)>1
-}
-$$
-
-is exactly the receiver non-entanglement-breaking condition for the binary coherent gravitational branch mode.
-
-The earliest NPT/capability front is
-
-$$
-\boxed{
-T_{\rm cap}(R)
-=T_{\rm NPT}^{\min}(R)
-=
-\frac Rc
--
-\frac1{\kappa_{\rm tot}}
+T_{\rm cap}^{\rm env}(R)
+=\frac Rc-
+\frac1\kappa
 \ln\left[
 1-
 \frac{16(kR)^2\Gamma_{\rm th}}
@@ -198,25 +213,12 @@ T_{\rm cap}(R)
 }
 $$
 
-Within the covered Gaussian receiver family, every nontrivial finite binary coherent source encoding is front faithful, so the channel-capability and source-cat NPT fronts coincide.
-
----
-
-## 5. Maximum thermal quantum range
-
-The mathematical NPT front exists only while
-
-$$
-\mathfrak Q_G(R)>1.
-$$
-
-Thus
+The corresponding envelope radius is
 
 $$
 \boxed{
-R<R_Q
-=
-\frac{5}{4k}
+R_{\rm env}
+=\frac5{4k}
 \sqrt{
 \frac{\mathcal O\kappa_g}
 {\Gamma_{\rm th}}
@@ -224,351 +226,68 @@ R<R_Q
 }
 $$
 
-For a finite witness requirement,
+This is an upper-envelope capability scale. A specified physical source waveform generally has a smaller capability range.
+
+For example, the matched decaying exponential source in `EXPONENTIAL_SOURCE_QUANTUM_WINDOW.md` has
 
 $$
-\boxed{
-R<R_\Lambda
-=
-\frac{R_Q}
-{\sqrt{1+\Lambda_{\rm req}/N_\Delta}}.
-}
-$$
-
-Therefore
-
-$$
-\boxed{
-R_\Lambda<R_Q
-}
-$$
-
-for every finite nonzero certification margin.
-
-The classical gravitational wave continues beyond these radii; these are receiver quantum-capability/certification limits, not propagation limits.
-
----
-
-## 6. Source branch strength in gravitational variables
-
-For a conserved nonrelativistic source quadrupole difference,
-
-$$
-\boxed{
-N_\Delta
-=\frac{G}{5\pi\hbar c^5}
-\int_0^\infty d\omega\,
-\omega^5
-|\Delta\widetilde Q_{ij}(\omega)|^2.
-}
-$$
-
-For the narrow-band plus-type branch motion
-
-$$
-\Delta Q_{xx}
-=q_0f(t)\cos\omega_0t,
-$$
-
-$$
-\Delta Q_{yy}
-=-\Delta Q_{xx},
-$$
-
-$$
-\boxed{
-N_\Delta
-\simeq
-\frac{Gq_0^2\omega_0^5T_f}
-{5\hbar c^5},
-\qquad
-T_f=\int dt\,|f(t)|^2.
-}
-$$
-
-The finite-certification front can therefore be written entirely in terms of a physical source trajectory and receiver parameters.
-
----
-
-## 7. Receiver graviton linewidth
-
-For a plus-type receiver quadrupole transition,
-
-$$
-\boxed{
-\kappa_g
-=\frac{4G\omega^5|q_B|^2}
-{5\hbar c^5}.
-}
-$$
-
-More generally,
-
-$$
-\boxed{
-\kappa_g
-=\frac{2G\omega^5}{5\hbar c^5}
-Q_{ij}^{10}Q_{ij}^{01}.
-}
-$$
-
-Thus the master front can be expressed entirely in source and receiver quadrupole matrix elements without an abstract gravitational coupling constant.
-
----
-
-## 8. Fully quadrupolar form
-
-Using the general receiver linewidth,
-
-$$
-\frac{16(kR)^2\Gamma_{\rm th}}
-{25\mathcal O\kappa_g}
-=
-\frac{8\hbar c^5(kR)^2\Gamma_{\rm th}}
-{5\mathcal O G\omega^5Q_{ij}^{10}Q_{ij}^{01}}.
-$$
-
-Since
-
-$$
-kR=\omega R/c,
-$$
-
-this becomes
-
-$$
-\boxed{
-\frac{16(kR)^2\Gamma_{\rm th}}
-{25\mathcal O\kappa_g}
-=
-\frac{8\hbar c^3R^2\Gamma_{\rm th}}
-{5\mathcal O G\omega^3Q_{ij}^{10}Q_{ij}^{01}}.
-}
-$$
-
-Hence
-
-$$
-\boxed{
-T_\Lambda^{\min}(R)
-=
-\frac Rc-
-\frac1{\kappa_{\rm tot}}
-\ln\left[
-1-
-\frac{8\hbar c^3R^2\Gamma_{\rm th}}
-{5\mathcal O G\omega^3Q_{ij}^{10}Q_{ij}^{01}}
-\left(1+\frac{\Lambda_{\rm req}}{N_\Delta}\right)
-\right].
-}
-$$
-
-This form displays the physical scaling directly:
-
-$$
-\boxed{
-\text{quantum-build penalty}
-\propto
-\frac{R^2\Gamma_{\rm th}}
-{\omega^3|Q_B|^2}.
-}
+R_{\rm exp}
+\simeq0.804742\,R_{\rm env}.
 $$
 
 ---
 
-## 9. Near-capability asymptotic
+## 6. What should be cited as the general result
 
-Define
+The paper-level hierarchy is now:
 
-$$
-\epsilon_Q(R)
-=1-
-\frac{1+\Lambda_{\rm req}/N_\Delta}
-{\mathfrak Q_G(R)}.
-$$
-
-Then
+### General fixed-source channel
 
 $$
 \boxed{
-T_\Lambda^{\min}-R/c
-=-\frac{\ln\epsilon_Q}{\kappa_{\rm tot}}.
+\tau_f(t)>m(t).
 }
 $$
 
-As
+### Protocol-optimized envelope
 
 $$
-\epsilon_Q\to0^+,
-$$
-
-the certification front diverges logarithmically.
-
-Thus approaching the quantum/classical receiver boundary produces a universal critical slowing in this Markov Gaussian model.
-
----
-
-## 10. Well-inside-range asymptotic
-
-If
-
-$$
-\frac{1+\Lambda_{\rm req}/N_\Delta}
-{\mathfrak Q_G(R)}
-\ll1,
-$$
-
-then
-
-$$
--\ln(1-x)\simeq x,
-$$
-
-and
-
-$$
-\boxed{
-T_\Lambda^{\min}-R/c
-\simeq
-\frac{16(kR)^2\Gamma_{\rm th}}
-{25\mathcal O\kappa_g\kappa_{\rm tot}}
-\left(1+\frac{\Lambda_{\rm req}}{N_\Delta}\right).
-}
-$$
-
-Therefore the far-zone post-light-cone build delay scales as
-
-$$
-\boxed{R^2}
-$$
-
-for a compact resonant receiver with fixed intrinsic linewidth.
-
----
-
-## 11. Zero-temperature limit
-
-The finite-margin variable $\Lambda$ above is normalized by the vacuum-output occupation $m$ and becomes singular as the receiver approaches an ideal pure-loss channel with
-
-$$
-\Gamma_{\rm th}\to0.
-$$
-
-Therefore the thermal front formula should not be naively evaluated by setting $\Gamma_{\rm th}=0$ inside $\Lambda$.
-
-In vacuum the correct feasibility object is the maximum transferable negativity. For weak total capture,
-
-$$
-\boxed{
-\mathcal N_{\max}
-\simeq
-\eta_Q
-=
-\frac{25\mathcal O}{16(kR)^2}
-\frac{\kappa_g}{\kappa_{\rm tot}}.
-}
-$$
-
-Thus thermal and vacuum receiver limitations should remain conceptually distinct.
-
----
-
-## 12. Passive nonrelativistic specialization
-
-For a passive nonrelativistic receiver,
-
-$$
-\frac{\kappa_g}{\omega}
+\tau_f(t)
 \le
-\frac23\mathcal C_B\beta_B^3.
+\frac{\kappa_\Delta}{\kappa}(1-e^{-\kappa t}).
 $$
 
-With one thermal internal bath,
+### Stationary optimized-envelope special case
 
-$$
-\Gamma_{\rm th}
-=\bar n_B\omega/Q_B.
-$$
+The logarithmic formula in this file.
 
-A wave-zone NPT region with
-
-$$
-kR\ge\zeta
-$$
-
-requires
-
-$$
-\boxed{
-\frac{25\mathcal O}{24}
-\frac{Q_B\mathcal C_B\beta_B^3}
-{\bar n_B}
->\zeta^2.
-}
-$$
-
-In vacuum, the optimized source-receiver negativity obeys
-
-$$
-\boxed{
-\mathcal N_{\max}^{\rm WZ}
-\lesssim
-\frac{25\mathcal O}{24\zeta^2}
-Q_B\mathcal C_B\beta_B^3
-}
-$$
-
-in the weak-capture regime.
+This distinction is essential because recent noisy gravitational receiver models already contain fixed time-dependent transfer channels with signal probabilities that grow quadratically while thermal occupation grows linearly.
 
 ---
 
-## 13. What is actually predicted
+## 7. Finite certification correction
 
-The model predicts a nested causal structure:
-
-### Light cone
+The normalized ratio
 
 $$
-T=R/c.
+\Lambda
+=\ln\frac{|z|^2}{p_0p_v}
 $$
 
-### Quantum-capability/NPT front
+remains an exact **sign/boundary** diagnostic for the binary coherent Gaussian theorem, but it should not be used by itself as a practical finite-certification strength near vanishing transmission.
 
-$$
-T_{\rm cap}=T_{\rm NPT}^{\min}.
-$$
+The preferred next metric is an absolute quantity such as
 
-### Finite-certification front
-
-$$
-T_\Lambda^{\min}>T_{\rm cap}.
-$$
-
-At nonzero thermal noise the latter two terminate at finite radii,
-
-$$
-R_Q,
-\qquad
-R_\Lambda<R_Q,
-$$
-
-and diverge logarithmically as those ranges are approached from below.
-
-This is not a modification of the relativistic light cone. It is a **quantum-information cone inside the ordinary causal cone**, set by receiver channel quality.
+- the negative eigenvalue of the matched $2\times2$ partial-transpose block;
+- a rigorous lower bound on full negativity;
+- or the exact full negativity where available.
 
 ---
 
-## 14. Central Feynman-level statement
+## 8. Current role of this file
 
-> **Einstein tells us when the gravitational branch signal is allowed to arrive. The receiver then needs time to turn that arriving field into a quantum record faster than its own environment turns the same information into a classical record. The source determines how much branch information is available, the Green function determines how much reaches the receiver, and the receiver linewidths determine whether that information remains quantum. Those ingredients combine into one front in spacetime.**
+This file is retained because the optimized logarithmic envelope is analytically useful. It should now be read as:
 
----
+> **the best-case stationary thermal receiver front under target-time-specific temporal-mode optimization.**
 
-## 15. Strongest next step
-
-The model now has a single central prediction. The strongest remaining tasks are therefore validation rather than adding more mechanisms:
-
-1. independent mathematical review of the binary coherent Gaussian theorem;
-2. broader prior-art/citation-forward novelty check;
-3. check the gravitational storage coefficient in a second fully explicit field quantization convention;
-4. then reorganize the main Experiment 01 paper around this master equation and its general channel-capability interpretation.
+It is no longer the central universal prediction of Experiment 01.
