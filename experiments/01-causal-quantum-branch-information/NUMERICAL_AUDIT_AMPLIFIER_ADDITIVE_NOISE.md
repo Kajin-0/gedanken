@@ -1,7 +1,7 @@
 # Numerical Audit — Thermal Amplifier and Additive Gaussian Noise
 
 **Date:** 2026-08-07  
-**Status:** Independent finite-dimensional numerical audit of the phase-insensitive binary coherent NPT/EB theorem. This is not part of the proof; it is a check against implementation-independent failure modes.
+**Status:** **REPRODUCIBLE INDEPENDENT NUMERICAL AUDIT — EXECUTABLE IMPLEMENTATIONS COMMITTED**
 
 ## 1. Purpose
 
@@ -17,14 +17,23 @@ $$
 \tau>m.
 $$
 
-The thermal attenuator case had already been checked independently using a beam-splitter dilation.
+The thermal attenuator case is independently checked with a beam-splitter dilation.
 
 This note audits two other canonical phase-insensitive channels:
 
 1. thermal amplification;
 2. unit-gain additive Gaussian noise.
 
-The calculations use direct Stinespring/random-displacement simulations rather than the coherent-state matrix-element formula used in the proof.
+The calculations use explicit Stinespring/random-displacement constructions rather than the coherent-state matrix-element formula used in the proof.
+
+### Committed implementations
+
+- `numerics/thermal_cat_scan.py` — thermal attenuator via beam splitter + thermal environment;
+- `numerics/amplifier_cat_scan.py` — thermal amplifier via two-mode-squeezing Stinespring dilation;
+- `numerics/additive_noise_cat_scan.py` — additive Gaussian noise via direct random-displacement integration;
+- `numerics/README.md` — run instructions, regression values, and convergence rules.
+
+The amplifier and additive-noise calculations were previously documented only as tables. Their actual implementations are now part of the repository.
 
 ---
 
@@ -73,18 +82,18 @@ $$
 
 ## 3. Amplifier simulation
 
-The simulation was performed in a truncated Fock basis.
+The committed script `numerics/amplifier_cat_scan.py` works in a truncated Fock basis.
 
-For each input bosonic dyad in the hybrid state,
+For each input bosonic dyad in the hybrid state it
 
-1. tensor with a truncated thermal environment;
-2. apply the exact finite-matrix two-mode-squeezing unitary;
-3. trace the environment;
-4. assemble the qubit–bosonic output;
-5. partially transpose the qubit;
-6. compute the minimum eigenvalue.
+1. tensors with a truncated thermal environment;
+2. applies the finite-matrix two-mode-squeezing unitary;
+3. traces the environment;
+4. assembles the qubit–bosonic output;
+5. partially transposes the qubit;
+6. computes the full PT spectrum.
 
-A representative non-EB test used
+A representative non-EB test uses
 
 $$
 G=1.5,
@@ -106,7 +115,7 @@ $$
 |\pm0.4\rangle,
 $$
 
-the minimum partial-transpose eigenvalue converged with Fock cutoff $N$ as
+the minimum partial-transpose eigenvalue converges with Fock cutoff $N$ as
 
 $$
 \begin{array}{c|c}
@@ -121,6 +130,8 @@ N&\lambda_{\min}(\rho^{T_A})\\
 $$
 
 The negative value is stable and rapidly converged.
+
+The newly committed implementation reproduces these values.
 
 ---
 
@@ -164,7 +175,9 @@ $$
 \lambda_{\min}\to0^-.
 $$
 
-Thus the above-threshold control behaves exactly as expected from truncation error.
+Thus the above-threshold control behaves as expected from truncation error.
+
+This control is important: a small negative eigenvalue from a finite bosonic truncation is **not** evidence of physical NPT unless it is stable under increasing resolution.
 
 ---
 
@@ -199,7 +212,9 @@ $$
 \boxed{m=1.}
 $$
 
-The channel was simulated directly as a two-dimensional Gaussian integral over displacement operators using Gauss–Hermite quadrature, followed by Fock truncation and partial-transpose diagonalization.
+The committed script `numerics/additive_noise_cat_scan.py` evaluates this channel directly as a two-dimensional Gaussian integral over displacement operators using tensor-product Gauss–Hermite quadrature, followed by Fock truncation and partial-transpose diagonalization.
+
+This construction is independent of both the coherent-dyad analytic kernel and the amplifier/attenuator dilation code.
 
 ---
 
@@ -217,7 +232,7 @@ $$
 N=16,
 $$
 
-and sufficiently converged quadrature order, representative minimum PT eigenvalues were
+and sufficiently converged quadrature order, representative minimum PT eigenvalues are
 
 $$
 \begin{array}{c|c|c}
@@ -232,45 +247,49 @@ $$
 
 The below-threshold negative eigenvalues are orders of magnitude above numerical error.
 
-Above the exact threshold, the residual negative eigenvalue is reduced to the few-$10^{-6}$ numerical quadrature/truncation floor.
+Above the exact threshold, the residual negative eigenvalue is reduced to the few-$10^{-6}$ quadrature/truncation floor.
 
 For example at
 
 $$
 m=1.3,
 $$
-raising the Gauss–Hermite integration order changed the spurious value from approximately
+
+raising the Gauss–Hermite integration order reduces a low-order spurious value of approximately
 
 $$
 -3.4\times10^{-3}
 $$
 
-at low integration order to
+to
 
 $$
 O(10^{-6})
 $$
 
-once the displacement integral was converged.
+once the displacement integral is converged.
+
+The committed implementation reproduces this behavior.
 
 ---
 
 ## 7. What the audit establishes
 
-This is not a proof, but it substantially reduces the chance that the analytic theorem is an artifact of
+This is not a proof, but it substantially reduces the chance that the coherent theorem is an artifact of
 
 - the thermal-attenuator representation;
 - a mistaken amplifier convention;
 - the additive-noise edge;
 - the coherent-state principal-minor algebra alone.
 
-The phase-insensitive theorem is now supported by
+The phase-insensitive coherent theorem is now supported by
 
 1. direct analytic coherent-kernel proof;
-2. explicit pure-loss edge analysis;
-3. independent thermal attenuator dilation;
-4. independent thermal amplifier Stinespring simulation;
-5. independent additive random-displacement simulation.
+2. separate pure-loss edge proof;
+3. an independent line-by-line analytic rederivation in `COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`;
+4. thermal attenuator beam-splitter dilation;
+5. thermal amplifier two-mode-squeezer simulation;
+6. additive random-displacement simulation.
 
 All checked channels behave consistently with
 
@@ -284,8 +303,49 @@ $$
 
 ---
 
-## 8. Remaining vulnerability
+## 8. Reproducibility caution
 
-The main unresolved issue is now **prior art**, not internal consistency.
+No finite-dimensional simulation can establish exact positivity at an infinite-dimensional EB boundary by itself.
 
-The strongest next step remains a deep literature review of Schmidt-rank-two / finite-ancilla sufficiency for one-mode Gaussian entanglement-breaking tests.
+In particular:
+
+- finite Fock cutoffs can create small false-negative PT eigenvalues;
+- high thermal occupation requires larger cutoffs;
+- finite Gauss–Hermite order can mimic weak NPT in an additive-noise EB channel;
+- near $\tau=m$, the physical witness gap is small and numerical convergence becomes demanding.
+
+Therefore the correct numerical observable is not merely the sign at one cutoff/order, but its **convergence trajectory** as numerical resolution increases.
+
+---
+
+## 9. Updated remaining vulnerability
+
+The previous version of this note identified Schmidt-rank-two prior art as the main unresolved question. That is obsolete: the Fock rank-two novelty was killed by Mele–Lami–Giovannetti prior art.
+
+The dominant remaining uncertainty is now much narrower:
+
+> **Has the exact all-finite-binary-coherent actual-output NPT/EB equivalence, or an algebraically equivalent matched three-element coherent-state PT witness, already been proved elsewhere?**
+
+Current equation-level literature audits of Rigas–Gühne–Lütkenhaus, Namiki, Häseler/Lütkenhaus, Killoran–Häseler–Lütkenhaus, and Kreis–van Loock have found very close predecessors but not this exact completion.
+
+See:
+
+- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
+- `COHERENT_PRIOR_ART_DEEP_AUDIT.md`
+- `CLAIM_LEDGER_POST_MELE_ADDENDUM.md`
+
+---
+
+## 10. Next numerical step
+
+The useful next numerical task is a **controlled near-boundary convergence suite**, not another isolated example.
+
+Recommended offsets are
+
+$$
+\epsilon=10^{-1},10^{-2},10^{-3},10^{-4}
+$$
+
+on both sides of the exact boundary, with several coherent separations and at least one unequal branch-weight case.
+
+The goal is to map the numerical resolution needed for a stable physical negative eigenvalue as the analytic witness gap tends to zero.
