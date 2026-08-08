@@ -45,9 +45,9 @@ Including endpoint and spoke rest mass, the branch-difference STF quadrupole is
 The generalized mode mass is
 \begin{equation}
 \boxed{
-M_{\rm eff}=4\mu A(q),
+M_{\rm eff}=4\mu \mathcal A(q),
 \qquad
-A(q)=\frac12+\frac{q}{\sin2q}.}
+\mathcal A(q)=\frac12+\frac{q}{\sin2q}.}
 \label{eq:Meff}
 \end{equation}
 Quantizing $u=u_{\rm zpf}(a+a^\dagger)$ gives
@@ -62,7 +62,7 @@ and the intrinsic plus-mode spontaneous graviton linewidth
 \frac{8G\mu L^2\omega^4}{5c^5}\,
 \Ccal_\kappa(q),
 \qquad
-\Ccal_\kappa(q)=\frac{(\tan q/q)^2}{A(q)}.}
+\Ccal_\kappa(q)=\frac{(\tan q/q)^2}{\mathcal A(q)}.}
 \label{eq:kappag}
 \end{equation}
 For $q\ll1$,
@@ -148,11 +148,11 @@ The reference qubit and compact work system couple to this bus only at the hub. 
 \end{equation}
 up to the chosen reflection/reabsorption geometry.
 
-Each spoke couples only to its controller field at the same spacetime point through the local eigenstrain density
+Let $A_s$ denote the spoke cross-sectional area. Each spoke couples only to its controller field at the same spacetime point through the local eigenstrain density
 \begin{equation}
 \boxed{
 \mathcal E_a(x,t)
-=\frac12EA
+=\frac12E A_s
 \left[
 \partial_x\xi_a(x,t)
 -\epsilon_a\lambda\chi(x)\Phi_a(x,t)
@@ -168,8 +168,7 @@ For the mirrored branch trajectory $\xi_a^{(s)}=\epsilon_a s u f_q$, Eqs.~\eqref
 \epsilon_a\lambda\chi\Phi_a^{(s)}
 =
 \epsilon_as
-\left[
-u f_q'-\lambda\chi X_C(t-x/v_c)\right].
+\left[u f_q'-\lambda\chi X_C(t-x/v_c)\right].
 \end{equation}
 Therefore
 \begin{equation}
@@ -183,18 +182,18 @@ pointwise, even after finite controller propagation is restored. The controller 
 Projecting the local elastic--controller interaction onto the plus elastic mode gives
 \begin{equation}
 H_{u\Phi}(t)
-=-4EA\lambda u(t)
+=-4E A_s\lambda u(t)
 \int_0^L\dd x\,
 \chi(x)f_q'(x)\Phi(x,t).
 \label{eq:uphi}
 \end{equation}
-For a narrowband branch-conditioned controller component, define the normalized overlap weight $w(x)\propto\chi(x)f_q'(x)$ and the causal form factor
+For a narrowband branch-conditioned controller component, define the normalized overlap weight $W_c(x)\propto\chi(x)f_q'(x)$ and the causal form factor
 \begin{equation}
 \boxed{
 F_c(\omega)=
-\int_0^L\dd x\,w(x)e^{i\omega x/v_c},
+\int_0^L\dd x\,W_c(x)e^{i\omega x/v_c},
 \qquad
-\int_0^L\dd x\,w(x)=1.}
+\int_0^L\dd x\,W_c(x)=1.}
 \label{eq:Fc}
 \end{equation}
 Let
@@ -211,7 +210,7 @@ while
 \begin{equation}
 \boxed{
 |F_c|^2
-=1-q_c^2\operatorname{Var}_w(x/L)+O(q_c^4).}
+=1-q_c^2\operatorname{Var}_{W_c}(x/L)+O(q_c^4).}
 \label{eq:Fcsmall}
 \end{equation}
 Thus finite-speed control produces a leading propagation delay, whereas the coupling-strength correction begins only at $O(q_c^2)$. For a nearly uniform long-wavelength overlap,
