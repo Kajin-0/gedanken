@@ -31,7 +31,7 @@ For any selected receiver memory mode with coherent branch amplitude $\alpha_B$,
 \end{equation}
 \end{lemma}
 
-The proof is a unitary rotation in one-particle mode space that aligns the displacement vector $\bm{\alpha}$ with one basis vector. Because coherent states transform covariantly under passive mode rotations, all branch dependence is compressed into $d$ and the orthogonal modes are vacuum. This lemma is the formal bridge between the physical local encoder and the standard binary-coherent bosonic-channel problem.
+The proof is a unitary rotation in one-particle mode space that aligns the displacement vector $\bm{\alpha}$ with one basis vector. Because coherent states transform covariantly under passive mode rotations, all branch dependence is compressed into $d$ and the orthogonal modes are vacuum. This lemma is the formal bridge between the physical local encoder and the standard binary-coherent bosonic-channel problem. The operator $d$ is a basis-defined collective coordinate, not an additional localized oscillator or a new propagating degree of freedom. Its physical content is the total branch-dependent coherent norm and the projection of that norm onto actual receiver-coupled modes.
 
 A branch-common controller or background gravitational coherent field causes only a common displacement, $|\gamma_C\pm\alpha\rangle$, and is removed by the same branch-independent displacement. It does not change $N_\Delta$, NPT, or entanglement-breaking status. Controller fluctuations above the coherent-state vacuum level are different: they are genuine added noise and must be propagated through the channel.
 
@@ -56,7 +56,7 @@ The fraction of the complete branch-distance norm emitted into the gravitational
 \kappa_A=\sum_j\kappa_j.
 \label{eq:betaA}
 \end{equation}
-This equality is a narrowband amplitude-damping result. If the port couplings vary appreciably across the source waveform bandwidth, the correct object is the waveform-weighted ratio
+This equality is a narrowband amplitude-damping result. It is not a universal penalty fixed by gravity alone. If the gravitational port were the only damping channel, then $\kappa_A=\kappa_{g,A}$ and $\beta_{g,A}=1$; the price would be an emission time set by the intrinsically tiny gravitational linewidth. Adding faster nongravitational decay shortens the source lifetime but lowers the gravitational branch fraction. Thus $\beta_{g,A}$ expresses an interface speed--loss tradeoff, not a fundamental upper bound on gravitational emission efficiency. If the port couplings vary appreciably across the source waveform bandwidth, the correct object is the waveform-weighted ratio
 \begin{equation}
 \beta_{g,A}[\alpha]
 =
@@ -90,7 +90,7 @@ The coefficient has a reciprocal-antenna interpretation. The on-axis directivity
 =\frac{25\Ocal}{16(kR)^2}.}
 \label{eq:friis}
 \end{equation}
-This is ordinary reciprocal far-field link physics specialized to the quadrupole channel, not a new antenna theorem. Critical-coupling and temporal coupled-mode normalization are standard \cite{RuanFan2012}.
+This is ordinary reciprocal far-field link physics specialized to the quadrupole channel, not a new antenna theorem. Critical-coupling and temporal coupled-mode normalization are standard \cite{RuanFan2012}. Its operational meaning is independently fixed in Appendix~\ref{app:tt-overlap}: a normalized emitted one-graviton angular mode is projected onto the reciprocal receiver mode, the outgoing retarded amplitude is isolated, and $|t_{BA}|^2$ becomes the single-pass storage probability in the weak one-way wave zone. Thus $\eta_{\rm store}$ is not being identified with an arbitrary classical power or extinction coefficient.
 
 \section{Receiver memory and the four-factor coherent link}
 \label{sec:memory}
@@ -149,7 +149,7 @@ Defining
 one has $\tau_c(t)=\eta_Q^{\rm link}\Tcal_f(t)$ and $\tau_c\le\eta_Q^{\rm link}$.
 \end{proposition}
 
-The factors in Eq.~\eqref{eq:master} are not duplicate normalizations. The same product follows from an independent cascaded bosonic network: a source beamsplitter of transmissivity $\beta_{g,A}$, a propagation beamsplitter of transmissivity $\eta_{\rm store}$, and a receiver loading channel whose coherent fraction is $\beta_{g,B}\Tcal_f$. The product is therefore the canonical serial loss of the post-handoff virtual mode.
+The factors in Eq.~\eqref{eq:master} are not duplicate normalizations. The same product follows from an independent cascaded bosonic network: a source beamsplitter of transmissivity $\beta_{g,A}$, a propagation beamsplitter of transmissivity $\eta_{\rm store}$, and a receiver loading channel whose coherent fraction is $\beta_{g,B}\Tcal_f$. The product is therefore the canonical serial loss of the post-handoff virtual mode. If those factors were merely assumed independently, this multiplication would be bookkeeping. The physical content here is that all four are derived relative to the same completed source branch-distance norm, while propagation and receiver capture are normalized independently enough to prevent an incoming graviton wavepacket from being inserted for free.
 
 If the receiver has already begun responding to precursor radiation before the physical source/controller handoff, the same normalized receiver response coefficient can be computed from the instantaneous coherent branch state, but it should not yet be interpreted as the transmissivity of a fixed logical-to-bosonic input channel. The fixed-input channel description begins only once the controller degrees have been cleared and the completed branch-distance norm is established.
 
