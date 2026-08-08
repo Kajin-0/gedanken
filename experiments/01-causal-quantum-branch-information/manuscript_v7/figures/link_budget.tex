@@ -2,7 +2,7 @@
 \centering
 \begin{tikzpicture}[
   >=Latex,
-  node distance=0.72cm,
+  node distance=0.78cm,
   box/.style={draw, rounded corners=2pt, align=center, minimum height=1.65cm, text width=3.15cm, inner sep=5pt},
   arr/.style={->, line width=0.85pt},
   lab/.style={align=center, font=\small}
@@ -24,15 +24,13 @@ $\Delta_{\rm mem}=\tau_c-m_c$};
 readout $(\tau_r,m_r)$\\
 $\Delta_{\rm acc}=\tau_r\Delta_{\rm mem}-m_r$};
 
-\draw[arr] (source) -- node[lab, above] {$\displaystyle \beta_{g,A}$\\source branching} (gmode);
+\draw[arr] (source) -- node[lab, above=2pt] {$\beta_{g,A}$} (gmode);
+\draw[arr] (gmode) -- node[lab, above=2pt] {$\eta_{\rm store}\beta_{g,B}\mathcal T_f$} (memory);
+\draw[arr] (memory) -- node[lab, above=2pt] {$(\tau_r,m_r)$} (readout);
 
-\draw[arr] (gmode) -- node[lab, above] {$\displaystyle \eta_{\rm store}\,\beta_{g,B}\,\mathcal T_f$\\capture $\times$ branching $\times$ loading} (memory);
-
-\draw[arr] (memory) -- node[lab, above] {noisy readout} (readout);
-
-\node[lab, below=0.55cm of gmode, xshift=1.65cm] (backbone) {$\displaystyle \eta_Q^{\rm link}=\beta_{g,A}\eta_{\rm store}\beta_{g,B},\qquad \tau_c=\eta_Q^{\rm link}\mathcal T_f$};
+\node[lab, below=0.55cm of gmode, xshift=1.68cm] (backbone) {$\displaystyle \eta_Q^{\rm link}=\beta_{g,A}\eta_{\rm store}\beta_{g,B},\qquad \tau_c=\eta_Q^{\rm link}\mathcal T_f$};
 
 \end{tikzpicture}
-\caption{Source-resolved gravitational quantum-link architecture after the local code is instantiated. The three multiplicative factors $\beta_{g,A}$, $\eta_{\rm store}$, and $\beta_{g,B}$ form the coherent link backbone; the fixed waveform contributes $\mathcal T_f\le1$. Noise determines the memory quantum excess, and a separate readout stage determines whether that excess remains accessible. Encoder precursor radiation is retained in the complete waveform $f(t)$ rather than reset at the handoff.}
+\caption{Source-resolved gravitational quantum-link architecture after the local code is instantiated. The arrows represent source gravitational branching $\beta_{g,A}$, wave-zone mode capture $\eta_{\rm store}$, receiver gravitational branching $\beta_{g,B}$, temporal loading $\mathcal T_f$, and the final readout channel $(\tau_r,m_r)$. The first three factors form the coherent link backbone. Noise determines the memory quantum excess, and the separate readout stage determines whether that excess remains accessible. Encoder precursor radiation is retained in the complete waveform $f(t)$ rather than reset at the handoff.}
 \label{fig:link-budget}
 \end{figure}
