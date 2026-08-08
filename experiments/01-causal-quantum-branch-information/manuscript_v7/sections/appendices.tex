@@ -1,0 +1,166 @@
+\appendix
+
+\section{Branch-distance conservation at the encoder handoff}
+\label{app:handoff}
+
+For the damped two-mode encoder, the source amplitude is
+\begin{equation}
+\alpha_s(t)=-is\zeta\frac{g}{\Omega}\ee^{-\kappa_A t/4}\sin(\Omega t).
+\end{equation}
+The branch separation of the source mode is $2\alpha_+(t)$. Each Markov output port $j$ carries branch-difference amplitude $2\sqrt{\kappa_j}\alpha_+(t)$. The branch distance emitted into port $j$ through the controller-empty time is
+\begin{equation}
+\boxed{
+N_{\Delta,j}^{\rm enc}
+=4\frac{\kappa_j}{\kappa_A}|\zeta|^2
+\left(1-\ee^{-\kappa_A T_*/2}\right).}
+\end{equation}
+The source branch distance remaining at handoff is
+\begin{equation}
+N_{\Delta,A}(T_*)=4|\zeta|^2\ee^{-\kappa_A T_*/2}.
+\end{equation}
+Summing all source output ports gives
+\begin{equation}
+N_{\Delta,A}(T_*)+
+\sum_jN_{\Delta,j}^{\rm enc}=4|\zeta|^2,
+\end{equation}
+which is Eq.~\eqref{eq:distance-conservation}. In the fast-encoder limit, the emitted precursor fraction is
+\begin{equation}
+\epsilon_{\rm pre}
+=1-\ee^{-\kappa_A T_*/2}
+\simeq\frac{\pi\kappa_A}{4g}.
+\end{equation}
+
+\section{Full-system Poincar\'e-charge audit}
+\label{app:charges}
+
+Use the center-of-energy first moment
+\begin{equation}
+D^i=\frac1{c^2}\int\dd^3x\,x^iT^{00}
+\end{equation}
+instead of fixing a boost-generator sign convention. At fixed total momentum, equality of $D^i$ is equivalent to equality of the boost charges.
+
+The branch symmetry of each subsystem is summarized in Table~\ref{tab:charges}. The crucial radiation entry uses the fact that the two branch-dependent coherent field amplitudes are related by a global sign after common displacements are removed, while the free-field Poincar\'e generators are quadratic. The graviton and ordinary bath charges can therefore be nonzero for an individual pulse while still being exactly equal between branches at the retained order.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+Subsystem & $\Delta P^0$ & $\Delta\mathbf P$ & $\Delta\mathbf J$ & $\Delta\mathbf D$ \\
+\midrule
+reference doublet & 0 & 0 & 0 & 0 \\
+endpoint pairs & 0 & 0 & 0 & 0 \\
+elastic spokes & 0 & 0 & 0 & 0 \\
+hub & 0 & 0 & 0 & 0 \\
+work/controller + interaction & 0 & 0 & 0 & 0 \\
+graviton field & 0 & 0 & 0 & 0 \\
+other linear output ports & 0 & 0 & 0 & 0 \\
+\midrule
+full encoded system & 0 & 0 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\caption{Branch differences of the audited Poincar\'e charges. Zero denotes equality between branches, not necessarily zero absolute charge of an individual subsystem.}
+\label{tab:charges}
+\end{table}
+
+For the endpoint and spoke sectors, rest and kinetic/strain energies are branch even, opposite radial pairs cancel linear momentum and center-of-energy first moment, and the radial motion has zero orbital angular momentum. The hub remains at the origin. For the controller implementation, Eq.~\eqref{eq:eigenstrain} gives
+\begin{equation}
+[\epsilon_asu f_q'-\epsilon_as\lambda X_C\chi]^2
+=[u f_q'-\lambda X_C\chi]^2,
+\end{equation}
+so the local interaction/elastic energy is pointwise branch common. The controller is compact at the hub and carries no branch-dependent translational or angular momentum by construction.
+
+For the emitted linear fields,
+\begin{equation}
+\alpha_-=-\alpha_+,
+\end{equation}
+and any quadratic free-field charge is invariant under this sign transformation. Radiation recoil is consequently branch common as well.
+
+Let $Q_A$ denote any of the ten total Poincar\'e generators. The reference stress-energy is proportional to the identity on its degenerate logical doublet, so
+\begin{equation}
+\langle\mathsf0|Q_A|\mathsf1\rangle=0.
+\end{equation}
+The table establishes equality of the two diagonal elements. Hence
+\begin{equation}
+\boxed{
+V_{\mathcal C}^\dagger Q_A V_{\mathcal C}=q_A I_{\mathcal C},}
+\end{equation}
+which gives Eq.~\eqref{eq:charge-code}. This is a first-order/working-model statement; branch-dependent material asymmetry, a nondegenerate reference stress tensor, controller nonlinearities, or higher-order gravitational self-interaction can violate it.
+
+\section{Exact pure-loss partial-transpose block}
+\label{app:pureloss}
+
+For Eq.~\eqref{eq:hybrid}, define normalized receiver even and odd cat states
+\begin{equation}
+|C_+\rangle=\frac{|B\rangle+|-B\rangle}{\sqrt{2(1+s_B)}},
+\qquad
+|C_-\rangle=\frac{|B\rangle-|-B\rangle}{\sqrt{2(1-s_B)}}.
+\end{equation}
+The partially transposed state decomposes into two $2\times2$ blocks. The block containing the negative eigenvalue is
+\begin{equation}
+M_-=
+\frac14
+\begin{pmatrix}
+(1+s_B)(1-s_E) & \sqrt{1-s_B^2}(1+s_E)\\
+\sqrt{1-s_B^2}(1+s_E) & (1-s_B)(1-s_E)
+\end{pmatrix}.
+\end{equation}
+Its determinant is
+\begin{equation}
+\det M_-=-\frac{s_E(1-s_B^2)}{4}<0
+\end{equation}
+for every $A>0$ and $\eta>0$. The magnitude of its negative eigenvalue gives Eq.~\eqref{eq:exactN}.
+
+\section{Passive quadrupole sum-rule bound}
+\label{app:sumrule}
+
+Energy-weighted sum rules may be written as double commutators, and coordinate-multipole/E2 applications are standard \cite{LuJohnson2018,Hinohara2019}. Let a stationary nonrelativistic matter system have Hamiltonian eigenstates $|m\rangle$ with energies $E_m$ and a passive diagonal state $\rho=\sum_m p_m|m\rangle\langle m|$, so $p_m\ge p_n$ whenever $E_m<E_n$. For any Hermitian operator $F$,
+\begin{equation}
+\frac12\Tr\rho[F,[H,F]]
+=\sum_{m<n}(p_m-p_n)(E_n-E_m)|F_{mn}|^2.
+\end{equation}
+For the five orthonormal STF mass-quadrupole components $Q_A$, the coordinate-space commutator identity gives
+\begin{equation}
+\boxed{
+\sum_A\frac12\Tr\rho[Q_A,[H,Q_A]]
+=\frac{10}{3}\hbar^2\langle I\rangle_\rho,}
+\end{equation}
+where $I=\sum_a m_a r_a^2$. Passivity makes every positive-frequency term on the spectral side nonnegative. For a narrow selected band near $\omega$,
+\begin{equation}
+\sum_{\rm band,A}(p_m-p_n)|Q^A_{mn}|^2
+\lesssim\frac{10}{3}\frac{\hbar\langle I\rangle}{\omega}.
+\end{equation}
+Using the quadrupole graviton transition rate
+\begin{equation}
+\gamma_{nm}^{(g)}
+=\frac{2G\omega_{nm}^5}{5\hbar c^5}
+Q_{ij}^{nm}Q_{ij}^{mn},
+\end{equation}
+one obtains the passive net gravitational linewidth ceiling
+\begin{equation}
+\kappa_{g,\rm net}
+\lesssim\frac{4G}{3c^5}\langle I\rangle\omega^4.
+\end{equation}
+Writing $\langle I\rangle=ML^2$, $\Ccal=2GM/(c^2L)$, and $\beta=\omega L/c$ gives
+\begin{equation}
+\boxed{
+\frac{\kappa_{g,\rm net}}{\omega}
+\lesssim\frac23\Ccal\beta^3,}
+\end{equation}
+which is Eq.~\eqref{eq:sumrule}. The positivity step is exactly where the passive-state assumption enters; active or inverted states are not constrained by this positive-term argument. Prior graviton-absorption studies already show extremely small ordinary-matter cross sections by complementary methods \cite{BoughnRothman2006,PalessandroSloth2020}.
+
+\section{Passive source broadening}
+\label{app:broadening}
+
+For a passive exponential source with $r=\kappa_A/\kappa_B$, fixed intrinsic source gravitational rate $\kappa_{g,A}$, and fixed receiver parameters, the optimized end-to-end transfer is
+\begin{equation}
+\tau_{A\to B}^{\max}(r)
+=4\frac{\kappa_{g,A}\kappa_\Delta}{\kappa_B^2}
+r^{2r/(1-r)}.
+\end{equation}
+Since
+\begin{equation}
+\frac{\dd}{\dd r}\ln r^{2r/(1-r)}
+=\frac{2(\ln r+1-r)}{(1-r)^2}<0,
+\end{equation}
+adding passive nongravitational source damping strictly reduces the source-resolved optimum. Receiver-local temporal matching and source branching must therefore not be optimized independently.
