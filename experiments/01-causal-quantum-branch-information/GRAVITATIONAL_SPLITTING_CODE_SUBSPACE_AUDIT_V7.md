@@ -44,8 +44,7 @@ The paper works perturbatively to leading order in the gravitational coupling an
 Their dressed-state calculation gives, for a point $\bar x$ outside a neighborhood containing the localized matter state, a first-order exterior metric matrix element of the form
 
 $$
-\langle\hat\psi_I|h_{\mu\nu}(\bar x)|\hat\psi_J\rangle
-=
+\langle\hat\psi_I|h_{\mu\nu}(\bar x)|\hat\psi_J\rangle=
 \widetilde h^{S\lambda}_{\mu\nu}(\bar x;y)
 \langle\psi_I|P_\lambda|\psi_J\rangle
 +
@@ -103,8 +102,7 @@ Therefore every charge matrix element on the code is fixed by the same scalar $q
 For an orthonormal code basis $|0_L\rangle,|1_L\rangle$ this gives
 
 $$
-\langle0_L|Q_A|0_L\rangle
-=
+\langle0_L|Q_A|0_L\rangle=
 \langle1_L|Q_A|1_L\rangle
 =q_A,
 $$
@@ -120,8 +118,7 @@ This is exactly the type of fixed-matrix-element condition appearing in the Donn
 It is stronger and more appropriate than merely imposing
 
 $$
-\langle0_L|Q_A|0_L\rangle
-=
+\langle0_L|Q_A|0_L\rangle=
 \langle1_L|Q_A|1_L\rangle
 $$
 
