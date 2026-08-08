@@ -1,9 +1,9 @@
-# Claim Ledger Addendum — Post-Mele Prior-Art Audit
+# Claim Ledger Addendum — Post Mele and Filippov–Ziman Audits
 
 **Date:** 2026-08-07  
-**Purpose:** Update the canonical claim ledger after the confirmed Mele–Lami–Giovannetti rank-two collision and the subsequent equation-level binary-coherent prior-art audit.
+**Purpose:** Canonical claim classification after two confirmed prior-art collisions.
 
-This addendum supersedes any older claim-ledger language that describes Schmidt-rank-two Fock sufficiency as candidate novelty.
+This file supersedes earlier addenda that described either the rank-two Fock theorem or the all-binary-coherent survival theorem as active novelty candidates.
 
 ---
 
@@ -11,22 +11,14 @@ This addendum supersedes any older claim-ledger language that describes Schmidt-
 
 ### A12. Phase-insensitive Schmidt-rank-two Fock sufficiency
 
-Mele–Lami–Giovannetti, arXiv:2303.12867 / *Nature Photonics* (2025), use
+Mele–Lami–Giovannetti, arXiv:2303.12867 / *Nature Photonics* (2025), already use finite Schmidt-rank-two Fock-pair inputs
 
 $$
 |\Psi_{M,c}\rangle
-=c|0,0\rangle+\sqrt{1-c^2}|M,M\rangle,
+=c|00\rangle+\sqrt{1-c^2}|MM\rangle
 $$
 
-with arbitrary
-
-$$
-M\ge1,
-\qquad
-0<c<1,
-$$
-
-and prove after a local $\{|0\rangle,|M\rangle\}$ projection that the state is non-PPT/distillable exactly when their phase-insensitive Gaussian channel is non-EB.
+and prove non-PPT/distillability exactly in the non-EB phase-insensitive region after local projection.
 
 Their condition
 
@@ -45,73 +37,184 @@ $$
 to
 
 $$
-\boxed{\tau>m.}
+\tau>m.
 $$
 
-Therefore do not claim novelty for
+Do not claim novelty for
 
 - phase-insensitive Schmidt-rank-two sufficiency;
-- arbitrary nonzero Schmidt weights in the Fock-pair family;
-- the fixed vacuum–one-photon Bell probe;
-- qubit ancilla sufficiency for the phase-insensitive family;
-- arbitrarily weak Schmidt-rank-two Fock entanglement sufficiency.
+- arbitrary nonzero Fock-pair Schmidt weights;
+- fixed vacuum–one-photon Bell sufficiency;
+- qubit-ancilla sufficiency for the phase-insensitive family;
+- arbitrarily weak rank-two Fock entanglement sufficiency.
 
-Canonical collision note:
+Read:
 
 - `NOVELTY_COLLISION_MELE_RANK_TWO.md`
 
 ### A13. Binary coherent effective-entanglement/NPT architecture
 
-Rigas–Gühne–Lütkenhaus (2006), Namiki (2008), Häseler–Moroder–Lütkenhaus (2008), Killoran–Häseler–Lütkenhaus (2010), and related work already establish
+Rigas–Gühne–Lütkenhaus, Häseler–Moroder–Lütkenhaus, Namiki, Killoran–Häseler–Lütkenhaus, Killoran–Lütkenhaus, Kreis–van Loock, and related work already establish
 
-- source-replacement states of the form
-  $$
-  \sqrt{p_0}|0\rangle|\alpha\rangle
-  +\sqrt{p_1}|1\rangle|-\alpha\rangle;
-  $$
-- binary coherent-state prepare-and-measure channel tests;
-- PPT/NPT-based effective-entanglement verification;
+- source-replacement states based on $|\pm\alpha\rangle$;
+- binary coherent channel tests;
+- PPT/NPT effective-entanglement verification;
 - negativity lower bounds for the same virtual hybrid state;
-- thermal beam-splitter noise as a test channel;
-- displaced coherent-state/vacuum projections;
-- finite coherent alphabets as strong EB/non-EB channel benchmarks.
+- thermal beam-splitter examples;
+- finite coherent alphabets as strong Gaussian-channel benchmarks.
 
-None of these broad ideas is candidate novelty.
+None of these broad ideas is new.
 
----
+### A14. Every finite binary coherent hybrid survives iff the phase-insensitive channel is non-EB
 
-## B. INTERNALLY DERIVED — MATHEMATICS AUDITED, NOVELTY UNVERIFIED
-
-### B4. Every finite binary coherent pair detects the exact phase-insensitive EB boundary
-
-For
+Filippov–Ziman, *Phys. Rev. A* **90**, 010301(R) (2014), arXiv:1405.1754, study
 
 $$
-|\Psi\rangle
-=\sqrt p|0\rangle|\alpha\rangle
-+e^{i\phi}\sqrt{1-p}|1\rangle|\beta\rangle,
+|\psi_\gamma\rangle
+\propto
+|\gamma\rangle|0\rangle-|0\rangle|\gamma\rangle
 $$
 
-with
+under asymmetric phase-insensitive Gaussian channels and derive a coherent-state weighted-swap witness.
+
+Specializing one side to the identity and tuning their witness gives, for every finite $\gamma\ne0$, a negative witness exactly when the remaining channel is non-EB.
+
+In their variables,
 
 $$
-0<p<1,
+a=\mu-\frac12|\kappa-1|
+$$
+
+is excess noise and the EB condition is
+
+$$
+a\ge\min(\kappa,1).
+$$
+
+With their quantum-limited decomposition parameter
+
+$$
+T=
+\begin{cases}
+1+a,&\kappa<1,\\
+\kappa+a,&\kappa>1,
+\end{cases}
+$$
+
+and $t=1-\lambda>0$, the one-sided witness becomes
+
+$$
+E(t;x)=e^{-Ax}+e^{-Bx}-2e^{-Cx},
+\qquad x=|\gamma|^2,
+$$
+
+where
+
+$$
+A=\frac\kappa T,
 \qquad
-\alpha\ne\beta,
+B=1+\frac{1-T}{Tt^2},
+\qquad
+C=1-\frac{\sqrt\kappa}{Tt}.
 $$
 
-the repository derives
+Choosing
+
+$$
+t^2=\frac{T-1}{T-\kappa}
+$$
+
+gives $A=B$, and the sign condition factors to
+
+$$
+(a+1)(a-\kappa)<0
+\iff a<\kappa
+$$
+
+for attenuation, and
+
+$$
+(a+\kappa)(a-1)<0
+\iff a<1
+$$
+
+for amplification. The additive-noise limit is $a<1$.
+
+These are exactly the complements of the EB condition.
+
+An invertible local filter on
+
+$$
+\operatorname{span}\{|0\rangle,|\gamma\rangle\}
+$$
+
+maps the untouched Filippov–Ziman reference to orthogonal qubit labels with arbitrary nonzero branch weights. A common displacement/rotation maps $|0\rangle,|\gamma\rangle$ to any finite distinct coherent pair.
+
+Finite Fock truncations of their weighted-swap witness satisfy
+
+$$
+W_{\lambda,N}^{T_2}\ge0,
+$$
+
+so the one-sided negative witness can be interpreted as NPT certification; the convergent limiting expectation forces a negative finite truncation.
+
+Therefore do not claim novelty for the underlying statement
 
 $$
 \boxed{
-(I\otimes\Phi_{\tau,m})(|\Psi\rangle\langle\Psi|)
-\text{ NPT}
-\iff
-\tau>m.
+\text{every finite binary coherent hybrid is NPT iff the phase-insensitive channel is non-EB}.
 }
 $$
 
-For symmetric real $|\pm a\rangle$ and $m>0$,
+Read:
+
+- `NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
+
+---
+
+## B. INTERNALLY DERIVED — MATHEMATICS AUDITED, POSSIBLE NOVELTY STILL UNVERIFIED
+
+### B4. Direct coherent-dyad kernel and compressed proof
+
+The repository independently derives
+
+$$
+\langle u|\Phi_{\tau,m}(|\alpha\rangle\langle\beta|)|v\rangle
+=
+\frac{\langle\beta|\alpha\rangle\langle u|v\rangle}{m+1}
+\exp\left[
+\frac{(\sqrt\tau\beta^*-u^*)(v-\sqrt\tau\alpha)}{m+1}
+\right].
+$$
+
+The resulting all-pairs theorem is prior art in substance, but this direct proof remains much shorter than the Filippov–Ziman route.
+
+Files:
+
+- `DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
+- `COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`
+
+### B5. Exact three-element coherent-state PT witness
+
+For symmetric $|\pm a\rangle$, one literal $2\times2$ block of the actual partial transpose is
+
+$$
+M_\Gamma
+=\begin{pmatrix}
+p_0&z_v^*\\
+z_v&p_v
+\end{pmatrix}.
+$$
+
+The condition
+
+$$
+|z_v|^2>p_0p_v
+$$
+
+certifies NPT.
+
+For $m>0$, the exact matched analysis displacement is
 
 $$
 \boxed{
@@ -128,131 +231,68 @@ $$
 }
 $$
 
-Pure loss is covered separately by a finite witness displacement.
-
-Files:
-
-- `DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
-- `PURE_LOSS_EDGE_CASE.md`
-
-**Current status:** candidate novelty, unverified.
-
-### B5. Exact three-element coherent-state PT witness
-
-A selected block
-
-$$
-M_\Gamma
-=\begin{pmatrix}
-p_0&z_v^*\\
-z_v&p_v
-\end{pmatrix}
-$$
-
-inside the output partial transpose satisfies
-
-$$
-\boxed{|z_v|^2>p_0p_v}
-$$
-
-exactly at the channel non-EB boundary when $v=v_*$.
-
-This gives an iff channel/state test from two selected populations and one coherence rather than a restricted first/second-moment SDP.
+This exposes the full EB boundary from only two populations and one coherence.
 
 File:
 
 - `EXACT_THREE_ELEMENT_WITNESS.md`
 
-**Current status:** candidate novelty, unverified.
+**Current status:** strongest surviving novelty candidate, unverified.
+
+### B6. Absolute selected-block negativity strength
+
+The negative eigenvalue of the selected block gives
+
+$$
+G(v)=\frac12
+\max\left\{0,
+\sqrt{(p_0-p_v)^2+4|z_v|^2}
+-(p_0+p_v)
+\right\}.
+$$
+
+The repository derives optimized weak-link asymptotics and explicit constants.
+
+Files:
+
+- `ABSOLUTE_THREE_ELEMENT_WITNESS_GAP.md`
+- `WEAK_LINK_ABSOLUTE_GAP_ASYMPTOTIC.md`
+
+**Current status:** quantitative novelty unverified.
 
 ---
 
-## C. IMPORTANT PRIOR-ART NEAR MISSES — DO NOT OVERSTATE THE DIFFERENCE
+## C. ACTIVE PUBLICATION QUESTION
 
-### C1. Rigas–Gühne–Lütkenhaus (2006)
+The broad survival theorems are dead as novelty claims.
 
-They use the exact symmetric binary coherent hybrid state and PPT/EVM criteria.
+The only defensible standalone question is now:
 
-For their symmetric Gaussian-noise example they identify the necessary relation
+> **Is the full phase-insensitive binary-coherent NPT boundary reducible to an exact three-matrix-element $2\times2$ PT principal minor in a way that is genuinely new and useful relative to Filippov–Ziman's weighted-swap witness and earlier EVM/moment criteria?**
 
-$$
-\delta<2\eta,
-\qquad
-\delta=\sigma^2-1.
-$$
+A possible paper, if this survives, must be framed as
 
-For a thermal attenuator,
+- minimal exact certification;
+- proof compression;
+- closed-form matched analysis displacement;
+- possibly an exact absolute witness-strength bound.
 
-$$
-\delta=2(1-\eta)\bar n,
-$$
-
-so this becomes
-
-$$
-\boxed{
-\bar n<\frac{\eta}{1-\eta},
-}
-$$
-
-the exact non-EB boundary.
-
-However, their **actual detection curves remain overlap-dependent and sufficient**, not an exact all-pair actual-state theorem.
-
-### C2. Namiki (2008)
-
-Explicitly describes the earlier binary-coherent virtual-state criterion as NPT based and develops a two-nonorthogonal-state quantum-domain benchmark.
-
-### C3. Killoran–Häseler–Lütkenhaus (2010)
-
-Use the same virtual hybrid state, negativity, and a thermal beam-splitter test channel. They state that their lower bounds do not provide the full entanglement picture and become trivial before all verifiable entanglement disappears.
-
-### C4. Häseler–Lütkenhaus (2010)
-
-Show that three coherent states can produce an optimal-strength channel benchmark for the lossy thermal-noise model. Therefore the candidate novelty is not “few coherent states reach an EB boundary.”
-
-### C5. Kreis–van Loock (2012)
-
-Study the same balanced hybrid state through thermal photon noise and give an amplitude-dependent sufficient Shchukin–Vogel witness, explicitly leaving part of the non-EB region undetected.
-
-Detailed audit:
-
-- `COHERENT_PRIOR_ART_DEEP_AUDIT.md`
+It must not be framed as discovery of binary coherent entanglement survival.
 
 ---
 
-## D. ACTIVE PUBLICATION QUESTION
-
-The only currently defensible standalone mathematical candidate in this branch is the narrow exact-completion statement:
-
-> **For a known phase-insensitive one-mode Gaussian channel, every finite nontrivial binary coherent hybrid source-replacement state is NPT exactly in the channel's non-entanglement-breaking region, and one matched coherent-state $2\times2$ PT minor detects this iff boundary.**
-
-This is not yet an originality claim.
-
-Before publication, the project must exhaust citation-forward searches from
-
-- Rigas et al. (2006);
-- Häseler et al. (2008);
-- Namiki (2008);
-- Killoran et al. (2010);
-- Kreis–van Loock (2012).
-
-Search supplements, dissertations, follow-up QKD papers, and hybrid-entanglement papers for exact state-level PPT/NPT calculations.
-
----
-
-## E. CURRENT STOP/GO
+## D. CURRENT STOP/GO
 
 ### STOP
 
-- old rank-two Fock standalone novelty paper;
-- broad claims that binary coherent states or NPT-based effective-entanglement tests are new;
-- broad claims that a finite coherent alphabet can newly benchmark the Gaussian EB boundary.
+- rank-two Fock survival novelty paper;
+- all-binary-coherent survival novelty paper;
+- broad coherent-state benchmarking novelty claims.
 
 ### GO
 
-- exact all-binary-coherent-pairs theorem adversarial audit;
-- exact three-element witness adversarial audit;
-- independent analytic proof rederivation;
-- reproducible amplifier/additive-noise numerical implementations;
-- gravity only after the above novelty question is substantially resolved.
+1. search for exact $2\times2$ coherent-state PT principal-minor prior art;
+2. try to derive the repository three-element witness directly from Filippov–Ziman's weighted-swap witness;
+3. audit absolute selected-block strength formulas;
+4. only then decide whether a narrow note is worth writing;
+5. if not, return focus to the gravity application.
