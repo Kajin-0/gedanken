@@ -2,23 +2,23 @@
 
 These scripts are **independent checks**, not components of the analytic proofs.
 
-Their purpose is to realize the relevant Gaussian channels by constructions that do not use the coherent-state matrix-element formula in `../DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`, assemble the qubit–bosonic output state in a truncated Fock basis, partially transpose the qubit, and inspect the minimum PT eigenvalue / negativity.
+Their purpose is to realize relevant Gaussian channels and gravitational normalization tests through constructions that do not simply call the analytic formula being audited, then test convergence or closed-form constants numerically.
 
-## Requirements
+## Pinned active environment
 
-- Python 3.10+
-- NumPy
-- SciPy
+The active CI environment is
 
-Example environment:
+- Python `3.12.13`;
+- NumPy `2.5.1`;
+- SciPy `1.18.0`.
+
+Install with
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install numpy scipy
+python -m pip install -r requirements.txt
 ```
 
-No result in this directory should be treated as proof of an infinite-dimensional statement. Near an entanglement-breaking boundary, finite Fock truncation and finite quadrature order can create small spurious negative PT eigenvalues. Convergence is part of the test.
+No finite-dimensional numerical result in this directory should be treated as proof of an infinite-dimensional statement. Near an entanglement-breaking boundary, finite Fock truncation and finite quadrature order can create small spurious negative PT eigenvalues. Convergence is part of the test.
 
 ---
 
@@ -45,19 +45,17 @@ $$
 m=(1-\eta)\bar n,
 $$
 
-and the exact EB boundary is
+with exact EB boundary
 
 $$
 \eta\le\frac{\bar n}{\bar n+1}.
 $$
 
-Run:
+Exploratory run:
 
 ```bash
 python thermal_cat_scan.py
 ```
-
-This is the oldest script in the audit suite and performs a grid scan in coherent branch separation around the thermal-loss EB threshold.
 
 ---
 
@@ -79,62 +77,43 @@ $$
 
 implemented by an explicit finite-matrix two-mode squeezer with a thermal environment.
 
-Repository channel parameters:
+Repository convention:
 
 $$
 \tau=G,
 $$
 
 $$
-m=(G-1)(n_E+1).
+m=(G-1)(n_E+1),
 $$
 
-The exact EB threshold is
+with exact EB threshold
 
 $$
 \boxed{n_E\ge\frac1{G-1}.}
 $$
 
-Default regression run:
-
-```bash
-python amplifier_cat_scan.py
-```
-
-This evaluates
-
-- `G = 1.5, n_E = 0.5, a = 0.4` — safely non-EB;
-- `G = 1.5, n_E = 3.0, a = 0.4` — EB control;
-
-for Fock cutoffs 10, 12, 14, 16, 18.
-
-Expected non-EB minimum PT eigenvalues converge approximately as
+Canonical non-EB regression case:
 
 ```text
-N=10  -5.85654e-2
-N=12  -5.85734e-2
-N=14  -5.85749e-2
-N=16  -5.85752e-2
-N=18  -5.85752e-2
+G=1.5, n_E=0.5, a=0.4
 ```
 
-On the EB control, the finite-cutoff PT minimum is spuriously negative but its magnitude decreases with cutoff, e.g.
+with minimum PT eigenvalue near
 
 ```text
-N=10  -6.22e-3
-N=12  -3.79e-3
-N=14  -2.53e-3
-N=16  -1.68e-3
-N=18  -1.11e-3
+-5.8575e-2
 ```
 
-The trend toward zero is the expected truncation behavior. A persistent finite negative value on the EB side would be a red flag.
+as the Fock cutoff is increased.
 
-Custom run:
+The EB control uses
 
-```bash
-python amplifier_cat_scan.py --gain 1.2 --n-env 2.0 --amplitude 0.3 --cutoffs 10 12 14
+```text
+G=1.5, n_E=3.0, a=0.4
 ```
+
+and verifies that the finite-cutoff negative PT floor shrinks with increasing cutoff.
 
 ---
 
@@ -155,7 +134,7 @@ $$
 D(z)\rho D^\dagger(z),
 $$
 
-implemented directly using tensor-product Gauss–Hermite quadrature over the displacement plane.
+implemented directly using tensor-product Gauss--Hermite quadrature.
 
 Here
 
@@ -169,48 +148,119 @@ $$
 \boxed{m\ge1.}
 $$
 
-Default regression run:
-
-```bash
-python additive_noise_cat_scan.py
-```
-
-uses coherent branches `|±0.35>` at Fock cutoff 16 and scans
-
-```text
-m = 0.70, 0.95, 1.05, 1.30
-```
-
-across quadrature orders 12, 16, and 20.
-
-Representative converged values at sufficiently high quadrature order are
-
-```text
-m=0.70   lambda_min(PT) ≈ -2.228e-2   non-EB
-m=0.95   lambda_min(PT) ≈ -2.581e-3   non-EB
-m=1.05   lambda_min(PT) ≈ few × 10^-6 negative numerical floor   EB
-m=1.30   lambda_min(PT) ≈ few × 10^-6 negative numerical floor   EB
-```
-
-The EB-side residual must be interpreted as quadrature/Fock error and tested for convergence rather than as physical NPT.
-
-Custom run:
-
-```bash
-python additive_noise_cat_scan.py --noise 0.999 --amplitude 0.35 --dim 18 --orders 16 20 24
-```
+The committed scans cross the boundary from both sides and explicitly track the quadrature/Fock numerical floor.
 
 ---
 
-## 4. What constitutes a successful audit
+## 4. Near-boundary stress harness
 
-A numerical case is useful only if all of the following are checked:
+Script:
 
-1. the output trace is close to one;
-2. the non-EB negative PT eigenvalue is stable as numerical resolution increases;
+```text
+near_boundary_stress.py
+```
+
+This approaches
+
+$$
+\delta=\tau-m=0
+$$
+
+from both sides using the independent additive-noise and thermal-amplifier implementations.
+
+Its purpose is not to prove the analytic boundary numerically. It tests how long the finite numerical realization continues to resolve the predicted sign before truncation/quadrature error dominates.
+
+---
+
+## 5. Canonical TT one-graviton normalization
+
+Script:
+
+```text
+tt_mode_overlap_25_16_check.py
+```
+
+This independently checks the publication-critical TT angular-mode overlap used in V7.
+
+It verifies
+
+1. direct TT angular quadrature against the analytic expression;
+2. outgoing + time-reversed decomposition;
+3. normalization $S(0)\to1$;
+4. wave-zone convergence to amplitude coefficient $5/4$.
+
+The associated workflow is
+
+```text
+.github/workflows/tt-normalization.yml
+```
+
+and passes under the pinned environment above.
+
+---
+
+## 6. Fast scientific regression suite
+
+CI harness:
+
+```text
+scientific_regression_checks.py
+```
+
+Workflow:
+
+```text
+.github/workflows/scientific-regressions.yml
+```
+
+This is the fast repository-level regression suite. It checks:
+
+### Independent channel realizations
+
+- thermal attenuator: safely non-EB case plus strong EB control;
+- thermal amplifier: documented non-EB PT eigenvalue plus shrinking EB truncation floor;
+- additive noise: non-EB / EB controls;
+- additive-noise near-boundary sign resolution.
+
+### V7 closed-form scientific constants
+
+- finite-spoke series for
+  $$
+  \mathcal A(q),\quad\mathcal C_Q(q),\quad\mathcal C_\kappa(q);
+  $$
+- the aggressive V7 benchmark values
+  $$
+  \kappa_g,
+  \quad
+  \beta_g,
+  \quad
+  \eta_{\rm store},
+  \quad
+  \eta_Q^{\rm link},
+  \quad
+  4e^{-2}\eta_Q^{\rm link};
+  $$
+- the exact binary-coherent pure-loss negativity weak-link asymptotic.
+
+First workflow run:
+
+```text
+31266390454
+```
+
+passed all checks under the pinned environment.
+
+---
+
+## 7. What constitutes a successful finite-Fock audit
+
+A numerical channel case is useful only if all of the following are checked:
+
+1. output trace is close to one;
+2. non-EB negative PT eigenvalue is stable as numerical resolution increases;
 3. EB-side residual negative eigenvalues shrink toward zero with increasing resolution;
 4. channel parameters are independently mapped to the repository's $(\tau,m)$ convention;
-5. the implementation does not call the analytic coherent-dyad formula being tested.
+5. implementation does not call the analytic coherent-dyad formula being tested.
 
 Near
 
@@ -218,34 +268,21 @@ $$
 |\tau-m|\ll1,
 $$
 
-absolute PT eigenvalues can be extremely small, so the convergence requirements become correspondingly stricter.
+absolute PT eigenvalues can be extremely small, so convergence requirements become correspondingly stricter.
 
 ---
 
-## 5. Current coverage
+## 8. Coverage status
 
-The three main phase-insensitive realizations now have committed executable audits:
-
-| Channel | Independent realization | Script |
+| Scientific item | Independent executable check | CI regression |
 |---|---|---|
-| thermal attenuator | beam splitter + thermal environment | `thermal_cat_scan.py` |
-| thermal amplifier | two-mode squeezer + thermal environment | `amplifier_cat_scan.py` |
-| additive noise | Gaussian random displacements | `additive_noise_cat_scan.py` |
+| thermal attenuation | `thermal_cat_scan.py` | yes, representative case |
+| thermal amplification | `amplifier_cat_scan.py` | yes |
+| additive Gaussian noise | `additive_noise_cat_scan.py` | yes |
+| near-EB boundary | `near_boundary_stress.py` / additive boundary checks | yes, representative case |
+| TT $25/16$ normalization | `tt_mode_overlap_25_16_check.py` | yes, dedicated workflow |
+| finite-spoke coefficients | closed-form regression | yes |
+| V7 benchmark constants | closed-form regression | yes |
+| exact-negativity asymptotic | closed-form regression | yes |
 
-This substantially improves reproducibility relative to the earlier repository state, where amplifier and additive-noise results were documented only as numerical tables.
-
----
-
-## 6. Next numerical target
-
-The next useful addition is a controlled near-boundary stress suite rather than a large brute-force scan.
-
-Recommended cases:
-
-- thermal attenuator with relative boundary offsets $|\tau-m|/\max(\tau,m)$ from $10^{-1}$ down to $10^{-4}$;
-- amplifier with $n_E=(1\pm\epsilon)/(G-1)$;
-- additive noise with $m=1\pm\epsilon$;
-- several coherent separations from weak overlap breaking to nearly orthogonal branches;
-- at least one strongly unequal branch-weight case.
-
-For each case, store convergence versus numerical resolution, not just one PT eigenvalue.
+The exploratory scans remain available for deeper convergence studies; CI intentionally uses a smaller deterministic subset to keep runtime bounded.
