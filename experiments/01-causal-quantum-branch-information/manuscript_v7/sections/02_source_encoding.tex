@@ -1,0 +1,196 @@
+\section{Regime and explicit conserved source}
+\label{sec:source}
+
+We work in linearized gravity around Minkowski spacetime, with compact nonrelativistic elastic source and receiver modes. For a mechanical device of scale $L$, resonance frequency $\omega$, and longitudinal sound speed $c_s$, define
+\begin{equation}
+q\equiv\frac{\omega L}{c_s},
+\qquad
+\beta\equiv\frac{\omega L}{c},
+\qquad
+\Ccal\equiv\frac{2GM}{c^2L}.
+\end{equation}
+The controlled mechanical regime is
+\begin{equation}
+\frac{|u|}{L}\ll1,
+\qquad q\ll1,
+\qquad \beta\ll1,
+\qquad \Ccal\ll1.
+\label{eq:regime}
+\end{equation}
+We additionally use a narrowband rotating-wave/input-output model around one source and one receiver quadrupole resonance, with $g,\kappa_A,\kappa_B,1/T\ll\omega$ whenever the corresponding rates are used.
+
+\subsection{Four-spoke plus mode}
+
+The explicit source consists of four endpoint masses $\mu$ connected to a central compact hub by four identical longitudinal elastic spokes of reference length $L$. The spokes lie along the $\pm x$ and $\pm y$ axes. The plus mode expands the $x$ pair while contracting the $y$ pair, with the opposite branch obtained by reversing the sign of the displacement coordinate $u$.
+
+For a spoke mode normalized to unit endpoint displacement,
+\begin{equation}
+f_q(x)=\frac{\sin(qx/L)}{\sin q},
+\end{equation}
+and the endpoint traction condition fixes the spoke mass $m_r$ as
+\begin{equation}
+\boxed{\frac{m_r}{\mu}=q\tan q.}
+\label{eq:mrmu}
+\end{equation}
+Including endpoint and spoke rest mass, the branch-difference STF quadrupole is
+\begin{equation}
+\boxed{
+\Delta Q_{xx}=8\mu Lu\frac{\tan q}{q},
+\qquad
+\Delta Q_{yy}=-\Delta Q_{xx},
+\qquad
+\Delta Q_{zz}=0.}
+\label{eq:DeltaQ}
+\end{equation}
+The generalized mode mass is
+\begin{equation}
+\boxed{
+M_{\rm eff}=4\mu A(q),
+\qquad
+A(q)=\frac12+\frac{q}{\sin2q}.}
+\label{eq:Meff}
+\end{equation}
+Quantizing $u=u_{\rm zpf}(a+a^\dagger)$ gives
+\begin{equation}
+q_{01}=4\mu L\frac{\tan q}{q}
+\sqrt{\frac{\hbar}{2M_{\rm eff}\omega}},
+\end{equation}
+and the intrinsic plus-mode spontaneous graviton linewidth
+\begin{equation}
+\boxed{
+\kappa_g(q)=
+\frac{8G\mu L^2\omega^4}{5c^5}\,
+\Ccal_\kappa(q),
+\qquad
+\Ccal_\kappa(q)=\frac{(\tan q/q)^2}{A(q)}.}
+\label{eq:kappag}
+\end{equation}
+For $q\ll1$,
+\begin{equation}
+\Ccal_\kappa(q)=1+\frac{q^2}{3}+O(q^4).
+\end{equation}
+The full source stress tensor includes endpoints, spokes, hub, and controller and is conserved to the working elastic/weak-field order. Internal stress is therefore part of the same conserved source; it is not an independent radiative contribution to be appended to the mass quadrupole after the fact.
+
+For the endpoint coordinates $X=L+u$ and $Y=L-u$, the branch-carrying plus combination obeys
+\begin{equation}
+Q_{xx}-Q_{yy}=2\mu(X^2-Y^2)=8\mu Lu
+\end{equation}
+exactly. The leading $u^2$ geometric term is branch even and occupies the dc/$2\omega$ sector rather than the branch-odd resonant mode.
+
+\section{Local equal-charge encoding and gravitational dressing}
+\label{sec:encoding}
+
+Let $S$ be a degenerate internal reference qubit, $a$ the source plus mode, and $w$ a branch-common work mode. We use the local resonant encoder
+\begin{equation}
+\boxed{
+H_{\rm enc}=\hbar g\sigma_z(a^\dagger w+a w^\dagger).}
+\label{eq:Henc}
+\end{equation}
+The initial state is
+\begin{equation}
+|\Psi_0\rangle
+=\frac{|0\rangle_S+|1\rangle_S}{\sqrt2}
+\otimes|0\rangle_a\otimes|\zeta\rangle_w\otimes|0\rangle_E,
+\label{eq:init}
+\end{equation}
+where $E$ denotes the source output ports, including the graviton vacuum.
+
+In the lossless limit, branch $s=\pm1$ evolves as
+\begin{equation}
+\alpha_s(t)=-is\zeta\sin(gt),
+\qquad
+\gamma_w(t)=\zeta\cos(gt).
+\end{equation}
+With source-mode amplitude damping rate $\kappa_A$ define
+\begin{equation}
+\Omega=\sqrt{g^2-\kappa_A^2/16}.
+\end{equation}
+Then
+\begin{align}
+\gamma_w(t)&=\zeta\ee^{-\kappa_A t/4}
+\left[\cos(\Omega t)+\frac{\kappa_A}{4\Omega}\sin(\Omega t)\right],\\
+\alpha_s(t)&=-is\zeta\frac{g}{\Omega}\ee^{-\kappa_A t/4}\sin(\Omega t).
+\end{align}
+The first exact controller-empty time is
+\begin{equation}
+\boxed{
+T_*=\frac{\pi-\arctan(4\Omega/\kappa_A)}{\Omega},}
+\label{eq:Tstar}
+\end{equation}
+for which
+\begin{equation}
+\gamma_w(T_*)=0,
+\qquad
+\alpha_s(T_*)=-is\zeta\ee^{-\kappa_A T_*/4}.
+\end{equation}
+For coherent inputs and vacuum linear loss ports, the conditional network remains a product of coherent states, so the work mode is exactly branch common and factorized at the handoff.
+
+A local elastic realization is obtained by an actuator coordinate $X_C$ that modulates a signed eigenstrain profile on the four spokes,
+\begin{equation}
+\mathcal E_a=\frac12EA
+\left[\partial_x\xi_a-\epsilon_a\sigma_z\lambda X_C\chi(x)\right]^2,
+\qquad
+\epsilon_a=\begin{cases}+1,&x\text{-spokes},\\-1,&y\text{-spokes}.
+\end{cases}
+\label{eq:eigenstrain}
+\end{equation}
+For the mirrored branch trajectory $\xi_a^{(s)}=\epsilon_a s u f_q$, the square bracket equals
+\begin{equation}
+\epsilon_a s\,[u f_q'-\lambda X_C\chi],
+\end{equation}
+so the local elastic energy density is pointwise branch common. The construction remains an effective linear-elastic model rather than a microscopic relativistic material theory.
+
+\subsection{Equal-charge code}
+
+Let the full logical codewords, including mechanics, controller, graviton field, and all other linear output ports, be
+\begin{equation}
+|\mathsf0\rangle=|0\rangle_S|\Phi_+\rangle,
+\qquad
+|\mathsf1\rangle=|1\rangle_S|\Phi_-\rangle.
+\end{equation}
+The reference doublet is degenerate and has branch-independent stress-energy. The endpoint and spoke energies are even under the branch sign reversal; opposite radial pairs cancel total momentum, angular momentum, and center-of-energy first moment. The hub remains central and branch common. Equation~\eqref{eq:eigenstrain} makes the controller/interaction energy branch common pointwise. Finally, the branch-dependent coherent amplitudes in the graviton and other linear output fields are related by a global sign, while their free Poincar\'e generators are quadratic and therefore sign invariant. Radiation emitted during the encoder is thus included in the same charge accounting rather than omitted from it.
+
+Consequently, for every total Poincar\'e generator $Q_A\in\{P^\mu,M^{\mu\nu}\}$, the diagonal code matrix elements are equal. The off-diagonal elements vanish because the orthogonal reference states carry identical stress-energy. Therefore the audited statement is
+\begin{equation}
+\boxed{
+V_{\mathcal C}^\dagger P^\mu V_{\mathcal C}=p^\mu I_{\mathcal C},
+\qquad
+V_{\mathcal C}^\dagger M^{\mu\nu}V_{\mathcal C}=m^{\mu\nu}I_{\mathcal C}}
+\label{eq:charge-code}
+\end{equation}
+to the working order. In particular,
+\begin{equation}
+\Delta P^\mu=0,
+\qquad
+\Delta M^{\mu\nu}=0.
+\end{equation}
+An explicit subsystem audit is given in Appendix~\ref{app:charges}.
+
+Equation~\eqref{eq:charge-code} matters because physical matter operators in gravity require gravitational dressing \cite{DonnellyGiddings2016}. At first perturbative order, the gravitational-splitting construction allows states for which the Poincar\'e generators act identically on the code to share a standard asymptotic dressing whose exterior observables are insensitive to the remaining encoded internal information \cite{DonnellyGiddings2018}. We therefore use a common first-order asymptotic dressing for the two code states. Their quadrupole difference is not an asymptotic Poincar\'e charge; its later physical effect is carried by the retarded field sourced by the conserved difference stress tensor $\Delta T^{\mu\nu}$.
+
+This statement is deliberately perturbative and code restricted. We do not claim exact gravitational tensor-factor locality, nor do we claim that states with different total mass or momentum are exterior-indistinguishable.
+
+\subsection{Causal origin versus channel handoff}
+
+There are two different clocks. The local causal intervention begins at $t=t_s$. The fixed bosonic input code is established only at $t=t_s+T_*$. During the encoder, the bosonic branch separation is still being created. In the lossless limit,
+\begin{equation}
+N_{\Delta,{\rm all}}(t)=4|\zeta|^2\sin^2(gt).
+\end{equation}
+At the controller-empty handoff, including precursor radiation emitted during the encoder,
+\begin{equation}
+\boxed{
+N_{\Delta,A}(T_*)+
+\sum_jN_{\Delta,j}^{\rm enc}=4|\zeta|^2.}
+\label{eq:distance-conservation}
+\end{equation}
+After this time the total branch-distance norm is fixed and branch-independent linear dynamics only redistribute it among modes. The causal clock therefore starts at $t_s$, but the fixed-input bosonic channel used below begins at $T_*$.
+
+The precursor is not discarded. The normalized gravitational waveform used later contains both radiation emitted during the encoder and radiation emitted after handoff. If the source--receiver separation is small enough, some precursor can reach and begin driving the receiver before $T_*$. During that early interval the physical process is a controlled qubit-to-multimode state-generation problem, not yet a fixed-input one-mode channel; its entanglement should be evaluated directly from the instantaneous coherent branch state. For any receiver state evaluated after handoff, however, the fixed global virtual mode defined at $T_*$ includes all precursor modes already in flight, and the receiver amplitude includes the coherent effect of any precursor that has already arrived.
+
+For a centrally triggered finite source, a source point $\mathbf x$ can acquire branch dependence only after a causal internal signal reaches it. A later signal reaching receiver point $\mathbf y$ satisfies
+\begin{equation}
+t_{\rm arr}-t_s\ge
+\frac{|\mathbf x-\mathbf x_0|+|\mathbf y-\mathbf x|}{c}
+\ge\frac{|\mathbf y-\mathbf x_0|}{c},
+\end{equation}
+so the center-origin $R/c$ lower bound remains valid. Before the receiver's causal past intersects the branch-dependent intervention history, physical receiver observables act proportionally to the identity on the equal-charge code to the working perturbative order. Equivalently, the encoded source-to-receiver map is a replacer channel on that code before causal arrival.
