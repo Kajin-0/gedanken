@@ -37,7 +37,7 @@ def summarize(eigvals: np.ndarray) -> tuple[float, float]:
 def additive_scan(
     epsilons: list[float],
     amplitude: float,
-    dim: int,
+    dims: list[int],
     orders: list[int],
 ) -> None:
     print("\n=== additive Gaussian noise: tau=1, m=1-delta ===")
@@ -48,18 +48,20 @@ def additive_scan(
             delta = sign * eps
             noise = 1.0 - delta
             print(f"delta=tau-m={delta:+.3e}; m={noise:.12g}")
-            for order in orders:
-                eigvals, trace = additive_pt_spectrum(
-                    noise=noise,
-                    amplitude=amplitude,
-                    dim=dim,
-                    order=order,
-                )
-                lam_min, neg = summarize(eigvals)
-                print(
-                    f"  order={order:3d}  lambda_min={lam_min:+.8e}  "
-                    f"neg={neg:.8e}  trace={trace:.12f}"
-                )
+            for dim in dims:
+                for order in orders:
+                    eigvals, trace = additive_pt_spectrum(
+                        noise=noise,
+                        amplitude=amplitude,
+                        dim=dim,
+                        order=order,
+                    )
+                    lam_min, neg = summarize(eigvals)
+                    print(
+                        f"  N={dim:3d}  order={order:3d}  "
+                        f"lambda_min={lam_min:+.8e}  "
+                        f"neg={neg:.8e}  trace={trace:.12f}"
+                    )
 
 
 def amplifier_scan(
@@ -122,8 +124,14 @@ def main() -> None:
         help="Absolute offsets |tau-m| from the EB boundary.",
     )
     parser.add_argument("--amplitude", type=float, default=0.35)
-    parser.add_argument("--additive-dim", type=int, default=16)
-    parser.add_argument("--orders", type=int, nargs="+", default=[12, 16, 20])
+    parser.add_argument(
+        "--additive-dims",
+        type=int,
+        nargs="+",
+        default=[16, 18, 20],
+        help="Fock cutoffs for additive-noise convergence.",
+    )
+    parser.add_argument("--orders", type=int, nargs="+", default=[16, 20, 24])
     parser.add_argument("--gain", type=float, default=1.5)
     parser.add_argument("--cutoffs", type=int, nargs="+", default=[10, 12, 14, 16])
     args = parser.parse_args()
@@ -134,7 +142,7 @@ def main() -> None:
         additive_scan(
             epsilons,
             amplitude=args.amplitude,
-            dim=args.additive_dim,
+            dims=args.additive_dims,
             orders=args.orders,
         )
 
