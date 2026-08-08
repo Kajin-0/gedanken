@@ -104,7 +104,7 @@ After retarded arrival, let $f(t)$ be the normalized temporal envelope of the se
 \begin{equation}
 \int_0^\infty\dd t\,|f(t)|^2=1.
 \end{equation}
-Here $f$ is the complete source gravitational waveform: it may contain encoder precursor radiation emitted before $T_*$ as well as later source radiation. When a receiver state is evaluated at a time after handoff, the convolution below includes any precursor contribution that has already arrived.
+Here $f$ is the complete source gravitational waveform: it may contain encoder precursor radiation emitted before the physical handoff as well as later source radiation. At any chosen receiver observation time, the convolution below includes whatever portion of that complete waveform has arrived by then.
 
 The linear receiver equation contains the selected gravitational input with rate $\kappa_\Delta=\eta_{\rm store}\kappa_{g,B}$. The coherent loading from the selected mode is therefore
 \begin{equation}
@@ -131,7 +131,7 @@ Define the dimensionless temporal loading factor
 The upper bound follows from Cauchy--Schwarz and is saturated at a chosen target time by the time reverse of the receiver impulse response.
 
 \begin{proposition}[Post-handoff gravitational quantum-link budget]
-For the vacuum/coherent, narrowband linear amplitude-damping model, let the fixed virtual difference mode be defined at $T_*$. For any receiver state evaluated at $t\ge T_*$, with the complete waveform $f$ including any encoder precursor, the receiver branch-distance fraction relative to the completed code is
+For the vacuum/coherent, narrowband linear amplitude-damping model, once the full source/controller system has passed its physical handoff, the completed logical code defines the fixed virtual difference mode of Sec.~\ref{sec:virtualmode}. At any subsequent receiver observation time, with the complete waveform $f$ including encoder precursor radiation, the receiver branch-distance fraction relative to that completed code is
 \begin{equation}
 \boxed{
 \tau_c(t)=
@@ -151,7 +151,7 @@ one has $\tau_c(t)=\eta_Q^{\rm link}\Tcal_f(t)$ and $\tau_c\le\eta_Q^{\rm link}$
 
 The factors in Eq.~\eqref{eq:master} are not duplicate normalizations. The same product follows from an independent cascaded bosonic network: a source beamsplitter of transmissivity $\beta_{g,A}$, a propagation beamsplitter of transmissivity $\eta_{\rm store}$, and a receiver loading channel whose coherent fraction is $\beta_{g,B}\Tcal_f$. The product is therefore the canonical serial loss of the post-handoff virtual mode.
 
-For $t<T_*$ the same expression, if normalized to the eventual code norm $4|\zeta|^2$, should be interpreted only as a coherent response coefficient. The instantaneous global coherent branch state can still be compressed into an instantaneous virtual mode, but the logical-to-bosonic code itself is still being generated and the fixed-input channel theorem is not yet the appropriate description.
+If the receiver has already begun responding to precursor radiation before the physical source/controller handoff, the same normalized receiver response coefficient can be computed from the instantaneous coherent branch state, but it should not yet be interpreted as the transmissivity of a fixed logical-to-bosonic input channel. The fixed-input channel description begins only once the controller degrees have been cleared and the completed branch-distance norm is established.
 
 Several waveform results are now merely choices of the order-unity factor $\Tcal_f$. A matched passive exponential gives
 \begin{equation}
