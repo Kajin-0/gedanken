@@ -1,17 +1,28 @@
-# Canonical-Class Proof Audit for the One-Mode Rank-Two Probe Theorem
+# Canonical-Class Audit for One-Mode Gaussian Channels
 
 **Date:** 2026-08-07  
-**Status:** Rigorous class-by-class audit of `COMPLETE_ONE_MODE_GAUSSIAN_TWO_BRANCH_PROBE_THEOREM.md` using the standard Gaussian CP and EB matrix inequalities.
+**Status:** **MATHEMATICS AUDIT — COVARIANCE CONVENTION CORRECTED; RANK-TWO NOVELTY RETIRED**
 
-## 1. Gaussian conventions
+This file now has two purposes:
 
-Use the one-mode Gaussian-channel convention
+1. record a convention-consistent reduction of arbitrary one-mode Gaussian channels to the phase-insensitive canonical family where applicable;
+2. record the singular $B_1$ closure argument.
+
+The previously advertised Schmidt-rank-two novelty is no longer active because of the confirmed Mele–Lami–Giovannetti prior-art collision. See `NOVELTY_COLLISION_MELE_RANK_TWO.md`.
+
+---
+
+## 1. Fixed covariance convention
+
+Use throughout
 
 $$
-V\mapsto K^TVK+\beta,
+\boxed{
+V\mapsto K^T V K+\beta,
+}
 $$
 
-with symplectic form
+with
 
 $$
 \Omega=
@@ -19,6 +30,12 @@ $$
 0&1\\
 -1&0
 \end{pmatrix}.
+$$
+
+In this convention a Gaussian unitary with symplectic matrix $S$ acts as
+
+$$
+\boxed{V\mapsto S^T V S.}
 $$
 
 Complete positivity is equivalent to
@@ -49,30 +66,67 @@ $$
 }
 $$
 
-These are standard Gaussian-channel results due to Holevo and are summarized explicitly in De Pasquale–Mari–Porzio–Giovannetti.
+These are the standard Gaussian CP/EB matrix conditions written in the present transpose convention.
 
 ---
 
-## 2. One-mode determinant identity
+## 2. Composition rule in this convention
+
+This was the main notation defect in the previous version of this file.
+
+Let a Gaussian input unitary $S_{\rm in}$ act before the channel and an output unitary $S_{\rm out}$ act after it.
+
+Starting from
+
+$$
+V
+\xrightarrow{S_{\rm in}}
+S_{\rm in}^T V S_{\rm in}
+\xrightarrow{(K,\beta)}
+K^T S_{\rm in}^T V S_{\rm in}K+\beta
+\xrightarrow{S_{\rm out}}
+S_{\rm out}^T
+\left(K^T S_{\rm in}^T V S_{\rm in}K+\beta\right)
+S_{\rm out},
+$$
+
+we obtain
+
+$$
+\boxed{
+K' = S_{\rm in} K S_{\rm out},
+}
+$$
+
+$$
+\boxed{
+\beta'=S_{\rm out}^T\beta S_{\rm out}.
+}
+$$
+
+The previous audit incorrectly mixed this with the alternative convention $V\mapsto KVK^T+\beta$ and wrote the symplectic matrices in the opposite order.
+
+The correction changes the bookkeeping, not the existence of the one-mode canonical reduction.
+
+---
+
+## 3. One-mode determinant identity
 
 For every real $2\times2$ matrix $K$,
 
 $$
 \boxed{
-K^T\Omega K
-=(\det K)\Omega.
+K^T\Omega K=(\det K)\Omega.
 }
 $$
 
 Define
 
 $$
-\boxed{
-\tau=\det K.
-}
+\boxed{\tau=\det K.}
 $$
 
-Then the CP condition becomes
+Then CP becomes
 
 $$
 \boxed{
@@ -81,7 +135,7 @@ $$
 }
 $$
 
-For a positive real symmetric $2\times2$ matrix $M$, the inequality
+For a positive real symmetric $2\times2$ matrix $M$,
 
 $$
 M\ge\pm\frac{ic}{2}\Omega
@@ -95,11 +149,11 @@ $$
 }
 $$
 
-This reduces the one-mode class audit to scalar symplectic-eigenvalue inequalities.
+Thus the one-mode class audit can be reduced to scalar determinant inequalities.
 
 ---
 
-## 3. Case $\tau=0$: all physical channels are EB
+## 4. Case $\tau=0$: every physical channel is EB
 
 If
 
@@ -119,45 +173,27 @@ $$
 \beta\ge\pm\frac{i}{2}\Omega.
 $$
 
-Choose the EB decomposition
+Choose
 
 $$
-\boxed{
 \alpha=\beta,
 \qquad
 \nu=0.
-}
 $$
 
-Then
-
-$$
-\alpha\ge\frac{i}{2}\Omega
-$$
-
-by CP, while
-
-$$
-\nu=0
-\ge
-\frac{i}{2}K^T\Omega K=0.
-$$
-
-Therefore
+Then the EB decomposition conditions are satisfied directly. Therefore
 
 $$
 \boxed{
-\tau=0
-\Longrightarrow
-\text{every physical one-mode Gaussian channel is EB}.
+\tau=0\Longrightarrow\text{EB}.
 }
 $$
 
-This covers the canonical $A_1/A_2$ classes.
+This covers the one-mode $A_1/A_2$ canonical classes.
 
 ---
 
-## 4. Case $\tau<0$: all physical channels are EB
+## 5. Case $\tau<0$: every physical channel is EB
 
 Write
 
@@ -167,172 +203,178 @@ $$
 s>0.
 $$
 
-Then CP requires
+CP requires
 
 $$
-\sqrt{\det\beta}
-\ge
-\frac{1+s}{2}.
+\sqrt{\det\beta}\ge\frac{1+s}{2}.
 $$
 
 Define
 
 $$
-\boxed{
-\alpha
-=\frac{1}{1+s}\beta,
-}
+\alpha=\frac{1}{1+s}\beta,
 $$
 
 $$
-\boxed{
-\nu
-=\frac{s}{1+s}\beta.
-}
+\nu=\frac{s}{1+s}\beta.
 $$
 
-Clearly
+Then
 
 $$
-\beta=\alpha+\nu.
-$$
-
-The symplectic eigenvalue of $\alpha$ is
-
-$$
-\sqrt{\det\alpha}
-=
-\frac{\sqrt{\det\beta}}{1+s}
-\ge
-\frac12,
-$$
-
-so
-
-$$
-\alpha\ge\frac{i}{2}\Omega.
-$$
-
-The symplectic eigenvalue of $\nu$ is
-
-$$
-\sqrt{\det\nu}
-=
-\frac{s\sqrt{\det\beta}}{1+s}
-\ge
-\frac{s}{2}.
-$$
-
-But
-
-$$
-K^T\Omega K
-=-s\Omega,
-$$
-
-so this is exactly sufficient for
-
-$$
-\nu\ge
--\frac{is}{2}\Omega
-=
-\frac{i}{2}K^T\Omega K.
-$$
-
-Hence the EB decomposition always exists:
-
-$$
-\boxed{
-\tau<0
-\Longrightarrow
-\text{every physical one-mode Gaussian channel is EB}.
-}
-$$
-
-This covers the orientation-reversing / phase-conjugating canonical class $D$ directly, without appealing only to a classification table.
-
----
-
-## 5. Case $\tau>0$, $\beta>0$: regular orientation-preserving channels
-
-If
-
-$$
-\tau>0
+\beta=\alpha+\nu,
 $$
 
 and
 
 $$
-\det\beta>0,
+\sqrt{\det\alpha}
+=\frac{\sqrt{\det\beta}}{1+s}
+\ge\frac12,
 $$
 
-the noise is full rank.
-
-Williamson's theorem gives a symplectic output matrix $S_{\rm out}$ such that
+while
 
 $$
-S_{\rm out}\beta S_{\rm out}^T
-=yI,
+\sqrt{\det\nu}
+=\frac{s\sqrt{\det\beta}}{1+s}
+\ge\frac{s}{2}.
 $$
 
-where
+Since
+
+$$
+K^T\Omega K=-s\Omega,
+$$
+
+the EB decomposition exists. Hence
+
+$$
+\boxed{
+\tau<0\Longrightarrow\text{EB}.
+}
+$$
+
+This covers the orientation-reversing / phase-conjugating class $D$.
+
+---
+
+## 6. Regular orientation-preserving case: corrected canonicalization
+
+Assume
+
+$$
+\tau>0,
+\qquad
+\det\beta>0.
+$$
+
+Let
 
 $$
 y=\sqrt{\det\beta}.
 $$
 
-Choose
+By one-mode Williamson reduction, choose a symplectic $S_{\rm out}$ satisfying
 
 $$
+\boxed{
+S_{\rm out}^T\beta S_{\rm out}=yI.
+}
+$$
+
+Now choose
+
+$$
+\boxed{
 S_{\rm in}
-=\sqrt\tau K^{-1}S_{\rm out}^{-1}.
+=\sqrt\tau\,S_{\rm out}^{-1}K^{-1}.
+}
 $$
-
-Its determinant is one, so in one mode it is symplectic.
 
 Then
 
 $$
-S_{\rm out}KS_{\rm in}
+S_{\rm in}KS_{\rm out}
 =\sqrt\tau I.
 $$
 
-Thus the channel is Gaussian-unitarily equivalent to a gauge-covariant phase-insensitive canonical channel.
+Moreover,
 
-The direct binary-coherent theorem therefore supplies a finite two-branch equal-covariance pure-Gaussian NPT probe whenever this channel is non-EB.
+$$
+\det S_{\rm in}
+=\frac{\tau}{\det K}
+=1.
+$$
 
-This covers the regular $B_2/C$ family and anisotropic full-rank versions thereof.
+For one mode,
 
----
+$$
+Sp(2,\mathbb R)=SL(2,\mathbb R),
+$$
 
-## 6. Why rank-deficient noise can occur only at $\tau=1$ among nonzero-$K$ channels
+so $S_{\rm in}$ is symplectic.
+
+Therefore, using the composition rule from Section 2,
+
+$$
+(K,\beta)
+\longrightarrow
+(\sqrt\tau I,yI).
+$$
+
+Thus every regular orientation-preserving one-mode Gaussian channel is Gaussian-unitarily equivalent to a gauge-covariant phase-insensitive channel.
+
+### Probe transformation
 
 If
 
 $$
-\tau\neq1,
+\Phi_{\rm PI}
+=\mathcal U_{\rm out}
+\circ\mathcal N
+\circ\mathcal U_{\rm in},
+$$
+
+then a canonical probe state $\rho_{RA}^{\rm can}$ for $\Phi_{\rm PI}$ corresponds to the original-channel input
+
+$$
+\boxed{
+\rho_{RA}^{\mathcal N}
+=(I_R\otimes U_{\rm in})
+\rho_{RA}^{\rm can}
+(I_R\otimes U_{\rm in}^\dagger).
+}
+$$
+
+The original-channel output is related to the canonical output by the local output unitary $U_{\rm out}$, so PPT/NPT is unchanged.
+
+This removes the former ambiguity over whether the input unitary or its inverse should appear in the channel-matched probe.
+
+---
+
+## 7. Rank-deficient noise can occur only at $\tau=1$ for nonzero orientation-preserving $K$
+
+If
+
+$$
+\tau\ne1,
 $$
 
 CP requires
 
 $$
 \sqrt{\det\beta}
-\ge
-\frac{|1-\tau|}{2}>0.
+\ge\frac{|1-\tau|}{2}>0.
 $$
 
 Therefore
 
 $$
-\boxed{
-\det\beta>0
-}
+\det\beta>0.
 $$
 
-and the channel belongs to the regular case above.
-
-Hence the only orientation-preserving nonzero-$K$ singular-noise case that needs separate treatment is
+Hence the only orientation-preserving nonzero-$K$ singular-noise case requiring separate treatment is
 
 $$
 \boxed{
@@ -342,21 +384,21 @@ $$
 }
 $$
 
-the canonical $B_1$ class.
+the $B_1$ class.
 
-The zero-noise subcase
+The subcase
 
 $$
 \tau=1,
-\quad
+\qquad
 \beta=0
 $$
 
-is simply a Gaussian unitary.
+is a Gaussian unitary.
 
 ---
 
-## 7. Gaussian-unitary subcase
+## 8. Gaussian-unitary subcase
 
 For
 
@@ -368,26 +410,22 @@ $$
 
 the channel is a local Gaussian unitary.
 
-Any entangled finite binary coherent hybrid state remains pure entangled after the channel and is therefore NPT.
+Any entangled finite Schmidt-rank-two input remains entangled and NPT if it was initially a pure rank-two state.
 
-Thus this boundary case is trivial.
+No special channel analysis is needed.
 
 ---
 
-## 8. Singular $B_1$: finite regularization proof
+## 9. Singular $B_1$: finite regularization proof
 
-Put the rank-one noise into diagonal canonical form,
+Put the rank-one noise into canonical form
 
 $$
 \boxed{
 \beta_{B_1}
-=
-\begin{pmatrix}
-b&0\\
-0&0
-\end{pmatrix},
-\qquad
-b>0,
+=\begin{pmatrix}
+b&0\\0&0\end{pmatrix},
+\qquad b>0,
 }
 $$
 
@@ -397,32 +435,17 @@ $$
 K=I.
 $$
 
-Now apply an additional local additive-noise channel after $B_1$ which adds finite noise
-
-$$
-\epsilon>0
-$$
-
-in the previously noiseless quadrature:
+Apply local post-processing that adds finite noise $\epsilon>0$ to the clean quadrature:
 
 $$
 \boxed{
 \beta_\epsilon
-=
-\begin{pmatrix}
-b&0\\
-0&\epsilon
-\end{pmatrix}.
+=\begin{pmatrix}
+b&0\\0&\epsilon\end{pmatrix}.
 }
 $$
 
-The regularized channel still has
-
-$$
-K=I.
-$$
-
-A symplectic squeeze turns $\beta_\epsilon$ into isotropic additive noise
+A finite one-mode squeeze isotropizes this to
 
 $$
 \boxed{
@@ -432,21 +455,16 @@ y_\epsilon=\sqrt{b\epsilon}.
 }
 $$
 
-For a unit-gain isotropic additive-noise channel, the Gaussian EB criterion is
+For a unit-gain isotropic additive-noise channel in the present convention, EB occurs at
 
 $$
-\boxed{
-y_\epsilon\ge1}
+y_\epsilon\ge1.
 $$
 
-in the present covariance convention where vacuum has covariance $I/2$.
-
-Choose any finite
+Choose
 
 $$
-\boxed{
-0<\epsilon<1/b.
-}
+\boxed{0<\epsilon<1/b.}
 $$
 
 Then
@@ -455,135 +473,67 @@ $$
 y_\epsilon<1,
 $$
 
-so the regularized channel
+so the regularized full-rank channel is non-EB.
+
+Use any finite rank-two input known to produce NPT for that regularized channel. Suppose the same input immediately after $B_1$ were PPT. Since the added noise is a local CP map,
 
 $$
-\mathcal N_\epsilon
-=\mathcal A_\epsilon\circ\mathcal B_1
-$$
-
-is non-EB and full rank.
-
-By the regular theorem there exists a **finite** matched two-branch pure-Gaussian input $|\Psi_{G,\epsilon}\rangle$ such that
-
-$$
-(I\otimes\mathcal N_\epsilon)
-(|\Psi_{G,\epsilon}\rangle\langle\Psi_{G,\epsilon}|)
-$$
-
-is NPT.
-
-Suppose, for contradiction, that the state immediately after $\mathcal B_1$ were PPT.
-
-Applying the local CP map $\mathcal A_\epsilon$ to the bosonic subsystem preserves PPT, because
-
-$$
-[(I\otimes\mathcal A_\epsilon)(\rho)]^{T_A}
-=(I\otimes\mathcal A_\epsilon)(\rho^{T_A})
+[(I\otimes\mathcal A_\epsilon)(\rho)]^{T_R}
+=(I\otimes\mathcal A_\epsilon)(\rho^{T_R})
 \ge0
 $$
 
-whenever
+would follow, contradicting the NPT regularized output.
 
-$$
-\rho^{T_A}\ge0.
-$$
+Therefore the original $B_1$ output is already NPT.
 
-But the post-processed state is NPT.
+The construction is finite for every finite $b>0$ and every finite allowed $\epsilon$.
 
-Contradiction.
+---
 
-Therefore
+## 10. Class exhaustion
+
+The one-mode canonical classes are therefore exhausted as follows:
+
+- $\tau=0$: EB;
+- $\tau<0$: EB;
+- $\tau>0$, full-rank noise: Gaussian-unitarily phase-insensitive;
+- $\tau=1$, zero noise: Gaussian unitary;
+- $\tau=1$, rank-one noise: $B_1$ finite-regularization closure.
+
+No physical one-mode Gaussian canonical class is omitted.
+
+---
+
+## 11. What this audit does and does not establish after the Mele collision
+
+### Mathematical statement
+
+Combining existing phase-insensitive finite-rank prior art with the corrected canonical reduction and the $B_1$ closure supports the mathematical statement
 
 $$
 \boxed{
-(I\otimes\mathcal B_1)
-(|\Psi_{G,\epsilon}\rangle\langle\Psi_{G,\epsilon}|)
-\text{ is already NPT}.
+\text{every non-EB one-mode Gaussian channel admits a finite Schmidt-rank-two NPT probe.}
 }
 $$
 
-Because $\epsilon$ was chosen finite, the matched probe has finite squeezing and finite energy.
+### Novelty statement
 
-Thus the singular $B_1$ channel is covered without an infinite-squeezing limit.
+Do **not** present that broad result as the repository's principal discovery.
 
----
+Mele–Lami–Giovannetti already establish the substantive phase-insensitive rank-two phenomenon for a larger Fock-pair family. For regular one-mode channels the extension is essentially standard canonicalization. The main additional ingredient here is the singular $B_1$ closure.
 
-## 9. Class exhaustion
+See:
 
-We have now treated every one-mode canonical possibility.
-
-### $\tau=0$
-
-EB.
-
-### $\tau<0$
-
-EB.
-
-### $\tau>0$, full-rank noise
-
-Regular theorem supplies finite rank-two pure-Gaussian probe whenever non-EB.
-
-### $\tau=1$, zero noise
-
-Gaussian unitary; trivial finite probe.
-
-### $\tau=1$, rank-one noise
-
-$B_1$ regularization proof supplies finite probe.
-
-Hence there is no unhandled physical one-mode Gaussian canonical class.
+- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
+- `NOVELTY_AUDIT_SCHMIDT_RANK_TWO_GAUSSIAN_PROBE.md`
 
 ---
 
-## 10. Audited theorem
+## 12. Active use of this file
 
-The class-by-class argument establishes:
+This canonical audit remains useful if the **binary coherent theorem** is later extended from phase-insensitive channels to arbitrary one-mode Gaussian channels.
 
-$$
-\boxed{
-\mathcal N\text{ is a non-EB one-mode Gaussian channel}
-}
-$$
+For a regular original channel, the canonical coherent pair pulls through $U_{\rm in}$ to two displaced copies of one finite-covariance pure Gaussian state. The $B_1$ case remains separately handled by the finite-regularization/PPT-monotonicity argument.
 
-iff there exists a finite Schmidt-rank-two hybrid input
-
-$$
-\sqrt p|0\rangle|\psi_0\rangle
-+e^{i\phi}\sqrt{1-p}|1\rangle|\psi_1\rangle,
-$$
-
-where $|\psi_0\rangle,|\psi_1\rangle$ are distinct displaced copies of the same finite-covariance pure Gaussian state, whose output under $I\otimes\mathcal N$ is NPT.
-
-The converse follows from the definition of an EB channel.
-
----
-
-## 11. Relation to finite-TMSV prior art
-
-De Pasquale et al. show that any finite nonzero two-mode squeezing can replace the formal infinite-energy Choi state when testing a Gaussian channel for EB.
-
-That resource is finite energy but has infinite Schmidt rank.
-
-The present theorem reduces the reference requirement further:
-
-$$
-\boxed{
-\text{Schmidt rank }2\text{ is sufficient for every one-mode Gaussian channel.}
-}
-$$
-
-This is the specific statement whose novelty remains to be established.
-
----
-
-## 12. Remaining mathematical checks
-
-The proof is now internally complete at the canonical-class level.
-
-The remaining issues are external rather than algebraic:
-
-1. literature search for an equivalent Schmidt-rank-two sufficiency theorem;
-2. independent review of the direct phase-insensitive binary-coherent principal-minor proof on which the regular case rests;
-3. precise alignment of notation with the most standard Gaussian-channel covariance convention in any manuscript version.
+Any future manuscript must preserve the covariance convention in Sections 1–2 exactly or explicitly redefine all channel matrices before changing transpose order.
