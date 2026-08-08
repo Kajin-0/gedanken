@@ -80,7 +80,7 @@ exactly. The leading $u^2$ geometric term is branch even and occupies the dc/$2\
 \section{Local equal-charge encoding and gravitational dressing}
 \label{sec:encoding}
 
-Let $S$ be a degenerate internal reference qubit, $a$ the source plus mode, and $w$ a branch-common work mode. We use the local resonant encoder
+Let $S$ be a degenerate internal reference qubit, $a$ the source plus mode, and $w$ a branch-common work mode. We use the resonant normal-mode encoder
 \begin{equation}
 \boxed{
 H_{\rm enc}=\hbar g\sigma_z(a^\dagger w+a w^\dagger).}
@@ -111,7 +111,7 @@ Then
 \left[\cos(\Omega t)+\frac{\kappa_A}{4\Omega}\sin(\Omega t)\right],\\
 \alpha_s(t)&=-is\zeta\frac{g}{\Omega}\ee^{-\kappa_A t/4}\sin(\Omega t).
 \end{align}
-The first exact controller-empty time is
+The first exact controller-empty time in this modal model is
 \begin{equation}
 \boxed{
 T_*=\frac{\pi-\arctan(4\Omega/\kappa_A)}{\Omega},}
@@ -123,7 +123,7 @@ for which
 \qquad
 \alpha_s(T_*)=-is\zeta\ee^{-\kappa_A T_*/4}.
 \end{equation}
-For coherent inputs and vacuum linear loss ports, the conditional network remains a product of coherent states, so the work mode is exactly branch common and factorized at the handoff.
+For coherent inputs and vacuum linear loss ports, the conditional modal network remains a product of coherent states, so the work mode is exactly branch common and factorized at the handoff.
 
 A local elastic realization is obtained by an actuator coordinate $X_C$ that modulates a signed eigenstrain profile on the four spokes,
 \begin{equation}
@@ -139,6 +139,52 @@ For the mirrored branch trajectory $\xi_a^{(s)}=\epsilon_a s u f_q$, the square 
 \epsilon_a s\,[u f_q'-\lambda X_C\chi],
 \end{equation}
 so the local elastic energy density is pointwise branch common. The construction remains an effective linear-elastic model rather than a microscopic relativistic material theory.
+
+\subsection{Finite-speed local-control correction}
+
+Equation~\eqref{eq:Henc} is a projected normal-mode description, not an assumption that a branch command switches the entire source instantaneously. Let a physical controller command propagate outward from the hub at speed $v_c\le c$. Then the local actuator variable is retarded,
+\begin{equation}
+X_C(x,t)=X_C\!\left(t-\frac{x}{v_c}\right),
+\end{equation}
+and projection onto the plus mode replaces the static overlap by the causal form factor
+\begin{equation}
+\boxed{
+F_c(\omega)=
+\int_0^L\dd x\,w(x)e^{i\omega x/v_c},
+\qquad
+\int_0^L\dd x\,w(x)=1,}
+\label{eq:Fc}
+\end{equation}
+where $w(x)\propto\chi(x)f_q'(x)$ is the normalized actuator--mode overlap. Define
+\begin{equation}
+q_c\equiv\frac{\omega L}{v_c}.
+\end{equation}
+For $q_c\ll1$,
+\begin{equation}
+\boxed{
+\arg F_c
+=\omega\frac{\bar x}{v_c}+O(q_c^3),}
+\end{equation}
+while
+\begin{equation}
+\boxed{
+|F_c|^2
+=1-q_c^2\operatorname{Var}_w(x/L)+O(q_c^4).}
+\label{eq:Fcsmall}
+\end{equation}
+Thus finite-speed actuation produces a leading control delay, whereas the coupling-strength correction begins only at $O(q_c^2)$. For a nearly uniform long-wavelength overlap,
+\begin{equation}
+F_c=e^{iq_c/2}\operatorname{sinc}(q_c/2),
+\qquad
+|F_c|^2=1-\frac{q_c^2}{12}+O(q_c^4).
+\end{equation}
+The effective coupling in Eq.~\eqref{eq:Henc} should therefore be read as $g_{\rm eff}=g_0F_c$ after absorbing its phase into the interaction timing. A complete distributed controller also requires an architecture-dependent clearing/reabsorption time,
+\begin{equation}
+\boxed{
+T_*^{\rm local}=T_*^{\rm modal}+O(L/v_c).}
+\label{eq:Tlocal}
+\end{equation}
+In the same RWA regime $g\ll\omega$ and $q_c\ll1$, this overhead is parametrically short compared with the resonant encoding time. If $v_c\simeq c_s$, then $q_c\simeq q$, so the existing long-wavelength spoke assumption also controls this locality correction. The finite-speed controller therefore shifts and slightly reshapes the source waveform rather than altering the serial gravitational link structure.
 
 \subsection{Equal-charge code}
 
@@ -172,7 +218,7 @@ This statement is deliberately perturbative and code restricted. We do not claim
 
 \subsection{Causal origin versus channel handoff}
 
-There are two different clocks. The local causal intervention begins at $t=t_s$. The fixed bosonic input code is established only at $t=t_s+T_*$. During the encoder, the bosonic branch separation is still being created. In the lossless limit,
+There are two different clocks. The local causal intervention begins at $t=t_s$. The fixed bosonic input code is established only after the physical controller has completed its branch-dependent interaction and cleared/recombined, at a handoff whose leading modal value is Eq.~\eqref{eq:Tstar} and whose local correction is Eq.~\eqref{eq:Tlocal}. During the encoder, the bosonic branch separation is still being created. In the lossless modal limit,
 \begin{equation}
 N_{\Delta,{\rm all}}(t)=4|\zeta|^2\sin^2(gt).
 \end{equation}
@@ -180,17 +226,23 @@ At the controller-empty handoff, including precursor radiation emitted during th
 \begin{equation}
 \boxed{
 N_{\Delta,A}(T_*)+
-\sum_jN_{\Delta,j}^{\rm enc}=4|\zeta|^2.}
+\sum_jN_{\Delta,j}^{\rm enc}=4|\zeta|^2}
 \label{eq:distance-conservation}
 \end{equation}
-After this time the total branch-distance norm is fixed and branch-independent linear dynamics only redistribute it among modes. The causal clock therefore starts at $t_s$, but the fixed-input bosonic channel used below begins at $T_*$.
+for the leading modal model; a fully local implementation replaces $T_*$ by the corresponding cleared handoff and includes the same controller degrees in the global branch-distance accounting. After handoff the total branch-distance norm is fixed and branch-independent linear dynamics only redistribute it among modes. The causal clock therefore starts at $t_s$, but the fixed-input bosonic channel used below begins only after this handoff.
 
-The precursor is not discarded. The normalized gravitational waveform used later contains both radiation emitted during the encoder and radiation emitted after handoff. If the source--receiver separation is small enough, some precursor can reach and begin driving the receiver before $T_*$. During that early interval the physical process is a controlled qubit-to-multimode state-generation problem, not yet a fixed-input one-mode channel; its entanglement should be evaluated directly from the instantaneous coherent branch state. For any receiver state evaluated after handoff, however, the fixed global virtual mode defined at $T_*$ includes all precursor modes already in flight, and the receiver amplitude includes the coherent effect of any precursor that has already arrived.
+The precursor is not discarded. The normalized gravitational waveform used later contains both radiation emitted during the encoder and radiation emitted after handoff. If the source--receiver separation is small enough, some precursor can reach and begin driving the receiver before handoff. During that early interval the physical process is a controlled qubit-to-multimode state-generation problem, not yet a fixed-input one-mode channel; its entanglement should be evaluated directly from the instantaneous coherent branch state. For any receiver state evaluated after handoff, however, the fixed global virtual mode includes all precursor modes already in flight, and the receiver amplitude includes the coherent effect of any precursor that has already arrived.
 
-For a centrally triggered finite source, a source point $\mathbf x$ can acquire branch dependence only after a causal internal signal reaches it. A later signal reaching receiver point $\mathbf y$ satisfies
+For a centrally triggered finite source, a material point $\mathbf x$ cannot acquire branch dependence before the local controller signal reaches it. Thus
 \begin{equation}
-t_{\rm arr}-t_s\ge
-\frac{|\mathbf x-\mathbf x_0|+|\mathbf y-\mathbf x|}{c}
-\ge\frac{|\mathbf y-\mathbf x_0|}{c},
+t_{\rm arr}-t_s
+\ge
+\frac{|\mathbf x-\mathbf x_0|}{v_c}
++\frac{|\mathbf y-\mathbf x|}{c}.
 \end{equation}
-so the center-origin $R/c$ lower bound remains valid. Before the receiver's causal past intersects the branch-dependent intervention history, physical receiver observables act proportionally to the identity on the equal-charge code to the working perturbative order. Equivalently, the encoded source-to-receiver map is a replacer channel on that code before causal arrival.
+Since $v_c\le c$, the triangle inequality gives
+\begin{equation}
+\boxed{
+t_{\rm arr}-t_s\ge\frac{|\mathbf y-\mathbf x_0|}{c}.}
+\end{equation}
+Restoring finite-speed actuation can therefore only delay the signal relative to the center-origin light-cone bound. Before the receiver's causal past intersects the branch-dependent intervention history, physical receiver observables act proportionally to the identity on the equal-charge code to the working perturbative order. Equivalently, the encoded source-to-receiver map is a replacer channel on that code before causal arrival.
