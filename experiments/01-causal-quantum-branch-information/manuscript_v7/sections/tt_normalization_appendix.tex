@@ -1,0 +1,125 @@
+\section{Independent TT one-graviton mode-overlap normalization}
+\label{app:tt-overlap}
+
+The wave-zone coefficient $25/16$ can be obtained without using either the retarded source--receiver self-energy or a resonant absorption cross section. We summarize that independent route here.
+
+Following the standard box-normalized TT quantization used in Ref.~\cite{BoughnRothman2006}, write
+\begin{equation}
+h_{ij}(\mathbf x,t)
+=\frac{1}{c\sqrt V}
+\sum_{\mathbf k,\lambda}
+\sqrt{\frac{16\pi G\hbar}{\omega_k}}
+\left[
+a_{\mathbf k\lambda}
+\epsilon^{(\lambda)}_{ij}
+ e^{i(\mathbf k\cdot\mathbf x-\omega_k t)}
++\mathrm{h.c.}
+\right],
+\end{equation}
+with $\epsilon^{(\lambda)}_{ij}\epsilon^{(\lambda')}_{ij}=\delta_{\lambda\lambda'}$. The local-inertial quadrupole interaction gives the one-graviton angular rate
+\begin{equation}
+\frac{d\kappa_g}{d\Omega}
+=\frac{G\omega^5}{4\pi\hbar c^5}
+\sum_\lambda
+|Q_{ij}\epsilon^{(\lambda)}_{ij}|^2.
+\label{eq:tt-diff-rate}
+\end{equation}
+
+For the plus transition
+\begin{equation}
+Q_{ij}=q\,\operatorname{diag}(1,-1,0),
+\end{equation}
+one finds
+\begin{equation}
+\sum_\lambda|Q:\epsilon^\lambda|^2
+=q^2\mathcal F(\theta,\phi),
+\end{equation}
+where
+\begin{equation}
+\mathcal F
+=2\cos^2\theta
++\frac12\sin^4\theta\cos^22\phi,
+\end{equation}
+and
+\begin{equation}
+\int d\Omega\,\mathcal F=\frac{16\pi}{5}.
+\end{equation}
+Equation~\eqref{eq:tt-diff-rate} therefore gives
+\begin{equation}
+\kappa_g
+=\frac{4G\omega^5q^2}{5\hbar c^5},
+\end{equation}
+which is the linewidth normalization used in the main text.
+
+Define the normalized one-graviton angular mode
+\begin{equation}
+\boxed{
+u_\lambda(\hat{\mathbf n})
+=\sqrt{\frac{5}{16\pi}}
+\frac{Q:\epsilon^\lambda(\hat{\mathbf n})}{q},}
+\end{equation}
+so that $\sum_\lambda\int d\Omega|u_\lambda|^2=1$. For an identical aligned reciprocal receiver displaced by $R\hat z$, a plane-wave component acquires the phase $e^{iz\mu}$ with $z=kR$ and $\mu=\cos\theta$. The normalized fixed-frequency mode overlap is therefore
+\begin{equation}
+S(z)
+=\sum_\lambda\int d\Omega
+|u_\lambda|^2e^{iz\mu}
+=\frac{5}{32}\int_{-1}^{1}d\mu\,
+(1+6\mu^2+\mu^4)e^{iz\mu}.
+\label{eq:tt-overlap-integral}
+\end{equation}
+Direct evaluation gives
+\begin{equation}
+S(z)
+=\frac{5}{4z^5}
+\left[
+2z^4\sin z+4z^3\cos z
+-6z^2\sin z-6z\cos z+6\sin z
+\right].
+\end{equation}
+Writing the result as positive- and negative-time propagation pieces,
+\begin{equation}
+S(z)=S_+(z)+S_-(z),
+\end{equation}
+with
+\begin{equation}
+\boxed{
+S_+(z)
+=-\frac{5i}{4}
+\frac{P(z)e^{iz}}{z^5},}
+\end{equation}
+\begin{equation}
+S_-(z)
+=+\frac{5i}{4}
+\frac{P(-z)e^{-iz}}{z^5},
+\end{equation}
+where
+\begin{equation}
+P(z)=3-3iz-3z^2+2iz^3+z^4.
+\end{equation}
+For a wavepacket carrying the usual $e^{-i\omega t}$ dependence, $S_+$ has phase $e^{-i\omega(t-R/c)}$ and is the outgoing retarded source-to-receiver component; $S_-$ is the time-reversed component of the full fixed-frequency overlap. Thus
+\begin{equation}
+\boxed{
+t_{BA}^{\rm TT}(z)
+=-\frac{5i}{4}
+\frac{P(z)e^{iz}}{z^5}.}
+\label{eq:tt-exact-transfer}
+\end{equation}
+The polynomial in Eq.~\eqref{eq:tt-exact-transfer} emerges from the TT mode overlap and is the same polynomial obtained independently from the retarded electric-Weyl calculation.
+
+In the wave zone,
+\begin{equation}
+t_{BA}^{\rm TT}
+=-\frac{5i}{4}\frac{e^{iz}}{z}
+\left[1+O(z^{-1})\right],
+\end{equation}
+so
+\begin{equation}
+\boxed{
+\eta_{\rm store}
+=|t_{BA}^{\rm TT}|^2
+\longrightarrow
+\frac{25}{16(kR)^2}.}
+\end{equation}
+This is the third independent normalization route used to validate the propagation coefficient: canonical TT one-graviton mode overlap, in addition to the retarded-field and critical-coupling/Friis derivations.
+
+The separated $S_+$ component should not be interpreted as a bounded single-pass probability in the reactive near zone; the storage interpretation is the weak one-way wave-zone regime used in the link budget.
