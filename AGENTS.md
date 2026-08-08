@@ -1,14 +1,33 @@
-# AGENTS.md — Canonical Research Recovery Point
+# AGENTS.md — Canonical Recovery and Submission Protocol
 
 **Repository:** `Kajin-0/gedanken`  
 **Active experiment:** `experiments/01-causal-quantum-branch-information/`  
-**Checkpoint:** 2026-08-07, after the standalone Gaussian branch was adversarially closed and an explicit conserved four-spoke source-plus-actuator model was constructed.
+**Checkpoint:** 2026-08-08, after the V7 manuscript survived the external-review closure pass.  
+**Current mode:** **submission / repository consolidation, not open-ended theory development.**
 
-This is the first file a new agent should read.
+This is the first operational file a new agent should read.
 
 ---
 
-## 1. Operating rule
+## 1. Mandatory concurrency protocol
+
+Other agents may edit `main` concurrently.
+
+Before every repository write:
+
+1. fetch the latest `main` head;
+2. compare it with the last-seen head;
+3. inspect intervening commits relevant to the file being changed;
+4. fetch the exact current target blob immediately before writing;
+5. never force a write against a stale blob SHA;
+6. if `main` changes during a long task, recheck immediately before the write;
+7. preserve concurrent work and prefer narrowly scoped edits.
+
+**Live `main` always overrides this file and every state snapshot.**
+
+---
+
+## 2. Research operating rule
 
 Try to kill every claim before trying to publish it.
 
@@ -16,149 +35,115 @@ Attack by
 
 1. counterexample;
 2. hidden assumption;
-3. convention or normalization error;
+3. convention/normalization error;
 4. singular limit;
-5. stronger prior art under different terminology;
-6. a general theorem that makes the result an immediate corollary;
-7. numerical truncation artifacts;
-8. omitted parts of a supposedly closed physical system;
-9. scope inflation.
+5. conservation-law failure;
+6. stronger theorem that makes the result trivial;
+7. prior art under different notation;
+8. numerical truncation artifact;
+9. omitted parts of a supposedly closed system;
+10. scope inflation.
 
-If a claim dies, update the documentation immediately.
+If a claim dies, downgrade or remove it immediately.
 
----
-
-## 2. Standalone Gaussian-channel branch: STOP
-
-The Gaussian-channel work produced correct and useful mathematics, but the broad novelty claims collided with prior art.
-
-### Rank-two Fock survival — prior art
-
-Mele–Lami–Giovannetti already contain the finite Schmidt-rank-two Fock-pair survival result.
-
-Read:
-
-- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
-
-### All finite binary coherent-pair survival — prior art in substance
-
-A one-sided specialization of Filippov–Ziman's 2014 coherent-state witness, plus an invertible local filter on the untouched two-dimensional coherent-state support, implies the same all-finite-pair survival boundary.
-
-Read:
-
-- `NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
-
-### Matched coherent scale and exponential sign factor — already encoded in Filippov–Ziman
-
-With their witness parameter
-
-$$
-1-\lambda=\frac{m}{\sqrt\tau},
-$$
-
-their one-sided witness contains exactly
-
-$$
-1-
-\exp\left[
-\frac{4a^2}{m}(\tau-m)
-\right]
-$$
-
-and generates the same matched coherent amplitude
-
-$$
-\frac{2\sqrt\tau a}{m}.
-$$
-
-Read:
-
-- `THREE_ELEMENT_WITNESS_VS_FILIPPOV.md`
-- `STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`
-
-### Retain as tools
-
-Keep the repository's compact Fock determinant, coherent-dyad proof, exact $2\times2$ PT compression, and weak-link absolute witness bound as lemmas/tools for the gravity calculation.
-
-Do **not** restart a standalone Gaussian theorem paper unless a genuinely new operational result appears.
+However, **do not keep opening new theory branches after the current V7 freeze unless a concrete technical defect is identified.**
 
 ---
 
-## 3. Current project priority: a genuinely closed gravitational source
+## 3. Current canonical paper
 
-The previous four-endpoint-mass source had a real vulnerability: prescribed accelerated masses alone do not define conserved stress-energy. An unspecified actuator might carry branch-dependent energy/stress and modify or cancel the claimed radiation.
+**A Source-Resolved Quantum Link Budget for Propagating Linearized Gravity**
 
-That loophole has now been attacked with an explicit isolated source architecture.
+Active manuscript:
 
-Read first:
+`experiments/01-causal-quantum-branch-information/manuscript_v7/`
 
-- `CONSERVED_SOURCE_ACTUATOR_AUDIT.md`
+Canonical scientific state:
+
+`experiments/01-causal-quantum-branch-information/CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`
+
+External-review response:
+
+`experiments/01-causal-quantum-branch-information/EXTERNAL_REVIEW_RESPONSE_V7.md`
+
+Current internal verdict:
+
+> **No known publication-critical structural physics gap remains from the external review within V7's declared weak-field, nonrelativistic, narrowband linear regime.**
+
+This does **not** mean referee-proof or guaranteed publication.
 
 ---
 
-## 4. Explicit four-spoke source-plus-actuator model
+## 4. Central post-handoff link
 
-Use
-
-- one central hub;
-- four identical finite-mass longitudinal elastic spokes of reference length $L$;
-- endpoint mass $\mu$ on each spoke;
-- one spoke pair along $x$ and one along $y$;
-- spoke rest mass $m_r$ per spoke;
-- longitudinal sound speed $c_s$;
-- mirrored plus-mode motion between source branches.
-
-The complete source is
+The active result is
 
 $$
-T^{\mu\nu}_{\rm tot}
-=T^{\mu\nu}_{\rm end}
-+T^{\mu\nu}_{\rm spokes}
-+T^{\mu\nu}_{\rm hub}
-+T^{\mu\nu}_{\rm ctrl},
+\boxed{
+\tau_c(t)
+=\beta_{g,A}
+\eta_{\rm store}(R)
+\beta_{g,B}
+\mathcal T_f(t).
+}
 $$
 
 with
 
 $$
-\boxed{\partial_\mu T^{\mu\nu}_{\rm tot}=0.}
+\beta_{g,A}=\frac{\kappa_{g,A}}{\kappa_A},
 $$
-
-For a compact conserved source define
-
-$$
-I_{ij}
-=\frac1{c^2}\int d^3x\,T^{00}_{\rm tot}x_i x_j.
-$$
-
-Then
 
 $$
 \boxed{
-\ddot I_{ij}=2\int d^3x\,T^{ij}_{\rm tot}.
+\eta_{\rm store}(R)
+=\frac{25\mathcal O}{16(kR)^2}
 }
 $$
 
-Thus internal stresses are required for conservation but are not an independent leading TT radiation term. Any real cancellation must appear in the **total energy quadrupole**.
+at leading wave-zone order,
+
+$$
+\beta_{g,B}=\frac{\kappa_{g,B}}{\kappa_B},
+$$
+
+and
+
+$$
+0\le\mathcal T_f(t)\le1.
+$$
+
+The memory quantum excess is
+
+$$
+\boxed{
+\Delta_{\rm mem}=\tau_c-m_c,
+}
+$$
+
+and a separate readout gives
+
+$$
+\boxed{
+\Delta_{\rm acc}=\tau_r\Delta_{\rm mem}-m_r.
+}
+$$
+
+The publication claim is the **source-resolved serial normalization/capability chain**, not a new Gaussian-channel theorem.
 
 ---
 
-## 5. Exact finite-spoke normal mode
+## 5. Current source architecture
+
+The radiating source is a finite-support four-spoke elastic plus mode.
 
 Define
 
 $$
-\boxed{q\equiv\frac{\omega L}{c_s}.}
+q=\frac{\omega L}{c_s}.
 $$
 
-For one spoke, normalized to endpoint displacement,
-
-$$
-\boxed{
-f_q(x)=\frac{\sin(qx/L)}{\sin q}.}
-$$
-
-The endpoint traction boundary condition gives
+The exact spoke boundary relation is
 
 $$
 \boxed{
@@ -166,402 +151,390 @@ $$
 }
 $$
 
-For the endpoint-dominated fundamental mode,
-
-$$
-q\ll1,
-$$
-
-$$
-\frac{m_r}{\mu}
-=q^2+\frac{q^4}{3}+O(q^6).
-$$
-
-No massless support is required.
-
----
-
-## 6. Main conserved-source result: the actuator does not cancel the quadrupole
-
-For branch $s=\pm1$, let the $x$ spokes move as
-
-$$
-\xi_x^{(s)}=s u_c(t)f_q(x),
-$$
-
-and the $y$ spokes as
-
-$$
-\xi_y^{(s)}=-s u_c(t)f_q(x).
-$$
-
-Including both endpoint masses and spoke rest mass, the exact leading branch-difference quadrupole is
+The branch-difference quadrupole is
 
 $$
 \boxed{
 \Delta Q_{xx}
-=8\mu L u_c\frac{\tan q}{q},
+=8\mu Lu\frac{\tan q}{q},
+\qquad
+\Delta Q_{yy}=-\Delta Q_{xx}.
 }
 $$
-
-$$
-\boxed{
-\Delta Q_{yy}
-=-8\mu L u_c\frac{\tan q}{q}.
-}
-$$
-
-For $0<q<\pi/2$,
-
-$$
-\frac{\tan q}{q}>1.
-$$
-
-Therefore the finite support **reinforces** rather than cancels the endpoint quadrupole.
-
-For $q\ll1$,
-
-$$
-\boxed{
-\frac{\tan q}{q}
-=1+\frac{q^2}{3}+\frac{2q^4}{15}+O(q^6).
-}
-$$
-
-The previous endpoint-only result is the controlled $q\to0$ limit.
-
----
-
-## 7. Correct finite-spoke mode mass and quantum matrix element
 
 The exact generalized mode mass is
 
 $$
+M_{\rm eff}
+=4\mu\mathcal A(q),
+$$
+
+$$
 \boxed{
-M_{\rm eff}(q)
-=4\mu
-\left[
-\frac12+\frac{q}{\sin2q}
-\right].
+\mathcal A(q)=\frac12+\frac{q}{\sin2q}.
+}
+$$
+
+The corrected graviton linewidth is
+
+$$
+\boxed{
+\kappa_g(q)
+=\frac{8G\mu L^2\omega^4}{5c^5}
+\frac{(\tan q/q)^2}{\mathcal A(q)}.
+}
+$$
+
+The old endpoint-only formulas are controlled $q\to0$ limits, not the active source model.
+
+---
+
+## 6. Local controller completion
+
+Do not use an instantaneous distributed `sigma_z` actuator as the physical model.
+
+The active source uses a local controller bus field
+
+$$
+\Phi_a^{(s)}(x,t)
+=sX_C(t-x/v_c),
+\qquad
+v_c\le c,
+$$
+
+with local eigenstrain coupling.
+
+Define
+
+$$
+q_c=\frac{\omega L}{v_c}.
+$$
+
+The projected controller form factor is
+
+$$
+F_c(\omega)
+=\int_0^Ldx\,W_c(x)e^{i\omega x/v_c},
+$$
+
+with
+
+$$
+|F_c|^2
+=1-q_c^2\operatorname{Var}_{W_c}(x/L)+O(q_c^4).
+$$
+
+A physical handoff has
+
+$$
+T_*^{\rm local}
+=T_*^{\rm modal}+O(L/v_c).
+$$
+
+Canonical source/controller notes:
+
+- `LOCAL_CONTROLLER_FIELD_COMPLETION_V7.md`
+- `FINITE_SPEED_LOCAL_ENCODER_AUDIT_V7.md`
+- `FINITE_HUB_CONTROLLER_RESIDUAL_BOUND_V7.md`
+
+---
+
+## 7. Equal-charge gravitational code
+
+The full encoded system, including controller/radiation/loss ports, satisfies at the retained perturbative order
+
+$$
+\boxed{
+V_{\mathcal C}^\dagger P^\mu V_{\mathcal C}
+=p^\mu I_{\mathcal C},
+}
+$$
+
+$$
+\boxed{
+V_{\mathcal C}^\dagger M^{\mu\nu}V_{\mathcal C}
+=m^{\mu\nu}I_{\mathcal C}.
+}
+$$
+
+This fixes all Poincare-charge matrix elements on the logical code.
+
+Use this only within the first-order Donnelly--Giddings gravitational-splitting scope:
+
+- common branch-independent long-range dressing may exist;
+- source-controlled branch information is absent before causal escape;
+- later branch-dependent quadrupole/precursor radiation is the signal;
+- no exact tensor-factor locality or nonperturbative quantum-gravity theorem is claimed.
+
+Canonical audit:
+
+`GRAVITATIONAL_SPLITTING_CODE_SUBSPACE_AUDIT_V7.md`
+
+---
+
+## 8. $25/16$ normalization — CLOSED
+
+Do not reopen the factor-of-four/factor-of-two normalization problem without a new concrete contradiction.
+
+There are now three distinct checks:
+
+1. retarded conserved-source field;
+2. critical absorption / reciprocal-antenna / Friis normalization;
+3. canonical TT one-graviton mode overlap.
+
+The TT route gives
+
+$$
+S_+(z)
+=-\frac{5i}{4}
+\frac{P(z)e^{iz}}{z^5},
+$$
+
+$$
+P(z)=3-3iz-3z^2+2iz^3+z^4,
+$$
+
+and therefore
+
+$$
+|S_+|^2
+\to\frac{25}{16z^2}.
+$$
+
+It independently reproduces the entire radial polynomial, not only the asymptotic coefficient.
+
+Canonical audit:
+
+`TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md`
+
+Numerical regression:
+
+`numerics/tt_mode_overlap_25_16_check.py`
+
+Workflow:
+
+`.github/workflows/tt-normalization.yml`
+
+Pinned active numerical environment:
+
+- Python `3.12.13`;
+- NumPy `2.5.1`;
+- SciPy `1.18.0`.
+
+---
+
+## 9. Approximation hierarchy
+
+Do not quote the leading formulas without their regime.
+
+The centralized control parameters are
+
+$$
+\boxed{
+\epsilon_u,
+q,
+q_c,
+\beta,
+B/\omega,
+\mathcal C,
+(kR)^{-1},
+\epsilon_h,
+\epsilon_{\rm fb}
+\ll1.
+}
+$$
+
+Canonical audit:
+
+`APPROXIMATION_ERROR_BUDGET_V7.md`
+
+The exact TT propagation correction is
+
+$$
+|t|^2
+=\frac{25}{16z^2}
+\left(
+1-\frac2{z^2}
++\frac3{z^4}
+-\frac9{z^6}
++\frac9{z^8}
+\right).
+$$
+
+At the benchmark $kR=10$, the leading wave-zone expression is about $1.97\%$ high.
+
+---
+
+## 10. Finite hub/controller residual — CLOSED TO BOUNDS
+
+The symmetric controller bus has branch-even quadratic energy and therefore
+
+$$
+\Delta Q_{ij}^{\rm ctrl}=0
+$$
+
+at the retained order.
+
+The generic finite-hub residual is bounded by
+
+$$
+\boxed{
+\frac{|\Delta Q_h|}{Q_0}
+\le
+\frac{C_h}{8}
+\frac{M_h}{\mu}
+\frac{r_h}{L}
+\frac{|u_h|}{|u|}
+\frac{q}{\tan q}.
 }
 $$
 
 Define
 
 $$
-\boxed{
-A(q)=\frac12+\frac{q}{\sin2q}.
-}
+\epsilon_h
+=\frac{M_h}{\mu}
+\frac{r_h}{L}
+\frac{u_h}{u}.
 $$
 
-Then
+Controlled source design requires $\epsilon_h\ll1$.
 
-$$
-A(q)
-=1+\frac{q^2}{3}+\frac{7q^4}{45}+O(q^6).
-$$
-
-The zero-point coordinate is
-
-$$
-\boxed{
-u_{\rm zpf}(q)
-=\sqrt{\frac{\hbar}{2M_{\rm eff}(q)\omega}}.
-}
-$$
-
-The one-branch quadrupole operator is
-
-$$
-\delta Q_{xx}
-=4\mu L\frac{\tan q}{q}u,
-$$
-
-so
-
-$$
-\boxed{
-q_{01}^{\rm tot}(q)
-=4\mu L\frac{\tan q}{q}
-\sqrt{\frac{\hbar}{2M_{\rm eff}(q)\omega}}.
-}
-$$
-
-Relative to the endpoint-only matrix element,
-
-$$
-\boxed{
-\mathcal C_Q(q)
-=\frac{\tan q/q}{\sqrt{A(q)}}
-=1+\frac{q^2}{6}+\frac{q^4}{24}+O(q^6).
-}
-$$
+Do not describe the model as an exact relativistic hyperelastic material theory.
 
 ---
 
-## 8. Correct finite-spoke graviton linewidth
+## 11. Novelty boundary
 
-For a plus mode, the repository convention gives
+Current novelty verdict: **GO WITH RESTRAINED CLAIMS**.
 
-$$
-\kappa_g
-=\frac{4G\omega^5}{5\hbar c^5}|q_{01}|^2.
-$$
+Final integrated sweep:
 
-Therefore
+`FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`
 
-$$
-\boxed{
-\kappa_g(q)
-=\frac{8G\mu L^2\omega^4}{5c^5}
-\mathcal C_\kappa(q),
-}
-$$
+Do not claim novelty for any of the following individually:
 
-where
+- finite-rank Gaussian survival;
+- all finite binary coherent survival;
+- matched coherent witness scale;
+- branch-difference graviton mode or $N_\Delta$ by itself;
+- generic propagating-graviton entanglement;
+- graviton transduction as a concept;
+- critical $l=2$ absorption cross section;
+- generic Gaussian non-EB criterion.
 
-$$
-\boxed{
-\mathcal C_\kappa(q)
-=\frac{(\tan q/q)^2}{A(q)}.
-}
-$$
-
-For $q\ll1$,
+The surviving candidate contribution is the **closed separated-source serial normalization**
 
 $$
-\boxed{
-\mathcal C_\kappa(q)
-=1+\frac{q^2}{3}+\frac{q^4}{9}+O(q^6).
-}
+\text{local source}
+\to
+\beta_{g,A}
+\to
+\eta_{\rm store}
+\to
+\beta_{g,B}
+\to
+\text{memory/noise}
+\to
+\text{readout}.
 $$
 
-Thus the endpoint-only linewidth
+This is a negative-search novelty boundary, not proof of priority.
 
-$$
-\frac{8G\mu L^2\omega^4}{5c^5}
-$$
-
-is again the controlled $q\to0$ limit.
+Never use `first`, `unique`, `unprecedented`, or equivalent priority language unless new independent evidence justifies it.
 
 ---
 
-## 9. Causal-support lower bound
+## 12. Standalone Gaussian branch — STOP
 
-Let
+The Gaussian work is retained as mathematics/tools only.
 
-$$
-\beta=\frac{\omega L}{c}.
-$$
+Canonical stop files:
 
-Causality requires
+- `STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`
+- `NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
+- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
 
-$$
-c_s\le c,
-$$
-
-hence
-
-$$
-q\ge\beta.
-$$
-
-For $\beta\ll1$, the stiffest causal support has parametrically
-
-$$
-\boxed{
-\frac{m_r}{\mu}\gtrsim\beta^2
-}
-$$
-
-and the minimum support correction to the classical quadrupole is
-
-$$
-\boxed{
-\frac{\Delta Q}{\Delta Q_{\rm end}}-1
-\gtrsim\frac{\beta^2}{3}.
-}
-$$
-
-The physically relevant endpoint approximation criterion is therefore
-
-$$
-q=\omega L/c_s\ll1,
-$$
-
-not an unphysical massless actuator.
+Do not restart a standalone Gaussian theorem paper from the existing rank-two/coherent-witness material.
 
 ---
 
-## 10. Controller does not need to become a which-branch record
+## 13. Superseded files
 
-Use an autonomous source-control Hamiltonian
+The repository intentionally retains the research trail.
 
-$$
-\boxed{
-H=H_m(u,p_u)+H_c(q_c,p_c)-\sigma_z g(q_c)u,
-}
-$$
+The following are historical unless a current document explicitly cites them for provenance:
 
-with $H_m$ parity even.
+- `CURRENT_STATE_RANK2_UPDATE.md`;
+- `PAPER_CORE_V3.md`;
+- `PAPER_CORE_V4.md`;
+- `PAPER_CORE_V5_LOCAL_END_TO_END.md`;
+- `PAPER_CORE_V6_QUANTUM_LINK_BUDGET.md`;
+- endpoint-only source formulas not labeled as $q\to0$ limits;
+- old logarithmic single-pulse quantum-cone claims;
+- old $25/[4(kR)^2]$ coherent-storage normalization;
+- universal $\beta^5$ passive-receiver claims.
 
-For branch $s$,
-
-$$
-u_s=s u_c.
-$$
-
-The controller backreaction contains
-
-$$
-\sigma_z u_s=u_c,
-$$
-
-which is branch independent.
-
-More strongly, with mechanical parity $P_u$, define
-
-$$
-U_P
-=|+\rangle\langle+|\otimes I
-+|-\rangle\langle-|\otimes P_u.
-$$
-
-Then
-
-$$
-U_P^\dagger uU_P=\sigma_z u,
-$$
-
-and
-
-$$
-\boxed{
-U_P^\dagger H U_P
-=H_m+H_c-g(q_c)u.
-}
-$$
-
-Before gravitational coupling is included, the controller/work reservoir can therefore follow identical quantum dynamics in both source branches. The actuator need not acquire a hidden classical branch record.
+Do not resurrect an old result merely because the file still exists.
 
 ---
 
-## 11. Controlled approximation regime
+## 14. Canonical reading order
 
-Use
-
-$$
-\boxed{|u|/L\ll1,}
-$$
-
-$$
-\boxed{q=\omega L/c_s\ll1,}
-$$
-
-$$
-\boxed{\beta=\omega L/c\ll1,}
-$$
-
-$$
-\boxed{\mathcal C=2GM/(c^2L)\ll1.}
-$$
-
-Finite spoke inertia is included explicitly. Remaining kinetic/internal-energy corrections to $T^{00}$ are relativistically suppressed and branch-even at first order under the mirrored source symmetry.
-
----
-
-## 12. Immediate next tasks
-
-A new agent should **not** restart the Gaussian novelty branch.
-
-Proceed in this order:
-
-### Priority 1 — propagate finite-spoke corrections through the source formulas
-
-Update the legacy endpoint-only source notes so that
-
-- endpoint expressions are explicitly labeled as $q\to0$ limits;
-- $M_{\rm eff}(q)$;
-- $q_{01}^{\rm tot}(q)$;
-- $\kappa_g(q)$;
-- $\Delta Q(q)$
-
-are used in the current source model.
-
-### Priority 2 — re-audit emitted coherent-graviton distance
-
-For a prescribed outer displacement $u_c(t)$, the classical branch quadrupole amplitude acquires
-
-$$
-\frac{\tan q}{q}.
-$$
-
-Therefore the emitted branch-distance formula should acquire
-
-$$
-\left(\frac{\tan q}{q}\right)^2
-$$
-
-relative to the endpoint-only prescribed-displacement expression, modulo the same narrowband assumptions.
-
-For a quantum single-mode normalization, use the corrected $q_{01}$ and $\kappa_g(q)$ consistently.
-
-### Priority 3 — re-audit source→receiver link
-
-Every downstream expression that uses $\kappa_{g,A}$ or $\kappa_{g,B}$ should be corrected by the appropriate
-
-$$
-\mathcal C_\kappa(q_A),
-\qquad
-\mathcal C_\kappa(q_B)
-$$
-
-factors.
-
-Check whether any qualitative scaling changes. The expectation is no: only controlled multiplicative $1+O(q^2)$ corrections in the endpoint-dominated regime.
-
-### Priority 4 — attack the hub/controller residual
-
-The next source-level adversarial question is finite hub/control extent and branch-dependent internal energy beyond the ideal parity-symmetric model. Bound its contribution in powers of
-
-$$
-r_h/L,
-\qquad
-v^2/c^2,
-\qquad
-\mathcal C.
-$$
-
-### Priority 5 — gravity paper, not another generic Gaussian paper
-
-Once the corrected source→receiver formulas are propagated, re-evaluate `PAPER_CORE_V3.md` around the conserved total source.
-
----
-
-## 13. Canonical reading order
+Read current `main` first, then:
 
 1. `AGENTS.md`
-2. `experiments/01-causal-quantum-branch-information/CONSERVED_SOURCE_ACTUATOR_AUDIT.md`
-3. `experiments/01-causal-quantum-branch-information/STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`
-4. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_RANK2_UPDATE.md`
-5. `experiments/01-causal-quantum-branch-information/CONSERVED_FOUR_MASS_QUADRUPOLE_SOURCE.md`
-6. `experiments/01-causal-quantum-branch-information/QUANTIZED_PLUS_MODE_SOURCE.md`
-7. `experiments/01-causal-quantum-branch-information/EXPLICIT_FOUR_MASS_SOURCE_RECEIVER_LINK.md`
-8. `experiments/01-causal-quantum-branch-information/PAPER_CORE_V3.md`
+2. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`
+3. `experiments/01-causal-quantum-branch-information/manuscript_v7/README.md`
+4. `experiments/01-causal-quantum-branch-information/EXTERNAL_REVIEW_RESPONSE_V7.md`
+5. `experiments/01-causal-quantum-branch-information/TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md`
+6. `experiments/01-causal-quantum-branch-information/FINITE_HUB_CONTROLLER_RESIDUAL_BOUND_V7.md`
+7. `experiments/01-causal-quantum-branch-information/APPROXIMATION_ERROR_BUDGET_V7.md`
+8. `experiments/01-causal-quantum-branch-information/GRAVITATIONAL_SPLITTING_CODE_SUBSPACE_AUDIT_V7.md`
+9. `experiments/01-causal-quantum-branch-information/FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`
+10. `experiments/01-causal-quantum-branch-information/numerics/README.md`
+
+Only go backward into legacy files when tracing a derivation or historical correction.
 
 ---
 
-## 14. Stop/go
+## 15. Current allowed work
 
-### STOP
+### Priority 1 — submission polish
 
-- standalone rank-two Fock theorem paper;
-- standalone all-binary-coherent survival theorem paper;
-- attempts to manufacture generic Gaussian novelty from the three-element witness alone.
+- final prose copyedit;
+- final bibliography metadata pass;
+- author / acknowledgments / funding metadata;
+- optional removal of the orphaned `sin^4` loading example;
+- rebuild clean manuscript-only source package from current `main`;
+- finalize PRD cover letter;
+- tag the submission commit.
 
-### GO
+### Priority 2 — repository reproducibility
 
-- finite-support conserved source;
-- corrected source-mode quantization;
-- corrected source→receiver coupling;
-- full gravity-specific adversarial audit.
+- broaden CI over the committed Gaussian-channel numerical audits;
+- add regression checks for benchmark constants, finite-spoke coefficients, and exact-negativity asymptotics;
+- keep the active numerical environment pinned.
+
+### Priority 3 — public repository hygiene
+
+- make superseded branches visibly historical;
+- keep `README.md`, `AGENTS.md`, and the canonical state synchronized;
+- avoid deleting the adversarial research history unless there is a specific maintenance reason.
+
+---
+
+## 16. Do not do this
+
+Unless a concrete defect is identified, do **not**
+
+- derive another Gaussian theorem;
+- invent another source architecture;
+- reopen $25/16$ normalization;
+- reopen finite-spoke propagation;
+- reopen the hub residual from zero;
+- broaden the paper into a near-term experimental proposal;
+- claim generic gravitational quantum communication novelty;
+- replace V7 with a new paper core merely for stylistic reasons.
+
+The correct next score increase comes from reproducibility, clarity, and external peer review—not another speculative derivation.
