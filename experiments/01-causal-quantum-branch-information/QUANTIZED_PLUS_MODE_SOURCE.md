@@ -1,362 +1,371 @@
-# Quantized Plus-Mode Source
+# Quantized Plus-Mode Source — Conserved Finite-Spoke Version
 
-**Timestamp:** 2026-08-07 20:04 EDT  
-**Status:** Explicit leading-order Hamiltonian source model for the four-mass quadrupole geometry. This converts the prescribed branch trajectory into a standard state-dependent driven normal mode.
+**Updated:** 2026-08-07  
+**Status:** Current quantized source model. The previous four-endpoint-mass formulas are recovered as the controlled $q\to0$ limit of the finite-mass conserved source in `CONSERVED_SOURCE_ACTUATOR_AUDIT.md`.
 
-## 1. Small-deformation plus coordinate
+## 1. Source architecture
 
-Start from the four equal endpoint masses $\mu$ in `CONSERVED_FOUR_MASS_QUADRUPOLE_SOURCE.md`.
-
-For a small deformation define one plus normal coordinate $u$ by
-
-$$
-X=L+u,
-$$
-
-$$
-Y=L-u,
-$$
-
-to leading order in
-
-$$
-|u|/L\ll1.
-$$
-
-The exact constant-$X^2+Y^2$ geometry differs only at $O(u^2/L^2)$.
-
-Two masses move on the $x$ axis and two on the $y$ axis. Each endpoint has speed magnitude $|\dot u|$ to leading order.
-
-Therefore the total kinetic energy is
-
-$$
-T
-=4\left(\frac12\mu\dot u^2\right)
-=2\mu\dot u^2.
-$$
-
-Write this as
-
-$$
-T
-=\frac12M_{\rm eff}\dot u^2.
-$$
-
-Hence
-
-$$
-\boxed{M_{\rm eff}=4\mu.}
-$$
-
----
-
-## 2. Quadrupole operator of the normal coordinate
-
-From the exact four-mass quadrupole,
-
-$$
-Q_{xx}
-=\frac23\mu L^2+2\mu d,
-$$
-
-$$
-Q_{yy}
-=\frac23\mu L^2-2\mu d,
-$$
-
-and in the small-deformation limit
-
-$$
-d\simeq2Lu.
-$$
-
-Therefore the time-dependent quadrupole of one mechanical configuration is
-
-$$
-\boxed{
-\delta Q_{xx}=4\mu L\,u,
-}
-$$
-
-$$
-\boxed{
-\delta Q_{yy}=-4\mu L\,u,
-}
-$$
-
-$$
-\delta Q_{zz}=0.
-$$
-
-Thus $u$ is directly a plus-polarized quadrupole normal coordinate.
-
----
-
-## 3. Internal harmonic Hamiltonian
-
-Let the symmetric internal elastic system have plus-mode frequency
-
-$$
-\omega_s.
-$$
-
-At quadratic order,
-
-$$
-\boxed{
-H_s
-=\frac{p_u^2}{2M_{\rm eff}}
-+\frac12M_{\rm eff}\omega_s^2u^2.
-}
-$$
-
-Quantize with
-
-$$
-[u,p_u]=i\hbar.
-$$
+Use four endpoint masses $\mu$ connected to a central hub by four identical longitudinal elastic spokes of reference length $L$.
 
 Define
 
 $$
 \boxed{
-u_{\rm zpf}
-=\sqrt{\frac{\hbar}{2M_{\rm eff}\omega_s}}
-=\sqrt{\frac{\hbar}{8\mu\omega_s}}.
+q\equiv\frac{\omega_sL}{c_s},
 }
 $$
 
-Then
+where $c_s$ is the longitudinal sound speed of a spoke.
+
+For one spoke, normalized to unit endpoint displacement,
 
 $$
 \boxed{
-u
-=u_{\rm zpf}(a+a^\dagger).
+f_q(x)=\frac{\sin(qx/L)}{\sin q}.}
+$$
+
+The endpoint traction boundary condition gives
+
+$$
+\boxed{
+\frac{m_r}{\mu}=q\tan q,
 }
 $$
 
-The Hamiltonian is
+where $m_r$ is the rest mass of one spoke.
+
+The endpoint-dominated regime is
 
 $$
-H_s
-=\hbar\omega_s
-\left(a^\dagger a+\frac12\right).
+\boxed{q\ll1.}
 $$
 
 ---
 
-## 4. Quadrupole transition matrix element
+## 2. Plus coordinate
 
-The plus quadrupole operator is
+Let $u$ be the outer endpoint displacement of the plus mode.
 
-$$
-\delta Q_{xx}
-=4\mu L u_{\rm zpf}(a+a^\dagger),
-$$
+For branch
 
 $$
-\delta Q_{yy}
-=-\delta Q_{xx}.
+s=\pm1,
 $$
 
-For the single-phonon transition,
+choose
 
 $$
-q_{01}
-\equiv
-\langle0|\delta Q_{xx}|1\rangle
-=4\mu L u_{\rm zpf}.
+\xi_x^{(s)}(x)=suf_q(x),
 $$
 
-Therefore
-
 $$
-\boxed{
-q_{01}
-=L\sqrt{\frac{2\mu\hbar}{\omega_s}}.
-}
+\xi_y^{(s)}(x)=-suf_q(x).
 $$
 
-The intrinsic spontaneous graviton linewidth of the plus mode is
+Thus one branch expands the $x$ pair and contracts the $y$ pair, while the other branch reverses the pattern.
 
-$$
-\kappa_g
-=\frac{4G\omega_s^5|q_{01}|^2}
-{5\hbar c^5}.
-$$
-
-Substitution gives
-
-$$
-\boxed{
-\kappa_g
-=\frac{8G\mu L^2\omega_s^4}
-{5c^5}.
-}
-$$
-
-This is a fully explicit gravitational linewidth for the ideal four-mass plus mode.
+The center of mass and mass dipole remain fixed by inversion symmetry.
 
 ---
 
-## 5. Consistency with the passive oscillator-strength ceiling
+## 3. Exact generalized mode mass
 
-The four endpoint masses have characteristic moment of inertia
-
-$$
-I\sim4\mu L^2.
-$$
-
-The general passive nonrelativistic ceiling derived earlier is
+The spoke kinetic-energy shape factor is
 
 $$
-\kappa_g
-\le
-\frac{4G}{3c^5}I\omega_s^4.
+I_2(q)
+=\frac1L\int_0^L f_q^2(x)dx
+=\frac{2q-\sin2q}{4q\sin^2q}.
+$$
+
+The total generalized mode mass is
+
+$$
+M_{\rm eff}
+=4\left[\mu+m_rI_2(q)\right].
 $$
 
 Using
 
 $$
-I=4\mu L^2
+m_r/\mu=q\tan q,
 $$
 
 gives
 
 $$
-\kappa_g
-\le
-\frac{16G\mu L^2\omega_s^4}{3c^5}.
+\boxed{
+M_{\rm eff}(q)
+=4\mu A(q),
+}
 $$
 
-The explicit plus-mode value
+where
 
 $$
-\frac{8}{5}
-\frac{G\mu L^2\omega_s^4}{c^5}
+\boxed{
+A(q)
+=\frac12+\frac{q}{\sin2q}.
+}
 $$
 
-lies comfortably below this ceiling.
+For $q\ll1$,
 
-Thus the source model is consistent with the earlier oscillator-strength analysis.
+$$
+\boxed{
+A(q)
+=1+\frac{q^2}{3}+\frac{7q^4}{45}+O(q^6).
+}
+$$
+
+Hence
+
+$$
+M_{\rm eff}
+=4\mu[1+O(q^2)].
+$$
+
+The endpoint-only result $M_{\rm eff}=4\mu$ is the $q\to0$ limit.
 
 ---
 
-## 6. Source branch qubit
+## 4. Total branch quadrupole including support mass
 
-Introduce a two-level internal control degree of freedom with basis
+Including endpoint rest mass and spoke rest mass, the branch-difference STF plus quadrupole is
 
 $$
-|+\rangle_S,
+\boxed{
+\Delta Q_{xx}
+=8\mu Lu\frac{\tan q}{q},
+}
+$$
+
+$$
+\boxed{
+\Delta Q_{yy}
+=-8\mu Lu\frac{\tan q}{q},
+}
+$$
+
+$$
+\Delta Q_{zz}=0.
+$$
+
+Therefore the one-branch time-dependent plus quadrupole operator is
+
+$$
+\boxed{
+\delta Q_{xx}
+=4\mu L\frac{\tan q}{q}\,u,
+}
+$$
+
+$$
+\delta Q_{yy}=-\delta Q_{xx}.
+$$
+
+For $q\ll1$,
+
+$$
+\boxed{
+\frac{\tan q}{q}
+=1+\frac{q^2}{3}+\frac{2q^4}{15}+O(q^6).
+}
+$$
+
+The finite support reinforces rather than cancels the endpoint quadrupole.
+
+---
+
+## 5. Quantization
+
+Use
+
+$$
+[u,p_u]=i\hbar
+$$
+
+and
+
+$$
+\boxed{
+H_m
+=\frac{p_u^2}{2M_{\rm eff}}
++\frac12M_{\rm eff}\omega_s^2u^2.
+}
+$$
+
+The zero-point coordinate is
+
+$$
+\boxed{
+u_{\rm zpf}(q)
+=\sqrt{\frac{\hbar}{2M_{\rm eff}(q)\omega_s}}.
+}
+$$
+
+Write
+
+$$
+\boxed{
+u
+=u_{\rm zpf}(a+a^\dagger).}
+$$
+
+The one-phonon quadrupole matrix element is
+
+$$
+\boxed{
+q_{01}^{\rm tot}(q)
+=4\mu L\frac{\tan q}{q}
+\sqrt{\frac{\hbar}{2M_{\rm eff}(q)\omega_s}}.
+}
+$$
+
+Relative to the endpoint-only matrix element,
+
+$$
+\boxed{
+\mathcal C_Q(q)
+\equiv
+\frac{q_{01}^{\rm tot}(q)}{q_{01}^{\rm end}}
+=
+\frac{\tan q/q}{\sqrt{A(q)}}.
+}
+$$
+
+For $q\ll1$,
+
+$$
+\boxed{
+\mathcal C_Q(q)
+=1+\frac{q^2}{6}+\frac{q^4}{24}+O(q^6).
+}
+$$
+
+---
+
+## 6. Correct spontaneous graviton linewidth
+
+For a plus mode with
+
+$$
+Q_{xx}^{01}=q_{01},
 \qquad
-|-\rangle_S,
+Q_{yy}^{01}=-q_{01},
 $$
 
-represented by
+the quadrupole contraction gives
 
 $$
-\sigma_z|s\rangle=s|s\rangle.
-$$
-
-Couple it to the plus mode through a state-dependent internal force
-
-$$
-\boxed{
-H_F(t)
-=-\sigma_zF(t)u.
-}
-$$
-
-For a source-qubit superposition
-
-$$
-|+x\rangle_S
-=\frac{|+\rangle_S+|-\rangle_S}{\sqrt2},
-$$
-
-the force creates the entangled mechanical cat
-
-$$
-\boxed{
-\frac{
-|+\rangle_S|\alpha(t)\rangle
-+|-\rangle_S|-\alpha(t)\rangle
-}{\sqrt2}
-}
-$$
-
-up to branch-common phases, provided the oscillator begins near its ground state.
-
-The two branches therefore have equal and opposite plus quadrupole expectation values.
-
----
-
-## 7. Coherent-state dynamics under the state-dependent force
-
-In the oscillator interaction picture,
-
-$$
-H_F^{I}(t)
-=-\sigma_zF(t)u_{\rm zpf}
-\left(
-a e^{-i\omega_st}
-+a^\dagger e^{i\omega_st}
-\right).
-$$
-
-A linear force maps the oscillator vacuum to a coherent state.
-
-The conditional coherent displacement is
-
-$$
-\boxed{
-\alpha_s(t)
-=s\,\frac{i u_{\rm zpf}}{\hbar}
-\int_0^t dt'\,
-F(t')e^{i\omega_st'},
-}
-$$
-
-up to the chosen interaction-picture phase convention.
-
-Thus
-
-$$
-\alpha_+(t)=-\alpha_-(t).
-$$
-
-No nonlinear mechanical interaction is required to create the branch-dependent coherent quadrupole once the source control is quantum.
-
----
-
-## 8. Inverse-engineered closed trajectory
-
-Instead of choosing $F(t)$ first, prescribe the desired branch coordinate
-
-$$
-\boxed{
-u_s(t)=s\,u_c(t).}
-$$
-
-The classical normal-mode equation is
-
-$$
-M_{\rm eff}\ddot u_s
-+M_{\rm eff}\omega_s^2u_s
-=sF(t).
+Q_{ij}^{10}Q_{ij}^{01}=2|q_{01}|^2.
 $$
 
 Therefore
 
 $$
+\kappa_g
+=\frac{4G\omega_s^5}{5\hbar c^5}|q_{01}|^2.
+$$
+
+Substituting the finite-spoke matrix element gives
+
+$$
 \boxed{
-F(t)
-=M_{\rm eff}
-[\ddot u_c(t)+\omega_s^2u_c(t)].
+\kappa_g(q)
+=
+\frac{8G\mu L^2\omega_s^4}{5c^5}
+\mathcal C_\kappa(q),
 }
 $$
 
-Choose
+where
+
+$$
+\boxed{
+\mathcal C_\kappa(q)
+=\frac{(\tan q/q)^2}{A(q)}.
+}
+$$
+
+For $q\ll1$,
+
+$$
+\boxed{
+\mathcal C_\kappa(q)
+=1+\frac{q^2}{3}+\frac{q^4}{9}+O(q^6).
+}
+$$
+
+Hence the previous endpoint-only linewidth
+
+$$
+\kappa_g^{\rm end}
+=\frac{8G\mu L^2\omega_s^4}{5c^5}
+$$
+
+is correct at leading order.
+
+---
+
+## 7. Autonomous source branch control
+
+Introduce a two-level source control with
+
+$$
+\sigma_z|s\rangle=s|s\rangle.
+$$
+
+A closed projected Hamiltonian is
+
+$$
+\boxed{
+H
+=H_m(u,p_u)
++H_c(q_c,p_c)
+-\sigma_zg(q_c)u.
+}
+$$
+
+For an initial source-qubit superposition, the plus mode develops mirrored coherent branches.
+
+The controller need not acquire which-branch information before gravity acts. With mechanical parity $P_u$ define
+
+$$
+U_P
+=|+\rangle\langle+|\otimes I
++|-\rangle\langle-|\otimes P_u.
+$$
+
+Since
+
+$$
+U_P^\dagger uU_P=\sigma_z u,
+$$
+
+and $H_m$ is parity even,
+
+$$
+\boxed{
+U_P^\dagger H U_P
+=H_m+H_c-g(q_c)u.
+}
+$$
+
+Thus the nongravitational controller dynamics can be branch common.
+
+---
+
+## 8. Closed branch trajectory
+
+Prescribe the mirrored outer displacement
+
+$$
+\boxed{
+u_s(t)=s u_c(t).}
+$$
+
+For a smooth narrowband pulse use
 
 $$
 \boxed{
@@ -364,124 +373,26 @@ u_c(t)
 =u_0
 \sin^4\left(\frac{\pi t}{T}\right)
 \cos(\omega_st),
-\qquad0<t<T,
+\qquad 0<t<T,
 }
 $$
 
 and $u_c=0$ outside the pulse.
 
-Since the $\sin^4$ envelope and its first three derivatives vanish at the endpoints,
-
-$$
-u_c(0)=\dot u_c(0)=0,
-$$
-
-$$
-u_c(T)=\dot u_c(T)=0,
-$$
-
-and the inverse-engineered force also switches on/off without an impulse.
-
-At the end of the protocol the mechanical plus mode returns to the same phase-space point in both branches.
-
-Thus the oscillator can, ideally, disentangle from the source qubit after having emitted a branch-dependent gravitational wavepacket.
+The local mechanical mode begins and ends at the same phase-space point in both branches while the gravitational field carries away a branch-dependent wavepacket.
 
 ---
 
-## 9. Resonant slowly varying force
+## 9. Correct emitted coherent graviton branch distance
 
-For
-
-$$
-u_c(t)=u_0g(t)\cos(\omega_st),
-$$
-
-with
-
-$$
-g(t)=\sin^4(\pi t/T),
-$$
-
-$$
-\ddot u_c+\omega_s^2u_c
-=u_0
-\left[
-\ddot g(t)\cos(\omega_st)
--2\omega_s\dot g(t)\sin(\omega_st)
-\right].
-$$
-
-Hence
+For the prescribed outer displacement, the branch quadrupole amplitude is
 
 $$
 \boxed{
-F(t)
-=M_{\rm eff}u_0
-\left[
-\ddot g\cos(\omega_st)
--2\omega_s\dot g\sin(\omega_st)
-\right].
+q_0(q)
+=8\mu L u_0\frac{\tan q}{q}.
 }
 $$
-
-For
-
-$$
-\omega_sT\gg1,
-$$
-
-the dominant term scales as
-
-$$
-F\sim
-2M_{\rm eff}\omega_su_0|\dot g|.
-$$
-
-The drive is purely internal to the source model in the idealization: equal-and-opposite forces act on the quadrupolar mechanical degree of freedom and produce no net center-of-mass force.
-
----
-
-## 10. Branch quadrupole difference
-
-One branch has
-
-$$
-\delta Q_{xx}^{(+)}
-=4\mu L u_c(t),
-$$
-
-while the other has
-
-$$
-\delta Q_{xx}^{(-)}
-=-4\mu L u_c(t).
-$$
-
-Therefore
-
-$$
-\boxed{
-\Delta Q_{xx}(t)
-=8\mu L u_c(t),
-}
-$$
-
-$$
-\boxed{
-\Delta Q_{yy}(t)
-=-8\mu L u_c(t).
-}
-$$
-
-The branch-difference amplitude is therefore
-
-$$
-\boxed{q_0=8\mu L u_0.}
-$$
-
----
-
-## 11. Emitted coherent graviton distance
 
 For the narrowband $\sin^4$ pulse,
 
@@ -489,200 +400,145 @@ $$
 N_\Delta
 \simeq
 \frac{Gq_0^2\omega_s^5}{5\hbar c^5}
-\int_0^Tdt\,
-\sin^8\left(\frac{\pi t}{T}\right).
+\frac{35T}{128}.
 $$
 
-Since
+Therefore
+
+$$
+\boxed{
+N_\Delta(q)
+\simeq
+\frac72
+\frac{G\mu^2L^2u_0^2\omega_s^5T}
+{\hbar c^5}
+\left(\frac{\tan q}{q}\right)^2.
+}
+$$
+
+The endpoint-only expression is multiplied by
+
+$$
+\boxed{
+\left(\frac{\tan q}{q}\right)^2
+=1+\frac{2q^2}{3}+\frac{17q^4}{45}+O(q^6).
+}
+$$
+
+for fixed prescribed outer displacement $u_0$.
+
+---
+
+## 10. Independent input-output normalization check
+
+For branch coordinates $\pm u_c$, the coherent-state amplitude difference of the mechanical mode is
+
+$$
+|\Delta\alpha_m|
+\simeq
+\frac{u_0g(t)}{u_{\rm zpf}}.
+$$
+
+The output-field branch distance is
+
+$$
+N_\Delta
+=\kappa_g(q)
+\int_0^Tdt\,|\Delta\alpha_m(t)|^2.
+$$
+
+Using
 
 $$
 \int_0^Tdt\,\sin^8(\pi t/T)
 =\frac{35T}{128},
 $$
 
-and
+the corrected $\kappa_g(q)$ and $u_{\rm zpf}(q)$ reproduce exactly
 
 $$
-q_0=8\mu L u_0,
-$$
-
-we obtain
-
-$$
-\boxed{
-N_\Delta
-\simeq
-\frac72
-\frac{G\mu^2L^2u_0^2\omega_s^5T}
-{\hbar c^5}.
-}
-$$
-
-This is the gravitational branch-distance produced by the explicit quantum normal-mode excursion.
-
----
-
-## 12. Independent input-output consistency check
-
-The mechanical coherent-state coordinate satisfies, in a slowly varying rotating-frame description,
-
-$$
-\langle u\rangle
-\simeq2u_{\rm zpf}\operatorname{Re}\alpha.
-$$
-
-For branch amplitudes $\pm u_c$, the mechanical coherent-state difference is therefore
-
-$$
-|\Delta\alpha_m(t)|
-\simeq
-\frac{u_0g(t)}{u_{\rm zpf}}.
-$$
-
-A mechanical mode with graviton linewidth $\kappa_g$ radiates a gravitational output field with branch-difference norm
-
-$$
-N_\Delta
-=\kappa_g
-\int_0^Tdt\,
-|\Delta\alpha_m(t)|^2
-$$
-
-in the Markov narrowband input-output picture.
-
-Thus
-
-$$
-N_\Delta
-=\kappa_g
-\frac{u_0^2}{u_{\rm zpf}^2}
-\frac{35T}{128}.
-$$
-
-Using
-
-$$
-\kappa_g
-=\frac{8G\mu L^2\omega_s^4}{5c^5}
-$$
-
-and
-
-$$
-u_{\rm zpf}^2
-=\frac{\hbar}{8\mu\omega_s},
-$$
-
-gives
-
-$$
-\boxed{
-N_\Delta
+N_\Delta(q)
 =\frac72
 \frac{G\mu^2L^2u_0^2\omega_s^5T}
-{\hbar c^5},
-}
+{\hbar c^5}
+\left(\frac{\tan q}{q}\right)^2.
 $$
 
-exactly matching the quadrupole-spectrum calculation.
-
-This is a valuable independent normalization check linking
-
-1. the mechanical quantum mode;
-2. the classical quadrupole formula;
-3. the graviton input-output description.
+Thus the classical conserved quadrupole calculation and the quantized input-output normalization remain consistent after the actuator/support correction.
 
 ---
 
-## 13. Source returns but the field does not
+## 11. Causal-support constraint
 
-At
-
-$$
-t=T,
-$$
-
-the source mechanical mode can return to the same state in both branches.
-
-But the emitted gravitational field has already carried away branch information:
+Let
 
 $$
-\frac{
-|+\rangle_S|g_+\rangle
-+|-\rangle_S|g_-\rangle
-}{\sqrt2}.
+\beta=\frac{\omega_sL}{c}.
 $$
 
-Thus the source can close its local mechanical trajectory while the remote gravitational wavepacket retains the branch record.
+Since
 
-This is exactly the information-flow structure needed for Experiment 01.
+$$
+c_s\le c,
+$$
 
-If the remote receiver captures part of the difference mode coherently, the source can become entangled with that receiver even though the local source oscillator has returned to its starting point.
+$$
+q\ge\beta.
+$$
+
+At the stiff causal limit with $\beta\ll1$,
+
+$$
+\frac{m_r}{\mu}\gtrsim\beta^2.
+$$
+
+The support corrections cannot be made identically zero at finite $\beta$, but they can be parametrically small in the compact nonrelativistic regime.
 
 ---
 
-## 14. Conservation and control
+## 12. Current source chain
 
-The Hamiltonian above describes the plus normal coordinate plus a state-dependent internal force.
-
-A strictly autonomous total model can promote the time-dependent control $F(t)$ to an internal clock/work-reservoir degree of freedom. That refinement is not necessary for the leading radiative calculation provided that
-
-1. all mechanical forces are internal and equal/opposite;
-2. the total stress-energy, including the actuator/control subsystem, is conserved;
-3. branch-dependent actuator radiation is either included or designed to be parametrically smaller/branch common.
-
-The important improvement over prescribed accelerated point masses is that the radiating degree of freedom is now a legitimate internal normal mode with zero net force and an explicit quantum Hamiltonian.
-
----
-
-## 15. Current complete source-to-receiver chain
-
-The project can now write
+The current source model is
 
 $$
 \boxed{
-|+x\rangle_S|0\rangle_m
-\xrightarrow{\ H_F(t)\ }
-\frac{|+\rangle|+\alpha(t)\rangle
-+|-\rangle|-\alpha(t)\rangle}{\sqrt2}
+\text{source qubit}
+\to
+\text{autonomous branch-common controller}
+\to
+\text{finite-spoke plus mode}
+\to
+\text{conserved total quadrupole}
+\to
+\text{quantized gravitational output mode}.
 }
 $$
 
-$$
-\boxed{
-\xrightarrow{\ \text{graviton emission}\ }
-\frac{|+\rangle|g_+\rangle
-+|-\rangle|g_-\rangle}{\sqrt2}
-}
-$$
-
-$$
-\boxed{
-\xrightarrow{\ R/c\ }
-\text{noisy receiver channel}
-}
-$$
-
-with every link parameterized by explicit quantities.
-
-This is substantially closer to a genuine Gedanken experiment than the earlier abstract source-cat picture.
+The strongest former source loophole—unspecified external actuator stress-energy—is therefore closed at controlled leading order.
 
 ---
 
-## 16. Strongest next step
+## 13. Next step
 
-Use the four-mass plus mode as **both source and receiver**, so that
+Propagate
 
 $$
-\kappa_{g,A},
-\quad
-\kappa_{g,B},
-\quad
-N_\Delta,
-\quad
-\eta_{\rm store}(R),
-\quad
-\tau_f(t,R)
+\mathcal C_\kappa(q)
 $$
 
-are all expressed in masses, sizes, frequencies, source displacement amplitude, receiver damping, temperature, and distance. Then determine the resulting absolute certification scale numerically and identify which parameter dominates the impossibility/practicality.
+through the receiver loading and source→receiver formulas.
+
+For a normalized incoming gravitational mode, the receiver loading rate should become
+
+$$
+\kappa_\Delta(R,q_B)
+=\frac{25\mathcal O}{16(kR)^2}\kappa_{g,B}(q_B),
+$$
+
+while the emitted source strength $N_\Delta$ carries its independent source factor
+
+$$
+(\tan q_A/q_A)^2.
+$$
+
+Those corrections should be kept conceptually separate.
