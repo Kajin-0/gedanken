@@ -2,465 +2,142 @@
 
 **Repository:** `Kajin-0/gedanken`  
 **Active experiment:** `experiments/01-causal-quantum-branch-information/`  
-**Research state included through:** `4a7119081f5c3baa2d7ee7b54a4f8d1025bee820`  
-**Snapshot date:** 2026-08-07 23:12 EDT  
-**Purpose:** let a fresh agent recover the current research state quickly after another agent reaches its context limit.
+**Research state included through:** `bee11bda2fcade8930a0ebca70539e6e7481247a`  
+**Snapshot date:** 2026-08-07 23:59 EDT  
 
-> **This is a snapshot, not authority over live `main`. The repository is being edited concurrently. Before doing any work, fetch the current `main` head and compare it with the SHA above. If `main` has advanced, read the intervening commits and changed files first. Newer live `main` always wins.**
-
----
-
-## 0. Mandatory concurrency protocol
-
-Before **every write**:
-
-1. Fetch current `main` HEAD.
-2. Compare it with the HEAD you last read.
-3. If it changed, inspect intervening commits and all relevant changed files.
-4. Re-fetch the exact target file immediately before updating it.
-5. Never overwrite using an old blob SHA.
-6. Prefer a new narrowly scoped note over rewriting a live coordination file unless synchronization is required.
-7. If another agent changed the research direction, follow the newer state.
-
-This repository really is being edited concurrently. During creation of this file another agent landed the conserved source-plus-actuator result between head checks. Treat races as normal.
+> **LIVE `main` ALWAYS WINS.** This repo may be edited by another agent. Before every write, fetch current HEAD, inspect intervening commits, re-fetch the exact target file, and never write from a stale blob SHA.
 
 ---
 
-# 1. Project in one sentence
+# 1. Project status in one sentence
 
-The project asks when a branch-dependent gravitational signal can propagate causally into a distant quantum receiver **while preserving quantum branch coherence**, rather than merely creating a classical branch record.
+The project now studies a **locally prepared, explicitly conserved quadrupolar gravity source whose branch-dependent radiative mode is propagated through retarded free space into a noisy quantum receiver**, asking when the downstream bosonic channel preserves source-reference entanglement.
 
-The current publication center is the **gravity application**, with explicit causality, source-mode quantization, retarded propagation, noisy receiver dynamics, and now an explicit conserved source-plus-actuator model.
+The standalone Gaussian-channel theorem paper is **stopped**. The active publication candidate is the gravity-specific end-to-end construction.
 
 ---
 
-# 2. Standalone Gaussian paper: STOP
+# 2. Broad novelty claims that are dead
 
-The Gaussian work produced correct compact mathematics, but the broad novelty claims collided with prior art.
+Do not resurrect any of these as headline discoveries.
+
+## Gaussian collisions
+
+- Mele–Lami–Giovannetti: finite Schmidt-rank-two Fock survival in the non-EB phase-insensitive Gaussian region.
+- Filippov–Ziman (2014): all-finite binary coherent survival in substance, including the matched coherent scale/exponential factor.
 
 Read:
 
-- `AGENTS.md`
-- `experiments/01-causal-quantum-branch-information/STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`
-- `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md`
-- `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
-- `experiments/01-causal-quantum-branch-information/THREE_ELEMENT_WITNESS_VS_FILIPPOV.md`
+- `STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`
+- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
+- `NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
+- `THREE_ELEMENT_WITNESS_VS_FILIPPOV.md`
 
-## Mele–Lami–Giovannetti collision
+## Gravity collisions
 
-The repository independently derived the finite Schmidt-rank-two Fock result
+Do not claim novelty for
 
-$$
-|\psi_s\rangle
-=\frac{|00\rangle+s|11\rangle}{\sqrt{1+s^2}},
-$$
+- branch-conditioned coherent graviton radiation;
+- $N_\Delta=\|\Delta\alpha\|^2$ as radiation-state distance;
+- $\Gamma_{\rm vac}=N_\Delta/2$;
+- coherent quantum gravitational radiation from a classical/semiclassical source;
+- quantum GW → resonant quantum detector state transfer;
+- gravitational communication framed by an EB/non-EB threshold;
+- propagating gravitons causally generating distant matter entanglement after a distance-dependent delay.
 
-with
+The last item is explicitly occupied by Trenggana & Zen, arXiv:2606.12901 (2026).
 
-$$
-\det M_s
-=\frac{s^2}{(1+s^2)^2}\frac{m-\tau}{(m+1)^3}.
-$$
+Read:
 
-The output is NPT iff $\tau>m$, but the substantive finite-Fock-pair survival result already exists in Mele–Lami–Giovannetti.
-
-**Do not resurrect Schmidt-rank-two sufficiency as a new standalone result.**
-
-## Filippov–Ziman collision
-
-The repository independently proved that every finite nontrivial binary coherent hybrid probe survives with NPT output exactly in the non-EB phase-insensitive region.
-
-A one-sided specialization of Filippov–Ziman's 2014 coherent-state witness plus an invertible local filter on the untouched two-dimensional coherent support already implies that survival result.
-
-Their witness also contains the same matched scale. With
-
-$$
-1-\lambda=\frac{m}{\sqrt\tau},
-$$
-
-the one-sided witness contains
-
-$$
-1-\exp\left[\frac{4a^2}{m}(\tau-m)\right]
-$$
-
-and the same matched coherent displacement
-
-$$
-v_*=\frac{2\sqrt\tau a}{m}.
-$$
-
-Do **not** claim as new:
-
-- all-finite binary coherent survival;
-- the matched displacement $v_*$;
-- the exponential sign factor;
-- generic small-coherent-alphabet access to the Gaussian EB boundary.
-
-Retain the repository proofs only as compact lemmas / quantitative tools for the gravity receiver analysis.
+- `NOVELTY_AUDIT_END_TO_END_GRAVITY_2026.md`
+- `NOVELTY_COLLISION_TRENGGANA_ZEN_PROPAGATING_ENTANGLEMENT.md`
+- `MATSUI_NDELTA_NORMALIZATION_CROSSCHECK.md`
 
 ---
 
-# 3. Gaussian formulas still worth carrying forward
+# 3. Strongest defensible paper thesis
 
-The phase-insensitive convention is
+The remaining candidate contribution is a **source-resolved quantitative synthesis**:
 
-$$
-\chi_{\Phi_{\tau,m}(O)}(\xi)
-=\chi_O(\sqrt\tau\xi)
-\exp\left[-\frac{2m+1-\tau}{2}|\xi|^2\right],
-$$
+> Construct a local branch preparation with a branch-common controller; realize it as an internally conserved finite-mass elastic quadrupole; normalize the emitted graviton difference mode; propagate it through retarded free space with an audited storage coefficient; load it into a noisy resonant receiver; and determine the finite spacetime region in which the downstream channel preserves source-reference entanglement, with controlled source, finite-size, feedback, and thermal errors.
 
-with
-
-$$
-\boxed{\Phi_{\tau,m}\text{ EB}\iff m\ge\tau.}
-$$
-
-For
-
-$$
-|\Phi_2\rangle=\frac{|00\rangle+|11\rangle}{\sqrt2},
-$$
-
-the selected PT block has
-
-$$
-\boxed{\det M_{01}=\frac{m-\tau}{4(m+1)^3}}
-$$
-
-and negative eigenvalue
-
-$$
-\boxed{\mu_- = \frac{m-\tau}{2(m+1)^2}}.
-$$
-
-Therefore
-
-$$
-\boxed{\mathcal N_{\rm out}\ge\frac{[\tau-m]_+}{2(m+1)^2}.}
-$$
-
-For symmetric coherent branches $|\pm a\rangle$,
-
-$$
-\boxed{v_*=\frac{2\sqrt\tau a}{m}},
-$$
-
-$$
-\boxed{
-\frac{|z_{v_*}|^2}{p_0p_{v_*}}
-=\exp\left[\frac{4a^2}{m}(\tau-m)\right].
-}
-$$
-
-The selected block gives the negativity lower bound
-
-$$
-G(v)=\frac12\max\left\{0,
-\sqrt{(p_0-p_v)^2+4|z_v|^2}-(p_0+p_v)
-\right\}.
-$$
-
-Weak-link optimization gives
-
-$$
-G_{\rm abs}^{\rm opt}
-=\frac{W(e^{-1})}{2}(\tau-m)+O(\tau^2),
-$$
-
-with
-
-$$
-\frac{W(e^{-1})}{2}\simeq0.1392322714,
-\qquad
-a_*\simeq0.565346\sqrt\tau.
-$$
-
-Treat these as retained tools / possible quantitative corollaries, not the basis of the stopped theorem paper.
+The novelty, if it survives final review, is in the **complete explicit construction and normalization**, not any one conceptual ingredient.
 
 ---
 
-# 4. Gravity architecture
+# 4. Canonical conserved source
 
-The active chain is
-
-$$
-\boxed{
-\text{source qubit}
-\to
-\text{closed branch-dependent mechanical quadrupole}
-\to
-\text{graviton difference mode}
-\to
-\text{retarded propagation}
-\to
-\text{noisy quantum receiver}
-\to
-\text{accessible register}.
-}
-$$
-
-The relevant question is not merely whether a classical gravitational waveform arrives. It is whether the complete source-controlled receiver channel becomes non-entanglement-breaking after causal contact.
-
----
-
-# 5. Causality statement to preserve
-
-Do **not** claim that all source-receiver entanglement must vanish outside the light cone. Vacuum correlations and entanglement harvesting make that too broad.
-
-Use the controlled-channel theorem.
+Use the four-spoke elastic plus mode.
 
 Define
 
 $$
-\mathcal A_{R,t}:
-\text{controllable incoming branch mode}
-\to
-\text{accessible receiver register at time }t.
+q=\frac{\omega L}{c_s}.
 $$
 
-Before causal contact,
-
-$$
-\boxed{
-\mathcal A_{R,t}(\rho)
-=\sigma_{R,t}\operatorname{Tr}\rho,
-\qquad t<R/c,
-}
-$$
-
-so the source-controlled map is a replacer channel and therefore EB.
-
-Read:
-
-- `GENERAL_CAUSAL_QUANTUM_CHANNEL_FRONT.md`
-- `MICROCAUSAL_REPLACER_THEOREM.md`
-- `ACCESSIBLE_RECEIVER_CASCADE_THEOREM.md`
-
----
-
-# 6. NEW CURRENT SOURCE RESULT: explicit conserved four-spoke architecture
-
-The former strongest source-side vulnerability was real: prescribed accelerated endpoint masses alone satisfy
-
-$$
-\partial_\mu T^{\mu\nu}_{\rm endpoints}\neq0,
-$$
-
-so an unspecified actuator could in principle carry compensating branch-dependent stress-energy.
-
-That leading-order loophole is now closed for one explicit elastic-spoke architecture in
-
-- `experiments/01-causal-quantum-branch-information/CONSERVED_SOURCE_ACTUATOR_AUDIT.md`
-
-Its status is:
-
-> **LEADING-ORDER ACTUATOR LOOPHOLE CLOSED FOR AN EXPLICIT ELASTIC-SPOKE ARCHITECTURE.**
-
-The complete source is
-
-$$
-T^{\mu\nu}_{\rm tot}
-=T^{\mu\nu}_{\rm end}
-+T^{\mu\nu}_{\rm spokes}
-+T^{\mu\nu}_{\rm hub}
-+T^{\mu\nu}_{\rm ctrl},
-$$
-
-with
-
-$$
-\boxed{\partial_\mu T^{\mu\nu}_{\rm tot}=0.}
-$$
-
-For
-
-$$
-I_{ij}
-=\frac1{c^2}\int d^3x\,T^{00}_{\rm tot}x_i x_j,
-$$
-
-conservation gives
-
-$$
-\boxed{\ddot I_{ij}=2\int d^3x\,T^{ij}_{\rm tot}.}
-$$
-
-Thus internal stresses are not an extra independent leading TT source to append to a point-mass quadrupole. In a conserved compact source, the stress representation and total-energy-quadrupole representation are equivalent. Any true cancellation must appear in the total energy quadrupole itself.
-
-## 6.1 Exact finite-spoke mode
-
-Use a central hub, four identical longitudinal elastic spokes, endpoint mass $\mu$, spoke mass $m_r$, spoke length $L$, and longitudinal sound speed $c_s$.
-
-Define
-
-$$
-\boxed{q\equiv\frac{\omega L}{c_s}.}
-$$
-
-The exact endpoint traction condition gives
+Exact spoke/end-mass boundary condition:
 
 $$
 \boxed{\frac{m_r}{\mu}=q\tan q.}
 $$
 
-For the endpoint-dominated fundamental mode, $q\ll1$ and
-
-$$
-\frac{m_r}{\mu}=q^2+\frac{q^4}{3}+O(q^6).
-$$
-
-No massless support is required.
-
-## 6.2 Total branch quadrupole
-
-Including endpoint masses and spoke rest mass,
+Total branch-difference plus quadrupole:
 
 $$
 \boxed{
-\Delta Q_{xx}
-=8\mu L u_c\frac{\tan q}{q},
+\Delta Q_{xx}=8\mu Lu\frac{\tan q}{q},
+\qquad
+\Delta Q_{yy}=-\Delta Q_{xx}.
 }
 $$
+
+Generalized mode mass:
 
 $$
 \boxed{
-\Delta Q_{yy}
-=-8\mu L u_c\frac{\tan q}{q}.
-}
-$$
-
-For $0<q<\pi/2$,
-
-$$
-\frac{\tan q}{q}>1,
-$$
-
-so the support does **not** cancel the endpoint quadrupole. It reinforces it.
-
-For $q\ll1$,
-
-$$
-\boxed{
-\frac{\tan q}{q}
-=1+\frac{q^2}{3}+\frac{2q^4}{15}+O(q^6).
-}
-$$
-
-The endpoint-only source is therefore the controlled $q\to0$ limit.
-
-## 6.3 Correct mode mass and quantum matrix element
-
-The generalized mode mass is
-
-$$
-\boxed{
-M_{\rm eff}(q)
-=4\mu\left[
-\frac12+\frac{q}{\sin2q}
-\right].
-}
-$$
-
-Define
-
-$$
+M_{\rm eff}=4\mu A(q),
+\qquad
 A(q)=\frac12+\frac{q}{\sin2q}.
+}
 $$
 
-Then
-
-$$
-A(q)=1+\frac{q^2}{3}+\frac{7q^4}{45}+O(q^6).
-$$
-
-The corrected transition matrix element is
+One-phonon quadrupole matrix element:
 
 $$
 \boxed{
-q_{01}^{\rm tot}(q)
+q_{01}
 =4\mu L\frac{\tan q}{q}
-\sqrt{\frac{\hbar}{2M_{\rm eff}(q)\omega}}.
+\sqrt{\frac{\hbar}{2M_{\rm eff}\omega}}.
 }
 $$
 
-Relative to the endpoint-only expression,
-
-$$
-\boxed{
-\mathcal C_Q(q)
-=\frac{\tan q/q}{\sqrt{A(q)}}
-=1+\frac{q^2}{6}+O(q^4).
-}
-$$
-
-## 6.4 Correct finite-spoke graviton linewidth
-
-For the plus mode,
-
-$$
-\kappa_g
-=\frac{4G\omega^5}{5\hbar c^5}|q_{01}|^2.
-$$
-
-Hence
+Gravitational linewidth:
 
 $$
 \boxed{
 \kappa_g(q)
 =\frac{8G\mu L^2\omega^4}{5c^5}
-\frac{(\tan q/q)^2}{A(q)}.
+\mathcal C_\kappa(q),
 }
 $$
-
-For $q\ll1$,
 
 $$
 \boxed{
-\kappa_g(q)
-=\frac{8G\mu L^2\omega^4}{5c^5}
-\left[1+\frac{q^2}{3}+O(q^4)\right].
+\mathcal C_\kappa(q)
+=\frac{(\tan q/q)^2}{A(q)}
+=1+\frac{q^2}{3}+\frac{q^4}{9}+\cdots.
 }
 $$
 
-The repository's previous endpoint-only linewidth is the controlled $q\to0$ limit.
+Main source file:
 
-## 6.5 Controller branch record
-
-The new source note also gives an autonomous controller form
-
-$$
-H=H_m+H_c-\sigma_z g(q_c)u.
-$$
-
-A controlled mechanical-parity transformation removes the source-qubit label from the nongravitational source/controller dynamics. This is the argument that the work reservoir need not acquire a hidden which-branch record before gravitational coupling is included.
-
-### Scope
-
-This is a controlled nonrelativistic/weak-field model, not a complete covariant hyperelastic material realization. Relevant small parameters include
-
-$$
-|u_c|/L\ll1,
-\qquad
-q=\omega L/c_s\ll1,
-\qquad
-\beta=\omega L/c\ll1,
-\qquad
-\mathcal C\ll1.
-$$
-
-Do not inflate the scope beyond that.
-
-### Presentation note
-
-The initial version of `CONSERVED_SOURCE_ACTUATOR_AUDIT.md` contains a few apparent LaTeX transcription typos such as `\rac` where `\frac` is intended. Re-fetch before fixing; another agent may already have corrected them.
+- `CONSERVED_SOURCE_ACTUATOR_AUDIT.md`
 
 ---
 
-# 7. Gravitational difference mode
+# 5. Graviton branch-distance normalization is externally verified
 
-The branch coherent-state distance is
+Use
 
 $$
 \boxed{
@@ -472,390 +149,668 @@ N_\Delta
 }
 $$
 
-For a narrow-band plus quadrupole,
+Matsui 2026 independently gives the same coefficient and convention, with
 
 $$
-N_\Delta
-\simeq
-\frac{Gq_0^2\omega_0^5T_f}{5\hbar c^5}.
+\boxed{\Gamma_{\rm vac}=N_\Delta/2.}
 $$
 
-Keep separate:
+No factor-of-two/four normalization discrepancy was found.
 
-- source branch strength $N_\Delta$;
-- free-space / mode overlap;
-- intrinsic receiver coupling.
+Matsui also explicitly notes that the quadrupole reduction requires the **complete conserved matter–apparatus source**, while setup-dependent apparatus terms are often left out of estimates. This is exactly where the explicit finite-spoke source is useful.
 
-The immediate task is to propagate the corrected finite-spoke matrix element into $N_\Delta$ and verify that previous source scalings survive with controlled $O(q^2)$ corrections.
+Read:
+
+- `MATSUI_NDELTA_NORMALIZATION_CROSSCHECK.md`
 
 ---
 
-# 8. Retarded source→receiver map
+# 6. Local source preparation is now explicit
 
-For aligned plus quadrupoles,
+Do not define the fundamental causal protocol by declaring a branch-displaced mechanical state at $t=0$.
+
+Preferred physical preparation uses a degenerate internal source qubit/reference $R$, finite-spoke source mode $a$, and branch-common work mode $c$:
 
 $$
 \boxed{
-\Sigma_{AB}^{R}
-=\frac54
-\sqrt{\kappa_{g,A}\kappa_{g,B}}
-\frac{P(\epsilon)e^{i\epsilon}}{\epsilon^5},
+H_{\rm enc}
+=\hbar g\sigma_z(a^\dagger c+a c^\dagger).
+}
+$$
+
+Lossless branch amplitudes:
+
+$$
+\alpha_s(t)=-is\beta\sin gt,
 \qquad
-\epsilon=\omega R/c,
+\gamma_s(t)=\beta\cos gt.
+$$
+
+At a half swap,
+
+$$
+\boxed{gT=\pi/2,}
+$$
+
+controller $c$ is exactly vacuum and the mechanical source carries opposite coherent branches.
+
+With source damping $\kappa_A$, define
+
+$$
+\Omega=\sqrt{g^2-\kappa_A^2/16}.
+$$
+
+There is an exact controller-empty time
+
+$$
+\boxed{
+T_*
+=\frac{\pi-\arctan(4\Omega/\kappa_A)}{\Omega},
 }
 $$
 
 with
 
 $$
-P(\epsilon)=3-3i\epsilon-3\epsilon^2+2i\epsilon^3+\epsilon^4.
+\gamma(T_*)=0,
+\qquad
+\alpha_s(T_*)=-is\beta e^{-\kappa_AT_*/4}.
 $$
 
-The storage amplitude is
-
-$$
-\boxed{
-t_{BA}^{\rm store}
-=\frac{-i\Sigma_{BA}^{R}}
-{\sqrt{\kappa_{g,A}\kappa_{g,B}}}.
-}
-$$
-
-In the wave zone,
-
-$$
-\boxed{
-\eta_{\rm store}(R)
-\simeq\frac{25\mathcal O}{16(kR)^2}.
-}
-$$
-
-The $25/16$ coefficient has independent checks from
-
-1. retarded Green/input-output normalization;
-2. plus-quadrupole power pattern × critical $l=2$ absorption cross section;
-3. electromagnetic dipole control giving $9/[16(kR)^2]$.
-
-Do **not** use the old $25/[4(kR)^2]$ as coherent storage efficiency; that corresponds to the larger scattering/extinction normalization.
+For vacuum loss ports the controller is branch independent, vacuum, and factorized at the handoff.
 
 Read:
 
-- `DELAYED_GRAVITATIONAL_INPUT_OUTPUT.md`
-- `NORMALIZED_GRAVITATIONAL_CROSS_RESPONSE.md`
-- `INDEPENDENT_CROSS_RESPONSE_CHECK.md`
-- `STORAGE_NORMALIZATION_25_OVER_16_AUDIT.md`
+- `EXACT_LOCAL_GAUSSIAN_SOURCE_ENCODER.md`
+- `CHANNEL_INPUT_ROLE_AND_DARK_MEMORY_AUDIT.md`
+
+Important conceptual role:
+
+- the qubit is a **retained reference**, not the Gaussian channel input;
+- the downstream bosonic source/gravitational mode → receiver map is the channel whose EB property is tested.
 
 ---
 
-# 9. Receiver bookkeeping
+# 7. Continuum realization of the local encoder
 
-The intrinsic receiver linewidth is
+The modal encoder can arise from a local elastic eigenstrain energy, not an unexplained external force.
 
-$$
-\boxed{
-\kappa_g
-=\frac{2G\omega^5}{5\hbar c^5}Q_{ij}^{10}Q_{ij}^{01}.
-}
-$$
-
-Range does **not** reduce this intrinsic linewidth. Range reduces only the selected source-mode coupling:
+For spoke sign $\epsilon_a=\pm1$,
 
 $$
 \boxed{
-\kappa_\Delta(R)
-=\frac{25\mathcal O}{16(kR)^2}\kappa_g.
+H_{{\rm el},a}
+=\frac12EA\int_0^Ldx\,
+[\partial_x\xi_a
+-\epsilon_a\sigma_z\lambda X_c\chi(x)]^2.
 }
 $$
+
+Projecting
+
+$$
+\xi_a=\epsilon_a u f_q(x)
+$$
+
+gives
+
+$$
+\boxed{
+H_{\rm cross}
+=-4EA\lambda\mathcal J\sigma_zX_cu,
+}
+$$
+
+$$
+\mathcal J=\int_0^L\chi(x)f_q'(x)dx.
+$$
+
+After quantization and RWA this is the sign-controlled beam-splitter encoder.
+
+For mirrored branches, the ideal elastic energy density is pointwise branch even.
+
+Read:
+
+- `DISTRIBUTED_EIGENSTRAIN_ENCODER_REALIZATION.md`
+
+Remaining scope: this is a continuum theoretical realization, not a detailed material device or fully relativistic active-material model.
 
 ---
 
-# 10. Fixed physical waveform correction
+# 8. Complete encoder + passive tail is one normalized output mode
 
-The old logarithmic "quantum reception cone" is an **optimized protocol envelope**, not the trajectory of a single physical emitted pulse.
+The encoder necessarily emits a short precursor. Do not discard it.
 
-For fixed normalized waveform $f(t)$,
+For vacuum source-loss ports, define the complete source response $h(t)$ and normalized temporal mode
+
+$$
+\boxed{f_{\rm full}(t)=i\sqrt{\kappa_A}h(t),}
+$$
+
+with
 
 $$
 \boxed{
-\tau_f(t)
+\int_0^\infty|f_{\rm full}(t)|^2dt=1.
+}
+$$
+
+The precursor norm is
+
+$$
+\boxed{
+\epsilon_{\rm pre}
+=1-e^{-\kappa_AT_*/2}
+\simeq\frac{\pi\kappa_A}{4g}
+}
+$$
+
+for $g\gg\kappa_A$.
+
+The full source output therefore includes both
+
+1. encoding-stage radiation;
+2. passive tail.
+
+Read:
+
+- `LOCAL_BOSONIC_INPUT_SWAP_CHANNEL.md`
+- `LOCAL_PREPARATION_END_TO_END_NPT_PROTOCOL.md`
+
+---
+
+# 9. Source branching and receiver channel
+
+Define source gravitational branching
+
+$$
+\boxed{
+\eta_g=\frac{\kappa_{g,A}}{\kappa_A}.
+}
+$$
+
+For vacuum ordinary source loss, the source stage is equivalent to pure loss
+
+$$
+\mathcal L_{\eta_g}
+$$
+
+on the virtual bosonic branch mode.
+
+Receiver useful coupling:
+
+$$
+\boxed{
+\kappa_\Delta
+=\eta_{\rm store}\kappa_{g,B}.
+}
+$$
+
+Receiver loading for the complete source temporal mode:
+
+$$
+\boxed{
+\tau_{\rm full}(t)
 =\kappa_\Delta
 \left|
-\int_0^t e^{-\kappa(t-s)/2}f(s)\,ds
+\int_0^t ds\,
+e^{-\kappa_B(t-s)/2}f_{\rm full}(s)
 \right|^2.
 }
 $$
 
-The receiver's branch-independent occupation is
+Receiver vacuum-output occupation:
 
 $$
-m(t)
-=\bar n_0e^{-\kappa t}
-+\frac{\Gamma_{\rm th}}{\kappa}(1-e^{-\kappa t}).
+\boxed{
+m_B(t)
+=n_0e^{-\kappa_Bt}
++\frac{\Gamma_{{\rm th},B}}{\kappa_B}
+(1-e^{-\kappa_Bt}).
+}
 $$
 
-The instantaneous non-EB condition is
+Complete vacuum-source effective channel:
 
 $$
-\boxed{\tau_f(t)>m(t).}
+\boxed{
+\Phi_{\rm eff}(t)
+=\Phi_{\eta_g\tau_{\rm full}(t),m_B(t)}.
+}
 $$
 
-Do not re-promote the waveform-optimized front as a universal physical prediction.
+For every finite nonzero coherent branch separation, the locally prepared source-reference/receiver state is NPT iff
+
+$$
+\boxed{
+\eta_g\tau_{\rm full}(t)>m_B(t).
+}
+$$
+
+The Gaussian sign theorem is prior art; the gravity construction is the application.
 
 ---
 
-# 11. Preferred finite pulse and quantum window
+# 10. Free-space storage normalization
 
-For the mechanically closed $\sin^4$ source pulse, the receiver can exhibit
-
-$$
-\boxed{
-\mathrm{EB}\to\mathrm{non\!-\!EB}\to\mathrm{EB}.
-}
-$$
-
-The dimensionless loading maximum is
-
-$$
-H_*\simeq0.8136763,
-$$
-
-so a non-EB interval requires
+For aligned compact plus quadrupoles in the wave zone,
 
 $$
 \boxed{
-\kappa_\Delta>1.22899\,\Gamma_{\rm th}.
+\eta_{\rm store}
+=\frac{25\mathcal O}{16(kR)^2}.
 }
 $$
 
-This finite capability bubble/window is the physical replacement for the old indefinitely expanding logarithmic cone.
+Do not use the old $25/[4(kR)^2]$ as coherent storage probability.
+
+The $25/16$ coefficient survived the finite-spoke source normalization update.
+
+Finite-size angular correction for the ideal slender-spoke source:
+
+$$
+\boxed{
+\kappa_g(q,\beta)
+=\kappa_g^{(Q)}(q)
+\left[1-\frac{2a(q)}7\beta^2+O(\beta^4)\right],
+}
+$$
+
+$$
+a(q)=\frac12+\frac{\cot q}{q}-\frac1{q^2}.
+$$
+
+Endpoint limit:
+
+$$
+\boxed{
+\kappa_g
+=\kappa_g^{(Q)}
+[1-\beta^2/21+\cdots].
+}
+$$
+
+The on-axis planar Fraunhofer amplitude has no transverse $kL$ correction at this order.
 
 Read:
 
-- `GENERAL_FIXED_WAVEFORM_RECEIVER_FRONT.md`
-- `SIN4_MECHANICAL_SOURCE_QUANTUM_WINDOW.md`
+- `STORAGE_NORMALIZATION_25_OVER_16_AUDIT.md`
+- `FINITE_SIZE_FORM_FACTOR_COEFFICIENT.md`
 
 ---
 
-# 12. Passive receiver bounds: keep scope narrow
+# 11. Passive temporal optimization
 
-For passive nonrelativistic receivers,
+For natural exponential source decay and constant receiver coupling, matched linewidths are the **global optimum** at fixed useful receiver fraction.
+
+Let
+
+$$
+r=\kappa_B/\kappa_A,
+\qquad
+\beta_\Delta=\kappa_\Delta/\kappa_B.
+$$
+
+Exact peak:
 
 $$
 \boxed{
-\frac{\kappa_g}{\omega}
-\lesssim\frac23\mathcal C\beta^3,
+\tau_{\max}(r)
+=4\beta_\Delta\frac1r r^{-2/(r-1)}.
 }
 $$
 
-with
+Unique maximum:
 
 $$
-\mathcal C=\frac{r_s}{L},
+\boxed{r=1.}
+$$
+
+Thus
+
+$$
+\boxed{
+\tau_{\max}^{\rm passive}
+=4e^{-2}\beta_\Delta.
+}
+$$
+
+End-to-end passive ceiling:
+
+$$
+\boxed{
+\tau_{\rm passive}^{\max}
+=4e^{-2}
+\beta_{g,A}\beta_{g,B}\eta_{\rm store}.
+}
+$$
+
+Read:
+
+- `OPTIMAL_PASSIVE_LINEWIDTH_MATCHING.md`
+
+---
+
+# 12. Nonlinear source geometry does not spoil the leading Gaussian branch mode
+
+For the exact endpoint geometry
+
+$$
+X=L+u,
 \qquad
-\beta=\frac{\omega L}{c}.
+Y=L-u,
 $$
 
-Do not call the older $\beta^5$ scaling universal; the extra $\beta^2$ came from a literal geometric-aperture assumption.
+$$
+\boxed{
+Q_{xx}-Q_{yy}=8\mu Lu
+}
+$$
 
-Do not extrapolate the passive nonrelativistic sum-rule ceiling to arbitrary relativistic QFT receivers, active/inverted systems, or strongly self-gravitating objects.
+exactly. The $u^2$ terms cancel from the branch-carrying plus tensor.
+
+The leading quadratic rest-mass tensor is parity even:
+
+$$
+\boxed{
+Q_{ij}^{(2)}
+\propto
+u^2\operatorname{diag}(1,1,-2),
+}
+$$
+
+and lies in the $0/2\omega$ sector.
+
+Its two-phonon rate is suppressed by
+
+$$
+\boxed{
+\frac{\Gamma_{2\to0}^{(2)}}
+{\Gamma_{1\to0}^{(1)}}
+=
+\frac{16}{3}
+\frac{A(q)^2}{(\tan q/q)^2}
+\left(\frac{u_{\rm zpf}}L\right)^2.
+}
+$$
+
+For perfectly mirrored coherent branches, the coherent $2\omega$ displacement difference vanishes at this order.
+
+Read:
+
+- `NONLINEAR_QUADRUPOLE_GAUSSIANITY_AUDIT.md`
 
 ---
 
-# 13. Accessibility is separate from absorption
+# 13. Reciprocal receiver backaction is controlled
 
-For Gaussian capture $(\tau_c,m_c)$ followed by readout $(\tau_r,m_r)$,
-
-$$
-\tau_{\rm tot}=\tau_c\tau_r,
-\qquad
-m_{\rm tot}=\tau_rm_c+m_r.
-$$
-
-The accessible output remains quantum-capable iff
+The exact reciprocal delayed source/receiver response differs from the one-way cascade by a round-trip factor
 
 $$
-\boxed{\tau_r(\tau_c-m_c)>m_r.}
+\boxed{
+\frac1{1+L(\nu)},
+}
 $$
 
-This separates capture, retained coherence, and operational readout.
+$$
+L(\nu)
+=\Sigma_{AB}^R\Sigma_{BA}^R
+\chi_A(\nu)\chi_B(\nu)e^{2i\nu R/c}.
+$$
+
+Uniform bound:
+
+$$
+\boxed{
+|L(\nu)|
+\le
+4\eta_{\rm store}
+\beta_{g,A}\beta_{g,B}.
+}
+$$
+
+Wave-zone form:
+
+$$
+\boxed{
+|L|
+\le
+\frac{25\mathcal O}{4(kR)^2}
+\beta_{g,A}\beta_{g,B}.
+}
+$$
+
+Thus
+
+- relative transfer-amplitude correction is $O((kR)^{-2})$;
+- absolute correction to the leading $O((kR)^{-2})$ forward transfer probability is $O((kR)^{-4})$;
+- the first source-controlled feedback echo at the receiver follows the path $A\to B\to A\to B$ and cannot arrive before $3R/c$.
+
+Read:
+
+- `RECIPROCAL_FEEDBACK_CASCADE_AUDIT.md`
 
 ---
 
-# 14. Practical scale
+# 14. Finite source causality: use the operation worldtube
 
-The gravity work is presently a **theoretical channel-structure result**, not a near-term experimental proposal.
-
-The repo's deliberately aggressive kilogram/meter/MHz/$Q\sim10^{12}$/perfect-overlap benchmark still produces optimized passive source-receiver negativity only around
+The theorem-level statement is
 
 $$
-\sim10^{-22}.
+\boxed{
+\text{receiver source-dependence}=0
+\quad\text{outside }J^+(\mathcal W_A),
+}
 $$
 
-Do not market the present architecture as experimentally imminent.
+where $\mathcal W_A$ is the complete source-operation worldtube.
+
+For an arbitrary simultaneous extended source operation,
+
+$$
+T_{\rm front}\ge D_{AB}/c,
+$$
+
+where $D_{AB}$ is support-to-support distance.
+
+For a centrally triggered causal encoder, if source point $\mathbf x$ cannot respond before $|\mathbf x-\mathbf x_0|/c$, then the triangle inequality gives
+
+$$
+\boxed{T_{\rm front}\ge R/c}
+$$
+
+for a point receiver at distance $R$ from the local origin, regardless of source extent.
+
+For the canonical planar four-spoke source viewed on axis, transverse path spread begins only at
+
+$$
+\boxed{
+\Delta t\sim L^2/(2Rc),
+}
+$$
+
+consistent with the Fresnel criterion $kL^2/R\ll1$.
+
+Read:
+
+- `FINITE_SOURCE_CAUSAL_SUPPORT_AUDIT.md`
 
 ---
 
-# 15. Highest-value next work
+# 15. Source thermal noise
 
-The source-conservation loophole is no longer the unresolved starting point. It has an explicit controlled solution. The next task is to **propagate and attack that solution through the full gravity chain**.
-
-Unless live `main` has advanced further, proceed in this order.
-
-## A. Update canonical source formulas
-
-Insert
+Passive source thermal channel:
 
 $$
-q=\omega L/c_s
+\boxed{
+m_A^{\rm passive}
+=\eta_g\frac{\Gamma_{{\rm th},A}}{\kappa_A}.}
 $$
 
-and replace endpoint-only quantities by either the exact four-spoke factors or expressions explicitly labeled as the $q\ll1$ limit.
-
-## B. Recompute emitted branch mode
-
-Use
+Full passive source→receiver non-EB condition:
 
 $$
-q_{01}^{\rm tot}(q)
+\boxed{
+\tau_f(t)
+[\eta_g-m_A]
+>m_B(t).
+}
 $$
 
-to recompute the emitted coherent-graviton norm $N_\Delta$ and determine the exact finite-$q$ correction.
-
-## C. Re-audit source→receiver normalization
-
-Insert the corrected source transition into $\Sigma_{AB}^R$ and the normalized source output. Verify rather than assume that the dimensionless far-zone storage factor
+Thermal noise injected specifically during the local encoder obeys
 
 $$
-25/[16(kR)^2]
+\boxed{
+\Delta N_{\rm enc}
+\le\Gamma_{\rm enc}T_*}
 $$
 
-remains unchanged after source normalization cancels.
+and gravitational-output penalty
 
-## D. Re-audit the $\sin^4$ capability window
+$$
+\boxed{
+\delta m_A^{\rm enc}
+\le\eta_g\Gamma_{\rm enc}T_*.
+}
+$$
 
-Determine whether finite-spoke corrections affect only source/linewidth strength or alter any normalized waveform quantity entering the EB→non-EB→EB window.
+For source-bath dominated noise,
 
-## E. Attack the new source model
+$$
+\boxed{
+\frac{\delta m_A^{\rm enc}}
+{m_A^{\rm passive}}
+\lesssim
+\kappa_AT_*
+\simeq\frac{\pi\kappa_A}{2g}.
+}
+$$
 
-Check for:
+Thus the hierarchy
 
-- missing controller momentum flux;
-- boundary-condition sign errors;
-- misuse of the conserved quadrupole identity;
-- branch-odd elastic/internal-energy terms at the same order;
-- errors in $M_{\rm eff}$, $q_{01}^{\rm tot}$, or $\kappa_g(q)$;
-- finite hub/controller branch dependence;
-- inconsistent simultaneous assumptions $q\ll1$ and $\beta\ll1$;
-- endpoint-only expressions still used elsewhere without a $q\to0$ label.
+$$
+\boxed{\kappa_A\ll g\ll\omega}
+$$
 
-## F. Only then rebuild the gravity paper core
+simultaneously controls precursor emission, encoder loss, thermal contamination, and RWA validity.
 
-The paper should distinguish
+Read:
 
-- causal signal arrival;
-- quantum-channel capability;
-- finite certification strength;
+- `THERMAL_PASSIVE_SOURCE_CHANNEL.md`
+- `THERMAL_LOCAL_ENCODER_BOUND.md`
+
+---
+
+# 16. Causal/NPT capability statement
+
+Let the local encoder begin at source time zero and let receiver-local time after causal arrival be $\theta$.
+
+For the vacuum-source benchmark,
+
+$$
+\boxed{
+\rho_{RB}(\theta)\text{ NPT}
+\iff
+\eta_g\tau_{\rm full}(\theta)>m_B(\theta).
+}
+$$
+
+Define
+
+$$
+\boxed{
+T_{\rm NPT}(R)
+=\frac Rc+
+\inf\{\theta>0:
+\eta_g\tau_{\rm full}(\theta)>m_B(\theta)\}
+}
+$$
+
+only for the explicitly defined point-origin/aligned benchmark. The invariant theorem uses the causal future of the source-operation worldtube.
+
+Do not revert to the old universal logarithmic “quantum cone” for one physical pulse.
+
+---
+
+# 17. Practical scale remains devastating
+
+The project is a theoretical channel-structure result, not a near-term apparatus proposal.
+
+Earlier aggressive kilogram/meter/MHz/$Q\sim10^{12}$/perfect-overlap benchmarks gave optimized passive negativity around
+
+$$
+10^{-22}.
+$$
+
+The new source closure does not remove the enormous weakness of gravity.
+
+---
+
+# 18. Current strongest remaining attacks
+
+The model has now survived leading-order attacks on
+
 - source conservation;
-- receiver accessibility;
-- practical feasibility.
+- actuator cancellation;
+- controller branch records;
+- unexplained initial branch state;
+- finite spoke inertia;
+- finite source size;
+- nonlinear quadrupole terms;
+- reciprocal source↔receiver feedback;
+- encoder thermal noise;
+- broad novelty overclaims.
+
+Highest-value remaining work, in order:
+
+1. **Final source-level novelty audit of the exact local-preparation + conserved-source + normalized-storage + noisy-receiver combination.** Search combinations, not individual ingredients.
+2. **Exact thermal covariance of the full encoder-plus-tail temporal mode** if a submission needs an equality rather than the current rigorous fast-encoder bound.
+3. **Microscopic implementation/error model for the sign-controlled eigenstrain coupler**, only if reviewers require more than the continuum existence construction.
+4. **Final paper core rewrite** around the narrow end-to-end benchmark, with prior-art collisions stated prominently rather than hidden.
+5. Recompute a representative absolute feasibility benchmark using all current correction factors to ensure no accumulated normalization drift.
 
 ---
 
-# 16. Superseded / killed claims not to resurrect
-
-Unless newer evidence explicitly reopens them:
-
-- standalone novelty of Schmidt-rank-two Gaussian EB testing;
-- standalone novelty of all-finite binary coherent survival;
-- standalone novelty of the matched coherent displacement $v_*$;
-- generic novelty of coherent-state Gaussian EB benchmarking;
-- old universal logarithmic quantum cone for one physical pulse;
-- $25/[4(kR)^2]$ as coherent storage efficiency;
-- universal $\beta^5$ passive-receiver suppression;
-- universal Planck-area absorption/linewidth bound for all gravitational receivers;
-- stronger source amplitude automatically improving channel quality;
-- all source-receiver entanglement vanishing outside the light cone;
-- the statement that actuator stress-energy is still completely unspecified.
-
----
-
-# 17. Numerical support
-
-Committed checks exist for
-
-- thermal attenuation;
-- thermal amplification;
-- additive Gaussian noise;
-- near-boundary convergence.
-
-Read:
-
-- `experiments/01-causal-quantum-branch-information/numerics/README.md`
-- `NUMERICAL_AUDIT_AMPLIFIER_ADDITIVE_NOISE.md`
-- `NUMERICAL_NEAR_BOUNDARY_STRESS_RESULTS.md`
-
-These are regression/supporting checks, not the origin of the analytic sign results.
-
----
-
-# 18. Recovery reading order
+# 19. Canonical recovery reading order
 
 After refreshing live `main`:
 
-1. `AGENTS.md` — authoritative active recovery note.
-2. `CONTEXT_HANDOFF.md` — compact continuity snapshot.
-3. latest commits after the snapshot SHA at the top.
-4. `README.md`.
-5. `experiments/01-causal-quantum-branch-information/CONSERVED_SOURCE_ACTUATOR_AUDIT.md`.
-6. `experiments/01-causal-quantum-branch-information/STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`.
-7. `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`.
-8. `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md`.
-9. current state / claim ledger files.
-10. `QUANTIZED_PLUS_MODE_SOURCE.md`.
-11. `CONSERVED_FOUR_MASS_QUADRUPOLE_SOURCE.md`.
-12. `EXPLICIT_FOUR_MASS_SOURCE_RECEIVER_LINK.md`.
-13. `DELAYED_GRAVITATIONAL_INPUT_OUTPUT.md`.
-14. `STORAGE_NORMALIZATION_25_OVER_16_AUDIT.md`.
-15. `GENERAL_FIXED_WAVEFORM_RECEIVER_FRONT.md`.
-16. `SIN4_MECHANICAL_SOURCE_QUANTUM_WINDOW.md`.
-17. passive/QFT receiver notes only as needed.
-
-Do not reread every historical checkpoint unless reconstructing a correction. Many checkpoint claims were superseded later the same day.
+1. `AGENTS.md`
+2. `CONTEXT_HANDOFF.md`
+3. all commits after the snapshot SHA above
+4. `NOVELTY_AUDIT_END_TO_END_GRAVITY_2026.md`
+5. `NOVELTY_COLLISION_TRENGGANA_ZEN_PROPAGATING_ENTANGLEMENT.md`
+6. `MATSUI_NDELTA_NORMALIZATION_CROSSCHECK.md`
+7. `CONSERVED_SOURCE_ACTUATOR_AUDIT.md`
+8. `EXACT_LOCAL_GAUSSIAN_SOURCE_ENCODER.md`
+9. `DISTRIBUTED_EIGENSTRAIN_ENCODER_REALIZATION.md`
+10. `LOCAL_PREPARATION_END_TO_END_NPT_PROTOCOL.md`
+11. `STORAGE_NORMALIZATION_25_OVER_16_AUDIT.md`
+12. `FINITE_SIZE_FORM_FACTOR_COEFFICIENT.md`
+13. `NONLINEAR_QUADRUPOLE_GAUSSIANITY_AUDIT.md`
+14. `RECIPROCAL_FEEDBACK_CASCADE_AUDIT.md`
+15. `FINITE_SOURCE_CAUSAL_SUPPORT_AUDIT.md`
+16. `THERMAL_PASSIVE_SOURCE_CHANNEL.md`
+17. `THERMAL_LOCAL_ENCODER_BOUND.md`
+18. `OPTIMAL_PASSIVE_LINEWIDTH_MATCHING.md`
+19. paper-core/current-state files only after these technical notes are understood.
 
 ---
 
-# 19. Research method
+# 20. Working rule
 
-Work adversarially rather than accumulatively.
-
-For every strong result, attack in this order:
+Attack every attractive claim by
 
 1. counterexample;
 2. hidden assumption;
-3. normalization / factor-of-two / convention error;
-4. singular limit;
-5. conservation-law failure;
-6. stronger theorem making the result a corollary;
-7. prior art under different notation;
-8. numerical truncation artifact;
-9. omitted subsystem of a supposedly closed physical model;
-10. scope inflation.
+3. factor-of-two / convention error;
+4. conservation failure;
+5. omitted subsystem;
+6. nonlinear correction;
+7. feedback / reciprocity;
+8. finite-support causality;
+9. thermal/noise correction;
+10. stronger prior art under different notation;
+11. scope inflation.
 
-When a headline claim dies, preserve correct mathematics but downgrade novelty immediately.
-
----
-
-# 20. Maintaining this handoff
-
-When approaching context exhaustion or after a major state transition:
-
-1. fetch newest `main` HEAD;
-2. compare it with the snapshot SHA at the top;
-3. read intervening relevant changes;
-4. re-fetch this exact file and update only from its current blob SHA;
-5. refresh snapshot SHA/date;
-6. update **STOP**, **current strongest result**, and **highest-value next work** first;
-7. preserve killed claims so later agents do not rediscover and re-promote them;
-8. keep canonical equations needed to prevent convention drift;
-9. prefer file paths over duplicating full derivations;
-10. if this file conflicts with a newer committed technical note, **newer live `main` wins**.
+If a claim dies, preserve correct mathematics but downgrade the novelty immediately.
