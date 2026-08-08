@@ -2,7 +2,7 @@
 
 **Repository:** `Kajin-0/gedanken`  
 **Active experiment:** `experiments/01-causal-quantum-branch-information/`  
-**Checkpoint:** 2026-08-07, after two confirmed prior-art kills: Mele–Lami–Giovannetti for rank-two Fock probes and Filippov–Ziman for all finite binary coherent-pair survival.
+**Checkpoint:** 2026-08-07, after the standalone Gaussian branch was adversarially closed and an explicit conserved four-spoke source-plus-actuator model was constructed.
 
 This is the first file a new agent should read.
 
@@ -16,431 +16,552 @@ Attack by
 
 1. counterexample;
 2. hidden assumption;
-3. convention/normalization error;
+3. convention or normalization error;
 4. singular limit;
 5. stronger prior art under different terminology;
 6. a general theorem that makes the result an immediate corollary;
 7. numerical truncation artifacts;
-8. scope inflation.
+8. omitted parts of a supposedly closed physical system;
+9. scope inflation.
 
 If a claim dies, update the documentation immediately.
 
 ---
 
-## 2. First confirmed kill — rank-two Fock novelty
+## 2. Standalone Gaussian-channel branch: STOP
 
-The repository independently derived
+The Gaussian-channel work produced correct and useful mathematics, but the broad novelty claims collided with prior art.
 
-$$
-|\psi_s\rangle
-=\frac{|00\rangle+s|11\rangle}{\sqrt{1+s^2}}
-$$
+### Rank-two Fock survival — prior art
 
-with
-
-$$
-\det M_s
-=\frac{s^2}{(1+s^2)^2}
-\frac{m-\tau}{(m+1)^3},
-$$
-
-so the output is NPT iff
-
-$$
-\tau>m.
-$$
-
-The mathematics appears correct.
-
-**Novelty is dead.**
-
-Mele–Lami–Giovannetti, arXiv:2303.12867 / *Nature Photonics* (2025), already use
-
-$$
-|\Psi_{M,c}\rangle
-=c|00\rangle+\sqrt{1-c^2}|MM\rangle
-$$
-
-for arbitrary $M\ge1$ and nonzero Schmidt weight, and prove non-PPT/distillability exactly in the non-EB phase-insensitive region after local projection.
+Mele–Lami–Giovannetti already contain the finite Schmidt-rank-two Fock-pair survival result.
 
 Read:
 
-- `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md`
+- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
 
-Do not resurrect the old rank-two standalone-paper claim.
+### All finite binary coherent-pair survival — prior art in substance
+
+A one-sided specialization of Filippov–Ziman's 2014 coherent-state witness, plus an invertible local filter on the untouched two-dimensional coherent-state support, implies the same all-finite-pair survival boundary.
+
+Read:
+
+- `NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
+
+### Matched coherent scale and exponential sign factor — already encoded in Filippov–Ziman
+
+With their witness parameter
+
+$$
+1-\lambda=\frac{m}{\sqrt\tau},
+$$
+
+their one-sided witness contains exactly
+
+$$
+1-
+\exp\left[
+\frac{4a^2}{m}(\tau-m)
+\right]
+$$
+
+and generates the same matched coherent amplitude
+
+$$
+\frac{2\sqrt\tau a}{m}.
+$$
+
+Read:
+
+- `THREE_ELEMENT_WITNESS_VS_FILIPPOV.md`
+- `STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`
+
+### Retain as tools
+
+Keep the repository's compact Fock determinant, coherent-dyad proof, exact $2\times2$ PT compression, and weak-link absolute witness bound as lemmas/tools for the gravity calculation.
+
+Do **not** restart a standalone Gaussian theorem paper unless a genuinely new operational result appears.
 
 ---
 
-## 3. Second confirmed kill — all finite binary coherent-pair survival theorem
+## 3. Current project priority: a genuinely closed gravitational source
 
-The repository also independently proves that every finite nontrivial
+The previous four-endpoint-mass source had a real vulnerability: prescribed accelerated masses alone do not define conserved stress-energy. An unspecified actuator might carry branch-dependent energy/stress and modify or cancel the claimed radiation.
 
-$$
-|\Psi\rangle
-=\sqrt p|0\rangle|\alpha\rangle
-+e^{i\phi}\sqrt{1-p}|1\rangle|\beta\rangle,
-\qquad
-\alpha\ne\beta,
-$$
+That loophole has now been attacked with an explicit isolated source architecture.
 
-has NPT output under a phase-insensitive Gaussian channel iff
+Read first:
 
-$$
-\tau>m.
-$$
+- `CONSERVED_SOURCE_ACTUATOR_AUDIT.md`
 
-The direct repository proof is correct and exceptionally compact, but the underlying survival theorem is already implicit in
+---
 
-S. N. Filippov and M. Ziman, *Phys. Rev. A* **90**, 010301(R) (2014), arXiv:1405.1754.
+## 4. Explicit four-spoke source-plus-actuator model
 
-They study
+Use
 
-$$
-|\psi_\gamma\rangle
-\propto
-|\gamma\rangle_A|0\rangle_B
--|0\rangle_A|\gamma\rangle_B
-$$
+- one central hub;
+- four identical finite-mass longitudinal elastic spokes of reference length $L$;
+- endpoint mass $\mu$ on each spoke;
+- one spoke pair along $x$ and one along $y$;
+- spoke rest mass $m_r$ per spoke;
+- longitudinal sound speed $c_s$;
+- mirrored plus-mode motion between source branches.
 
-under asymmetric phase-insensitive Gaussian channels and derive an exact coherent-state witness family.
-
-### One-sided specialization
-
-Leave $A$ ideal and apply the noisy channel only to $B$.
-
-In Filippov–Ziman variables, let
+The complete source is
 
 $$
-a=\mu-\frac12|\kappa-1|
-$$
-
-be excess noise and let
-
-$$
-T=
-\begin{cases}
-1+a,&\kappa<1,\\
-\kappa+a,&\kappa>1.
-\end{cases}
-$$
-
-With
-
-$$
-t=1-\lambda>0,
-$$
-
-their exact witness expectation reduces, up to a positive prefactor, to
-
-$$
-E(t;x)=e^{-Ax}+e^{-Bx}-2e^{-Cx},
-\qquad x=|\gamma|^2,
+T^{\mu\nu}_{\rm tot}
+=T^{\mu\nu}_{\rm end}
++T^{\mu\nu}_{\rm spokes}
++T^{\mu\nu}_{\rm hub}
++T^{\mu\nu}_{\rm ctrl},
 $$
 
 with
 
 $$
-A=\frac\kappa T,
+\boxed{\partial_\mu T^{\mu\nu}_{\rm tot}=0.}
 $$
 
-$$
-B=1+\frac{1-T}{Tt^2},
-$$
+For a compact conserved source define
 
 $$
-C=1-\frac{\sqrt\kappa}{Tt}.
+I_{ij}
+=\frac1{c^2}\int d^3x\,T^{00}_{\rm tot}x_i x_j.
 $$
 
-Choose
+Then
 
 $$
 \boxed{
-t^2=\frac{T-1}{T-\kappa}}
+\ddot I_{ij}=2\int d^3x\,T^{ij}_{\rm tot}.
+}
 $$
 
-for finite excess noise. Then
-
-$$
-A=B
-$$
-
-and negativity of the witness for **every finite $\gamma\ne0$** is equivalent to
-
-$$
-(T-\kappa)(T-1)<\kappa.
-$$
-
-This factors as
-
-$$
-(a+1)(a-\kappa)<0
-\iff a<\kappa
-$$
-
-for attenuation, and
-
-$$
-(a+\kappa)(a-1)<0
-\iff a<1
-$$
-
-for amplification. The additive-noise limit is also $a<1$.
-
-Those are exactly the complements of the Filippov–Ziman EB condition
-
-$$
-a\ge\min(\kappa,1).
-$$
-
-The quantum-limited attenuation/amplification edges are handled by finite direct choices of $t$.
-
-### Mapping to the repository state
-
-The untouched reference mode occupies only
-
-$$
-\operatorname{span}\{|0\rangle,|\gamma\rangle\}.
-$$
-
-An invertible local filter on this two-dimensional support maps
-
-$$
-|\gamma\rangle_A,|0\rangle_A
-$$
-
-to orthogonal qubit labels with arbitrary nonzero weights. It commutes with the channel on $B$ and preserves PT inertia on the occupied support.
-
-A common displacement/phase rotation on $B$ maps the pair
-
-$$
-|0\rangle,|\gamma\rangle
-$$
-
-to any finite distinct coherent pair.
-
-### NPT refinement
-
-Their weighted-swap witness has finite Fock truncations satisfying
-
-$$
-W_{\lambda,N}^{T_2}
-\propto
-|\Omega_{\lambda,N}\rangle
-\langle\Omega_{\lambda,N}|
-\ge0.
-$$
-
-Thus the truncations are decomposable NPT witnesses. The one-sided Gaussian expectation converges; a negative limiting expectation implies a negative finite truncation and therefore NPT.
-
-Read the full derivation:
-
-- `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
-
-**Do not claim the all-finite-binary-coherent survival theorem as new.**
+Thus internal stresses are required for conservation but are not an independent leading TT radiation term. Any real cancellation must appear in the **total energy quadrupole**.
 
 ---
 
-## 4. Main remaining candidate — minimal exact three-element PT witness
+## 5. Exact finite-spoke normal mode
 
-The strongest surviving possible contribution is now much narrower.
-
-For symmetric branches $|\pm a\rangle$, the repository selects one $2\times2$ block of the actual partial transpose:
+Define
 
 $$
-M_\Gamma
-=
-\begin{pmatrix}
-p_0&z_v^*\\
-z_v&p_v
-\end{pmatrix}.
+\boxed{q\equiv\frac{\omega L}{c_s}.}
 $$
 
-NPT is certified iff
-
-$$
-|z_v|^2>p_0p_v.
-$$
-
-For $m>0$, the exact matched coherent analysis displacement is
+For one spoke, normalized to endpoint displacement,
 
 $$
 \boxed{
-v_*=\frac{2\sqrt\tau a}{m}}
+f_q(x)=\frac{\sin(qx/L)}{\sin q}.}
+$$
+
+The endpoint traction boundary condition gives
+
+$$
+\boxed{
+\frac{m_r}{\mu}=q\tan q.
+}
+$$
+
+For the endpoint-dominated fundamental mode,
+
+$$
+q\ll1,
+$$
+
+$$
+\frac{m_r}{\mu}
+=q^2+\frac{q^4}{3}+O(q^6).
+$$
+
+No massless support is required.
+
+---
+
+## 6. Main conserved-source result: the actuator does not cancel the quadrupole
+
+For branch $s=\pm1$, let the $x$ spokes move as
+
+$$
+\xi_x^{(s)}=s u_c(t)f_q(x),
+$$
+
+and the $y$ spokes as
+
+$$
+\xi_y^{(s)}=-s u_c(t)f_q(x).
+$$
+
+Including both endpoint masses and spoke rest mass, the exact leading branch-difference quadrupole is
+
+$$
+\boxed{
+\Delta Q_{xx}
+=8\mu L u_c\frac{\tan q}{q},
+}
+$$
+
+$$
+\boxed{
+\Delta Q_{yy}
+=-8\mu L u_c\frac{\tan q}{q}.
+}
+$$
+
+For $0<q<\pi/2$,
+
+$$
+\frac{\tan q}{q}>1.
+$$
+
+Therefore the finite support **reinforces** rather than cancels the endpoint quadrupole.
+
+For $q\ll1$,
+
+$$
+\boxed{
+\frac{\tan q}{q}
+=1+\frac{q^2}{3}+\frac{2q^4}{15}+O(q^6).
+}
+$$
+
+The previous endpoint-only result is the controlled $q\to0$ limit.
+
+---
+
+## 7. Correct finite-spoke mode mass and quantum matrix element
+
+The exact generalized mode mass is
+
+$$
+\boxed{
+M_{\rm eff}(q)
+=4\mu
+\left[
+\frac12+\frac{q}{\sin2q}
+\right].
+}
+$$
+
+Define
+
+$$
+\boxed{
+A(q)=\frac12+\frac{q}{\sin2q}.
+}
+$$
+
+Then
+
+$$
+A(q)
+=1+\frac{q^2}{3}+\frac{7q^4}{45}+O(q^6).
+$$
+
+The zero-point coordinate is
+
+$$
+\boxed{
+u_{\rm zpf}(q)
+=\sqrt{\frac{\hbar}{2M_{\rm eff}(q)\omega}}.
+}
+$$
+
+The one-branch quadrupole operator is
+
+$$
+\delta Q_{xx}
+=4\mu L\frac{\tan q}{q}u,
+$$
+
+so
+
+$$
+\boxed{
+q_{01}^{\rm tot}(q)
+=4\mu L\frac{\tan q}{q}
+\sqrt{\frac{\hbar}{2M_{\rm eff}(q)\omega}}.
+}
+$$
+
+Relative to the endpoint-only matrix element,
+
+$$
+\boxed{
+\mathcal C_Q(q)
+=\frac{\tan q/q}{\sqrt{A(q)}}
+=1+\frac{q^2}{6}+\frac{q^4}{24}+O(q^6).
+}
+$$
+
+---
+
+## 8. Correct finite-spoke graviton linewidth
+
+For a plus mode, the repository convention gives
+
+$$
+\kappa_g
+=\frac{4G\omega^5}{5\hbar c^5}|q_{01}|^2.
+$$
+
+Therefore
+
+$$
+\boxed{
+\kappa_g(q)
+=\frac{8G\mu L^2\omega^4}{5c^5}
+\mathcal C_\kappa(q),
+}
+$$
+
+where
+
+$$
+\boxed{
+\mathcal C_\kappa(q)
+=\frac{(\tan q/q)^2}{A(q)}.
+}
+$$
+
+For $q\ll1$,
+
+$$
+\boxed{
+\mathcal C_\kappa(q)
+=1+\frac{q^2}{3}+\frac{q^4}{9}+O(q^6).
+}
+$$
+
+Thus the endpoint-only linewidth
+
+$$
+\frac{8G\mu L^2\omega^4}{5c^5}
+$$
+
+is again the controlled $q\to0$ limit.
+
+---
+
+## 9. Causal-support lower bound
+
+Let
+
+$$
+\beta=\frac{\omega L}{c}.
+$$
+
+Causality requires
+
+$$
+c_s\le c,
+$$
+
+hence
+
+$$
+q\ge\beta.
+$$
+
+For $\beta\ll1$, the stiffest causal support has parametrically
+
+$$
+\boxed{
+\frac{m_r}{\mu}\gtrsim\beta^2
+}
+$$
+
+and the minimum support correction to the classical quadrupole is
+
+$$
+\boxed{
+\frac{\Delta Q}{\Delta Q_{\rm end}}-1
+\gtrsim\frac{\beta^2}{3}.
+}
+$$
+
+The physically relevant endpoint approximation criterion is therefore
+
+$$
+q=\omega L/c_s\ll1,
+$$
+
+not an unphysical massless actuator.
+
+---
+
+## 10. Controller does not need to become a which-branch record
+
+Use an autonomous source-control Hamiltonian
+
+$$
+\boxed{
+H=H_m(u,p_u)+H_c(q_c,p_c)-\sigma_z g(q_c)u,
+}
+$$
+
+with $H_m$ parity even.
+
+For branch $s$,
+
+$$
+u_s=s u_c.
+$$
+
+The controller backreaction contains
+
+$$
+\sigma_z u_s=u_c,
+$$
+
+which is branch independent.
+
+More strongly, with mechanical parity $P_u$, define
+
+$$
+U_P
+=|+\rangle\langle+|\otimes I
++|-\rangle\langle-|\otimes P_u.
+$$
+
+Then
+
+$$
+U_P^\dagger uU_P=\sigma_z u,
 $$
 
 and
 
 $$
 \boxed{
-\frac{|z_{v_*}|^2}{p_0p_{v_*}}
-=\exp\left[\frac{4a^2}{m}(\tau-m)\right].
+U_P^\dagger H U_P
+=H_m+H_c-g(q_c)u.
 }
 $$
 
-This is valuable because it turns a known survival phenomenon into a literal finite $2\times2$ PT minor using only
-
-1. one population $p_0$;
-2. one displaced population $p_{v_*}$;
-3. one coherence $z_{v_*}$.
-
-It is substantially simpler than the Filippov–Ziman weighted integral witness.
-
-Read:
-
-- `experiments/01-causal-quantum-branch-information/EXACT_THREE_ELEMENT_WITNESS.md`
-- `experiments/01-causal-quantum-branch-information/DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
-- `experiments/01-causal-quantum-branch-information/COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`
-
-### Important scope warning
-
-The off-diagonal term contains
-
-$$
-\Phi(|a\rangle\langle-a|),
-$$
-
-so this is not automatically a two-conditional-output prepare-and-measure benchmark. Treat it as an exact state/process-coherence witness unless a separate implementation argument is supplied.
+Before gravitational coupling is included, the controller/work reservoir can therefore follow identical quantum dynamics in both source branches. The actuator need not acquire a hidden classical branch record.
 
 ---
 
-## 5. Secondary candidate — exact absolute witness strength
+## 11. Controlled approximation regime
 
-The selected block also provides the finite negativity lower bound
+Use
 
 $$
-G(v)=\frac12
-\max\left\{0,
-\sqrt{(p_0-p_v)^2+4|z_v|^2}
--(p_0+p_v)
-\right\}.
+\boxed{|u|/L\ll1,}
 $$
 
-The repo has additional weak-link asymptotics and exact low-dimensional strength formulas.
+$$
+\boxed{q=\omega L/c_s\ll1,}
+$$
 
-Potential novelty is now in **certification strength / proof compression**, not the existence of surviving entanglement.
+$$
+\boxed{\beta=\omega L/c\ll1,}
+$$
 
-Search these files after the three-element witness:
+$$
+\boxed{\mathcal C=2GM/(c^2L)\ll1.}
+$$
 
-- `ABSOLUTE_THREE_ELEMENT_WITNESS_GAP.md`
-- `WEAK_LINK_ABSOLUTE_GAP_ASYMPTOTIC.md`
+Finite spoke inertia is included explicitly. Remaining kinetic/internal-energy corrections to $T^{00}$ are relativistically suppressed and branch-even at first order under the mirrored source symmetry.
 
 ---
 
-## 6. Internal proof and convention status
+## 12. Immediate next tasks
 
-The direct coherent-dyad proof has independently survived a line-by-line rederivation.
+A new agent should **not** restart the Gaussian novelty branch.
 
-The earlier covariance-order bug in the arbitrary Gaussian-channel audit has been fixed. Use throughout
+Proceed in this order:
+
+### Priority 1 — propagate finite-spoke corrections through the source formulas
+
+Update the legacy endpoint-only source notes so that
+
+- endpoint expressions are explicitly labeled as $q\to0$ limits;
+- $M_{\rm eff}(q)$;
+- $q_{01}^{\rm tot}(q)$;
+- $\kappa_g(q)$;
+- $\Delta Q(q)$
+
+are used in the current source model.
+
+### Priority 2 — re-audit emitted coherent-graviton distance
+
+For a prescribed outer displacement $u_c(t)$, the classical branch quadrupole amplitude acquires
 
 $$
-V\mapsto K^T V K+\beta.
+\frac{\tan q}{q}.
 $$
 
-For input/output symplectics,
+Therefore the emitted branch-distance formula should acquire
 
 $$
-K'=S_{\rm in}KS_{\rm out},
+\left(\frac{\tan q}{q}\right)^2
 $$
 
+relative to the endpoint-only prescribed-displacement expression, modulo the same narrowband assumptions.
+
+For a quantum single-mode normalization, use the corrected $q_{01}$ and $\kappa_g(q)$ consistently.
+
+### Priority 3 — re-audit source→receiver link
+
+Every downstream expression that uses $\kappa_{g,A}$ or $\kappa_{g,B}$ should be corrected by the appropriate
+
 $$
-\beta'=S_{\rm out}^T\beta S_{\rm out}.
+\mathcal C_\kappa(q_A),
+\qquad
+\mathcal C_\kappa(q_B)
 $$
 
-Read:
+factors.
 
-- `ONE_MODE_GAUSSIAN_CANONICAL_CLASS_PROOF_AUDIT.md`
+Check whether any qualitative scaling changes. The expectation is no: only controlled multiplicative $1+O(q^2)$ corrections in the endpoint-dominated regime.
+
+### Priority 4 — attack the hub/controller residual
+
+The next source-level adversarial question is finite hub/control extent and branch-dependent internal energy beyond the ideal parity-symmetric model. Bound its contribution in powers of
+
+$$
+r_h/L,
+\qquad
+v^2/c^2,
+\qquad
+\mathcal C.
+$$
+
+### Priority 5 — gravity paper, not another generic Gaussian paper
+
+Once the corrected source→receiver formulas are propagated, re-evaluate `PAPER_CORE_V3.md` around the conserved total source.
 
 ---
 
-## 7. Numerical status
-
-Executable independent checks are committed for
-
-- thermal attenuation;
-- thermal amplification;
-- additive Gaussian noise;
-- near-boundary convergence.
-
-The additive-noise stress test resolves the analytic sign change down to at least
-
-$$
-|\tau-m|=10^{-4}
-$$
-
-with the current cutoffs.
-
-Read:
-
-- `numerics/README.md`
-- `NUMERICAL_NEAR_BOUNDARY_STRESS_RESULTS.md`
-
----
-
-## 8. Exact next actions
-
-A new agent should **not** restart the rank-two or all-coherent-pairs novelty searches. Both broad claims are dead.
-
-Proceed in this order.
-
-### Priority 1 — kill the three-element witness novelty
-
-Search for
-
-- $2\times2$ coherent-state principal minors of partial transposes;
-- displaced-vacuum entanglement witnesses;
-- hybrid coherent-state criteria of the form $|z|^2>p_0p_v$;
-- coherent-state process-matrix minors;
-- Husimi-Q / off-diagonal Q-kernel PPT criteria;
-- finite truncations of weighted-swap witnesses that collapse to a two-vector block;
-- exact optimized displacement witnesses under thermal attenuators/amplifiers/additive noise.
-
-The collision need not use the repository notation.
-
-### Priority 2 — compare directly against Filippov–Ziman
-
-Ask whether their weighted-swap witness can be analytically minimized/projected to the repository three-element principal minor. If yes, even the witness novelty may collapse to a proof simplification.
-
-### Priority 3 — audit absolute-strength formulas
-
-Check whether the selected-block negative eigenvalue and weak-link optimum are genuinely new quantitative corollaries.
-
-### Priority 4 — decide publication value
-
-Only if the minimal witness or quantitative bound survives should a standalone note be drafted. The manuscript would need to present itself as a **minimal exact certification/simplification of known entanglement-survival physics**, not as a newly discovered survival theorem.
-
-### Priority 5 — gravity
-
-If the standalone quantum-information contribution becomes too small, return to the gravity application. The strongest unresolved gravity-specific issue remains the complete conserved actuator/control stress-energy of the explicit source.
-
----
-
-## 9. Canonical reading order
+## 13. Canonical reading order
 
 1. `AGENTS.md`
-2. `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
-3. `experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md`
+2. `experiments/01-causal-quantum-branch-information/CONSERVED_SOURCE_ACTUATOR_AUDIT.md`
+3. `experiments/01-causal-quantum-branch-information/STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`
 4. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_RANK2_UPDATE.md`
-5. `experiments/01-causal-quantum-branch-information/CLAIM_LEDGER_POST_MELE_ADDENDUM.md`
-6. `experiments/01-causal-quantum-branch-information/EXACT_THREE_ELEMENT_WITNESS.md`
-7. `experiments/01-causal-quantum-branch-information/DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
-8. `experiments/01-causal-quantum-branch-information/COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`
-9. `experiments/01-causal-quantum-branch-information/NUMERICAL_NEAR_BOUNDARY_STRESS_RESULTS.md`
-10. `experiments/01-causal-quantum-branch-information/numerics/README.md`
+5. `experiments/01-causal-quantum-branch-information/CONSERVED_FOUR_MASS_QUADRUPOLE_SOURCE.md`
+6. `experiments/01-causal-quantum-branch-information/QUANTIZED_PLUS_MODE_SOURCE.md`
+7. `experiments/01-causal-quantum-branch-information/EXPLICIT_FOUR_MASS_SOURCE_RECEIVER_LINK.md`
+8. `experiments/01-causal-quantum-branch-information/PAPER_CORE_V3.md`
 
 ---
 
-## 10. Stop/go
+## 14. Stop/go
 
 ### STOP
 
-- rank-two Fock novelty paper;
-- all-finite-binary-coherent-pairs survival theorem as novelty;
-- broad claims that binary coherent effective-entanglement testing is new;
-- broad claims that a small coherent alphabet newly reaches a Gaussian EB boundary.
+- standalone rank-two Fock theorem paper;
+- standalone all-binary-coherent survival theorem paper;
+- attempts to manufacture generic Gaussian novelty from the three-element witness alone.
 
 ### GO
 
-- minimal exact three-element PT witness novelty audit;
-- exact negative-eigenvalue / absolute-strength audit;
-- reduction/comparison to Filippov–Ziman's weighted-swap witness;
-- only then a narrowly scoped paper or return to gravity.
+- finite-support conserved source;
+- corrected source-mode quantization;
+- corrected source→receiver coupling;
+- full gravity-specific adversarial audit.
