@@ -1,0 +1,96 @@
+\section{Approximation hierarchy}
+\label{sec:error-budget}
+
+The source, propagation, and receiver approximations are controlled by distinct small parameters. Table~\ref{tab:error-budget} collects the leading corrections in one place. Several entries are not merely estimated errors: the finite-spoke dependence is retained explicitly within the linear elastic model, the controller propagation form factor is known through $O(q_c^2)$, and the TT propagation kernel is known in closed form.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{p{0.22\textwidth}p{0.19\textwidth}p{0.28\textwidth}p{0.22\textwidth}}
+\toprule
+Effect & Control parameter & Leading correction & Treatment \\
+\midrule
+Source nonlinearity
+& $\epsilon_u=|u|/L$
+& branch-symmetric nonlinear corrections typically relative $O(\epsilon_u^2)$
+& linear plus mode \\
+
+Spoke inertia / sound speed
+& $q=\omega L/c_s$
+& endpoint limit differs by $O(q^2)$
+& $\tan q/q$ and $M_{\rm eff}(q)$ retained \\
+
+Controller propagation
+& $q_c=\omega L/v_c$
+& phase delay $O(q_c)$; $|F_c|^2=1-O(q_c^2)$
+& explicit local-bus form factor \\
+
+Finite GW wavelength
+& $\beta=\omega L/c$
+& quadrupole-rate correction $O(\beta^2)$
+& finite-size audit \\
+
+Internal kinetic/elastic energy
+& $v/c\sim\beta\epsilon_u$
+& relative $O(\beta^2\epsilon_u^2)$
+& explicit residual bound \\
+
+Weak gravity
+& $\Ccal=2GM/(c^2L)$
+& nonlinear metric correction relative $O(\Ccal)$
+& linearized gravity only \\
+
+RWA / narrowband dynamics
+& $B/\omega$, $B=\max(g,\kappa_A,\kappa_B,1/T)$
+& generator/spectral corrections generically $O(B/\omega)$
+& narrowband input--output model \\
+
+Wave-zone propagation
+& $(kR)^{-1}$
+& storage probability relative $-2/(kR)^2+O((kR)^{-4})$
+& exact TT polynomial available \\
+
+Reciprocal feedback
+& $\epsilon_{\rm fb}=4\eta_{\rm store}\beta_{g,A}\beta_{g,B}$
+& transfer-amplitude correction $O(\epsilon_{\rm fb})$
+& delayed-feedback audit \\
+
+Finite hub deformation
+& $\epsilon_h=(M_h/\mu)(r_h/L)(u_h/u)$
+& $|\Delta Q_h|/Q_0\lesssim(C_h/8)\epsilon_h$
+& explicit design bound \\
+\bottomrule
+\end{tabular}
+\caption{Central approximation hierarchy for the V7 model. The listed orders are relative to the retained leading quantity unless stated otherwise. The controller and gravitational-dressing statements are perturbative; no all-orders material or quantum-gravity claim is made.}
+\label{tab:error-budget}
+\end{table}
+
+For the source one requires
+\begin{equation}
+\epsilon_u,\ q,\ q_c,\ \beta,\ \Ccal\ll1,
+\end{equation}
+while the dynamical model additionally requires
+\begin{equation}
+B/\omega\ll1.
+\end{equation}
+The finite-hub term is architecture dependent rather than universal. A sufficient design condition is
+\begin{equation}
+\boxed{
+\epsilon_h
+=\frac{M_h}{\mu}
+\frac{r_h}{L}
+\frac{u_h}{u}
+\ll1.}
+\label{eq:hub-design}
+\end{equation}
+For the symmetric quadratic controller bus itself, the branch-conditioned fields obey $\Phi_-=-\Phi_+$, so the local controller energy density is branch common and contributes no branch-odd quadrupole at this order. A non-cleared controller excitation is instead an explicit source loss or dephasing channel.
+
+The independent TT mode-overlap calculation in Appendix~\ref{app:tt-overlap} gives the exact propagation factor
+\begin{equation}
+|t_{BA}^{\rm TT}|^2
+=\frac{25}{16z^2}
+\left(1-\frac{2}{z^2}+\frac{3}{z^4}-\frac{9}{z^6}+\frac{9}{z^8}\right),
+\qquad z=kR.
+\label{eq:exact-prop-prob}
+\end{equation}
+Thus at the benchmark value $kR=10$, replacing the exact TT factor by $25/[16(kR)^2]$ overestimates the propagation contribution by approximately $1.97\%$, without affecting the qualitative interface-dominated conclusion.
