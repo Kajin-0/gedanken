@@ -1,0 +1,33 @@
+name: Scientific regression checks
+
+on:
+  push:
+    paths:
+      - 'experiments/01-causal-quantum-branch-information/numerics/**'
+      - '.github/workflows/scientific-regressions.yml'
+  pull_request:
+    paths:
+      - 'experiments/01-causal-quantum-branch-information/numerics/**'
+      - '.github/workflows/scientific-regressions.yml'
+
+jobs:
+  regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/01-causal-quantum-branch-information/numerics/requirements.txt
+
+      - name: Install pinned dependencies
+        working-directory: experiments/01-causal-quantum-branch-information/numerics
+        run: python -m pip install -r requirements.txt
+
+      - name: Run fast scientific regressions
+        working-directory: experiments/01-causal-quantum-branch-information/numerics
+        run: python scientific_regression_checks.py
