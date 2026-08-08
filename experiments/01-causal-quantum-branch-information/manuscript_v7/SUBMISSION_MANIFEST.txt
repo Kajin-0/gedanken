@@ -1,0 +1,14 @@
+main.tex
+references.bib
+data.bib
+figures/link_budget.tex
+figures/source_geometry.tex
+sections/01_introduction.tex
+sections/02_source_encoding.tex
+sections/03_virtual_link.tex
+sections/04_noise_negativity.tex
+sections/05_bounds_benchmark.tex
+sections/05b_approximation_budget.tex
+sections/06_discussion_conclusion.tex
+sections/appendices.tex
+sections/tt_normalization_appendix.tex
