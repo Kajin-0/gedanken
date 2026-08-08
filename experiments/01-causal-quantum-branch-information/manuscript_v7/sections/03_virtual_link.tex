@@ -1,0 +1,168 @@
+\section{Virtual difference mode after handoff}
+\label{sec:virtualmode}
+
+The local encoder does not assume a bosonic mode already entangled with $S$. That bosonic channel input emerges only after the local preparation has completed.
+
+\begin{lemma}[Virtual difference-mode reduction]
+After the handoff, suppose the branch-conditioned state of all bosonic degrees of freedom in the vacuum/coherent linear network is, after removing branch-common displacements,
+\begin{equation}
+|\Psi_s\rangle=|s\bm{\alpha}\rangle,
+\qquad s=\pm1.
+\end{equation}
+Let $A=\|\bm{\alpha}\|$ and define
+\begin{equation}
+\boxed{
+d=\frac{1}{A}\sum_j\alpha_j^*b_j.}
+\label{eq:virtualmode}
+\end{equation}
+Then a branch-independent passive mode rotation maps
+\begin{equation}
+|s\bm{\alpha}\rangle
+\longmapsto
+|sA\rangle_d\otimes|0\rangle_\perp.
+\label{eq:modecompression}
+\end{equation}
+For any selected receiver memory mode with coherent branch amplitude $\alpha_B$, the reduced map from $d$ to that memory is a pure-loss projection of transmissivity
+\begin{equation}
+\boxed{
+\eta_B=\frac{|\alpha_B|^2}{A^2}
+=\frac{N_{\Delta,B}}{N_{\Delta,{\rm all}}}.}
+\label{eq:etaB}
+\end{equation}
+\end{lemma}
+
+The proof is a unitary rotation in one-particle mode space that aligns the displacement vector $\bm{\alpha}$ with one basis vector. Because coherent states transform covariantly under passive mode rotations, all branch dependence is compressed into $d$ and the orthogonal modes are vacuum. This lemma is the formal bridge between the physical local encoder and the standard binary-coherent bosonic-channel problem.
+
+A branch-common controller or background gravitational coherent field causes only a common displacement, $|\gamma_C\pm\alpha\rangle$, and is removed by the same branch-independent displacement. It does not change $N_\Delta$, NPT, or entanglement-breaking status. Controller fluctuations above the coherent-state vacuum level are different: they are genuine added noise and must be propagated through the channel.
+
+\section{Source gravitational branching and free-space propagation}
+\label{sec:sourceprop}
+
+Let the source mode couple to independent narrowband Markov output ports $j$ with rates $\kappa_j$. For a mirrored coherent trajectory $\alpha_s(t)=s\alpha(t)$, the branch-difference output amplitude is
+\begin{equation}
+\Delta b_j^{\rm out}(t)=2\sqrt{\kappa_j}\,\alpha(t).
+\end{equation}
+Hence
+\begin{equation}
+N_{\Delta,j}=4\kappa_j\int\dd t\,|\alpha(t)|^2.
+\end{equation}
+The fraction of the complete branch-distance norm emitted into the gravitational port is therefore
+\begin{equation}
+\boxed{
+\beta_{g,A}
+\equiv\frac{N_{\Delta,g}}{N_{\Delta,{\rm tot}}}
+=\frac{\kappa_{g,A}}{\kappa_A},}
+\qquad
+\kappa_A=\sum_j\kappa_j.
+\label{eq:betaA}
+\end{equation}
+This equality is a narrowband amplitude-damping result. If the port couplings vary appreciably across the source waveform bandwidth, the correct object is the waveform-weighted ratio
+\begin{equation}
+\beta_{g,A}[\alpha]
+=
+\frac{\int\dd\Omega\,\kappa_g(\omega+\Omega)|\widetilde\alpha(\Omega)|^2}
+{\int\dd\Omega\,\kappa_{\rm tot}(\omega+\Omega)|\widetilde\alpha(\Omega)|^2}.
+\label{eq:freqbeta}
+\end{equation}
+
+Equation~\eqref{eq:betaA} is not a generic coherence parameter. Pure phase diffusion can destroy the source-reference entanglement without changing the source energy or any branching ratio. Non-Gaussian source dephasing must therefore be represented by a separate source channel rather than hidden inside $\beta_{g,A}$.
+
+\subsection{Wave-zone mode capture}
+
+For aligned compact plus quadrupoles in the wave zone, the retarded source-to-receiver normalization gives the useful receiver gravitational-port rate
+\begin{equation}
+\kappa_\Delta(R)=\eta_{\rm store}(R)\kappa_{g,B},
+\end{equation}
+with
+\begin{equation}
+\boxed{
+\eta_{\rm store}(R)=\frac{25\Ocal}{16(kR)^2},
+\qquad k=\omega/c,}
+\label{eq:etastore}
+\end{equation}
+where $0\le\Ocal\le1$ collects residual temporal, tensor, polarization, and orientation mode overlap.
+
+The coefficient has a reciprocal-antenna interpretation. The on-axis directivity of the aligned plus source is $G_A=5/2$, while the critically coupled $l=2$ receiver effective area $A_e=5\pi/(2k^2)$ corresponds to reciprocal gain $G_B=5/2$. Thus
+\begin{equation}
+\boxed{
+\eta_{\rm store}
+=\Ocal G_AG_B\left(\frac{\lambda}{4\pi R}\right)^2
+=\frac{25\Ocal}{16(kR)^2}.}
+\label{eq:friis}
+\end{equation}
+This is ordinary reciprocal far-field link physics specialized to the quadrupole channel, not a new antenna theorem. Critical-coupling and temporal coupled-mode normalization are standard \cite{RuanFan2012}.
+
+\section{Receiver memory and the four-factor coherent link}
+\label{sec:memory}
+
+Let the receiver memory mode $b$ have total linewidth $\kappa_B$ and intrinsic gravitational linewidth $\kappa_{g,B}$. Define
+\begin{equation}
+\boxed{\beta_{g,B}=\frac{\kappa_{g,B}}{\kappa_B}.}
+\label{eq:betaB}
+\end{equation}
+After retarded arrival, let $f(t)$ be the normalized temporal envelope of the selected incoming source mode,
+\begin{equation}
+\int_0^\infty\dd t\,|f(t)|^2=1.
+\end{equation}
+Here $f$ is the complete source gravitational waveform: it may contain encoder precursor radiation emitted before $T_*$ as well as later source radiation. When a receiver state is evaluated at a time after handoff, the convolution below includes any precursor contribution that has already arrived.
+
+The linear receiver equation contains the selected gravitational input with rate $\kappa_\Delta=\eta_{\rm store}\kappa_{g,B}$. The coherent loading from the selected mode is therefore
+\begin{equation}
+\tau_{f,B}(t)
+=\kappa_\Delta
+\left|
+\int_0^t\dd s\,
+\ee^{-\kappa_B(t-s)/2}f(s)
+\right|^2.
+\end{equation}
+Define the dimensionless temporal loading factor
+\begin{equation}
+\boxed{
+\Tcal_f(t)
+=\kappa_B
+\left|
+\int_0^t\dd s\,
+\ee^{-\kappa_B(t-s)/2}f(s)
+\right|^2,}
+\qquad
+0\le\Tcal_f(t)\le1.
+\label{eq:Tf}
+\end{equation}
+The upper bound follows from Cauchy--Schwarz and is saturated at a chosen target time by the time reverse of the receiver impulse response.
+
+\begin{proposition}[Post-handoff gravitational quantum-link budget]
+For the vacuum/coherent, narrowband linear amplitude-damping model, let the fixed virtual difference mode be defined at $T_*$. For any receiver state evaluated at $t\ge T_*$, with the complete waveform $f$ including any encoder precursor, the receiver branch-distance fraction relative to the completed code is
+\begin{equation}
+\boxed{
+\tau_c(t)=
+\beta_{g,A}\,
+\eta_{\rm store}(R)\,
+\beta_{g,B}\,
+\Tcal_f(t).}
+\label{eq:master}
+\end{equation}
+Defining
+\begin{equation}
+\boxed{\eta_Q^{\rm link}=\beta_{g,A}\eta_{\rm store}\beta_{g,B},}
+\label{eq:etalink}
+\end{equation}
+one has $\tau_c(t)=\eta_Q^{\rm link}\Tcal_f(t)$ and $\tau_c\le\eta_Q^{\rm link}$.
+\end{proposition}
+
+The factors in Eq.~\eqref{eq:master} are not duplicate normalizations. The same product follows from an independent cascaded bosonic network: a source beamsplitter of transmissivity $\beta_{g,A}$, a propagation beamsplitter of transmissivity $\eta_{\rm store}$, and a receiver loading channel whose coherent fraction is $\beta_{g,B}\Tcal_f$. The product is therefore the canonical serial loss of the post-handoff virtual mode.
+
+For $t<T_*$ the same expression, if normalized to the eventual code norm $4|\zeta|^2$, should be interpreted only as a coherent response coefficient. The instantaneous global coherent branch state can still be compressed into an instantaneous virtual mode, but the logical-to-bosonic code itself is still being generated and the fixed-input channel theorem is not yet the appropriate description.
+
+Several waveform results are now merely choices of the order-unity factor $\Tcal_f$. A matched passive exponential gives
+\begin{equation}
+\Tcal_{\rm exp}^{\max}=4\ee^{-2}\simeq0.541341,
+\end{equation}
+a smooth $\sin^4$ pulse gives
+\begin{equation}
+\Tcal_{\sin^4}^{\max}\simeq0.7980213,
+\end{equation}
+and target-time optimization yields
+\begin{equation}
+\Tcal_{\rm opt}(t)=1-\ee^{-\kappa_B t}\to1.
+\end{equation}
+Temporal shaping can remove an order-unity mismatch penalty, but it cannot exceed the source-branching, propagation, or receiver-branching ceiling.
