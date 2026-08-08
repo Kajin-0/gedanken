@@ -1,347 +1,357 @@
-# Current State Addendum — Rank-Two Gaussian Theorem
+# Current State Addendum — Post Rank-Two Prior-Art Collision
 
 **Date:** 2026-08-07  
-**Purpose:** Latest recovery point after the Schmidt-rank-two theorem audit. Read this together with `CURRENT_STATE.md`; this addendum contains the newest result that postdates the last full canonical rewrite.
+**Status:** Canonical recovery point after the Mele–Lami–Giovannetti collision audit.  
+**Read first:** root `AGENTS.md` and `NOVELTY_COLLISION_MELE_RANK_TWO.md`.
 
-## 1. Strongest standalone result in the repository
+## 1. Executive verdict
 
-The current strongest candidate theorem is now independent of gravity:
+The repository's Schmidt-rank-two Fock calculations remain mathematically credible, but the principal novelty claim has been killed by prior art.
+
+The previous proposed headline
+
+> **Schmidt-Rank-Two Probes Suffice to Detect Entanglement Breaking in One-Mode Gaussian Channels**
+
+must **not** be treated as the current publication target.
+
+Mele, Lami, and Giovannetti, arXiv:2303.12867 (first submitted 22 March 2023; later *Nature Photonics* 2025), already use finite Schmidt-rank-two Fock-pair inputs and prove in Supplementary Remark 1 that, after a local two-level projection, the resulting state is non-PPT/distillable exactly throughout the non-entanglement-breaking region of their canonical phase-insensitive Gaussian channel. Their result holds for every positive Fock index $M$ and every nonzero Schmidt weight.
+
+Under the parameter map
 
 $$
-\boxed{
-\text{Every non-entanglement-breaking one-mode Gaussian channel admits a finite Schmidt-rank-two input whose output is NPT.}
-}
+\tau=g\lambda,
+\qquad
+m=g-1,
 $$
 
-Equivalently, for one-mode Gaussian channels,
+their exact condition
 
-> **if a channel destroys entanglement for every Schmidt-rank-two input, then it is fully entanglement breaking.**
+$$
+(1-\lambda)g<1
+$$
 
-A qubit reference is sufficient.
+becomes
 
-Novelty remains unverified, but targeted searches have not located an equivalent theorem.
+$$
+\boxed{\tau>m,}
+$$
+
+which is exactly the repository's determinant boundary.
+
+Setting
+
+$$
+M=1,
+\qquad
+c=1/\sqrt2
+$$
+
+gives the fixed vacuum–one-photon Bell state.
+
+See:
+
+- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
+- root `AGENTS.md`
 
 ---
 
-## 2. Short independent proof for the phase-insensitive family
+## 2. Rank-two Fock theorem: mathematics retained, novelty retired
 
-For the canonical channel $\Phi_{\tau,m}$, use the fixed input
-
-$$
-\boxed{
-|\psi_\lambda\rangle
-=
-\frac{|00\rangle+\lambda|11\rangle}
-{\sqrt{1+\lambda^2}},
-\qquad\lambda>0.
-}
-$$
-
-After partial transpose, the subspace
+For
 
 $$
-\{|0\rangle_R|1\rangle_B,
-|1\rangle_R|0\rangle_B\}
+|\psi_s\rangle
+=\frac{|00\rangle+s|11\rangle}{\sqrt{1+s^2}},
+\qquad s>0,
 $$
 
-contains the block
+the repository independently derives
 
 $$
-\boxed{
-M_\lambda
-=
-\frac1{(1+\lambda^2)(m+1)^2}
+M_s
+=\frac{1}{(1+s^2)(m+1)^2}
 \begin{pmatrix}
-m&\lambda\sqrt\tau\\
-\lambda\sqrt\tau&\lambda^2(m+1-\tau)
-\end{pmatrix}.
-}
+m&s\sqrt\tau\\
+s\sqrt\tau&s^2(m+1-\tau)
+\end{pmatrix},
 $$
 
-Its determinant is exactly
+with
 
 $$
 \boxed{
-\det M_\lambda
-=
-\frac{\lambda^2}{(1+\lambda^2)^2}
+\det M_s
+=\frac{s^2}{(1+s^2)^2}
 \frac{m-\tau}{(m+1)^3}.
 }
 $$
 
-Therefore, for **every** $\lambda>0$,
+Therefore
 
 $$
-\boxed{
 \rho_{\rm out}\text{ NPT}
 \iff
-\tau>m
-\iff
-\Phi_{\tau,m}\text{ non-EB}.
-}
-$$
-
-This proof is structurally independent of the binary coherent-state proof.
-
-File: `TRUNCATED_TMSV_RANK_TWO_THEOREM.md`.
-
----
-
-## 3. Fixed Bell-state / two-dimensional Choi criterion
-
-Set
-
-$$
-\lambda=1.
-$$
-
-Then the single fixed Bell state
-
-$$
-\boxed{
-|\Phi_2\rangle
-=\frac{|00\rangle+|11\rangle}{\sqrt2}
-}
-$$
-
-in the vacuum–one-photon subspace detects the full phase-insensitive EB boundary.
-
-The relevant channel process elements are
-
-$$
-A_{11}=\frac{m}{(m+1)^2},
-$$
-
-$$
-B_{00}=\frac{m+1-\tau}{(m+1)^2},
-$$
-
-$$
-X_{01}=\frac{\sqrt\tau}{(m+1)^2}.
-$$
-
-Thus
-
-$$
-\boxed{
-|X_{01}|^2>A_{11}B_{00}
-\iff
 \tau>m.
-}
 $$
 
-The full infinite-dimensional EB transition is therefore already visible in the two-dimensional vacuum–one-photon Choi truncation.
+This compact proof is still useful as
 
-File: `TWO_DIMENSIONAL_CHOI_TRUNCATION_CRITERION.md`.
+1. an independent derivation;
+2. a transparent two-dimensional principal-minor proof;
+3. a convenient lemma for later calculations.
+
+It is **not** presently a discovery claim.
+
+Files retained for mathematical reference:
+
+- `TRUNCATED_TMSV_RANK_TWO_THEOREM.md`
+- `TWO_DIMENSIONAL_CHOI_TRUNCATION_CRITERION.md`
+- `MINIMAL_QUBIT_ANCILLA_GAUSSIAN_EB.md`
+- `ARBITRARILY_WEAK_RANK_TWO_GAUSSIAN_PROBES.md`
+
+These files should be read as rediscovery/simplification notes unless separately revised.
 
 ---
 
-## 4. Exact absolute lower bound for the fixed Bell probe
+## 3. General one-mode extension after the collision
 
-The smaller eigenvalue of the selected PT block simplifies to
-
-$$
-\boxed{
-\mu_-^{(01)}
-=\frac{m-\tau}{2(m+1)^2}.
-}
-$$
-
-Hence
+The repository's class audit still suggests the mathematical statement
 
 $$
-\boxed{
-\mathcal N(\rho_{\rm out})
-\ge
-\frac{[\tau-m]_+}{2(m+1)^2}.
-}
+\text{every non-EB one-mode Gaussian channel admits a finite rank-two NPT probe}
 $$
 
-For pure loss this selected block gives the exact negativity of the Bell-state output.
+is correct.
 
----
+However, for regular orientation-preserving one-mode Gaussian channels this follows essentially from
 
-## 5. Complete one-mode Gaussian extension
+1. the existing phase-insensitive rank-two Fock result of Mele et al.;
+2. standard Gaussian input/output canonicalization;
+3. local-unitary invariance of Schmidt rank and NPT.
 
-Use the one-mode identity
+The remaining singular $B_1$ class is handled in the repository by a finite regularization:
 
 $$
-K^T\Omega K=(\det K)\Omega
+Y_{B_1}=\operatorname{diag}(b,0),
+\qquad
+Y_\epsilon=\operatorname{diag}(b,\epsilon),
 $$
 
-and Holevo's Gaussian CP/EB matrix criteria.
+with finite
 
-Canonical-class audit:
+$$
+0<\epsilon<1/b.
+$$
 
-- $\det K=0$: every physical channel is EB.
-- $\det K<0$: every physical orientation-reversing/phase-conjugating channel is EB.
-- $\det K>0$, full-rank noise: Gaussian-unitarily equivalent to phase-insensitive canonical form; pull the rank-two Fock probe back through the common input Gaussian unitary.
-- Gaussian-unitary boundary: trivial.
-- singular $B_1$ rank-one noise: finite regularization plus PPT monotonicity supplies a finite rank-two NPT probe.
+Then
 
-Thus every non-EB one-mode Gaussian channel is covered.
+$$
+\sqrt{b\epsilon}<1,
+$$
+
+so the regularized unit-gain channel is non-EB. If the pre-regularization output were PPT, subsequent local Gaussian noise could not make it NPT. Hence the original $B_1$ output is already NPT for the same finite probe.
+
+This argument has survived the current adversarial audit, but after the Mele collision it is a **singular-class closure argument**, not enough by itself to justify the previous standalone-paper headline.
 
 Files:
 
-- `COMPLETE_ONE_MODE_GAUSSIAN_TWO_BRANCH_PROBE_THEOREM.md`
 - `ONE_MODE_GAUSSIAN_CANONICAL_CLASS_PROOF_AUDIT.md`
 - `CONSTRUCTIVE_B1_FINITE_PROBE.md`
 
 ---
 
-## 6. Constructive singular $B_1$ probe
+## 4. Strongest surviving standalone candidate: binary coherent probes
 
-For
+The active theorem candidate is now structurally different from the killed Fock result.
 
-$$
-Y_{B_1}=\operatorname{diag}(b,0),
-\qquad b>0,
-$$
-
-choose any
+For every finite nontrivial hybrid state
 
 $$
-0<y<1
+|\Psi\rangle
+=\sqrt p|0\rangle|\alpha\rangle
++e^{i\phi}\sqrt{1-p}|1\rangle|\beta\rangle,
 $$
 
-and add finite local post-processing noise
+with
 
 $$
-\epsilon=y^2/b
+0<p<1,
+\qquad
+\alpha\ne\beta,
 $$
 
-in the clean quadrature.
-
-The regularized channel has isotropic canonical noise $y<1$ and is non-EB.
-
-The required matched input squeezing is finite:
+the repository proves
 
 $$
 \boxed{
-r=\frac12\ln\frac{b}{y}.
+(I\otimes\Phi_{\tau,m})(|\Psi\rangle\langle\Psi|)
+\text{ is NPT}
+\iff
+\tau>m.
 }
 $$
 
-If the original $B_1$ output were PPT, local post-processing could not turn it into the NPT regularized output. Therefore the original channel already preserves NPT for the same finite rank-two probe.
-
----
-
-## 7. Stronger pure-Gaussian-branch result remains separate
-
-The rank-two theorem above does **not** require Gaussian branch states; its shortest proof uses canonical $|0\rangle$ and $|1\rangle$.
-
-A stronger result derived earlier remains:
-
-> Every non-EB one-mode Gaussian channel admits a rank-two probe whose two bosonic branches are displaced copies of one finite-covariance pure Gaussian state.
-
-For the phase-insensitive family the stronger statement is:
-
-> **every finite nontrivial binary coherent hybrid probe works.**
-
-This stronger theorem relies on the coherent-state principal-minor proof and canonicalization.
-
----
-
-## 8. Arbitrarily weak rank-two entanglement
-
-For
+For symmetric real branches $|\pm a\rangle$ and $m>0$, define the coherent-state principal-minor ratio
 
 $$
-|\psi_\lambda\rangle
-\propto
-|00\rangle+\lambda|11\rangle,
+R(v)=\frac{|z_v|^2}{p_0p_v}.
 $$
 
-the input entanglement tends to zero as
-
-$$
-\lambda\to0^+.
-$$
-
-But the PT determinant remains negative for every finite $\lambda>0$ whenever the channel is non-EB.
-
-Thus
+The exact optimum is
 
 $$
 \boxed{
-\text{arbitrarily weak Schmidt-rank-two entanglement suffices.}
+v_*=\frac{2\sqrt\tau a}{m},
 }
 $$
 
-This is not meant to supersede the known arbitrarily weak finite-TMSV result; the candidate novelty is fixing Schmidt rank to two.
+and
 
-File: `ARBITRARILY_WEAK_RANK_TWO_GAUSSIAN_PROBES.md`.
+$$
+\boxed{
+R(v_*)
+=\exp\left[\frac{4a^2}{m}(\tau-m)\right].
+}
+$$
 
----
+Thus every finite nonzero coherent separation detects the exact EB boundary.
 
-## 9. Prior-art status
+For pure loss $m=0$, the maximizing displacement moves to infinity, but no infinite test state is required: any finite
 
-Known neighboring results:
+$$
+v>\frac{a(1-\tau)}{\sqrt\tau}
+$$
 
-- finite-squeezing TMSV states can test Gaussian EB behavior;
-- arbitrarily weak finite squeezing can suffice;
-- coherent-state ensemble benchmarks can certify quantum-domain behavior of all one-mode Gaussian channels;
-- general Schmidt-number / partially-entanglement-breaking channel theory exists.
-
-Targeted searches have not located:
-
-1. universal Schmidt-rank-two sufficiency for one-mode Gaussian EB testing;
-2. the exact vacuum–one-photon Choi truncation criterion for the full phase-insensitive EB boundary;
-3. the stronger all-finite-coherent-pairs NPT/EB equivalence;
-4. the exact minimal coherent-state three-element witness.
-
-This is not proof of novelty.
+certifies NPT for every $\tau>0$.
 
 Files:
 
-- `NOVELTY_AUDIT_SCHMIDT_RANK_TWO_GAUSSIAN_PROBE.md`
-- `NOVELTY_ADDENDUM_COHERENT_BENCHMARKS_VS_RANK_TWO.md`
+- `DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
+- `PURE_LOSS_EDGE_CASE.md`
+
+**Novelty status:** candidate novelty, unverified. No exact prior-art theorem matching the all-finite-coherent-pairs iff statement has yet been located.
 
 ---
 
-## 10. Independent numerical audit
+## 5. Second surviving candidate: exact three-element coherent witness
 
-The phase-insensitive theorem is now checked by:
+For the same coherent hybrid state, one $2\times2$ partial-transpose block
 
-1. analytic coherent-state proof;
-2. pure-loss edge proof;
-3. direct thermal-loss dilation;
-4. explicit thermal-amplifier Stinespring simulation;
-5. explicit additive random-displacement simulation;
-6. independent truncated-TMSV analytic proof.
+$$
+M_\Gamma=
+\begin{pmatrix}
+p_0&z_v^*\\
+z_v&p_v
+\end{pmatrix}
+$$
+
+provides the condition
+
+$$
+\boxed{|z_v|^2>p_0p_v.}
+$$
+
+At the matched displacement $v_*$ this criterion is equivalent to
+
+$$
+\boxed{\tau>m.}
+$$
+
+Thus two populations plus one coherence detect the full actual-state NPT boundary of the binary coherent output.
 
 File:
 
-- `NUMERICAL_AUDIT_AMPLIFIER_ADDITIVE_NOISE.md`
+- `EXACT_THREE_ELEMENT_WITNESS.md`
+
+**Novelty status:** candidate novelty, unverified.
 
 ---
 
-## 11. Current publication priority
+## 6. Coherent-state prior-art boundary already established
 
-If novelty survives expert review, the cleanest publication order is now:
+### Häseler–Moroder–Lütkenhaus (2008)
 
-### Paper A — standalone theorem
+Already established two-nonorthogonal-coherent-state quantum-device testing, effective entanglement, and PPT/expectation-value-matrix methods.
 
-**Schmidt-Rank-Two Probes Suffice to Detect Entanglement Breaking in One-Mode Gaussian Channels**
+Therefore none of those general ideas are new.
 
-Preferred architecture:
+### Kreis–van Loock (2012)
 
-- `PAPER_CORE_RANK_TWO_GAUSSIAN_EB_V2.md`
+They study the same symmetric hybrid state
 
-### Paper B — gravity application
+$$
+(|0\rangle|\alpha\rangle+|1\rangle|-\alpha\rangle)/\sqrt2
+$$
 
-Use Paper A as a lemma in the source-resolved gravitational receiver calculation in `PAPER_CORE_V3.md`.
+under one-sided thermal photon noise. They derive the noisy hybrid state and apply a finite-order Shchukin–Vogel moment witness. Their sufficient threshold is amplitude dependent, and their discussion explicitly leaves an undetected region below the known thermal-channel EB threshold.
+
+This is the most important surviving novelty comparison: the repository's result claims an exact necessary-and-sufficient actual-state NPT completion of precisely that gap.
+
+### Namiki–Azuma (2015)
+
+Coherent-state ensembles and homodyne measurements can benchmark all one-mode Gaussian channels against entanglement-breaking performance. This is an established ensemble benchmark, not the same as the individual binary hybrid-state theorem.
+
+Files:
+
+- `NOVELTY_CHECK_GAUSSIAN_BINARY_PROBE.md`
+- `NOVELTY_CHECK_FINITE_CAT.md`
+- `PRIOR_ART_BINARY_COHERENT_TESTS.md`
 
 ---
 
-## 12. Strongest next step
+## 7. Current strongest next step
 
-The internal mathematics is now substantially stronger than the novelty evidence.
+The highest-value task is now **not more theorem expansion**.
 
-Next priority:
+Proceed in this order:
 
-1. expert-level literature review of finite Choi truncations / ancilla dimension for Gaussian EB;
-2. independent human proof review;
-3. only then prepare a standalone manuscript.
+1. citation-forward and equation-level literature search from Kreis–van Loock (2012) and Häseler–Moroder–Lütkenhaus (2008);
+2. search for exact binary-coherent actual-state NPT conditions under thermal attenuation, amplification, and additive Gaussian noise;
+3. search for displaced-vacuum / coherent-state $2\times2$ PT principal-minor witnesses that reach an EB boundary;
+4. independently rederive the coherent-dyad kernel and optimized ratio using one fixed Gaussian convention;
+5. reconstruct and commit the amplifier and additive-noise numerical scripts;
+6. only then decide whether a coherent-state standalone note/paper is justified.
 
-For the gravity application, the strongest remaining technical check is the exact conserved actuator/control stress-energy, not another receiver architecture.
+Root `AGENTS.md` contains the exact continuation protocol and search targets.
+
+---
+
+## 8. Writeup issue that still requires correction
+
+The general Gaussian-channel audit currently mixes covariance-map conventions. It states a convention equivalent to
+
+$$
+V\mapsto K^T V K+\beta
+$$
+
+while some canonicalization matrices are ordered as if using
+
+$$
+V\mapsto KVK^T+\beta.
+$$
+
+This appears to be a notation/order issue rather than a counterexample, but it must be repaired before any manuscript uses the arbitrary-channel extension.
+
+---
+
+## 9. Publication priority after the collision
+
+### Do not proceed
+
+Do not proceed with the old rank-two Fock standalone paper as a novelty submission.
+
+`PAPER_CORE_RANK_TWO_GAUSSIAN_EB_V2.md` is retained as a historical/internal derivation, not the active paper architecture.
+
+### Active candidate
+
+If novelty survives the new audit, a much narrower standalone result could center on
+
+> **Every finite nontrivial binary coherent hybrid probe detects the exact entanglement-breaking boundary of a phase-insensitive one-mode Gaussian channel.**
+
+The exact three-element witness would be the operational corollary.
+
+### Gravity
+
+The gravity application remains secondary. The strongest unresolved gravity-specific technical problem is still the complete conserved actuator/control stress-energy for the explicit source.
+
+Do not expand the gravity receiver architecture until the coherent lemma novelty search is substantially complete.
