@@ -195,8 +195,7 @@ $$
 must be replaced by the waveform-weighted spectral ratio already given in V7:
 
 $$
-\beta_{g,A}[\alpha]
-=
+\beta_{g,A}[\alpha]=
 \frac{
 \int d\Omega\,
 \kappa_g(\omega+\Omega)|\widetilde\alpha(\Omega)|^2
