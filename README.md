@@ -14,7 +14,7 @@ Location:
 
 [`experiments/01-causal-quantum-branch-information/manuscript_v7/`](experiments/01-causal-quantum-branch-information/manuscript_v7/)
 
-Canonical state:
+Canonical scientific state:
 
 [`CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md)
 
@@ -22,7 +22,7 @@ Current internal verdict:
 
 > **No known publication-critical structural physics gap remains from the external review within the manuscript's declared weak-field, nonrelativistic, narrowband linear regime.**
 
-This is not a guarantee of peer-review acceptance. The remaining work is editorial, reproducibility, repository organization, and submission packaging.
+This is not a guarantee of peer-review acceptance. The remaining work is final editorial/submission metadata, clean packaging, and external peer scrutiny.
 
 ---
 
@@ -65,7 +65,7 @@ $$
 0\le\mathcal T_f(t)\le1.
 $$
 
-The memory is then tested through
+The memory is tested through
 
 $$
 \Delta_{\rm mem}=\tau_c-m_c,
@@ -147,7 +147,7 @@ This is used only within the first-order gravitational-splitting scope: common l
 
 ### Independent normalization checks
 
-The $25/16$ propagation normalization now has three conceptually distinct derivations:
+The $25/16$ propagation normalization has three conceptually distinct derivations:
 
 1. retarded conserved-source field;
 2. power-flow / critical-absorption / reciprocal-antenna normalization;
@@ -189,19 +189,22 @@ For the active publication state, read in this order:
 
 1. [`AGENTS.md`](AGENTS.md) — operational recovery protocol and current allowed work;
 2. [`CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md) — canonical scientific state;
-3. [`manuscript_v7/README.md`](experiments/01-causal-quantum-branch-information/manuscript_v7/README.md) — manuscript build/layout;
-4. [`EXTERNAL_REVIEW_RESPONSE_V7.md`](experiments/01-causal-quantum-branch-information/EXTERNAL_REVIEW_RESPONSE_V7.md) — point-by-point closure of the external review;
-5. [`TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md`](experiments/01-causal-quantum-branch-information/TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md) — third normalization derivation;
-6. [`FINITE_HUB_CONTROLLER_RESIDUAL_BOUND_V7.md`](experiments/01-causal-quantum-branch-information/FINITE_HUB_CONTROLLER_RESIDUAL_BOUND_V7.md) — finite source residual bounds;
-7. [`GRAVITATIONAL_SPLITTING_CODE_SUBSPACE_AUDIT_V7.md`](experiments/01-causal-quantum-branch-information/GRAVITATIONAL_SPLITTING_CODE_SUBSPACE_AUDIT_V7.md) — primary-source dressing audit;
-8. [`FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`](experiments/01-causal-quantum-branch-information/FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md) — final restrained novelty boundary;
-9. [`numerics/README.md`](experiments/01-causal-quantum-branch-information/numerics/README.md) — numerical audit suite.
+3. [`ARCHIVE_STATUS.md`](experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md) — active vs historical artifact map;
+4. [`manuscript_v7/README.md`](experiments/01-causal-quantum-branch-information/manuscript_v7/README.md) — manuscript build/layout;
+5. [`EXTERNAL_REVIEW_RESPONSE_V7.md`](experiments/01-causal-quantum-branch-information/EXTERNAL_REVIEW_RESPONSE_V7.md) — point-by-point closure of the external review;
+6. [`TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md`](experiments/01-causal-quantum-branch-information/TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md) — third normalization derivation;
+7. [`FINITE_HUB_CONTROLLER_RESIDUAL_BOUND_V7.md`](experiments/01-causal-quantum-branch-information/FINITE_HUB_CONTROLLER_RESIDUAL_BOUND_V7.md) — finite source residual bounds;
+8. [`GRAVITATIONAL_SPLITTING_CODE_SUBSPACE_AUDIT_V7.md`](experiments/01-causal-quantum-branch-information/GRAVITATIONAL_SPLITTING_CODE_SUBSPACE_AUDIT_V7.md) — primary-source dressing audit;
+9. [`FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`](experiments/01-causal-quantum-branch-information/FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md) — final restrained novelty boundary;
+10. [`numerics/README.md`](experiments/01-causal-quantum-branch-information/numerics/README.md) — numerical audit and CI coverage.
 
 ---
 
 ## Historical / superseded branches
 
 The repository intentionally retains failed and superseded derivations as an audit trail. They are **not** current recovery points.
+
+Use [`ARCHIVE_STATUS.md`](experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md) for the detailed map.
 
 ### Standalone Gaussian-paper branch — STOPPED
 
@@ -213,18 +216,7 @@ Canonical stop documents:
 - [`NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`](experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md)
 - [`NOVELTY_COLLISION_MELE_RANK_TWO.md`](experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md)
 
-### Legacy paper cores / state files
-
-Files such as
-
-- `PAPER_CORE_V3.md`;
-- `PAPER_CORE_V4.md`;
-- `PAPER_CORE_V5_LOCAL_END_TO_END.md`;
-- `PAPER_CORE_V6_QUANTUM_LINK_BUDGET.md`;
-- `CURRENT_STATE_RANK2_UPDATE.md`;
-- older endpoint-only source notes
-
-are retained for provenance. They are superseded by `manuscript_v7/` and `CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md` unless a current document explicitly cites them for a historical derivation.
+Legacy `PAPER_CORE_*`, old current-state files, and endpoint-only source notes are retained for provenance but are superseded by `manuscript_v7/` and the current V7 state.
 
 Do not resurrect superseded claims merely because the old file remains in the repository.
 
@@ -232,26 +224,25 @@ Do not resurrect superseded claims merely because the old file remains in the re
 
 ## Reproducibility
 
-Active automated checks include
-
-- V7 LaTeX compile + unresolved citation/reference check;
-- canonical TT one-graviton overlap regression;
-- pinned numerical environment for the active TT suite.
-
 Pinned active numerical environment:
 
 - Python `3.12.13`;
 - NumPy `2.5.1`;
 - SciPy `1.18.0`.
 
-The repository also contains independent finite-Fock / quadrature audits for
+Automated checks now include
 
-- thermal attenuation;
-- thermal amplification;
-- additive Gaussian noise;
-- near-EB-boundary convergence.
+- V7 LaTeX compile + unresolved citation/reference check;
+- canonical TT one-graviton overlap regression;
+- fast scientific regression suite covering representative thermal attenuation, thermal amplification, additive-noise/near-boundary behavior, finite-spoke series coefficients, V7 benchmark constants, and exact-negativity asymptotics.
 
-Broader regression CI for this legacy numerical suite is repository-engineering work, not a publication-critical physics blocker.
+Key workflows:
+
+- `.github/workflows/latex-v7.yml`
+- `.github/workflows/tt-normalization.yml`
+- `.github/workflows/scientific-regressions.yml`
+
+The manuscript also contains `SUBMISSION_MANIFEST.txt`, which defines the journal source file set. A separate workflow builds that manifest in an isolated directory and packages only the required submission source.
 
 ---
 
@@ -259,14 +250,14 @@ Broader regression CI for this legacy numerical suite is repository-engineering 
 
 Do **not** open another theoretical branch without a concrete technical defect.
 
-Current allowed work is
+Current work is limited to
 
 1. final prose and bibliography copyedit;
 2. author / acknowledgments / funding metadata;
-3. clean PRD submission package and cover letter;
-4. broaden legacy numerical CI;
-5. improve archive/superseded navigation;
-6. create a clean tagged submission snapshot.
+3. finalize the PRD cover letter;
+4. validate and preserve the clean manifest-defined submission package;
+5. create the final submission tag/snapshot;
+6. respond to actual external peer-review objections if they arise.
 
 If a new physics objection appears, document it explicitly and attack that objection. Otherwise preserve the frozen V7 result.
 
