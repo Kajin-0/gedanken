@@ -7,83 +7,132 @@ A repository for first-principles thought experiments and adversarial theoretica
 For the current research state, read in this order:
 
 1. [`AGENTS.md`](AGENTS.md) — authoritative recovery protocol and exact next actions;
-2. [`NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`](experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md) — confirmed collision that retired the all-finite-binary-coherent survival theorem as novelty;
-3. [`NOVELTY_COLLISION_MELE_RANK_TWO.md`](experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md) — confirmed collision that retired the rank-two Fock theorem as novelty;
-4. [`CURRENT_STATE_RANK2_UPDATE.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_RANK2_UPDATE.md) — current Experiment 01 recovery state;
-5. [`CLAIM_LEDGER_POST_MELE_ADDENDUM.md`](experiments/01-causal-quantum-branch-information/CLAIM_LEDGER_POST_MELE_ADDENDUM.md) — current claim classification;
-6. [`EXACT_THREE_ELEMENT_WITNESS.md`](experiments/01-causal-quantum-branch-information/EXACT_THREE_ELEMENT_WITNESS.md) — strongest surviving possible standalone contribution;
-7. [`COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md`](experiments/01-causal-quantum-branch-information/COHERENT_THEOREM_ADVERSARIAL_PROOF_AUDIT.md) — independent proof rederivation;
-8. [`numerics/README.md`](experiments/01-causal-quantum-branch-information/numerics/README.md) — reproducible independent channel simulations.
+2. [`CONSERVED_SOURCE_ACTUATOR_AUDIT.md`](experiments/01-causal-quantum-branch-information/CONSERVED_SOURCE_ACTUATOR_AUDIT.md) — current gravity-source result and finite-spoke conservation completion;
+3. [`STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`](experiments/01-causal-quantum-branch-information/STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md) — formal stop decision on the standalone Gaussian-theorem branch;
+4. [`NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`](experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md) — coherent-state prior-art collision;
+5. [`NOVELTY_COLLISION_MELE_RANK_TWO.md`](experiments/01-causal-quantum-branch-information/NOVELTY_COLLISION_MELE_RANK_TWO.md) — rank-two Fock prior-art collision;
+6. [`CURRENT_STATE_RANK2_UPDATE.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_RANK2_UPDATE.md) — legacy-named current-state recovery note;
+7. [`numerics/README.md`](experiments/01-causal-quantum-branch-information/numerics/README.md) — reproducible Gaussian-channel audit suite retained for the gravity receiver lemmas.
 
 ## Experiment 01 — Causal Transport of Quantum Branch Information by Gravity
 
 **Original question:** If a mass is placed in a coherent spatial superposition, can gravity communicate information about the alternatives to a distant quantum system without first converting those alternatives into classical information?
 
-The experiment developed into a relativistic source→field→receiver channel model. During that work, several continuous-variable quantum-information statements were derived and then subjected to adversarial prior-art review.
+The project has developed into a source→quantized gravitational field→noisy receiver model with explicit causality, mode matching, thermal entanglement-breaking thresholds, and finite source/receiver geometry.
 
-### What was killed
+### Gaussian detour: mathematically useful, no longer the publication center
 
-The repository independently derived a very short Schmidt-rank-two Fock proof of the phase-insensitive Gaussian entanglement-breaking boundary. The mathematics appears correct, but Mele–Lami–Giovannetti already contain the underlying finite-rank survival result. It is retained as a compact rederivation, not a discovery claim.
+The repository independently derived several compact Gaussian-channel results, including
 
-The repository also independently proved that every finite nontrivial binary coherent hybrid input remains NPT exactly while a phase-insensitive Gaussian channel is non-entanglement-breaking. That broad survival theorem is likewise not a viable novelty claim: a one-sided specialization of Filippov–Ziman's 2014 coherent-state witness, combined with an invertible local filter on the untouched two-dimensional coherent-state span, implies the same finite-amplitude survival boundary.
+- a vacuum–one-photon rank-two PT determinant;
+- an exact binary-coherent PT principal minor;
+- a three-element negativity lower bound;
+- weak-link optimized witness asymptotics.
 
-Documenting those collisions is part of the project, not a failure mode to hide.
+The broad novelty claims did not survive prior-art review. Mele–Lami–Giovannetti already contain the substantive finite-rank Fock phenomenon, while Filippov–Ziman's coherent-state witness already encodes the all-finite-coherent survival boundary and the same matched coherent scale/exponential sign factor.
 
-### Strongest surviving possible standalone contribution
+These calculations are retained as short lemmas and quantitative tools. The standalone Gaussian paper path is stopped unless a genuinely new operational result emerges.
 
-The remaining question is substantially narrower: whether the known binary-coherent survival boundary admits a **new minimal exact certificate**.
+### Current gravity bottleneck: make the source genuinely closed
 
-For symmetric branches `|±a>`, the repository selects a literal two-dimensional block of the actual partial transpose,
+The strongest source-level objection was that prescribed accelerated endpoint masses alone do not define a conserved stress-energy tensor. An unspecified actuator might carry compensating branch-dependent stress-energy and alter or cancel the claimed radiation.
 
-$$
-M_\Gamma=
-\begin{pmatrix}
-p_0&z_v^*\\
-z_v&p_v
-\end{pmatrix}.
-$$
+The repository now contains an explicit finite-mass conservation completion: a central hub with four longitudinal elastic spokes and four endpoint masses.
 
-NPT is certified by
+For one spoke define
 
 $$
-|z_v|^2>p_0p_v.
+q=\frac{\omega L}{c_s},
 $$
 
-For a phase-insensitive Gaussian channel with $m>0$, the matched coherent analysis displacement is
+where $c_s$ is the longitudinal sound speed. The exact endpoint boundary condition gives
 
 $$
 \boxed{
-v_*=\frac{2\sqrt\tau\,a}{m},
+\frac{m_r}{\mu}=q\tan q,
 }
 $$
 
-and the exact ratio is
+where $m_r$ is the mass of one spoke and $\mu$ the endpoint mass.
+
+Including the rest-mass quadrupole of the spokes, the branch-difference plus quadrupole becomes
 
 $$
 \boxed{
-\frac{|z_{v_*}|^2}{p_0p_{v_*}}
-=\exp\left[\frac{4a^2}{m}(\tau-m)\right].
+\Delta Q_{xx}
+=8\mu L u_c\frac{\tan q}{q},
 }
 $$
 
-Thus two selected populations and one coherence expose the full EB boundary through one finite $2\times2$ PT minor.
+$$
+\boxed{
+\Delta Q_{yy}
+=-8\mu L u_c\frac{\tan q}{q}.
+}
+$$
 
-**This minimal-witness formulation is still under prior-art attack. It is not yet an originality claim.**
+Thus the support does **not** cancel the endpoint quadrupole in this closed architecture. For the endpoint-dominated fundamental mode,
 
-The associated selected-block negative eigenvalue and weak-link optimized witness-strength formulas are also being audited as possible quantitative contributions.
+$$
+\frac{\tan q}{q}
+=1+\frac{q^2}{3}+O(q^4),
+$$
 
-### Numerical reproducibility
+so the previous endpoint-only source is the controlled $q\to0$ limit.
 
-Independent executable checks are committed for
+The exact generalized mode mass is
 
-- thermal attenuation — beam-splitter dilation;
-- thermal amplification — two-mode-squeezer dilation;
-- additive Gaussian noise — direct random-displacement integration;
-- controlled near-boundary stress scans.
+$$
+\boxed{
+M_{\rm eff}(q)
+=4\mu\left[
+\frac12+\frac{q}{\sin2q}
+\right],
+}
+$$
 
-The additive-noise stress suite resolves the analytic sign change through at least $|\tau-m|=10^{-4}$ at the current numerical resolution.
+and the corrected gravitational linewidth is
 
-See [`numerics/README.md`](experiments/01-causal-quantum-branch-information/numerics/README.md).
+$$
+\boxed{
+\kappa_g(q)
+=
+\frac{8G\mu L^2\omega^4}{5c^5}
+\frac{(\tan q/q)^2}
+{\frac12+q/\sin2q}.
+}
+$$
+
+For $q\ll1$,
+
+$$
+\kappa_g(q)
+=
+\frac{8G\mu L^2\omega^4}{5c^5}
+\left[
+1+\frac{q^2}{3}+\frac{q^4}{9}+O(q^6)
+\right].
+$$
+
+The branch controller can also be modeled autonomously with
+
+$$
+H=H_m+H_c-\sigma_z g(q_c)u.
+$$
+
+A controlled mechanical-parity transformation removes the source-qubit label from the nongravitational source/controller dynamics, showing that the work reservoir need not acquire a hidden which-branch record before gravitational coupling is included.
+
+### Current next step
+
+Propagate the finite-spoke corrections through the quantized plus mode and source→receiver formulas:
+
+- corrected $q_{01}(q)$;
+- corrected $\kappa_g(q)$;
+- corrected emitted branch-distance $N_\Delta$;
+- corrected source→receiver storage/coupling factors;
+- finite hub/controller residual bounds.
+
+Then rebuild the gravity-paper core around the **total conserved source**, not prescribed endpoint trajectories.
 
 ## Research status policy
 
@@ -95,4 +144,4 @@ Claims are explicitly classified as
 - **COLLISION CONFIRMED — DO NOT CLAIM**;
 - **SUPERSEDED / INCORRECT**.
 
-A claim that collides with prior art is removed from the active publication path immediately. The current publication decision is therefore: do not write another broad Gaussian-channel survival theorem; first determine whether the three-element exact PT witness or its quantitative strength is genuinely new and useful. If not, return the research focus to the gravity application.
+A claim that collides with prior art or fails a conservation audit is removed from the active publication path rather than defended.
