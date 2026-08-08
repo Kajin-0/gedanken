@@ -490,8 +490,7 @@ Thus there is no universal unsuppressed controller quadrupole waiting at the nex
 The source-side branch quadrupole can now be organized as
 
 $$
-\Delta Q_{ij}
-=
+\Delta Q_{ij}=
 \Delta Q_{ij}^{\rm main}
 +\Delta Q_{ij}^{\rm hub}
 +\Delta Q_{ij}^{E}
