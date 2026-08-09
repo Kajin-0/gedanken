@@ -1,0 +1,169 @@
+\section{Compact transverse-traceless propagation and the combined bound}
+\label{sec:ttcombined}
+
+\subsection{General compact quadrupole radiation}
+
+Let $Q_{ij}$ be an arbitrary possibly complex symmetric trace-free transition quadrupole at angular frequency $\omega$. For propagation direction $\hat{\bm n}$ define
+\begin{equation}
+P_{ij}=\delta_{ij}-n_i n_j
+\end{equation}
+and the transverse-traceless projector
+\begin{equation}
+\Lambda_{ij,kl}(\hat{\bm n})
+=\frac12\left(
+P_{ik}P_{jl}+P_{il}P_{jk}-P_{ij}P_{kl}
+\right).
+\label{eq:TTprojector}
+\end{equation}
+For unit-normalized polarization tensors, completeness gives
+\begin{equation}
+\sum_\lambda
+|Q_{ij}\epsilon_{ij}^{(\lambda)}|^2
+=Q_{ij}^*\Lambda_{ij,kl}Q_{kl}.
+\end{equation}
+The angular one-graviton rate may therefore be written
+\begin{equation}
+\frac{\dd\kappa_g}{\dd\Omega}
+=
+\frac{G\omega^5}{4\pi\hbar c^5}
+Q^*:\Lambda(\hat{\bm n}):Q.
+\label{eq:differentialrate}
+\end{equation}
+Rotational invariance and the fact that $\Lambda$ has rank two on the five-dimensional STF tensor space imply
+\begin{equation}
+\int\dd\Omega\,\Lambda(\hat{\bm n})
+=\frac{8\pi}{5}I_{\rm STF}.
+\label{eq:LambdaIntegral}
+\end{equation}
+Thus
+\begin{equation}
+\kappa_g
+=
+\frac{2G\omega^5}{5\hbar c^5}Q^*:Q,
+\end{equation}
+consistent with Eq.~\eqref{eq:gravitonrate}.
+
+The corresponding directivity is
+\begin{equation}
+D_Q(\hat{\bm n})
+=4\pi\frac{\dd\kappa_g/\dd\Omega}{\kappa_g}
+=
+\frac52\frac{Q^*:\Lambda(\hat{\bm n}):Q}{Q^*:Q}.
+\end{equation}
+Because $\Lambda$ is an orthogonal projector,
+\begin{equation}
+\boxed{D_Q(\hat{\bm n})\le\frac52.}
+\label{eq:Dmax}
+\end{equation}
+Equality occurs when $Q$ lies entirely in the two-dimensional TT tensor subspace associated with the line of sight.
+
+\subsection{Normalized one-graviton propagation singular value}
+
+The directivity argument has a useful quantum-mode counterpart. Define the normalized angular one-graviton mode
+\begin{equation}
+ u_{Q,\lambda}(\hat{\bm n})
+=
+\sqrt{\frac{5}{8\pi}}
+\frac{Q:\epsilon^{(\lambda)}(\hat{\bm n})}{\sqrt{Q^*:Q}},
+\label{eq:normalizedmode}
+\end{equation}
+which obeys
+\begin{equation}
+\sum_\lambda\int\dd\Omega\,
+|u_{Q,\lambda}|^2=1.
+\end{equation}
+For normalized source and receiver quadrupoles separated by $R\hat{\bm R}$, fixed-frequency translation gives
+\begin{equation}
+S_{BA}(z)
+=
+\sum_\lambda\int\dd\Omega\,
+ u_{Q_B,\lambda}^*(\hat{\bm n})
+ u_{Q_A,\lambda}(\hat{\bm n})
+\ee^{iz\hat{\bm n}\cdot\hat{\bm R}},
+\qquad z=kR.
+\label{eq:translatedoverlap}
+\end{equation}
+In the wave zone, the outgoing stationary point at $+\hat{\bm R}$ gives
+\begin{equation}
+\boxed{
+t_{BA}^{\rm TT}(z)
+=
+-\frac{5i}{4z}\ee^{iz}
+\frac{Q_B^*:\Lambda(\hat{\bm R}):Q_A}
+{\sqrt{Q_A^*:Q_A}\sqrt{Q_B^*:Q_B}}
++O(z^{-2}).}
+\label{eq:TTamplitude}
+\end{equation}
+Cauchy--Schwarz and $\|\Lambda\|_{\op}=1$ therefore imply the compact-quadrupole singular-channel bound
+\begin{equation}
+\boxed{
+\|P_g(\omega)\|_{\op}^2
+\le
+\frac{25}{16[k(\omega)R]^2}
+\left[1+O((kR)^{-1})\right].}
+\label{eq:TTpropbound}
+\end{equation}
+Matched source and receiver tensors in the same line-of-sight TT subspace saturate the leading projector inequality. For the aligned plus tensor $Q\propto\mathrm{diag}(1,-1,0)$, the complete normalized angular integral can be reduced to
+\begin{equation}
+S(z)=\frac5{32}
+\int_{-1}^{1}\dd x\,
+(1+6x^2+x^4)\ee^{izx},
+\end{equation}
+whose outgoing endpoint contribution is $-(5i/4z)\ee^{iz}+O(z^{-2})$. This provides an independent check of the coefficient in Eq.~\eqref{eq:TTamplitude}.
+
+\subsection{Passive compact-quadrupole throughput theorem}
+
+We now combine the endpoint cut set, the mass-quadrupole spectral resource, and the normalized TT propagation ceiling. For a narrow band centered at $\omega$, assume
+\begin{equation}
+\frac{\omega L_A}{c}\ll1,
+\qquad
+\frac{\omega L_B}{c}\ll1,
+\qquad
+kR=\frac{\omega R}{c}\gg1.
+\label{eq:regime}
+\end{equation}
+Then Eqs.~\eqref{eq:materialcutset} and \eqref{eq:TTpropbound} give the main result.
+
+\begin{theorem}[Passive compact-quadrupole gravitational throughput]
+For direct weak one-way propagation between compact passive nonrelativistic linear bosonic endpoints in the regime \eqref{eq:regime},
+\begin{equation}
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25}{16(kR)^2}
+\frac{4G\omega^4}{3c^5}
+\min\!\left(
+\langle I_A\rangle,
+\langle I_B\rangle
+\right).}
+\label{eq:combined1}
+\end{equation}
+Equivalently,
+\begin{equation}
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega^2}{12c^3R^2}
+\min\!\left(
+\langle I_A\rangle,
+\langle I_B\rangle
+\right).}
+\label{eq:combined2}
+\end{equation}
+\end{theorem}
+
+The inequality is leading-order in the compact-source and wave-zone expansions; it is an upper bound rather than a claim that all three constituent inequalities can be saturated simultaneously. Its main structural feature is what no longer appears: endpoint quality factor, branching fraction, number of passive internal resonances, and the choice of basis used to describe coherent internal mode mixing. Those quantities determine how closely a particular device approaches the ceiling, but they cannot increase the ceiling inside the stated class.
+
+For a finite band $\mathcal B=[\omega_-,\omega_+]$ lying entirely in the compact wave-zone regime, a conservative broad-band version keeps the two band edges distinct:
+\begin{equation}
+\Gamma_{\rm coh}(\mathcal B)
+\lesssim
+\frac{25G}{12c^3R^2}
+\frac{\omega_+^4}{\omega_-^2}
+\min\!\left(
+\langle I_A\rangle,
+\langle I_B\rangle
+\right).
+\label{eq:broadband}
+\end{equation}
+This form is intentionally loose; a genuinely broadband non-Markov response theory should retain the full frequency dependence inside the integral rather than combining separate suprema.
