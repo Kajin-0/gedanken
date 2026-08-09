@@ -1,0 +1,34 @@
+\section{From one-sided gravitational absorption to a two-ended link}
+\label{sec:context}
+
+Resonant gravitational-wave antennas provide an old and useful warning against judging a weak interaction by peak response alone. The absorption cross section of resonant bars can be computed from their elastic modes \cite{PaikWagoner1976}, and the frequency-integrated response is controlled by oscillator strength rather than growing indefinitely with mechanical quality factor. Raising $Q$ sharpens a resonance and can increase its peak, but it simultaneously reduces the bandwidth over which that enhancement is available. Material-response descriptions of gravitational absorption make the same point in a more general language by expressing the cross section through dynamical elastic or stress susceptibilities \cite{SrivastavaWidomPizzella2003}. We take that one-sided integrated-response viewpoint as prior physics, not as a new result.
+
+A related lesson has become central in quantum transduction. A useful transducer is characterized not only by an on-resonance conversion efficiency but by the frequency-dependent quantum channel, including bandwidth and added noise. Continuous-time quantum capacities are naturally written as frequency integrals of per-frequency channel capacities \cite{WangLiJiang2022}, while passive cavity transducers obey efficiency-bandwidth constraints that can be modified only by introducing additional physical resources such as nonclassical assistance \cite{ShiZhuang2024}. These developments suggest asking a gravitational question that differs from the historical receiver-only problem:
+\begin{quote}
+Given a passive material source, direct propagating gravitational radiation, and a passive material receiver, what frequency-integrated coherent transfer can the complete link support when both matter--gravity interfaces are retained?
+\end{quote}
+
+The distinction matters because a receiver cross section alone begins with an incident gravitational field already present. An end-to-end link must also pay for creating the useful gravitational radiation mode from matter. Recent work has formulated gravity-mediated quantum channels, gravitational quantum communication benchmarks, and graviton-sensitive receivers in increasingly explicit ways \cite{MariEtAl2026,ToccaceloAndersenBrask2025,TobarEtAl2024}. Our purpose here is narrower: to bound a direct passive propagating link without assuming that either matter--gravity interface is ideal.
+
+The central quantity is the frequency-integrated coherent transmission. Let $T(\omega)$ be the matrix transfer function from selected local input channels of the source device to selected local output channels of the receiver device, after all unobserved passive ports have been retained in the physical model. We define
+\begin{equation}
+\boxed{
+\Gamma_{\rm coh}
+\equiv
+\frac{1}{2\pi}
+\int_{\mathcal B}\dd\omega\,
+\Tr[T^\dagger(\omega)T(\omega)].}
+\label{eq:Gammacoh}
+\end{equation}
+For a scalar channel this is simply the area under its transmissivity spectrum. It has units of inverse time and contains no arbitrary full-width-at-half-maximum convention. It is not itself a Shannon or quantum capacity; information-theoretic consequences will be stated only after the physical response bound is established.
+
+We derive the result in three steps. First, established passive linear-system identities are used to bound the integrated useful transfer by the smaller gravitational coupling resource of the two endpoints. Second, for compact nonrelativistic linear matter, the mass-quadrupole energy-weighted sum rule bounds that resource independently of how it is distributed among passive resonances. Third, the transverse-traceless radiation projector bounds the largest normalized propagation channel between compact quadrupoles in the wave zone. The resulting narrowband theorem is
+\begin{equation}
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega^2}{12c^3R^2}
+\min\!\left(\langle I_A\rangle,\langle I_B\rangle\right),}
+\label{eq:headline}
+\end{equation}
+where $I_A$ and $I_B$ are the internal mass inertia moments about the endpoint centers of mass. The theorem is restricted to the compact, passive, nonrelativistic, linear-bosonic, direct wave-zone class stated explicitly below. In particular, it is not a bound on active transducers, extended phased apertures, near-field gravity, higher multipoles, or relativistic sources.
