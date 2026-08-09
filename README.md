@@ -12,13 +12,17 @@ Active manuscript:
 
 Canonical scientific state:
 
-[`CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md)
+[`CURRENT_STATE_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md)
+
+Current claim boundary:
+
+[`CLAIM_LEDGER.md`](experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md)
 
 Current internal assessment:
 
-> No known publication-critical structural physics gap remains from the external review within the manuscript's stated weak-field, nonrelativistic, narrowband linear regime.
+> No known publication-critical structural physics gap remains within the manuscript's stated weak-field, nonrelativistic, narrowband linear regime.
 
-This is a submission-readiness statement, not a guarantee of peer-review acceptance.
+This is a submission-readiness assessment, not formal journal peer review and not a guarantee of correctness or acceptance. Repository review passes are described transparently in the canonical state file.
 
 ---
 
@@ -172,13 +176,15 @@ At `kR = 10`, the leading wave-zone expression is about `1.97%` high.
 
 For the active scientific state, read:
 
-1. [`AGENTS.md`](AGENTS.md) — current recovery and editing rules;
-2. [`CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md) — canonical scientific state;
-3. [`ARCHIVE_STATUS.md`](experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md) — active versus historical notes;
-4. [`manuscript_v7/README.md`](experiments/01-causal-quantum-branch-information/manuscript_v7/README.md) — manuscript layout and build instructions;
+1. [`CURRENT_STATE_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md) — canonical scientific/review state and review-transparency statement;
+2. [`CLAIM_LEDGER.md`](experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md) — current publication claim boundary and correction history;
+3. [`manuscript_v7/README.md`](experiments/01-causal-quantum-branch-information/manuscript_v7/README.md) — active manuscript layout and build instructions;
+4. [`ARCHIVE_STATUS.md`](experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md) — active versus historical notes;
 5. [`TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md`](experiments/01-causal-quantum-branch-information/TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md) — independent one-graviton normalization;
 6. [`APPROXIMATION_ERROR_BUDGET_V7.md`](experiments/01-causal-quantum-branch-information/APPROXIMATION_ERROR_BUDGET_V7.md) — approximation hierarchy;
 7. [`FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`](experiments/01-causal-quantum-branch-information/FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md) — restrained novelty boundary.
+
+`AGENTS.md` contains repository editing/recovery instructions for automated contributors and is not part of the scientific claim.
 
 Older paper cores and stopped Gaussian-channel novelty branches remain in the repository as an audit trail. They are not current recovery points. See [`ARCHIVE_STATUS.md`](experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md).
 
