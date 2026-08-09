@@ -1,37 +1,43 @@
 # Current State — Experiment 02
 
-**Status:** **COMPACT PASSIVE LINEAR-BOSONIC THROUGHPUT THEOREM CLOSED; NOVELTY NARROWED TO TWO-ENDED GRAVITATIONAL QUANTUM CUT SET; MANUSCRIPT HARDENING NEXT**
+**Status:** **MANUSCRIPT V1 THEOREM CHECKPOINT CLOSED; PHYSICS GO WITH DECLARED SCOPE; NOVELTY PROVISIONAL GO; FURTHER BROADENING PAUSED**
 
-## 1. Research question
+## 1. Headline result
 
-Can the speed–efficiency tradeoff exposed by Experiment 01 be promoted to an end-to-end passive gravitational throughput bound that cannot be evaded by arbitrarily high Q, many resonances, coherent mode mixing, or a different compact quadrupole orientation?
-
-Current answer:
-
-> **Yes for stable passive linear bosonic matter networks coupled through compact quadrupole radiation in the weak one-way wave zone.**
-
-Experiment 01 / V7 remains frozen and is not modified by this branch.
-
----
-
-## 2. Physical throughput metric
-
-For the stationary source-to-receiver transfer matrix `T(omega)`, define
+For a direct narrowband link between compact passive nonrelativistic **linear bosonic** source and receiver networks, coupled through quadrupolar linearized gravity in the weak one-way wave zone, define
 
 ```math
-\boxed{
 \Gamma_{\rm coh}
 =\frac1{2\pi}
 \int_{\mathcal B}
 \operatorname{Tr}[T^\dagger(\omega)T(\omega)]d\omega.
+```
+
+The current theorem gives
+
+```math
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega^2}{12c^3R^2}
+\min\!\left(
+\langle I_A\rangle,
+\langle I_B\rangle
+\right),
 }
 ```
 
-`Gamma_coh` has units of inverse time. It is a frequency-integrated coherent-transfer / efficiency-bandwidth quantity, **not itself a quantum capacity**.
+where `I_A` and `I_B` are internal mass inertia moments about each endpoint center of mass.
+
+The result contains no endpoint quality factor, no assumed number of passive internal modes, and no four-spoke-specific parameter. It is a frequency-integrated coherent-transfer / efficiency-bandwidth bound, **not itself a quantum capacity**.
+
+Experiment 01 / V7 remains frozen at its submission-ready scientific state and is not modified by this branch.
 
 ---
 
-## 3. Passive-network cut set
+## 2. Proof chain
+
+### A. Passive-network cut set
 
 For a stable completely passive endpoint,
 
@@ -39,24 +45,7 @@ For a stable completely passive endpoint,
 A=-iH-\frac12K^\dagger K.
 ```
 
-Established passive-system theory gives the full-channel Gramian identity `P=I`. Selecting the useful local ports and gravitational ports then yields
-
-```math
-\boxed{
-\|S_{g\leftarrow u}\|_2^2
-\le
-\operatorname{Tr}(K_g^\dagger K_g).
-}
-```
-
-For source and receiver connected by one-way gravitational propagation `P_g(omega)`, define
-
-```math
-\eta_{\max}
-=\sup_{\omega\in\mathcal B}\|P_g(\omega)\|_{\rm op}^2.
-```
-
-Then
+Using established passive-system Gramian identities,
 
 ```math
 \boxed{
@@ -70,29 +59,21 @@ Then
 }
 ```
 
-This permits arbitrary finite-dimensional passive coherent mode mixing and overlapping resonances. The Gramian/H2 mathematics is **not claimed new**; the candidate contribution is its gravitational end-to-end closure.
+Arbitrary finite-dimensional passive coherent mode mixing and overlapping resonances are allowed. The underlying Gramian/H2 mathematics is established prior art; the candidate contribution is the gravity-specific end-to-end closure.
 
-Canonical derivation: `PASSIVE_NETWORK_CUTSET_THEOREM.md`.
+Canonical file: `PASSIVE_NETWORK_CUTSET_THEOREM.md`.
 
----
+### B. Microscopic gravitational-port factorization
 
-## 4. Microscopic gravitational-port factorization
-
-For a narrow frequency sector, let the microscopic matter-to-graviton coupling be
+For the narrowband matter-to-graviton coupling operator,
 
 ```math
 G=V\Gamma_g^{1/2},
 \qquad
-\Gamma_g=G^\dagger G.
+\Gamma_g=G^\dagger G,
 ```
 
-Then free graviton propagation `U_R` produces the normalized interface map
-
-```math
-P_g=V_B^\dagger U_RV_A,
-```
-
-and the complete matter-to-matter gravitational coupling factorizes as
+so that
 
 ```math
 \boxed{
@@ -104,24 +85,20 @@ P_g
 }
 ```
 
-This separates endpoint oscillator-strength/linewidth magnitude from normalized angular-polarization propagation and prevents double counting.
+This separates endpoint coupling magnitude from normalized gravitational mode geometry and prevents double counting. Nonorthogonal radiation patterns are retained through the gravitational Gram matrix.
 
-Canonical derivation: `GRAVITATIONAL_PORT_FACTORIZATION.md`.
+Canonical file: `GRAVITATIONAL_PORT_FACTORIZATION.md`.
 
----
+### C. Passive mass-quadrupole resource
 
-## 5. Material resource — closed for passive linear bosonic matter
-
-Diagonalizing the isolated linear matter Hamiltonian gives
+For passive linear bosonic matter,
 
 ```math
-\boxed{
 \operatorname{Tr}(K_g^\dagger K_g)
-=\sum_n\kappa_{g,n}.
-}
+=\sum_n\kappa_{g,n},
 ```
 
-For a one-quantum compact quadrupole transition,
+with one-quantum quadrupole rate
 
 ```math
 \kappa_{g,n}
@@ -130,13 +107,7 @@ For a one-quantum compact quadrupole transition,
 Q_{ij}^{0n}Q_{ij}^{n0}.
 ```
 
-The internal inertia moment is defined about each endpoint center of mass,
-
-```math
-I=\sum_a m_a|\mathbf r_a-\mathbf R_{\rm CM}|^2.
-```
-
-For retained quadrupole-active modes below operating ceiling `Omega`, the EWSR gives
+The mass-quadrupole EWSR then gives, for retained modes below operating ceiling `Omega`,
 
 ```math
 \boxed{
@@ -146,48 +117,33 @@ For retained quadrupole-active modes below operating ceiling `Omega`, the EWSR g
 }
 ```
 
-Therefore
+The inertia moment is defined internally about the endpoint center of mass.
 
-```math
-\boxed{
-\Gamma_{\rm coh}
-\le
-\eta_{\max}
-\frac{4G\Omega^4}{3c^5}
-\min(\langle I_A\rangle,\langle I_B\rangle).
-}
-```
+Canonical files: `MATERIAL_RESPONSE_BRIDGE.md`, `SPECTRAL_GENERALIZATION.md`.
 
-Canonical derivations: `MATERIAL_RESPONSE_BRIDGE.md`, `SPECTRAL_GENERALIZATION.md`.
-
----
-
-## 6. TT geometry — closed for compact quadrupole wave-zone channels
+### D. Compact TT propagation ceiling
 
 For arbitrary complex STF quadrupole `Q`,
 
 ```math
 D_Q(\hat n)
-=
-\frac52
-\frac{Q^*:\Lambda(\hat n):Q}{Q^*:Q}
+=\frac52\frac{Q^*:\Lambda Q}{Q^*:Q}
 \le\frac52.
 ```
 
-The direct normalized one-graviton stationary-phase overlap gives
+The normalized one-graviton stationary-phase overlap gives
 
 ```math
 \boxed{
 t_{BA}^{\rm TT}
-=
--\frac{5i}{4kR}e^{ikR}
+=-\frac{5i}{4kR}e^{ikR}
 \frac{Q_B^*:\Lambda(\hat R):Q_A}
 {\sqrt{Q_A^*:Q_A}\sqrt{Q_B^*:Q_B}}
-+O((kR)^{-2}).
++O((kR)^{-2}),
 }
 ```
 
-Hence
+and therefore
 
 ```math
 \boxed{
@@ -197,48 +153,15 @@ Hence
 }
 ```
 
-at leading wave-zone order. Matched line-of-sight TT quadrupoles saturate the projector inequality.
+at leading wave-zone order.
 
-Canonical derivation: `TT_PROPAGATION_BOUND.md`.
-
----
-
-## 7. Headline narrowband theorem
-
-Combining the endpoint material resource and compact TT propagation ceiling gives
-
-```math
-\boxed{
-\Gamma_{\rm coh}
-\lesssim
-\frac{25}{16(kR)^2}
-\frac{4G\omega^4}{3c^5}
-\min(\langle I_A\rangle,\langle I_B\rangle).
-}
-```
-
-Since `k=omega/c`,
-
-```math
-\boxed{
-\Gamma_{\rm coh}
-\lesssim
-\frac{25G\omega^2}{12c^3R^2}
-\min(\langle I_A\rangle,\langle I_B\rangle).
-}
-```
-
-This expression contains no endpoint Q, no number of passive internal modes, and no four-spoke-specific parameter.
-
-The theorem is restricted to direct compact nonrelativistic quadrupole links in weak linearized gravity, with stable passive linear bosonic endpoints and narrowband/band-local Markov dynamics.
-
-Canonical synthesis: `THEOREM_SYNTHESIS.md`.
+Canonical files: `TT_PROPAGATION_BOUND.md`, `INDEPENDENT_TT_COEFFICIENT_CHECK.md`.
 
 ---
 
-## 8. Exact single-pole checkpoint
+## 3. Exact two-resonator specialization
 
-For one source and receiver pole with explicit local input/output ports,
+For explicit source and receiver local ports,
 
 ```math
 \boxed{
@@ -252,13 +175,13 @@ For one source and receiver pole with explicit local input/output ports,
 }
 ```
 
-For symmetric intrinsic gravitational rates and no internal loss,
+For symmetric intrinsic gravitational rates with no internal loss, the integrated spectral-area optimum occurs at
 
 ```math
-\kappa_{\rm in}=\kappa_{\rm out}=2\kappa_g
+\kappa_{\rm in}=\kappa_{\rm out}=2\kappa_g,
 ```
 
-maximizes the integrated area, giving
+with
 
 ```math
 \boxed{
@@ -267,142 +190,182 @@ maximizes the integrated area, giving
 }
 ```
 
-Canonical derivation: `TWO_PORT_SPECTRAL_BOUND.md`.
+Thus peak-optimal critical coupling and throughput-optimal coupling are different objectives.
+
+Canonical file: `TWO_PORT_SPECTRAL_BOUND.md`.
 
 ---
 
-## 9. Capacity corollaries
+## 4. Quantum-information corollaries
 
-For a stationary vacuum pure-loss realization, each transmission eigenvalue satisfies
+`Gamma_coh` is not a capacity. For a stationary vacuum pure-loss realization, however, every transmission eigenvalue satisfies
 
 ```math
 \tau_n(\omega)\le\eta_{\max}.
 ```
 
-If `eta_max <= 1/2`, the unassisted continuous-time pure-loss quantum capacity is
+If `eta_max <= 1/2`, then
 
 ```math
-\boxed{Q_1=0.}
+\boxed{Q_1=0}
 ```
 
-For `eta_max < 1`, the two-way-assisted rate obeys
+for unassisted asymptotic pure-loss quantum capacity.
+
+For `eta_max < 1`,
 
 ```math
 \boxed{
 Q_2
 \le
 \frac{\Gamma_{\rm coh}}
-{\ln2\,(1-\eta_{\max})}.
+{\ln2\,(1-\eta_{\max})}
 }
 ```
 
-These are operational corollaries, not the definition of `Gamma_coh` and not universal noisy-gravity capacity statements.
+for the two-way-assisted pure-loss rate.
 
-Canonical derivation: `CAPACITY_COROLLARIES.md`.
+These are channel-specific corollaries, not universal noisy-gravity capacity statements.
 
----
-
-## 10. Explicit V7 realization vs theorem ceiling
-
-In the long-wavelength V7 source,
-
-```math
-\kappa_g^{\rm V7}
-\to
-\frac{8G\mu L^2\omega^4}{5c^5},
-```
-
-while the endpoint-only EWSR ceiling for `I=4 mu L^2` is
-
-```math
-\kappa_{g,\rm EWSR}^{\max}
-=\frac{16G\mu L^2\omega^4}{3c^5}.
-```
-
-Therefore
-
-```math
-\frac{\kappa_{g,\rm EWSR}^{\max}}
-{\kappa_g^{\rm V7}}
-=\frac{10}{3}.
-```
-
-The explicit mode carries 30% of the endpoint-only material ceiling and its plus tensor saturates the compact TT geometry ceiling. The final end-to-end theorem is not claimed globally sharp.
-
-See `BENCHMARK_THEOREM_COMPARISON.md`.
+Canonical file: `CAPACITY_COROLLARIES.md`.
 
 ---
 
-## 11. Critical prior-art update
+## 5. Explicit realization and sharpness
 
-The easy novelty story is no longer allowed.
+The frozen V7 long-wavelength plus mode reaches 30% of the endpoint-only EWSR gravitational-linewidth ceiling and saturates the compact TT geometry ceiling. The combined theorem is an upper bound and is **not** claimed globally sharp; simultaneous saturation of the passive cut set, EWSR ceiling, and propagation ceiling remains open.
 
-Historical resonant-mass gravitational-wave antenna theory already computes absorption cross sections and their frequency integrals. In that literature, increasing Q raises the resonant peak while reducing bandwidth, leaving an integrated response governed by oscillator strength/material parameters rather than by Q alone.
+Canonical file: `BENCHMARK_THEOREM_COMPARISON.md`.
 
-Material-susceptibility descriptions of gravitational absorption are also established, including Kubo/elastic-response treatments of metallic antennas.
+---
 
-Therefore the following are **not** Experiment 02 novelty claims:
+## 6. Prior-art boundary
+
+The easy novelty story is explicitly rejected.
+
+Historical resonant-mass gravitational-wave antenna theory already contains integrated absorption-response physics in which increasing Q raises peak response while narrowing bandwidth. Susceptibility/Kubo descriptions of gravitational absorption are also established. Passive linear quantum-network Gramian theory and modern continuous-time transducer capacity/efficiency-bandwidth metrics are established as well.
+
+Therefore Experiment 02 does **not** claim novelty for
 
 - Q-independent integrated gravitational response;
 - integrated gravitational absorption cross sections;
-- gravitational absorption written in susceptibility language;
-- passive Gramian/H2 theory;
-- generic efficiency-bandwidth quantum-transducer bounds.
+- susceptibility-based gravitational absorption;
+- passive Gramian/H2 mathematics;
+- generic efficiency-bandwidth transducer metrics.
 
-The potential contribution is narrower:
+The candidate contribution is the narrower **two-ended direct far-field closure**:
 
 ```text
-historical one-sided gravitational response
-+ known passive network identities
--> two-ended gravitational interface cut set
--> source and receiver quadrupole spectral resources
+source passive gravitational spectral resource
 -> normalized propagating TT channel
--> end-to-end integrated coherent-transfer ceiling
--> capacity corollary.
+-> receiver passive gravitational spectral resource
+-> integrated end-to-end coherent-transfer cut set
+-> pure-loss quantum-information corollaries.
 ```
 
-A targeted search has also found near-field laboratory transmitter–receiver gravitational coupling and active electromagnetic GW emission/reception proposals. These are important neighboring architectures but lie outside the present direct passive far-field compact-quadrupole class.
+Targeted searches have not yet found an inspected source stating the same theorem. This is a negative search result, not proof of priority.
 
-No inspected source yet states the same two-ended passive far-field theorem. This is a negative search result, not proof of priority.
-
-See `LITERATURE_MAP.md` and `INITIAL_NOVELTY_SWEEP.md`.
+Canonical files: `INITIAL_NOVELTY_SWEEP.md`, `LITERATURE_MAP.md`.
 
 ---
 
-## 12. Validation
+## 7. Validation checkpoint
 
-Automated branch regression covers:
+Four independent numerical regression layers are present:
 
-1. exact two-pole spectral integral and random passive rate sets;
-2. random multi-mode passive Gramians, endpoint H2 bounds, and directly integrated cascades;
-3. random complex STF quadrupoles, TT directivity, angular normalization, and the `25/16` wave-zone coefficient.
+1. exact two-pole spectral area and random passive rate sets;
+2. random multimode passive Gramians and directly integrated cascades;
+3. random complex STF quadrupoles, TT directivity, angular normalization, and the `25/16` wave-zone coefficient;
+4. microscopic gravitational-port factorization with deliberately overlapping radiation patterns.
 
-GitHub Actions run `31310582891`, job `93237694140`, completed successfully with all three regression stages passing.
+GitHub Actions run `31311724347`, job `93240439026`, completed successfully with all four layers passing.
 
-An adversarial theorem audit found no fatal internal gap within the declared class and identified the correct remaining risks as novelty collision, scope creep, and global sharpness.
+The theorem also passed a written adversarial audit without a fatal internal gap inside the declared class. Remaining risks are novelty collision and global sharpness rather than an identified algebraic inconsistency.
 
-See `ADVERSARIAL_THEOREM_AUDIT.md`.
+Canonical file: `ADVERSARIAL_THEOREM_AUDIT.md`.
 
 ---
 
-## 13. Strongest next step
+## 8. Manuscript v1 checkpoint
 
-Do **not** broaden to arbitrary interacting matter yet.
+A theorem-first manuscript now exists at
 
-The next work should be publication hardening:
+```text
+manuscript_v1/
+```
 
-1. finish the targeted historical two-antenna / reciprocity / scattering collision search;
-2. independently rederive the TT stationary-phase coefficient and gravitational-port factorization in manuscript notation;
-3. write a short theorem-first manuscript outline centered on the two-ended closure, explicitly crediting historical integrated resonant-mass response;
-4. keep the V7 four-spoke source only as a concrete near-ceiling example;
-5. only after that decide whether a full manuscript is justified.
+with working title
 
-### Forbidden for now
+**Passive Throughput Bounds for Propagating Gravitational Quantum Transduction**.
+
+Its structure is deliberately independent of V7:
+
+1. historical one-sided gravitational absorption as prior physics;
+2. passive-network cut set;
+3. microscopic gravitational-port normalization;
+4. mass-quadrupole spectral resource;
+5. compact TT propagation ceiling;
+6. combined theorem;
+7. exact two-resonator example;
+8. pure-loss capacity corollaries;
+9. scope and routes around the theorem.
+
+The V7 four-spoke realization appears only as a late sanity check.
+
+Final manuscript-v1 compile after visual cleanup:
+
+- workflow run: `31312356701`
+- job: `93241979746`
+- head SHA: `f3f09bf977f61b304082ac727cb26752cc264a11`
+- LaTeX compilation: **PASS**
+- unresolved reference/citation scan: **PASS**
+- PDF artifact upload: **PASS**
+
+Rendered PDF QA:
+
+- 13 pages;
+- all pages open/render correctly;
+- no clipping, broken equations, or obvious overflow;
+- hyperlink boxes removed with `hidelinks`;
+- no personal identity or repository-name leakage detected in extracted PDF text.
+
+---
+
+## 9. Publication decision
+
+Current formal decision:
+
+```text
+PHYSICS THEOREM:       GO WITH DECLARED SCOPE
+NUMERICAL VALIDATION:  GO
+MANUSCRIPT V1:         GO
+NOVELTY:               PROVISIONAL GO, NARROW CLAIM
+V7 MODIFICATION:       NO
+THEOREM BROADENING:    PAUSED FOR THIS PAPER
+```
+
+Do **not** broaden this manuscript to arbitrary interacting/non-Markov matter unless an external criticism makes that necessary.
+
+---
+
+## 10. Hard stop / next trigger
+
+Experiment 02 should now be treated as a frozen manuscript-v1 theorem checkpoint.
+
+Reopen the physics only for one of the following:
+
+1. a concrete counterexample or proof defect;
+2. a prior-art collision with the two-ended theorem;
+3. an external specialist/referee objection;
+4. a clearly separable extension paper on active/nonpassive resources, extended apertures, near-field channels, or interacting susceptibility theory.
+
+### Forbidden claims
 
 - “first gravitational efficiency-bandwidth bound”;
 - “new Q-independent gravitational response law”;
 - “universal gravitational quantum capacity bound”;
 - “all passive matter”;
-- first/unique/unprecedented claims;
+- first/unique/unprecedented language without much stronger priority evidence;
 - applying `25/16` to extended arrays, higher multipoles, or the near field;
-- merging Experiment 02 into V7.
+- claiming the final coefficient is globally saturable;
+- merging Experiment 02 physics into frozen V7.
