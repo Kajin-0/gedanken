@@ -135,6 +135,35 @@ For a one-quantum mass-quadrupole transition of angular frequency $\omega_n$, we
 Q_{ij}^{0n}Q_{ij}^{n0}.
 \label{eq:gravitonrate}
 \end{equation}
+
+The normalization of Eq.~\eqref{eq:gravitonrate} can be cross-checked directly against classical compact-antenna theory. Hirakawa, Narihara, and Fujimoto define for an elastic mode $\bm u=x_n\bm w_n$ a modal mass $\mu_n=\int\rho|\bm w_n|^2dV$, a linearized STF quadrupole coefficient $q_{n,ij}$, and a gravitational effective area \cite{HirakawaNariharaFujimoto1976}
+\begin{equation}
+A_{Gn}=\frac{2\,q_n:q_n}{M\mu_n}.
+\label{eq:HirakawaAG}
+\end{equation}
+Quantizing the same coordinate gives
+\begin{equation}
+Q_{ij}^{01}
+=q_{n,ij}\sqrt{\frac{\hbar}{2\mu_n\omega_n}},
+\qquad
+Q^{01}:Q^{10}
+=\frac{\hbar M A_{Gn}}{4\omega_n}.
+\end{equation}
+Equation~\eqref{eq:gravitonrate} therefore becomes
+\begin{equation}
+\boxed{
+\kappa_{g,n}
+=\frac{GMA_{Gn}\omega_n^4}{10c^5}.}
+\label{eq:HirakawaKappa}
+\end{equation}
+This is the quantized form of the historical mode oscillator-strength normalization, rather than a separate convention. Hirakawa et al.'s quality-factor-independent short-pulse result may equivalently be written
+\begin{equation}
+\frac{E}{F(\nu_n)}
+=\frac{\pi}{2}\frac{\kappa_{g,n}}{k_n^2}f_n(\hat n),
+\label{eq:HirakawaPulseKappa}
+\end{equation}
+where $F(\nu)$ is incident gravitational pulse energy per unit area per hertz. We use these relations only as an independent normalization check; the single-mode oscillator-strength result is historical prior physics.
+
 Let $Q_a$, $a=1,\ldots,5$, be an orthonormal STF basis for the internal mass-quadrupole operator, defined about the endpoint center of mass. Energy-weighted coordinate-multipole sum rules may be written as double commutators \cite{LuJohnson2018,Hinohara2019}. For the present mass quadrupole,
 \begin{equation}
 \sum_a\frac12
