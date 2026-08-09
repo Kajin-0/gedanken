@@ -1,0 +1,29 @@
+\section{Discussion and scope}
+\label{sec:discussion}
+
+The point of Eq.~\eqref{eq:combined2} is not that resonant gravitational response has an efficiency--bandwidth tradeoff. That lesson is already present in resonant-mass antenna theory \cite{PaikWagoner1976}, and susceptibility-based descriptions of gravitational absorption are established \cite{SrivastavaWidomPizzella2003}. Nor is the passive Gramian structure new \cite{GutaYamamoto2014,TechakesariNurdin2017}, and frequency-integrated transducer capacities are standard in modern quantum-transduction theory \cite{WangLiJiang2022}. The contribution sought here is the closure of these ingredients into a two-ended inequality: the source gravitational interface, normalized propagating TT channel, and receiver gravitational interface are all bounded in the same end-to-end transfer problem.
+
+This closure makes several common optimization directions transparent. Increasing endpoint $Q$ can suppress ordinary loss and improve peak gravitational branching, but it cannot increase the endpoint gravitational coupling trace. Adding passive resonances can redistribute oscillator strength over frequency but cannot exceed the quadrupole sum-rule resource. Coherent internal mode mixing can create bright and dark combinations, but the trace of the gravitational damping Gram matrix is basis invariant. Finally, rotating or coherently combining compact quadrupole tensors cannot exceed the $D=5/2$ TT directivity ceiling. Within the theorem class, a substantial improvement must therefore alter the physical resource rather than only the passive resonant matching.
+
+That statement also clarifies what can evade the bound. Active or inverted matter invalidates the positive passive-resource argument and introduces pump and spontaneous-noise resources. Parametric or explicitly time-dependent driving leaves the passive time-invariant network class. An extended phased aperture can achieve larger directivity by using spatial phase across its physical size and is not a compact quadrupole. Higher multipoles, relativistic sources, and strongly self-gravitating systems leave the retained nonrelativistic quadrupole approximation. Reactive near-field exchange is a different gravitational channel from the direct one-way wave-zone propagation considered here. Intermediate relays create additional interfaces and propagation segments and require a separate multi-hop cut-set treatment. Curved-background focusing likewise replaces the flat-space propagation operator used in Sec.~\ref{sec:ttcombined}.
+
+The material theorem also has a specific microscopic scope. Equation~\eqref{eq:EWSR} uses the coordinate mass-quadrupole commutator structure of ordinary nonrelativistic matter. For a general interacting system, the positive absorptive quadrupole spectral measure remains a natural response variable, but the simple inertia-moment closure need not survive unchanged if relativistic, velocity-dependent, or other microscopic interactions contribute materially to the double commutator. A non-Markov susceptibility formulation is therefore a useful extension, not a prerequisite for the present linear-bosonic result.
+
+Thermal occupation deserves a similar distinction. The coherent damping matrix of a linear oscillator network is a property of its coupling to the bath, whereas a finite-temperature passive spectral function carries population-difference weights and the channel acquires added noise. We therefore use the ground-state one-quantum coupling resource for the coherent-transfer ceiling and do not infer a thermal capacity from Eq.~\eqref{eq:materialbound} alone. The pure-loss capacity statements in Sec.~\ref{sec:examplescapacity} apply only when the unobserved ports are in vacuum.
+
+The theorem is also not claimed globally sharp. The compact plus mode in Sec.~\ref{sec:examplescapacity} saturates the TT geometry ceiling and reaches the correct material scaling within the order-unity ratio in Eq.~\eqref{eq:threetenths}, but the cut-set, material, and propagation inequalities need not all be saturated by the same physical device. Establishing the globally optimal passive architecture is a separate variational problem.
+
+\section{Conclusion}
+
+We have bounded the frequency-integrated coherent transfer of a direct propagating gravitational link between compact passive linear matter systems. Established passive-system identities first reduce the end-to-end problem to the smaller gravitational coupling resource of the source and receiver. The mass-quadrupole energy-weighted sum rule then bounds each endpoint resource, while the normalized TT one-graviton propagation problem bounds the largest compact quadrupole free-space channel. In the narrowband wave zone the resulting ceiling is
+\begin{equation}
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega^2}{12c^3R^2}
+\min\!\left(
+\langle I_A\rangle,
+\langle I_B\rangle
+\right).}
+\end{equation}
+Within the declared passive class, increasing quality factor, adding passive resonances, or rotating within the compact quadrupole channel cannot evade this integrated ceiling. A stationary vacuum pure-loss realization also inherits explicit continuous-time capacity corollaries. The result should be read as a direct passive compact-quadrupole transduction bound in weak linearized gravity, not as a universal limit on gravitational communication. Architectures that improve substantially on the ceiling must change at least one of the physical assumptions that generate it.
