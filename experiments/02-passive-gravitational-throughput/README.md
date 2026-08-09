@@ -56,6 +56,8 @@ For one source and receiver pole,
 
 Removing ordinary loss can raise peak gravitational branching, but the spectral response narrows toward the intrinsic gravitational linewidth.
 
+The general fact that integrated resonant gravitational response is `Q`-independent is historical antenna physics; the present result extends the resource ceiling to arbitrary passive local-port matching and many-mode coherent endpoint dynamics.
+
 ### Many modes / coherent mixing
 
 Established completely passive linear-system identities imply the endpoint cut set
@@ -74,7 +76,7 @@ Internal coherent mixing cannot increase the basis-invariant gravitational coupl
 
 ### More passive quadrupole oscillator strength
 
-For ordinary compact nonrelativistic linear matter, the mass-quadrupole EWSR gives
+For ordinary compact nonrelativistic linear matter, the cumulative mass-quadrupole EWSR gives
 
 ```math
 \operatorname{Tr}(K_g^\dagger K_g)
@@ -83,6 +85,8 @@ For ordinary compact nonrelativistic linear matter, the mass-quadrupole EWSR giv
 ```
 
 in the retained narrow band.
+
+This is the step that closes the arbitrarily-many-passive-resonances loophole.
 
 ### Better compact quadrupole orientation
 
@@ -102,29 +106,45 @@ and the normalized TT one-graviton propagation map obeys
 
 at leading wave-zone order.
 
-The V7 plus mode saturates this geometry ceiling, but the theorem itself no longer depends on that source construction.
+**Prior-art correction:** Hirakawa, Narihara, and Fujimoto (1976) already derived the same real-STF directivity functional in equivalent component form, including the `5/2` maximum. The candidate contribution is not the directivity law; it is the use of the normalized inter-endpoint TT propagation operator inside the two-ended resource cut set.
 
 ---
 
-## What is actually new here — if the remaining prior-art audit holds
+## Prior art and the actual candidate contribution
 
 The easy novelty story is **not allowed**.
 
-Historical resonant-mass gravitational-wave antenna theory already uses integrated absorption cross sections. The cancellation between increased resonant peak and reduced bandwidth at high Q is therefore not a new discovery here. Gravitational absorption written in material-susceptibility language is also established, as are passive quantum-network Gramian identities and generic quantum-transducer efficiency-bandwidth/capacity metrics.
+Full-text historical audits now establish that all of the following are old:
 
-The candidate contribution is narrower:
+- complete gravitational generator--detector calculations and architecture-specific end-to-end limitations;
+- compact mechanical gravitational antenna eigenmodes;
+- one quadrupole-derived oscillator-strength parameter governing emission and reception;
+- gravitational antenna reciprocity;
+- `Q`-independent short-pulse / integrated gravitational response;
+- the compact real-STF directivity functional and its `D=5/2` maximum;
+- integrated resonant-mass absorption, susceptibility/Kubo gravitational response, passive Gramian/H2 mathematics, and generic quantum-transducer efficiency-bandwidth/capacity metrics.
+
+The candidate contribution is therefore only the **many-mode two-ended passive resource closure**:
 
 ```text
-historical one-sided gravitational response
-+ established passive network identities
--> source gravitational resource cut set
--> normalized propagating TT channel
--> receiver gravitational resource cut set
--> end-to-end integrated coherent-transfer ceiling
--> pure-loss quantum-information corollaries.
+historical compact gravitational antenna oscillator-strength / reciprocity / directivity
++ established passive selected-port H2 machinery
+-> source gravitational coupling trace
+-> normalized separated TT propagation operator
+-> receiver gravitational coupling trace
+-> cumulative mass-quadrupole EWSR closure of BOTH endpoint traces
+-> end-to-end frequency-integrated coherent-transfer ceiling
+-> channel-specific pure-loss corollaries.
 ```
 
-A targeted search has not yet found this same two-ended passive far-field closure. That is a negative search result, not proof of priority.
+No equivalent theorem has been found in the inspected primary sources, including the full Hirakawa–Narihara–Fujimoto 1976 and Grishchuk–Sazhin 1975 papers. That is a **negative search result, not proof of priority**.
+
+Canonical audits:
+
+- `TARGETED_TWO_ENDED_NOVELTY_SWEEP_2026-08-09.md`
+- `SPECIALIST_PRIOR_ART_STRESS_TEST_2026-08-09.md`
+- `GRISHCHUK_SAZHIN_1975_COLLISION_AUDIT.md`
+- `HIRAKAWA_NARIHARA_FUJIMOTO_1976_COLLISION_AUDIT.md`
 
 ---
 
@@ -185,37 +205,45 @@ A general interacting/non-Markov susceptibility theorem is **not required for th
 
 ## Validation
 
-Automated branch regression checks:
+Physics regression checks include:
 
 - exact two-pole spectral area against direct integration;
 - random passive rate sets;
 - random multi-mode passive Gramians and end-to-end cascades;
-- random complex STF tensors against the `D <= 5/2` TT ceiling;
-- TT angular normalization and the `25/16` propagation coefficient.
+- random complex STF tensors against the TT ceiling;
+- TT angular normalization and the `25/16` propagation coefficient;
+- microscopic gravitational-port factorization with overlapping radiation patterns.
 
-GitHub Actions run `31310582891`, job `93237694140`, passed all current regression stages.
+The post-Hirakawa manuscript framing also passed branch CI:
+
+- workflow run `31342625802`;
+- job `93318795190`;
+- LaTeX compile: **PASS**;
+- unresolved citation/reference scan: **PASS**;
+- PDF upload: **PASS**;
+- rendered manuscript: **14 pages**, visual QA **PASS**.
 
 ---
 
 ## Read next
 
 1. `CURRENT_STATE.md`
-2. `THEOREM_SYNTHESIS.md`
-3. `PASSIVE_NETWORK_CUTSET_THEOREM.md`
-4. `GRAVITATIONAL_PORT_FACTORIZATION.md`
-5. `MATERIAL_RESPONSE_BRIDGE.md`
-6. `TT_PROPAGATION_BOUND.md`
-7. `CAPACITY_COROLLARIES.md`
-8. `ADVERSARIAL_THEOREM_AUDIT.md`
-9. `INITIAL_NOVELTY_SWEEP.md`
-10. `LITERATURE_MAP.md`
-11. `MANUSCRIPT_OUTLINE.md`
+2. `HIRAKAWA_NARIHARA_FUJIMOTO_1976_COLLISION_AUDIT.md`
+3. `GRISHCHUK_SAZHIN_1975_COLLISION_AUDIT.md`
+4. `THEOREM_SYNTHESIS.md`
+5. `PASSIVE_NETWORK_CUTSET_THEOREM.md`
+6. `GRAVITATIONAL_PORT_FACTORIZATION.md`
+7. `MATERIAL_RESPONSE_BRIDGE.md`
+8. `TT_PROPAGATION_BOUND.md`
+9. `CAPACITY_COROLLARIES.md`
+10. `ADVERSARIAL_THEOREM_AUDIT.md`
+11. `LITERATURE_MAP.md`
 12. `AGENTS.md`
 
 ## Current status
 
 **Physics theorem: closed within the stated passive compact linear-bosonic class.**
 
-**Publication novelty: promising but not yet established.**
+**Exact publication novelty: provisional; no inspected full-theorem collision found, but broad ingredient-level novelty is explicitly rejected.**
 
-The next step is a theorem-first manuscript hardening pass, not further broadening of the physics.
+**Next step: external specialist/referee-style review of the exact resource closure and its significance. Do not broaden the theorem further for this paper.**
