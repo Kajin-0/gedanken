@@ -4,20 +4,76 @@
 
 This file tracks nearby results that could collide with, constrain, or sharpen Experiment 02. It is not yet a novelty claim.
 
-The central collision target is:
+The current collision target is deliberately narrow:
 
 ```text
-passive matter gravitational spectral weight
-+ propagating TT gravity
-+ end-to-end efficiency/rate tradeoff
-+ integrated coherent-transfer or capacity bound
+known passive linear-network machinery
++ microscopic matter-to-graviton coupling
++ mass-quadrupole spectral resource at BOTH endpoints
++ normalized propagating TT channel
++ end-to-end integrated transfer cut set
++ quantum-information corollary.
 ```
 
-A paper that derives only a generic transducer efficiency-bandwidth limit, only a gravitational absorption cross section, or only a quantum-capacity integral is relevant prior art but not automatically the same theorem.
+Several ingredients of this chain are old and must be credited explicitly. In particular, neither passive Gramian theory nor the Q-independence of an integrated resonant gravitational response is new here.
 
 ---
 
-## 1. Continuous-time quantum capacity of transducers
+## 1. Historical resonant-mass absorption cross sections
+
+### Paik and Wagoner — cylindrical gravitational-wave antenna
+
+**H. J. Paik and R. V. Wagoner, “Calculation of the absorption cross section of a cylindrical gravitational-wave antenna,” Phys. Rev. D 13, 2694 (1976).**
+
+This is foundational prior art for resonant-mass gravitational absorption. It computes the absorption cross section of Weber-type cylindrical antennas from their elastic eigenmodes.
+
+The broader resonant-mass literature subsequently uses the **frequency-integrated absorption cross section** as the natural measure of coupling to a gravitational-wave packet. This quantity removes the apparent advantage of arbitrarily large Q: the resonant peak grows as the linewidth shrinks, leaving a finite integrated oscillator-strength-like response.
+
+Later reviews explicitly write the integrated cross section of a bar antenna and show that adding a resonant transducer redistributes that integrated response among coupled normal modes rather than generating unlimited gravitational coupling strength.
+
+**Novelty consequence for Experiment 02:**
+
+> The statement “high Q cannot increase the integrated gravitational response without limit” is historical gravitational-antenna physics and is **not** a novelty claim of Experiment 02.
+
+Experiment 02 must instead ask what happens when this response logic is closed **end to end**, with both matter-gravity interfaces and the propagating quantum channel retained in one passive cut-set bound.
+
+Primary record: Phys. Rev. D 13, 2694 (1976).
+
+---
+
+## 2. Gravitational absorption expressed through material response
+
+### Srivastava, Widom, Pizzella — metallic antenna susceptibility
+
+**Y. N. Srivastava, A. Widom, and G. Pizzella, “Electronic Enhancements in the Detection of Gravitational Waves by Metallic Antennae,” arXiv:gr-qc/0302024 (2003).**
+
+This is close prior art to the susceptibility/material-response side of Experiment 02. It expresses gravitational-wave absorption and scattering in terms of the dynamical elastic response of matter and develops a Kubo/viscosity description of the antenna.
+
+The important lesson is that a gravitational absorption cross section can be written directly in terms of an **imaginary material response function**, rather than only as a single mechanical-mode linewidth.
+
+This means a future non-Markov susceptibility extension of Experiment 02 cannot be presented as conceptually unprecedented. The possible new step would be to combine such a material-response description with the two-ended passive cut set and normalized TT propagation channel.
+
+URL: https://arxiv.org/abs/gr-qc/0302024
+
+### Widom, Drosdoff, Sivasubramanian, Srivastava
+
+**“Electronic Detection of Gravitational Disturbances and Collective Coulomb Interactions,” arXiv:gr-qc/0402097 (2004).**
+
+This work likewise connects graviton absorption cross sections to nonlocal viscous response functions of metallic crystals and emphasizes the need for the full microscopic stress response.
+
+URL: https://arxiv.org/abs/gr-qc/0402097
+
+### Branchina, Gasparini, Rissone
+
+**“Electronic contribution to the oscillations of a gravitational antenna,” Phys. Rev. D 70, 024004 (2004), arXiv:gr-qc/0402048.**
+
+This provides a microscopic Hamiltonian treatment of gravitational antenna response and is relevant to any claim about whether electronic or mechanical sectors dominate a material coupling resource.
+
+**Novelty consequence:** the material-response bridge must be framed as a particular **sum-rule closure of an endpoint resource used in an end-to-end theorem**, not as the invention of susceptibility-based gravitational absorption.
+
+---
+
+## 3. Continuous-time quantum capacity of transducers
 
 **C.-H. Wang, F. Li, and L. Jiang, “Quantum capacities of transducers,” Nature Communications 13, 6698 (2022).**
 
@@ -25,57 +81,48 @@ Primary role for Experiment 02:
 
 - establishes a clean continuous-time capacity language for frequency-dependent bosonic transducers;
 - defines one-way and two-way pure-loss capacities by integrating per-frequency channel capacities over `d omega / 2 pi`;
-- shows that efficiency, bandwidth, and noise should not be collapsed into a peak-efficiency number;
-- derives a capacity ceiling set by a physical coherent-coupling scale for a generic coupled-bosonic-chain architecture.
+- shows that efficiency, bandwidth, and noise should not be collapsed into peak efficiency;
+- derives a capacity ceiling controlled by a physical coupling scale for generic coupled-bosonic transducers.
 
 Key distinction:
 
-The physical constraint there is a bounded transducer coupling rate `g_max`. Experiment 02 seeks a **gravity-specific passive matter bound on the available coupling spectral weight itself**, using quadrupole response and linearized gravity.
+Their resource ceiling is a transducer coupling scale supplied as part of the device model. Experiment 02 attempts to derive the **gravity-specific endpoint coupling resource itself** from mass-quadrupole spectral weight and then place two such resources on opposite sides of a propagating gravitational channel.
 
 URL: https://www.nature.com/articles/s41467-022-34373-8
 
 ---
 
-## 2. Passive efficiency-bandwidth product and active/entanglement-assisted escape
+## 4. Passive efficiency-bandwidth limits and resource-assisted escape
 
 **H. Shi and Q. Zhuang, “Overcoming the fundamental limit of quantum transduction via intraband entanglement,” Optica Quantum 2, 475 (2024), arXiv:2404.09441.**
 
-Primary role:
-
-- explicitly uses a frequency-integrated transduction efficiency as an efficiency-bandwidth product;
-- derives a passive/non-entanglement-assisted ceiling for specific cavity electro-optical/electro-optomechanical architectures;
-- shows that an additional nonclassical resource can surpass the passive architecture limit.
+This work explicitly studies a frequency-integrated transduction efficiency and derives passive architecture limits for electro-optic/electro-optomechanical transducers, then shows how an additional nonclassical resource can surpass them.
 
 Key distinction:
 
-Its bound is set by nonlinear coupling and pump resources in those transducer architectures. The gravitational target would instead derive the passive interface resource ceiling from mass-quadrupole spectral weight.
+Its bound is set by the couplings and pump resources of those architectures. Experiment 02 seeks a passive **gravitational** material-resource ceiling derived from mass quadrupole response.
 
-This paper strongly supports separating the passive theorem from a later “what resource beats it?” paper.
+This paper strongly supports separating a passive gravitational theorem from a later “what physical resource beats it?” paper.
 
 URL: https://arxiv.org/abs/2404.09441
 
 ---
 
-## 3. Bandwidth-and-time-limited quantum communication
+## 5. Bandwidth-and-time-limited quantum communication
 
 **A. Gandotra, Z. Wang, A. A. Clerk, and L. Jiang, “Quantum communication over bandwidth-and-time-limited channels,” Phys. Rev. A 113, 032616 (2026), arXiv:2502.08831.**
 
-Primary role:
+This work warns that finite signal duration and finite bandwidth cannot always be treated as independent asymptotic frequency channels and derives optimal temporal modes for finite-time pure-loss channels.
 
-- warns that finite signal duration and finite bandwidth cannot always be treated as independent asymptotic frequency channels;
-- derives optimal encoding/decoding modes for finite-time pure-loss channels, including Lorentzian spectra.
+Implication:
 
-Implication for Experiment 02:
-
-A long-time continuous-frequency metric is appropriate as an asymptotic response bound, but a finite-protocol operational theorem may require singular temporal modes rather than naive mode-counting by `B`.
-
-This reinforces using a spectral integral as the primary physical quantity and treating `B tau` as a single-resonance shorthand only.
+`Gamma_coh` is best regarded as an asymptotic continuous-frequency response quantity. A finite-duration communication theorem may require singular temporal modes rather than naive mode counting.
 
 URL: https://arxiv.org/abs/2502.08831
 
 ---
 
-## 4. Passive linear quantum input-output formalism
+## 6. Passive linear quantum input-output formalism
 
 ### Guță and Yamamoto
 
@@ -99,107 +146,84 @@ URL: https://arxiv.org/abs/1303.3771
 
 ### Techakesari and Nurdin
 
-**P. Techakesari and H. I. Nurdin, “On the quasi-balanceable class of linear quantum stochastic systems,” Automatica 78, 272–281 (2017); preprint arXiv:1408.1855.**
+**P. Techakesari and H. I. Nurdin, “On the quasi-balanceable class of linear quantum stochastic systems,” Automatica 78, 272–281 (2017); arXiv:1408.1855.**
 
-A result directly relevant to Experiment 02 is already known: for an asymptotically stable **completely passive** linear quantum stochastic system, the controllability Gramian is the identity,
+For an asymptotically stable completely passive linear quantum stochastic system, the controllability Gramian is the identity,
 
 ```math
 P=I.
 ```
 
-This is the exact full-channel Gramian fact used in the Experiment 02 endpoint proof. Therefore:
+That is exactly the full-channel Gramian fact used in Experiment 02.
 
-> **The identity `P=I`, passive scattering unitarity, and the underlying Gramian machinery are established mathematics and are not part of the novelty claim.**
+> **The identity `P=I`, passive scattering unitarity, and the underlying Gramian/H2 machinery are established mathematics and are not part of the novelty claim.**
 
-Experiment 02 uses this known passive-system structure to obtain a selected gravitational-port cut set and then closes that abstract port resource using microscopic gravitational quadrupole physics.
+Experiment 02 uses this known structure to form a gravitational-port cut set and then closes that abstract resource using microscopic gravitational physics.
 
 URL: https://arxiv.org/abs/1408.1855
 
-Related physical-realizability literature also characterizes linear quantum-system transfer functions through frequency-domain unitarity conditions; see A. Kh. Sichani and I. R. Petersen, arXiv:1609.07595.
-
-URL: https://arxiv.org/abs/1609.07595
+Related physical-realizability literature: A. Kh. Sichani and I. R. Petersen, arXiv:1609.07595.
 
 ---
 
-## 5. Bode–Fano / passive matching analogy
+## 7. Passive matching and scattering-sum-rule analogies
 
-The Bode–Fano criterion and related causal sum-rule bounds establish efficiency-bandwidth tradeoffs for passive linear time-invariant matching and scattering systems.
+Bode–Fano and related passive causal bounds already establish generic response-bandwidth tradeoffs in electromagnetic networks. Time modulation/nonstationarity is a known route around passive time-invariant limits.
 
-A useful recent example is:
+A recent acoustic result, **“Acoustic Analogy of Quantum Baldin Sum Rule for Optimal Causal Scattering,” Phys. Rev. Lett. 136, 226902 (2026),** is especially relevant mathematically because it converts a spectral sum rule into an integrated scattering bound.
 
-**X. Yang, E. Wen, and D. F. Sievenpiper, “Broadband Time-Modulated Absorber beyond the Bode-Fano Limit for Short Pulses by Energy Trapping,” Phys. Rev. Applied 17, 044003 (2022).**
-
-Role:
-
-- conceptual analogy only at present;
-- indicates that time modulation / nonstationarity is a known route around passive time-invariant matching bounds;
-- suggests possible mathematical tools for the later susceptibility/scattering theorem.
-
-Do not imply that Experiment 02 is simply a gravitational Bode–Fano theorem unless an actual analytic mapping is derived.
+These analogies mean Experiment 02 should avoid broad claims such as “the first efficiency-bandwidth theorem” or “a new universal sum-rule method.”
 
 ---
 
-## 6. General scattering sum-rule analogy
+## 8. Existing gravitational quantum-channel and transducer work
 
-A 2026 acoustic result derives a universal causal scattering sum rule that links integrated extinction to static material properties:
+Experiment 02 also inherits the V7 literature on:
 
-**“Acoustic Analogy of Quantum Baldin Sum Rule for Optimal Causal Scattering,” Phys. Rev. Lett. 136, 226902 (2026).**
+- propagating-graviton entanglement;
+- graviton-sensitive receivers;
+- gravity-mediated Gaussian quantum channels;
+- photon-graviton and related transduction proposals;
+- weak graviton absorption by ordinary bound matter.
 
-Role:
-
-This is relevant because Experiment 02 is also trying to convert a positive spectral sum rule into an integrated passive scattering/transfer bound. The mathematical analogy may be useful even though the physical channel is different.
-
-This paper should be inspected closely before any novelty statement using words such as “universal sum rule” or “fundamental response bound.”
-
----
-
-## 7. V7 inherited gravitational prior art
-
-Experiment 02 inherits, but does not re-audit yet, the V7 references on:
-
-- passive quadrupole energy-weighted sum rules;
-- graviton absorption by ordinary bound matter;
-- graviton transduction / resonant gravitational receivers;
-- propagating gravitational quantum channels.
-
-Before manuscript drafting, the prior-art search must be repeated with the new collision target:
-
-```text
-(gravity OR graviton OR gravitational wave)
-AND
-(sum rule OR oscillator strength OR susceptibility OR passivity)
-AND
-(bandwidth OR throughput OR integrated transmission OR capacity OR transduction)
-```
+The targeted search performed for Experiment 02 has not yet found a paper that closes **both passive matter interfaces plus propagating TT geometry plus an integrated quantum-transfer metric** in one theorem. This is a negative search result, not proof of priority.
 
 ---
 
-## 8. Current novelty status
+## 9. Current novelty status
 
-**UNKNOWN / DO NOT CLAIM PRIORITY.**
+**NARROWED / PROMISING / UNVERIFIED — DO NOT CLAIM PRIORITY.**
 
-What is already established elsewhere:
+### Explicitly not new
 
+- resonant gravitational absorption cross sections;
+- the use of an integrated gravitational absorption cross section;
+- the cancellation of resonant Q enhancement against shrinking bandwidth in an integrated response;
+- susceptibility/Kubo descriptions of gravitational absorption by matter;
 - passive linear quantum input-output theory;
-- the full-channel Gramian identity `P=I` for stable completely passive linear quantum systems;
-- continuous-time quantum capacities for transducers;
-- generic/specific transducer efficiency-bandwidth limitations;
-- quadrupole sum rules and weak graviton absorption in ordinary matter.
+- the complete passive Gramian identity `P=I`;
+- continuous-time quantum-capacity integrals;
+- generic passive transducer efficiency-bandwidth limitations;
+- quadrupole sum rules by themselves.
 
-The potentially distinctive physics is therefore **not** a new passive-control theorem. It is the conjunction
+### Potentially distinctive conjunction
 
 ```text
-known passive linear-network machinery
--> gravitational interface cut set
--> microscopic matter-to-graviton coupling factorization
--> mass-quadrupole EWSR material ceiling
--> compact TT propagation singular-value ceiling
--> end-to-end integrated gravitational transfer bound
--> pure-loss capacity corollary.
+historical one-sided integrated gravitational response
++ known passive quantum-network cut-set machinery
++ microscopic matter-to-graviton port factorization
++ mass-quadrupole EWSR resource at source AND receiver
++ compact TT propagation singular-value ceiling
++ end-to-end integrated coherent-transfer theorem
++ pure-loss quantum-capacity corollary.
 ```
 
-A restrained future claim could be:
+A restrained future manuscript claim could be:
 
-> We combine established passive linear-system identities with microscopic quadrupole radiation and propagation bounds to derive an end-to-end frequency-integrated ceiling for direct passive gravitational transduction between compact matter systems.
+> We extend the one-sided integrated-response viewpoint familiar from resonant gravitational antennas to an end-to-end passive quantum-transduction setting in which both matter-gravity interfaces and the propagating TT channel are bounded explicitly.
 
-That claim remains unverified until the remaining gravitational-antenna and general passive-scattering collision searches are complete.
+Or, more technically:
+
+> We combine established passive linear-system identities with microscopic quadrupole spectral and propagation bounds to derive an end-to-end frequency-integrated ceiling for direct passive gravitational transduction between compact matter systems.
+
+The remaining novelty question is whether this **two-ended closure** has already appeared under different gravitational-antenna, scattering, or network language.
