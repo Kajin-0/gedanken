@@ -30,3 +30,6 @@ jobs:
 
       - name: Verify TT quadrupole propagation bound
         run: python experiments/02-passive-gravitational-throughput/numerics/verify_tt_propagation_bound.py
+
+      - name: Verify microscopic gravitational port factorization
+        run: python experiments/02-passive-gravitational-throughput/numerics/verify_gravitational_port_factorization.py
