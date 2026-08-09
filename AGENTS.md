@@ -2,7 +2,7 @@
 
 **Repository:** `Kajin-0/gedanken`  
 **Active experiment:** `experiments/01-causal-quantum-branch-information/`  
-**Checkpoint:** 2026-08-08, after external-review physics closure, repository consolidation, broad scientific CI, and isolated submission-package validation.  
+**Checkpoint:** 2026-08-08, after adversarial review closure, repository consolidation, broad scientific automated checks, and isolated submission-package validation.  
 **Current mode:** **submission polish only unless a concrete new technical defect appears.**
 
 This is the first operational file a new agent should read.
@@ -35,13 +35,17 @@ Active manuscript:
 
 `experiments/01-causal-quantum-branch-information/manuscript_v7/`
 
-Canonical scientific state:
+Canonical scientific/review state:
 
-`experiments/01-causal-quantum-branch-information/CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`
+`experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md`
 
-External-review closure:
+Current claim boundary:
 
-`experiments/01-causal-quantum-branch-information/EXTERNAL_REVIEW_RESPONSE_V7.md`
+`experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md`
+
+Adversarial referee pass:
+
+`experiments/01-causal-quantum-branch-information/ADVERSARIAL_REVIEW_RESPONSE_V7_2026-08-08.md`
 
 Artifact-status map:
 
@@ -49,9 +53,9 @@ Artifact-status map:
 
 Current internal verdict:
 
-> **No known publication-critical structural physics gap remains from the external review within V7's declared weak-field, nonrelativistic, narrowband linear regime.**
+> **No known publication-critical structural physics gap remains within V7's declared weak-field, nonrelativistic, narrowband linear regime.**
 
-This is not a guarantee of peer-review acceptance.
+The repository-level review passes include AI-agent critiques plus equation, source, numerical, and literature audits. They are **not formal journal peer review** and do not guarantee correctness or acceptance.
 
 ---
 
@@ -159,6 +163,12 @@ Do not claim priority for individual Gaussian lemmas, graviton transduction, bra
 
 Never use `first`, `unique`, `unprecedented`, or equivalent priority language without new independent evidence.
 
+### Macroscopic source coherence
+
+The link calculation is conditional on successful preparation and preservation of source-reference coherence. V7 does not contain a device-specific decoherence calculation for realizing the kilogram-scale coherent mechanical source.
+
+Do not present this practical limitation as solved experimental engineering.
+
 ---
 
 ## 5. Standalone Gaussian branch — STOP
@@ -197,7 +207,7 @@ Pinned numerical environment:
 - NumPy `2.5.1`;
 - SciPy `1.18.0`.
 
-Active workflows:
+Active automated checks:
 
 ### Manuscript
 
@@ -235,7 +245,7 @@ The source set is defined by
 
 `manuscript_v7/SUBMISSION_MANIFEST.txt`.
 
-The workflow
+The automated check
 
 1. copies only manifest-listed files into an isolated directory;
 2. applies semantic guards;
@@ -254,11 +264,11 @@ Before historical research files, read:
 
 1. `AGENTS.md`
 2. `README.md`
-3. `CONTEXT_HANDOFF.md`
-4. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`
-5. `experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md`
-6. `experiments/01-causal-quantum-branch-information/manuscript_v7/README.md`
-7. `experiments/01-causal-quantum-branch-information/EXTERNAL_REVIEW_RESPONSE_V7.md`
+3. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md`
+4. `experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md`
+5. `experiments/01-causal-quantum-branch-information/manuscript_v7/README.md`
+6. `experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md`
+7. `experiments/01-causal-quantum-branch-information/ADVERSARIAL_REVIEW_RESPONSE_V7_2026-08-08.md`
 8. `experiments/01-causal-quantum-branch-information/numerics/README.md`
 
 Only go backward into legacy files when tracing provenance or auditing a historical correction.
@@ -272,12 +282,11 @@ Unless a concrete technical defect is discovered, work is limited to:
 1. final prose copyedit;
 2. final bibliography metadata verification;
 3. author / acknowledgments / funding metadata;
-4. optional removal of the orphaned `sin^4` loading example;
-5. finalize PRD cover letter;
-6. create the final submission tag/snapshot;
-7. respond to actual external peer-review objections.
+4. finalize PRD cover letter;
+5. create the final submission tag/snapshot;
+6. respond to actual journal referee objections.
 
-The repository front door, archive map, broad numerical CI, and clean isolated submission-package workflow are already complete.
+The repository front door, archive map, broad numerical automated checks, and clean isolated submission-package check are already complete.
 
 ---
 
@@ -294,4 +303,4 @@ Without a concrete new defect, do **not**
 - broaden the work into a near-term experimental proposal;
 - claim generic gravitational quantum communication novelty.
 
-The next epistemic step is independent peer review, not another speculative derivation.
+The next epistemic step is independent journal peer review, not another speculative derivation.
