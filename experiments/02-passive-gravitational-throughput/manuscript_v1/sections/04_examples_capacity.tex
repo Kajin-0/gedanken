@@ -1,0 +1,166 @@
+\section{Exact resonator specialization and quantum-information corollaries}
+\label{sec:examplescapacity}
+
+\subsection{Two resonators with explicit local ports}
+
+The general theorem is easiest to interpret in the minimal source--receiver resonator model. Let the source linewidth be
+\begin{equation}
+\kappa_A=\kappa_{\rm in}+\kappa_{g,A}+\kappa_{i,A}
+\end{equation}
+and the receiver linewidth
+\begin{equation}
+\kappa_B=\kappa_{g,B}+\kappa_{\rm out}+\kappa_{i,B},
+\end{equation}
+where $\kappa_{\rm in}$ and $\kappa_{\rm out}$ are the useful local couplings and $\kappa_{i,j}$ collect all other passive loss. For a scalar propagation factor $\eta_{\rm prop}$, the stationary transmissivity as a function of detuning $\Omega$ is
+\begin{equation}
+\tau(\Omega)
+=
+\frac{
+\eta_{\rm prop}
+\kappa_{\rm in}\kappa_{g,A}
+\kappa_{g,B}\kappa_{\rm out}}
+{[\Omega^2+(\kappa_A/2)^2]
+ [\Omega^2+(\kappa_B/2)^2]}.
+\label{eq:twopoleTau}
+\end{equation}
+Using
+\begin{equation}
+\int_{-\infty}^{\infty}
+\frac{\dd\Omega}
+{(\Omega^2+a^2)(\Omega^2+b^2)}
+=
+\frac{\pi}{ab(a+b)},
+\end{equation}
+one obtains the exact spectral area
+\begin{equation}
+\boxed{
+\Gamma_{\rm EBP}
+\equiv
+\frac{1}{2\pi}\int_{-\infty}^{\infty}\tau(\Omega)\dd\Omega
+=
+\frac{4\eta_{\rm prop}
+\kappa_{\rm in}\kappa_{g,A}
+\kappa_{g,B}\kappa_{\rm out}}
+{\kappa_A\kappa_B(\kappa_A+\kappa_B)}.}
+\label{eq:exactEBP}
+\end{equation}
+Passivity gives the simple cut-set form
+\begin{equation}
+\boxed{
+\Gamma_{\rm EBP}
+\le
+\eta_{\rm prop}
+\min(\kappa_{g,A},\kappa_{g,B}).}
+\label{eq:twopolecut}
+\end{equation}
+Thus reducing ordinary loss can raise peak conversion by increasing gravitational branching, but the integrated response remains tied to the smaller intrinsic gravitational interface rate.
+
+There is also a useful distinction between optimizing peak conversion and optimizing spectral area. For symmetric gravitational linewidths $\kappa_{g,A}=\kappa_{g,B}=\kappa_g$, zero internal loss, and symmetric external coupling
+\begin{equation}
+\kappa_{\rm in}=\kappa_{\rm out}=x\kappa_g,
+\end{equation}
+Eq.~\eqref{eq:exactEBP} becomes
+\begin{equation}
+\frac{\Gamma_{\rm EBP}}{\eta_{\rm prop}\kappa_g}
+=
+\frac{2x^2}{(1+x)^3}.
+\end{equation}
+The maximum occurs at
+\begin{equation}
+\boxed{x=2,}
+\end{equation}
+not at critical coupling $x=1$, and gives
+\begin{equation}
+\boxed{
+\Gamma_{\rm EBP}^{\rm sym,max}
+=\frac8{27}\eta_{\rm prop}\kappa_g.}
+\label{eq:827}
+\end{equation}
+Peak efficiency and integrated throughput are therefore different optimization targets even before gravity-specific material bounds are imposed.
+
+\subsection{Comparison with an explicit compact plus mode}
+
+It is useful to compare the material sum-rule ceiling with a concrete compact mode of the same scaling. Consider four endpoint masses $\mu$ at radius $L$ moving in the plus-quadrupole pattern. In the long-wavelength limit its leading gravitational linewidth is
+\begin{equation}
+\kappa_g^{(4)}
+=
+\frac{8G\mu L^2\omega^4}{5c^5},
+\label{eq:fourmasswidth}
+\end{equation}
+while the endpoint inertia about the center is $I=4\mu L^2$. Equation~\eqref{eq:materialbound} then gives
+\begin{equation}
+\kappa_{g,{\rm EWSR}}^{\max}
+=
+\frac{16G\mu L^2\omega^4}{3c^5},
+\end{equation}
+so
+\begin{equation}
+\boxed{
+\frac{\kappa_g^{(4)}}
+{\kappa_{g,{\rm EWSR}}^{\max}}
+=\frac3{10}.}
+\label{eq:threetenths}
+\end{equation}
+The same plus tensor lies entirely in the line-of-sight TT subspace and saturates the compact-quadrupole directivity ceiling. Thus an explicit conserved mechanical realization can attain the correct material scaling within an order-unity factor while saturating the geometry bound. Equation~\eqref{eq:combined2} is nevertheless an upper bound; simultaneous saturation of every inequality is not claimed.
+
+As an aggressive numerical scale, take $\kappa_g\simeq6.87\times10^{-26}\,{\rm s}^{-1}$ and $kR=10$, for which the maximal compact-quadrupole leading propagation factor is $\eta_{\rm prop}=25/1600=0.015625$. Then
+\begin{equation}
+\eta_{\rm prop}\kappa_g
+\simeq1.07\times10^{-27}\,{\rm s}^{-1},
+\end{equation}
+while the symmetric two-pole area optimum is
+\begin{equation}
+\Gamma_{\rm EBP}^{\rm sym,max}
+\simeq3.18\times10^{-28}\,{\rm s}^{-1}.
+\end{equation}
+The inverse of the latter is of order $10^{20}$ years. This is an inverse coherent-transfer scale, not a literal ``time per qubit.''
+
+\subsection{Pure-loss capacity corollaries}
+
+For a stationary vacuum realization in which all unobserved channels are pure loss, let $\tau_n(\omega)$ be the transmission eigenvalues of $T^\dagger T$. Continuous-time bosonic transducer capacities are obtained by integrating the appropriate per-frequency channel quantity \cite{WangLiJiang2022}. Passive source and receiver subblocks are contractions, so
+\begin{equation}
+\tau_n(\omega)
+\le
+\|P_g(\omega)\|_{\op}^2
+\le\eta_{\max}.
+\label{eq:taumax}
+\end{equation}
+For a pure-loss bosonic channel, the unassisted quantum capacity per mode is
+\begin{equation}
+q_1(\tau)
+=
+\max\!\left\{
+\log_2\frac{\tau}{1-\tau},0
+\right\}.
+\end{equation}
+Hence if
+\begin{equation}
+\eta_{\max}\le\frac12,
+\end{equation}
+then every eigenchannel lies in the zero-capacity region and
+\begin{equation}
+\boxed{Q_1=0.}
+\label{eq:Q1zero}
+\end{equation}
+For a compact quadrupole link deep in the wave zone, Eq.~\eqref{eq:TTpropbound} automatically places $\eta_{\max}$ far below $1/2$.
+
+With unlimited two-way classical assistance, the pure-loss per-mode capacity is
+\begin{equation}
+q_2(\tau)=-\log_2(1-\tau).
+\end{equation}
+For $0\le\tau\le\eta_{\max}<1$,
+\begin{equation}
+-\ln(1-\tau)
+\le
+\frac{\tau}{1-\eta_{\max}},
+\end{equation}
+so
+\begin{equation}
+\boxed{
+Q_2
+\le
+\frac{\Gamma_{\rm coh}}
+{\ln2\,(1-\eta_{\max})}.}
+\label{eq:Q2bound}
+\end{equation}
+Combining Eq.~\eqref{eq:Q2bound} with Eq.~\eqref{eq:combined2} yields an operational two-way entanglement-distribution-rate ceiling for the stationary vacuum pure-loss realization. The statement is deliberately channel specific: thermal occupation, dephasing, active gain, or pump noise changes the capacity problem even though the passive coherent-transfer theorem remains the relevant starting resource bound.
