@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+\newcommand{\dd}{\mathrm d}
+\newcommand{\ee}{\mathrm e}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\op}{\mathrm{op}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+
+\title{Passive Throughput Bounds for Propagating Gravitational Quantum Transduction}
+\author{Anonymous}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Resonant gravitational-wave antennas already illustrate a one-sided oscillator-strength principle: increasing mechanical quality factor raises the resonant response while narrowing its bandwidth, so the frequency-integrated absorption does not grow without limit. Modern quantum-transducer theory likewise treats efficiency and bandwidth jointly. We ask the corresponding end-to-end question for a direct propagating gravitational link when both passive matter interfaces are explicit. For stable passive linear bosonic source and receiver networks, we define the frequency-integrated coherent transfer
+\begin{equation}
+\Gamma_{\rm coh}
+=\frac{1}{2\pi}\int_{\mathcal B}\dd\omega\,
+\Tr[T^\dagger(\omega)T(\omega)].
+\end{equation}
+Established passive-system identities give a cut-set bound in terms of the total gravitational coupling resources of the two endpoints. For compact nonrelativistic matter, the mass-quadrupole energy-weighted sum rule bounds each resource, while a direct normalized transverse-traceless one-graviton calculation bounds the compact quadrupole propagation singular value by $5/(4kR)$ in the wave zone. For a narrow band centered at angular frequency $\omega$, these results give
+\begin{equation}
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega^2}{12c^3R^2}
+\min\!\left(\langle I_A\rangle,\langle I_B\rangle\right),
+}
+\end{equation}
+where $I_A$ and $I_B$ are the internal mass inertia moments about the endpoint centers of mass. The bound is independent of endpoint quality factor, the number of passive internal resonances, coherent mode mixing, and compact quadrupole orientation within the stated class. A two-resonator specialization yields an exact efficiency-bandwidth integral and shows that the area-optimal external coupling differs from peak-optimal critical coupling. For a stationary vacuum pure-loss realization, the response bound also gives continuous-time quantum-capacity corollaries. The result is a two-ended passive gravitational transduction bound within weak linearized gravity, not a universal limit on gravitational communication or on active, extended-aperture, near-field, or relativistic architectures.
+\end{abstract}
+
+\input{sections/01_context}
+\input{sections/02_network_material}
+\input{sections/03_tt_combined}
+\input{sections/04_examples_capacity}
+\input{sections/05_discussion}
+\input{sections/appendices}
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}
