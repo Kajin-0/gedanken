@@ -14,6 +14,14 @@ This note connects that network quantity to the microscopic positive mass-quadru
 
 The result does not yet claim arbitrary nonlinear/interacting matter.
 
+Throughout this note, internal multipole moments are defined in the endpoint center-of-mass frame (or center-of-energy frame at the retained nonrelativistic order). In particular,
+
+```math
+I=\sum_a m_a|\mathbf r_a-\mathbf R_{\rm CM}|^2
+```
+
+is the **internal** inertia moment about that origin. Translating the laboratory coordinate origin therefore cannot increase the material resource appearing in the bound.
+
 ---
 
 ## 2. Internal normal-mode basis
@@ -100,7 +108,7 @@ Q_{ij}^{0n}Q_{ij}^{n0},
 }
 ```
 
-with the same STF tensor normalization used in the V7 EWSR derivation.
+with the same STF tensor normalization used in the V7 EWSR derivation. The quadrupole operator here is likewise the internal STF mass quadrupole about the endpoint center of mass.
 
 Thus the input-output linewidth is not a free phenomenological parameter once the matter mode and its mass-quadrupole matrix element are fixed.
 
@@ -189,7 +197,7 @@ It is independent of the number of matter modes and of coherent mode mixing insi
 
 ## 6. Compactness form
 
-Define the endpoint length scale from its inertia moment,
+Define the endpoint internal size scale from the center-of-mass inertia moment,
 
 ```math
 L_j^2
@@ -282,7 +290,7 @@ That extension should be proved through linear response / passive dilation rathe
 
 Allowed:
 
-> For arbitrary stable passive **linear bosonic** source and receiver networks with compact nonrelativistic matter and quadrupole coupling to propagating linearized gravity, the frequency-integrated coherent transfer is bounded by the smaller endpoint mass-quadrupole oscillator-strength resource. The bound is unaffected by adding modes or coherent internal mode mixing.
+> For arbitrary stable passive **linear bosonic** source and receiver networks with compact nonrelativistic matter and quadrupole coupling to propagating linearized gravity, the frequency-integrated coherent transfer is bounded by the smaller endpoint mass-quadrupole oscillator-strength resource defined about each endpoint's center of mass. The bound is unaffected by adding modes or coherent internal mode mixing.
 
 Not yet allowed:
 
