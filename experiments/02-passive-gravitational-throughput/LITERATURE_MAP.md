@@ -44,7 +44,7 @@ Primary role:
 
 - explicitly uses a frequency-integrated transduction efficiency as an efficiency-bandwidth product;
 - derives a passive/non-entanglement-assisted ceiling for specific cavity electro-optical/electro-optomechanical architectures;
-- shows that an additional nonclassical resource can surpass the passive limit.
+- shows that an additional nonclassical resource can surpass the passive architecture limit.
 
 Key distinction:
 
@@ -77,27 +77,43 @@ URL: https://arxiv.org/abs/2502.08831
 
 ## 4. Passive linear quantum input-output formalism
 
+### Guță and Yamamoto
+
 **M. Guță and N. Yamamoto, “System identification for passive linear quantum systems,” Phys. Rev. A 89, 032103 (2014), arXiv:1303.3771.**
 
-Primary role for the network theorem:
-
-- writes a passive bosonic network as
+This establishes the standard passive bosonic realization
 
 ```math
-A=-i\Omega-\frac12C^\dagger C;
+A=-i\Omega-\frac12C^\dagger C
 ```
 
-- gives the input-output transfer matrix
+and transfer matrix
 
 ```math
-\Xi(s)=I-C(sI-A)^{-1}C^\dagger;
+\Xi(s)=I-C(sI-A)^{-1}C^\dagger,
 ```
 
-- notes that the complete transfer `Xi(i omega)` is unitary on the real-frequency axis when all passive channels are retained.
-
-These are exactly the standard identities used by `PASSIVE_NETWORK_CUTSET_THEOREM.md`. The Experiment 02 contribution is **not** this formalism. The new candidate physics is the gravitational cut-set application plus the quadrupole spectral-resource bound.
+with complete real-frequency scattering unitary when all passive channels are retained.
 
 URL: https://arxiv.org/abs/1303.3771
+
+### Techakesari and Nurdin
+
+**P. Techakesari and H. I. Nurdin, “On the quasi-balanceable class of linear quantum stochastic systems,” Automatica 78, 272–281 (2017); preprint arXiv:1408.1855.**
+
+A result directly relevant to Experiment 02 is already known: for an asymptotically stable **completely passive** linear quantum stochastic system, the controllability Gramian is the identity,
+
+```math
+P=I.
+```
+
+This is the exact full-channel Gramian fact used in the Experiment 02 endpoint proof. Therefore:
+
+> **The identity `P=I`, passive scattering unitarity, and the underlying Gramian machinery are established mathematics and are not part of the novelty claim.**
+
+Experiment 02 uses this known passive-system structure to obtain a selected gravitational-port cut set and then closes that abstract port resource using microscopic gravitational quadrupole physics.
+
+URL: https://arxiv.org/abs/1408.1855
 
 Related physical-realizability literature also characterizes linear quantum-system transfer functions through frequency-domain unitarity conditions; see A. Kh. Sichani and I. R. Petersen, arXiv:1609.07595.
 
@@ -165,12 +181,25 @@ AND
 What is already established elsewhere:
 
 - passive linear quantum input-output theory;
+- the full-channel Gramian identity `P=I` for stable completely passive linear quantum systems;
 - continuous-time quantum capacities for transducers;
 - generic/specific transducer efficiency-bandwidth limitations;
 - quadrupole sum rules and weak graviton absorption in ordinary matter.
 
-What now appears potentially distinctive is the conjunction:
+The potentially distinctive physics is therefore **not** a new passive-control theorem. It is the conjunction
 
-> a passive linear-network cut-set bound in which the endpoint resource is identified with gravitational coupling spectral weight and then bounded by the positive mass-quadrupole EWSR, producing a gravity-specific end-to-end coherent-transfer and pure-loss capacity ceiling.
+```text
+known passive linear-network machinery
+-> gravitational interface cut set
+-> microscopic matter-to-graviton coupling factorization
+-> mass-quadrupole EWSR material ceiling
+-> compact TT propagation singular-value ceiling
+-> end-to-end integrated gravitational transfer bound
+-> pure-loss capacity corollary.
+```
 
-That claim remains unverified until a dedicated gravity-specific collision search is complete and the material-response bridge is audited independently.
+A restrained future claim could be:
+
+> We combine established passive linear-system identities with microscopic quadrupole radiation and propagation bounds to derive an end-to-end frequency-integrated ceiling for direct passive gravitational transduction between compact matter systems.
+
+That claim remains unverified until the remaining gravitational-antenna and general passive-scattering collision searches are complete.
