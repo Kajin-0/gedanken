@@ -1,627 +1,279 @@
 # Claim Ledger — Experiment 01
 
-**Updated:** 2026-08-07 20:04 EDT  
-**Purpose:** Separate established prior art, internally derived mathematics, model-specific gravitational results, corrected claims, and remaining novelty candidates.
+**Updated:** 2026-08-08  
+**Status:** **CURRENT V7 CLAIM BOUNDARY**  
+**Purpose:** State what the active manuscript does and does not claim, while preserving the important correction history from earlier research stages.
+
+> This file supersedes the older exploratory novelty ledger. Earlier Gaussian-channel investigations and waveform-specific branches remain in Git history and supporting notes, but they are **not current publication claims**.
 
 ---
 
-## A. Established prior art — do not claim
+## 1. Active manuscript claim
 
-### A1. Gravity-mediated entanglement
+**A Source-Resolved Quantum Link Budget for Propagating Linearized Gravity**
 
-Established by the BMV literature and later work.
+For the stated weak-field, nonrelativistic, narrowband linear regime, the post-handoff coherent source-to-memory transfer is
 
-### A2. Locally mediated / retarded gravity-generated entanglement
-
-Christodoulou et al. (2023) derive entanglement using local linearized quantum gravity and explicitly discuss light-crossing retardation.
-
-### A3. Gravity as a quantum-information channel
-
-Mari–Zippilli–Vitali (2026) explicitly ask whether gravity can mediate quantum information and characterize a gravity-induced thermal-attenuator channel through its entanglement-breaking boundary.
-
-### A4. Coherent-state gravity channel benchmarks
-
-Lami–Pedernales–Plenio (2024), Toccacelo–Andersen–Brask (2025), Mari et al. (2026), and related work already use coherent states / channel benchmarks in gravitational settings.
-
-### A5. Noisy gravitational state transfer and thermal thresholds
-
-Toccacelo–Andersen–Brask (2025) study noisy Newtonian oscillator communication. Miki–Li–Chen (2026) derive entanglement-generation and entanglement-breaking thresholds for thermally damped gravitational oscillator dynamics.
-
-### A6. Quantized passing GW mode coupled to a quantum detector
-
-Toccacelo–Beitel–Andersen–Pikovski (2026) model a quantized incident gravitational-wave mode swapping quantum state with a resonant acoustic detector and include thermal open-system dynamics.
-
-### A7. Relativistic sender→receiver quantum-channel causality
-
-Cliche–Kempf already show that a spacelike-separated receiver cannot depend on a localized sender input, while vacuum correlations can still generate detector entanglement.
-
-### A8. Gaussian-channel EB boundaries
-
-Established.
-
-For the convention used here,
-
-$$
-\Phi_{\tau,m}\text{ is EB}
-\iff
-m\ge\tau.
-$$
-
-### A9. Two-coherent-state effective-entanglement tests
-
-Established by Häseler–Moroder–Lütkenhaus and subsequent quantum-device benchmark work.
-
-### A10. Same hybrid coherent/qubit state under thermal attenuation
-
-Kreis–van Loock (2012) study the same symmetric hybrid input under a thermal beam-splitter channel and construct a sufficient moment witness.
-
-### A11. Nonclassicality-breaking / EB relations for Gaussian channels
-
-Ivan–Sabapathy–Simon (2013) establish an essential equivalence between nonclassicality-breaking and entanglement-breaking Gaussian channels. This is not the same statement as the binary-hybrid NPT theorem below.
-
----
-
-## B. Strongest internally derived mathematical result — novelty unverified
-
-### B1. Exact coherent-dyad matrix element
-
-For the one-mode gauge-covariant phase-insensitive Gaussian channel,
-
-$$
+```math
 \boxed{
-\langle u|
-\Phi_{\tau,m}(|\alpha\rangle\langle\beta|)
-|v\rangle
-=
-\frac{\langle\beta|\alpha\rangle\langle u|v\rangle}{m+1}
-\exp\left[
-\frac{(\sqrt\tau\beta^*-u^*)(v-\sqrt\tau\alpha)}{m+1}
-\right].
+\tau_c(t)
+=\beta_{g,A}\,\eta_{\rm store}(R)\,\beta_{g,B}\,\mathcal T_f(t)
 }
-$$
+```
 
-This follows directly from the characteristic function and one complex Gaussian integral.
+with
 
-### B2. Binary coherent exact NPT/EB equivalence
-
-For every finite nontrivial
-
-$$
-|\Psi\rangle
-=\sqrt p|0\rangle|\alpha\rangle
-+e^{i\phi}\sqrt{1-p}|1\rangle|\beta\rangle,
-$$
-
-with $0<p<1$ and $\alpha\neq\beta$,
-
-$$
-\boxed{
-(I\otimes\Phi_{\tau,m})(|\Psi\rangle\langle\Psi|)
-\text{ is NPT}
-\iff
-\tau>m.
-}
-$$
-
-Since $\tau>m$ is exactly the channel non-EB region, every nontrivial finite binary coherent hybrid input detects the EB transition.
-
-A direct proof uses one finite $2\times2$ principal minor. Pure loss $m=0$ has a separate finite coherent-state witness and is included exactly.
-
-**Novelty status:** targeted searches have not found an equivalent theorem, but absence is not established.
-
-Files:
-
-- `DIRECT_GAUSSIAN_BINARY_PROBE_PROOF.md`
-- `PURE_LOSS_EDGE_CASE.md`
-
-### B3. Exact three-element boundary witness
-
-For symmetric $|\pm a\rangle$ and $m>0$,
-
-$$
-\boxed{
-v_*=\frac{2\sqrt\tau a}{m},
-}
-$$
-
-and
-
-$$
-\boxed{
-\frac{|z_{v_*}|^2}{p_0p_{v_*}}
-=\exp\left[
-\frac{4a^2}{m}(\tau-m)
-\right].
-}
-$$
-
-Thus one $2\times2$ partial-transpose principal minor reaches the exact EB boundary.
-
-**Novelty status:** promising but unverified.
-
----
-
-## C. Absolute finite-strength witness — internally derived
-
-For
-
-$$
-M_v=
-\begin{pmatrix}
-p_0&z_v^*\\
-z_v&p_v
-\end{pmatrix}
-$$
-
-inside the partial transpose, define
-
-$$
-\boxed{
-G(v)
-=\frac12
-\max\left\{
-0,
-\sqrt{(p_0-p_v)^2+4|z_v|^2}
--(p_0+p_v)
-\right\}.
-}
-$$
-
-Then
-
-$$
-\boxed{
-\mathcal N(\rho)\ge G(v).
-}
-$$
-
-This is an absolute negativity lower bound, unlike the normalized ratio $\Lambda$.
-
-### Weak-link asymptotic
-
-For $\tau,m\ll1$ with fixed $m/\tau<1$, optimizing the source coherent separation and analysis displacement gives
-
-$$
-\boxed{
-G_{\rm abs}^{\rm opt}
-=\frac12W(e^{-1})(\tau-m)+O(\tau^2).
-}
-$$
-
-Numerically,
-
-$$
-\boxed{
-\frac12W(e^{-1})
-\simeq0.1392323.
-}
-$$
-
-The corresponding leading optimal source coherent amplitude is
-
-$$
-\boxed{
-a_*
-\simeq0.565346\sqrt\tau.
-}
-$$
-
-File: `WEAK_LINK_ABSOLUTE_GAP_ASYMPTOTIC.md`.
-
----
-
-## D. Correct general receiver statement
-
-A physical source emits one fixed normalized temporal waveform $f$.
-
-For a Markov receiver,
-
-$$
-\boxed{
-\tau_f(t)
-=\kappa_\Delta
-\left|
-\int_0^t ds\,
-e^{-\kappa(t-s)/2}f(s)
-\right|^2,
-}
-$$
-
-and
-
-$$
-\boxed{
-m(t)
-=n_0e^{-\kappa t}
-+\frac{\Gamma_{\rm th}}{\kappa}
-(1-e^{-\kappa t}).
-}
-$$
-
-Therefore
-
-$$
-\boxed{
-\text{receiver channel non-EB}
-\iff
-\tau_f(t)>m(t).
-}
-$$
-
-For the binary coherent hybrid input, this is simultaneously the exact NPT condition.
-
-Restoring propagation,
-
-$$
-\boxed{
-T_{\rm cap}(R;f)
-=\frac Rc+
-\inf\{t>0:\tau_f(t)>m(t)\}.
-}
-$$
-
-This is now the **general receiver equation** within the one-mode Gaussian Markov model.
-
-File: `GENERAL_FIXED_WAVEFORM_RECEIVER_FRONT.md`.
-
----
-
-## E. Corrected status of the logarithmic front
-
-The earlier logarithmic formula is **not universal**.
-
-It assumes
-
-1. stationary thermal initial receiver
-   $$
-   n_0=\Gamma_{\rm th}/\kappa;
-   $$
-2. target-time-specific temporal-mode optimization.
-
-Under those assumptions,
-
-$$
-\boxed{
-T_{\rm cap}^{\rm env}
-=\frac Rc+
-\frac1\kappa
-\ln\frac{\kappa_\Delta}
-{\kappa_\Delta-\Gamma_{\rm th}}.
-}
-$$
-
-It is now a best-case **optimized envelope**, not the paper's master physical front.
-
-File: `MASTER_CAUSAL_FRONT_EQUATION.md` with corrected scope.
-
----
-
-## F. Gravity-specific field calculations — strong but convention/model dependent
-
-### F1. Branch coherent-mode distance
-
-For a conserved nonrelativistic quadrupole branch difference,
-
-$$
-\boxed{
-N_\Delta
-=\frac{G}{5\pi\hbar c^5}
-\int_0^\infty d\omega\,
-\omega^5
-|\Delta\widetilde Q_{ij}(\omega)|^2.
-}
-$$
-
-### F2. Receiver graviton linewidth
-
-$$
-\boxed{
-\kappa_g
-=\frac{2G\omega^5}{5\hbar c^5}
-Q_{ij}^{10}Q_{ij}^{01}.
-}
-$$
-
-### F3. Aligned-plus retarded cross response
-
-$$
-\boxed{
-\Sigma_{AB}^{R}
-=\frac54
-\sqrt{\kappa_{g,A}\kappa_{g,B}}
-\frac{P(\epsilon)e^{i\epsilon}}{\epsilon^5},
-}
-$$
-
-where
-
-$$
-P(\epsilon)
-=3-3i\epsilon-3\epsilon^2+2i\epsilon^3+\epsilon^4.
-$$
-
-### F4. Source-output→receiver-input storage coefficient
-
-$$
-\boxed{
-t_{AB}^{\rm store}
-=-i\Sigma_{AB}^{R}/\sqrt{\kappa_{g,A}\kappa_{g,B}}.
-}
-$$
-
-Wave zone:
-
-$$
-\boxed{
-\eta_{\rm store}
-\simeq
-\frac{25\mathcal O}{16(kR)^2}.
-}
-$$
-
-The factor $25/16$ is the **storage/absorption** normalization; the four-times-larger value belongs to scattering/extinction bookkeeping.
-
-**Remaining audit:** desirable to rederive in a second fully explicit field convention.
-
----
-
-## G. Explicit conserved-source benchmark
-
-A four-mass cross with branch-dependent radii
-
-$$
-X_s^2=L^2+s\,d(t),
-$$
-
-$$
-Y_s^2=L^2-s\,d(t)
-$$
-
-has zero center-of-mass motion and exact branch difference
-
-$$
-\boxed{
-\Delta Q_{xx}=4\mu d(t),
+```math
+\beta_{g,A}=\frac{\kappa_{g,A}}{\kappa_A},
 \qquad
-\Delta Q_{yy}=-4\mu d(t),
+\eta_{\rm store}(R)=\frac{25\mathcal O}{16(kR)^2},
 \qquad
-\Delta Q_{zz}=0.
-}
-$$
+\beta_{g,B}=\frac{\kappa_{g,B}}{\kappa_B},
+\qquad
+0\le\mathcal T_f\le1.
+```
 
-Using
+The publication claim is the **source-resolved physical normalization and capability chain**: local quantum preparation, conserved gravitational emission, normalized travelling-mode propagation, receiver capture, noise, and later readout are kept in one consistent calculation without assuming a normalized incoming gravitational mode for free.
 
-$$
-d(t)\propto
-\sin^4(\pi t/T)\cos\omega t
-$$
+The product form itself is not claimed as new.
 
-makes the compact quadrupole pulse sufficiently smooth for finite $N_\Delta$.
+---
 
-The small-deformation plus normal mode has
+## 2. Claims explicitly not made
 
-$$
-M_{\rm eff}=4\mu,
-$$
+V7 does **not** claim
 
-$$
-u_{\rm zpf}=\sqrt{\hbar/(8\mu\omega)},
-$$
+- that gravity-mediated quantum information transfer is new;
+- that Gaussian entanglement-breaking boundaries are new;
+- that coherent graviton radiation from a source is new;
+- that propagating gravitons can causally correlate or entangle distant matter for the first time;
+- that graviton absorption or quantum transduction is new;
+- that the critical quadrupole absorption area is new;
+- that the binary-coherent Gaussian lemmas constitute a new standalone theorem paper;
+- that the kilogram-scale benchmark is experimentally feasible;
+- that the passive `~10^-42` benchmark is a universal gravitational bound;
+- exact gravitational tensor-factor locality or an all-orders quantum-gravity result.
+
+Avoid `first`, `unique`, `unprecedented`, or equivalent priority language.
+
+---
+
+## 3. Load-bearing V7 results
+
+### 3.1 Conserved finite-support source
+
+The active source is the finite-spoke elastic plus mode with local finite-speed control. Its exact finite-spoke relations include
+
+```math
+\boxed{\frac{m_r}{\mu}=q\tan q}
+```
 
 and
 
-$$
+```math
 \boxed{
-\kappa_g
-=\frac{8G\mu L^2\omega^4}{5c^5}.
+\Delta Q_{xx}=8\mu Lu\frac{\tan q}{q},
+\qquad
+\Delta Q_{yy}=-\Delta Q_{xx}.
 }
-$$
+```
 
-A state-dependent internal force can create the coherent mechanical cat and return the mechanical mode to the origin after the pulse.
+The corresponding gravitational linewidth is
 
-Files:
+```math
+\boxed{
+\kappa_g(q)=
+\frac{8G\mu L^2\omega^4}{5c^5}
+\frac{(\tan q/q)^2}{\frac12+q/\sin2q}.
+}
+```
 
-- `CONSERVED_FOUR_MASS_QUADRUPOLE_SOURCE.md`
-- `QUANTIZED_PLUS_MODE_SOURCE.md`
+### 3.2 Equal-charge gravitational code
+
+At the retained perturbative order,
+
+```math
+\boxed{
+V_{\mathcal C}^\dagger P^\mu V_{\mathcal C}=p^\mu I_{\mathcal C},
+\qquad
+V_{\mathcal C}^\dagger M^{\mu\nu}V_{\mathcal C}=m^{\mu\nu}I_{\mathcal C}.
+}
+```
+
+This is used only within the first-order gravitational-splitting scope. A branch-common long-range dressing may remain; the branch-sensitive signal is the later retarded difference field.
+
+### 3.3 Propagation normalization
+
+The wave-zone storage factor
+
+```math
+\boxed{
+\eta_{\rm store}=\frac{25\mathcal O}{16(kR)^2}
+}
+```
+
+is closed by three conceptually distinct routes:
+
+1. retarded conserved-source field;
+2. reciprocal radiation/critical-absorption normalization;
+3. canonical transverse-traceless one-graviton mode overlap.
+
+The third route reproduces the full radial polynomial
+
+```math
+P(z)=3-3iz-3z^2+2iz^3+z^4
+```
+
+and the exact aligned transfer probability
+
+```math
+|t|^2=
+\frac{25}{16z^2}
+\left(1-\frac{2}{z^2}+\frac{3}{z^4}-\frac{9}{z^6}+\frac{9}{z^8}\right).
+```
+
+At `kR=10`, the leading wave-zone expression is about `1.97%` high.
+
+### 3.4 Memory and accessible readout
+
+The memory quantum excess is
+
+```math
+\Delta_{\rm mem}=\tau_c-m_c,
+```
+
+while a separate noisy readout gives
+
+```math
+\boxed{
+\Delta_{\rm acc}=\tau_r\Delta_{\rm mem}-m_r.
+}
+```
+
+The Gaussian-channel criterion is prior theory used as a tool, not a novelty claim.
+
+### 3.5 Exact weak-link entanglement amount
+
+For the fixed binary-coherent pure-loss problem used in V7,
+
+```math
+\boxed{
+\mathcal N_{\max}(\eta)
+=\eta-2\eta^{3/2}+\frac{13}{3}\eta^2+O(\eta^{5/2}).
+}
+```
+
+Its role is quantitative: a fantastically weak end-to-end link is not rescued by arbitrarily increasing branch separation.
 
 ---
 
-## H. Source-specific quantum-capability bubble
+## 4. Current novelty boundary
 
-For the normalized narrowband $\sin^4$ graviton mode,
+The targeted 2025–2026 prior-art sweep did **not** find an inspected work that closes the same separated chain
 
-$$
-f_4(t)
-=\sqrt{128/(35T)}\sin^4(\pi t/T),
-$$
-
-define
-
-$$
-S_{4,q}(x)
-=\frac{128q}{35}e^{-qx}J_{4,q}^2[\min(x,1)],
-$$
-
-$$
-N_q(x)=1-e^{-qx}.
-$$
-
-Then
-
-$$
+```math
 \boxed{
-\tau_4
-=\frac{\kappa_\Delta}{\kappa}S_{4,q}(x),
+\text{local physical source preparation}
+\to
+\text{normalized gravitational emission}
+\to
+\text{free propagation}
+\to
+\text{remote receiver capture}
+\to
+\text{receiver noise/readout}
 }
-$$
+```
 
-$$
-\boxed{
-m
-=\frac{\Gamma_{\rm th}}{\kappa}N_q(x).
-}
-$$
+with both matter–gravity interfaces explicitly normalized.
 
-The channel is non-EB iff
+The defensible V7 contribution is therefore:
 
-$$
-\boxed{
-\frac{\kappa_\Delta}{\Gamma_{\rm th}}
-\frac{S_{4,q}(x)}{N_q(x)}>1.
-}
-$$
+> **A source-resolved weak-linearized-gravity construction that closes local preparation, conserved radiative emission, normalized travelling-mode propagation, remote memory capture, Gaussian noise, and accessible readout in one serial normalization, exposing the separate source and receiver gravitational branching penalties.**
 
-Optimizing $q$ and $x$ gives
+This is a **negative literature search result, not proof of priority**. Publication significance remains subject to normal referee judgment.
 
-$$
-\boxed{
-H_{4,*}\simeq0.8136763,
-}
-$$
+Canonical literature audit:
 
-so the pulse can produce a non-EB window only if
-
-$$
-\boxed{
-\kappa_\Delta>1.22899\,\Gamma_{\rm th}.
-}
-$$
-
-The two time boundaries form a finite EB $\to$ non-EB $\to$ EB spacetime bubble.
-
-File: `SIN4_MECHANICAL_SOURCE_QUANTUM_WINDOW.md`.
+`FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`
 
 ---
 
-## I. Explicit source-to-receiver link
+## 5. Historical corrections retained as audit evidence
 
-For the same four-mass plus mode as receiver, total endpoint mass $M=4\mu$:
+These were real earlier errors or overclaims and are preserved because they document how the present result was hardened.
 
-$$
-\boxed{
-\kappa_\Delta(R)
-=\frac{5\mathcal O}{8}
-\frac{GM L^2\omega^2}
-{c^3R^2}.
-}
-$$
+### H1. Universal logarithmic quantum cone — superseded
 
-At $kR=\zeta$ and with ordinary linewidth $\kappa\simeq\omega/Q$,
+The logarithmic front holds only for the stated stationary/target-time-optimized conditions, not as a universal causal front.
 
-$$
-\boxed{
-\frac{\kappa_\Delta}{\kappa}
-=\frac{5\mathcal O}{16\zeta^2}
-Q\mathcal C\beta^3,
-}
-$$
+### H2. Universal `beta^5` receiver penalty — superseded
 
-where
+That scaling applies to geometric-aperture-limited absorbers, not to every compact resonant receiver.
 
-$$
-\mathcal C=2GM/(c^2L),
-$$
+### H3. `25/[4(kR)^2]` state-storage coefficient — incorrect
 
-$$
-\beta=\omega L/c.
-$$
+That coefficient belongs to scattering/extinction bookkeeping. State storage uses
 
-For the optimized $\sin^4$ pulse in vacuum,
+```math
+\boxed{\frac{25}{16(kR)^2}}.
+```
 
-$$
-\boxed{
-\mathcal N_{\max}^{\rm WZ}
-\simeq
-0.249382
-\frac{\mathcal O}{\zeta^2}
-Q\mathcal C\beta^3
-}
-$$
+### H4. “No source-receiver entanglement before `R/c`” — too strong
 
-in the weak-capture limit.
+The correct causal statement concerns **source-controlled input dependence/communication**, not the absence of all vacuum or background correlations.
 
-The minimal three-element absolute witness reaches
+### H5. Hard `sin^2` compact quadrupole pulse — not ultraviolet safe
 
-$$
-\boxed{
-G_{\rm abs,max}^{\rm WZ}
-\simeq
-0.0347220
-\frac{\mathcal O}{\zeta^2}
-Q\mathcal C\beta^3.
-}
-$$
-
-File: `EXPLICIT_FOUR_MASS_SOURCE_RECEIVER_LINK.md`.
+Its endpoint smoothness is insufficient for the ideal `omega^5 |Q_tilde|^2` coherent-graviton norm. Later work used smoother waveforms, and the active V7 manuscript no longer depends on that orphaned waveform example.
 
 ---
 
-## J. Information-flow result: stronger source is not always better
+## 6. Stopped exploratory branches
 
-For pure-loss capture fraction $\eta\ll1$, exact binary-cat negativity is optimized at
+### Standalone Gaussian novelty branch — STOP
 
-$$
-\boxed{
-N_\Delta^{\rm opt}
-\simeq4\sqrt\eta.
-}
-$$
+The exact coherent-dyad formulas, binary-coherent partial-transpose witnesses, and related Gaussian calculations remain useful supporting mathematics. They are **not the active paper's novelty claim** and should not be presented as such.
 
-Thus an arbitrarily strong emitted branch record is counterproductive when one tiny receiver captures only a small fraction of the outgoing field. The uncollected gravitational modes become a which-branch environment.
+Canonical stop documents:
 
-This is an important physical consequence of the exact pure-loss state, not a claim that weak sources are universally optimal for every protocol.
+- `STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`
+- `NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
+- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
 
----
+### Waveform-specific historical branches
 
-## K. Corrected / superseded claims
-
-### K1. Universal logarithmic quantum cone — superseded
-
-Only a stationary target-time-optimized envelope.
-
-### K2. Universal $\beta^5$ receiver penalty — superseded
-
-Only geometric-aperture-limited absorbers. Compact resonant absorbers can have wavelength-scale effective cross sections.
-
-### K3. $25/[4(kR)^2]$ state-storage coefficient — incorrect
-
-That is scattering/extinction normalization. State storage uses $25/[16(kR)^2]$.
-
-### K4. “No source-receiver entanglement before $R/c$” — too strong
-
-The correct causal statement concerns **source-controlled communication/input dependence**, not all background/vacuum entanglement.
-
-### K5. $\sin^2$ compact quadrupole as literal mechanical source — insufficiently smooth
-
-A hard $\sin^2$ quadrupole pulse has endpoint derivative structure that is not UV safe for the ideal $\omega^5|\widetilde Q|^2$ coherent-graviton norm. Use $\sin^4$ or a smoother envelope for an explicit compact mechanical source.
+Earlier `sin^4` quantum-capability bubbles and source-specific receiver optimizations are retained as research history/supporting calculations, not as the V7 publication center.
 
 ---
 
-## L. Remaining novelty candidates
+## 7. Explicit limitations still open by design
 
-### L1. Exact binary coherent NPT/EB theorem
+The manuscript does not solve every physical problem surrounding a realizable experiment.
 
-Strongest mathematical candidate.
+In particular:
 
-### L2. Exact minimal principal-minor witness saturating the Gaussian EB boundary
+- the kilogram-scale benchmark is conditional on successful preparation and preservation of macroscopic source coherence;
+- no device-specific environmental decoherence budget for such a source is claimed;
+- the approximation hierarchy is perturbative and does not constitute a universal all-orders remainder bound;
+- the material model is a controlled linear-elastic source, not an exact relativistic hyperelastic body;
+- the novelty conclusion is restrained and remains subject to referee judgment.
 
-Strongest operational quantum-information candidate.
-
-### L3. Source-resolved retarded full gravitational link
-
-A controlled quantum branch source is mapped into an emitted coherent graviton difference mode, propagated over explicit distance, and captured by a noisy quantum receiver in one normalized calculation.
-
-### L4. Source-specific spacetime quantum-capability / finite-certification bubble
-
-Unlike prior work that starts from a Newtonian pair or an already-incident GW mode, the current construction derives the temporal receiver channel from a specified source-side coherent quadrupole history.
-
-**Novelty status for L3/L4:** promising synthesis; targeted searches have not located the same full construction, but no originality claim is yet justified.
+These are stated limitations, not hidden assumptions.
 
 ---
 
-## M. Strongest next audit
+## 8. Current verification state
 
-1. Broader citation-forward search for L1/L2.
-2. Independent field-normalization derivation of $25/16$.
-3. Rewrite the paper around **source-resolved fixed-waveform dynamics**, not the obsolete universal logarithmic front.
-4. Keep passive feasibility and compact-object discussion secondary.
+The active manuscript and supporting physics have been checked through
+
+- analytic conservation and source audits;
+- three propagation-normalization routes;
+- direct numerical transverse-traceless overlap regression;
+- representative Gaussian-channel/negativity regressions;
+- centralized approximation/error accounting;
+- primary-source gravitational-splitting comparison;
+- targeted prior-art comparison;
+- independent manuscript compilation and clean submission-source compilation.
+
+The current research mode is **submission polish only unless a concrete new technical defect appears**.
