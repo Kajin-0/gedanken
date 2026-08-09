@@ -75,7 +75,37 @@ URL: https://arxiv.org/abs/2502.08831
 
 ---
 
-## 4. Bode–Fano / passive matching analogy
+## 4. Passive linear quantum input-output formalism
+
+**M. Guță and N. Yamamoto, “System identification for passive linear quantum systems,” Phys. Rev. A 89, 032103 (2014), arXiv:1303.3771.**
+
+Primary role for the network theorem:
+
+- writes a passive bosonic network as
+
+```math
+A=-i\Omega-\frac12C^\dagger C;
+```
+
+- gives the input-output transfer matrix
+
+```math
+\Xi(s)=I-C(sI-A)^{-1}C^\dagger;
+```
+
+- notes that the complete transfer `Xi(i omega)` is unitary on the real-frequency axis when all passive channels are retained.
+
+These are exactly the standard identities used by `PASSIVE_NETWORK_CUTSET_THEOREM.md`. The Experiment 02 contribution is **not** this formalism. The new candidate physics is the gravitational cut-set application plus the quadrupole spectral-resource bound.
+
+URL: https://arxiv.org/abs/1303.3771
+
+Related physical-realizability literature also characterizes linear quantum-system transfer functions through frequency-domain unitarity conditions; see A. Kh. Sichani and I. R. Petersen, arXiv:1609.07595.
+
+URL: https://arxiv.org/abs/1609.07595
+
+---
+
+## 5. Bode–Fano / passive matching analogy
 
 The Bode–Fano criterion and related causal sum-rule bounds establish efficiency-bandwidth tradeoffs for passive linear time-invariant matching and scattering systems.
 
@@ -93,7 +123,7 @@ Do not imply that Experiment 02 is simply a gravitational Bode–Fano theorem un
 
 ---
 
-## 5. General scattering sum-rule analogy
+## 6. General scattering sum-rule analogy
 
 A 2026 acoustic result derives a universal causal scattering sum rule that links integrated extinction to static material properties:
 
@@ -107,7 +137,7 @@ This paper should be inspected closely before any novelty statement using words 
 
 ---
 
-## 6. V7 inherited gravitational prior art
+## 7. V7 inherited gravitational prior art
 
 Experiment 02 inherits, but does not re-audit yet, the V7 references on:
 
@@ -128,14 +158,19 @@ AND
 
 ---
 
-## 7. Current novelty status
+## 8. Current novelty status
 
 **UNKNOWN / DO NOT CLAIM PRIORITY.**
 
-What appears potentially distinctive is not the generic idea that efficiency trades against bandwidth. That is established transducer physics.
+What is already established elsewhere:
 
-The possible new result is specifically:
+- passive linear quantum input-output theory;
+- continuous-time quantum capacities for transducers;
+- generic/specific transducer efficiency-bandwidth limitations;
+- quadrupole sum rules and weak graviton absorption in ordinary matter.
 
-> deriving a passive gravitational end-to-end rate/response ceiling from the positive mass-quadrupole spectral weight of both material interfaces and the TT propagation channel.
+What now appears potentially distinctive is the conjunction:
 
-That claim remains unverified until the susceptibility theorem is proved and a dedicated gravity-specific literature sweep is complete.
+> a passive linear-network cut-set bound in which the endpoint resource is identified with gravitational coupling spectral weight and then bounded by the positive mass-quadrupole EWSR, producing a gravity-specific end-to-end coherent-transfer and pure-loss capacity ceiling.
+
+That claim remains unverified until a dedicated gravity-specific collision search is complete and the material-response bridge is audited independently.
