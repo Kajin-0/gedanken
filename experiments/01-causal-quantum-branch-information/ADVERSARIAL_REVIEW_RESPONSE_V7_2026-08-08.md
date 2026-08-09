@@ -1,20 +1,24 @@
 # Adversarial Referee Pass on V7 — 2026-08-08
 
-**Scope:** current V7 manuscript after external-review closure.  
-**Question:** does the strongest conceptual referee critique expose a new physics failure, or mainly a framing/interpretation risk?
+**Scope:** current V7 manuscript after the main derivations and normalization audits were integrated.  
+**Question:** do strong referee-style objections expose a new physics failure, or mainly framing, scope, and feasibility limitations?
+
+## Review provenance
+
+This is a **repository-level adversarial review record**, not formal journal peer review. The critiques came from independent AI-agent review passes and were then checked against the manuscript, supporting derivations, primary literature, and numerical tests. No external physicist, journal, or institution is represented as having endorsed the work.
 
 ## Overall verdict
 
 No new algebraic or structural physics failure was found.
 
-The critique identified two real presentation vulnerabilities:
+The review passes did identify several real vulnerabilities that were worth making explicit in the manuscript:
 
-1. the four-factor result could be mistaken for a bookkeeping identity if the common physical normalization is not stated immediately;
-2. the passive benchmark could be misread as a universal gravitational efficiency bound.
+1. the four-factor result could be mistaken for a bookkeeping identity;
+2. the passive benchmark could be misread as a universal gravitational bound;
+3. macroscopic source coherence was not initially stated prominently enough as a prerequisite;
+4. the approximation hierarchy needed an explicit statement about mixed higher-order corrections.
 
-Both points have now been made explicit in the manuscript.
-
-The remaining objections were already addressed by the existing derivations but are recorded below because they are exactly the questions a strong referee is likely to ask.
+Those points are now stated directly in V7.
 
 ---
 
@@ -30,38 +34,34 @@ Central result:
 \mathcal T_f(t).
 ```
 
-### Referee concern
+### Concern
 
-A product of emission, propagation, absorption, and temporal-overlap efficiencies is structurally familiar. If each factor were independently assumed, the multiplication would not by itself be a new physical result.
+A product of emission, propagation, absorption, and temporal-overlap efficiencies is structurally familiar. If each factor were independently assumed, the multiplication would not itself be a new physical result.
 
 ### V7 answer
 
-The contribution is the common operational normalization connecting all stages without inserting an already normalized incoming graviton wavepacket.
+Agreed. The product form is explicitly described as standard.
 
-Specifically:
+The contribution is the **common operational normalization** connecting the stages without inserting an already normalized incoming graviton wavepacket:
 
 - source branching is measured relative to the complete locally prepared branch-distance norm;
-- propagation is independently normalized as a source-to-receiver one-graviton mode overlap;
-- receiver branching is normalized to the actual receiver linewidth;
-- memory capture and later readout remain distinct.
-
-The manuscript now states this directly in the abstract, the link-budget derivation, and the discussion.
+- propagation is normalized as a reciprocal one-graviton source-to-receiver mode overlap;
+- receiver branching is normalized to the physical receiver linewidth;
+- memory capture and later readout are kept distinct.
 
 **Status: CLOSED as a framing vulnerability.**
 
-The residual publication question is editorial rather than algebraic: whether a referee considers this integration sufficiently consequential for the journal.
+The remaining publication question is whether this integration is sufficiently consequential for the journal.
 
 ---
 
-## 2. Is source gravitational branching an unavoidable fundamental penalty?
+## 2. Is source gravitational branching a fundamental tiny number?
 
 ```math
 \beta_{g,A}=\frac{\kappa_{g,A}}{\kappa_A}.
 ```
 
-### Referee concern
-
-If nongravitational damping vanishes, then
+If nongravitational damping vanished,
 
 ```math
 \kappa_A=\kappa_{g,A}
@@ -69,63 +69,39 @@ If nongravitational damping vanishes, then
 \beta_{g,A}=1.
 ```
 
-Therefore the small branching fraction in the benchmark cannot be a universal gravitational bound.
+Therefore the small benchmark branching fraction cannot be a universal gravitational bound.
 
 ### V7 answer
 
-Correct. The small value is a finite-bandwidth passive operating point, not a fundamental constant of matter.
+Correct. The small benchmark value is a **finite-bandwidth passive operating point**.
 
-For the benchmark, the intrinsic gravitational linewidth is approximately
-
-```math
-\kappa_g\simeq6.87\times10^{-26}\,\mathrm{s}^{-1},
-```
-
-corresponding to a characteristic gravitational lifetime of roughly
+For the benchmark, the intrinsic gravitational lifetime is about
 
 ```math
 4.6\times10^{17}\ \mathrm{yr}.
 ```
 
-A source can raise gravitational branching toward unity by removing faster nongravitational loss, but then emission becomes correspondingly slow. Conversely, adding ordinary loss shortens the source lifetime and reduces gravitational branching.
-
-The manuscript now states explicitly that this is a speed--loss tradeoff.
+Reducing nongravitational loss can raise the gravitational branching fraction toward unity, but then emission occurs on the extremely slow intrinsic gravitational timescale.
 
 **Status: CLOSED.**
 
 ---
 
-## 3. How universal is the four-spoke result?
+## 3. How universal is the four-spoke source result?
 
-### Referee concern
+The explicit finite-spoke elastic source demonstrates a consistent conserved architecture. It does not prove that every gravitational quantum emitter has the same microscopic branching behavior.
 
-The explicit conserved four-spoke elastic quadrupole proves consistency for one source architecture. It does not prove that all gravitational quantum emitters share the same microscopic branching behavior.
-
-### V7 answer
-
-Agreed and already scoped correctly.
-
-The four-spoke construction is an existence proof that a finite-support conserved source can realize the required branch quadrupole while including its support and controller.
-
-The passive spectral-weight bound is explicitly restricted to passive, stationary, nonrelativistic matter. The manuscript does not extend it to active or inverted states, relativistic field systems, or strongly self-gravitating matter.
+V7 treats the construction as an explicit controlled source model, not a universal theorem about all possible matter or transducers. The passive spectral-weight arguments are likewise restricted to their stated passive, nonrelativistic regime.
 
 **Status: CLOSED by scope.**
-
-V7 is not a universal no-go theorem for all conceivable gravitational transducers.
 
 ---
 
 ## 4. Does the one-way product survive reciprocal dynamics?
 
-### Referee concern
+A complete source-field-receiver system is reciprocal and can contain reabsorption and delayed feedback.
 
-The actual gravitational field is reciprocal. A fully interacting source--field--receiver system can contain reabsorption, multiple scattering, and delayed feedback.
-
-### V7 answer
-
-The one-way result is explicitly the leading term of a controlled weak-feedback regime.
-
-The audited loop amplitude obeys
+V7 uses the one-way result as the leading term of a controlled weak-feedback regime. The audited loop amplitude obeys
 
 ```math
 |L(\nu)|
@@ -133,13 +109,7 @@ The audited loop amplitude obeys
 4\eta_{\rm store}\beta_{g,A}\beta_{g,B},
 ```
 
-and the first source-controlled round-trip echo appears only after approximately
-
-```math
-3R/c.
-```
-
-Thus the factorized one-way transfer is not asserted as an exact solution of arbitrary strong reciprocal coupling.
+and the first source-controlled round-trip echo appears only after approximately `3R/c`.
 
 **Status: CLOSED at the stated weak one-way order.**
 
@@ -147,19 +117,15 @@ Thus the factorized one-way transfer is not asserted as an exact solution of arb
 
 ## 5. What exactly is the `25/16` quantity?
 
-### Referee concern
+Classical emitted power, extinction, scattering, absorption, coherent mode overlap, and stored quantum probability are not automatically interchangeable.
 
-Classical emitted power, extinction, scattering, absorption, coherent overlap, and stored quantum probability are not automatically the same quantity.
-
-### V7 answer
-
-The coefficient is supported by three conceptually distinct calculations:
+The V7 storage coefficient is supported by three conceptually distinct calculations:
 
 1. retarded conserved-source field;
-2. reciprocal radiation/absorption normalization;
+2. reciprocal radiation / critical quadrupole absorption;
 3. canonical transverse-traceless one-graviton mode overlap.
 
-The third route supplies the operational chain directly:
+The third route gives the operational chain
 
 ```math
 \text{normalized emitted one-graviton mode}
@@ -171,11 +137,21 @@ The third route supplies the operational chain directly:
 \eta_{\rm store}
 ```
 
-in the weak one-way wave zone.
+in the weak one-way wave zone and reproduces the complete radial polynomial
 
-The manuscript now says explicitly that the storage probability is not being identified with an arbitrary classical power or extinction coefficient.
+```math
+P(z)=3-3iz-3z^2+2iz^3+z^4.
+```
 
-The reactive near zone remains outside this probability interpretation.
+Thus
+
+```math
+|t|^2=
+\frac{25}{16z^2}
+\left(1-\frac{2}{z^2}+\frac{3}{z^4}-\frac{9}{z^6}+\frac{9}{z^8}\right).
+```
+
+The reactive near zone is outside this storage-probability interpretation.
 
 **Status: CLOSED at the stated wave-zone order.**
 
@@ -183,15 +159,9 @@ The reactive near zone remains outside this probability interpretation.
 
 ## 6. Is gravitational splitting being asked to prove too much?
 
-### Referee concern
+First-order gravitational splitting does not prove exact tensor-factor locality or absence of all exterior gravitational fields.
 
-First-order gravitational splitting does not establish exact tensor-factor locality or absence of all exterior gravitational fields.
-
-### V7 answer
-
-V7 does not require either claim.
-
-It imposes the equal-charge code condition
+V7 requires only
 
 ```math
 V_{\mathcal C}^{\dagger}Q_A V_{\mathcal C}=q_A I_{\mathcal C}
@@ -199,45 +169,77 @@ V_{\mathcal C}^{\dagger}Q_A V_{\mathcal C}=q_A I_{\mathcal C}
 
 for the total Poincare generators at the retained perturbative order.
 
-A common long-range gravitational dressing may remain. The only claim is that the logical branch is absent from that first-order charge data before the branch-dependent retarded multipole disturbance arrives.
-
-No exact nonperturbative subsystem theorem is claimed.
+A common long-range gravitational dressing may remain. The claim is that the logical branch is absent from the first-order charge data, while later branch-dependent multipole radiation carries the causal signal.
 
 **Status: CLOSED at first perturbative order.**
 
 ---
 
-## 7. Is the virtual difference mode physically real?
+## 7. Is the virtual difference mode a new physical oscillator?
 
-### Referee concern
+No.
 
-The collective mode
+The collective coordinate
 
 ```math
-d=\frac{1}{A}\sum_j\alpha_j^* b_j
+d=\frac{1}{A}\sum_j\alpha_j^*b_j
 ```
 
-could be misread as a new localized oscillator or propagating physical mode.
+is a basis-defined compression of the coherent displacement vector. It is not a newly postulated localized oscillator or an additional physical particle mode.
 
-### V7 answer
-
-It is neither.
-
-It is a basis-defined collective coordinate obtained by rotating the coherent displacement vector onto one mode coordinate. Its physical content is the total branch-dependent coherent norm and the projection of that norm onto actual receiver-coupled modes.
-
-The manuscript now states this explicitly.
+Its physical content is the complete branch-dependent coherent norm and its projection onto the receiver-coupled modes.
 
 **Status: CLOSED as an interpretation vulnerability.**
 
 ---
 
-# Final referee-level assessment
+## 8. What about macroscopic source coherence?
 
-The strongest surviving criticism is not that V7 contains a hidden factor-of-two error or an inconsistent gravitational source. It is the higher-level question:
+The link coefficient is conditional on successfully preparing and preserving source-reference coherence during the relevant protocol interval.
 
-> Is the common source-to-readout normalization itself a sufficiently important conceptual advance beyond the already known individual ingredients?
+The kilogram-scale benchmark does **not** include a device-specific calculation of thermal, vibrational, material, controller, or measurement-induced decoherence for realizing such a macroscopic coherent mechanical source.
 
-V7 is now positioned to answer that question as strongly as the current physics permits:
+A real experiment would require
+
+```math
+T_{\rm coherence}>T_{\rm protocol}.
+```
+
+This practical requirement may be more restrictive than the already tiny gravitational transfer coefficient.
+
+**Status: explicit limitation, not solved experimental engineering.**
+
+---
+
+## 9. Do the separate approximations hide dangerous cross terms?
+
+V7 uses several controlled small parameters. In the regular perturbative regime, simultaneous independent corrections enter at higher product order, schematically including terms such as
+
+```math
+O(q^2\beta^2),
+\qquad
+O\!\left(q_c^2\frac{B}{\omega}\right),
+```
+
+while some mixed structure is already explicit, for example
+
+```math
+O(\beta^2\epsilon_u^2).
+```
+
+The manuscript does **not** claim a universal all-orders remainder bound. If a small parameter ceases to be small or a singular/resonant regime is approached, the separated expansion must be replaced by the corresponding coupled calculation.
+
+**Status: controlled at the stated perturbative order; no all-orders claim.**
+
+---
+
+## Final referee-level assessment
+
+The strongest surviving criticism is not a demonstrated normalization error or inconsistent source. It is the higher-level publication question:
+
+> Is the common source-to-readout normalization a sufficiently important conceptual advance beyond the already known individual ingredients?
+
+V7's physical distinction is
 
 ```math
 \boxed{
@@ -249,12 +251,10 @@ V7 is now positioned to answer that question as strongly as the current physics 
 
 because the source must first place its branch-dependent quantum record into the gravitational radiation channel.
 
-The passive numerical benchmark near `10^{-42}` is evidence for the size of that distinction in one aggressive ordinary-matter operating point; it is not the theorem.
-
-The durable result is the source-resolved normalized factorization together with its stated domain of validity.
+The passive value near `10^-42` quantifies that distinction for one aggressive ordinary-matter operating point. It is not the theorem and not a universal gravitational bound.
 
 ## Publication verdict
 
-**No new publication-blocking physics defect found.**
+**No new publication-blocking physics defect was found in these adversarial review passes.**
 
-The manuscript should not reopen the main derivations on the basis of this review. The remaining uncertainty is normal referee judgment about conceptual significance, generality, and presentation.
+That statement is an internal research assessment, not peer review. The remaining uncertainty is normal referee judgment about conceptual significance, generality, and presentation.
