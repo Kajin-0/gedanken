@@ -27,3 +27,6 @@ jobs:
 
       - name: Verify passive-network cut-set bound
         run: python experiments/02-passive-gravitational-throughput/numerics/verify_passive_network_cutset.py
+
+      - name: Verify TT quadrupole propagation bound
+        run: python experiments/02-passive-gravitational-throughput/numerics/verify_tt_propagation_bound.py
