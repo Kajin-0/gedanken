@@ -20,7 +20,7 @@ compact mechanical eigenmodes
 -> gravitational emission
 -> gravitational reception
 -> emission/reception reciprocity
--> directivity
+-> the same STF quadrupole directivity functional
 -> Q-independent short-pulse response.
 ```
 
@@ -164,39 +164,72 @@ This historical result is closer than a generic resonant-bar citation because it
 
 ---
 
-## 6. The directivity value 5/2 is also already present
+## 6. Hirakawa Eq. (15) is the same real-STF directivity functional
 
-Hirakawa et al. derive explicit directivity patterns for compact quadrupole antenna modes.
+The collision is stronger than merely sharing the maximum value `5/2`.
 
-For their B-mode family,
+For a real symmetric trace-free quadrupole tensor `q`, the TT projector obeys
 
 ```math
-f(\theta,\phi)
+q:\Lambda(\hat n):q
 =
-\frac52
--\frac52\sin^2\theta
-+\frac58\sin^4\theta\cos^22\phi.
+q:q
+-2(q\hat n)\cdot(q\hat n)
++\frac12(\hat n^Tq\hat n)^2.
 ```
 
-Along the symmetry axis,
+Therefore the Experiment 02 directivity expression restricted to real STF tensors is
+
+```math
+D_q(\hat n)
+=
+\frac52
+\frac{q:\Lambda(\hat n):q}{q:q}
+=
+5\frac{
+\frac12q:q
+-(q\hat n)\cdot(q\hat n)
++\frac14(\hat n^Tq\hat n)^2
+}{q:q}.
+```
+
+Hirakawa et al. Eq. (15) is
+
+```math
+f_n(\hat n)
+=
+\frac{
+\frac14(\hat n^Tq\hat n)^2
++\frac12 q:q
+-(q\hat n)\cdot(q\hat n)
+}{\frac15 q:q},
+```
+
+which is algebraically identical:
+
+```math
+\boxed{f_n(\hat n)=D_q(\hat n)}.
+```
+
+Their later explicit B-mode formula reaches
 
 ```math
 f(0,\phi)=\frac52.
 ```
 
-Thus the numerical compact-quadrupole directivity value `D = 5/2` is not a new observation of Experiment 02.
+Thus both the compact real-STF directivity functional and its `5/2` maximum are historical antenna theory.
 
-Experiment 02 still contributes a cleaner operator statement for arbitrary complex STF transition tensors,
+Experiment 02 uses the equivalent TT-projector language, extends the normalized radiation space to possibly complex STF transition tensors, and—more importantly—uses the resulting normalized angular modes to obtain a **separated inter-endpoint propagation amplitude**
 
 ```math
-D_Q(\hat n)
-=
-\frac52
-\frac{Q^*:\Lambda(\hat n):Q}{Q^*:Q}
-\le\frac52,
+t_{BA}^{\rm TT}
+=-\frac{5i}{4kR}e^{ikR}
+\frac{Q_B^*:\Lambda(\hat R):Q_A}
+{\|Q_A\|\|Q_B\|}
++O((kR)^{-2}),
 ```
 
-and converts this to the normalized one-graviton propagation singular-value ceiling
+and hence
 
 ```math
 \|P_g\|_{\rm op}^2
@@ -204,7 +237,7 @@ and converts this to the normalized one-graviton propagation singular-value ceil
 \frac{25}{16(kR)^2}.
 ```
 
-But the underlying maximum directivity value itself must be treated as historical antenna physics, not novelty.
+The directivity formula itself is **not** part of the novelty claim. The potentially distinctive step is its normalization as the middle free-space operator in the two-ended resource cut set.
 
 ---
 
@@ -281,7 +314,7 @@ After full-text inspection, the following are definitively **not** novelty claim
 - the same oscillator-strength parameter governing emission and reception;
 - gravitational antenna reciprocity;
 - Q-independent short-pulse / integrated resonant response;
-- compact quadrupole directivity reaching `5/2`;
+- the compact real-STF directivity functional and its `5/2` maximum;
 - optimization of mechanical readout loading and thermal noise.
 
 The surviving candidate contribution is narrower:
@@ -291,7 +324,7 @@ The surviving candidate contribution is narrower:
 Symbolically,
 
 ```text
-historical compact antenna oscillator strength + reciprocity
+historical compact antenna oscillator strength + reciprocity + directivity
                          ↓
 known passive H2 cut-set machinery
                          ↓
@@ -316,11 +349,11 @@ The risk is no longer that the theorem is algebraically wrong.
 
 The sharper referee objection is now:
 
-> The paper may be a technically correct synthesis of known gravitational antenna oscillator-strength/reciprocity physics, known passive H2 mathematics, and a known quadrupole sum rule, rather than a fundamentally new physical principle.
+> The paper may be a technically correct synthesis of known gravitational antenna oscillator-strength/reciprocity/directivity physics, known passive H2 mathematics, and a known quadrupole sum rule, rather than a fundamentally new physical principle.
 
-That objection cannot be answered by claiming that emission, reception, integrated response, or `D=5/2` are new; they are not.
+That objection cannot be answered by claiming that emission, reception, integrated response, reciprocity, or compact quadrupole directivity are new; they are not.
 
-The manuscript must instead make clear that its candidate contribution is the **architecture-independent two-ended closure** that removes `Q`, mode count, internal coherent mixing, and compact orientation from the final integrated ceiling.
+The manuscript must instead make clear that its candidate contribution is the **architecture-independent many-mode two-ended closure** that removes `Q`, passive mode count, internal coherent mixing, and compact orientation from the final integrated ceiling.
 
 Whether that synthesis is significant enough for publication is a referee/editor judgment, not something the internal audit can settle.
 
@@ -333,6 +366,7 @@ PHYSICS THEOREM:                    GO WITH DECLARED SCOPE
 HIRAKAWA FULL-TEXT COLLISION:       STRONG INGREDIENT COLLISION
 COMPACT EMISSION/RECEPTION THEORY:  HISTORICAL
 Q-INDEPENDENT PULSE RESPONSE:       HISTORICAL
+REAL-STF DIRECTIVITY FUNCTIONAL:    HISTORICAL
 D = 5/2 DIRECTIVITY VALUE:          HISTORICAL
 PASSIVE H2 TWO-END CUT SET:         NO COLLISION FOUND HERE
 CUMULATIVE BOTH-END EWSR CLOSURE:   NO COLLISION FOUND HERE
@@ -348,11 +382,11 @@ THEOREM BROADENING:                 NO
 
 ## 11. Required manuscript correction
 
-Before external specialist review, manuscript v1 should explicitly cite Hirakawa et al. and state that compact gravitational antennas with common emission/reception oscillator strength, reciprocity, Q-independent pulse response, and directivity up to `5/2` are historical.
+Manuscript v1 should explicitly cite Hirakawa et al. and state that compact gravitational antennas with common emission/reception oscillator strength, reciprocity, Q-independent pulse response, and the real-STF directivity functional are historical.
 
-The introduction should no longer contrast the present problem with a purely “receiver-only” historical literature. Older generator-detector calculations and unified emission/reception antenna theory both exist.
+The introduction should not contrast the present problem with a purely “receiver-only” historical literature. Older generator-detector calculations and unified emission/reception antenna theory both exist.
 
-The paper should lead with the actual new candidate object:
+The paper should lead with the actual candidate object:
 
 ```math
 \Gamma_{\rm coh}
