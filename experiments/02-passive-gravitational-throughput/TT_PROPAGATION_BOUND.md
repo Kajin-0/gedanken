@@ -198,9 +198,108 @@ This is not a special property of the four-spoke source geometry; it is a proper
 
 ---
 
-## 5. Reciprocal receiver gain
+## 5. Direct canonical TT overlap proof
 
-For a reciprocal compact quadrupole receiver coupled to the same radiation family, transmit and receive gain are equal channel by channel. Therefore the receiver gain obeys the same ceiling,
+The propagation ceiling can be obtained directly from the normalized one-graviton angular modes, without using a Friis/effective-area interpretation.
+
+For any nonzero STF quadrupole `Q`, define its normalized emitted angular mode
+
+```math
+\boxed{
+u_{Q,\lambda}(\hat n)
+=
+\sqrt{\frac{5}{8\pi}}
+\frac{Q:\epsilon^{(\lambda)}(\hat n)}
+{\sqrt{Q^*:Q}}.
+}
+```
+
+The angular identity above gives
+
+```math
+\sum_\lambda\int d\Omega\,|u_{Q,\lambda}|^2=1.
+```
+
+For normalized source and reciprocal receiver quadrupoles `Q_A,Q_B`, separated by `R \hat R`, the fixed-frequency translated mode overlap is
+
+```math
+S_{BA}(z)
+=
+\sum_\lambda\int d\Omega\,
+u_{Q_B,\lambda}^*(\hat n)
+u_{Q_A,\lambda}(\hat n)
+e^{iz\hat n\cdot\hat R},
+\qquad z=kR.
+```
+
+For `z >> 1`, stationary phase gives independent outgoing and time-reversed contributions from `+\hat R` and `-\hat R`. The outgoing retarded piece is
+
+```math
+\boxed{
+t_{BA}^{\rm TT}(z)
+=
+-\frac{5i}{4z}e^{iz}
+\frac{
+Q_B^*:\Lambda(\hat R):Q_A
+}
+{
+\sqrt{Q_A^*:Q_A}
+\sqrt{Q_B^*:Q_B}
+}
++O(z^{-2}).
+}
+```
+
+The coefficient follows because the outgoing stationary-phase factor is `2 pi/(i z)` and the product of normalized angular-mode prefactors is `5/(8 pi)`.
+
+Now use Cauchy--Schwarz together with `||Lambda||_op=1`:
+
+```math
+|Q_B^*:\Lambda:Q_A|
+\le
+\sqrt{Q_B^*:Q_B}
+\sqrt{Q_A^*:Q_A}.
+```
+
+Therefore
+
+```math
+\boxed{
+|t_{BA}^{\rm TT}|^2
+\le
+\frac{25}{16(kR)^2}
+\left[1+O((kR)^{-1})\right].
+}
+```
+
+At leading wave-zone order the bound is saturated when both source and receiver quadrupoles occupy the same normalized TT tensor in the two-dimensional TT subspace associated with the line of sight.
+
+This directly proves that the largest singular value of the compact quadrupole TT propagation map is
+
+```math
+\boxed{
+\|P_g(\omega)\|_{\rm op}
+\le
+\frac{5}{4kR}
+```
+
+at leading wave-zone order, and hence
+
+```math
+\boxed{
+\|P_g(\omega)\|_{\rm op}^2
+\le
+\frac{25}{16(kR)^2}.
+}
+```
+
+For the aligned V7 plus mode, the tensor overlap ratio is exactly one, reproducing the leading term of its explicit finite-distance TT overlap.
+
+---
+
+## 6. Reciprocal receiver gain interpretation
+
+The same result has a reciprocal antenna interpretation. For a reciprocal compact quadrupole receiver coupled to the same radiation family, transmit and receive gain are equal channel by channel. Therefore the receiver gain obeys
 
 ```math
 \boxed{
@@ -221,11 +320,7 @@ A_e
 
 The final equality uses `lambda = 2 pi / k` and reproduces the V7 reciprocal-absorption normalization.
 
----
-
-## 6. Wave-zone source-to-receiver ceiling
-
-For a weak one-way reciprocal far-field link, the Friis form is
+For a weak one-way reciprocal far-field link,
 
 ```math
 \eta_{BA}
@@ -235,63 +330,23 @@ G_A G_B
 \mathcal O,
 ```
 
-where `0 <= O <= 1` contains residual polarization/tensor/orientation/temporal mismatch not already absorbed into the chosen singular channel.
-
-Using
-
-```math
-G_A\le\frac52,
-\qquad
-G_B\le\frac52,
-```
-
-and
-
-```math
-\frac{\lambda}{4\pi R}
-=\frac{1}{2kR},
-```
-
-gives
+where `0 <= O <= 1` collects residual polarization/tensor/orientation mismatch. Using `G_A,G_B <= 5/2` again gives
 
 ```math
 \boxed{
 \eta_{BA}
 \le
-\frac{25}{16(kR)^2}.
+\frac{25\mathcal O}{16(kR)^2}.
 }
 ```
 
-More generally,
-
-```math
-\boxed{
-\eta_{BA}
-\le
-\frac{25\mathcal O}{16(kR)^2},
-\qquad 0\le\mathcal O\le1.
-}
-```
-
-The coefficient is saturated by an aligned reciprocal TT quadrupole pair with perfect polarization/tensor matching in the leading wave-zone limit.
+Thus the direct TT-overlap and reciprocal-gain routes agree.
 
 ---
 
-## 7. Propagation-operator statement
+## 7. Propagation-operator statement over a band
 
-Let `P_g(omega)` be the propagation map between normalized compact source and receiver quadrupole radiation-channel spaces. Its operator norm is the largest transfer amplitude over all normalized source and receiver superpositions. The gain argument above already maximizes over the STF source tensor and reciprocal receiver tensor, so
-
-```math
-\boxed{
-\|P_g(\omega)\|_{\rm op}^2
-\le
-\frac{25}{16[k(\omega)R]^2}
-}
-```
-
-in the weak one-way wave zone.
-
-Therefore, over a declared operating band `B` lying entirely in the wave zone,
+Let `P_g(omega)` be the propagation map between normalized compact source and receiver quadrupole radiation-channel spaces. Over a declared operating band `B` lying entirely in the wave zone,
 
 ```math
 \boxed{
@@ -301,9 +356,11 @@ Therefore, over a declared operating band `B` lying entirely in the wave zone,
 \|P_g(\omega)\|_{\rm op}^2
 \le
 \sup_{\omega\in\mathcal B}
-\frac{25}{16[k(\omega)R]^2}.
+\frac{25}{16[k(\omega)R]^2}
 }
 ```
+
+at leading wave-zone order.
 
 For a narrow band around carrier `omega_0`,
 
@@ -313,7 +370,7 @@ For a narrow band around carrier `omega_0`,
 \frac{25}{16(k_0R)^2}
 ```
 
-up to the declared fractional-bandwidth correction.
+up to the declared fractional-bandwidth and higher-order wave-zone corrections.
 
 ---
 
@@ -356,7 +413,7 @@ Equivalently,
 }
 ```
 
-This is now independent of the four-spoke construction. The four-spoke plus mode is an explicit source realization that saturates the compact-quadrupole directivity ceiling, not an assumption of the theorem.
+This is now independent of the four-spoke construction. The four-spoke plus mode is an explicit source realization that saturates the compact-quadrupole directivity and leading TT propagation ceiling, not an assumption of the theorem.
 
 ---
 
@@ -375,18 +432,19 @@ The `5/2` and `25/16` ceilings here are restricted to:
 
 An extended distributed aperture can obtain larger directivity by using spatial phase across its size; that is a different architecture and must be bounded by its actual aperture rather than by the compact quadrupole theorem.
 
+The canonical TT overlap supplies the strongest derivation of the propagation singular-value bound; reciprocity is needed only for the equivalent receiver-gain interpretation.
+
 ---
 
 ## 10. Claim discipline
 
 Allowed:
 
-> Any compact STF mass quadrupole has gravitational-wave directivity at most `5/2`. By reciprocity, the same ceiling applies to a compact quadrupole receiver, yielding a maximum one-way wave-zone quadrupole link factor `25/[16(kR)^2]`.
+> Any compact STF mass quadrupole has gravitational-wave directivity at most `5/2`, and the normalized TT one-graviton propagation map between two compact quadrupole channel spaces has leading wave-zone singular value at most `5/(4kR)`. Hence the maximum one-way compact-quadrupole wave-zone transfer is `25/[16(kR)^2]`.
 
 Not allowed:
 
 - `25/16` is a universal bound for all gravitational antennas;
 - the result covers extended arrays or higher multipoles;
 - the result applies in the near field;
-- the result is independent of reciprocity;
 - the result is a fundamental bound of quantum gravity rather than a compact linearized-gravity quadrupole theorem.
