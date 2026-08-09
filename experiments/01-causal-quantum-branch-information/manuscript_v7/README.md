@@ -14,7 +14,7 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 
 Automated checks:
 
-- `.github/workflows/latex-v7.yml` — manuscript compile, unresolved-reference/citation check, PDF artifact;
+- `.github/workflows/latex-v7.yml` — manuscript compile, unresolved-reference/citation check, PDF output;
 - `.github/workflows/submission-package.yml` — manifest-defined isolated source copy, semantic guards, clean-directory compile, clean source ZIP.
 
 ## Layout
@@ -32,22 +32,23 @@ Automated checks:
 - `figures/` — source geometry and serial link architecture
 - `references.bib` — scientific bibliography
 - `data.bib` — repository/Data Availability citation
-- `SUBMISSION_MANIFEST.txt` — exact manuscript-source file set used by the isolated packaging workflow
+- `SUBMISSION_MANIFEST.txt` — exact manuscript-source file set used by the isolated packaging check
 
 ## Canonical state
 
 Read:
 
-1. `../CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`
-2. `../PRD_SUBMISSION_CHECKLIST_V7.md`
-3. `../EXTERNAL_REVIEW_RESPONSE_V7.md`
-4. `../ARCHIVE_STATUS.md`
+1. `../CURRENT_STATE_REVIEW_CLOSED_V7.md`
+2. `../CLAIM_LEDGER.md`
+3. `../PRD_SUBMISSION_CHECKLIST_V7.md`
+4. `../ADVERSARIAL_REVIEW_RESPONSE_V7_2026-08-08.md`
+5. `../ARCHIVE_STATUS.md`
 
 Current internal verdict:
 
-> No known publication-critical structural physics gap remains from the external review within the manuscript's declared weak-field, nonrelativistic, narrowband linear regime.
+> No known publication-critical structural physics gap remains within the manuscript's declared weak-field, nonrelativistic, narrowband linear regime.
 
-This is a submission-readiness statement, not a guarantee of peer-review acceptance.
+The repository-level adversarial review passes include independent AI-agent critiques plus mathematical, numerical, primary-source, and literature audits. They are **not formal journal peer review** and do not guarantee correctness or acceptance.
 
 ## Public versus private submission metadata
 
