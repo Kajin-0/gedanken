@@ -1,188 +1,31 @@
 # Experiment 02 — Passive Gravitational Coherent-Transfer Throughput
 
-## Research question
+## Question
 
-Can the speed–efficiency tradeoff exposed by Experiment 01 be promoted to a broad passive gravitational throughput bound that cannot be evaded by arbitrarily high Q, many resonances, or coherent mode mixing?
+What frequency-integrated coherent transfer can a **direct passive gravitational link** support when both compact matter interfaces and the propagating TT channel are treated explicitly?
 
-**Current answer:** yes for stable finite-dimensional passive linear Markov endpoint networks. The remaining hard step is extending the material-response bridge to completely general interacting/non-Markov passive susceptibilities.
-
-Experiment 01 / V7 is frozen. This branch does not modify it.
+Experiment 01 / V7 is frozen. This branch develops a separate theorem and does not modify V7.
 
 ---
 
-## Main result — passive linear-network cut-set theorem
+## Headline theorem
 
-For a stable passive bosonic endpoint,
-
-```math
-A=-iH-\frac12K^\dagger K,
-```
-
-partition the external channels into useful local, gravitational, and ordinary-loss ports. Let
+For compact passive nonrelativistic **linear bosonic** source and receiver networks coupled by quadrupolar linearized gravity in the weak one-way wave zone, define
 
 ```math
-P_g(\omega)
-```
-
-be the one-way gravitational propagation map between the source and receiver channel spaces, and define
-
-```math
-\eta_{\max}
-=\sup_{\omega\in\mathcal B}
-\|P_g(\omega)\|_{\rm op}^2
-\le1.
-```
-
-For the complete useful source-to-receiver transfer matrix `T(omega)`, define
-
-```math
-\boxed{
 \Gamma_{\rm coh}
 =\frac1{2\pi}
 \int_{\mathcal B}
 \operatorname{Tr}[T^\dagger(\omega)T(\omega)]d\omega.
-}
 ```
 
-Then passivity gives
+For a narrow band centered at `omega`, the current theorem gives
 
 ```math
 \boxed{
 \Gamma_{\rm coh}
-\le
-\eta_{\max}
-\min\!\left[
-\operatorname{Tr}(K_{g,A}^\dagger K_{g,A}),
-\operatorname{Tr}(K_{g,B}^\dagger K_{g,B})
-\right].
-}
-```
-
-The proof uses the passive identity `A+A^dagger=-K^dagger K`, the fact that the complete-channel controllability Gramian is exactly the identity, and contraction of passive scattering subblocks.
-
-This result allows arbitrary coherent internal mode mixing and overlapping resonances. It does **not** require independent scalar channels.
-
-See `PASSIVE_NETWORK_CUTSET_THEOREM.md`.
-
----
-
-## Single-pole specialization
-
-For one source and one receiver resonance with explicit local input/output ports,
-
-```math
-\tau(\Omega)
-=
-\frac{
-\eta_{\rm prop}
-\kappa_{\rm in}\kappa_{g,A}\kappa_{g,B}\kappa_{\rm out}
-}
-{
-[\Omega^2+(\kappa_A/2)^2]
-[\Omega^2+(\kappa_B/2)^2]
-},
-```
-
-and
-
-```math
-\boxed{
-\Gamma_{\rm EBP}
-\equiv
-\frac1{2\pi}\int_{-\infty}^{\infty}\tau(\Omega)d\Omega
-=
-\frac{
-4\eta_{\rm prop}
-\kappa_{\rm in}\kappa_{g,A}\kappa_{g,B}\kappa_{\rm out}
-}
-{\kappa_A\kappa_B(\kappa_A+\kappa_B)}.
-}
-```
-
-Therefore
-
-```math
-\boxed{
-\Gamma_{\rm EBP}
-\le
-\eta_{\rm prop}\min(\kappa_{g,A},\kappa_{g,B}).
-}
-```
-
-For symmetric intrinsic gravitational rates with no internal loss, the spectral-area optimum is overcoupled:
-
-```math
-\kappa_{\rm in}=\kappa_{\rm out}=2\kappa_g,
-```
-
-with
-
-```math
-\boxed{
-\Gamma_{\rm EBP}^{\rm sym,max}
-=\frac8{27}\eta_{\rm prop}\kappa_g.
-}
-```
-
-See `TWO_PORT_SPECTRAL_BOUND.md`.
-
----
-
-## Passive matter spectral resource
-
-For a stationary passive nonrelativistic matter system, define the positive quadrupole spectral measure
-
-```math
-d\mu_Q(\omega)
-=
-\sum_{m<n,a}
-(p_m-p_n)|Q^a_{mn}|^2
-\delta(\omega-\omega_{nm})d\omega.
-```
-
-The energy-weighted quadrupole sum rule gives
-
-```math
-\int_0^\infty\omega\,d\mu_Q(\omega)
-=\frac{10}{3}\hbar\langle I\rangle.
-```
-
-Hence the cumulative gravitational transition-rate weight below operating ceiling `Omega`,
-
-```math
-K_g(\Omega)
-=
-\frac{2G}{5\hbar c^5}
-\int_0^\Omega\omega^5d\mu_Q(\omega),
-```
-
-obeys
-
-```math
-\boxed{
-K_g(\Omega)
-\le
-\frac{4G}{3c^5}\langle I\rangle\Omega^4.
-}
-```
-
-This controls the total passive gravitational oscillator-strength rate of arbitrarily many quadrupole transitions inside a finite operating band.
-
-For passive linear mode networks whose gravitational Markov coupling matrix resolves that same positive spectral weight,
-
-```math
-\operatorname{Tr}(K_g^\dagger K_g)
-\le K_g(\Omega),
-```
-
-and therefore
-
-```math
-\boxed{
-\Gamma_{\rm coh}
-\le
-\eta_{\max}
-\frac{4G\Omega^4}{3c^5}
+\lesssim
+\frac{25G\omega^2}{12c^3R^2}
 \min\!\left(
 \langle I_A\rangle,
 \langle I_B\rangle
@@ -190,127 +33,189 @@ and therefore
 }
 ```
 
-This is the current strongest material-level result. See `SPECTRAL_GENERALIZATION.md`.
+Here `I_A` and `I_B` are internal mass inertia moments about each endpoint center of mass.
+
+The result contains no endpoint quality factor, no assumed number of passive modes, and no four-spoke-specific parameter.
+
+`Gamma_coh` is a physical integrated coherent-transfer / efficiency-bandwidth quantity, **not itself a quantum capacity**.
 
 ---
 
-## Pure-loss quantum-information corollaries
+## Why the theorem survives obvious passive escape routes
 
-`Gamma_coh` is a physical coherent-transfer integral, **not** itself a capacity.
+### High Q
 
-For a stationary vacuum pure-loss realization, every transmission eigenvalue satisfies
+For one source and receiver pole,
+
+```math
+\Gamma_{\rm EBP}
+=\frac1{2\pi}\int\tau(\Omega)d\Omega
+\le
+\eta_{\rm prop}\min(\kappa_{g,A},\kappa_{g,B}).
+```
+
+Removing ordinary loss can raise peak gravitational branching, but the spectral response narrows toward the intrinsic gravitational linewidth.
+
+### Many modes / coherent mixing
+
+Established completely passive linear-system identities imply the endpoint cut set
+
+```math
+\Gamma_{\rm coh}
+\le
+\eta_{\max}
+\min\!\left[
+\operatorname{Tr}(K_{g,A}^\dagger K_{g,A}),
+\operatorname{Tr}(K_{g,B}^\dagger K_{g,B})
+\right].
+```
+
+Internal coherent mixing cannot increase the basis-invariant gravitational coupling trace.
+
+### More passive quadrupole oscillator strength
+
+For ordinary compact nonrelativistic linear matter, the mass-quadrupole EWSR gives
+
+```math
+\operatorname{Tr}(K_g^\dagger K_g)
+\le
+\frac{4G\omega^4}{3c^5}\langle I\rangle
+```
+
+in the retained narrow band.
+
+### Better compact quadrupole orientation
+
+For any compact STF mass quadrupole,
+
+```math
+D_Q(\hat n)\le\frac52,
+```
+
+and the normalized TT one-graviton propagation map obeys
+
+```math
+\|P_g\|_{\rm op}^2
+\le
+\frac{25}{16(kR)^2}
+```
+
+at leading wave-zone order.
+
+The V7 plus mode saturates this geometry ceiling, but the theorem itself no longer depends on that source construction.
+
+---
+
+## What is actually new here — if the remaining prior-art audit holds
+
+The easy novelty story is **not allowed**.
+
+Historical resonant-mass gravitational-wave antenna theory already uses integrated absorption cross sections. The cancellation between increased resonant peak and reduced bandwidth at high Q is therefore not a new discovery here. Gravitational absorption written in material-susceptibility language is also established, as are passive quantum-network Gramian identities and generic quantum-transducer efficiency-bandwidth/capacity metrics.
+
+The candidate contribution is narrower:
+
+```text
+historical one-sided gravitational response
++ established passive network identities
+-> source gravitational resource cut set
+-> normalized propagating TT channel
+-> receiver gravitational resource cut set
+-> end-to-end integrated coherent-transfer ceiling
+-> pure-loss quantum-information corollaries.
+```
+
+A targeted search has not yet found this same two-ended passive far-field closure. That is a negative search result, not proof of priority.
+
+---
+
+## Pure-loss corollaries
+
+For a stationary vacuum pure-loss realization, every transmission eigenvalue obeys
 
 ```math
 \tau_n(\omega)\le\eta_{\max}.
 ```
 
-Therefore, if
+If `eta_max <= 1/2`,
 
 ```math
-\eta_{\max}\le1/2,
+\boxed{Q_1=0}
 ```
 
-the unassisted pure-loss quantum capacity is identically zero:
+for unassisted asymptotic pure-loss quantum capacity.
 
-```math
-\boxed{Q_1=0.}
-```
-
-For `eta_max < 1`, the two-way-assisted capacity obeys
+For `eta_max < 1`,
 
 ```math
 \boxed{
 Q_2
 \le
 \frac{\Gamma_{\rm coh}}
-{\ln2\,(1-\eta_{\max})}.
+{\ln2\,(1-\eta_{\max})}
 }
 ```
 
-Combining with the passive network and material bounds gives an explicit gravity-limited two-way entanglement-distribution rate ceiling within the pure-loss model.
+for the two-way-assisted pure-loss rate.
 
-See `CAPACITY_COROLLARIES.md`.
-
----
-
-## Relation to the V7 aligned quadrupole
-
-For the V7 aligned plus-quadrupole wave-zone channel,
-
-```math
-\eta_{\rm prop}
-=\frac{25\mathcal O}{16(kR)^2}.
-```
-
-The narrowband passive matter result becomes
-
-```math
-\boxed{
-\Gamma_{\rm EBP}
-\lesssim
-\frac{25\mathcal O}{24(kR)^2}
-\omega
-\min\!\left(
-\mathcal C_A\beta_A^3,
-\mathcal C_B\beta_B^3
-\right).
-}
-```
-
-For the inherited benchmark,
-
-```math
-\eta_{\rm prop}\kappa_g
-=1.0734375\times10^{-27}\;\mathrm{s}^{-1},
-```
-
-whose inverse is about
-
-```math
-2.95\times10^{19}\;\mathrm{yr}.
-```
-
-This is a coherent-transfer cut-set timescale, not literally a one-qubit waiting time.
+These are channel-specific corollaries, not universal statements about gravity.
 
 ---
 
-## What remains open
+## Explicit realization
 
-The key unresolved physics question is now narrower:
+The frozen V7 long-wavelength mode reaches 30% of the endpoint-only EWSR gravitational-linewidth ceiling and saturates the compact TT geometry ceiling. This shows that the theorem has the correct physical scale, but the complete end-to-end coefficient is not claimed globally sharp.
 
-> Can the gravitational coupling-trace resource in the passive Markov theorem be replaced directly by a general matrix-valued mass-quadrupole susceptibility/spectral measure for arbitrary interacting passive matter, while retaining a rigorous TT propagation bound?
+See `BENCHMARK_THEOREM_COMPARISON.md`.
 
-That is the next theorem target. Active/inverted matter, relativistic systems, nonstationary driving, thermal/noisy capacities, and resource-assisted escapes are later branches.
+---
+
+## Scope
+
+The current theorem is restricted to:
+
+- weak linearized gravity;
+- direct propagating one-way wave-zone transfer;
+- compact nonrelativistic quadrupole source and receiver matter;
+- stable passive linear bosonic endpoint dynamics in a narrow/band-local Markov description;
+- no active gain, inversion, parametric drive, extended phased aperture, higher-multipole beaming, near-field exchange, or intermediate relay.
+
+A general interacting/non-Markov susceptibility theorem is **not required for the current result** and is intentionally deferred.
 
 ---
 
 ## Validation
 
-Branch-only automated regression checks:
+Automated branch regression checks:
 
-- exact two-pole spectral integral against direct quadrature;
-- random passive two-pole rate sets;
-- the symmetric `8/27` optimum;
-- random multi-mode passive Gramians and endpoint H2 norms;
-- direct quadrature of random source–propagation–receiver networks against the cut-set ceiling.
+- exact two-pole spectral area against direct integration;
+- random passive rate sets;
+- random multi-mode passive Gramians and end-to-end cascades;
+- random complex STF tensors against the `D <= 5/2` TT ceiling;
+- TT angular normalization and the `25/16` propagation coefficient.
 
-The first GitHub Actions run passed all checks.
+GitHub Actions run `31310582891`, job `93237694140`, passed all current regression stages.
 
 ---
 
-## Novelty status
-
-**Promising but unverified. Do not claim priority yet.**
-
-A targeted current search has found nearby work on generic quantum-transducer capacity/efficiency-bandwidth limits and on gravitational detector coupling limits, but no inspected source yet combines passive mass-quadrupole spectral weight with an end-to-end gravitational transfer/capacity cut-set theorem.
-
-Read next:
+## Read next
 
 1. `CURRENT_STATE.md`
-2. `PASSIVE_NETWORK_CUTSET_THEOREM.md`
-3. `CAPACITY_COROLLARIES.md`
-4. `TWO_PORT_SPECTRAL_BOUND.md`
-5. `SPECTRAL_GENERALIZATION.md`
-6. `SINGLE_RESONANCE_BOUND.md`
-7. `LITERATURE_MAP.md`
-8. `AGENTS.md`
+2. `THEOREM_SYNTHESIS.md`
+3. `PASSIVE_NETWORK_CUTSET_THEOREM.md`
+4. `GRAVITATIONAL_PORT_FACTORIZATION.md`
+5. `MATERIAL_RESPONSE_BRIDGE.md`
+6. `TT_PROPAGATION_BOUND.md`
+7. `CAPACITY_COROLLARIES.md`
+8. `ADVERSARIAL_THEOREM_AUDIT.md`
+9. `INITIAL_NOVELTY_SWEEP.md`
+10. `LITERATURE_MAP.md`
+11. `MANUSCRIPT_OUTLINE.md`
+12. `AGENTS.md`
+
+## Current status
+
+**Physics theorem: closed within the stated passive compact linear-bosonic class.**
+
+**Publication novelty: promising but not yet established.**
+
+The next step is a theorem-first manuscript hardening pass, not further broadening of the physics.
