@@ -3,7 +3,7 @@
 **Date:** 2026-08-08  
 **Purpose:** keep the adversarial research trail without letting obsolete files compete with the active V7 manuscript.
 
-> Live `main`, root `AGENTS.md`, and `CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md` are authoritative.
+> Live `main`, root `AGENTS.md`, and `CURRENT_STATE_REVIEW_CLOSED_V7.md` are authoritative.
 
 ---
 
@@ -11,14 +11,17 @@
 
 Use these for current scientific or submission work:
 
-1. `CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`
-2. `manuscript_v7/`
-3. `EXTERNAL_REVIEW_RESPONSE_V7.md`
-4. `APPROXIMATION_ERROR_BUDGET_V7.md`
-5. `FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`
-6. `PRD_SUBMISSION_CHECKLIST_V7.md`
-7. `PRD_COVER_LETTER_DRAFT_V7.md`
-8. `SUBMISSION_STRATEGY_V7.md`
+1. `CURRENT_STATE_REVIEW_CLOSED_V7.md`
+2. `CLAIM_LEDGER.md`
+3. `manuscript_v7/`
+4. `ADVERSARIAL_REVIEW_RESPONSE_V7_2026-08-08.md`
+5. `APPROXIMATION_ERROR_BUDGET_V7.md`
+6. `FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`
+7. `PRD_SUBMISSION_CHECKLIST_V7.md`
+8. `PRD_COVER_LETTER_DRAFT_V7.md`
+9. `SUBMISSION_STRATEGY_V7.md`
+
+The review material is repository-level adversarial review, including AI-agent critiques plus mathematical, numerical, primary-source, and literature audits. It is **not formal journal peer review**.
 
 Do not replace the active manuscript with an older `PAPER_CORE_*` file.
 
@@ -58,7 +61,7 @@ These are active tools or supporting derivations, but not standalone novelty cla
 - `VIRTUAL_DIFFERENCE_MODE_CHANNEL_REDUCTION.md`
 - `CANONICAL_FOUR_FACTOR_QUANTUM_LINK_BUDGET.md`
 
-Where these overlap with `manuscript_v7/`, the manuscript and current-state file define the publication wording and scope.
+Where these overlap with `manuscript_v7/`, the manuscript, current-state file, and current claim ledger define the publication wording and scope.
 
 ---
 
@@ -101,7 +104,7 @@ Use older cores only to trace the evolution of a derivation or understand why a 
 
 ---
 
-## F. Superseded current-state files
+## F. Superseded and legacy state/review files
 
 Historical recovery notes include
 
@@ -110,9 +113,16 @@ Historical recovery notes include
 - `CURRENT_STATE_MANUSCRIPT_V7.md`
 - `CURRENT_STATE_SUBMISSION_V7.md`
 
-These remain useful provenance, but the current recovery point is
+Legacy filenames retained for compatibility:
 
-`CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`.
+- `CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`
+- `EXTERNAL_REVIEW_RESPONSE_V7.md`
+
+The legacy `EXTERNAL_REVIEW` files now contain explicit pointers and terminology clarification. They are **not** canonical state files.
+
+The current recovery point is
+
+`CURRENT_STATE_REVIEW_CLOSED_V7.md`.
 
 ---
 
@@ -149,6 +159,8 @@ Do not resurrect without a new derivation and new evidence:
 - prescribed endpoint masses alone as a complete conserved gravitational source;
 - generic novelty for propagating-graviton entanglement or graviton transduction.
 
+The compact correction history is also preserved in `CLAIM_LEDGER.md`.
+
 ---
 
 ## I. Numerical material
@@ -168,7 +180,7 @@ Legacy/receiver audits retained for reproducibility:
 - `additive_noise_cat_scan.py`
 - `near_boundary_stress.py`
 
-CI-oriented regression harness:
+Automated regression harness:
 
 - `scientific_regression_checks.py`
 
