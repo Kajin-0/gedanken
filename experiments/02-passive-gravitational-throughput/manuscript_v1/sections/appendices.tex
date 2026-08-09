@@ -1,0 +1,170 @@
+\appendix
+
+\section{Passive selected-port Gramian bound}
+\label{app:gramian}
+
+For the passive endpoint of Eq.~\eqref{eq:passiveio}, define the complete controllability Gramian
+\begin{equation}
+P_{\rm all}
+=\int_0^\infty\dd t\,
+\ee^{At}K^\dagger K\ee^{A^\dagger t}.
+\end{equation}
+It solves
+\begin{equation}
+AP_{\rm all}+P_{\rm all}A^\dagger+K^\dagger K=0.
+\end{equation}
+Equation~\eqref{eq:Apassive} also gives
+\begin{equation}
+AI+IA^\dagger+K^\dagger K=0.
+\end{equation}
+For stable $A$, the Lyapunov solution is unique, hence
+\begin{equation}
+P_{\rm all}=I.
+\end{equation}
+For a selected input subset $u$,
+\begin{equation}
+P_u=\int_0^\infty\dd t\,
+\ee^{At}K_u^\dagger K_u\ee^{A^\dagger t}.
+\end{equation}
+Since $0\le K_u^\dagger K_u\le K^\dagger K$, the integral representation gives
+\begin{equation}
+0\le P_u\le I.
+\end{equation}
+The standard Gramian identity then yields
+\begin{equation}
+\|S_{g\leftarrow u}\|_2^2
+=\Tr(K_gP_uK_g^\dagger)
+\le\Tr(K_g^\dagger K_g).
+\end{equation}
+The receiver-side statement follows analogously from the corresponding observability or dual controllability Gramian.
+
+\section{Cumulative quadrupole spectral bound}
+\label{app:sumrule}
+
+For a passive diagonal state
+\begin{equation}
+\rho=\sum_m p_m|m\rangle\langle m|,
+\end{equation}
+with $p_m\ge p_n$ for $E_m<E_n$, the double-commutator identity for a Hermitian operator $F$ is
+\begin{equation}
+\frac12\Tr\rho[F,[H,F]]
+=\sum_{m<n}(p_m-p_n)(E_n-E_m)|F_{mn}|^2.
+\end{equation}
+For the five orthonormal STF mass-quadrupole components $Q_a$ of ordinary nonrelativistic matter,
+\begin{equation}
+\sum_a\frac12\Tr\rho[Q_a,[H,Q_a]]
+=\frac{10}{3}\hbar^2\langle I\rangle_\rho.
+\end{equation}
+Define the positive spectral measure
+\begin{equation}
+\dd\mu_Q(\omega)
+=\sum_{m<n,a}
+(p_m-p_n)|Q^a_{mn}|^2
+\delta(\omega-\omega_{nm})\dd\omega.
+\end{equation}
+Then
+\begin{equation}
+\int_0^\infty\omega\,\dd\mu_Q(\omega)
+=\frac{10}{3}\hbar\langle I\rangle_\rho.
+\end{equation}
+The positive gravitational transition-rate weight below $\Omega$ is
+\begin{equation}
+K_g(\Omega)
+=\frac{2G}{5\hbar c^5}
+\int_0^\Omega\omega^5\dd\mu_Q(\omega).
+\end{equation}
+Since $\omega^5\le\Omega^4\omega$ on the selected interval,
+\begin{equation}
+\boxed{
+K_g(\Omega)
+\le
+\frac{4G}{3c^5}
+\langle I\rangle_\rho\Omega^4.}
+\end{equation}
+For the coherent linear-network theorem we use the ground-state one-quantum coupling resource; finite-temperature population factors affect net absorption and channel noise and are not silently identified with the state-independent oscillator damping matrix.
+
+\section{Independent aligned-plus TT integral}
+\label{app:TTcheck}
+
+Take $Q=\mathrm{diag}(1,-1,0)$ and propagation along $z$. With the usual spherical transverse basis and unit-normalized polarization tensors,
+\begin{align}
+Q:\epsilon_+
+&=\frac{1+\cos^2\theta}{\sqrt2}\cos2\phi,\\
+Q:\epsilon_\times
+&=-\sqrt2\cos\theta\sin2\phi.
+\end{align}
+For the normalized one-graviton angular mode in Eq.~\eqref{eq:normalizedmode}, azimuthal integration gives
+\begin{equation}
+\sum_\lambda\int_0^{2\pi}\dd\phi\,
+|u_{Q,\lambda}|^2
+=
+\frac5{32}(1+6x^2+x^4),
+\qquad x=\cos\theta.
+\end{equation}
+Thus the translated overlap is
+\begin{equation}
+S(z)
+=\frac5{32}\int_{-1}^{1}
+(1+6x^2+x^4)\ee^{izx}\dd x.
+\end{equation}
+The endpoint weight is $5/4$ at both $x=\pm1$. A single integration by parts therefore gives the outgoing contribution
+\begin{equation}
+S_+(z)
+=-\frac{5i}{4z}\ee^{iz}+O(z^{-2}).
+\end{equation}
+Evaluating the polynomial Fourier integral exactly gives
+\begin{equation}
+S_+(z)
+=-\frac{5i}{4}\frac{P(z)\ee^{iz}}{z^5},
+\end{equation}
+where
+\begin{equation}
+P(z)=3-3iz-3z^2+2iz^3+z^4.
+\end{equation}
+Consequently,
+\begin{equation}
+|S_+(z)|^2
+=
+\frac{25}{16z^2}
+\left(
+1-\frac2{z^2}+\frac3{z^4}
+-\frac9{z^6}+\frac9{z^8}
+\right).
+\end{equation}
+This check fixes the leading $25/16$ coefficient directly from normalized angular modes.
+
+\section{Exact two-pole integral and symmetric optimum}
+\label{app:twopole}
+
+Substitution of $a=\kappa_A/2$ and $b=\kappa_B/2$ into
+\begin{equation}
+\int_{-\infty}^{\infty}\frac{\dd\Omega}
+{(\Omega^2+a^2)(\Omega^2+b^2)}
+=\frac{\pi}{ab(a+b)}
+\end{equation}
+gives Eq.~\eqref{eq:exactEBP} immediately. To prove Eq.~\eqref{eq:twopolecut}, note first that
+\begin{equation}
+4\kappa_{g,B}\kappa_{\rm out}
+\le(\kappa_{g,B}+\kappa_{\rm out})^2
+\le\kappa_B^2
+\end{equation}
+and $\kappa_{\rm in}\le\kappa_A$. Hence
+\begin{equation}
+\Gamma_{\rm EBP}
+\le
+\eta_{\rm prop}\kappa_{g,A}
+\frac{\kappa_B}{\kappa_A+\kappa_B}
+\le
+\eta_{\rm prop}\kappa_{g,A}.
+\end{equation}
+Exchanging $A$ and $B$ gives the receiver-side bound.
+
+For the symmetric lossless family, define
+\begin{equation}
+f(x)=\frac{2x^2}{(1+x)^3}.
+\end{equation}
+Then
+\begin{equation}
+f'(x)=\frac{2x(2-x)}{(1+x)^4},
+\end{equation}
+so the unique positive maximum occurs at $x=2$, with $f(2)=8/27$.
