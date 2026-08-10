@@ -35,19 +35,29 @@ obeys, at leading separated-wave-zone order,
 
 The claim is **not** that the ingredients are new. The candidate contribution is the complete gravity-specific two-ended elimination of device-specific passive parameters in favor of endpoint inertia and free-space separation.
 
-## What to send a reviewer
-
-Recommended minimum packet:
+## Package contents
 
 1. `TECHNICAL_SUMMARY.md` — one-page technical statement and proof chain.
 2. `NOVELTY_AND_SCOPE.md` — exactly what is and is not claimed.
-3. `AUDIT_EQUATIONS_AND_ASSUMPTIONS.md` — load-bearing equations and assumptions.
-4. `HOSTILE_REVIEW_QUESTIONS.md` — questions the reviewer is explicitly invited to attack.
-5. `REVIEWER_TARGETS.md` — ranked specialists and the particular failure mode each is best positioned to test.
-6. `OUTREACH_EMAIL.md` — concise outreach text.
-7. Manuscript source: `../manuscript_v1/`.
+3. `AUDIT_EQUATIONS_AND_ASSUMPTIONS.md` — load-bearing equations, assumptions, and the likely failure mode at each step.
+4. `HOSTILE_REVIEW_QUESTIONS.md` — nine concrete questions the reviewer is explicitly invited to attack.
+5. `REVIEWER_TARGETS.md` — ranked specialists and the failure mode each is best positioned to test.
+6. `OUTREACH_EMAIL.md` — concise initial and follow-up outreach text with reviewer-specific inserts.
+7. `MANUSCRIPT_AND_VALIDATION.md` — frozen manuscript/CI identifiers and version-control protocol.
+8. `REVIEW_RESPONSE_TEMPLATE.md` — structured intake and triage for each external response.
+9. Manuscript source: `../manuscript_v1/`.
 
 The canonical internal adversarial report is `../HOSTILE_REFEREE_REPORT_2026-08-09.md`.
+
+## What to send on first contact
+
+Keep the first contact deliberately small:
+
+1. compiled manuscript PDF;
+2. `TECHNICAL_SUMMARY.md`;
+3. `NOVELTY_AND_SCOPE.md`.
+
+Do not attach the full internal audit archive. If the specialist agrees to inspect a specific theorem step, send `AUDIT_EQUATIONS_AND_ASSUMPTIONS.md` plus only the relevant supporting audit.
 
 ## Review protocol
 
@@ -66,6 +76,18 @@ C. I do not see either A or B, but the synthesis is too incremental because ...
 D. I do not see A or B, and I regard the closed theorem as a legitimate specialist contribution.
 ```
 
+## Recommended sequence
+
+Wave 1 should deliberately use three nearly orthogonal reviewers:
+
+```text
+Odylio Aguiar  -> historical resonant-mass / priority attack
+David Miller   -> generic source-receiver wave-theorem attack
+Hendra Nurdin  -> passive H2 / Hilbert-space attack
+```
+
+Only after concrete Wave-1 objections are resolved should the package go to the modern multimode/graviton and generic two-body-transfer specialists listed in `REVIEWER_TARGETS.md`.
+
 ## Internal freeze rule
 
-Do not broaden the theorem while external review is pending. Only reopen derivation if a reviewer supplies a concrete technical or priority objection.
+Do not broaden the theorem while external review is pending. Only reopen derivation if a reviewer supplies a concrete technical or priority objection. Collect the first review wave against one frozen manuscript version, then make a synchronized revision rather than silently changing the target under review.
