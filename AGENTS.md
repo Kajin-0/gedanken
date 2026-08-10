@@ -1,15 +1,47 @@
-# AGENTS.md — Canonical Recovery and Submission Protocol
+# AGENTS.md — Canonical Repository Recovery Protocol
 
-**Repository:** `Kajin-0/gedanken`  
-**Active experiment:** `experiments/01-causal-quantum-branch-information/`  
-**Checkpoint:** 2026-08-08, after adversarial review closure, repository consolidation, broad scientific automated checks, and isolated submission-package validation.  
-**Current mode:** **submission polish only unless a concrete new technical defect appears.**
+**Repository:** `Kajin-0/gedanken`
 
-This is the first operational file a new agent should read.
+This is the first operational file a new automated contributor should read.
 
----
+## 1. Research tracks
 
-## 1. Mandatory concurrency protocol
+### Experiment 01 — publication track
+
+`experiments/01-causal-quantum-branch-information/`
+
+Paper: **A Source-Resolved Quantum Link Budget for Propagating Linearized Gravity**
+
+Status: V7 physics is frozen. Work is limited to submission/editorial tasks unless a concrete technical defect appears.
+
+Canonical recovery files:
+
+1. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md`
+2. `experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md`
+3. `experiments/01-causal-quantum-branch-information/manuscript_v7/README.md`
+4. `experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md`
+5. `experiments/01-causal-quantum-branch-information/ADVERSARIAL_REVIEW_RESPONSE_V7_2026-08-08.md`
+
+Do not reopen the `25/16` normalization, conserved-source architecture, finite-spoke propagation, Gaussian novelty branch, or other closed V7 items without a concrete contradiction.
+
+### Experiment 02 — exploratory track
+
+`experiments/02-passive-gravitational-throughput/`
+
+Status: independent reconstruction; **no theorem verified and no manuscript yet**.
+
+Start with:
+
+1. `experiments/02-passive-gravitational-throughput/AGENTS.md`
+2. `experiments/02-passive-gravitational-throughput/CURRENT_STATE.md`
+3. `experiments/02-passive-gravitational-throughput/QUESTION.md`
+4. `experiments/02-passive-gravitational-throughput/ASSUMPTIONS.md`
+5. `experiments/02-passive-gravitational-throughput/HYPOTHESES.md`
+6. `experiments/02-passive-gravitational-throughput/CLAIM_LEDGER.md`
+
+Experiment 02 must independently derive or falsify its candidate throughput bound. Conversation history is a source of hypotheses, not evidence.
+
+## 2. Mandatory repository-integrity protocol
 
 Other agents may edit `main` concurrently.
 
@@ -18,188 +50,66 @@ Before every repository write:
 1. fetch latest `main`;
 2. compare with the last-seen head;
 3. inspect relevant intervening commits;
-4. fetch the exact current target blob immediately before writing;
+4. fetch the exact current target blob immediately before replacing a file;
 5. never force a write against a stale blob SHA;
 6. if `main` changes during a long task, recheck before writing;
-7. preserve concurrent work and prefer narrowly scoped edits.
+7. preserve concurrent work and prefer narrowly scoped edits;
+8. after any important write, fetch the resulting commit and affected files from the actual remote to verify persistence.
 
-**Live `main` always overrides this file and every state snapshot.**
+**Live `main` always overrides conversation history, connector caches, and state snapshots.**
 
----
+If local git and a connector disagree about branches, commits, or files, stop and resolve the repository-state discrepancy before making scientific claims based on that state.
 
-## 2. Current paper
+## 3. Experiment 01 scientific boundary
 
-**A Source-Resolved Quantum Link Budget for Propagating Linearized Gravity**
+The current V7 central link is
 
-Active manuscript:
+```math
+\tau_c(t)=\beta_{g,A}\eta_{\rm store}(R)\beta_{g,B}\mathcal T_f(t),
+```
 
-`experiments/01-causal-quantum-branch-information/manuscript_v7/`
+with
 
-Canonical scientific/review state:
-
-`experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md`
-
-Current claim boundary:
-
-`experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md`
-
-Adversarial referee pass:
-
-`experiments/01-causal-quantum-branch-information/ADVERSARIAL_REVIEW_RESPONSE_V7_2026-08-08.md`
-
-Artifact-status map:
-
-`experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md`
-
-Current internal verdict:
-
-> **No known publication-critical structural physics gap remains within V7's declared weak-field, nonrelativistic, narrowband linear regime.**
-
-The repository-level review passes include AI-agent critiques plus equation, source, numerical, and literature audits. They are **not formal journal peer review** and do not guarantee correctness or acceptance.
-
----
-
-## 3. Central result
-
-The active post-handoff link is
-
-$$
-\boxed{
-\tau_c(t)
-=\beta_{g,A}\eta_{\rm store}(R)\beta_{g,B}\mathcal T_f(t).
-}
-$$
-
-At leading wave-zone order,
-
-$$
-\boxed{
+```math
 \eta_{\rm store}(R)=\frac{25\mathcal O}{16(kR)^2}.
-}
-$$
+```
 
-Memory and accessible readout are separated:
+The publication claim is the source-resolved physical normalization/capability chain, not a new Gaussian-channel theorem.
 
-$$
-\Delta_{\rm mem}=\tau_c-m_c,
-$$
+The current internal assessment is:
 
-$$
-\boxed{
-\Delta_{\rm acc}=\tau_r\Delta_{\rm mem}-m_r.
-}
-$$
+> No known publication-critical structural physics gap remains within V7's declared weak-field, nonrelativistic, narrowband linear regime.
 
-The publication claim is the **source-resolved serial normalization/capability chain**, not a new Gaussian-channel theorem.
+This is not formal peer review and does not guarantee journal acceptance.
 
----
+Experiment 01's standalone Gaussian novelty route is stopped. Do not revive it from legacy files.
 
-## 4. Physics items already closed — do not reopen casually
+## 4. Experiment 02 research discipline
 
-### Conserved finite-support source
+The prior conversational candidate
 
-Use the finite-spoke plus mode and local finite-speed controller, not prescribed endpoint trajectories as a complete source.
+```math
+\Gamma_{\rm coh}
+\stackrel{?}{\lesssim}
+\frac{25G\omega^2}{12c^3R^2}\min(I_A,I_B)
+```
 
-Canonical support:
+is **not an established result**.
 
-- `CONSERVED_SOURCE_ACTUATOR_AUDIT.md`
-- `LOCAL_CONTROLLER_FIELD_COMPLETION_V7.md`
-- `FINITE_SPEED_LOCAL_ENCODER_AUDIT_V7.md`
-- `FINITE_HUB_CONTROLLER_RESIDUAL_BOUND_V7.md`
+Experiment 02 must use an AI-native falsification loop:
 
-The endpoint-only source is a controlled limit, not the active model.
+1. derive from explicit assumptions;
+2. independently reconstruct load-bearing steps;
+3. run normalization/dimensional audits;
+4. attempt hostile counterexamples;
+5. search primary prior art for an exact collision;
+6. run numerical adversarial tests where possible;
+7. update the claim ledger;
+8. only then consider a manuscript.
 
-### Equal-charge gravitational code
+Human specialists are reserved for the final external/journal-review boundary rather than the normal internal iteration loop.
 
-At the retained perturbative order,
-
-$$
-V_{\mathcal C}^\dagger P^\mu V_{\mathcal C}=p^\mu I_{\mathcal C},
-$$
-
-$$
-V_{\mathcal C}^\dagger M^{\mu\nu}V_{\mathcal C}=m^{\mu\nu}I_{\mathcal C}.
-$$
-
-Use only within the first-order gravitational-splitting scope.
-
-Canonical audit:
-
-`GRAVITATIONAL_SPLITTING_CODE_SUBSPACE_AUDIT_V7.md`
-
-### $25/16$ normalization
-
-Closed by three conceptually distinct routes:
-
-1. retarded conserved-source field;
-2. reciprocal critical-absorption / Friis normalization;
-3. canonical TT one-graviton angular-mode overlap.
-
-The TT route independently reproduces the full radial polynomial, not only the far-field coefficient.
-
-Canonical audit:
-
-`TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md`
-
-Do not restart factor-of-two/four normalization work without a new concrete contradiction.
-
-### Approximation/error budget
-
-Canonical audit:
-
-`APPROXIMATION_ERROR_BUDGET_V7.md`
-
-Do not quote leading formulas outside their stated regime.
-
-### Integrated novelty boundary
-
-Canonical audit:
-
-`FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`
-
-Current verdict: **GO WITH RESTRAINED CLAIMS**.
-
-Do not claim priority for individual Gaussian lemmas, graviton transduction, branch-conditioned graviton radiation, generic propagating-graviton entanglement, or the critical $l=2$ absorption bound.
-
-Never use `first`, `unique`, `unprecedented`, or equivalent priority language without new independent evidence.
-
-### Macroscopic source coherence
-
-The link calculation is conditional on successful preparation and preservation of source-reference coherence. V7 does not contain a device-specific decoherence calculation for realizing the kilogram-scale coherent mechanical source.
-
-Do not present this practical limitation as solved experimental engineering.
-
----
-
-## 5. Standalone Gaussian branch — STOP
-
-Canonical stop documents:
-
-- `STANDALONE_GAUSSIAN_NOVELTY_VERDICT.md`
-- `NOVELTY_COLLISION_FILIPPOV_BINARY_COHERENT.md`
-- `NOVELTY_COLLISION_MELE_RANK_TWO.md`
-
-Retain the mathematics as channel/receiver tools only.
-
-Do not restart a standalone Gaussian theorem paper from the existing material.
-
----
-
-## 6. Superseded material
-
-Use
-
-`experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md`
-
-for the current artifact map.
-
-In particular, old `PAPER_CORE_*`, old state files, endpoint-only formulas, old `$25/[4(kR)^2]$` storage normalization, old universal logarithmic-cone language, and universal passive `$\beta^5$` claims are historical unless a current document explicitly invokes a narrowed limit.
-
-Do not resurrect an old result merely because its file remains in the repository.
-
----
-
-## 7. Reproducibility state
+## 5. Reproducibility state for Experiment 01
 
 Pinned numerical environment:
 
@@ -207,100 +117,37 @@ Pinned numerical environment:
 - NumPy `2.5.1`;
 - SciPy `1.18.0`.
 
-Active automated checks:
+Active Experiment 01 checks include:
 
-### Manuscript
+- `.github/workflows/latex-v7.yml`
+- `.github/workflows/tt-normalization.yml`
+- `.github/workflows/scientific-regressions.yml`
+- `.github/workflows/submission-package.yml`
 
-`.github/workflows/latex-v7.yml`
+Do not claim Experiment 02 CI validation until Experiment 02 has its own real workflows or is explicitly covered by a real existing workflow on `main`.
 
-Checks LaTeX compilation and unresolved references/citations.
+## 6. Allowed work
 
-### Publication-critical TT normalization
+### Experiment 01
 
-`.github/workflows/tt-normalization.yml`
+Unless a concrete defect appears:
 
-Runs the independent TT angular-mode regression.
+- final prose/metadata work;
+- author, acknowledgments, funding, conflict metadata;
+- final submission snapshot/tag;
+- journal submission and referee response.
 
-### Broader scientific regression suite
+### Experiment 02
 
-`.github/workflows/scientific-regressions.yml`
+Active first-principles research is allowed and expected, subject to its local `AGENTS.md` and claim ledger. The immediate task is the passive selected-port spectral-area cut.
 
-Covers representative
+## 7. Global prohibitions
 
-- thermal attenuation;
-- thermal amplification;
-- additive Gaussian noise;
-- near-boundary resolution;
-- finite-spoke series coefficients;
-- V7 benchmark constants;
-- exact-negativity weak-link asymptotics.
+Do not:
 
-First run `31266390454` passed.
-
-### Isolated submission-package build
-
-`.github/workflows/submission-package.yml`
-
-The source set is defined by
-
-`manuscript_v7/SUBMISSION_MANIFEST.txt`.
-
-The automated check
-
-1. copies only manifest-listed files into an isolated directory;
-2. applies semantic guards;
-3. compiles there;
-4. checks unresolved citations/references;
-5. strips build products;
-6. uploads a clean source ZIP.
-
-Run `31266474558` passed.
-
----
-
-## 8. Canonical reading order
-
-Before historical research files, read:
-
-1. `AGENTS.md`
-2. `README.md`
-3. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md`
-4. `experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md`
-5. `experiments/01-causal-quantum-branch-information/manuscript_v7/README.md`
-6. `experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md`
-7. `experiments/01-causal-quantum-branch-information/ADVERSARIAL_REVIEW_RESPONSE_V7_2026-08-08.md`
-8. `experiments/01-causal-quantum-branch-information/numerics/README.md`
-
-Only go backward into legacy files when tracing provenance or auditing a historical correction.
-
----
-
-## 9. Current allowed work
-
-Unless a concrete technical defect is discovered, work is limited to:
-
-1. final prose copyedit;
-2. final bibliography metadata verification;
-3. author / acknowledgments / funding metadata;
-4. finalize PRD cover letter;
-5. create the final submission tag/snapshot;
-6. respond to actual journal referee objections.
-
-The repository front door, archive map, broad numerical automated checks, and clean isolated submission-package check are already complete.
-
----
-
-## 10. Do not do this
-
-Without a concrete new defect, do **not**
-
-- derive another Gaussian theorem;
-- invent another source architecture;
-- reopen $25/16$ normalization;
-- reopen finite-spoke propagation;
-- restart the hub residual from zero;
-- replace V7 with another paper core for stylistic reasons;
-- broaden the work into a near-term experimental proposal;
-- claim generic gravitational quantum communication novelty.
-
-The next epistemic step is independent journal peer review, not another speculative derivation.
+- treat conversation-only artifacts as repository evidence;
+- invent branch names, commits, workflow runs, or files;
+- report a write as successful before verifying it on the actual remote;
+- use `first`, `unique`, `unprecedented`, or similar priority language without dedicated evidence;
+- silently promote a provisional Experiment 02 hypothesis into a theorem;
+- modify frozen V7 physics merely to align it with Experiment 02.
