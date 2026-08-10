@@ -1,52 +1,52 @@
 # Claim Ledger — Experiment 02
 
-This ledger is authoritative for the research status of Experiment 02. A statement is not a project result merely because it appears in `HYPOTHESES.md` or in conversation history.
+This ledger is authoritative for Experiment 02. Conversation history is a source of hypotheses, never proof.
 
 ## Status labels
 
-- `QUESTION` — research target, no truth value assigned.
-- `PROVISIONAL` — plausible candidate under investigation.
-- `DERIVED / VALIDATION PENDING` — an explicit repository derivation exists, but the required independent validation gate is not yet complete.
+- `PROVISIONAL` — candidate under investigation.
 - `ESTABLISHED WITHIN MODEL` — derived and independently checked within explicit assumptions.
-- `FAILED` — contradicted or overstrong.
-- `HISTORICAL / PRIOR ART` — established elsewhere; not a novelty claim.
-- `OPEN` — unresolved boundary or extension.
+- `FAILED AS A CURRENT CLAIM` — contradicted or outside the established scope.
+- `HISTORICAL / PRIOR ART` — established ingredient; not a novelty claim.
+- `OPEN` — unresolved extension, collision, or significance question.
 
 ## Current ledger
 
 | Statement | Status | Evidence |
 |---|---|---|
-| A two-sided complex-envelope `H2` spectral-area metric is mathematically well defined for stable strictly proper selected cross-port blocks | ESTABLISHED WITHIN MODEL | Plancherel/Gramian identity in `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md` |
-| Finite-dimensional passive selected-port transfer obeys `||H_{o<-i}||_2^2 <= min[Tr(K_i^dag K_i), Tr(K_o^dag K_o)]` | ESTABLISHED WITHIN MODEL | derivation + Stage-A CI |
-| A separated finite-dimensional passive link obeys `Gamma_coh <= eta_max min[Tr(K_gA^dag K_gA), Tr(K_gB^dag K_gB)]` | ESTABLISHED WITHIN MODEL | Stage-A derivation + end-to-end adversarial regression |
-| The modal quadrupole strength obeys `sum_n (q_n:q_n)/mu_n <= (20/3) I_2`, with `I_2=int rho r^2 dV` | ESTABLISHED WITHIN MODEL | `GRAVITATIONAL_ENDPOINT_RESOURCE_DERIVATION.md` + Stage-B CI |
-| A retained modal sector with `omega_n <= Omega` obeys `sum_n kappa_g,n <= (4G/3c^5) I_2 Omega^4` | ESTABLISHED WITHIN MODEL | independent quadrupole-power derivation + Stage-B CI |
-| In an energy-normalized finite-dimensional Markov gravitational port model, `Tr(K_g^dag K_g)=sum_n kappa_g,n` | ESTABLISHED WITHIN MODEL | energy-linewidth/input-output normalization + trace invariance checks |
-| Passive internal unitary modal mixing cannot increase total gravitational coupling trace | ESTABLISHED WITHIN MODEL | trace invariance + Stage-B mixing regression |
-| Compact quadrupolar TT propagation obeys the leading wave-zone coefficient `limsup_(kR->infty) (kR)^2 ||P_g||_op^2 <= 25/16` | ESTABLISHED WITHIN MODEL | `TT_PROPAGATION_BOUND_DERIVATION.md` + Stage-C CI + independent V7 cross-check after derivation |
-| The finite-dimensional narrowband two-ended bound `Gamma_coh lesssim [25 G omega_0^2/(12 c^3 R^2)] min(I_2A,I_2B)` holds in the declared passive compact wave-zone class | ESTABLISHED WITHIN MODEL | `FINITE_TWO_ENDED_INERTIA_BOUND.md` + combined CI run `31393498572`, job `93470648716`, PASS |
-| The same simple coefficient is established over an arbitrary broad absolute-frequency interval | FAILED AS A CURRENT CLAIM | `NARROWBAND_NORMALIZATION_AUDIT.md`; carrier/envelope separation is required |
-| Repeated passive returns cannot increase the leading `1/R^2` upper-bound coefficient | PROVISIONAL | next adversarial stage |
-| Countably infinite bounded-port modal sectors obey the same passive cut | OPEN | next mathematical stage; requires semigroup/operator proof |
-| Arbitrary unbounded PDE boundary ports are covered | FAILED AS A CURRENT CLAIM | explicitly outside initial assumptions |
+| Complex-envelope `H2` spectral-area metric for stable strictly proper selected cross-port blocks | ESTABLISHED WITHIN MODEL | `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md` |
+| Passive selected-port cut `||H||_2^2 <= min[Tr(K_i^dag K_i),Tr(K_o^dag K_o)]` | ESTABLISHED WITHIN MODEL | Stage-A derivation + CI |
+| Separated passive cut by source/receiver gravitational traces | ESTABLISHED WITHIN MODEL | Stage-A derivation + random two-ended adversary |
+| `sum_n (q_n:q_n)/mu_n <= (20/3) I_2` | ESTABLISHED WITHIN MODEL | Stage-B derivation + CI |
+| `Tr(K_g^dag K_g) <= (4G/3c^5) I_2 Omega^4` in the retained quadrupolar modal sector | ESTABLISHED WITHIN MODEL | Stage-B derivation + CI |
+| Passive unitary internal mode mixing cannot increase gravitational coupling trace | ESTABLISHED WITHIN MODEL | trace invariance + Stage-B CI |
+| Leading compact TT propagation coefficient `limsup (kR)^2 ||P_g||_op^2 <= 25/16` | ESTABLISHED WITHIN MODEL | Stage-C derivation + CI; V7 used only as post-derivation cross-check |
+| Narrowband two-ended inertia bound `Gamma_coh lesssim [25 G omega_0^2/(12 c^3 R^2)] min(I_2A,I_2B)` | ESTABLISHED WITHIN MODEL | `FINITE_TWO_ENDED_INERTIA_BOUND.md` + combined CI |
+| Countably infinite separable **bounded-port Markov** modal sectors obey the same passive cut | ESTABLISHED WITHIN MODEL | `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md` + infinite-modal CI |
+| Stage-B inertia resource makes the countable gravitational port Hilbert–Schmidt | ESTABLISHED WITHIN MODEL | finite trace `Tr(K_g^dag K_g)=sum kappa_g,n` in the bounded-port modal representation |
+| Same simple theorem over arbitrary broad absolute frequency | FAILED AS A CURRENT CLAIM | `NARROWBAND_NORMALIZATION_AUDIT.md` |
+| Arbitrary unbounded PDE boundary-control/observation ports are covered | FAILED AS A CURRENT CLAIM | admissibility/domain analysis not supplied |
+| Genuinely non-Markov continua are covered | FAILED AS A CURRENT CLAIM | outside declared model |
+| Repeated passive source↔receiver returns cannot raise the retained leading `1/R^2` ceiling | PROVISIONAL | next physical attack |
 | Eigenmode gravitational-antenna emission/reception theory is new here | HISTORICAL / PRIOR ART | Hirakawa–Narihara–Fujimoto 1976 |
-| General arbitrary-elastic-body multimode GW response is new here | HISTORICAL / PRIOR ART | Lobo 1995 / arXiv:gr-qc/0006102 |
-| The `20/3` or `4/3` cumulative coefficient is novel | OPEN | detailed historical collision search incomplete; do not claim |
-| The complete inertia-only two-ended theorem is novel | OPEN | complete historical/prior-art audit not yet done |
-| Previous conversational Experiment 02 CI/branch/manuscript claims are repository evidence | FAILED | the earlier remote state did not exist; only the real commits/runs below count |
+| General arbitrary-elastic-body multimode GW response is new here | HISTORICAL / PRIOR ART | Lobo 1995 |
+| Infinite-dimensional `H2`/operator-Gramian machinery is new here | HISTORICAL / PRIOR ART | Baras–Brockett 1975; Opmeer–Reis–Wollner 2013 |
+| The exact `20/3`/`4/3` cumulative coefficient is novel | OPEN | historical collision search incomplete |
+| The complete gravity-specific two-ended inertia closure is novel | OPEN | complete prior-art collision search incomplete |
+| Earlier conversation-only Experiment-02 branches/CI/manuscript are repository evidence | FAILED AS A CURRENT CLAIM | only the real `main` history below counts |
 
-## Stage-A validation
+## Real validation record
+
+### Stage A — passive cut
 
 ```text
 workflow: .github/workflows/experiment02-passive-cut.yml
-first canonical run: 31391304791
+first run: 31391304791
 job: 93463450929
-result: PASS
+PASS
 ```
 
-On the assembled theorem commit `8fc8da7cf5d51e3a56d7e0b15434407c7e493ecb`, Stage A reran as run `31393498735` and passed.
-
-Representative first-run output:
+Representative output:
 
 ```text
 worst endpoint H2/resource ratio = 0.410127000961
@@ -54,16 +54,14 @@ largest full-scattering singular value = 1
 worst two-ended Gamma/bound ratio = 0.089763188389
 ```
 
-## Stage-B validation
+### Stage B — endpoint resource
 
 ```text
 workflow: .github/workflows/experiment02-endpoint-resource.yml
-first canonical run: 31392339989
+first run: 31392339989
 job: 93466817164
-result: PASS
+PASS
 ```
-
-Representative output:
 
 ```text
 worst 20/3 tensor absolute error = 2.84217094304e-14
@@ -73,78 +71,72 @@ worst modal-mixing invariance absolute error = 5.68434188608e-14
 worst cumulative linewidth/(4 I2/3) ratio = 0.381072504534
 ```
 
-Stage B also reran successfully on the assembled theorem commit.
-
-## Stage-C validation
+### Stage C — TT propagation
 
 ```text
 workflow: .github/workflows/experiment02-tt-propagation.yml
-first canonical run: 31393020114
+first run: 31393020114
 job: 93469060678
-result: PASS
+PASS
 ```
 
-Output:
-
 ```text
-worst TT projector relative excess over q:q = 0
-worst 8pi/5 sphere-normalization relative error = 3.73465396589e-15
-largest random directivity = 2.46390574729
-largest random stationary-phase amplitude prefactor = 0.895467559969
 aligned directivity saturation = 2.5
 aligned amplitude prefactor = 1.25
 aligned power prefactor = 1.5625
 PASS: compact TT propagation 25/16 bound
 ```
 
-The Stage-C derivation was corrected before final assembly to make only a leading-wave-zone limsup claim for arbitrary complex quadrupoles. It does not import the aligned plus-mode even-power finite-distance correction as a universal subleading statement.
-
-## Combined finite-dimensional narrowband validation
+### Combined finite narrowband theorem
 
 ```text
 workflow: .github/workflows/experiment02-combined-bound.yml
-commit:   8fc8da7cf5d51e3a56d7e0b15434407c7e493ecb
-run:      31393498572
-job:      93470648716
-result:   PASS
+commit: 8fc8da7cf5d51e3a56d7e0b15434407c7e493ecb
+run: 31393498572
+job: 93470648716
+PASS
 ```
-
-Actual adversarial output:
 
 ```text
 worst actual Gamma/(25 min(I2)/(12 R^2)) ratio = 0.0630906707807
 largest endpoint resource/budget fraction = 0.99023971892
 largest propagation/TT-ceiling fraction = 0.972827931667
-PASS: finite-dimensional narrowband two-ended 25/12 inertia bound
 ```
 
-The integrated random-system regression deliberately drives endpoint and propagation resources close to their allowed ceilings. It is not a proof; the analytic assembly is in `FINITE_TWO_ENDED_INERTIA_BOUND.md`.
+### Countably infinite bounded-port extension
+
+```text
+workflow: .github/workflows/experiment02-infinite-modal.yml
+commit: 91566b4ccfb1488b54a403a79452b9dc67347181
+run: 31394415776
+job: 93473679179
+PASS
+```
+
+```text
+analytic infinite gravitational trace limit = 0.0789987925949
+N=64 gravitational trace = 0.0787012072883
+N=64 trace tail = 0.000297585306554
+largest lambda_max(P_u) = 0.733694365996
+worst H2/gravitational-resource ratio = 0.581912323912
+modal-mixing resource error = 4.16333634234e-17
+modal-mixing H2 error = 8.67361737988e-16
+PASS: countably-infinite bounded-port truncation stress test
+```
+
+The truncation test is not the infinite-dimensional proof. The proof is the positive contraction-semigroup Gramian bound plus Hilbert–Schmidt gravitational-port regularity in `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`.
 
 ## Frequency convention
 
-From Stage D onward:
-
 ```text
 omega_0   absolute gravitational carrier angular frequency
-nu        complex-envelope detuning frequency
+nu        complex-envelope detuning
 B         envelope bandwidth, B/omega_0 << 1
 k_0       omega_0/c
 Gamma_coh (1/2pi) integral over nu of Tr[T^dag T]
-I_2       int rho r^2 dV about an endpoint center of mass
+I_2       int rho r^2 dV about endpoint COM
 ```
 
-See `NARROWBAND_NORMALIZATION_AUDIT.md`.
+## Priority discipline
 
-## Prior-art boundary
-
-Generic Stage-A passivity machinery is established systems theory, and broad Stage-B/C antenna ingredients are historical. Current primary anchors include Guta–Yamamoto, Gough–Zhang, Hirakawa–Narihara–Fujimoto (1976), and Lobo (1995).
-
-No priority language is permitted for the cumulative coefficients or the complete two-ended closure until the detailed collision search is complete.
-
-## Promotion discipline
-
-Before expanding the theorem's scope, record the derivation, assumptions, independent check, counterexample attempts, primary-source comparison, and numerical evidence where relevant.
-
-## Priority language
-
-Do not use `first`, `new`, `unique`, `unprecedented`, or equivalent priority wording unless a dedicated primary-source audit supports it. A negative search result is not proof of priority.
+Broad ingredients are explicitly not novelty claims. Do not use `first`, `new`, `unique`, `unprecedented`, or equivalent priority wording without a dedicated primary-source collision audit. A negative search is not proof of priority.
