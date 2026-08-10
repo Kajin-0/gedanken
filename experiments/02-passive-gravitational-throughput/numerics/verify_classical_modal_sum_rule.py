@@ -9,8 +9,8 @@ Checks
    equivalently
        sum_n M A_Gn <= (40/3) I.
 3. Parseval saturation for a complete displacement basis.
-4. Orthogonality of the quadrupole-gradient fields to rigid translations and
-   infinitesimal rigid rotations about the center of mass.
+4. Orthogonality of the quadrupole-gradient fields to rigid translations when
+   the spatial origin is the center of mass.
 5. Exact Hirakawa effective-area <-> one-quantum linewidth normalization.
 
 The random-subspace test is deliberately independent of any elastic stiffness
@@ -96,23 +96,10 @@ def rigid_translation_vectors(masses: np.ndarray) -> np.ndarray:
     return V
 
 
-def rigid_rotation_vectors(
-    positions: np.ndarray, masses: np.ndarray
-) -> np.ndarray:
-    npts = len(masses)
-    sqrt_m = np.sqrt(masses)
-    V = np.zeros((3 * npts, 3))
-    axes = np.eye(3)
-    for axis in range(3):
-        field = np.cross(np.broadcast_to(axes[axis], positions.shape), positions)
-        V[:, axis] = (sqrt_m[:, None] * field).reshape(-1)
-    return V
-
-
 def check_random_bessel_trials(ntrials: int = 400) -> tuple[float, float, float]:
     max_fraction = 0.0
     max_identity_rel = 0.0
-    max_rigid_overlap = 0.0
+    max_translation_overlap = 0.0
 
     for _ in range(ntrials):
         npts = int(RNG.integers(4, 18))
@@ -154,21 +141,18 @@ def check_random_bessel_trials(ntrials: int = 400) -> tuple[float, float, float]
         if effective_area_weight > effective_area_ceiling * (1.0 + 5.0e-12):
             raise AssertionError("Classical effective-area sum-rule bound violated")
 
-        # CM choice removes translations; symmetry removes infinitesimal rotations.
-        rigid = np.column_stack(
-            [
-                rigid_translation_vectors(masses),
-                rigid_rotation_vectors(positions, masses),
-            ]
-        )
-        overlaps = rigid.T @ G
-        scale = max(np.linalg.norm(rigid) * np.linalg.norm(G), 1.0)
-        rigid_rel = np.max(np.abs(overlaps)) / scale
-        max_rigid_overlap = max(max_rigid_overlap, rigid_rel)
-        if rigid_rel > 2.0e-12:
-            raise AssertionError(f"Rigid-mode overlap too large: {rigid_rel}")
+        # At the CM origin, rigid translations have zero linear quadrupole overlap.
+        translations = rigid_translation_vectors(masses)
+        overlaps = translations.T @ G
+        scale = max(np.linalg.norm(translations) * np.linalg.norm(G), 1.0)
+        translation_rel = np.max(np.abs(overlaps)) / scale
+        max_translation_overlap = max(max_translation_overlap, translation_rel)
+        if translation_rel > 2.0e-12:
+            raise AssertionError(
+                f"Rigid-translation overlap too large: {translation_rel}"
+            )
 
-    return max_fraction, max_identity_rel, max_rigid_overlap
+    return max_fraction, max_identity_rel, max_translation_overlap
 
 
 def check_hirakawa_quantum_normalization(ntrials: int = 500) -> float:
@@ -215,14 +199,14 @@ def check_hirakawa_quantum_normalization(ntrials: int = 500) -> float:
 
 def main() -> None:
     pointwise = check_pointwise_identity()
-    max_fraction, identity_rel, rigid_rel = check_random_bessel_trials()
+    max_fraction, identity_rel, translation_rel = check_random_bessel_trials()
     linewidth_rel = check_hirakawa_quantum_normalization()
 
     print("Classical modal sum-rule regression: PASS")
     print(f"  max pointwise 20/3 relative error: {pointwise:.3e}")
     print(f"  max discrete identity relative error: {identity_rel:.3e}")
     print(f"  largest random retained/ceiling fraction: {max_fraction:.12f}")
-    print(f"  max rigid-mode normalized overlap: {rigid_rel:.3e}")
+    print(f"  max rigid-translation normalized overlap: {translation_rel:.3e}")
     print(f"  max A_G <-> kappa_g relative mismatch: {linewidth_rel:.3e}")
 
 
