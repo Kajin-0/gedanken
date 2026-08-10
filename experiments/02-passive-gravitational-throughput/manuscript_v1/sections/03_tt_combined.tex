@@ -61,7 +61,7 @@ for $D_A=D_B=5/2$, confirming that the TT normalization and classical antenna in
 
 \subsection{Passive repeated returns}
 
-Repeated scattering between the same two passive separated endpoints does not change the leading coefficient. Let $R_A,R_B$ be their exact gravitational reflection blocks and $P_{BA},P_{AB}$ the forward/reverse propagation maps. Standard scattering-network composition gives \cite{Redheffer1962}
+Repeated scattering between the same two passive separated endpoints does not increase the leading ceiling. Let $R_A,R_B$ be their exact gravitational reflection blocks and $P_{BA},P_{AB}$ the forward/reverse propagation maps. Standard scattering-network composition gives \cite{Redheffer1962}
 \begin{equation}
 P_{\rm eff}
 =(I-P_{BA}R_AP_{AB}R_B)^{-1}P_{BA}.
@@ -77,15 +77,16 @@ With $p_+=\|P_{BA}\|_{\op}$ and $p_-=\|P_{AB}\|_{\op}$, passivity implies
 For reciprocal propagation, $p_+=p_-=p$ and $\eta=p^2$, hence
 \begin{equation}
 \boxed{
-\eta_{\rm rec}\le\frac{\eta}{(1-\eta)^2}
-=\eta+O((kR)^{-4}).}
+\eta_{\rm rec}\le\frac{\eta}{(1-\eta)^2}.}
 \label{eq:etarec}
 \end{equation}
+Since $\eta=O((kR)^{-2})$,
 \begin{equation}
-\eta_{\rm rec}=\eta+O((kR)^{-4}).
+\boxed{
+\eta_{\rm rec}\le \eta+O((kR)^{-4}).}
 \label{eq:recurrentorder}
 \end{equation}
-Thus recurrent two-endpoint scattering is subleading in power relative to the retained $O((kR)^{-2})$ term. Added relays, mirrors, external cavities, near-field exchange, and nonseparable common interaction regions are different architectures.
+Thus the recurrent-scattering \emph{upper bound} differs from the one-hop ceiling only beyond the retained $O((kR)^{-2})$ power term. The actual recurrent transfer may be smaller because of interference. Added relays, mirrors, external cavities, near-field exchange, and nonseparable common interaction regions are different architectures.
 
 \subsection{Inertia-controlled throughput}
 
@@ -120,7 +121,7 @@ Equivalently,
 \end{equation}
 \end{theorem}
 
-The theorem is an upper bound, not a global saturability claim. Its physical content is that the leading integrated ceiling contains no endpoint quality factor, passive resonance count, coherent mixing parameter, or compact orientation. Equation~\eqref{eq:etarec} adds that arbitrary passive returns between the same two separated endpoints do not alter the leading coefficient.
+The theorem is an upper bound, not a global saturability claim. Its physical content is that the leading integrated ceiling contains no endpoint quality factor, passive resonance count, coherent mixing parameter, or compact orientation. Equations~\eqref{eq:etarec}--\eqref{eq:recurrentorder} add that arbitrary passive returns between the same two separated endpoints cannot increase the leading coefficient.
 
 For a finite band $\mathcal B=[\omega_-,\omega_+]$ entirely inside the compact wave-zone regime, the conservative edge-separated form is
 \begin{equation}
