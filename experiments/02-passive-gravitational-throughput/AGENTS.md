@@ -1,9 +1,9 @@
 # AGENTS.md — Experiment 02 Recovery and Research Protocol
 
 **Experiment:** `02-passive-gravitational-throughput`  
-**Mode:** exploratory independent reconstruction.  
-**Current theorem status:** Stage A generic passive cut established within its finite-dimensional model; gravity-specific theorem unverified.  
-**Manuscript status:** none.
+**Mode:** theorem hardened; short-manuscript validation / adversarial freeze.  
+**Current theorem status:** established within the declared compact retained-sector bounded-port narrowband model.  
+**Manuscript status:** `manuscript_v1/` active.
 
 This file is the first operational file an automated contributor should read after the repository-level `AGENTS.md`.
 
@@ -13,115 +13,125 @@ Before every repository write:
 
 1. fetch the current `main` head;
 2. verify that this experiment directory exists on that exact ref;
-3. fetch the exact target blob immediately before replacing a file;
-4. never force-update a stale branch/ref;
-5. after writing, fetch the resulting commit and the changed files from `main` to verify persistence;
-6. if local git and a connector disagree about remote state, treat the discrepancy as a blocking integrity problem and do not build scientific conclusions on the disputed state.
+3. compare intervening commits with the last-seen head;
+4. fetch the exact current target blob immediately before replacement;
+5. never force-update a stale branch/ref;
+6. after writing, fetch the resulting commit and changed files from `main` to verify persistence;
+7. if local git and a connector disagree about remote state, treat the discrepancy as a blocking integrity problem.
 
-Repository provenance must be verifiable from the actual remote.
+Repository provenance must be verifiable from the actual remote. Conversation history is not repository evidence.
 
 ## 2. Experiment 01 is frozen
 
 `../01-causal-quantum-branch-information/` is the V7 publication project.
 
-Do not alter its physics while working here unless Experiment 02 uncovers a concrete defect that directly affects V7. Shared constants or formulas may be compared, but Experiment 02 must independently derive its own operational normalization.
+Do not alter its physics while working here unless Experiment 02 uncovers a concrete defect that directly affects V7. Shared formulas may be compared only after Experiment 02 has derived its own normalization independently.
 
-## 3. Independence rule
+## 3. Current theorem
 
-The previous conversational exploration suggested a candidate bound
+Use the notation
 
-```math
-\Gamma_{\rm coh}
-\stackrel{?}{\lesssim}
-\frac{25G\omega^2}{12c^3R^2}\min(I_A,I_B).
+```text
+omega_0   absolute gravitational carrier angular frequency
+nu        complex-envelope detuning
+B         envelope bandwidth, B/omega_0 << 1
+k_0       omega_0/c
+a_A,a_B   endpoint radii, k_0 a_A,k_0 a_B << 1
+R         separation, k_0 R >> 1
+Omega     upper frequency of retained endpoint modal sector,
+          Omega=omega_0[1+O(B/omega_0)]
+I_2       int rho r^2 dV about endpoint COM
 ```
 
-Do **not** begin by proving this expression.
+The established in-model statement is
 
-The correct outcome may be a different coefficient, a weaker theorem, an additional material parameter, or a no-go for the entire inertia-only idea.
+```math
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega_0^2}{12c^3R^2}
+\min(I_{2,A},I_{2,B})
+}
+```
 
-Stage A has now independently established only the generic finite-dimensional passive structural cut. That result is stored in `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md` and validated by GitHub Actions run `31391304791`.
+for finite or countably infinite **bounded-port Markov** modal sectors satisfying the retained carrier-scale frequency assumption.
 
-## 4. Required AI-native research loop
+This is a complex-envelope spectral-area theorem, not a capacity theorem.
 
-A gravity-specific claim must progress through these roles/stages:
+## 4. Load-bearing proof files
 
-### A. Derivation
+Read in this order:
 
-Develop the result from explicit assumptions. Separate exact identities, inequalities, asymptotic statements, and conjectures.
+1. `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md`
+2. `GRAVITATIONAL_ENDPOINT_RESOURCE_DERIVATION.md`
+3. `TT_PROPAGATION_BOUND_DERIVATION.md`
+4. `NARROWBAND_NORMALIZATION_AUDIT.md`
+5. `FINITE_TWO_ENDED_INERTIA_BOUND.md`
+6. `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`
+7. `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`
+8. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+9. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
+10. `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
+11. `CLAIM_LEDGER.md`
+12. `CURRENT_STATE.md`
+13. `manuscript_v1/README.md`
 
-### B. Independent reconstruction
+## 5. What the theorem does not cover
 
-Where practical, rederive the same load-bearing result without the original derivational narrative.
+Do not silently broaden to
 
-### C. Hostile technical attack
+- arbitrary broad absolute-frequency operation with one carrier coefficient;
+- higher-frequency endpoint modes far above the carrier whose off-resonant tails are not separately bounded;
+- unbounded PDE boundary-control/observation ports;
+- genuinely non-Markov continua;
+- extended phased apertures;
+- added gravitational relays or external cavities;
+- reactive near-field exchange;
+- active gain, pumping, inversion, or externally powered feedback;
+- relativistic, nonlinear, higher-multipole-dominated, or strong-field regimes.
 
-Try to reject the claim using:
+## 6. Historical / novelty boundary
 
-- counterexamples;
-- nonnormal/noncommuting passive systems;
-- extreme linewidths;
-- degeneracies;
-- mode mixing;
-- continuum/domain issues;
-- repeated scattering;
-- normalization inconsistencies.
+Most ingredients are historical. Do not claim novelty for
 
-### D. Prior-art collision
+- gravitational-antenna eigenmode theory;
+- integrated resonant-mass response;
+- arbitrary-body multimode GW response;
+- gravitational material-response sum rules;
+- generic passive `H2` machinery;
+- generic source–receiver wave-channel bounds;
+- directivity / reciprocal effective area;
+- multiple-scattering composition;
+- the `20/3` or `4/3` intermediate lemmas as standalone results.
 
-Assume the claim is old. Search primary sources using both modern and historical terminology. Separate ingredient prior art from an exact theorem collision.
+The only plausible publication contribution is the **complete gravity-specific two-ended inertia closure**. No exact equivalent theorem was found in the inspected literature, but that negative result is not proof of priority.
 
-### E. Numerical adversary
+Do not use `first`, `new`, `unique`, `unprecedented`, or equivalent priority language.
 
-When possible, optimize or randomly search for systems that maximize `actual / claimed bound`. Tests should be designed to fail the theorem, not merely reproduce examples.
+## 7. Validation state
 
-### F. Normalization audit
+Canonical earlier passing gates are recorded in `CURRENT_STATE.md` and `CLAIM_LEDGER.md`.
 
-Check dimensions, `2`, `pi`, Fourier conventions, one/two-sided spectra, polarization sums, field versus power normalization, and asymptotic order.
+The active manuscript has its own workflow:
 
-### G. Meta-referee
+`.github/workflows/latex-experiment02.yml`
 
-Only after the above stages should an agent judge whether the claim is technically viable and significant enough to continue.
+and the theorem has dedicated passive-cut, endpoint-resource, TT-propagation, combined-bound, infinite-modal, and recurrence workflows.
 
-Human review is reserved for the final external/journal boundary, not the normal internal iteration loop.
+After any manuscript/theorem scope edit, require fresh runs on the exact resulting `main` head before declaring the checkpoint frozen.
 
-## 5. Documentation requirements
+## 8. Current research mode
 
-Keep these files current:
+The AI-native derivation, hostile attack, prior-art collision, numerical falsification, infinite-modal, recurrence, significance, and first manuscript-scope stages have been completed.
 
-- `QUESTION.md`
-- `ASSUMPTIONS.md`
-- `HYPOTHESES.md`
-- `CLAIM_LEDGER.md`
-- `CURRENT_STATE.md`
+Do **not** add another theorem extension merely because one is imaginable.
 
-Create narrowly named derivation/audit files as work advances. Never hide a failed derivation; record the correction and update the claim ledger.
+Current allowed work is:
 
-## 6. Evidence hierarchy
+1. validate the current scope-hardening edits;
+2. final manuscript claim/notation/citation audit;
+3. final repository-state synchronization;
+4. manuscript compression/editorial polish only if it preserves the theorem;
+5. final external specialist/journal review.
 
-Prefer, in order:
-
-1. explicit derivation stored in the repository;
-2. independent derivation/check;
-3. numerical regression/counterexample search;
-4. primary literature;
-5. secondary literature for navigation only;
-6. conversation history only as a source of questions, never as proof.
-
-## 7. No manuscript yet
-
-Do not create a paper manuscript until the gravity-specific central theorem or no-go statement has survived the independent technical stages above.
-
-## 8. Next technical task — Stage B
-
-Derive the cumulative gravitational coupling resource `Tr(K_g^dagger K_g)` from the mass-weighted quadrupolar matter problem.
-
-Requirements:
-
-- start from an explicit continuum/modal coupling;
-- derive the mode quadrupole normalization;
-- derive the gravitational linewidth/coupling coefficient independently;
-- test the modal completeness sum without importing the desired `4/3` coefficient;
-- identify the exact inertia functional, if one exists;
-- compare directly with primary gravitational resonant-mass/antenna literature;
-- add a numerical or symbolic regression for every coefficient that can be tested.
+If a new concrete technical defect appears, reopen only the affected proof layer and record the correction explicitly.

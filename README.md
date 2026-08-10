@@ -1,6 +1,6 @@
 # Gedanken
 
-First-principles theoretical physics and quantum-information thought experiments, developed through explicit derivations, conservation checks, numerical tests, normalization audits, adversarial review, and prior-art comparison.
+First-principles theoretical physics and quantum-information thought experiments, developed through explicit derivations, conservation checks, normalization audits, numerical falsification, adversarial review, and prior-art comparison.
 
 ## Research tracks
 
@@ -8,9 +8,13 @@ First-principles theoretical physics and quantum-information thought experiments
 
 **A Source-Resolved Quantum Link Budget for Propagating Linearized Gravity**
 
+Directory:
+
+[`experiments/01-causal-quantum-branch-information/`](experiments/01-causal-quantum-branch-information/)
+
 Active manuscript:
 
-[`experiments/01-causal-quantum-branch-information/manuscript_v7/`](experiments/01-causal-quantum-branch-information/manuscript_v7/)
+[`manuscript_v7/`](experiments/01-causal-quantum-branch-information/manuscript_v7/)
 
 Canonical scientific state:
 
@@ -22,190 +26,109 @@ Current internal assessment:
 
 Experiment 01 is frozen except for submission/editorial work or a concrete technical defect.
 
-### Experiment 02 — exploratory track
+Its post-handoff coherent transfer is
 
-**Passive Gravitational Throughput**
+```math
+\tau_c(t)
+=\beta_{g,A}\,\eta_{\rm store}(R)\,\beta_{g,B}\,\mathcal T_f(t),
+```
+
+with leading compact wave-zone storage
+
+```math
+\eta_{\rm store}(R)=\frac{25\mathcal O}{16(kR)^2}.
+```
+
+The Experiment-01 publication claim is the **source-resolved physical normalization and capability accounting**, not a new Gaussian-channel theorem.
+
+### Experiment 02 — theorem / short-manuscript track
+
+**An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction**
 
 Directory:
 
 [`experiments/02-passive-gravitational-throughput/`](experiments/02-passive-gravitational-throughput/)
 
-Status:
+Active manuscript:
 
-> Open research question. No theorem is yet verified and no manuscript exists.
+[`manuscript_v1/`](experiments/02-passive-gravitational-throughput/manuscript_v1/)
 
-A previous conversational exploration suggested the provisional target
+Canonical state:
+
+[`CURRENT_STATE.md`](experiments/02-passive-gravitational-throughput/CURRENT_STATE.md)
+
+Current in-model result:
+
+```math
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega_0^2}{12c^3R^2}
+\min(I_{2,A},I_{2,B})
+}
+```
+
+where
 
 ```math
 \Gamma_{\rm coh}
-\stackrel{?}{\lesssim}
-\frac{25G\omega^2}{12c^3R^2}\min(I_A,I_B),
+=\frac1{2\pi}\int_{\mathcal B_\nu}
+\operatorname{Tr}[T^\dagger(\nu)T(\nu)]\,d\nu,
+\qquad
+I_2=\int\rho r^2d^3x.
 ```
 
-but Experiment 02 is explicitly rebuilding this question from first principles. The candidate coefficient, assumptions, and even the existence of an inertia-only bound must be independently derived or falsified.
+The established scope is deliberately narrow:
+
+```text
+B/omega_0 << 1                         narrow complex-envelope operation
+k_0 a_A, k_0 a_B << 1                 compact endpoints
+k_0 R >> 1                             separated wave zone
+omega_n <= Omega
+Omega = omega_0[1+O(B/omega_0)]        retained carrier-scale endpoint modal sector
+finite or countably infinite
+bounded-port Markov modal sectors      passive endpoint model
+```
+
+Higher-frequency off-resonant endpoint sectors are not automatically controlled by the simple carrier-scale `omega_0^4` resource and require separate treatment.
+
+The proof combines
+
+```text
+passive selected-port spectral-area cut
+        ↓
+source and receiver gravitational coupling traces
+        ↓
+I_2-controlled cumulative quadrupole resource at both endpoints
+        ↓
+compact TT propagation ceiling 25/16
+        ↓
+same-two-endpoint passive recurrence control
+        ↓
+25/12 two-ended inertia closure.
+```
+
+The generic passive mathematics, gravitational-antenna modal theory, integrated resonant-mass response, material-response sum rules, directivity, generic wave-channel bounds, and multiple-scattering composition are historical ingredients. No standalone novelty claim is made for them.
+
+A hostile literature audit found strong near-collisions but no inspected primary source stating the exact complete two-ended closure. That negative search is **not** a priority claim.
 
 Start with:
 
-1. [`QUESTION.md`](experiments/02-passive-gravitational-throughput/QUESTION.md)
-2. [`ASSUMPTIONS.md`](experiments/02-passive-gravitational-throughput/ASSUMPTIONS.md)
-3. [`HYPOTHESES.md`](experiments/02-passive-gravitational-throughput/HYPOTHESES.md)
-4. [`CLAIM_LEDGER.md`](experiments/02-passive-gravitational-throughput/CLAIM_LEDGER.md)
-5. [`CURRENT_STATE.md`](experiments/02-passive-gravitational-throughput/CURRENT_STATE.md)
-6. [`AGENTS.md`](experiments/02-passive-gravitational-throughput/AGENTS.md)
+1. [`AGENTS.md`](experiments/02-passive-gravitational-throughput/AGENTS.md)
+2. [`CURRENT_STATE.md`](experiments/02-passive-gravitational-throughput/CURRENT_STATE.md)
+3. [`CLAIM_LEDGER.md`](experiments/02-passive-gravitational-throughput/CLAIM_LEDGER.md)
+4. [`MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md)
+5. [`HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`](experiments/02-passive-gravitational-throughput/HOSTILE_PRIOR_ART_COLLISION_AUDIT.md)
+6. [`META_REFEREE_SIGNIFICANCE_AUDIT.md`](experiments/02-passive-gravitational-throughput/META_REFEREE_SIGNIFICANCE_AUDIT.md)
+7. [`manuscript_v1/README.md`](experiments/02-passive-gravitational-throughput/manuscript_v1/README.md)
 
-Earlier conversation-only descriptions of Experiment 02 branches, commits, CI runs, or manuscript files are not repository provenance and are not scientific evidence.
-
----
-
-## Experiment 01 central result
-
-After local source preparation and controller handoff, the coherent source-to-memory transfer separates into four physical factors:
-
-```math
-\boxed{
-\tau_c(t)
-=\beta_{g,A}\,\eta_{\rm store}(R)\,\beta_{g,B}\,\mathcal T_f(t)
-}
-```
-
-with source gravitational branching
-
-```math
-\beta_{g,A}=\frac{\kappa_{g,A}}{\kappa_A},
-```
-
-free-space mode capture
-
-```math
-\boxed{
-\eta_{\rm store}(R)=\frac{25\mathcal O}{16(kR)^2}
-}
-```
-
-receiver gravitational branching
-
-```math
-\beta_{g,B}=\frac{\kappa_{g,B}}{\kappa_B},
-```
-
-and temporal loading
-
-```math
-0\le \mathcal T_f(t)\le1.
-```
-
-The memory quantum excess is
-
-```math
-\Delta_{\rm mem}=\tau_c-m_c,
-```
-
-and a separate noisy readout gives
-
-```math
-\boxed{
-\Delta_{\rm acc}=\tau_r\Delta_{\rm mem}-m_r.
-}
-```
-
-The Experiment 01 publication claim is the **source-resolved physical normalization and capability accounting**. It is not a new Gaussian-channel theorem, not the first graviton transducer proposal, and not a near-term experimental design.
+Earlier conversation-only descriptions of branches, commits, CI runs, or files are not repository provenance. Only artifacts verified on the actual remote count.
 
 ---
 
-## Experiment 01 conserved finite-support source
+## Experiment 01 key recovery points
 
-For the explicit four-spoke elastic plus mode,
-
-```math
-q=\frac{\omega L}{c_s},
-```
-
-with exact finite-spoke boundary relation
-
-```math
-\boxed{
-\frac{m_r}{\mu}=q\tan q.
-}
-```
-
-The branch quadrupole is
-
-```math
-\boxed{
-\Delta Q_{xx}=8\mu Lu\frac{\tan q}{q},
-\qquad
-\Delta Q_{yy}=-\Delta Q_{xx}.
-}
-```
-
-The corrected gravitational linewidth is
-
-```math
-\boxed{
-\kappa_g(q)=
-\frac{8G\mu L^2\omega^4}{5c^5}
-\frac{(\tan q/q)^2}{\frac12+q/\sin 2q}.
-}
-```
-
-A finite-speed local controller is included explicitly. The simplified resonant controller used in the manuscript is the narrowband limit of that causal model.
-
----
-
-## Experiment 01 equal-charge gravitational code
-
-At the retained perturbative order, the encoded system satisfies
-
-```math
-\boxed{
-V_{\mathcal C}^\dagger P^\mu V_{\mathcal C}=p^\mu I_{\mathcal C},
-}
-```
-
-```math
-\boxed{
-V_{\mathcal C}^\dagger M^{\mu\nu}V_{\mathcal C}=m^{\mu\nu}I_{\mathcal C}.
-}
-```
-
-This does **not** mean gravity vanishes outside the source. A branch-independent long-range gravitational field may remain. The claim is only that source-controlled branch information is absent before its causal disturbance reaches the receiver, within the stated first-order gravitational approximation.
-
----
-
-## Experiment 01 independent propagation checks
-
-The factor `25/16` has three independent derivations:
-
-1. retarded conserved-source field;
-2. reciprocal radiation/absorption normalization;
-3. canonical transverse-traceless one-graviton mode overlap.
-
-The third derivation reproduces the complete radial polynomial
-
-```math
-P(z)=3-3iz-3z^2+2iz^3+z^4.
-```
-
-The exact transfer probability is
-
-```math
-|t|^2=
-\frac{25}{16z^2}
-\left(
-1-\frac{2}{z^2}
-+\frac{3}{z^4}
--\frac{9}{z^6}
-+\frac{9}{z^8}
-\right).
-```
-
-At `kR = 10`, the leading wave-zone expression is about `1.97%` high.
-
----
-
-## Experiment 01 start here
-
-For the publication-track scientific state, read:
+For V7 scientific provenance, read:
 
 1. [`CURRENT_STATE_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md)
 2. [`CLAIM_LEDGER.md`](experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md)
@@ -215,28 +138,37 @@ For the publication-track scientific state, read:
 6. [`APPROXIMATION_ERROR_BUDGET_V7.md`](experiments/01-causal-quantum-branch-information/APPROXIMATION_ERROR_BUDGET_V7.md)
 7. [`FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`](experiments/01-causal-quantum-branch-information/FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md)
 
-Older paper cores and stopped Gaussian-channel novelty branches remain as an audit trail. They are not current recovery points.
+Older paper cores and stopped Gaussian-channel novelty branches remain as an audit trail and are not current recovery points.
 
 ---
 
-## Numerical and manuscript checks
+## Automated checks
 
-Experiment 01 automatically checks:
+Pinned scientific Python environment:
 
-- V7 manuscript compilation and unresolved references;
-- independent one-graviton propagation normalization;
-- representative thermal attenuation, amplification, additive noise, finite-spoke corrections, benchmark values, and weak-link negativity;
-- independent compilation of the clean manuscript-only source package.
+- Python `3.12.13`
+- NumPy `2.5.1`
+- SciPy `1.18.0`
 
-The numerical environment used for the current Experiment 01 checks is Python `3.12.13`, NumPy `2.5.1`, and SciPy `1.18.0`.
+Experiment 01 workflows include manuscript compilation, TT normalization, broader scientific regressions, and isolated submission-package validation.
 
-Experiment 02 does **not** yet claim its own CI validation. New tests will be added only after the corresponding derivations are real repository artifacts.
+Experiment 02 has dedicated workflows for
+
+- passive selected-port cut;
+- endpoint quadrupole resource;
+- compact TT propagation;
+- combined `25/12` theorem;
+- countably infinite bounded-port truncations;
+- same-endpoint passive recurrence;
+- manuscript compilation and unresolved-reference checks.
+
+Exact canonical run IDs are recorded in the corresponding `CURRENT_STATE.md` / `CLAIM_LEDGER.md` files rather than inferred from conversation history.
 
 ---
 
 ## Current work
 
 - **Experiment 01:** submission/editorial work only unless a concrete technical defect appears.
-- **Experiment 02:** active first-principles reconstruction and falsification of the passive gravitational-throughput question.
+- **Experiment 02:** validate the current manuscript scope-hardening checkpoint, perform the final adversarial manuscript audit, synchronize recovery state, then stop internal theorem broadening and move to external specialist/journal review.
 
-`AGENTS.md` contains the repository recovery/editing protocol and the separation rules between the frozen publication track and the exploratory track.
+Repository editing/recovery rules are in the root [`AGENTS.md`](AGENTS.md).

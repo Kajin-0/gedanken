@@ -1,7 +1,7 @@
 \section{Cumulative gravitational endpoint resource}
 \label{sec:resource}
 
-Let a compact elastic body have equilibrium density $\rho(\bm x)$ and center of mass at the origin.  Expand a small displacement field as
+Let a compact elastic body have equilibrium density $\rho(\bm x)$ and center of mass at the origin. Expand a small displacement field as
 \begin{equation}
 \bm u(\bm x,t)=\sum_n \xi_n(t)\bm w_n(\bm x),
 \end{equation}
@@ -22,7 +22,7 @@ q_{n,ij}
 \right)\dd^3x .
 \label{eq:qn}
 \end{equation}
-For a harmonic mode of frequency $\omega_n$, the standard quadrupole power formula gives the gravitational energy-decay rate
+For a harmonic mode of physical frequency $\omega_n$, the standard quadrupole power formula gives the gravitational energy-decay rate
 \begin{equation}
 \boxed{
 \kappa_{g,n}
@@ -32,13 +32,13 @@ For a harmonic mode of frequency $\omega_n$, the standard quadrupole power formu
 \label{eq:kappan}
 \end{equation}
 
-The cumulative resource follows from one elementary completeness bound.  Introduce the vector influence fields
+The cumulative resource follows from one elementary completeness bound. Introduce the vector influence fields
 \begin{equation}
 (g^{ij})_k
 =\delta_{ik}x_j+\delta_{jk}x_i
 -\frac23\delta_{ij}x_k,
 \end{equation}
-so that $q_{n,ij}=\langle w_n,g^{ij}\rangle_\rho$.  Direct contraction gives
+so that $q_{n,ij}=\langle w_n,g^{ij}\rangle_\rho$. Direct contraction gives
 \begin{equation}
 \boxed{
 \sum_{i,j,k}|(g^{ij})_k|^2=\frac{20}{3}r^2 .
@@ -60,7 +60,7 @@ Therefore
 \label{eq:qsum}
 \end{equation}
 
-If the retained modes satisfy $\omega_n\le\Omega$, Eqs.~\eqref{eq:kappan} and \eqref{eq:qsum} imply
+If the retained modal sector satisfies $\omega_n\le\Omega$, Eqs.~\eqref{eq:kappan} and \eqref{eq:qsum} imply
 \begin{equation}
 \boxed{
 \sum_n\kappa_{g,n}
@@ -73,14 +73,15 @@ In an energy-normalized Markov modal representation this is
 \begin{equation}
 \Tr(K_g^\dagger K_g)=\sum_n\kappa_{g,n}.
 \end{equation}
-The trace is invariant under unitary internal modal mixing.  For a countable retained modal sector, Eq.~\eqref{eq:kappasum} also proves that $K_g$ is Hilbert--Schmidt.
+The trace is invariant under unitary internal modal mixing. For a countable retained modal sector, Eq.~\eqref{eq:kappasum} also proves that $K_g$ is Hilbert--Schmidt.
 
-For a narrow carrier band, $\Omega=\omega_0[1+O(B/\omega_0)]$, so
+The theorem uses the retained carrier-scale sector of Eq.~\eqref{eq:retainedsector}, for which $\Omega=\omega_0[1+O(B/\omega_0)]$. Therefore
 \begin{equation}
 \Tr(K_g^\dagger K_g)
 \lesssim
 \frac{4G}{3c^5}I_2\omega_0^4 .
 \label{eq:narrowresource}
 \end{equation}
+This replacement is not a statement about arbitrary endpoint modes at all physical frequencies. In particular, modes with $\omega_n\gg\omega_0$ can have off-resonant tails inside the measured envelope band while carrying gravitational rates proportional to their own $\omega_n^4$. Such sectors are outside the simple carrier-scale closure unless their contribution is separately bounded.
 
-Neither the existence of an integrated gravitational response nor the general modal/sum-rule philosophy is new.  Paik and Wagoner calculated resonant-mass absorption cross sections \cite{PaikWagoner1976}; Aguiar's review explicitly discusses the integrated cross section and notes that adding a resonant transducer produces two normal modes while retaining a finite mass/material scaling \cite{Aguiar2010}; and gravitational material-response dispersion and sum rules have been derived microscopically \cite{Srivastava2003}.  Accordingly, Eqs.~\eqref{eq:20over3}--\eqref{eq:kappasum} are used here as proof lemmas, not as standalone novelty claims.
+Neither the existence of an integrated gravitational response nor the general modal/sum-rule philosophy is new. Paik and Wagoner calculated resonant-mass absorption cross sections \cite{PaikWagoner1976}; Aguiar's review explicitly discusses the integrated cross section and notes that adding a resonant transducer produces two normal modes while retaining a finite mass/material scaling \cite{Aguiar2010}; and gravitational material-response dispersion and sum rules have been derived microscopically \cite{Srivastava2003}. Accordingly, Eqs.~\eqref{eq:20over3}--\eqref{eq:kappasum} are used here as proof lemmas, not as standalone novelty claims.

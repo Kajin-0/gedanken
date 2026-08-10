@@ -24,22 +24,42 @@ Canonical recovery files:
 
 Do not reopen the `25/16` normalization, conserved-source architecture, finite-spoke propagation, Gaussian novelty branch, or other closed V7 items without a concrete contradiction.
 
-### Experiment 02 — exploratory track
+### Experiment 02 — theorem / short-manuscript track
 
 `experiments/02-passive-gravitational-throughput/`
 
-Status: independent reconstruction. The finite-dimensional generic passive selected-port cut is established within its model and validated on `main`; the gravity-specific endpoint resource, propagation normalization for this metric, and final inertia theorem remain unverified. No manuscript exists.
+Paper source: `experiments/02-passive-gravitational-throughput/manuscript_v1/`
 
-Start with:
+Current in-model theorem:
+
+```math
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega_0^2}{12c^3R^2}\min(I_{2,A},I_{2,B}).
+```
+
+Status: the finite and countably infinite bounded-port passive theorem, retained carrier-scale endpoint resource, compact TT propagation coefficient, and same-endpoint recurrence ceiling have been derived and validated within their declared model. A short manuscript exists. The active checkpoint is manuscript scope hardening and final adversarial validation, not open-ended theorem expansion.
+
+Canonical recovery files:
 
 1. `experiments/02-passive-gravitational-throughput/AGENTS.md`
 2. `experiments/02-passive-gravitational-throughput/CURRENT_STATE.md`
-3. `experiments/02-passive-gravitational-throughput/QUESTION.md`
-4. `experiments/02-passive-gravitational-throughput/ASSUMPTIONS.md`
-5. `experiments/02-passive-gravitational-throughput/HYPOTHESES.md`
-6. `experiments/02-passive-gravitational-throughput/CLAIM_LEDGER.md`
+3. `experiments/02-passive-gravitational-throughput/CLAIM_LEDGER.md`
+4. `experiments/02-passive-gravitational-throughput/MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
+5. `experiments/02-passive-gravitational-throughput/HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+6. `experiments/02-passive-gravitational-throughput/META_REFEREE_SIGNIFICANCE_AUDIT.md`
+7. `experiments/02-passive-gravitational-throughput/manuscript_v1/README.md`
 
-Experiment 02 must independently derive or falsify its candidate throughput bound. Conversation history is a source of hypotheses, not evidence.
+The Experiment-02 theorem is explicitly a compact narrowband retained-sector result. Do not drop the conditions
+
+```text
+B/omega_0 << 1
+k_0 a_A, k_0 a_B << 1
+k_0 R >> 1
+omega_n <= Omega = omega_0[1+O(B/omega_0)] for the retained endpoint modal sector
+```
+
+or silently extend the carrier-scale `omega_0^4` endpoint resource to uncontrolled higher-frequency off-resonant modes.
 
 ## 2. Mandatory repository-integrity protocol
 
@@ -54,7 +74,8 @@ Before every repository write:
 5. never force a write against a stale blob SHA;
 6. if `main` changes during a long task, recheck before writing;
 7. preserve concurrent work and prefer narrowly scoped edits;
-8. after any important write, fetch the resulting commit and affected files from the actual remote to verify persistence.
+8. after any important write, fetch the resulting commit and affected files from the actual remote to verify persistence;
+9. require fresh CI on the exact resulting head before reporting a validated checkpoint.
 
 **Live `main` always overrides conversation history, connector caches, and state snapshots.**
 
@@ -62,7 +83,7 @@ If local git and a connector disagree about branches, commits, or files, stop an
 
 ## 3. Experiment 01 scientific boundary
 
-The current V7 central link is
+The V7 central link is
 
 ```math
 \tau_c(t)=\beta_{g,A}\eta_{\rm store}(R)\beta_{g,B}\mathcal T_f(t),
@@ -80,55 +101,54 @@ The current internal assessment is:
 
 > No known publication-critical structural physics gap remains within V7's declared weak-field, nonrelativistic, narrowband linear regime.
 
-This is not formal peer review and does not guarantee journal acceptance.
+Experiment 01's standalone Gaussian novelty route is stopped.
 
-Experiment 01's standalone Gaussian novelty route is stopped. Do not revive it from legacy files.
+## 4. Experiment 02 scientific boundary
 
-## 4. Experiment 02 research discipline
+Use
 
-The prior conversational candidate
-
-```math
-\Gamma_{\rm coh}
-\stackrel{?}{\lesssim}
-\frac{25G\omega^2}{12c^3R^2}\min(I_A,I_B)
+```text
+omega_0   absolute carrier angular frequency
+nu        complex-envelope detuning
+B         envelope bandwidth
+k_0       omega_0/c
+I_2       int rho r^2 dV about endpoint COM
 ```
 
-is **not an established result**.
+`Gamma_coh` is a frequency-integrated coherent-transfer spectral area with units `s^-1`; it is not an information capacity.
 
-Experiment 02 must use an AI-native falsification loop:
+The generic passive-system mathematics, gravitational-antenna eigenmode theory, integrated resonant-mass response, material sum rules, directivity, generic wave-channel bounds, and multiple-scattering composition are not novelty claims.
 
-1. derive from explicit assumptions;
-2. independently reconstruct load-bearing steps;
-3. run normalization/dimensional audits;
-4. attempt hostile counterexamples;
-5. search primary prior art for an exact collision;
-6. run numerical adversarial tests where possible;
-7. update the claim ledger;
-8. only then consider a manuscript.
+The only plausible Experiment-02 publication contribution is the gravity-specific cumulative **two-ended inertia closure**. No exact equivalent theorem was found in the inspected literature; this is not proof of priority.
 
-Human specialists are reserved for the final external/journal-review boundary rather than the normal internal iteration loop.
+Do not broaden Experiment 02 to active systems, extended apertures, added relays/cavities, near-field transfer, arbitrary unbounded PDE ports, genuinely non-Markov continua, broad absolute-frequency operation with one carrier coefficient, or uncontrolled high-frequency off-resonant sectors.
 
 ## 5. Reproducibility state
 
-Pinned numerical environment used by the active checks:
+Pinned numerical environment used by active scientific checks:
 
 - Python `3.12.13`;
 - NumPy `2.5.1`;
 - SciPy `1.18.0`.
 
-Experiment 01 checks include:
+Experiment 01 workflows include:
 
 - `.github/workflows/latex-v7.yml`
 - `.github/workflows/tt-normalization.yml`
 - `.github/workflows/scientific-regressions.yml`
 - `.github/workflows/submission-package.yml`
 
-Experiment 02 currently has:
+Experiment 02 workflows include:
 
 - `.github/workflows/experiment02-passive-cut.yml`
+- `.github/workflows/experiment02-endpoint-resource.yml`
+- `.github/workflows/experiment02-tt-propagation.yml`
+- `.github/workflows/experiment02-combined-bound.yml`
+- `.github/workflows/experiment02-infinite-modal.yml`
+- `.github/workflows/experiment02-recurrence.yml`
+- `.github/workflows/latex-experiment02.yml`
 
-The first Stage-A run on `main` (`31391304791`) passed. Do not generalize that validation beyond the finite-dimensional passive cut it actually tests.
+Canonical run IDs and exact scope are recorded in each experiment's current-state/claim-ledger files.
 
 ## 6. Allowed work
 
@@ -143,7 +163,15 @@ Unless a concrete defect appears:
 
 ### Experiment 02
 
-Active first-principles research is allowed and expected, subject to its local `AGENTS.md` and claim ledger. The immediate task is Stage B: derive and attack the gravity-specific cumulative endpoint coupling resource without assuming the inherited `4/3` coefficient.
+Unless a concrete defect appears:
+
+- validate manuscript scope hardening;
+- final adversarial claim/notation/citation audit;
+- final recovery-state synchronization;
+- concise editorial/manuscript polish;
+- external specialist/journal review.
+
+Further theorem broadening is stopped unless a concrete objection shows the current theorem is internally inconsistent or too narrow to support its stated conclusion.
 
 ## 7. Global prohibitions
 
@@ -152,6 +180,7 @@ Do not:
 - treat conversation-only artifacts as repository evidence;
 - invent branch names, commits, workflow runs, or files;
 - report a write as successful before verifying it on the actual remote;
+- report a scientific checkpoint as validated before the exact-head CI has completed;
 - use `first`, `unique`, `unprecedented`, or similar priority language without dedicated evidence;
-- silently promote a provisional Experiment 02 hypothesis into a theorem;
+- silently broaden either experiment's scope;
 - modify frozen V7 physics merely to align it with Experiment 02.

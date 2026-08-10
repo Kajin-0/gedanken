@@ -1,11 +1,23 @@
 # Current State — Experiment 02
 
-**Checkpoint:** hostile prior-art collision audit completed on real `main`.  
-**Status:** **PHYSICS THEOREM ESTABLISHED WITHIN THE DECLARED BOUNDED-PORT NARROWBAND CLASS; SAME-ENDPOINT PASSIVE RECURRENCE CONTROLLED; STANDALONE INGREDIENT NOVELTY REJECTED; NO EXACT COLLISION FOUND FOR COMPLETE TWO-ENDED INERTIA CLOSURE; SIGNIFICANCE/PRIORITY IS NOW THE DOMINANT RISK; NO MANUSCRIPT YET.**
+**Checkpoint:** manuscript-v1 adversarial scope hardening on real `main`.  
+**Status:** **PHYSICS THEOREM ESTABLISHED WITHIN THE DECLARED RETAINED-SECTOR BOUNDED-PORT NARROWBAND CLASS; SHORT MANUSCRIPT ACTIVE; SCOPE-HARDENING CI PENDING ON THIS CHECKPOINT; SIGNIFICANCE/PRIORITY REMAINS THE DOMINANT EXTERNAL RISK.**
 
-## 1. Current theorem within the declared model
+## 1. Current theorem
 
-Let `omega_0` be the absolute carrier angular frequency and `nu` the complex-envelope detuning. Define
+Let `omega_0` be the absolute carrier angular frequency, `nu` the complex-envelope detuning, and `B/omega_0 << 1`. Let `a_A,a_B` be characteristic endpoint radii and require
+
+```math
+k_0 a_A \ll 1,
+\qquad
+k_0 a_B \ll 1,
+\qquad
+k_0 R \gg 1,
+\qquad
+k_0=\omega_0/c.
+```
+
+Define
 
 ```math
 \Gamma_{\rm coh}
@@ -13,7 +25,15 @@ Let `omega_0` be the absolute carrier angular frequency and `nu` the complex-env
 \operatorname{Tr}[T^\dagger(\nu)T(\nu)]\,d\nu.
 ```
 
-For separated compact passive nonrelativistic linear-harmonic source and receiver systems in weak leading-quadrupolar wave-zone gravity, with finite or countably infinite **bounded-port Markov modal sectors**,
+At each endpoint the current theorem applies to a finite or countably infinite bounded-port Markov modal sector whose retained physical modal frequencies satisfy
+
+```math
+\omega_n\le\Omega,
+\qquad
+\Omega=\omega_0[1+O(B/\omega_0)].
+```
+
+For separated compact passive nonrelativistic linear-harmonic endpoints in weak leading mass-quadrupole gravity,
 
 ```math
 \boxed{
@@ -24,19 +44,21 @@ For separated compact passive nonrelativistic linear-harmonic source and receive
 }
 ```
 
-where
+with
 
 ```math
 I_2=\int\rho r^2d^3x
 ```
 
-is the scalar second mass moment about each endpoint center of mass.
+about each endpoint center of mass.
 
 `Gamma_coh` has units `s^-1` and is a coherent-transfer spectral area, not an information capacity.
 
 ## 2. Proof spine
 
 ### A. Passive selected-port cut
+
+For passive Markov endpoints,
 
 ```math
 \Gamma_{\rm coh}
@@ -46,6 +68,8 @@ is the scalar second mass moment about each endpoint center of mass.
 \operatorname{Tr}(K_{g,A}^\dagger K_{g,A}),
 \operatorname{Tr}(K_{g,B}^\dagger K_{g,B})].
 ```
+
+The band-limited `Gamma_coh` is no larger than the corresponding full-line `H2` integral because the integrand is nonnegative. The source and receiver cuts then follow by pointwise contractivity of the opposite endpoint and the propagation operator.
 
 Files:
 
@@ -60,22 +84,24 @@ Files:
 \frac{q_n:q_n}{\mu_n},
 ```
 
-with
+and
 
 ```math
 \sum_n\frac{q_n:q_n}{\mu_n}
-\le\frac{20}{3}I_2,
+\le\frac{20}{3}I_2.
 ```
 
-so in the narrow carrier sector
+Therefore, for the retained sector with `omega_n <= Omega`,
 
 ```math
-\boxed{
 \operatorname{Tr}(K_g^\dagger K_g)
+\le
+\frac{4G}{3c^5}I_2\Omega^4
 \lesssim
 \frac{4G}{3c^5}I_2\omega_0^4.
-}
 ```
+
+The final carrier replacement is not a bound on uncontrolled modes with `omega_n >> omega_0`. Such higher-frequency off-resonant sectors require separate treatment.
 
 File:
 
@@ -83,17 +109,17 @@ File:
 
 ### C. Compact TT propagation
 
+For compact quadrupoles,
+
 ```math
 D_q\le\frac52,
 ```
 
-and outgoing stationary phase gives
+and outgoing stationary phase in the separated wave zone gives
 
 ```math
-\boxed{
 \limsup_{kR\to\infty}(kR)^2\|P_g\|_{\rm op}^2
 \le\frac{25}{16}.
-}
 ```
 
 File:
@@ -119,23 +145,23 @@ File:
 
 ## 3. Countably infinite bounded-port closure
 
-For a separable internal modal Hilbert space with bounded Markov port operator and passive contraction semigroup, the selected-input Gramian obeys
+For a separable internal modal Hilbert space with bounded Markov port operator and passive contraction semigroup,
 
 ```math
 0\le P_u(\tau)
-\le I-T(\tau)T^\dagger(\tau)
+\le I-\mathcal T(\tau)\mathcal T^\dagger(\tau)
 \le I.
 ```
 
-Stage B supplies
+The retained gravitational resource gives
 
 ```math
 \operatorname{Tr}(K_g^\dagger K_g)<\infty,
 ```
 
-so the gravitational port is Hilbert–Schmidt and the operator-valued `H2` cut is finite.
+so the gravitational port is Hilbert--Schmidt and the operator-valued `H2` cut is finite.
 
-This extends the theorem to countably infinite **bounded-port** modal sectors. It does not cover arbitrary unbounded PDE boundary-control ports or genuinely non-Markov continua.
+This does not cover arbitrary unbounded PDE boundary-control ports or genuinely non-Markov continua.
 
 ## 4. Same-endpoint passive recurrence
 
@@ -146,7 +172,7 @@ P_{\rm eff}
 =(I-P_+R_AP_-R_B)^{-1}P_+,
 ```
 
-and
+with
 
 ```math
 \|P_{\rm eff}\|
@@ -160,33 +186,37 @@ For reciprocal one-hop power ceiling `eta=p^2`,
 \le\frac{\eta}{(1-\eta)^2}.
 ```
 
-Therefore recurrence changes only subleading terms in the upper ceiling and
-
-```math
-\limsup_{kR\to\infty}(kR)^2\|P_{\rm eff}\|^2\le\frac{25}{16}.
-```
-
-The actual recurrent transfer may be smaller because of interference. The proof does not cover added relays, external mirrors/cavities, near-field exchange, or active feedback.
+Since `eta=O[(kR)^-2]`, recurrence changes only subleading terms in the upper ceiling. This is not an equality for actual recurrent transfer.
 
 File:
 
 `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`
 
-## 5. Narrowband/asymptotic discipline
+## 5. Manuscript
 
-The integrated variable is envelope detuning `nu`; `omega_0` is the absolute carrier. Required:
+Active source:
 
-```math
-B/\omega_0\ll1.
-```
+`manuscript_v1/`
 
-The `25/16` and `25/12` numbers are retained leading wave-zone coefficients, not universal exact finite-distance formulas.
+Title:
 
-File:
+**An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction**
 
-`NARROWBAND_NORMALIZATION_AUDIT.md`
+The meta-referee decision was `GO TO A SHORT SPECIALIST MANUSCRIPT`; that manuscript now exists on `main`.
 
-## 6. Real validation record
+First manuscript adversarial scope audit:
+
+`MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
+
+The audit found no coefficient failure, but required three hardenings:
+
+1. explicitly constrain the retained endpoint modal sector at the carrier scale;
+2. quantify compactness and wave-zone conditions;
+3. make the band-integral-to-full-line-`H2` step explicit.
+
+These edits are part of the current checkpoint and require fresh CI before freeze.
+
+## 6. Validation record before this scope-hardening checkpoint
 
 ```text
 Stage A passive cut:
@@ -199,89 +229,54 @@ Stage C TT propagation:
   run 31393020114, job 93469060678 — PASS
 
 Combined finite-dimensional theorem:
-  commit 8fc8da7cf5d51e3a56d7e0b15434407c7e493ecb
   run 31393498572, job 93470648716 — PASS
 
 Countably infinite bounded-port extension:
-  commit 91566b4ccfb1488b54a403a79452b9dc67347181
   run 31394415776, job 93473679179 — PASS
 
 Passive same-endpoint recurrence:
-  commit e040fcaf2f6023fafd02bef1f11846d0a9236d0e
   run 31394879241, job 93475219560 — PASS
+
+Pre-hardening manuscript head:
+  commit 87732887b9139f286e025e470810cdf207706116
+  manuscript run 31397765390 — PASS
+  combined-bound run 31397765584 — PASS
+  infinite-modal run 31397765773 — PASS
+  recurrence run 31397765372 — PASS
 ```
 
-## 7. Hostile prior-art verdict
+## 7. Historical / novelty boundary
 
-Canonical audit:
+Canonical files:
 
-`HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+- `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+- `META_REFEREE_SIGNIFICANCE_AUDIT.md`
+- `CLAIM_LEDGER.md`
 
-The audit found strong historical collisions with nearly every individual ingredient:
+Nearly every ingredient has strong historical precedent. No standalone novelty claim is made for gravitational-antenna eigenmodes, integrated resonant response, the `20/3` or `4/3` lemmas, generic `H2` machinery, directivity, generic wave-channel bounds, or multiple-scattering composition.
 
-```text
-gravity antenna eigenmode theory:                  HISTORICAL
-arbitrary-body multimode GW response:              HISTORICAL
-integrated resonant-mass cross section:             HISTORICAL
-mode-splitting finite integrated response:          HISTORICAL STRONG PRECEDENT
-gravity material-response sum rules:                HISTORICAL
-generator–receiver Hertz calculations:              HISTORICAL
-generic wave-channel / coupling-limit mathematics:  HISTORICAL
-generic response-plus-propagation bounds:           HISTORICAL
-finite/infinite passive H2 machinery:                HISTORICAL
-multiple-scattering recurrence:                     HISTORICAL
-20/3 standalone novelty:                            DO NOT CLAIM
-4/3 standalone novelty:                             DO NOT CLAIM
-complete two-ended inertia-only closure:            NO EXACT COLLISION FOUND
-priority claim:                                     NO
-```
+No inspected source states the exact complete two-ended inertia closure. That is a negative search result, not proof of priority.
 
-The most damaging near-collision is the old resonant-mass integrated-cross-section literature. Aguiar's review, citing Paik–Wagoner, explicitly notes that after adding a resonant transducer and producing two normal modes, the integrated cross section still retains a finite mass/material scaling. Thus the broad idea that extra passive resonances do not create unlimited integrated gravitational response is historical.
+## 8. Current exclusions
 
-Rudenko's 2003 work is the strongest complete generator–receiver near-collision found: it optimizes an entire gravitational Hertz couple, but retains architecture-specific source/receiver/noise/geometry parameters rather than eliminating both endpoints into an inertia-only coherent spectral-area theorem.
+No claim is made for
 
-Across the inspected sources, no exact statement of the complete closure
+- broad absolute-frequency operation with one carrier coefficient;
+- uncontrolled higher-frequency off-resonant endpoint sectors;
+- arbitrary unbounded PDE boundary-control ports;
+- genuinely non-Markov continua;
+- added relays, external mirrors/cavities, or extended phased apertures;
+- reactive near-field exchange;
+- active gain/pumping/feedback;
+- higher-multipole-dominated, relativistic, nonlinear, or strong-field regimes.
 
-```text
-passive selected-port spectral-area cut
--> gravitational trace at source and receiver
--> cumulative I_2 resource at BOTH endpoints
--> compact TT propagation ceiling
--> leading same-endpoint recurrence control
--> explicit min(I_2A,I_2B)/R^2 end-to-end ceiling
-```
+## 9. Current research mode
 
-was found.
+Do not broaden the theorem further without a concrete defect.
 
-That is a **negative search result, not proof of priority**.
+Immediate tasks:
 
-## 8. Current epistemic state
-
-```text
-physics theorem within declared model:                  GO
-finite/countably infinite bounded-port modes:           GO
-same-two-endpoint passive recurrence, leading order:    GO
-broad-frequency theorem:                                NO CLAIM
-unbounded PDE / non-Markov continuum extension:         NO CLAIM
-added relays/cavities/near-field/active feedback:        NO CLAIM
-standalone generic-method novelty:                       NO
-standalone 20/3 or 4/3 novelty:                         NO
-exact two-ended inertia closure as candidate result:     PROVISIONAL GO
-exact historical priority:                               NOT ESTABLISHED
-publication significance:                               OPEN / DOMINANT RISK
-manuscript:                                              NONE
-```
-
-## 9. Experiment 01 boundary
-
-Experiment 01 / V7 remains frozen. No V7 physics was modified by this reconstruction.
-
-## 10. Next action — significance meta-referee
-
-Do not broaden the theorem further merely because another extension is imaginable.
-
-The next internally informative test is editorial/significance review:
-
-> assuming the theorem is correct and the historical ingredients are fully credited, is the exact gravity-specific two-ended inertia closure sufficiently informative to justify a short specialist paper?
-
-That review should decide `REJECT`, `MAJOR REVISION`, or `GO TO SHORT MANUSCRIPT`, and should penalize any presentation that makes the generic systems/modal machinery look new.
+1. validate the manuscript scope-hardening checkpoint on the exact `main` head;
+2. synchronize all recovery files with that validated head;
+3. perform one final manuscript claim/citation/normalization audit;
+4. then freeze internal theory and reserve human specialists/journal referees for the external boundary.
