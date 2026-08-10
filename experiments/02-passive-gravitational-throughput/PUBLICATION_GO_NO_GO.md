@@ -4,19 +4,21 @@
 
 **PHYSICS: GO WITH DECLARED SCOPE**
 
-**MANUSCRIPT: GO AFTER CLAIM NARROWING**
+**MANUSCRIPT: GO**
 
-**NOVELTY: PROVISIONAL GO ONLY FOR THE GRAVITY-SPECIFIC CUMULATIVE INERTIA CLOSURE**
+**HEADLINE THEOREM: CLASSICAL PASSIVE GRAVITATIONAL TRANSDUCTION**
 
-**GENERIC TWO-ENDED / SINGULAR-CHANNEL / SUM-RULE-METHOD NOVELTY: NO-GO — ESTABLISHED PRIOR ART**
+**QUANTUM RESULTS: DOWNSTREAM CHANNEL COROLLARIES**
 
-**THEOREM BROADENING: NO-GO FOR THIS PAPER**
+**NOVELTY: PROVISIONAL GO ONLY FOR THE EXACT GRAVITY-SPECIFIC INERTIA-CLOSED TWO-ENDED THEOREM**
+
+**FURTHER INTERNAL BROADENING: NO-GO**
 
 ---
 
 ## 1. Physics gate — GO
 
-For compact passive nonrelativistic linear-bosonic endpoints in weak one-way quadrupolar wave-zone gravity,
+For compact passive nonrelativistic linear-harmonic endpoints in weak direct one-pass quadrupolar wave-zone gravity,
 
 ```math
 \Gamma_{\rm coh}
@@ -31,48 +33,74 @@ obeys
 \Gamma_{\rm coh}
 \lesssim
 \frac{25G\omega^2}{12c^3R^2}
-\min(\langle I_A\rangle,\langle I_B\rangle).
+\min(I_A,I_B).
 }
 ```
 
-No fatal internal defect has been identified within the declared class.
-
-The proof chain is
-
-```text
-passive selected-port H2 cut set
--> microscopic gravitational-port factorization
--> cumulative mass-quadrupole EWSR at both endpoints
--> normalized compact TT wave-zone propagation.
-```
+No fatal internal defect has been identified inside the declared class.
 
 ---
 
-## 2. Normalization gate — PASS, STRENGTHENED BY HISTORICAL CROSS-CHECK
+## 2. Classical material-resource gate — PASS
 
-The one-quantum gravitational rate
+The load-bearing material step is now independent of quantum mechanics.
 
-```math
-\kappa_{g,n}
-=\frac{2G\omega_n^5}{5\hbar c^5}Q^{01}:Q^{10}
-```
-
-matches the historical Hirakawa compact-antenna effective-area normalization exactly.
-
-From
+For the STF quadrupole influence fields,
 
 ```math
-A_{Gn}=\frac{2q_n:q_n}{M\mu_n},
+(g^{ij})_k
+=\delta_{ik}x_j+\delta_{jk}x_i
+-\frac23\delta_{ij}x_k,
 ```
 
-quantization gives
+one has
 
 ```math
-Q^{01}:Q^{10}
-=\frac{\hbar M A_{Gn}}{4\omega_n}
+\boxed{
+\sum_{ijk}|(g^{ij})_k|^2
+=\frac{20}{3}r^2.
+}
 ```
 
-and hence
+Standard modal-participation/Bessel completeness then yields
+
+```math
+\boxed{
+\sum_n\frac{q_n:q_n}{\mu_n}
+\le\frac{20}{3}I
+}
+```
+
+and, using Hirakawa's gravitational effective area,
+
+```math
+\boxed{
+\sum_n M A_{Gn}\le\frac{40}{3}I.
+}
+```
+
+For retained modes below `Omega`,
+
+```math
+\boxed{
+\sum_n\kappa_{g,n}
+\le\frac{4G}{3c^5}I\Omega^4.
+}
+```
+
+The modal-participation/completeness method itself is standard structural dynamics. The gravity-specific content is the STF quadrupole influence-field specialization, its `20/3` norm, and the mapping to gravitational effective area.
+
+---
+
+## 3. Normalization gate — PASS
+
+Hirakawa's historical mode effective area and the one-quantum gravitational linewidth match exactly.
+
+```math
+A_{Gn}=\frac{2q_n:q_n}{M\mu_n}
+```
+
+and the classical emitted power give
 
 ```math
 \boxed{
@@ -81,120 +109,64 @@ and hence
 }
 ```
 
-Hirakawa's Q-independent pulse response then becomes
+Quantization gives
 
 ```math
-\frac{E}{F(\nu_n)}
-=\frac{\pi}{2}\frac{\kappa_{g,n}}{k_n^2}f_n.
+Q^{01}:Q^{10}
+=\frac{\hbar M A_{Gn}}{4\omega_n},
 ```
 
-No factor-of-two or `2 pi` inconsistency was found.
-
-Canonical file: `HIRAKAWA_EFFECTIVE_AREA_QUANTUM_LINEWIDTH_CROSSCHECK.md`.
-
----
-
-## 3. Gravitational historical gate — STRONG COLLISIONS, NO EXACT THEOREM COLLISION
-
-The following are historical:
-
-- complete gravitational generator--detector calculations and architecture-specific end-to-end limitations;
-- compact mechanical gravitational antenna eigenmodes;
-- quadrupole-controlled emission/reception oscillator strength;
-- gravitational antenna reciprocity;
-- Q-independent short-pulse / integrated gravitational response;
-- the compact real-STF directivity functional and its `D=5/2` maximum.
-
-Hirakawa Eq. (15) is algebraically identical to the real-STF restriction of
+so
 
 ```math
-D_Q(\hat n)=\frac52\frac{Q^*:\Lambda Q}{Q^*:Q}.
+\kappa_{g,n}
+=\frac{2G\omega_n^5}{5\hbar c^5}Q^{01}:Q^{10}
 ```
 
-Therefore none of those items supports a novelty claim.
+reproduces the same coefficient exactly.
 
-Canonical files:
-
-- `GRISHCHUK_SAZHIN_1975_COLLISION_AUDIT.md`
-- `HIRAKAWA_NARIHARA_FUJIMOTO_1976_COLLISION_AUDIT.md`
+No factor-of-two or `2 pi` mismatch was found.
 
 ---
 
-## 4. Cross-field structural gate — GENERIC STRUCTURE IS ALSO PRIOR ART
+## 4. Propagation gate — PASS
 
-Generic wave physics already contains
-
-- singular/orthogonal source--receiver communication channels;
-- sums of squared channel connection strengths;
-- two-body response-resource bounds connected by a free-space Green operator;
-- Frobenius/trace spectral-transfer metrics and transmission singular-value bounds.
-
-Thus the abstract
-
-```text
-source response -> propagation operator -> receiver response
-```
-
-resource sandwich is not itself new.
-
-Modern acoustic work also gives a direct precedent for converting a physical sum rule into a frequency-integrated passive scattering bound. The sum-rule methodology therefore cannot be claimed as novel either.
-
-Canonical file: `GENERIC_WAVE_TRANSFER_COLLISION_AUDIT_2026-08-09.md`.
-
----
-
-## 5. What survives all inspected collisions
-
-No inspected primary source has been found to state the full gravity-specific cumulative closure
-
-```text
-selected-port H2 frequency integral
--> min(source gravitational trace, receiver gravitational trace)
--> microscopic quadrupole identification
--> cumulative EWSR at BOTH endpoints
--> compact separated TT wave-zone factor
--> explicit inertia-only many-mode end-to-end ceiling.
-```
-
-The surviving candidate result is therefore specifically
+The separated compact TT channel obeys
 
 ```math
 \boxed{
-\Gamma_{\rm coh}
-\lesssim
-\frac{25G\omega^2}{12c^3R^2}
-\min(\langle I_A\rangle,\langle I_B\rangle).
+\|P_g\|_{\rm op}^2
+\le\frac{25}{16(kR)^2}
 }
 ```
 
-with independence from endpoint `Q`, passive mode count, coherent internal mixing, and compact quadrupole orientation.
+at leading wave-zone order.
 
-This is a negative-search conclusion, **not proof of priority**.
+The coefficient is supported independently by
 
----
-
-## 6. Significance gate — MATERIAL RISK
-
-The strongest hostile referee objection is now:
-
-> The result is a technically correct gravity-specific synthesis of historical gravitational-antenna oscillator-strength physics, standard wave-channel theory, standard passive H2 identities, and a known quadrupole sum rule.
-
-That objection is credible.
-
-The manuscript cannot answer it by asserting novelty of any ingredient. It must show that the cumulative closure itself is valuable because it proves, in one architecture-independent statement, that passive improvements in `Q`, resonance count, coherent mode mixing, or compact orientation cannot exceed an explicit inertia-controlled ceiling.
-
-**Publication significance is now the dominant risk; correctness is not the dominant known risk.**
-
----
-
-## 7. Sharpness and information-theory gates
-
-The theorem is an upper bound, not a globally sharp optimum. The V7 long-wavelength mode has the correct scaling, reaches 30% of the endpoint EWSR ceiling, and saturates compact TT geometry, but simultaneous saturation of all inequalities is unproved.
-
-For stationary vacuum pure loss,
+- the TT angular-mode calculation;
+- the exact aligned-plus outgoing polynomial; and
+- the classical reciprocal-antenna expression
 
 ```math
-\eta_{\max}\le\frac12\Rightarrow Q_1=0,
+D_AD_B\left(\frac{\lambda}{4\pi R}\right)^2
+```
+
+with `D_A=D_B=5/2`.
+
+The directivity law and `5/2` maximum are historical; the coefficient is used here as a normalization factor, not a novelty claim.
+
+---
+
+## 5. Quantum-information gate — GO AS COROLLARY
+
+The physical throughput theorem is classical.
+
+After quantizing the same transfer problem and specializing to stationary vacuum pure loss,
+
+```math
+\eta_{\max}\le\frac12
+\Rightarrow Q_1=0,
 ```
 
 and
@@ -202,60 +174,168 @@ and
 ```math
 Q_2
 \le
-\frac{\Gamma_{\rm coh}}{\ln2\,(1-\eta_{\max})}.
+\frac{\Gamma_{\rm coh}}
+{\ln2\,(1-\eta_{\max})}.
 ```
 
-These remain secondary channel-specific corollaries.
+These are useful operational consequences but are not the headline theorem.
 
 ---
 
-## 8. Manuscript gate — PASS
+## 6. Prior-art gate — BROAD NOVELTY REJECTED
 
-The abstract, introduction, material-resource section, discussion, and bibliography now explicitly credit
+The audit now explicitly rejects novelty for
 
-- historical gravitational antenna emission/reception, reciprocity, Q-independent response, and directivity;
-- generic singular-channel/two-body wave-transfer structure;
-- the exact Hirakawa effective-area-to-quantum-linewidth normalization.
+- gravitational generator--receiver/end-to-end calculations;
+- compact gravitational antenna eigenmodes;
+- gravitational reciprocity;
+- `Q`-independent integrated gravitational response;
+- compact real-STF directivity / `D=5/2`;
+- gravitational material-response sum-rule methodology;
+- quadrupole-commutator response sum rules;
+- passive H2/Gramian mathematics;
+- generic source--receiver singular wave channels;
+- generic two-body response + Green-operator bounds;
+- modal participation / effective-modal-mass completeness;
+- generic sum-rule-to-integrated-response methodology.
 
-Latest validated manuscript run:
+Therefore the paper cannot be sold on any individual method or ingredient.
+
+---
+
+## 7. Surviving candidate contribution
+
+No inspected source has been found to state the full gravity-specific closure
 
 ```text
-GitHub Actions run: 31343168940
-job:               93320172594
-LaTeX compile:      PASS
-citation/ref scan:  PASS
-PDF upload:         PASS
+passive selected-port spectral-area cut set
+-> smaller source/receiver gravitational resource
+-> STF quadrupole modal-participation specialization
+-> cumulative effective-area/inertia ceiling at BOTH endpoints
+-> normalized compact one-pass TT propagation
+-> explicit inertia-only many-mode end-to-end bound.
 ```
 
-The theorem equations were not changed by these prior-art corrections.
+The candidate result is specifically
+
+```math
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega^2}{12c^3R^2}
+\min(I_A,I_B),
+}
+```
+
+with simultaneous exclusion of passive escape through
+
+```text
+higher Q
+more resonances
+coherent bright-mode engineering
+compact quadrupole reorientation.
+```
+
+This is a negative-search conclusion, **not proof of priority**.
 
 ---
 
-## 9. Allowed manuscript claim
+## 8. Scope gate — CLOSED WITH EXPLICIT BOUNDARIES
+
+### Finite vs. infinite modal sectors
+
+The H2 theorem applies directly to finite band-local modal sectors. The material resource bound is uniform in retained mode count. A countably infinite extension requires the corresponding passive transfer operator to possess the usual trace-class limit.
+
+### Direct one-pass propagation
+
+The theorem bounds the direct retarded one-pass/Born wave-zone hop. It does not include recurrent multiple scattering, strong common-bath hybridization, relays, near-field exchange, or curved-background focusing.
+
+### Sharpness
+
+The bound is not claimed globally saturable. The explicit compact plus mode reaches 30% of the endpoint material ceiling and saturates compact TT geometry, but simultaneous saturation of the full chain remains open.
+
+---
+
+## 9. Validation gate — PASS
+
+Latest complete physics regression:
+
+```text
+GitHub Actions run: 31344642352
+job:               93324206747
+PASS
+```
+
+Passed stages:
+
+1. exact two-port spectral bound;
+2. passive H2 cut set;
+3. classical modal-sum regression;
+4. TT propagation regression;
+5. microscopic gravitational-port factorization.
+
+Latest complete manuscript validation:
+
+```text
+GitHub Actions run: 31344642351
+job:               93324206692
+PASS
+```
+
+- LaTeX compile: PASS
+- unresolved citation/reference scan: PASS
+- PDF artifact upload: PASS
+
+---
+
+## 10. Significance gate — MATERIAL RISK
+
+The strongest hostile summary is
+
+> “Hirakawa effective area + standard modal participation + passive H2 + Friis/TT.”
+
+That criticism is credible because nearly all methods are established.
+
+The publication case is that no individual ingredient supplies the final **architecture-independent parameter elimination**. The closed theorem removes `Q`, mode count, coherent mixing, compact orientation, and phenomenological endpoint couplings from the ceiling and leaves only
+
+```math
+G,\;c,\;\omega,\;R,\;I_A,\;I_B.
+```
+
+Whether this synthesis is sufficiently significant is an external referee/editor judgment.
+
+Canonical hostile report:
+
+`HOSTILE_REFEREE_REPORT_2026-08-09.md`.
+
+---
+
+## 11. Allowed manuscript claim
 
 A defensible formulation is:
 
-> We combine established passive linear-system identities with microscopic gravitational coupling traces, cumulative mass-quadrupole spectral bounds at two compact matter interfaces, and normalized separated TT propagation to obtain an explicit inertia-controlled frequency-integrated ceiling for direct passive gravitational transduction.
+> We derive an inertia-controlled spectral-area ceiling for direct passive gravitational transduction by combining a passive source-to-receiver cut set with the compact STF quadrupole modal-participation resource and normalized one-pass TT propagation.
 
-Do **not** frame the source--receiver operator structure, reciprocity, directivity, Q-independent response, or use of a sum rule as the new idea.
+The manuscript should immediately acknowledge that the underlying modal-participation, antenna reciprocity/directivity, H2, singular-channel, and sum-rule methods are prior art.
 
 ---
 
-## 10. Forbidden claims
+## 12. Forbidden claims
 
 Do not claim
 
 - first gravitational efficiency-bandwidth bound;
-- new Q-independent gravitational response law;
+- new `Q`-independent gravitational response law;
 - first gravitational source--receiver/end-to-end bound;
-- new gravitational antenna reciprocity or compact directivity;
+- new gravitational antenna reciprocity/directivity;
+- new gravitational response sum-rule methodology;
+- new modal-completeness/effective-mass theorem;
 - new generic singular-channel wave-transfer formalism;
-- new sum-rule method for integrated passive response;
-- new passive H2 theorem;
+- quantum origin of the headline throughput ceiling;
 - universal gravitational quantum-capacity limit;
 - all passive matter;
 - globally optimal/saturable coefficient;
-- first/unique/unprecedented language without substantially stronger evidence.
+- first/unique/unprecedented language without substantially stronger external evidence.
 
 ---
 
@@ -263,17 +343,18 @@ Do not claim
 
 ```text
 PHYSICS THEOREM:                         GO
-MICROSCOPIC NORMALIZATION:               GO
+CLASSICAL MODAL RESOURCE:                GO
+NORMALIZATION:                           GO
 NUMERICAL VALIDATION:                    GO
 MANUSCRIPT:                              GO
-GENERIC STRUCTURAL NOVELTY:              NO
+HEADLINE THEOREM IS QUANTUM:             NO — CLASSICAL
+GENERIC METHOD NOVELTY:                  NO
 GRAVITATIONAL INGREDIENT NOVELTY:        NO
-GRAVITY-SPECIFIC CUMULATIVE INERTIA CLOSURE:
-                                         PROVISIONAL GO
+EXACT INERTIA-CLOSED TWO-ENDED THEOREM:  PROVISIONAL GO
 PUBLICATION SIGNIFICANCE:                MATERIAL EXTERNAL-REVIEW RISK
 PRIORITY CLAIM:                          NO
 V7 MODIFICATION:                         NO
-THEOREM BROADENING:                      NO
+FURTHER INTERNAL BROADENING:             NO
 ```
 
-The next action is a hostile external-referee-style review of the exact cumulative inertia closure and its publication significance—not another internal generalization.
+The next action is genuine external specialist review of the exact inertia closure and the H2-to-gravitational-continuum interface, not another internal generalization.
