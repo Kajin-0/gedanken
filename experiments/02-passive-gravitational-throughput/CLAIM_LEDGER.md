@@ -16,10 +16,10 @@ This ledger is authoritative for the research status of Experiment 02. A stateme
 
 | Statement | Status | Evidence |
 |---|---|---|
-| A two-sided `H2` spectral-area metric is mathematically well defined for stable strictly proper selected cross-port blocks | ESTABLISHED WITHIN MODEL | standard Plancherel/Gramian identity, re-derived in `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md` |
-| Finite-dimensional passive selected-port transfer obeys `||H_{o<-i}||_2^2 <= min[Tr(K_i^dag K_i), Tr(K_o^dag K_o)]` | DERIVED / VALIDATION PENDING | `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md`; adversarial regression added, CI pending |
-| A separated two-ended passive link obeys `Gamma_coh <= eta_max min[Tr(K_gA^dag K_gA), Tr(K_gB^dag K_gB)]` under the Stage-A realization assumptions | DERIVED / VALIDATION PENDING | `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md`; end-to-end random-system regression added, CI pending |
-| Compact quadrupolar endpoint coupling has an inertia-only cumulative bound | PROVISIONAL | candidate H2 only |
+| A two-sided `H2` spectral-area metric is mathematically well defined for stable strictly proper selected cross-port blocks | ESTABLISHED WITHIN MODEL | Plancherel/Gramian identity re-derived in `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md` |
+| Finite-dimensional passive selected-port transfer obeys `||H_{o<-i}||_2^2 <= min[Tr(K_i^dag K_i), Tr(K_o^dag K_o)]` | ESTABLISHED WITHIN MODEL | derivation + GitHub Actions run `31391304791`, job `93463450929`, PASS |
+| A separated two-ended passive link obeys `Gamma_coh <= eta_max min[Tr(K_gA^dag K_gA), Tr(K_gB^dag K_gB)]` under the Stage-A realization assumptions | ESTABLISHED WITHIN MODEL | derivation + end-to-end random-system regression in run `31391304791`, PASS |
+| Compact quadrupolar endpoint coupling has an inertia-only cumulative bound | PROVISIONAL | candidate H2 only; Stage B |
 | The relevant endpoint coefficient is `4/3` in `G I Omega^4 / c^5` normalization | PROVISIONAL | inherited candidate; must be re-derived |
 | The relevant compact TT propagation coefficient is `25/16` for the Experiment-02 throughput normalization | PROVISIONAL | candidate H3; must be independently normalized for this metric |
 | The final two-ended coefficient is `25/12` | PROVISIONAL | candidate H4 only |
@@ -29,6 +29,31 @@ This ledger is authoritative for the research status of Experiment 02. A stateme
 | Arbitrary unbounded PDE boundary ports are covered | FAILED AS A CURRENT CLAIM | explicitly outside initial assumptions |
 | The complete inertia-only theorem is novel | OPEN | no trustworthy complete prior-art audit yet |
 | Previous conversational Experiment 02 CI/branch/manuscript claims are repository evidence | FAILED | real remote did not contain those artifacts |
+
+## Stage-A validation record
+
+Workflow:
+
+`.github/workflows/experiment02-passive-cut.yml`
+
+First canonical run on `main`:
+
+```text
+run: 31391304791
+job: 93463450929
+PASS
+```
+
+Adversarial sample outputs:
+
+```text
+worst endpoint H2/resource ratio = 0.410127000961
+largest full-scattering singular value = 1
+worst two-ended Gamma/bound ratio = 0.089763188389
+PASS: finite-dimensional passive selected-port cut
+```
+
+The numerical test is not a proof; it is an independent regression against random complex noncommuting passive realizations and the two-ended cut. The analytic proof is in `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md`.
 
 ## Stage-A prior-art boundary
 

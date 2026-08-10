@@ -2,7 +2,7 @@
 
 **Experiment:** `02-passive-gravitational-throughput`  
 **Mode:** exploratory independent reconstruction.  
-**Current theorem status:** none verified.  
+**Current theorem status:** Stage A generic passive cut established within its finite-dimensional model; gravity-specific theorem unverified.  
 **Manuscript status:** none.
 
 This file is the first operational file an automated contributor should read after the repository-level `AGENTS.md`.
@@ -38,19 +38,13 @@ The previous conversational exploration suggested a candidate bound
 
 Do **not** begin by proving this expression.
 
-Begin from:
-
-- the selected-port transfer definition;
-- passivity;
-- explicit gravitational coupling;
-- compact TT propagation;
-- the assumptions in `ASSUMPTIONS.md`.
-
 The correct outcome may be a different coefficient, a weaker theorem, an additional material parameter, or a no-go for the entire inertia-only idea.
+
+Stage A has now independently established only the generic finite-dimensional passive structural cut. That result is stored in `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md` and validated by GitHub Actions run `31391304791`.
 
 ## 4. Required AI-native research loop
 
-A claim must progress through these roles/stages:
+A gravity-specific claim must progress through these roles/stages:
 
 ### A. Derivation
 
@@ -116,6 +110,18 @@ Prefer, in order:
 
 ## 7. No manuscript yet
 
-Do not create a paper manuscript until the central theorem or no-go statement has survived the independent technical stages above.
+Do not create a paper manuscript until the gravity-specific central theorem or no-go statement has survived the independent technical stages above.
 
-The next technical task is Stage A from `CURRENT_STATE.md`: derive the passive selected-port spectral-area cut from scratch and state exactly what assumptions are required.
+## 8. Next technical task — Stage B
+
+Derive the cumulative gravitational coupling resource `Tr(K_g^dagger K_g)` from the mass-weighted quadrupolar matter problem.
+
+Requirements:
+
+- start from an explicit continuum/modal coupling;
+- derive the mode quadrupole normalization;
+- derive the gravitational linewidth/coupling coefficient independently;
+- test the modal completeness sum without importing the desired `4/3` coefficient;
+- identify the exact inertia functional, if one exists;
+- compare directly with primary gravitational resonant-mass/antenna literature;
+- add a numerical or symbolic regression for every coefficient that can be tested.

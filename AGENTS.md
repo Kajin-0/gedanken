@@ -28,7 +28,7 @@ Do not reopen the `25/16` normalization, conserved-source architecture, finite-s
 
 `experiments/02-passive-gravitational-throughput/`
 
-Status: independent reconstruction; **no theorem verified and no manuscript yet**.
+Status: independent reconstruction. The finite-dimensional generic passive selected-port cut is established within its model and validated on `main`; the gravity-specific endpoint resource, propagation normalization for this metric, and final inertia theorem remain unverified. No manuscript exists.
 
 Start with:
 
@@ -109,22 +109,26 @@ Experiment 02 must use an AI-native falsification loop:
 
 Human specialists are reserved for the final external/journal-review boundary rather than the normal internal iteration loop.
 
-## 5. Reproducibility state for Experiment 01
+## 5. Reproducibility state
 
-Pinned numerical environment:
+Pinned numerical environment used by the active checks:
 
 - Python `3.12.13`;
 - NumPy `2.5.1`;
 - SciPy `1.18.0`.
 
-Active Experiment 01 checks include:
+Experiment 01 checks include:
 
 - `.github/workflows/latex-v7.yml`
 - `.github/workflows/tt-normalization.yml`
 - `.github/workflows/scientific-regressions.yml`
 - `.github/workflows/submission-package.yml`
 
-Do not claim Experiment 02 CI validation until Experiment 02 has its own real workflows or is explicitly covered by a real existing workflow on `main`.
+Experiment 02 currently has:
+
+- `.github/workflows/experiment02-passive-cut.yml`
+
+The first Stage-A run on `main` (`31391304791`) passed. Do not generalize that validation beyond the finite-dimensional passive cut it actually tests.
 
 ## 6. Allowed work
 
@@ -139,7 +143,7 @@ Unless a concrete defect appears:
 
 ### Experiment 02
 
-Active first-principles research is allowed and expected, subject to its local `AGENTS.md` and claim ledger. The immediate task is the passive selected-port spectral-area cut.
+Active first-principles research is allowed and expected, subject to its local `AGENTS.md` and claim ledger. The immediate task is Stage B: derive and attack the gravity-specific cumulative endpoint coupling resource without assuming the inherited `4/3` coefficient.
 
 ## 7. Global prohibitions
 
