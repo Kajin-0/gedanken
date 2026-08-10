@@ -8,7 +8,7 @@ Test the last major physical scope objection in the hostile referee report:
 
 The answer is favorable within the same compact far-zone class:
 
-> **If each endpoint is passive and the single-hop gravitational propagation operator has norm `p<1`, all recurrent two-endpoint scattering can be summed exactly as a Redheffer/Born geometric series. Its effective forward propagation norm is at most `p/(1-p^2)`. Therefore recurrent scattering changes the power transfer only at relative order `O(p^2)` and absolute order `O(p^4)`. Since compact TT propagation has `p=O((kR)^-1)`, repeated returns first modify the power ceiling at `O((kR)^-4)`, beyond the retained leading `O((kR)^-2)` wave-zone term.**
+> **If each endpoint is passive and the single-hop gravitational propagation operator has norm `p<1`, all recurrent two-endpoint scattering can be summed exactly as a Redheffer/Born geometric series. Its effective forward propagation norm is at most `p/(1-p^2)`. Therefore the recurrent-scattering upper ceiling exceeds the one-hop power ceiling only by a relative `O(p^2)` and an absolute `O(p^4)`. Since compact TT propagation has `p=O((kR)^-1)`, repeated returns can increase the power ceiling only at `O((kR)^-4)`, beyond the retained leading `O((kR)^-2)` wave-zone term. The actual recurrent transfer can be smaller because of interference.**
 
 Thus the leading `25/16` coefficient is not vulnerable to passive recurrent scattering between the same two compact endpoints.
 
@@ -221,7 +221,7 @@ so passive repeated scattering cannot approach that condition.
 
 ## 5. Leading-order asymptotics
 
-Expand
+Expand the recurrent upper ceiling,
 
 ```math
 \frac{\eta}{(1-\eta)^2}
@@ -234,16 +234,17 @@ With
 \eta=O((kR)^{-2}),
 ```
 
-we have
+we therefore have
 
 ```math
 \boxed{
 \eta_{\rm rec}
-=\eta+O((kR)^{-4}).
+\le
+\eta+O((kR)^{-4}).
 }
 ```
 
-Thus repeated source-receiver returns do not modify the leading power-transfer coefficient at order `1/R^2`.
+This is an upper-bound statement. It does not assert that the actual recurrent transfer equals the one-hop transfer plus a positive `O((kR)^-4)` correction; interference can reduce the transfer. What is proved is exactly what the throughput theorem needs: recurrent scattering cannot increase the leading power-transfer ceiling at order `1/R^2`.
 
 The current one-pass TT amplitude itself has omitted higher far-zone terms beginning at
 
@@ -251,7 +252,7 @@ The current one-pass TT amplitude itself has omitted higher far-zone terms begin
 O((kR)^{-2})
 ```
 
-in amplitude, which can generate power corrections at `O((kR)^-3)`. Recurrent scattering is therefore parametrically **more subleading** than the first already-neglected one-pass propagation correction.
+in amplitude, which can generate power corrections at `O((kR)^-3)`. The possible recurrent enhancement of the upper ceiling is therefore parametrically **more subleading** than the first already-neglected one-pass propagation correction.
 
 This is the central result of the audit.
 
@@ -316,7 +317,7 @@ Using the classical inertia resource,
 }
 ```
 
-This is an exact passive recurrent-scattering correction within the two-endpoint scattering model.
+This is an exact passive recurrent-scattering upper bound within the two-endpoint scattering model.
 
 ---
 
@@ -370,7 +371,7 @@ A shared radiative continuum can be reorganized into endpoint scattering blocks 
 - one propagation between interaction regions contributes one factor of `P`;
 - collective return processes correspond to additional round trips and therefore additional factors of `P_AB P_BA`.
 
-The present result does not construct a fully non-Markov common-bath master equation. It instead proves that, whenever the separated wave-zone scattering representation is valid, passive recurrent corrections cannot alter the leading `1/R^2` throughput coefficient.
+The present result does not construct a fully non-Markov common-bath master equation. It instead proves that, whenever the separated wave-zone scattering representation is valid, passive recurrent corrections cannot increase the leading `1/R^2` throughput ceiling.
 
 That is the physically relevant question for the current asymptotic theorem.
 
@@ -404,7 +405,7 @@ The useful observation for Experiment 02 is only the asymptotic consequence:
 
 ```math
 \boxed{
-\text{passive recurrent correction to power}
+\text{possible passive recurrent increase of the power ceiling}
 =O((kR)^{-4}),
 }
 ```
@@ -420,10 +421,11 @@ PASSIVE TWO-ENDPOINT RECURRENT SCATTERING:      BOUNDED
 ROUND-TRIP LOOP NORM:                           <= p^2
 EFFECTIVE FORWARD AMPLITUDE NORM:               <= p/(1-p^2)
 EFFECTIVE POWER FACTOR:                         <= eta/(1-eta)^2
-RECURRENT POWER CORRECTION IN WAVE ZONE:        O((kR)^-4)
-LEADING 25/16 COEFFICIENT:                      UNCHANGED
+RECURRENT POWER-CEILING ENHANCEMENT:            O((kR)^-4)
+ACTUAL RECURRENT TRANSFER EQUALS ONE-HOP+O(...): NOT CLAIMED
+LEADING 25/16 COEFFICIENT:                      UNCHANGED AS UPPER CEILING
 LEADING 1/R^2 HEADLINE THEOREM:                 UNCHANGED
 EXTERNAL RELAYS / CAVITIES / NEAR FIELD:        NOT COVERED
 ```
 
-The manuscript may safely replace the stronger phrase "one-pass only" by the more accurate statement that the displayed headline theorem is the **leading separated wave-zone result**, with passive recurrent returns between the same two endpoints entering only beyond retained order.
+The manuscript may safely replace the stronger phrase "one-pass only" by the more accurate statement that the displayed headline theorem is the **leading separated wave-zone upper ceiling**, with passive recurrent returns between the same two endpoints unable to increase it until beyond retained order.
