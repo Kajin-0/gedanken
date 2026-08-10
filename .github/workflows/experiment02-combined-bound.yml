@@ -1,0 +1,33 @@
+name: Experiment 02 combined-inertia regression
+
+on:
+  push:
+    paths:
+      - 'experiments/02-passive-gravitational-throughput/**'
+      - '.github/workflows/experiment02-combined-bound.yml'
+  pull_request:
+    paths:
+      - 'experiments/02-passive-gravitational-throughput/**'
+      - '.github/workflows/experiment02-combined-bound.yml'
+
+jobs:
+  combined-bound:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/02-passive-gravitational-throughput/numerics/requirements.txt
+
+      - name: Install pinned dependencies
+        working-directory: experiments/02-passive-gravitational-throughput/numerics
+        run: python -m pip install -r requirements.txt
+
+      - name: Verify finite-dimensional narrowband inertia closure
+        working-directory: experiments/02-passive-gravitational-throughput/numerics
+        run: python verify_combined_inertia_bound.py
