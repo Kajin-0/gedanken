@@ -1,11 +1,11 @@
 \section{Compact TT propagation and two-ended closure}
 \label{sec:propagation}
 
-Let $q_{ij}$ be a complex STF quadrupole amplitude and $\Lambda(\hat n)$ the transverse-traceless projector for direction $\hat n$.  Define the angular power form
+Let $q_{ij}$ be a complex STF quadrupole amplitude and $\Lambda(\hat n)$ the transverse-traceless projector for direction $\hat n$. Define the angular power form
 \begin{equation}
 F_q(\hat n)=q^*:\Lambda(\hat n):q .
 \end{equation}
-Since $\Lambda$ is an orthogonal projector, $0\le F_q\le q^*:q$.  For an STF tensor,
+Since $\Lambda$ is an orthogonal projector, $0\le F_q\le q^*:q$. For an STF tensor,
 \begin{equation}
 F_q=q^*:q-2(q^*\hat n)\cdot(q\hat n)
 +\frac12|\hat n\cdot q\hat n|^2 .
@@ -21,25 +21,25 @@ Hence the normalized angular density
 \begin{equation}
 w_q(\hat n)=\frac{F_q(\hat n)}{(8\pi/5)q^*:q}
 \end{equation}
-obeys $w_q\le5/(8\pi)$.  The corresponding directivity is therefore
+obeys $w_q\le5/(8\pi)$. The corresponding directivity is therefore
 \begin{equation}
 \boxed{D_q=4\pi w_q\le\frac52 .}
 \label{eq:Dmax}
 \end{equation}
-The maximum is attained by a plus quadrupole observed along its symmetry-normal direction.  Gravitational-antenna directivity itself is historical \cite{Hirakawa1976}; Eq.~\eqref{eq:Dmax} is used only to fix the present normalized propagation coefficient.
+The maximum is attained by a plus quadrupole observed along its symmetry-normal direction. Gravitational-antenna directivity itself is historical \cite{Hirakawa1976}; Eq.~\eqref{eq:Dmax} is used only to fix the present normalized propagation coefficient.
 
-Choose unit-norm TT polarization tensors $\epsilon^\lambda(\hat n)$ and normalized angular amplitudes
+Choose unit-norm TT polarization tensors $\epsilon^\lambda(\hat n)$ and define normalized angular amplitudes by
 \begin{equation}
-u_{q,\lambda}(\hat n)
+a_{q,\lambda}(\hat n)
 =\frac{q:\epsilon^\lambda(\hat n)}
 {\sqrt{(8\pi/5)q^*:q}}.
 \end{equation}
-Translation by a separation $R$ adds phase $\exp(ik\hat n\cdot\bm R)$.  In the outgoing wave zone, stationary phase at $\hat n=\hat R$ gives
+Translation by a separation $R$ adds phase $\exp(ik\hat n\cdot\bm R)$. In the outgoing wave zone, stationary phase at $\hat n=\hat R$ gives
 \begin{equation}
 t_{BA}
 \sim
 \frac{2\pi e^{ikR}}{ikR}
-\sum_\lambda u^*_{B,\lambda}(\hat R)u_{A,\lambda}(\hat R).
+\sum_\lambda a^*_{B,\lambda}(\hat R)a_{A,\lambda}(\hat R).
 \end{equation}
 Cauchy--Schwarz together with $w_q\le5/(8\pi)$ yields
 \begin{equation}
@@ -56,7 +56,7 @@ Optimizing over normalized compact source and receiver superpositions gives the 
 }
 \label{eq:25over16}
 \end{equation}
-The same coefficient follows from reciprocal effective area, $D_AD_B(\lambda/4\pi R)^2$, with $D_A,D_B\le5/2$.  An independent canonical one-graviton calculation in the companion repository project reproduces the same leading coefficient and, for an aligned plus-mode specialization, supplies finite-distance corrections; those subleading corrections are not assumed to be universal here.
+The same coefficient follows from reciprocal effective area, $D_AD_B(\lambda/4\pi R)^2$, with $D_A,D_B\le5/2$. An independent canonical one-graviton calculation in the companion repository project reproduces the same leading coefficient and, for an aligned plus-mode specialization, supplies finite-distance corrections; those subleading corrections are not assumed to be universal here.
 
 Combining Eqs.~\eqref{eq:gravcut}, \eqref{eq:narrowresource}, and \eqref{eq:25over16}, with $k_0=\omega_0/c$, gives
 \begin{align}
@@ -74,19 +74,19 @@ This proves Eq.~\eqref{eq:headline} within the declared narrowband leading-wave-
 
 \subsection{Repeated passive returns}
 
-Let $P_+$ and $P_-$ be forward and reverse separated propagation, and let $R_A,R_B$ be the gravitational reflection blocks of the passive endpoints.  Repeated returns sum to the exact resolvent
+Let $P_+$ and $P_-$ be forward and reverse separated propagation, and let $R_A,R_B$ be the gravitational reflection blocks of the passive endpoints. Repeated returns sum to the exact resolvent
 \begin{equation}
 P_{\rm eff}
 =(I-P_+R_AP_-R_B)^{-1}P_+ .
 \end{equation}
-As subblocks of passive scattering matrices, $\|R_A\|_{\op},\|R_B\|_{\op}\le1$.  With $p_\pm=\|P_\pm\|_{\op}$,
+As subblocks of passive scattering matrices, $\|R_A\|_{\op},\|R_B\|_{\op}\le1$. With $p_\pm=\|P_\pm\|_{\op}$,
 \begin{equation}
 \boxed{
 \|P_{\rm eff}\|_{\op}
 \le\frac{p_+}{1-p_+p_-}
 }
 \end{equation}
-whenever $p_+p_-<1$.  For reciprocal propagation, $p_+=p_-=p$ and $\eta=p^2$, so
+whenever $p_+p_-<1$. For reciprocal propagation, $p_+=p_-=p$ and $\eta=p^2$, so
 \begin{equation}
 \|P_{\rm eff}\|_{\op}^2
 \le\frac{\eta}{(1-\eta)^2} .
@@ -95,4 +95,4 @@ Since $\eta=O[(kR)^{-2}]$, recurrence changes the \emph{upper ceiling} only at s
 \begin{equation}
 \limsup_{kR\rightarrow\infty}(kR)^2\|P_{\rm eff}\|_{\op}^2\le\frac{25}{16} .
 \end{equation}
-This is not an equality for the actual recurrent transfer: destructive interference may reduce it.  The scattering composition is established network theory \cite{Redheffer1962}; its role here is only to close a potential passive gravitational loophole.
+This is not an equality for the actual recurrent transfer: destructive interference may reduce it. The scattering composition is established network theory \cite{Redheffer1962}; its role here is only to close a potential passive gravitational loophole.
