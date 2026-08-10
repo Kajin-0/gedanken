@@ -3,7 +3,7 @@
 
 \subsection{General compact quadrupole radiation}
 
-Let $Q_{ij}$ be an arbitrary possibly complex symmetric trace-free transition quadrupole at angular frequency $\omega$. For propagation direction $\hat{\bm n}$ define
+Let $Q_{ij}$ be an arbitrary possibly complex symmetric trace-free quadrupole amplitude at angular frequency $\omega$. For propagation direction $\hat{\bm n}$ define
 \begin{equation}
 P_{ij}=\delta_{ij}-n_i n_j
 \end{equation}
@@ -21,15 +21,15 @@ For unit-normalized polarization tensors, completeness gives
 |Q_{ij}\epsilon_{ij}^{(\lambda)}|^2
 =Q_{ij}^*\Lambda_{ij,kl}Q_{kl}.
 \end{equation}
-The angular one-graviton rate may therefore be written
+In the quantum normalization the angular one-graviton rate is
 \begin{equation}
 \frac{\dd\kappa_g}{\dd\Omega}
 =
 \frac{G\omega^5}{4\pi\hbar c^5}
-Q^*:\Lambda(\hat{\bm n}):Q.
+Q^*:\Lambda(\hat{\bm n}):Q,
 \label{eq:differentialrate}
 \end{equation}
-Rotational invariance and the fact that $\Lambda$ has rank two on the five-dimensional STF tensor space imply
+but the normalized angular dependence below is identical for a classical monochromatic TT field. Rotational invariance and the fact that $\Lambda$ has rank two on the five-dimensional STF tensor space imply
 \begin{equation}
 \int\dd\Omega\,\Lambda(\hat{\bm n})
 =\frac{8\pi}{5}I_{\rm STF}.
@@ -43,23 +43,21 @@ Thus
 \end{equation}
 consistent with Eq.~\eqref{eq:gravitonrate}.
 
-The corresponding directivity is
+The corresponding normalized directivity is
 \begin{equation}
 D_Q(\hat{\bm n})
-=4\pi\frac{\dd\kappa_g/\dd\Omega}{\kappa_g}
-=
-\frac52\frac{Q^*:\Lambda(\hat{\bm n}):Q}{Q^*:Q}.
+=\frac52\frac{Q^*:\Lambda(\hat{\bm n}):Q}{Q^*:Q}.
 \end{equation}
 Because $\Lambda$ is an orthogonal projector,
 \begin{equation}
 \boxed{D_Q(\hat{\bm n})\le\frac52.}
 \label{eq:Dmax}
 \end{equation}
-Equality occurs when $Q$ lies entirely in the two-dimensional TT tensor subspace associated with the line of sight.
+Equality occurs when $Q$ lies entirely in the two-dimensional TT tensor subspace associated with the line of sight. For real STF tensors this directivity functional is algebraically identical to the compact gravitational-antenna result of Hirakawa, Narihara, and Fujimoto \cite{HirakawaNariharaFujimoto1976}; neither the functional nor the value $5/2$ is claimed as new.
 
-\subsection{Normalized one-graviton propagation singular value}
+\subsection{Normalized TT propagation singular value}
 
-The directivity argument has a useful quantum-mode counterpart. Define the normalized angular one-graviton mode
+A convenient tensor-normalized angular radiation mode is
 \begin{equation}
  u_{Q,\lambda}(\hat{\bm n})
 =
@@ -72,7 +70,7 @@ which obeys
 \sum_\lambda\int\dd\Omega\,
 |u_{Q,\lambda}|^2=1.
 \end{equation}
-For normalized source and receiver quadrupoles separated by $R\hat{\bm R}$, fixed-frequency translation gives
+The same normalized mode may be read as a one-graviton angular wavefunction or as an energy-normalized classical TT radiation pattern. For normalized source and receiver quadrupoles separated by $R\hat{\bm R}$, fixed-frequency translation gives
 \begin{equation}
 S_{BA}(z)
 =
@@ -94,7 +92,7 @@ t_{BA}^{\rm TT}(z)
 +O(z^{-2}).}
 \label{eq:TTamplitude}
 \end{equation}
-Cauchy--Schwarz and $\|\Lambda\|_{\op}=1$ therefore imply the compact-quadrupole singular-channel bound
+Cauchy--Schwarz and $\|\Lambda\|_{\op}=1$ therefore imply
 \begin{equation}
 \boxed{
 \|P_g(\omega)\|_{\op}^2
@@ -103,17 +101,25 @@ Cauchy--Schwarz and $\|\Lambda\|_{\op}=1$ therefore imply the compact-quadrupole
 \left[1+O((kR)^{-1})\right].}
 \label{eq:TTpropbound}
 \end{equation}
-Matched source and receiver tensors in the same line-of-sight TT subspace saturate the leading projector inequality. For the aligned plus tensor $Q\propto\mathrm{diag}(1,-1,0)$, the complete normalized angular integral can be reduced to
+Matched source and receiver tensors in the same line-of-sight TT subspace saturate the leading projector inequality. For the aligned plus tensor $Q\propto\mathrm{diag}(1,-1,0)$, the complete normalized angular integral reduces to
 \begin{equation}
 S(z)=\frac5{32}
 \int_{-1}^{1}\dd x\,
 (1+6x^2+x^4)\ee^{izx},
 \end{equation}
-whose outgoing endpoint contribution is $-(5i/4z)\ee^{iz}+O(z^{-2})$. This provides an independent check of the coefficient in Eq.~\eqref{eq:TTamplitude}.
+whose outgoing endpoint contribution is $-(5i/4z)\ee^{iz}+O(z^{-2})$. This independently fixes the coefficient in Eq.~\eqref{eq:TTamplitude}.
+
+The leading coefficient also has a purely classical reciprocal-antenna interpretation after the endpoint coupling magnitudes have been normalized out. Two matched compact quadrupoles have maximal directivities $D_A=D_B=5/2$, and the far-field normalized transfer factor is
+\begin{equation}
+D_AD_B\left(\frac{\lambda}{4\pi R}\right)^2
+=\frac{25}{16(kR)^2},
+\label{eq:FriisTT}
+\end{equation}
+using $\lambda=2\pi/k$. Equation~\eqref{eq:TTamplitude} is the direct TT-field normalization of the same leading propagation geometry; quantum mechanics is not required for the coefficient.
 
 \subsection{Passive compact-quadrupole throughput theorem}
 
-We now combine the endpoint cut set, the mass-quadrupole spectral resource, and the normalized TT propagation ceiling. For a narrow band centered at $\omega$, assume
+We now combine the passive endpoint cut set, the classical cumulative quadrupole oscillator-strength bound, and normalized TT propagation. For a narrow band centered at $\omega$, assume
 \begin{equation}
 \frac{\omega L_A}{c}\ll1,
 \qquad
@@ -125,17 +131,14 @@ kR=\frac{\omega R}{c}\gg1.
 Then Eqs.~\eqref{eq:materialcutset} and \eqref{eq:TTpropbound} give the main result.
 
 \begin{theorem}[Passive compact-quadrupole gravitational throughput]
-For direct weak one-way propagation between compact passive nonrelativistic linear bosonic endpoints in the regime \eqref{eq:regime},
+For direct weak one-way propagation between compact passive nonrelativistic linear endpoints in the regime \eqref{eq:regime},
 \begin{equation}
 \boxed{
 \Gamma_{\rm coh}
 \lesssim
 \frac{25}{16(kR)^2}
 \frac{4G\omega^4}{3c^5}
-\min\!\left(
-\langle I_A\rangle,
-\langle I_B\rangle
-\right).}
+\min(I_A,I_B).}
 \label{eq:combined1}
 \end{equation}
 Equivalently,
@@ -144,15 +147,14 @@ Equivalently,
 \Gamma_{\rm coh}
 \lesssim
 \frac{25G\omega^2}{12c^3R^2}
-\min\!\left(
-\langle I_A\rangle,
-\langle I_B\rangle
-\right).}
+\min(I_A,I_B).}
 \label{eq:combined2}
 \end{equation}
 \end{theorem}
 
-The inequality is leading-order in the compact-source and wave-zone expansions; it is an upper bound rather than a claim that all three constituent inequalities can be saturated simultaneously. Its main structural feature is what no longer appears: endpoint quality factor, branching fraction, number of passive internal resonances, and the choice of basis used to describe coherent internal mode mixing. Those quantities determine how closely a particular device approaches the ceiling, but they cannot increase the ceiling inside the stated class.
+The headline inequality is a classical passive-wave bound within the stated linear-harmonic class: the H2 cut set, cumulative modal resource ceiling, and leading propagation bound all admit classical derivations. Quantization reproduces the same endpoint normalization and supplies the information-theoretic corollaries discussed later. The inequality is leading-order in the compact-source and wave-zone expansions and is an upper bound rather than a claim that all constituent inequalities can be saturated simultaneously.
+
+Its main structural feature is what no longer appears: endpoint quality factor, branching fraction, number of passive internal resonances, and the basis used to describe coherent internal mode mixing. Those quantities determine how closely a particular device approaches the ceiling, but they cannot increase the ceiling inside the stated class.
 
 For a finite band $\mathcal B=[\omega_-,\omega_+]$ lying entirely in the compact wave-zone regime, a conservative broad-band version keeps the two band edges distinct:
 \begin{equation}
@@ -160,10 +162,7 @@ For a finite band $\mathcal B=[\omega_-,\omega_+]$ lying entirely in the compact
 \lesssim
 \frac{25G}{12c^3R^2}
 \frac{\omega_+^4}{\omega_-^2}
-\min\!\left(
-\langle I_A\rangle,
-\langle I_B\rangle
-\right).
+\min(I_A,I_B).
 \label{eq:broadband}
 \end{equation}
-This form is intentionally loose; a genuinely broadband non-Markov response theory should retain the full frequency dependence inside the integral rather than combining separate suprema.
+This form is intentionally loose; a sharper broadband response theory should retain the full frequency dependence inside the integral rather than combining separate suprema.
