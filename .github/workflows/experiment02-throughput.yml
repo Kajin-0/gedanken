@@ -32,6 +32,9 @@ jobs:
       - name: Verify classical modal sum-rule bound
         run: python experiments/02-passive-gravitational-throughput/numerics/verify_classical_modal_sum_rule.py
 
+      - name: Verify recurrent passive scattering bound
+        run: python experiments/02-passive-gravitational-throughput/numerics/verify_recurrent_scattering_bound.py
+
       - name: Verify TT quadrupole propagation bound
         run: python experiments/02-passive-gravitational-throughput/numerics/verify_tt_propagation_bound.py
 
