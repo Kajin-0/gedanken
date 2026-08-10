@@ -229,14 +229,23 @@ Excluded:
 
 ## Validation
 
-The last fully validated pre-attribution checkpoint was
+Final strongest-route manuscript validation:
 
 ```text
-physics:     run 31346367916, job 93328941553 — PASS
-manuscript:  run 31346367918, job 93328941582 — PASS
+run 31346901851
+job 93330404771
+PASS
 ```
 
-The physics suite contains six layers:
+Final-head physics regression:
+
+```text
+run 31347058681
+job 93330821747
+PASS
+```
+
+The physics suite contains six passing layers:
 
 1. two-port spectral bound;
 2. passive H2 cut set;
@@ -245,7 +254,7 @@ The physics suite contains six layers:
 5. TT propagation;
 6. microscopic port factorization.
 
-A fresh manuscript build is required after the Lobo/Tobar citation edits before the final checkpoint is frozen.
+The manuscript compile, unresolved citation/reference scan, and PDF upload all passed after the Lobo/Tobar attribution edits.
 
 ---
 
