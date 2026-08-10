@@ -2,7 +2,7 @@
 
 ## Question
 
-What frequency-integrated coherent transfer can a **direct passive gravitational link** support when both compact matter interfaces and the propagating TT channel are treated explicitly?
+What frequency-integrated coherent transfer can a **separated passive gravitational link** support when both compact matter interfaces and the propagating TT channel are treated explicitly?
 
 Experiment 01 / V7 is frozen. This branch develops a separate theorem and does not modify V7.
 
@@ -10,7 +10,7 @@ Experiment 01 / V7 is frozen. This branch develops a separate theorem and does n
 
 ## Headline theorem
 
-For compact passive nonrelativistic linear-harmonic source and receiver networks in weak one-pass quadrupolar wave-zone gravity,
+For compact passive nonrelativistic linear-harmonic source and receiver networks in weak quadrupolar wave-zone gravity,
 
 ```math
 \Gamma_{\rm coh}
@@ -18,7 +18,7 @@ For compact passive nonrelativistic linear-harmonic source and receiver networks
 \operatorname{Tr}[T^\dagger(\omega)T(\omega)]d\omega
 ```
 
-obeys
+obeys, at leading separated-wave-zone order,
 
 ```math
 \boxed{
@@ -29,55 +29,94 @@ obeys
 }
 ```
 
-The ceiling contains no endpoint quality factor, no assumed number of passive resonances, no coherent internal-mixing parameter, and no four-spoke-specific quantity.
-
 The physical bound is **classical** within this linear-harmonic class. Quantum mechanics reproduces the same oscillator-strength normalization and gives later pure-loss channel/capacity corollaries.
+
+The leading ceiling contains no endpoint quality factor, passive resonance count, coherent internal-mixing parameter, branching fraction, or four-spoke-specific quantity.
 
 ---
 
-## Proof skeleton
+## Strongest-route upgrades
 
-### Passive selected-port cut set
+### Countably infinite passive modal sectors
 
-```math
-\Gamma_{\rm coh}
-\le
-\eta_{\max}
-\min\!\left[
-\operatorname{Tr}(K_{g,A}^\dagger K_{g,A}),
-\operatorname{Tr}(K_{g,B}^\dagger K_{g,B})
-\right].
-```
-
-This is established passive H2/Gramian algebra applied to the gravitational port resources.
-
-### Classical cumulative material resource
-
-For mass-weighted elastic normal modes,
+The selected-port H2 theorem now holds directly for a separable bounded-port passive Markov modal Hilbert space. For the contraction semigroup `T(t)=exp(At)`,
 
 ```math
-(g^{ij})_k
-=\delta_{ik}x_j+\delta_{jk}x_i
--\frac23\delta_{ij}x_k
+\boxed{
+0\le P_u(\tau)
+\le I-T(\tau)T^\dagger(\tau)
+\le I.
+}
 ```
 
-satisfies
+If the gravitational port is Hilbert--Schmidt,
 
 ```math
-\sum_{ijk}|(g^{ij})_k|^2
-=\frac{20}{3}r^2.
+\boxed{
+\|S_{g\leftarrow u}\|_2^2
+\le\operatorname{Tr}(K_g^\dagger K_g).
+}
 ```
 
-Standard modal-participation/Bessel completeness therefore gives the gravitational specialization
+The gravitational inertia resource itself guarantees
+
+```math
+\operatorname{Tr}(K_g^\dagger K_g)<\infty,
+```
+
+so countably infinite passive resonance count is covered without a finite-mode loophole.
+
+### Passive recurrent returns
+
+For exact passive endpoint reflection blocks `R_A,R_B`, repeated separated propagation sums to
+
+```math
+\boxed{
+P_{\rm eff}
+=(I-P_{BA}R_AP_{AB}R_B)^{-1}P_{BA}.
+}
+```
+
+For reciprocal propagation with one-hop power factor `eta`,
+
+```math
+\boxed{
+\eta_{\rm rec}
+\le\frac{\eta}{(1-\eta)^2}.
+}
+```
+
+Since compact TT propagation has `eta = O((kR)^-2)`,
+
+```math
+\boxed{
+\eta_{\rm rec}
+=\eta+O((kR)^{-4}).
+}
+```
+
+Thus arbitrarily many passive back-and-forth returns between the same two compact endpoints cannot change the retained leading `1/R^2` coefficient.
+
+---
+
+## Material resource
+
+Historical resonant-mass theory already supplies the long-wavelength STF tidal-force fields and their projection onto elastic normal modes. Applying standard Bessel/Parseval completeness to those fields gives
 
 ```math
 \boxed{
 \sum_n\frac{q_n:q_n}{\mu_n}
-\le\frac{20}{3}I
+\le\frac{20}{3}I.
 }
 ```
 
-and, using Hirakawa's historical gravitational effective area,
+Using Hirakawa's gravitational effective area,
+
+```math
+A_{Gn}=\frac{2q_n:q_n}{M\mu_n},
+```
+
+this becomes
 
 ```math
 \boxed{
@@ -85,23 +124,43 @@ and, using Hirakawa's historical gravitational effective area,
 }
 ```
 
-For retained modes below `Omega`,
+and therefore
 
 ```math
 \boxed{
 \sum_n\kappa_{g,n}
+=\operatorname{Tr}(K_g^\dagger K_g)
 \le\frac{4G}{3c^5}I\Omega^4.
 }
 ```
 
-### Normalized compact TT propagation
+The `20/3` coefficient, tidal influence fields, and modal-completeness method are **not** presented as new mathematics. Lobo's arbitrary-body antenna formalism contains the historical STF tidal/modal ingredients; the exact `40/3` Hirakawa-effective-area sum has not been found explicitly in the inspected sources.
+
+---
+
+## Modern multimode stress test
+
+Tobar, Pikovski, and Tobar's 2025 multimode graviton bar is an apparent many-mode challenge that instead illustrates the resource accounting. Its hybrid normal-mode absorption rates carry factors
 
 ```math
-G_B^\dagger U_RG_A
-=\Gamma_{g,B}^{1/2}P_g\Gamma_{g,A}^{1/2},
+\Gamma_{{\rm stim},j}\propto P_{1j}^2 M h^2.
 ```
 
-with
+Orthogonality of the mass-weighted normal-mode transformation gives
+
+```math
+\boxed{
+\sum_j|P_{1j}|^2=1.
+}
+```
+
+so hybridization redistributes the gravitationally driven coordinate rather than creating independent copies of its coupling. The design can still improve readout transduction and spectral coverage substantially.
+
+See `TOBAR_MULTIMODE_BAR_STRESS_TEST_2026-08-09.md`.
+
+---
+
+## Compact TT propagation
 
 ```math
 \boxed{
@@ -112,79 +171,7 @@ with
 
 at leading wave-zone order.
 
-The same `25/16` has both a normalized TT angular-mode derivation and a classical reciprocal-antenna interpretation from `D_A=D_B=5/2`.
-
----
-
-## Historical normalization cross-check
-
-Hirakawa, Narihara, and Fujimoto's 1976 compact-antenna effective area satisfies
-
-```math
-A_{Gn}=\frac{2q_n:q_n}{M\mu_n}.
-```
-
-Their radiated power and the harmonic modal energy give
-
-```math
-\boxed{
-\kappa_{g,n}
-=\frac{GMA_{Gn}\omega_n^4}{10c^5}.
-}
-```
-
-Quantizing the same normal coordinate gives
-
-```math
-Q^{01}:Q^{10}
-=\frac{\hbar M A_{Gn}}{4\omega_n}
-```
-
-and reproduces exactly
-
-```math
-\kappa_{g,n}
-=\frac{2G\omega_n^5}{5\hbar c^5}Q^{01}:Q^{10}.
-```
-
-No factor-of-two or `2 pi` mismatch was found.
-
----
-
-## Exact resonator and quantum corollaries
-
-For one source and receiver pole,
-
-```math
-\Gamma_{\rm EBP}
-\le\eta_{\rm prop}\min(\kappa_{g,A},\kappa_{g,B}).
-```
-
-For the symmetric lossless family,
-
-```math
-\kappa_{\rm in}=\kappa_{\rm out}=2\kappa_g,
-\qquad
-\Gamma_{\rm EBP}^{\rm max}
-=\frac8{27}\eta_{\rm prop}\kappa_g.
-```
-
-After quantization, for a stationary vacuum pure-loss realization,
-
-```math
-\eta_{\max}\le\frac12\Rightarrow Q_1=0,
-```
-
-and
-
-```math
-Q_2
-\le
-\frac{\Gamma_{\rm coh}}
-{\ln2\,(1-\eta_{\max})}.
-```
-
-These are downstream channel-specific consequences, not the origin of the physical throughput bound.
+The same coefficient has both a normalized TT angular-mode derivation and a classical reciprocal-antenna interpretation using `D_A=D_B=5/2`.
 
 ---
 
@@ -193,24 +180,24 @@ These are downstream channel-specific consequences, not the origin of the physic
 The audit explicitly rejects novelty for
 
 - gravitational generator--receiver calculations;
-- compact gravitational antenna eigenmodes;
-- gravitational reciprocity and compact quadrupole directivity;
+- compact resonant-mass eigenmode and STF tidal-response theory;
+- gravitational reciprocity and `D=5/2` directivity;
 - `Q`-independent integrated gravitational response;
-- gravitational material-response sum-rule methodology;
-- passive H2/Gramian mathematics;
-- generic singular source--receiver wave channels and Green-operator transfer bounds;
-- modal participation / effective-modal-mass completeness;
-- generic use of sum rules to constrain integrated passive response.
+- gravitational response sum-rule methodology;
+- modal participation/effective-mass completeness;
+- passive finite/infinite-dimensional H2/Gramian machinery;
+- generic singular wave channels and two-body Green-operator bounds;
+- multiple-scattering/Redheffer composition.
 
-The only surviving candidate contribution is the **gravity-specific cumulative two-ended closure**:
+The only surviving candidate contribution is the **complete gravity-specific two-ended inertia closure**:
 
 ```text
-passive selected-port spectral-area cut set
--> smaller source/receiver gravitational resource
--> STF quadrupole modal-participation specialization
--> cumulative effective-area/inertia ceiling at BOTH endpoints
--> normalized compact one-pass TT propagation
--> explicit inertia-only end-to-end throughput bound.
+passive selected-port spectral-area cut
+-> source/receiver gravitational traces
+-> cumulative inertia resource at BOTH endpoints
+-> compact TT propagation
+-> passive recurrence subleading at retained order
+-> explicit inertia-only end-to-end ceiling.
 ```
 
 No inspected primary source has been found stating this exact theorem. That is a negative search result, not a priority claim.
@@ -219,39 +206,46 @@ No inspected primary source has been found stating this exact theorem. That is a
 
 ## Scope
 
-The theorem is restricted to
+Included:
 
 - weak linearized gravity;
-- direct retarded one-pass/Born wave-zone transfer;
-- compact nonrelativistic quadrupole source and receiver matter;
-- stable passive linear-harmonic endpoint dynamics in finite band-local sectors;
-- no active gain, inversion, parametric drive, extended phased aperture, higher-multipole beaming, near-field exchange, recurrent multiple scattering, strong common-bath hybridization, or intermediate relay.
+- separated compact nonrelativistic quadrupolar matter;
+- passive linear-harmonic endpoint dynamics;
+- finite or countably infinite bounded-port Markov modal sectors;
+- repeated passive returns between the same two endpoints at the stated wave-zone asymptotic order.
 
-For an infinite elastic spectrum, the finite-sector resource bound is uniform in mode count; extension of the H2 transfer requires the corresponding trace-class limit.
+Excluded:
+
+- active gain/inversion/parametric drive;
+- extended phased apertures or additional gravitational relays/mirrors;
+- engineered external cavities;
+- near-field/reactive exchange;
+- nonlinear/relativistic matter;
+- unbounded PDE boundary ports without admissibility analysis;
+- genuinely non-Markov continua;
+- globally sharp/saturable optimality claims.
 
 ---
 
 ## Validation
 
-Latest complete physics regression:
+The last fully validated pre-attribution checkpoint was
 
 ```text
-run 31344642352
-job 93324206747
-PASS
+physics:     run 31346367916, job 93328941553 — PASS
+manuscript:  run 31346367918, job 93328941582 — PASS
 ```
 
-All five stages passed, including the new classical modal-sum regression.
+The physics suite contains six layers:
 
-Latest complete manuscript validation:
+1. two-port spectral bound;
+2. passive H2 cut set;
+3. classical modal sum rule;
+4. recurrent passive scattering;
+5. TT propagation;
+6. microscopic port factorization.
 
-```text
-run 31344642351
-job 93324206692
-PASS
-```
-
-LaTeX compilation, unresolved citation/reference scan, and PDF artifact upload all passed.
+A fresh manuscript build is required after the Lobo/Tobar citation edits before the final checkpoint is frozen.
 
 ---
 
@@ -259,23 +253,19 @@ LaTeX compilation, unresolved citation/reference scan, and PDF artifact upload a
 
 1. `CURRENT_STATE.md`
 2. `HOSTILE_REFEREE_REPORT_2026-08-09.md`
-3. `CLASSICAL_MODAL_SUM_RULE_AND_QUANTUM_SCOPE_AUDIT_2026-08-09.md`
-4. `HIRAKAWA_EFFECTIVE_AREA_QUANTUM_LINEWIDTH_CROSSCHECK.md`
-5. `HIRAKAWA_NARIHARA_FUJIMOTO_1976_COLLISION_AUDIT.md`
-6. `SRIVASTAVA_WIDOM_PIZZELLA_2003_SUM_RULE_COLLISION_AUDIT.md`
-7. `STRUCTURAL_DYNAMICS_MODAL_PARTICIPATION_COLLISION_AUDIT.md`
+3. `LOBO_SPHERICAL_MODAL_COMPLETENESS_COLLISION_AUDIT_2026-08-09.md`
+4. `TOBAR_MULTIMODE_BAR_STRESS_TEST_2026-08-09.md`
+5. `INFINITE_DIMENSIONAL_PASSIVE_H2_AUDIT_2026-08-09.md`
+6. `RECURRENT_SCATTERING_WAVEZONE_AUDIT_2026-08-09.md`
+7. `HIRAKAWA_EFFECTIVE_AREA_QUANTUM_LINEWIDTH_CROSSCHECK.md`
 8. `GENERIC_WAVE_TRANSFER_COLLISION_AUDIT_2026-08-09.md`
-9. `PASSIVE_NETWORK_CUTSET_THEOREM.md`
-10. `GRAVITATIONAL_PORT_FACTORIZATION.md`
-11. `TT_PROPAGATION_BOUND.md`
-12. `CAPACITY_COROLLARIES.md`
 
 ## Current status
 
-**Physics theorem: GO within the declared passive compact linear-harmonic one-pass class.**
+**Physics theorem: GO within the declared passive compact linear-harmonic separated-wave-zone class.**
 
 **Exact novelty: provisional only for the final gravity-specific inertia closure.**
 
-**Main remaining risk: publication significance, not a known algebraic defect.**
+**Main remaining risk: publication significance/priority, not a known internal technical defect.**
 
-**Next step: actual external gravitational-antenna / passive-wave specialist review. Do not broaden this paper further internally.**
+**Next step: specialist external review; do not broaden the theorem further internally without a concrete objection.**
