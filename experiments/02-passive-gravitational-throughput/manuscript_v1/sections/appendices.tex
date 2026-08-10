@@ -36,12 +36,65 @@ The standard Gramian identity then yields
 =\Tr(K_gP_uK_g^\dagger)
 \le\Tr(K_g^\dagger K_g).
 \end{equation}
-The receiver-side statement follows analogously from the corresponding observability or dual controllability Gramian.
+The receiver-side statement follows analogously from the corresponding observability or dual controllability Gramian. No commutator or quantum-state assumption enters this proof.
 
-\section{Cumulative quadrupole spectral bound}
+\section{Classical quadrupole modal-completeness bound}
+\label{app:classicalsum}
+
+For the mass-weighted displacement space of Eq.~\eqref{eq:massinner}, define the tensor-indexed vector fields of Eq.~\eqref{eq:gijfield},
+\begin{equation}
+(g^{ij})_k
+=\delta_{ik}x_j+\delta_{jk}x_i
+-\frac23\delta_{ij}x_k.
+\end{equation}
+Their pointwise squared norm is
+\begin{align}
+\sum_{ijk}|(g^{ij})_k|^2
+&=\sum_{ijk}
+\left(
+\delta_{ik}x_j+\delta_{jk}x_i
+-\frac23\delta_{ij}x_k
+\right)^2\\
+&=6r^2-\frac{8}{3}r^2+\frac{4}{3}r^2\\
+&=\frac{20}{3}r^2.
+\end{align}
+Here the first term includes the two diagonal squares and their cross term; the last two terms arise from the trace subtraction and its interference with the symmetric part.
+
+Let $\bm e_n=\bm w_n/\sqrt{\mu_n}$ be any orthonormal retained set of elastic modes. For each pair $i,j$, Bessel's inequality gives
+\begin{equation}
+\sum_n
+|\langle\bm e_n,\bm g^{ij}\rangle_\rho|^2
+\le
+\|\bm g^{ij}\|_\rho^2.
+\end{equation}
+Since
+\begin{equation}
+\langle\bm e_n,\bm g^{ij}\rangle_\rho
+=\frac{q_{n,ij}}{\sqrt{\mu_n}},
+\end{equation}
+summing over $i,j$ yields
+\begin{align}
+\sum_n\frac{q_n:q_n}{\mu_n}
+&\le
+\int\rho
+\sum_{ijk}|(g^{ij})_k|^2dV\\
+&=\frac{20}{3}\int\rho r^2dV\\
+&=\boxed{\frac{20}{3}I}.
+\end{align}
+Using Eq.~\eqref{eq:HirakawaAG},
+\begin{equation}
+\boxed{
+\sum_n M A_{Gn}
+\le\frac{40}{3}I.}
+\end{equation}
+This is the classical oscillator-strength sum rule used in the main proof.
+
+If the elastic eigenmodes form a complete basis for the components of all five STF quadrupole-gradient fields, Bessel's inequality becomes Parseval equality. For a selected band, constrained mechanical subspace, or any incomplete retained set, the inequality is the appropriate form. Choosing the origin at the center of mass removes overlap with rigid translations. A rigid infinitesimal rotation $\bm u=\bm\Omega\times\bm r$ gives zero linearized symmetric quadrupole contraction, so rotational zero modes do not enlarge the sum.
+
+\section{Equivalent quantum cumulative spectral bound}
 \label{app:sumrule}
 
-For a passive diagonal state
+For a passive diagonal quantum state
 \begin{equation}
 \rho=\sum_m p_m|m\rangle\langle m|,
 \end{equation}
@@ -81,7 +134,7 @@ K_g(\Omega)
 \frac{4G}{3c^5}
 \langle I\rangle_\rho\Omega^4.}
 \end{equation}
-For the coherent linear-network theorem we use the ground-state one-quantum coupling resource; finite-temperature population factors affect net absorption and channel noise and are not silently identified with the state-independent oscillator damping matrix.
+For a ground-state linear-harmonic system this reproduces the classical modal-completeness result after quantizing the normal coordinates. At finite temperature the population-difference spectral measure controls net quantum absorption and noise; it should not be confused with a reduction of the underlying classical mode-coupling constants.
 
 \section{Independent aligned-plus TT integral}
 \label{app:TTcheck}
@@ -93,7 +146,7 @@ Q:\epsilon_+
 Q:\epsilon_\times
 &=-\sqrt2\cos\theta\sin2\phi.
 \end{align}
-For the normalized one-graviton angular mode in Eq.~\eqref{eq:normalizedmode}, azimuthal integration gives
+For the normalized angular mode in Eq.~\eqref{eq:normalizedmode}, azimuthal integration gives
 \begin{equation}
 \sum_\lambda\int_0^{2\pi}\dd\phi\,
 |u_{Q,\lambda}|^2
@@ -131,7 +184,7 @@ Consequently,
 -\frac9{z^6}+\frac9{z^8}
 \right).
 \end{equation}
-This check fixes the leading $25/16$ coefficient directly from normalized angular modes.
+This check fixes the leading $25/16$ coefficient directly from normalized TT angular modes.
 
 \section{Exact two-pole integral and symmetric optimum}
 \label{app:twopole}
