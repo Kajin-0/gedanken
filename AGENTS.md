@@ -7,6 +7,12 @@
 
 This is the first operational file a new agent should read.
 
+For all new research, theorem reopening, and future experiments, also read and follow
+
+`AI_RESEARCH_PROTOCOL.md`.
+
+The repository is **AI-first by default**: complete internally automatable derivation, reconstruction, hostile review, prior-art collision search, numerical/symbolic attack, meta-review, and manuscript compression before depending on human input. Human specialists are reserved for the final external-validation / journal-review boundary unless a genuinely external fact cannot be resolved internally.
+
 ---
 
 ## 1. Mandatory concurrency protocol
@@ -263,13 +269,14 @@ Run `31266474558` passed.
 Before historical research files, read:
 
 1. `AGENTS.md`
-2. `README.md`
-3. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md`
-4. `experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md`
-5. `experiments/01-causal-quantum-branch-information/manuscript_v7/README.md`
-6. `experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md`
-7. `experiments/01-causal-quantum-branch-information/ADVERSARIAL_REVIEW_RESPONSE_V7_2026-08-08.md`
-8. `experiments/01-causal-quantum-branch-information/numerics/README.md`
+2. `AI_RESEARCH_PROTOCOL.md`
+3. `README.md`
+4. `experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md`
+5. `experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md`
+6. `experiments/01-causal-quantum-branch-information/manuscript_v7/README.md`
+7. `experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md`
+8. `experiments/01-causal-quantum-branch-information/ADVERSARIAL_REVIEW_RESPONSE_V7_2026-08-08.md`
+9. `experiments/01-causal-quantum-branch-information/numerics/README.md`
 
 Only go backward into legacy files when tracing provenance or auditing a historical correction.
 
