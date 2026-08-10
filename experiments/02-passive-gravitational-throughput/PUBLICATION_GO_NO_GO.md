@@ -1,26 +1,28 @@
 # Publication Go / No-Go — Experiment 02
 
-## Verdict
+## Final internal verdict
 
-**PHYSICS: GO WITH DECLARED SCOPE**
+**PHYSICS: GO**
 
 **MANUSCRIPT: GO**
 
-**HEADLINE THEOREM: CLASSICAL PASSIVE GRAVITATIONAL TRANSDUCTION**
+**INTERNAL AI ADVERSARIAL REVIEW: GO**
 
-**COUNTABLY INFINITE BOUNDED-PORT MODES: COVERED**
+**TITLE:** **An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction**
 
-**PASSIVE TWO-ENDPOINT RECURRENCE: LEADING-ORDER OBJECTION CLOSED**
+**HEADLINE THEOREM:** classical passive gravitational transduction
 
-**STANDALONE MODAL-SUM NOVELTY: STRONGLY NARROWED**
+**NOVELTY:** provisional only for the exact gravity-specific two-ended inertia closure
 
-**NOVELTY: PROVISIONAL GO ONLY FOR THE EXACT GRAVITY-SPECIFIC INERTIA-CLOSED TWO-ENDED THEOREM**
+**PRIORITY CLAIM:** no
 
-**FURTHER INTERNAL BROADENING: NO-GO**
+**FURTHER INTERNAL BROADENING:** no-go
+
+**NEXT EXTERNAL GATE:** final specialist / journal review
 
 ---
 
-## 1. Physics gate — GO
+## 1. Result admitted by the gate
 
 For separated compact passive nonrelativistic linear-harmonic endpoints in weak quadrupolar wave-zone gravity,
 
@@ -30,14 +32,13 @@ For separated compact passive nonrelativistic linear-harmonic endpoints in weak 
 \operatorname{Tr}[T^\dagger T]d\omega
 ```
 
-obeys, at the retained leading order,
+obeys
 
 ```math
 \boxed{
 \Gamma_{\rm coh}
 \lesssim
-\frac{25G\omega^2}{12c^3R^2}
-\min(I_A,I_B).
+\frac{25G\omega^2}{12c^3R^2}\min(I_A,I_B).
 }
 ```
 
@@ -45,307 +46,236 @@ No fatal internal defect has been identified inside the declared class.
 
 ---
 
-## 2. Infinite-modal-sector gate — PASS
+## 2. Load-bearing gates
 
-The passive H2 endpoint theorem is no longer restricted to a finite state vector.
-
-For a separable Hilbert-space modal sector with bounded Markov port operator and contraction semigroup `T(t)`, the finite-time selected Gramian obeys
+### Passive selected-port cut — PASS
 
 ```math
-\boxed{
+\Gamma_{\rm coh}
+\le
+\eta_{\max}\min[
+\operatorname{Tr}(K_{g,A}^\dagger K_{g,A}),
+\operatorname{Tr}(K_{g,B}^\dagger K_{g,B})].
+```
+
+This is established passive systems mathematics.
+
+### Countably infinite bounded-port modal sectors — PASS
+
+For a bounded-port contraction-semigroup realization,
+
+```math
 0\le P_u(\tau)
 \le I-T(\tau)T^\dagger(\tau)
-\le I.
-}
+\le I,
 ```
 
-If `K_g` is Hilbert--Schmidt,
+and the inertia resource makes `K_g` Hilbert--Schmidt. Arbitrary unbounded PDE boundary ports and genuinely non-Markov continua remain outside scope.
+
+### Classical endpoint resource — PASS
 
 ```math
-\boxed{
-\|S_{g\leftarrow u}\|_2^2
-\le\operatorname{Tr}(K_g^\dagger K_g).
-}
+\sum_n\frac{q_n:q_n}{\mu_n}\le\frac{20}{3}I,
 ```
 
-The gravitational material bound supplies the Hilbert--Schmidt condition,
+```math
+\sum_nMA_{Gn}\le\frac{40}{3}I,
+```
 
 ```math
 \operatorname{Tr}(K_g^\dagger K_g)
-\le\frac{4G}{3c^5}I\Omega^4<\infty.
-```
-
-Thus countably infinite passive resonance count is covered directly in the stated bounded-port Markov class.
-
-Unbounded PDE boundary ports and genuinely non-Markov continua remain outside scope.
-
----
-
-## 3. Classical material-resource gate — PASS, NOVELTY NARROWED
-
-The cumulative material result is
-
-```math
-\boxed{
-\sum_n\frac{q_n:q_n}{\mu_n}
-\le\frac{20}{3}I,
-\qquad
-\sum_n M A_{Gn}
-\le\frac{40}{3}I.
-}
-```
-
-and therefore
-
-```math
-\boxed{
-\sum_n\kappa_{g,n}
 \le\frac{4G}{3c^5}I\Omega^4.
-}
 ```
 
-However, the historical audit now shows that the underlying STF tidal influence fields and arbitrary-body elastic modal projections are already present in Lobo's resonant-mass formalism. STF completeness plus standard modal Bessel/Parseval theory yields the `20/3` coefficient in a short derivation.
+The modal-completeness method and historical STF tidal ingredients are prior art; the standalone modal relation is not the headline novelty.
 
-Therefore:
-
-```text
-new tidal influence field:                 NO
-new modal-completeness method:             NO
-20/3 as new mathematical principle:        NO
-40/3 A_G sum explicitly found historically: NO
-40/3 used in final two-ended closure:       CANDIDATE CONTRIBUTION
-```
-
-Canonical audit:
-
-`LOBO_SPHERICAL_MODAL_COMPLETENESS_COLLISION_AUDIT_2026-08-09.md`.
-
----
-
-## 4. Modern multimode stress test — PASS
-
-Tobar, Pikovski, and Tobar's 2025 multimode graviton bar appears superficially to challenge the finite-resource statement because several hybrid modes inherit strong coupling from one tonne-scale driven element.
-
-Their modal rates contain squared participation factors
+### Classical/quantum normalization — PASS
 
 ```math
-\Gamma_{{\rm stim},j}\propto P_{1j}^2 M h^2.
-```
-
-The mass-weighted normal-mode transformation is orthogonal, so
-
-```math
-\boxed{
-\sum_j|P_{1j}|^2=1.
-}
-```
-
-The hybrid modes partition the original driven-coordinate norm rather than creating `N` independent copies of it. The architecture can still improve readout transduction and spectral coverage.
-
-This is a concrete modern example of the Experiment 02 trace-resource principle rather than a counterexample.
-
-Canonical audit:
-
-`TOBAR_MULTIMODE_BAR_STRESS_TEST_2026-08-09.md`.
-
----
-
-## 5. Normalization gate — PASS
-
-Hirakawa's historical effective area and the one-quantum linewidth agree exactly:
-
-```math
-\boxed{
 \kappa_{g,n}
 =\frac{GMA_{Gn}\omega_n^4}{10c^5}
 =\frac{2G\omega_n^5}{5\hbar c^5}Q^{01}:Q^{10}.
-}
 ```
 
 No factor-of-two or `2 pi` mismatch was found.
 
----
-
-## 6. Propagation gate — PASS, INCLUDING PASSIVE RECURRENCE AT LEADING ORDER
-
-The compact TT one-hop channel obeys
+### Compact TT propagation — PASS
 
 ```math
-\boxed{
-\eta
-=\|P_g\|_{\rm op}^2
-\le\frac{25}{16(kR)^2}
-}
+\|P_g\|_{\rm op}^2
+\le\frac{25}{16(kR)^2}.
 ```
 
-at leading wave-zone order.
+The directivity law and `D=5/2` are historical; the coefficient is used as a normalized propagation resource.
 
-For exact passive endpoint reflection blocks, all repeated returns sum to
-
-```math
-P_{\rm eff}
-=(I-P_{BA}R_AP_{AB}R_B)^{-1}P_{BA}.
-```
-
-For reciprocal propagation,
+### Passive recurrence — PASS AFTER WORDING CORRECTION
 
 ```math
-\boxed{
 \eta_{\rm rec}
 \le\frac{\eta}{(1-\eta)^2}
-=\eta+O((kR)^{-4}).
-}
+\le\eta+O((kR)^{-4}).
 ```
 
-Thus arbitrary passive returns between the same two separated compact endpoints cannot alter the retained leading `1/R^2` coefficient.
-
-This does not cover external relays/mirrors, engineered extended cavities, near-field exchange, active gain, or overlapping interaction regions.
+The second statement is an upper-bound asymptotic. The earlier equality wording was stronger than the proof supported and has been corrected. The headline theorem is unchanged.
 
 ---
 
-## 7. Quantum-information gate — GO AS COROLLARY
+## 3. Prior-art gate
 
-The physical throughput theorem is classical.
+Broad novelty is rejected for
 
-For the stationary vacuum pure-loss quantum realization,
+- gravitational generator--receiver calculations;
+- resonant-mass eigenmode / STF tidal theory;
+- effective area and reciprocity;
+- compact quadrupole directivity;
+- `Q`-independent integrated gravitational response;
+- gravitational response sum rules;
+- modal participation / effective-mass completeness;
+- passive finite/infinite-dimensional `H2` theory;
+- generic source--receiver singular channels;
+- two-body material-response + Green-operator bounds;
+- multiple-scattering composition;
+- generic continuous-time transducer metrics.
 
-```math
-\eta_{\max}\le\frac12
-\Rightarrow Q_1=0,
-```
+Rudenko's 2003 complete generator--receiver Hertz-experiment calculation is the strongest additional end-to-end historical near-collision found during the AI review. It does not state the final inertia-only frequency-integrated passive theorem.
 
-and
-
-```math
-Q_2
-\le
-\frac{\Gamma_{\rm coh}}
-{\ln2(1-\eta_{\max})}.
-```
-
-These remain secondary operational consequences.
-
----
-
-## 8. Prior-art gate — BROAD NOVELTY REJECTED
-
-Do not claim novelty for
-
-- gravitational source--receiver calculations;
-- compact resonant-mass eigenmode/STF tidal theory;
-- gravitational reciprocity or `D=5/2`;
-- `Q`-independent integrated response;
-- gravitational response sum-rule methodology;
-- modal participation/effective-mass completeness;
-- passive finite/infinite-dimensional H2/Gramian theory;
-- generic singular wave channels or two-body Green-operator bounds;
-- multiple-scattering/Redheffer composition.
-
-The dimensional-fingerprint search for a historical result scaling directly as
-
-```math
-\frac{G\omega^2 I}{c^3R^2}
-```
-
-after eliminating antenna-specific `Q`, effective mass, and oscillator strength did not locate an exact two-ended theorem in the inspected primary sources.
-
-That remains a negative search result, not proof of priority.
-
----
-
-## 9. Surviving candidate contribution
-
-The only defensible novelty center is
+### Surviving candidate contribution
 
 ```text
 passive selected-port spectral-area cut
--> source/receiver total gravitational traces
+-> source/receiver total gravitational coupling traces
 -> cumulative inertia resource at BOTH endpoints
--> compact separated TT propagation
--> passive recurrence subleading at retained order
--> explicit inertia-only end-to-end ceiling.
+-> compact normalized TT propagation
+-> passive recurrence cannot increase retained leading ceiling
+-> explicit inertia-only end-to-end bound.
 ```
 
-The candidate equation is
-
-```math
-\boxed{
-\Gamma_{\rm coh}
-\lesssim
-\frac{25G\omega^2}{12c^3R^2}
-\min(I_A,I_B).
-}
-```
-
-Its physical content is simultaneous exclusion of passive escape through
-
-```text
-higher Q
-finite or countably infinite resonance count
-coherent bright-mode engineering
-compact quadrupole orientation
-passive repeated returns between the same endpoints.
-```
+No inspected primary source has been found stating this exact closure. This is a negative-search result, not proof of priority.
 
 ---
 
-## 10. Validation gate — PASS
+## 4. AI adversarial review gate
 
-Final manuscript validation after the strongest-route theorem and Lobo/Tobar attribution edits:
+Repository-wide method:
 
-```text
-run 31346901851
-job 93330404771
-PASS
-```
+`AI_RESEARCH_PROTOCOL.md`
 
-- LaTeX compile: PASS
-- unresolved citation/reference scan: PASS
-- PDF upload: PASS
+### Round 1
 
-Final-head physics regression:
+Three role-separated attacks tested
 
-```text
-run 31347058681
-job 93330821747
-PASS
-```
+1. historical collision / old antenna notation;
+2. generic passive-wave reduction;
+3. infinite-dimensional systems / admissibility failure.
 
-All six independent physics regressions passed, including the recurrent-scattering test.
+Meta-referee result:
+
+**MAJOR REVISION — compress and position as a specialist gravity-specific resource theorem.**
+
+### Round 2
+
+The compressed 13-page manuscript was re-audited independently by role:
+
+- historical claim discipline: **PASS**;
+- generic-method positioning: **PASS**;
+- scope/operator audit: **PASS**.
+
+Final meta-referee:
+
+**GO FOR SPECIALIST SUBMISSION AFTER FINAL EDITORIAL FREEZE.**
+
+No more internal physics derivation is recommended.
 
 ---
 
-## 11. Significance gate — DOMINANT REMAINING RISK
+## 5. Validation gate
 
-A skeptical expert can fairly summarize the methods as
+Final-title manuscript:
 
-> “historical gravitational antenna theory + modal completeness + passive H2 + TT/Friis + standard scattering composition.”
-
-The publication case therefore rests on the **closed parameter elimination**, not on any ingredient. The theorem removes phenomenological architecture variables and leaves only
-
-```math
-G,\;c,\;\omega,\;R,\;I_A,\;I_B.
+```text
+run: 31351144558
+job: 93342080071
+PASS
 ```
 
-Whether that synthesis is sufficiently significant is now the principal external-review question.
+- compile: PASS
+- unresolved citations/references: PASS
+- PDF artifact: PASS
+- length: 13 pages
+
+Final-title physics:
+
+```text
+run: 31351144554
+job: 93342080258
+PASS
+```
+
+Six regressions pass:
+
+1. two-port spectral bound;
+2. passive selected-port cut;
+3. classical modal resource;
+4. recurrent-scattering upper bound;
+5. TT propagation;
+6. microscopic port factorization.
+
+---
+
+## 6. Scope gate
+
+Included:
+
+- weak linearized gravity;
+- compact nonrelativistic quadrupolar matter;
+- separated wave-zone propagation;
+- passive time-invariant linear-harmonic endpoint dynamics;
+- finite or countably infinite bounded-port Markov modal sectors;
+- passive returns between the same two endpoints at retained leading order.
+
+Excluded:
+
+- active gain/inversion/parametric driving;
+- extended phased apertures;
+- relays/mirrors/external cavities;
+- reactive near-field exchange;
+- relativistic, nonlinear, higher-multipole, or strongly self-gravitating matter;
+- arbitrary unbounded PDE boundary ports without admissibility analysis;
+- genuinely non-Markov continua;
+- universal common-bath or gravitational quantum-capacity theorems.
+
+---
+
+## 7. Forbidden claims
+
+Do not claim
+
+- first gravitational source--receiver calculation;
+- first gravitational efficiency-bandwidth law;
+- new gravitational reciprocity/directivity;
+- new modal-completeness mathematics;
+- new gravitational response sum-rule method;
+- new generic `H2` / singular-channel / Green-operator formalism;
+- quantum origin of the classical throughput ceiling;
+- arbitrary passive continuum matter;
+- globally optimal/saturable coefficient;
+- universal gravitational quantum-capacity limit;
+- `first`, `unique`, `unprecedented`, or equivalent priority language without substantially stronger external evidence.
 
 ---
 
 ## Final decision
 
 ```text
-PHYSICS THEOREM:                              GO
-MANUSCRIPT:                                   GO
-COUNTABLY INFINITE BOUNDED-PORT MODES:        GO
-TWO-ENDPOINT PASSIVE RECURRENCE, LEADING:     GO
-MATERIAL/QUANTUM NORMALIZATION:               GO
-MODERN MULTIMODE STRESS TEST:                 PASS
-STANDALONE MODAL-SUM NOVELTY:                 NO-GO AS MAIN CLAIM
-GENERIC METHOD NOVELTY:                       NO
-EXACT INERTIA-CLOSED TWO-ENDED THEOREM:       PROVISIONAL GO
-PUBLICATION SIGNIFICANCE:                     MATERIAL EXTERNAL-REVIEW RISK
-PRIORITY CLAIM:                               NO
-FURTHER INTERNAL BROADENING:                  NO
+TECHNICAL FAIL FOUND:                        NO
+EXACT PRIORITY COLLISION FOUND:              NO
+BROAD NOVELTY:                               NO
+GENERIC METHOD NOVELTY:                      NO
+EXACT GRAVITY-SPECIFIC INERTIA CLOSURE:      PROVISIONAL GO
+INTERNAL AI REVIEW:                          GO
+MANUSCRIPT:                                  GO
+PHYSICS:                                     GO
+MORE INTERNAL GENERALIZATION:                NO
+HUMAN INPUT FOR INTERNAL ITERATION:          NOT REQUIRED
+FINAL EXTERNAL / JOURNAL REVIEW:             YES — FINAL GATE ONLY
 ```
-
-The next action is specialist external review of the exact two-ended inertia closure, not another internal generalization.
