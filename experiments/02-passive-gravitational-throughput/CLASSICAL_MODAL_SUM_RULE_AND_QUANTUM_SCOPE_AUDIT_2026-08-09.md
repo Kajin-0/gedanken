@@ -150,9 +150,9 @@ is the internal mass inertia moment about the center of mass.
 
 ### Equality condition
 
-Equality holds if the chosen orthonormal normal-mode set is complete for the displacement-field components of every `g^{ij}` relevant to the unconstrained body. For any retained subset of modes, constrained mechanical subspace, or band truncation, the Bessel form is the safe statement and remains an upper bound.
+Equality holds if the chosen orthonormal normal-mode set is complete for the displacement-field components of every `g^{ij}` relevant to the unconstrained displacement space. For any retained subset of modes, constrained mechanical subspace, or band truncation, the Bessel form is the safe statement and remains an upper bound.
 
-Rigid translations do not create a problem when the origin is the center of mass because the quadrupole-gradient fields are orthogonal to constant translations. Infinitesimal rigid rotations are pointwise orthogonal to the symmetric quadrupole deformation map. Thus omitting rigid zero modes does not increase the right-hand side.
+Rigid translations do not create a problem when the origin is the center of mass because the quadrupole-gradient fields are orthogonal to constant translations. Infinitesimal rigid rotations are different: for an anisotropic body they generally rotate the static quadrupole and therefore need not be orthogonal to the quadrupole-gradient fields. If free-body rotational zero modes are omitted from the retained positive-frequency elastic sector, the Bessel bound only becomes looser. If rotational motion is constrained into a finite-frequency mode, it belongs in the retained modal sum in the usual way.
 
 ---
 
@@ -205,7 +205,13 @@ The independently checked Hirakawa-to-quantum normalization is
 =\frac{G M A_{Gn}\omega_n^4}{10c^5}.
 ```
 
-The same quantity can be interpreted classically as the mode's gravitational energy-decay rate, because Hirakawa's emitted power is proportional to the mode energy with the corresponding oscillator-strength coefficient.
+The same quantity is the classical modal gravitational energy-decay rate. Hirakawa's emitted power is
+
+```math
+P_n=\frac{G}{5c^5}M A_{Gn}\omega_n^4\,\langle T_n\rangle,
+```
+
+and for a harmonic mode the total cycle-averaged energy is `E_n=2<T_n>`, giving `P_n/E_n = G M A_Gn omega_n^4/(10c^5)`.
 
 For retained modes with
 
