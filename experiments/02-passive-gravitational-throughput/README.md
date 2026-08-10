@@ -72,7 +72,8 @@ This is **internal validation**, not external verification. The next epistemic s
 7. `manuscript_v1/` — authoritative frozen manuscript source.
 8. `SUBMISSION_STRATEGY_2026-08-10.md` — journal-fit and submission strategy.
 9. `submission_prd/` — PRD-specific submission copy and submission materials.
-10. `AGENTS.md` — repository recovery and freeze protocol.
+10. `external_review/` — blind-first Stage-A and Stage-B/C packets for independent scrutiny.
+11. `AGENTS.md` — repository recovery and freeze protocol.
 
 `QUESTION.md`, `HYPOTHESES.md`, and early derivation files preserve the research history. Their provisional language should not be mistaken for the current claim state.
 
