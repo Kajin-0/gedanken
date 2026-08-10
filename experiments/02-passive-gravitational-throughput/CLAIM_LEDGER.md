@@ -24,13 +24,17 @@ This ledger is authoritative for Experiment 02. Conversation history is a source
 | Narrowband two-ended inertia bound `Gamma_coh lesssim [25 G omega_0^2/(12 c^3 R^2)] min(I_2A,I_2B)` | ESTABLISHED WITHIN MODEL | `FINITE_TWO_ENDED_INERTIA_BOUND.md` + combined CI |
 | Countably infinite separable **bounded-port Markov** modal sectors obey the same passive cut | ESTABLISHED WITHIN MODEL | `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md` + infinite-modal CI |
 | Stage-B inertia resource makes the countable gravitational port Hilbert–Schmidt | ESTABLISHED WITHIN MODEL | finite trace `Tr(K_g^dag K_g)=sum kappa_g,n` in the bounded-port modal representation |
+| Passive repeated returns between the **same two separated compact endpoints** leave the leading `1/R^2` propagation ceiling unchanged | ESTABLISHED WITHIN MODEL | `PASSIVE_TWO_ENDPOINT_RECURRENCE.md` + recurrence CI |
+| Recurrent upper ceiling obeys `eta_eff <= eta/(1-eta)^2`; the correction to the upper ceiling is `O(eta^2)` | ESTABLISHED WITHIN MODEL | resolvent/Neumann proof + scalar saturation test |
+| Actual recurrent transfer equals `eta + O((kR)^-4)` | FAILED AS A CURRENT CLAIM | interference can reduce actual transfer; only the upper-ceiling statement is valid |
 | Same simple theorem over arbitrary broad absolute frequency | FAILED AS A CURRENT CLAIM | `NARROWBAND_NORMALIZATION_AUDIT.md` |
 | Arbitrary unbounded PDE boundary-control/observation ports are covered | FAILED AS A CURRENT CLAIM | admissibility/domain analysis not supplied |
 | Genuinely non-Markov continua are covered | FAILED AS A CURRENT CLAIM | outside declared model |
-| Repeated passive source↔receiver returns cannot raise the retained leading `1/R^2` ceiling | PROVISIONAL | next physical attack |
+| Added relays, external mirrors/cavities, near-field exchange, or active feedback are covered by the recurrence proof | FAILED AS A CURRENT CLAIM | these alter the propagation architecture and are explicitly excluded |
 | Eigenmode gravitational-antenna emission/reception theory is new here | HISTORICAL / PRIOR ART | Hirakawa–Narihara–Fujimoto 1976 |
 | General arbitrary-elastic-body multimode GW response is new here | HISTORICAL / PRIOR ART | Lobo 1995 |
 | Infinite-dimensional `H2`/operator-Gramian machinery is new here | HISTORICAL / PRIOR ART | Baras–Brockett 1975; Opmeer–Reis–Wollner 2013 |
+| Multiple-scattering / scattering-transfer composition is new here | HISTORICAL / PRIOR ART | Redheffer 1962 |
 | The exact `20/3`/`4/3` cumulative coefficient is novel | OPEN | historical collision search incomplete |
 | The complete gravity-specific two-ended inertia closure is novel | OPEN | complete prior-art collision search incomplete |
 | Earlier conversation-only Experiment-02 branches/CI/manuscript are repository evidence | FAILED AS A CURRENT CLAIM | only the real `main` history below counts |
@@ -46,14 +50,6 @@ job: 93463450929
 PASS
 ```
 
-Representative output:
-
-```text
-worst endpoint H2/resource ratio = 0.410127000961
-largest full-scattering singular value = 1
-worst two-ended Gamma/bound ratio = 0.089763188389
-```
-
 ### Stage B — endpoint resource
 
 ```text
@@ -63,14 +59,6 @@ job: 93466817164
 PASS
 ```
 
-```text
-worst 20/3 tensor absolute error = 2.84217094304e-14
-worst truncated Bessel ratio = 1
-worst full-basis Parseval absolute error = 1.70530256582e-13
-worst modal-mixing invariance absolute error = 5.68434188608e-14
-worst cumulative linewidth/(4 I2/3) ratio = 0.381072504534
-```
-
 ### Stage C — TT propagation
 
 ```text
@@ -78,13 +66,6 @@ workflow: .github/workflows/experiment02-tt-propagation.yml
 first run: 31393020114
 job: 93469060678
 PASS
-```
-
-```text
-aligned directivity saturation = 2.5
-aligned amplitude prefactor = 1.25
-aligned power prefactor = 1.5625
-PASS: compact TT propagation 25/16 bound
 ```
 
 ### Combined finite narrowband theorem
@@ -121,10 +102,30 @@ largest lambda_max(P_u) = 0.733694365996
 worst H2/gravitational-resource ratio = 0.581912323912
 modal-mixing resource error = 4.16333634234e-17
 modal-mixing H2 error = 8.67361737988e-16
-PASS: countably-infinite bounded-port truncation stress test
 ```
 
-The truncation test is not the infinite-dimensional proof. The proof is the positive contraction-semigroup Gramian bound plus Hilbert–Schmidt gravitational-port regularity in `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`.
+### Passive two-endpoint recurrence
+
+```text
+workflow: .github/workflows/experiment02-recurrence.yml
+commit: e040fcaf2f6023fafd02bef1f11846d0a9236d0e
+run: 31394879241
+job: 93475219560
+PASS
+```
+
+```text
+worst random ||P_eff|| / resolvent ceiling ratio = 0.999994469265
+largest random z^2 ||P_eff||^2 = 1.64372328603
+largest scalar saturation absolute error = 2.77555756156e-17
+scalar z=160 scaled power = 1.56269075233
+target leading coefficient 25/16 = 1.5625
+z=160 leading-coefficient absolute error = 0.000190752327001
+recurrence ceiling correction / eta^2 at z=160 = 2.00018312037
+PASS: passive two-endpoint recurrence leaves leading 25/16 coefficient unchanged
+```
+
+The fact that finite-`z` scaled recurrent power can exceed `25/16` is not a contradiction: `25/16` is the **leading asymptotic coefficient**. The recurrent correction is subleading and the scaled quantity converges back to `25/16` as separation grows.
 
 ## Frequency convention
 
