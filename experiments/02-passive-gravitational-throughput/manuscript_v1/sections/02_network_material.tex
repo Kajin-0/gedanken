@@ -3,7 +3,7 @@
 
 \subsection{Passive linear endpoint}
 
-Consider an energy-normalized finite-dimensional passive linear endpoint with internal complex-envelope mode vector $\bm a$ and realization
+Consider first an energy-normalized finite modal sector with internal complex-envelope mode vector $\bm a$ and passive realization
 \begin{equation}
 \dot{\bm a}=A\bm a-K^\dagger\bm b_{\rm in},
 \qquad
@@ -17,7 +17,7 @@ A=-iH-\frac12K^\dagger K,
 \qquad H=H^\dagger.}
 \label{eq:Apassive}
 \end{equation}
-The same energy-normalized form describes classical passive coupled modes and passive bosonic quantum input--output systems; we use the latter literature for the standard realization and Gramian identities \cite{GutaYamamoto2014,TechakesariNurdin2017}. Partition the external channels into useful local ports $u$, gravitational ports $g$, and all remaining passive loss ports $\ell$,
+The same energy-normalized form describes classical passive coupled modes and passive bosonic quantum input--output systems; we use the latter literature for the standard finite-dimensional realization and Gramian identities \cite{GutaYamamoto2014,TechakesariNurdin2017}. Partition the external channels into useful local ports $u$, gravitational ports $g$, and all remaining passive loss ports $\ell$,
 \begin{equation}
 K=\begin{pmatrix}K_u\\K_g\\K_\ell\end{pmatrix}.
 \end{equation}
@@ -27,22 +27,23 @@ S_{g\leftarrow u}(s)
 =-K_g(sI-A)^{-1}K_u^\dagger.
 \label{eq:Sgu}
 \end{equation}
-For any strictly proper matrix transfer $S$, define
+For any strictly proper transfer $S$, define
 \begin{equation}
 \|S\|_2^2
 \equiv
 \frac{1}{2\pi}
 \int_{-\infty}^{\infty}\dd\omega\,
-\Tr[S^\dagger(i\omega)S(i\omega)].
+\Tr[S^\dagger(i\omega)S(i\omega)],
 \label{eq:H2def}
 \end{equation}
+where in an infinite-dimensional channel space the trace is the Hilbert--Schmidt norm squared whenever it exists.
 
-For an asymptotically stable completely passive realization the full-channel controllability Gramian is the identity. The selected-input Gramian
+For a finite stable completely passive realization the selected-input controllability Gramian
 \begin{equation}
 P_u=\int_0^\infty \dd t\,
 \ee^{At}K_u^\dagger K_u\ee^{A^\dagger t}
 \end{equation}
-therefore satisfies $0\le P_u\le I$. Consequently,
+satisfies $0\le P_u\le I$. Consequently,
 \begin{equation}
 \|S_{g\leftarrow u}\|_2^2
 =
@@ -52,6 +53,24 @@ therefore satisfies $0\le P_u\le I$. Consequently,
 \label{eq:endpointbound}
 \end{equation}
 The same inequality holds for the receiver transfer from gravitational input to useful local output. The proof is a passive linear-systems identity; quantization is not required.
+
+Finite internal dimension is not essential to Eq.~\eqref{eq:endpointbound}. Infinite-dimensional $H^2$ realizations and operator controllability Gramians are standard \cite{BarasBrockett1975,OpmeerReisWollner2013}. For the particular passive form needed here, let $\mathcal X$ be a separable modal Hilbert space, let $H$ be self-adjoint on its domain, let $K:\mathcal X\to\mathcal Y$ be bounded, and let
+\begin{equation}
+A=-iH-\frac12K^\dagger K
+\end{equation}
+generate the contraction semigroup $\mathcal T(t)=e^{At}$. For every finite $\tau$,
+\begin{align}
+P_u(\tau)
+&=\int_0^\tau\dd t\,
+\mathcal T(t)K_u^\dagger K_u\mathcal T^\dagger(t)\\
+&\le
+\int_0^\tau\dd t\,
+\mathcal T(t)K^\dagger K\mathcal T^\dagger(t)\\
+&=I-\mathcal T(\tau)\mathcal T^\dagger(\tau)
+\le I.
+\label{eq:infgramian}
+\end{align}
+The monotone strong limit therefore gives $0\le P_u\le I$ without requiring a finite number of modes. If $K_g$ is Hilbert--Schmidt, then the causal impulse response $-K_g\mathcal T(t)K_u^\dagger$ is square-integrable in Hilbert--Schmidt norm and operator-valued Plancherel gives Eq.~\eqref{eq:endpointbound} unchanged. The gravitational material theorem below supplies precisely this regularity, since Eq.~\eqref{eq:materialbound} implies $\Tr(K_g^\dagger K_g)<\infty$ in the retained band. Thus a countably infinite bounded-port Markov modal sector is covered directly rather than only through finite truncations. Unbounded boundary ports and genuinely non-Markov continua require separate admissibility analysis and are not claimed here.
 
 Let $P_g(\omega)$ denote the normalized one-way gravitational propagation operator from the source gravitational output space to the receiver gravitational input space, and let
 \begin{equation}
@@ -69,10 +88,10 @@ P_g(\omega)
 S_{g\leftarrow u}^{(A)}(i\omega),
 \label{eq:fullT}
 \end{equation}
-passive scattering subblocks are contractions. Applying the Frobenius/operator-norm inequality on either side of the propagation cut gives the following result.
+passive scattering subblocks are contractions. Applying the Hilbert--Schmidt/operator-norm inequality on either side of the propagation cut gives the following result.
 
 \begin{theorem}[Passive gravitational cut set]
-For two stable finite-dimensional passive linear endpoints connected by a one-way contractive gravitational propagation operator,
+For two passive linear endpoints in the finite-dimensional class above or its countably infinite bounded-port Hilbert-space extension, connected by a one-way contractive gravitational propagation operator and with finite gravitational coupling traces,
 \begin{equation}
 \boxed{
 \Gamma_{\rm coh}
@@ -86,7 +105,7 @@ For two stable finite-dimensional passive linear endpoints connected by a one-wa
 \end{equation}
 \end{theorem}
 
-The theorem permits arbitrary coherent mode mixing and overlapping resonances inside each endpoint. The passive Gramian identities themselves are established prior art; their role here is to expose the gravitational coupling trace as the endpoint resource that an end-to-end link cannot exceed.
+The theorem permits arbitrary coherent mode mixing and overlapping resonances inside each endpoint, including a countably infinite passive modal sector under the stated bounded-port conditions. The passive Gramian and infinite-dimensional $H^2$ machinery are established prior art; their role here is to expose the gravitational coupling trace as the endpoint resource that an end-to-end link cannot exceed.
 
 \subsection{Separating coupling magnitude from radiation geometry}
 
@@ -224,7 +243,7 @@ and Eq.~\eqref{eq:classicalAGsum} gives
 \frac{4G}{3c^5}I\Omega^4.}
 \label{eq:materialbound}
 \end{equation}
-This is the cumulative endpoint oscillator-strength ceiling. Adding passive resonances redistributes a finite gravitational resource rather than producing unlimited integrated response.
+This is the cumulative endpoint oscillator-strength ceiling. Adding passive resonances redistributes a finite gravitational resource rather than producing unlimited integrated response. For a countably infinite retained modal sector, Eq.~\eqref{eq:materialbound} also proves that $K_g$ is Hilbert--Schmidt and therefore closes the regularity condition used in the infinite-dimensional endpoint theorem above.
 
 \subsection{Equivalent quantum representation}
 
