@@ -225,14 +225,16 @@ The theorem is an upper bound. Do not claim the final coefficient is globally sa
 
 ## Validation
 
-The pre-Lobo/Tobar strongest-route checkpoint passed:
+Canonical strongest-route validation:
 
 ```text
-physics:     run 31346367916, job 93328941553
-manuscript:  run 31346367918, job 93328941582
+manuscript:  run 31346901851, job 93330404771 — PASS
+physics:     run 31347058681, job 93330821747 — PASS
 ```
 
-Physics CI contains six regressions:
+The manuscript compile, unresolved citation/reference scan, and PDF upload passed after the Lobo/Tobar attribution edits.
+
+Physics CI contains six passing regressions:
 
 1. exact two-port spectral bound;
 2. passive H2 cut set;
@@ -241,7 +243,7 @@ Physics CI contains six regressions:
 5. TT propagation;
 6. microscopic port factorization.
 
-After historical/citation changes, always use the latest final-head CI run as the canonical validation before publication.
+Use these runs as the canonical validation for this frozen checkpoint unless the manuscript or physics code changes afterward.
 
 ## Canonical reading order
 
