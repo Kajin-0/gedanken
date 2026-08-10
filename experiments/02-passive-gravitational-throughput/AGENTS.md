@@ -1,83 +1,211 @@
-# AGENTS.md — Experiment 02
+# AGENTS.md — Experiment 02 Recovery Protocol
 
 ## Scope
 
-This branch investigates passive gravitational coherent-transfer throughput bounds. It is deliberately separate from Experiment 01 / V7.
+Experiment 02 studies a passive frequency-integrated throughput ceiling for direct propagating gravitational transduction.
 
-Do not modify V7 from this branch unless a concrete technical defect is found. V7 is an inherited source of already-audited lemmas, not an active derivation target.
+It is separate from Experiment 01 / V7. **Do not modify V7 from this branch.** V7 is an inherited source of audited normalization/examples, not an active derivation target.
 
-## Canonical question
+## Canonical current result
 
-Can the V7 speed–efficiency tradeoff be promoted from a two-resonator statement to an integrated spectral bound for arbitrary compact passive nonrelativistic matter coupled through propagating linearized gravity?
-
-## Mandatory order of attack
-
-1. Prove and stress-test the single-resonance linewidth-weighted bound.
-2. Derive the actual frequency-domain transfer function for a minimal passive source–propagation–receiver model.
-3. Define an unambiguous integrated coherent-transfer metric using `d omega / 2 pi`.
-4. Replace single poles by positive quadrupole spectral measures / susceptibilities.
-5. Use passivity + EWSR + TT propagation to seek a total spectral bound.
-6. Only then map the physical bound to quantum-capacity or entanglement-rate quantities.
-
-Do not skip directly to a capacity theorem.
-
-## Claim discipline
-
-Until proved otherwise:
-
-- `Gamma_kappa` is a linewidth-weighted coherent-transfer scale, **not** a communication capacity.
-- `25/16` belongs only to the aligned plus-quadrupole wave-zone specialization.
-- The EWSR controls the first positive frequency moment of quadrupole spectral weight; it does not by itself bound an unrestricted `omega^5` gravitational spectrum.
-- A broadband theorem must address multiple parallel resonances explicitly.
-- Any ultraviolet cutoff must be derived from the declared physical regime or stated as an assumption.
-- No priority claim is allowed before a dedicated current literature sweep.
-
-## Research stopping rules
-
-Stop and document rather than hand-wave if any of the following occurs:
-
-- the proposed rate metric depends on an arbitrary bandwidth convention;
-- the general bound requires an unphysical hard cutoff with no regime justification;
-- a many-mode counterexample exceeds the proposed single-mode ceiling while remaining passive and nonrelativistic;
-- the TT propagation map cannot be normalized consistently for arbitrary tensor channels;
-- an existing paper already proves the same gravity-specific theorem.
-
-## Concurrency protocol
-
-Before every write:
-
-1. fetch current `main`;
-2. confirm V7 has not changed unexpectedly;
-3. fetch the current experiment-02 target blob if updating a file;
-4. never write with a stale blob SHA;
-5. keep writes on `experiment-02-passive-gravitational-throughput` until the research state is mature enough to merge.
-
-## Canonical files
-
-- `README.md` — research program and current headline target.
-- `CURRENT_STATE.md` — live result/status ledger.
-- `SINGLE_RESONANCE_BOUND.md` — exact first theorem and assumptions.
-- `SPECTRAL_GENERALIZATION.md` — arbitrary-response route and known obstacles.
-- `LITERATURE_MAP.md` — nearest prior art and collision risks.
-
-## Inherited V7 inputs
-
-Use only the following V7 results unless a new need is demonstrated:
+For compact passive nonrelativistic linear-harmonic endpoints in weak direct one-pass quadrupolar wave-zone gravity,
 
 ```math
-\tau_c(t)=\eta_{\rm prop}\beta_{g,A}\beta_{g,B}\mathcal T_f(t),
-\qquad
-\beta_{g,j}=\kappa_{g,j}/\kappa_j,
-\qquad
-0\le\mathcal T_f\le1,
+\Gamma_{\rm coh}
+=\frac1{2\pi}\int_{\mathcal B}
+\operatorname{Tr}[T^\dagger(\omega)T(\omega)]d\omega
 ```
 
-and, for passive nonrelativistic matter in the selected narrow band,
+obeys
 
 ```math
-\frac{\kappa_{g,j}}{\omega}
+\boxed{
+\Gamma_{\rm coh}
 \lesssim
-\frac23\mathcal C_j\beta_j^3.
+\frac{25G\omega^2}{12c^3R^2}
+\min(I_A,I_B).
+}
 ```
 
-Everything beyond those inherited inputs should be rederived cleanly for Experiment 02.
+The headline physical bound is **classical** within this linear-harmonic class. Quantum theory supplies an equivalent one-graviton normalization and downstream pure-loss capacity/entanglement corollaries.
+
+Canonical state:
+
+`CURRENT_STATE.md`
+
+Current manuscript:
+
+`manuscript_v1/`
+
+Current title:
+
+**Passive Throughput Bounds for Propagating Gravitational Transduction**
+
+## Proof skeleton
+
+1. **Passive selected-port H2 cut set**
+
+```math
+\Gamma_{\rm coh}
+\le
+\eta_{\max}
+\min[
+\operatorname{Tr}(K_{g,A}^\dagger K_{g,A}),
+\operatorname{Tr}(K_{g,B}^\dagger K_{g,B})].
+```
+
+2. **Classical quadrupole modal resource**
+
+```math
+\sum_{ijk}|(g^{ij})_k|^2
+=\frac{20}{3}r^2,
+```
+
+```math
+\sum_n\frac{q_n:q_n}{\mu_n}
+\le\frac{20}{3}I,
+```
+
+and with Hirakawa's gravitational effective area,
+
+```math
+\sum_n M A_{Gn}\le\frac{40}{3}I.
+```
+
+For retained modes below `Omega`,
+
+```math
+\sum_n\kappa_{g,n}
+\le\frac{4G}{3c^5}I\Omega^4.
+```
+
+3. **Normalized compact TT propagation**
+
+```math
+\|P_g\|_{\rm op}^2
+\le\frac{25}{16(kR)^2}.
+```
+
+4. Combine the three results to obtain the headline inertia ceiling.
+
+## Important interpretation corrections
+
+Do not restore the superseded quantum-first framing.
+
+The following are now explicit:
+
+- the passive H2 inequality is classical linear-system algebra as well as quantum input-output algebra;
+- modal participation / equivalent-modal-mass completeness is standard structural-dynamics methodology;
+- `sum M A_G <= 40 I/3` is the gravity-specific STF quadrupole specialization of that completeness machinery;
+- the quantum mass-quadrupole EWSR reproduces the same endpoint coefficient but is not needed to prove the present classical bound;
+- the `25/16` wave-zone coefficient has a classical reciprocal-antenna interpretation as well as the normalized TT angular-mode derivation;
+- quantum capacity statements are corollaries, not the headline theorem.
+
+## Prior-art claim boundary
+
+Do **not** claim novelty for
+
+- gravitational generator--receiver calculations;
+- compact gravitational antenna eigenmodes;
+- gravitational reciprocity;
+- `Q`-independent integrated gravitational response;
+- compact real-STF directivity or `D=5/2`;
+- gravitational material-response sum rules or quadrupole-commutator sum rules;
+- passive H2/Gramian mathematics;
+- generic singular source--receiver wave channels;
+- generic two-body response + Green-operator transfer bounds;
+- modal participation / effective-modal-mass completeness;
+- generic use of sum rules to constrain integrated passive response.
+
+The only surviving candidate publication contribution is the exact gravity-specific cumulative two-ended closure
+
+```math
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega^2}{12c^3R^2}
+\min(I_A,I_B)
+```
+
+and its simultaneous exclusion of passive escape via higher `Q`, more resonances, coherent bright-mode engineering, or compact quadrupole reorientation.
+
+This remains a negative prior-art search result, **not a priority claim**.
+
+## Closed scope clarifications
+
+### Finite versus infinite modal sectors
+
+The H2 theorem applies directly to finite retained band-local sectors. The modal resource bound is uniform in retained mode count. Any countably infinite extension requires the corresponding passive transfer operator to possess the usual trace-class limit.
+
+### Propagation architecture
+
+`P_g` is the direct retarded one-pass/Born wave-zone hop. Do not silently extend the theorem to recurrent source--receiver multiple scattering, strong common-bath hybridization, relays, near-field exchange, or curved-background focusing.
+
+### Sharpness
+
+The theorem is an upper bound. Do not claim the final coefficient is globally saturable. The explicit compact plus mode reaches the correct scaling, 30% of the endpoint material ceiling, and saturates compact TT geometry, but simultaneous saturation of the whole chain is open.
+
+## Validation
+
+Current complete physics regression checkpoint:
+
+```text
+run 31344642352
+job 93324206747
+PASS
+```
+
+Current complete manuscript checkpoint:
+
+```text
+run 31344642351
+job 93324206692
+PASS
+```
+
+The numerical suite includes the classical modal-sum regression in addition to the exact two-port, passive H2, TT propagation, and microscopic port-factorization checks.
+
+## Canonical reading order
+
+1. `CURRENT_STATE.md`
+2. `README.md`
+3. `HOSTILE_REFEREE_REPORT_2026-08-09.md`
+4. `CLASSICAL_MODAL_SUM_RULE_AND_QUANTUM_SCOPE_AUDIT_2026-08-09.md`
+5. `HIRAKAWA_EFFECTIVE_AREA_QUANTUM_LINEWIDTH_CROSSCHECK.md`
+6. `HIRAKAWA_NARIHARA_FUJIMOTO_1976_COLLISION_AUDIT.md`
+7. `SRIVASTAVA_WIDOM_PIZZELLA_2003_SUM_RULE_COLLISION_AUDIT.md`
+8. `STRUCTURAL_DYNAMICS_MODAL_PARTICIPATION_COLLISION_AUDIT.md`
+9. `GENERIC_WAVE_TRANSFER_COLLISION_AUDIT_2026-08-09.md`
+10. `PASSIVE_NETWORK_CUTSET_THEOREM.md`
+11. `GRAVITATIONAL_PORT_FACTORIZATION.md`
+12. `TT_PROPAGATION_BOUND.md`
+13. `manuscript_v1/`
+
+## Hard stop
+
+Do **not** broaden this paper internally to
+
+- arbitrary interacting/non-Markov matter;
+- active/inverted or parametrically driven systems;
+- extended phased apertures;
+- higher multipoles or relativistic beaming;
+- near-field gravity;
+- relay/repeater networks;
+- curved backgrounds;
+- recurrent multiple scattering;
+- a universal gravitational quantum-capacity theorem.
+
+Do not restart the old fully general susceptibility program unless an actual external referee objection makes it necessary.
+
+## Next epistemic step
+
+The next useful action is genuine external specialist review, aimed at
+
+1. whether an equivalent inertia-closed two-ended gravitational theorem exists under older antenna, mutual-impedance, scattering, or network language;
+2. whether the H2-to-gravitational-continuum / one-pass subsystem boundary hides a physical defect; and
+3. whether the exact closure is significant enough for publication when its individual methods are prior art.
+
+Canonical internal adversarial assessment:
+
+`HOSTILE_REFEREE_REPORT_2026-08-09.md`
+
+Absent a concrete external objection, further internal generalization is more likely to dilute the result than strengthen it.
