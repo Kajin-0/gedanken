@@ -173,16 +173,21 @@ q_{n,ij}
 =\langle\bm w_n,\bm g^{ij}\rangle_\rho.
 \label{eq:qmodal}
 \end{equation}
-A direct Cartesian contraction gives the pointwise identity
+The underlying long-wavelength tidal influence fields are historical resonant-mass antenna physics. Lobo's arbitrary-body formalism decomposes the gravitational tidal force into STF fields proportional to $\rho E_{ij}x_j$ and projects them onto mass-orthogonal elastic eigenmodes \cite{Lobo1995}. For any STF tensor $E$, Eq.~\eqref{eq:linearQmap} gives
+\begin{equation}
+E:q_n
+=2\int\rho\,w_{n,i}E_{ij}x_j\,dV,
+\end{equation}
+so Lobo's modal driving coefficients are directional STF projections of the same $q_n$. The following step is therefore not a new influence-field construction; it is standard modal completeness applied to those historical gravitational tidal fields.
+
+A direct Cartesian contraction, equivalently the completeness contraction of an orthonormal five-dimensional STF tensor basis, gives
 \begin{equation}
 \boxed{
 \sum_{i,j,k}|(g^{ij})_k|^2
 =\frac{20}{3}r^2.}
 \label{eq:gidentity}
 \end{equation}
-The projection/completeness mechanism used next is standard modal-participation or equivalent-modal-mass bookkeeping in structural dynamics \cite{BamfordGaymanWada1971}. The gravity-specific specialization is the set of STF quadrupole influence fields in Eq.~\eqref{eq:gijfield} and their exact total norm in Eq.~\eqref{eq:gidentity}.
-
-Applying Bessel's inequality to the normalized modes $\bm e_n=\bm w_n/\sqrt{\mu_n}$ and then summing over $i,j$ yields
+The projection/completeness mechanism is standard modal-participation or equivalent-modal-mass bookkeeping in structural dynamics \cite{BamfordGaymanWada1971}. Applying Bessel's inequality to the normalized modes $\bm e_n=\bm w_n/\sqrt{\mu_n}$ and then summing over $i,j$ yields
 \begin{equation}
 \boxed{
 \sum_n\frac{q_n:q_n}{\mu_n}
@@ -207,7 +212,7 @@ Therefore Eq.~\eqref{eq:classicalqsum} immediately gives the classical cumulativ
 \frac{40}{3}I.}
 \label{eq:classicalAGsum}
 \end{equation}
-This result contains no Planck constant.
+This result contains no Planck constant. We did not find this particular effective-area sum written explicitly in the inspected historical sources, but its ingredients and completeness mechanism are established; its role here is to close the end-to-end resource accounting rather than to introduce a new modal method.
 
 Hirakawa's radiated-power normalization for a harmonic mode is
 \begin{equation}
@@ -243,7 +248,7 @@ and Eq.~\eqref{eq:classicalAGsum} gives
 \frac{4G}{3c^5}I\Omega^4.}
 \label{eq:materialbound}
 \end{equation}
-This is the cumulative endpoint oscillator-strength ceiling. Adding passive resonances redistributes a finite gravitational resource rather than producing unlimited integrated response. For a countably infinite retained modal sector, Eq.~\eqref{eq:materialbound} also proves that $K_g$ is Hilbert--Schmidt and therefore closes the regularity condition used in the infinite-dimensional endpoint theorem above.
+This is the cumulative endpoint oscillator-strength ceiling. Adding passive resonances redistributes a finite gravitational resource rather than producing unlimited integrated response. A recent multimode graviton-bar proposal provides a concrete illustration: after diagonalizing one gravitationally driven massive coordinate into several hybrid modes, each modal absorption rate carries a squared participation factor $P_{1j}^2$ \cite{TobarPikovskiTobar2025}. Orthogonality of the mass-weighted normal-mode transformation partitions, rather than duplicates, the driven-coordinate norm. Such hybridization can substantially improve readout transduction and spectral coverage while remaining consistent with a fixed cumulative external gravitational resource. For a countably infinite retained modal sector, Eq.~\eqref{eq:materialbound} also proves that $K_g$ is Hilbert--Schmidt and therefore closes the regularity condition used in the infinite-dimensional endpoint theorem above.
 
 \subsection{Equivalent quantum representation}
 
