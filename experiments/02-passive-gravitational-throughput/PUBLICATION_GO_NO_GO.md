@@ -4,7 +4,7 @@
 
 **PHYSICS: GO WITH DECLARED SCOPE**
 
-**MANUSCRIPT: GO AFTER FINAL BUILD**
+**MANUSCRIPT: GO**
 
 **HEADLINE THEOREM: CLASSICAL PASSIVE GRAVITATIONAL TRANSDUCTION**
 
@@ -289,18 +289,29 @@ passive repeated returns between the same endpoints.
 
 ---
 
-## 10. Validation gate
+## 10. Validation gate — PASS
 
-Last fully validated pre-Lobo/Tobar checkpoint:
+Final manuscript validation after the strongest-route theorem and Lobo/Tobar attribution edits:
 
 ```text
-physics:     run 31346367916, job 93328941553 — PASS
-manuscript:  run 31346367918, job 93328941582 — PASS
+run 31346901851
+job 93330404771
+PASS
 ```
 
-Physics CI contains six independent regressions, including the recurrent-scattering test.
+- LaTeX compile: PASS
+- unresolved citation/reference scan: PASS
+- PDF upload: PASS
 
-A fresh manuscript build is required after the new historical attributions before final freeze.
+Final-head physics regression:
+
+```text
+run 31347058681
+job 93330821747
+PASS
+```
+
+All six independent physics regressions passed, including the recurrent-scattering test.
 
 ---
 
@@ -324,6 +335,7 @@ Whether that synthesis is sufficiently significant is now the principal external
 
 ```text
 PHYSICS THEOREM:                              GO
+MANUSCRIPT:                                   GO
 COUNTABLY INFINITE BOUNDED-PORT MODES:        GO
 TWO-ENDPOINT PASSIVE RECURRENCE, LEADING:     GO
 MATERIAL/QUANTUM NORMALIZATION:               GO
@@ -336,4 +348,4 @@ PRIORITY CLAIM:                               NO
 FURTHER INTERNAL BROADENING:                  NO
 ```
 
-The next action after final CI is specialist external review of the exact two-ended inertia closure, not another internal generalization.
+The next action is specialist external review of the exact two-ended inertia closure, not another internal generalization.
