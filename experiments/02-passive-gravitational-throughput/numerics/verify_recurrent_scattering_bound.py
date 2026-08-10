@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression for the recurrent two-endpoint scattering bound.
+"""Regression for the recurrent two-endpoint scattering upper bound.
 
 For arbitrary noncommuting contraction-valued endpoint reflections R_A,R_B
 and bidirectional propagation operators P_BA,P_AB, verify
@@ -15,6 +15,10 @@ where p_plus=||P_BA||_op and p_minus=||P_AB||_op.
 In the reciprocal case p_plus=p_minus=p, this becomes
 
     ||P_eff||_op^2 <= eta/(1-eta)^2, eta=p^2.
+
+The asymptotic test concerns the difference between this *upper ceiling* and
+the one-hop ceiling eta. It does not assert that the actual recurrent transfer
+equals eta plus a positive correction; interference can reduce it.
 
 The test deliberately uses non-normal, noncommuting random contractions.
 """
@@ -118,19 +122,19 @@ def check_reciprocal_scaling(samples: int = 10_000) -> tuple[float, float]:
 
 
 def check_wavezone_order() -> None:
-    # Verify numerically that eta/(1-eta)^2 - eta = O(eta^2), hence
-    # O((kR)^-4) when eta ~ (kR)^-2.
+    # Verify numerically that the recurrent upper-ceiling excess
+    # eta/(1-eta)^2 - eta is O(eta^2), hence O((kR)^-4) when eta ~ (kR)^-2.
     kR = np.array([10.0, 20.0, 40.0, 80.0, 160.0])
     eta = 25.0 / (16.0 * kR**2)
-    correction = eta / (1.0 - eta) ** 2 - eta
-    ratio = correction / eta**2
+    ceiling_excess = eta / (1.0 - eta) ** 2 - eta
+    ratio = ceiling_excess / eta**2
 
     # The ratio tends to 2 as eta -> 0.
     assert np.all(np.isfinite(ratio))
     assert abs(ratio[-1] - 2.0) < 5e-4
 
-    # Doubling kR should asymptotically reduce the absolute correction by 16.
-    scale = correction[:-1] / correction[1:]
+    # Doubling kR should asymptotically reduce the ceiling excess by 16.
+    scale = ceiling_excess[:-1] / ceiling_excess[1:]
     assert np.all(scale > 15.0)
     assert np.all(scale < 17.2)
 
@@ -145,7 +149,7 @@ def main() -> None:
     print(f"  worst general P_eff/bound ratio: {general_ratio:.12f}")
     print(f"  worst reciprocal power/bound ratio: {reciprocal_ratio:.12f}")
     print(f"  worst 120-term Neumann relative error: {series_rel:.3e}")
-    print("  wave-zone recurrent power correction: O((kR)^-4) verified")
+    print("  wave-zone recurrent upper-ceiling excess: O((kR)^-4) verified")
 
 
 if __name__ == "__main__":
