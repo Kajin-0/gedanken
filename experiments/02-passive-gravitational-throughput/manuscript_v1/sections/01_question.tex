@@ -1,0 +1,50 @@
+\section{Question and result}
+\label{sec:question}
+
+Resonant-mass gravitational antennas have long been described in terms of elastic eigenmodes, absorption cross sections, effective coupling, and directivity \cite{Hirakawa1976,PaikWagoner1976,Lobo1995}.  The integrated response is also historical: resonant-bar literature treats frequency-integrated absorption cross sections, and adding a resonant transducer redistributes the response among additional normal modes rather than removing its finite material scaling \cite{Aguiar2010}.  Material-response dispersion relations and gravitational-wave sum rules provide another cumulative-response viewpoint \cite{Srivastava2003}.  Complete generator--receiver calculations are historical as well \cite{Rudenko2003}.
+
+The generic mathematical architecture is equally established.  Orthogonal source--receiver wave channels and limits on their connection strengths are standard wave theory \cite{Miller2000}; two-body radiative bounds combine constrained endpoint response with free-space propagation \cite{Molesky2020}; and passive $H_2$ and infinite-dimensional realization machinery are classical systems theory \cite{BarasBrockett1975,Opmeer2013}.  None of these ingredients is claimed as new.
+
+The narrower question addressed here is whether those ingredients imply a simple cumulative ceiling when \emph{both} gravitational endpoints are allowed arbitrary passive linear-harmonic complexity:
+
+\begin{quote}
+Can passive resonant engineering increase the frequency-integrated coherent transfer of a separated compact gravitational link without bound, or is there a matter resource that cuts the link at either endpoint?
+\end{quote}
+
+Let $\omega_0$ be the absolute gravitational carrier frequency and $\nu$ the complex-envelope detuning, with bandwidth $B/\omega_0\ll1$.  Let $T(\nu)$ map selected local input channels at source $A$ to selected local output channels at receiver $B$, with all unobserved passive ports retained in the physical model.  Define
+\begin{equation}
+\boxed{
+\Gamma_{\rm coh}
+\equiv
+\frac{1}{2\pi}
+\int_{\mathcal B_\nu}\dd\nu\,
+\Tr[T^\dagger(\nu)T(\nu)] .
+}
+\label{eq:gamma}
+\end{equation}
+For a scalar channel, $\Gamma_{\rm coh}$ is the area under the power-transmissivity spectrum of the complex envelope.  It has units of inverse time and is not an information capacity.
+
+Define the scalar second mass moment about each endpoint center of mass,
+\begin{equation}
+I_2\equiv\int_V\rho(\bm x)r^2\dd^3x .
+\label{eq:I2}
+\end{equation}
+This is not the moment of inertia about one selected axis; the trace of the conventional inertia tensor is $2I_2$.
+
+The main result is the following leading narrowband wave-zone bound.
+
+\begin{theorem}[Two-ended passive gravitational throughput]
+For separated compact nonrelativistic linear-harmonic source and receiver systems in weak mass-quadrupole gravity, with finite or countably infinite bounded-port Markov modal sectors,
+\begin{equation}
+\boxed{
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega_0^2}{12c^3R^2}
+\min(I_{2,A},I_{2,B}) .
+}
+\label{eq:headline}
+\end{equation}
+The symbol $\lesssim$ denotes the retained narrowband, leading separated-wave-zone order.  Repeated passive returns between the same two compact endpoints do not change the leading $1/R^2$ coefficient.
+\end{theorem}
+
+The result is classical.  Its content is the disappearance, from the leading integrated ceiling, of explicit passive quality factor, finite or countably infinite bounded-port resonance count, passive unitary internal mode mixing, individual modal effective mass, compact quadrupole orientation after optimization, and same-endpoint passive recurrence.  These quantities can strongly reshape the transfer spectrum, but within the stated class they cannot increase its cumulative area beyond the two endpoint resources and free-space TT channel.
