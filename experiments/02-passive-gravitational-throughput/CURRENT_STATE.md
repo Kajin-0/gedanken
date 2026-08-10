@@ -449,25 +449,29 @@ The dimensional-fingerprint search for an older equivalent scaling proportional 
 
 ---
 
-## 10. Validation
+## 10. Validation — frozen strongest-route checkpoint
 
-Last fully validated manuscript before the Lobo/Tobar attribution-only edits:
+Final manuscript validation after the Lobo/Tobar attribution and strongest-route theorem edits:
 
 ```text
-run: 31346367918
-job: 93328941582
+run: 31346901851
+job: 93330404771
 PASS
 ```
 
-Last fully validated physics suite:
+- LaTeX compile: **PASS**
+- unresolved citation/reference scan: **PASS**
+- PDF artifact upload: **PASS**
+
+Final-head physics regression:
 
 ```text
-run: 31346367916
-job: 93328941553
+run: 31347058681
+job: 93330821747
 PASS
 ```
 
-The physics CI now contains six layers:
+All six physics layers passed:
 
 1. exact two-port spectral bound;
 2. passive-network H2 cut set;
@@ -476,7 +480,7 @@ The physics CI now contains six layers:
 5. TT propagation;
 6. microscopic gravitational-port factorization.
 
-A fresh manuscript validation is required after the new Lobo/Tobar citations before this checkpoint is finally frozen.
+The earlier physics run at the exact Lobo/Tobar manuscript commit also passed (`31346901841`, job `93330404759`). The later final-head run confirms that the synchronized repository state retains all six passing regressions.
 
 ---
 
