@@ -1,11 +1,15 @@
 # Current State — Experiment 02
 
-**Checkpoint:** internal AI freeze after final exact-head manuscript/theorem validation.  
-**Status:** **INTERNAL AI REVIEW: GO; THEORY AND MANUSCRIPT SCIENCE FROZEN AT `d05a1e5d5f2f8b4c352f058de73194519c1015e1`; NEXT EPISTEMIC STEP IS EXTERNAL SPECIALIST/JOURNAL REVIEW.**
+**Checkpoint:** recent gravity-communication literature collision audit and manuscript framing patch.  
+**Status:** **PHYSICS THEOREM REMAINS FROZEN; NOVELTY/MANUSCRIPT FREEZE NARROWLY REOPENED PENDING FRESH EXACT-HEAD CI.**
 
-Canonical freeze record:
+The pre-reopen fully validated science/manuscript SHA is
 
-`INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
+```text
+d05a1e5d5f2f8b4c352f058de73194519c1015e1
+```
+
+The reopen is literature/claim discipline only. No theorem broadening or coefficient rederivation is authorized.
 
 ## 1. Current theorem
 
@@ -114,7 +118,35 @@ so recurrence changes only subleading terms in the leading `1/R^2` upper ceiling
 
 File: `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`.
 
-## 4. Manuscript and audits
+## 4. Novelty reopen — recent gravity-communication literature
+
+A concrete audit defect was identified after the first internal freeze: the earlier hostile literature review did not directly close against several of the most semantically adjacent modern gravity-as-communication papers.
+
+Canonical new audit:
+
+`RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
+
+It explicitly analyzes
+
+- Kafri, Milburn & Taylor (2015), *Bounds on quantum communication via Newtonian gravity*;
+- Lami, Pedernales & Plenio (2024), *Testing the Quantumness of Gravity without Entanglement*;
+- Toccacelo, Andersen & Brask (2025), *Benchmarks for quantum communication via gravity*;
+- Mari, Zippilli & Vitali (2026), *Can gravity mediate the transmission of quantum information?*.
+
+Revised claim discipline:
+
+```text
+gravity as a communication mediator:                         HISTORICAL
+classical-channel/noise and LOCC communication bounds:       HISTORICAL
+state-transfer benchmarks between gravitational oscillators: HISTORICAL
+narrowband gravity-induced optomechanical channel:            HISTORICAL
+complete passive wave-zone I_2 + TT spectral-area closure:    NO EXACT COLLISION FOUND
+priority claim:                                               NO
+```
+
+The recent papers are major conceptual near-collisions, but the audit found no inspected paper stating the Experiment-02 frequency-integrated passive wave-zone theorem with both endpoints reduced to `I_2` and the compact TT `25/16` propagation ceiling.
+
+## 5. Manuscript patch
 
 Active manuscript source:
 
@@ -124,31 +156,19 @@ Title:
 
 **An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction**
 
-Canonical audits:
+The current patch adds the four recent communication papers to the bibliography and explicitly disclaims novelty for gravity-mediated communication or state-transfer bounds in general. It distinguishes those Newtonian/oscillator and optomechanical communication settings from the present passive separated-TT spectral-area closure.
 
-- `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
-- `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
-- `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-- `META_REFEREE_SIGNIFICANCE_AUDIT.md`
-- `CLAIM_LEDGER.md`
+This is a literature-framing correction, not a theorem correction.
 
-The manuscript-scope audit found no coefficient failure. It required three hardenings now in the frozen source:
+## 6. Last fully validated checkpoint
 
-1. retained carrier-scale endpoint modal sector;
-2. explicit `k_0 a << 1` and `k_0 R >> 1` conditions;
-3. explicit band-integral-to-full-line-`H2` positivity step.
-
-The final freeze audit found no new physics defect and corrected bibliography metadata/minor wording only.
-
-## 5. Final exact-head validation
-
-Authoritative frozen science/manuscript commit:
+Pre-reopen authoritative SHA:
 
 ```text
 d05a1e5d5f2f8b4c352f058de73194519c1015e1
 ```
 
-All seven gates passed on that exact SHA:
+All seven gates passed there:
 
 ```text
 passive cut        run 31429984820 — PASS
@@ -160,25 +180,15 @@ recurrence         run 31429984808 — PASS
 manuscript         run 31429984776, job 93590769191 — PASS
 ```
 
-The manuscript compiled to 10 pages with no unresolved references/citations.
+The current literature/manuscript patch must now receive fresh exact-head CI before a replacement canonical freeze SHA is recorded.
 
-Final artifact:
+## 7. Historical / novelty boundary
 
-```text
-name: experiment02-manuscript-v1
-artifact ID: 9078731235
-ZIP size: 266784 bytes
-SHA256: 370c852f7a65305ffe5dbdb6a5ce5fcf61d5e620668a6a0c90b0baa63ad9d917
-head SHA: d05a1e5d5f2f8b4c352f058de73194519c1015e1
-```
-
-## 6. Historical / novelty boundary
-
-Most ingredients are historical. No standalone novelty claim is made for resonant-mass integrated response, gravitational-antenna modal theory/directivity, arbitrary-body multimode response, material sum rules, generic passive `H2`, generic wave-channel bounds, multiple scattering, or the `20/3` and `4/3` lemmas.
+Most ingredients are historical. No standalone novelty claim is made for resonant-mass integrated response, gravitational-antenna modal theory/directivity, arbitrary-body multimode response, material sum rules, generic passive `H2`, generic wave-channel bounds, multiple scattering, gravity-mediated communication in general, or the `20/3` and `4/3` lemmas.
 
 No inspected source states the exact complete two-ended inertia closure. This is a negative search result, not proof of priority.
 
-## 7. Explicit exclusions
+## 8. Explicit exclusions
 
 No claim is made for
 
@@ -191,13 +201,13 @@ No claim is made for
 - active gain/pumping/feedback;
 - higher-multipole-dominated, relativistic, nonlinear, or strong-field regimes.
 
-## 8. Current research mode — HARD STOP
+## 9. Current research mode
 
-Do not broaden, rederive, or repackage the theorem merely because another extension is imaginable.
+Do not broaden or rederive the theorem.
 
-Further technical changes require either
+Immediate sequence:
 
-1. a concrete new contradiction/technical defect, or
-2. a concrete external specialist/journal objection.
-
-Otherwise work is limited to submission-oriented metadata/editorial tasks and external review response.
+1. commit the recent-literature collision audit and manuscript citation/framing patch;
+2. require fresh exact-head manuscript plus Experiment-02 theorem regressions;
+3. if all pass, record a docs-only replacement freeze checkpoint;
+4. after that, further technical work again requires a concrete contradiction or external specialist/journal objection.

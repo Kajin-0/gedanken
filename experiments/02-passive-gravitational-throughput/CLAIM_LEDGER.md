@@ -42,13 +42,16 @@ This ledger is authoritative for Experiment 02. Conversation history is a source
 | Infinite-dimensional `H2`/operator-Gramian machinery is new here | HISTORICAL / PRIOR ART | Baras--Brockett 1975; Opmeer--Reis--Wollner 2013 |
 | Multiple-scattering composition is new here | HISTORICAL / PRIOR ART | Redheffer 1962 |
 | `20/3` or `4/3` should be presented as standalone novelty | FAILED AS A NOVELTY CLAIM | short closure of historical modal/sum-rule ingredients |
-| The complete gravity-specific two-ended inertia closure is an exact known theorem | OPEN — NO EXACT COLLISION FOUND | `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`; strong near-collisions, no exact inspected match |
+| Gravity as a communication mediator or the existence of gravity-mediated communication bounds is new here | HISTORICAL / PRIOR ART | Kafri--Milburn--Taylor 2015; Lami--Pedernales--Plenio 2024; Toccacelo--Andersen--Brask 2025; Mari--Zippilli--Vitali 2026 |
+| Classical-channel/noise, LOCC-simulation, or gravitational state-transfer benchmarks are new here | HISTORICAL / PRIOR ART | `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md` |
+| A narrowband gravity-induced optomechanical communication channel is new here | HISTORICAL / PRIOR ART | Mari--Zippilli--Vitali 2026 |
+| The complete gravity-specific two-ended inertia closure is an exact known theorem | OPEN — NO EXACT COLLISION FOUND | `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md` + `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`; strong near-collisions, no exact inspected match |
 | Priority of the complete closure is proved | FAILED AS A CURRENT CLAIM | negative literature search is not proof of priority |
 | Conversation-only branches/commits/CI are repository evidence | FAILED AS A CURRENT CLAIM | only verified real remote artifacts count |
 
-## Canonical final validation
+## Last fully validated pre-reopen checkpoint
 
-The authoritative frozen science/manuscript SHA is
+The last fully validated theorem/manuscript SHA before the recent-literature novelty reopen is
 
 ```text
 d05a1e5d5f2f8b4c352f058de73194519c1015e1
@@ -66,18 +69,7 @@ recurrence         run 31429984808 — PASS
 manuscript         run 31429984776, job 93590769191 — PASS
 ```
 
-The manuscript compiled to 10 pages with no unresolved references/citations.
-
-Final artifact:
-
-```text
-name: experiment02-manuscript-v1
-artifact ID: 9078731235
-SHA256: 370c852f7a65305ffe5dbdb6a5ce5fcf61d5e620668a6a0c90b0baa63ad9d917
-head SHA: d05a1e5d5f2f8b4c352f058de73194519c1015e1
-```
-
-Earlier layer-by-layer and scope-hardening validation remains preserved in git history and the audit files. The canonical final freeze is summarized in `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`.
+That checkpoint remains valid evidence for the theorem derivation. The current literature-framing patch changes manuscript/prior-art text, not the mathematical proof, but it must receive fresh exact-head CI before a new canonical manuscript freeze SHA is recorded.
 
 ## Frequency and geometry convention
 
@@ -96,24 +88,25 @@ I_2       int rho r^2 dV about endpoint COM
 
 ## Manuscript and audit status
 
-Active/frozen science source: `manuscript_v1/` at the SHA above.
+Active manuscript: `manuscript_v1/`.
 
 Read:
 
+- `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
 - `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
 - `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
 - `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
 - `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
 - `META_REFEREE_SIGNIFICANCE_AUDIT.md`
 
-Internal verdict:
+Current interim verdict:
 
-> **INTERNAL AI REVIEW: GO — THEORY/MANUSCRIPT SCIENCE FROZEN.**
+> **PHYSICS THEOREM REMAINS FROZEN; NOVELTY/MANUSCRIPT FREEZE IS NARROWLY REOPENED UNTIL THE RECENT-LITERATURE PATCH PASSES FRESH EXACT-HEAD CI.**
 
-Further technical changes require a concrete new contradiction or external specialist/journal objection.
+No theorem broadening is authorized by this reopen.
 
 ## Priority discipline
 
-Do not use `first`, `new`, `unique`, `unprecedented`, or equivalent priority wording for the complete closure. The strongest accurate statement is:
+Do not use `first`, `new`, `unique`, `unprecedented`, or equivalent priority wording for the complete closure. In particular, do not claim to be the first gravity-mediated communication bound. The strongest accurate statement remains:
 
-> no exact equivalent theorem was found in the inspected primary literature.
+> no exact equivalent of the complete passive wave-zone two-ended inertia theorem was found in the inspected primary literature.
