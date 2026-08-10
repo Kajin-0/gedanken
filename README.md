@@ -64,12 +64,12 @@ Canonical state:
 Authoritative validated science/manuscript SHA:
 
 ```text
-d05a1e5d5f2f8b4c352f058de73194519c1015e1
+1ce596493073dbb49e6eb71f1a6df0566ff3c25b
 ```
 
 Internal verdict:
 
-> **INTERNAL AI REVIEW: GO — THEORY AND MANUSCRIPT SCIENCE FROZEN.**
+> **INTERNAL AI REVIEW: GO — THEORY AND LITERATURE-CORRECTED MANUSCRIPT FROZEN.**
 
 Current in-model result:
 
@@ -108,17 +108,18 @@ Higher-frequency off-resonant endpoint sectors are not automatically controlled 
 
 The proof combines passive selected-port spectral-area cuts, two endpoint gravitational coupling traces, an `I_2`-controlled cumulative quadrupole resource, the compact TT `25/16` propagation ceiling, and same-two-endpoint passive recurrence control.
 
-Most ingredients are historical. A hostile literature audit found strong near-collisions but no inspected primary source stating the exact complete two-ended closure. That negative search is **not** a priority claim.
+Most ingredients are historical. The literature boundary now explicitly includes modern gravity-as-communication work: Newtonian communication/noise bounds, LOCC simulation bounds, gravitational oscillator state-transfer benchmarks, and gravity-induced optomechanical channels are not novelty claims here. The dedicated recent collision audit found major conceptual near-collisions but no inspected primary source stating the exact passive far-zone TT two-ended `I_2` spectral-area closure. That negative search is **not** a priority claim.
 
 Start with:
 
 1. [`INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md)
 2. [`CURRENT_STATE.md`](experiments/02-passive-gravitational-throughput/CURRENT_STATE.md)
 3. [`CLAIM_LEDGER.md`](experiments/02-passive-gravitational-throughput/CLAIM_LEDGER.md)
-4. [`MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md)
-5. [`HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`](experiments/02-passive-gravitational-throughput/HOSTILE_PRIOR_ART_COLLISION_AUDIT.md)
-6. [`META_REFEREE_SIGNIFICANCE_AUDIT.md`](experiments/02-passive-gravitational-throughput/META_REFEREE_SIGNIFICANCE_AUDIT.md)
-7. [`manuscript_v1/README.md`](experiments/02-passive-gravitational-throughput/manuscript_v1/README.md)
+4. [`RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md)
+5. [`MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md)
+6. [`HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`](experiments/02-passive-gravitational-throughput/HOSTILE_PRIOR_ART_COLLISION_AUDIT.md)
+7. [`META_REFEREE_SIGNIFICANCE_AUDIT.md`](experiments/02-passive-gravitational-throughput/META_REFEREE_SIGNIFICANCE_AUDIT.md)
+8. [`manuscript_v1/README.md`](experiments/02-passive-gravitational-throughput/manuscript_v1/README.md)
 
 Earlier conversation-only descriptions of branches, commits, CI runs, or files are not repository provenance. Only artifacts verified on the actual remote count.
 
@@ -136,13 +137,13 @@ Experiment 01 workflows cover manuscript compilation, TT normalization, broader 
 
 Experiment 02 has dedicated workflows for passive selected-port cut, endpoint quadrupole resource, compact TT propagation, the combined `25/12` theorem, countably infinite bounded-port truncations, same-endpoint passive recurrence, and manuscript compilation/reference checks.
 
-The final Experiment-02 science/manuscript SHA passed all seven dedicated gates. Exact run IDs and artifact digest are recorded in the freeze checkpoint rather than inferred from conversation history.
+The final literature-corrected Experiment-02 science/manuscript SHA passed all seven dedicated gates. Exact run IDs and artifact digest are recorded in the freeze checkpoint rather than inferred from conversation history.
 
 ---
 
 ## Current work
 
 - **Experiment 01:** submission/editorial work only unless a concrete technical defect appears.
-- **Experiment 02:** internal theory/manuscript science is frozen. Further technical changes require a concrete new contradiction or external specialist/journal objection; otherwise work is limited to submission-oriented metadata/editorial tasks and external review.
+- **Experiment 02:** internal theory and literature-corrected manuscript are frozen. Further technical changes require a concrete new contradiction or external specialist/journal objection; otherwise work is limited to submission-oriented metadata/editorial tasks and external review.
 
 Repository editing/recovery rules are in the root [`AGENTS.md`](AGENTS.md).

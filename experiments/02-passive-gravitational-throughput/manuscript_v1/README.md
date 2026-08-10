@@ -2,9 +2,15 @@
 
 **Title:** *An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction*
 
-This is the active short specialist manuscript source for Experiment 02 on `main`.
+This is the frozen short specialist manuscript source for Experiment 02 on `main`.
 
 ## Scientific status
+
+Authoritative validated manuscript/science SHA:
+
+```text
+1ce596493073dbb49e6eb71f1a6df0566ff3c25b
+```
 
 The manuscript is organized around one result:
 
@@ -25,8 +31,9 @@ The historical/prior-art and manuscript-audit boundaries are maintained in:
 - `../META_REFEREE_SIGNIFICANCE_AUDIT.md`
 - `../MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
 - `../MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
+- `../INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
 
-## Build
+## Build and validation
 
 ```bash
 latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
@@ -36,7 +43,14 @@ Dedicated GitHub Actions workflow:
 
 `.github/workflows/latex-experiment02.yml`
 
-It compiles the manuscript, fails on unresolved references/citations, and uploads the PDF artifact.
+On SHA `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`, manuscript run `31436799879`, job `93612603414`, passed. The final LaTeX pass produced 10 pages and the unresolved-reference/citation check passed.
+
+Artifact:
+
+```text
+artifact ID: 9081319062
+SHA256: 788801a0bb567b6ae9c559a1bfe1e70c45fc4ac86a041710568241abaf32ad2c
+```
 
 ## Scope
 
@@ -79,8 +93,8 @@ Explicitly outside the current theorem:
 
 A post-freeze audit identified an omission in the novelty review: the manuscript had not directly engaged the recent gravity-as-communication line represented by Kafri--Milburn--Taylor (2015), Lami--Pedernales--Plenio (2024), Toccacelo--Andersen--Brask (2025), and Mari--Zippilli--Vitali (2026).
 
-The current source now cites those papers explicitly and states that gravity-mediated communication, communication/classicality bounds, and state-transfer benchmarks are historical. The remaining candidate contribution is only the passive separated-TT frequency-integrated two-ended `I_2` closure.
+The frozen source now cites those papers explicitly and states that gravity-mediated communication, communication/classicality bounds, and state-transfer benchmarks are historical. The remaining candidate contribution is only the passive separated-TT frequency-integrated two-ended `I_2` closure.
 
-This patch does not alter the theorem derivation. Fresh exact-head CI is required before the manuscript freeze is restored.
+The literature-corrected manuscript and all six physics regressions passed fresh exact-head CI. The novelty/manuscript freeze is therefore restored.
 
 The public manuscript remains `Anonymous`; private author/submission metadata should be added only at the external submission boundary.

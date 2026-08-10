@@ -1,9 +1,9 @@
 # AGENTS.md — Experiment 02 Recovery and Freeze Protocol
 
 **Experiment:** `02-passive-gravitational-throughput`  
-**Mode:** internally frozen theorem / short-manuscript track.  
+**Mode:** internally frozen theorem / literature-corrected short-manuscript track.  
 **Current theorem status:** established within the declared compact retained-sector bounded-port narrowband model.  
-**Frozen science/manuscript SHA:** `d05a1e5d5f2f8b4c352f058de73194519c1015e1`.  
+**Frozen science/manuscript SHA:** `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`.  
 **Internal verdict:** **GO — no further theorem broadening absent a concrete defect or external objection.**
 
 This file is the first operational file an automated contributor should read after the repository-level `AGENTS.md`.
@@ -29,11 +29,12 @@ Read:
 1. `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
 2. `CURRENT_STATE.md`
 3. `CLAIM_LEDGER.md`
-4. `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
-5. `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
-6. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-7. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
-8. `manuscript_v1/README.md`
+4. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
+5. `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
+6. `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
+7. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+8. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
+9. `manuscript_v1/README.md`
 
 For proof provenance, then read:
 
@@ -94,23 +95,22 @@ Do not silently broaden to
 
 Most ingredients are historical. Do not claim novelty for
 
-- gravitational-antenna eigenmode theory;
-- integrated resonant-mass response;
-- arbitrary-body multimode GW response;
-- gravitational material-response sum rules;
-- generic passive `H2` machinery;
-- generic source–receiver wave-channel bounds;
-- directivity / reciprocal effective area;
-- multiple-scattering composition;
+- gravitational-antenna eigenmode theory or integrated resonant-mass response;
+- arbitrary-body multimode GW response or gravitational material-response sum rules;
+- generic passive `H2`, source--receiver wave-channel bounds, directivity, or multiple scattering;
+- gravity as a communication mediator;
+- Newtonian gravity communication/noise bounds or LOCC simulation bounds;
+- state-transfer benchmarks between gravitationally interacting oscillators;
+- narrowband gravity-induced optomechanical communication channels;
 - the `20/3` or `4/3` intermediate lemmas as standalone results.
 
-The only plausible publication contribution is the **complete gravity-specific two-ended inertia closure**. No exact equivalent theorem was found in the inspected literature; that negative result is not proof of priority.
+The only plausible publication contribution is the **complete gravity-specific passive far-zone two-ended inertia closure**. Historical and recent-literature collision audits found no exact equivalent theorem in the inspected primary literature; that negative result is not proof of priority.
 
 Do not use `first`, `new`, `unique`, `unprecedented`, or equivalent priority language.
 
 ## 6. Validation state
 
-The frozen science/manuscript SHA `d05a1e5d5f2f8b4c352f058de73194519c1015e1` passed all six physics workflows plus the manuscript workflow. Exact run IDs and artifact digest are in `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`.
+The frozen science/manuscript SHA `1ce596493073dbb49e6eb71f1a6df0566ff3c25b` passed all six physics workflows plus the manuscript workflow after the recent gravity-communication literature patch. Exact run IDs and artifact digest are in `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`.
 
 Documentation commits after that SHA do not supersede the validated science source unless they intentionally modify theorem/manuscript science and receive a new exact-head validation cycle.
 
@@ -127,6 +127,6 @@ Allowed work:
 - submission metadata/editorial preparation;
 - external specialist/journal review;
 - response to a concrete external objection;
-- reopening only a proof layer implicated by a concrete new contradiction.
+- reopening only a proof or literature layer implicated by a concrete new contradiction.
 
 Absent one of those triggers, preserve the frozen science/manuscript source.

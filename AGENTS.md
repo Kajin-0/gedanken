@@ -35,7 +35,7 @@ Paper source:
 Authoritative validated science/manuscript SHA:
 
 ```text
-d05a1e5d5f2f8b4c352f058de73194519c1015e1
+1ce596493073dbb49e6eb71f1a6df0566ff3c25b
 ```
 
 Current in-model theorem:
@@ -48,7 +48,7 @@ Current in-model theorem:
 
 Status:
 
-> **INTERNAL AI REVIEW: GO — THEORY AND MANUSCRIPT SCIENCE FROZEN.**
+> **INTERNAL AI REVIEW: GO — THEORY AND LITERATURE-CORRECTED MANUSCRIPT FROZEN.**
 
 Canonical recovery order:
 
@@ -56,10 +56,11 @@ Canonical recovery order:
 2. `experiments/02-passive-gravitational-throughput/AGENTS.md`
 3. `experiments/02-passive-gravitational-throughput/CURRENT_STATE.md`
 4. `experiments/02-passive-gravitational-throughput/CLAIM_LEDGER.md`
-5. `experiments/02-passive-gravitational-throughput/MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
-6. `experiments/02-passive-gravitational-throughput/HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-7. `experiments/02-passive-gravitational-throughput/META_REFEREE_SIGNIFICANCE_AUDIT.md`
-8. `experiments/02-passive-gravitational-throughput/manuscript_v1/README.md`
+5. `experiments/02-passive-gravitational-throughput/RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
+6. `experiments/02-passive-gravitational-throughput/MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
+7. `experiments/02-passive-gravitational-throughput/HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+8. `experiments/02-passive-gravitational-throughput/META_REFEREE_SIGNIFICANCE_AUDIT.md`
+9. `experiments/02-passive-gravitational-throughput/manuscript_v1/README.md`
 
 The Experiment-02 theorem is explicitly a compact narrowband retained-sector result. Do not drop
 
@@ -107,7 +108,9 @@ The publication claim is the source-resolved physical normalization/capability c
 
 The generic passive-system mathematics, gravitational-antenna eigenmode theory, integrated resonant-mass response, material sum rules, directivity, generic wave-channel bounds, and multiple-scattering composition are not novelty claims.
 
-The only plausible Experiment-02 publication contribution is the gravity-specific cumulative **two-ended inertia closure**. No exact equivalent theorem was found in the inspected literature; this is not proof of priority.
+Modern gravity-as-communication results are also explicit prior art: Newtonian communication/noise bounds, LOCC simulation bounds, gravitational oscillator state-transfer benchmarks, and gravity-induced optomechanical communication channels must not be presented as new here.
+
+The only plausible Experiment-02 publication contribution is the gravity-specific cumulative **passive far-zone two-ended inertia closure**. Historical and recent-literature collision audits found no exact equivalent theorem in the inspected literature; this is not proof of priority.
 
 Do not broaden Experiment 02 to active systems, extended apertures, added relays/cavities, near-field transfer, arbitrary unbounded PDE ports, genuinely non-Markov continua, broad absolute-frequency operation with one carrier coefficient, or uncontrolled high-frequency off-resonant sectors.
 
@@ -121,7 +124,7 @@ Pinned scientific Python environment:
 
 Experiment 01 workflows include manuscript compilation, TT normalization, broader scientific regressions, and isolated submission-package validation.
 
-Experiment 02 workflows include passive-cut, endpoint-resource, TT-propagation, combined-bound, infinite-modal, recurrence, and manuscript checks. All seven passed on the frozen science/manuscript SHA above. Exact run IDs and artifact digest are in `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`.
+Experiment 02 workflows include passive-cut, endpoint-resource, TT-propagation, combined-bound, infinite-modal, recurrence, and manuscript checks. All seven passed on the frozen literature-corrected science/manuscript SHA above. Exact run IDs and artifact digest are in `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`.
 
 ## 5. Allowed work
 
@@ -153,6 +156,7 @@ Do not:
 - report a write as successful before verifying it on the actual remote;
 - report a scientific checkpoint as validated before exact-head CI completes;
 - use `first`, `new`, `unique`, `unprecedented`, or similar priority language without dedicated evidence;
+- claim to be the first gravity-mediated communication bound;
 - silently broaden either experiment's scope;
 - modify frozen V7 physics merely to align it with Experiment 02;
 - modify frozen Experiment-02 science merely because another extension is imaginable.

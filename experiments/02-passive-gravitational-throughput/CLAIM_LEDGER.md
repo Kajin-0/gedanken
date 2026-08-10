@@ -16,7 +16,7 @@ This ledger is authoritative for Experiment 02. Conversation history is a source
 |---|---|---|
 | Complex-envelope `H2` spectral-area metric for stable strictly proper selected cross-port blocks | ESTABLISHED WITHIN MODEL | `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md` |
 | Passive selected-port transfer is cut by endpoint port traces | ESTABLISHED WITHIN MODEL | Stage-A derivation + CI |
-| Band-limited `Gamma_coh` is bounded by the corresponding full-line selected-port `H2` norm | ESTABLISHED WITHIN MODEL | positivity of `Tr(T^dag T)`; explicit in manuscript passive-cut section |
+| Band-limited `Gamma_coh` is bounded by the corresponding full-line selected-port `H2` norm | ESTABLISHED WITHIN MODEL | positivity of `Tr(T^dag T)`; manuscript passive-cut section |
 | Separated passive transfer is cut by the smaller source/receiver gravitational trace | ESTABLISHED WITHIN MODEL | Stage-A derivation + random two-ended adversary |
 | `sum_n (q_n:q_n)/mu_n <= (20/3) I_2` | ESTABLISHED WITHIN MODEL | Stage-B derivation + CI |
 | `Tr(K_g^dag K_g) <= (4G/3c^5) I_2 Omega^4` for `omega_n <= Omega` | ESTABLISHED WITHIN MODEL | Stage-B derivation + CI |
@@ -45,31 +45,39 @@ This ledger is authoritative for Experiment 02. Conversation history is a source
 | Gravity as a communication mediator or the existence of gravity-mediated communication bounds is new here | HISTORICAL / PRIOR ART | Kafri--Milburn--Taylor 2015; Lami--Pedernales--Plenio 2024; Toccacelo--Andersen--Brask 2025; Mari--Zippilli--Vitali 2026 |
 | Classical-channel/noise, LOCC-simulation, or gravitational state-transfer benchmarks are new here | HISTORICAL / PRIOR ART | `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md` |
 | A narrowband gravity-induced optomechanical communication channel is new here | HISTORICAL / PRIOR ART | Mari--Zippilli--Vitali 2026 |
-| The complete gravity-specific two-ended inertia closure is an exact known theorem | OPEN — NO EXACT COLLISION FOUND | `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md` + `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`; strong near-collisions, no exact inspected match |
+| The complete gravity-specific two-ended inertia closure is an exact known theorem | OPEN — NO EXACT COLLISION FOUND | historical + recent collision audits; strong near-collisions, no exact inspected match |
 | Priority of the complete closure is proved | FAILED AS A CURRENT CLAIM | negative literature search is not proof of priority |
 | Conversation-only branches/commits/CI are repository evidence | FAILED AS A CURRENT CLAIM | only verified real remote artifacts count |
 
-## Last fully validated pre-reopen checkpoint
+## Authoritative validated checkpoint
 
-The last fully validated theorem/manuscript SHA before the recent-literature novelty reopen is
+The literature-corrected theorem/manuscript SHA is
 
 ```text
-d05a1e5d5f2f8b4c352f058de73194519c1015e1
+1ce596493073dbb49e6eb71f1a6df0566ff3c25b
 ```
 
 All seven gates passed on that exact SHA:
 
 ```text
-passive cut        run 31429984820 — PASS
-endpoint resource  run 31429984888 — PASS
-TT propagation     run 31429984826 — PASS
-combined bound     run 31429984854 — PASS
-infinite modal     run 31429984786 — PASS
-recurrence         run 31429984808 — PASS
-manuscript         run 31429984776, job 93590769191 — PASS
+passive cut        run 31436799875 — PASS
+endpoint resource  run 31436799815 — PASS
+TT propagation     run 31436799906 — PASS
+combined bound     run 31436799849 — PASS
+infinite modal     run 31436799835 — PASS
+recurrence         run 31436799854 — PASS
+manuscript         run 31436799879, job 93612603414 — PASS
 ```
 
-That checkpoint remains valid evidence for the theorem derivation. The current literature-framing patch changes manuscript/prior-art text, not the mathematical proof, but it must receive fresh exact-head CI before a new canonical manuscript freeze SHA is recorded.
+Manuscript artifact:
+
+```text
+artifact ID: 9081319062
+ZIP size: 271138 bytes
+SHA256: 788801a0bb567b6ae9c559a1bfe1e70c45fc4ac86a041710568241abaf32ad2c
+```
+
+The final LaTeX pass produced 10 pages and the workflow found no unresolved references/citations.
 
 ## Frequency and geometry convention
 
@@ -92,18 +100,18 @@ Active manuscript: `manuscript_v1/`.
 
 Read:
 
-- `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
 - `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
+- `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
 - `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
 - `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
 - `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
 - `META_REFEREE_SIGNIFICANCE_AUDIT.md`
 
-Current interim verdict:
+Current verdict:
 
-> **PHYSICS THEOREM REMAINS FROZEN; NOVELTY/MANUSCRIPT FREEZE IS NARROWLY REOPENED UNTIL THE RECENT-LITERATURE PATCH PASSES FRESH EXACT-HEAD CI.**
+> **INTERNAL AI REVIEW: GO. PHYSICS AND LITERATURE-CORRECTED MANUSCRIPT ARE FROZEN AT `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`.**
 
-No theorem broadening is authorized by this reopen.
+No theorem broadening is authorized.
 
 ## Priority discipline
 
