@@ -41,7 +41,7 @@ with leading compact wave-zone storage
 
 The Experiment-01 publication claim is the **source-resolved physical normalization and capability accounting**, not a new Gaussian-channel theorem.
 
-### Experiment 02 — theorem / short-manuscript track
+### Experiment 02 — internally frozen theorem / manuscript track
 
 **An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction**
 
@@ -49,13 +49,27 @@ Directory:
 
 [`experiments/02-passive-gravitational-throughput/`](experiments/02-passive-gravitational-throughput/)
 
-Active manuscript:
+Manuscript:
 
 [`manuscript_v1/`](experiments/02-passive-gravitational-throughput/manuscript_v1/)
+
+Canonical freeze record:
+
+[`INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md)
 
 Canonical state:
 
 [`CURRENT_STATE.md`](experiments/02-passive-gravitational-throughput/CURRENT_STATE.md)
+
+Authoritative validated science/manuscript SHA:
+
+```text
+d05a1e5d5f2f8b4c352f058de73194519c1015e1
+```
+
+Internal verdict:
+
+> **INTERNAL AI REVIEW: GO — THEORY AND MANUSCRIPT SCIENCE FROZEN.**
 
 Current in-model result:
 
@@ -92,53 +106,21 @@ bounded-port Markov modal sectors      passive endpoint model
 
 Higher-frequency off-resonant endpoint sectors are not automatically controlled by the simple carrier-scale `omega_0^4` resource and require separate treatment.
 
-The proof combines
+The proof combines passive selected-port spectral-area cuts, two endpoint gravitational coupling traces, an `I_2`-controlled cumulative quadrupole resource, the compact TT `25/16` propagation ceiling, and same-two-endpoint passive recurrence control.
 
-```text
-passive selected-port spectral-area cut
-        ↓
-source and receiver gravitational coupling traces
-        ↓
-I_2-controlled cumulative quadrupole resource at both endpoints
-        ↓
-compact TT propagation ceiling 25/16
-        ↓
-same-two-endpoint passive recurrence control
-        ↓
-25/12 two-ended inertia closure.
-```
-
-The generic passive mathematics, gravitational-antenna modal theory, integrated resonant-mass response, material-response sum rules, directivity, generic wave-channel bounds, and multiple-scattering composition are historical ingredients. No standalone novelty claim is made for them.
-
-A hostile literature audit found strong near-collisions but no inspected primary source stating the exact complete two-ended closure. That negative search is **not** a priority claim.
+Most ingredients are historical. A hostile literature audit found strong near-collisions but no inspected primary source stating the exact complete two-ended closure. That negative search is **not** a priority claim.
 
 Start with:
 
-1. [`AGENTS.md`](experiments/02-passive-gravitational-throughput/AGENTS.md)
+1. [`INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md)
 2. [`CURRENT_STATE.md`](experiments/02-passive-gravitational-throughput/CURRENT_STATE.md)
 3. [`CLAIM_LEDGER.md`](experiments/02-passive-gravitational-throughput/CLAIM_LEDGER.md)
-4. [`MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md)
+4. [`MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md)
 5. [`HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`](experiments/02-passive-gravitational-throughput/HOSTILE_PRIOR_ART_COLLISION_AUDIT.md)
 6. [`META_REFEREE_SIGNIFICANCE_AUDIT.md`](experiments/02-passive-gravitational-throughput/META_REFEREE_SIGNIFICANCE_AUDIT.md)
 7. [`manuscript_v1/README.md`](experiments/02-passive-gravitational-throughput/manuscript_v1/README.md)
 
 Earlier conversation-only descriptions of branches, commits, CI runs, or files are not repository provenance. Only artifacts verified on the actual remote count.
-
----
-
-## Experiment 01 key recovery points
-
-For V7 scientific provenance, read:
-
-1. [`CURRENT_STATE_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md)
-2. [`CLAIM_LEDGER.md`](experiments/01-causal-quantum-branch-information/CLAIM_LEDGER.md)
-3. [`manuscript_v7/README.md`](experiments/01-causal-quantum-branch-information/manuscript_v7/README.md)
-4. [`ARCHIVE_STATUS.md`](experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md)
-5. [`TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md`](experiments/01-causal-quantum-branch-information/TT_ONE_GRAVITON_MODE_OVERLAP_25_OVER_16_AUDIT.md)
-6. [`APPROXIMATION_ERROR_BUDGET_V7.md`](experiments/01-causal-quantum-branch-information/APPROXIMATION_ERROR_BUDGET_V7.md)
-7. [`FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md`](experiments/01-causal-quantum-branch-information/FINAL_INTEGRATED_PRIOR_ART_SWEEP_V7.md)
-
-Older paper cores and stopped Gaussian-channel novelty branches remain as an audit trail and are not current recovery points.
 
 ---
 
@@ -150,25 +132,17 @@ Pinned scientific Python environment:
 - NumPy `2.5.1`
 - SciPy `1.18.0`
 
-Experiment 01 workflows include manuscript compilation, TT normalization, broader scientific regressions, and isolated submission-package validation.
+Experiment 01 workflows cover manuscript compilation, TT normalization, broader scientific regressions, and isolated submission-package validation.
 
-Experiment 02 has dedicated workflows for
+Experiment 02 has dedicated workflows for passive selected-port cut, endpoint quadrupole resource, compact TT propagation, the combined `25/12` theorem, countably infinite bounded-port truncations, same-endpoint passive recurrence, and manuscript compilation/reference checks.
 
-- passive selected-port cut;
-- endpoint quadrupole resource;
-- compact TT propagation;
-- combined `25/12` theorem;
-- countably infinite bounded-port truncations;
-- same-endpoint passive recurrence;
-- manuscript compilation and unresolved-reference checks.
-
-Exact canonical run IDs are recorded in the corresponding `CURRENT_STATE.md` / `CLAIM_LEDGER.md` files rather than inferred from conversation history.
+The final Experiment-02 science/manuscript SHA passed all seven dedicated gates. Exact run IDs and artifact digest are recorded in the freeze checkpoint rather than inferred from conversation history.
 
 ---
 
 ## Current work
 
 - **Experiment 01:** submission/editorial work only unless a concrete technical defect appears.
-- **Experiment 02:** validate the current manuscript scope-hardening checkpoint, perform the final adversarial manuscript audit, synchronize recovery state, then stop internal theorem broadening and move to external specialist/journal review.
+- **Experiment 02:** internal theory/manuscript science is frozen. Further technical changes require a concrete new contradiction or external specialist/journal objection; otherwise work is limited to submission-oriented metadata/editorial tasks and external review.
 
 Repository editing/recovery rules are in the root [`AGENTS.md`](AGENTS.md).

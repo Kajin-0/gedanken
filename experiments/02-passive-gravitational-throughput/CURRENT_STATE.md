@@ -1,7 +1,11 @@
 # Current State — Experiment 02
 
-**Checkpoint:** final manuscript freeze audit and bibliography polish.  
-**Status:** **PHYSICS THEOREM ESTABLISHED WITHIN THE DECLARED RETAINED-SECTOR BOUNDED-PORT NARROWBAND CLASS; SCOPE-HARDENED MANUSCRIPT AND ALL SIX PHYSICS REGRESSIONS PASSED ON `3cfb62e3...`; FINAL POLISH CI PENDING; NO FURTHER THEOREM BROADENING.**
+**Checkpoint:** internal AI freeze after final exact-head manuscript/theorem validation.  
+**Status:** **INTERNAL AI REVIEW: GO; THEORY AND MANUSCRIPT SCIENCE FROZEN AT `d05a1e5d5f2f8b4c352f058de73194519c1015e1`; NEXT EPISTEMIC STEP IS EXTERNAL SPECIALIST/JOURNAL REVIEW.**
+
+Canonical freeze record:
+
+`INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
 
 ## 1. Current theorem
 
@@ -96,7 +100,7 @@ File: `FINITE_TWO_ENDED_INERTIA_BOUND.md`.
 
 ## 3. Infinite modal and recurrence closure
 
-Countably infinite separable **bounded-port Markov** modal sectors are covered when the gravitational port is Hilbert--Schmidt; the retained endpoint resource gives the required finite trace.
+Countably infinite separable **bounded-port Markov** modal sectors are covered when the gravitational port is Hilbert--Schmidt; the retained endpoint resource supplies the required finite trace.
 
 File: `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`.
 
@@ -110,9 +114,9 @@ so recurrence changes only subleading terms in the leading `1/R^2` upper ceiling
 
 File: `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`.
 
-## 4. Manuscript
+## 4. Manuscript and audits
 
-Active source:
+Active manuscript source:
 
 `manuscript_v1/`
 
@@ -120,65 +124,61 @@ Title:
 
 **An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction**
 
-The first manuscript adversarial audit is:
+Canonical audits:
 
-`MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
+- `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
+- `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
+- `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+- `META_REFEREE_SIGNIFICANCE_AUDIT.md`
+- `CLAIM_LEDGER.md`
 
-It found no coefficient failure and required three scope hardenings now present in the manuscript:
+The manuscript-scope audit found no coefficient failure. It required three hardenings now in the frozen source:
 
 1. retained carrier-scale endpoint modal sector;
 2. explicit `k_0 a << 1` and `k_0 R >> 1` conditions;
 3. explicit band-integral-to-full-line-`H2` positivity step.
 
-The final freeze audit is:
+The final freeze audit found no new physics defect and corrected bibliography metadata/minor wording only.
 
-`MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
+## 5. Final exact-head validation
 
-It found no new physics defect. It corrected two bibliography metadata entries and minor wording only. Fresh exact-head CI is required before the final freeze verdict is promoted to canonical.
-
-## 5. Scope-hardening validation — exact real head
-
-Scope-hardening commit:
+Authoritative frozen science/manuscript commit:
 
 ```text
-3cfb62e31dfb0905955050f963bdc2bf93706c9e
+d05a1e5d5f2f8b4c352f058de73194519c1015e1
 ```
 
-All seven Experiment-02 gates passed:
+All seven gates passed on that exact SHA:
 
 ```text
-passive cut        run 31429039197 — PASS
-endpoint resource  run 31429039518 — PASS
-TT propagation     run 31429039529 — PASS
-combined bound     run 31429039256 — PASS
-infinite modal     run 31429039819 — PASS
-recurrence         run 31429039531 — PASS
-manuscript         run 31429039874, job 93587616997 — PASS
+passive cut        run 31429984820 — PASS
+endpoint resource  run 31429984888 — PASS
+TT propagation     run 31429984826 — PASS
+combined bound     run 31429984854 — PASS
+infinite modal     run 31429984786 — PASS
+recurrence         run 31429984808 — PASS
+manuscript         run 31429984776, job 93590769191 — PASS
 ```
 
-The manuscript compiled to 10 pages with no unresolved references/citations after the final LaTeX pass.
+The manuscript compiled to 10 pages with no unresolved references/citations.
 
-Artifact:
+Final artifact:
 
 ```text
 name: experiment02-manuscript-v1
-artifact ID: 9078372416
-ZIP SHA256: 9dac950d7f9136aaa8608e82eed819ed23544f5ce50cd9b927357540f8c39026
+artifact ID: 9078731235
+ZIP size: 266784 bytes
+SHA256: 370c852f7a65305ffe5dbdb6a5ce5fcf61d5e620668a6a0c90b0baa63ad9d917
+head SHA: d05a1e5d5f2f8b4c352f058de73194519c1015e1
 ```
 
 ## 6. Historical / novelty boundary
-
-Read:
-
-- `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-- `META_REFEREE_SIGNIFICANCE_AUDIT.md`
-- `CLAIM_LEDGER.md`
 
 Most ingredients are historical. No standalone novelty claim is made for resonant-mass integrated response, gravitational-antenna modal theory/directivity, arbitrary-body multimode response, material sum rules, generic passive `H2`, generic wave-channel bounds, multiple scattering, or the `20/3` and `4/3` lemmas.
 
 No inspected source states the exact complete two-ended inertia closure. This is a negative search result, not proof of priority.
 
-## 7. Exclusions
+## 7. Explicit exclusions
 
 No claim is made for
 
@@ -191,13 +191,13 @@ No claim is made for
 - active gain/pumping/feedback;
 - higher-multipole-dominated, relativistic, nonlinear, or strong-field regimes.
 
-## 8. Current research mode
+## 8. Current research mode — HARD STOP
 
-Do not broaden the theorem further without a concrete defect.
+Do not broaden, rederive, or repackage the theorem merely because another extension is imaginable.
 
-Immediate sequence:
+Further technical changes require either
 
-1. commit the final bibliography/wording polish and freeze audit;
-2. require fresh manuscript plus all six physics workflows on that exact head;
-3. if all pass, record a docs-only canonical freeze checkpoint;
-4. reserve further technical changes for a concrete external specialist/journal objection.
+1. a concrete new contradiction/technical defect, or
+2. a concrete external specialist/journal objection.
+
+Otherwise work is limited to submission-oriented metadata/editorial tasks and external review response.

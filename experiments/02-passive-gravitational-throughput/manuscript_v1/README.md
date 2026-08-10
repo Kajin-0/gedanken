@@ -2,57 +2,41 @@
 
 **Title:** *An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction*
 
-This is the active short specialist manuscript source for Experiment 02 on `main`.
+This is the internally frozen short specialist manuscript source for Experiment 02.
 
-## Scientific status
+## Frozen science source
 
-The manuscript is organized around one result:
+Authoritative validated commit:
+
+```text
+d05a1e5d5f2f8b4c352f058de73194519c1015e1
+```
+
+Internal verdict:
+
+> **INTERNAL AI REVIEW: GO — THEORY/MANUSCRIPT SCIENCE FROZEN.**
+
+Canonical freeze record:
+
+`../INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
+
+## Scientific result
 
 ```math
+\boxed{
 \Gamma_{\rm coh}
 \lesssim
 \frac{25G\omega_0^2}{12c^3R^2}
-\min(I_{2,A},I_{2,B}).
+\min(I_{2,A},I_{2,B})
+}
 ```
 
 The theorem is established only within its declared compact narrowband retained-sector class. The manuscript does not claim novelty for gravitational-antenna eigenmode theory, integrated resonant-mass response, arbitrary-body modal projection, response sum rules, generic passive `H2` mathematics, generic wave-channel bounds, directivity, or multiple-scattering composition.
 
-The historical/prior-art and manuscript-audit boundaries are maintained in:
-
-- `../HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-- `../CLAIM_LEDGER.md`
-- `../META_REFEREE_SIGNIFICANCE_AUDIT.md`
-- `../MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
-
-## Build
-
-```bash
-latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
-```
-
-Dedicated GitHub Actions workflow:
-
-`.github/workflows/latex-experiment02.yml`
-
-It compiles the manuscript, fails on unresolved references/citations, and uploads the PDF artifact.
-
 ## Scope
 
-Use
-
 ```text
-omega_0   absolute carrier angular frequency
-nu        complex-envelope detuning
-B         envelope bandwidth, B/omega_0 << 1
-k_0       omega_0/c
-a_A,a_B   characteristic endpoint radii
-R         endpoint separation
-Omega     upper physical frequency of retained endpoint modal sector
-```
-
-Required asymptotic/model conditions:
-
-```text
+B/omega_0 << 1
 k_0 a_A, k_0 a_B << 1
 k_0 R >> 1
 Omega = omega_0[1+O(B/omega_0)]
@@ -73,14 +57,52 @@ Explicitly outside the current theorem:
 - reactive near-field exchange;
 - relativistic/nonlinear matter and higher-multipole-dominated regimes.
 
-## Current checkpoint
+## Validation
 
-The first manuscript adversarial scope audit found no `25/12` coefficient failure. It required three clarifications now incorporated in the source:
+All six physics workflows and the manuscript workflow passed on the frozen source SHA:
 
-1. the retained carrier-scale modal-sector condition;
-2. explicit `k_0 a << 1` and `k_0R >> 1` geometry conditions;
-3. explicit use of positivity to bound the band-limited metric by the full-line `H2` cut.
+```text
+passive cut        run 31429984820 — PASS
+endpoint resource  run 31429984888 — PASS
+TT propagation     run 31429984826 — PASS
+combined bound     run 31429984854 — PASS
+infinite modal     run 31429984786 — PASS
+recurrence         run 31429984808 — PASS
+manuscript         run 31429984776, job 93590769191 — PASS
+```
 
-Fresh CI on the exact scope-hardening head is required before this checkpoint is frozen.
+Final manuscript: **10 pages**, no unresolved references/citations.
 
-The public manuscript remains `Anonymous`; private author/submission metadata should be added only at the external submission boundary.
+Artifact:
+
+```text
+name: experiment02-manuscript-v1
+artifact ID: 9078731235
+SHA256: 370c852f7a65305ffe5dbdb6a5ce5fcf61d5e620668a6a0c90b0baa63ad9d917
+```
+
+## Build
+
+```bash
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+```
+
+Workflow:
+
+`.github/workflows/latex-experiment02.yml`
+
+## Audit boundary
+
+Read:
+
+- `../MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
+- `../MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
+- `../HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+- `../META_REFEREE_SIGNIFICANCE_AUDIT.md`
+- `../CLAIM_LEDGER.md`
+
+The final audits found no publication-critical internal coefficient or normalization failure. The remaining risk is external historical/significance/model-scope review.
+
+The public manuscript remains `Anonymous`; private author/submission metadata belongs at the external submission boundary.
+
+Do not modify manuscript science without a concrete technical defect or external specialist/journal objection.

@@ -46,41 +46,38 @@ This ledger is authoritative for Experiment 02. Conversation history is a source
 | Priority of the complete closure is proved | FAILED AS A CURRENT CLAIM | negative literature search is not proof of priority |
 | Conversation-only branches/commits/CI are repository evidence | FAILED AS A CURRENT CLAIM | only verified real remote artifacts count |
 
-## Validation record
+## Canonical final validation
 
-Original layer-by-layer passes:
-
-```text
-Stage A passive cut:
-  run 31391304791, job 93463450929 — PASS
-Stage B endpoint resource:
-  run 31392339989, job 93466817164 — PASS
-Stage C TT propagation:
-  run 31393020114, job 93469060678 — PASS
-Combined finite-dimensional theorem:
-  run 31393498572, job 93470648716 — PASS
-Countably infinite bounded-port extension:
-  run 31394415776, job 93473679179 — PASS
-Passive same-endpoint recurrence:
-  run 31394879241, job 93475219560 — PASS
-```
-
-Scope-hardened manuscript/theorem head:
+The authoritative frozen science/manuscript SHA is
 
 ```text
-commit 3cfb62e31dfb0905955050f963bdc2bf93706c9e
-passive cut        run 31429039197 — PASS
-endpoint resource  run 31429039518 — PASS
-TT propagation     run 31429039529 — PASS
-combined bound     run 31429039256 — PASS
-infinite modal     run 31429039819 — PASS
-recurrence         run 31429039531 — PASS
-manuscript         run 31429039874, job 93587616997 — PASS
+d05a1e5d5f2f8b4c352f058de73194519c1015e1
 ```
 
-Manuscript output on that head: 10 pages, no unresolved references/citations. Artifact ID `9078372416`; ZIP SHA256 `9dac950d7f9136aaa8608e82eed819ed23544f5ce50cd9b927357540f8c39026`.
+All seven gates passed on that exact SHA:
 
-The final bibliography/wording polish commit containing `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md` must receive fresh exact-head CI before the canonical freeze is recorded.
+```text
+passive cut        run 31429984820 — PASS
+endpoint resource  run 31429984888 — PASS
+TT propagation     run 31429984826 — PASS
+combined bound     run 31429984854 — PASS
+infinite modal     run 31429984786 — PASS
+recurrence         run 31429984808 — PASS
+manuscript         run 31429984776, job 93590769191 — PASS
+```
+
+The manuscript compiled to 10 pages with no unresolved references/citations.
+
+Final artifact:
+
+```text
+name: experiment02-manuscript-v1
+artifact ID: 9078731235
+SHA256: 370c852f7a65305ffe5dbdb6a5ce5fcf61d5e620668a6a0c90b0baa63ad9d917
+head SHA: d05a1e5d5f2f8b4c352f058de73194519c1015e1
+```
+
+Earlier layer-by-layer and scope-hardening validation remains preserved in git history and the audit files. The canonical final freeze is summarized in `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`.
 
 ## Frequency and geometry convention
 
@@ -99,16 +96,21 @@ I_2       int rho r^2 dV about endpoint COM
 
 ## Manuscript and audit status
 
-Active source: `manuscript_v1/`.
+Active/frozen science source: `manuscript_v1/` at the SHA above.
 
 Read:
 
+- `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
 - `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
 - `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
 - `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
 - `META_REFEREE_SIGNIFICANCE_AUDIT.md`
 
-The final audit found no new physics failure. It corrected bibliography metadata and minor wording only; fresh CI remains the final internal gate.
+Internal verdict:
+
+> **INTERNAL AI REVIEW: GO — THEORY/MANUSCRIPT SCIENCE FROZEN.**
+
+Further technical changes require a concrete new contradiction or external specialist/journal objection.
 
 ## Priority discipline
 

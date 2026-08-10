@@ -1,9 +1,10 @@
-# AGENTS.md — Experiment 02 Recovery and Research Protocol
+# AGENTS.md — Experiment 02 Recovery and Freeze Protocol
 
 **Experiment:** `02-passive-gravitational-throughput`  
-**Mode:** theorem hardened; short-manuscript validation / adversarial freeze.  
+**Mode:** internally frozen theorem / short-manuscript track.  
 **Current theorem status:** established within the declared compact retained-sector bounded-port narrowband model.  
-**Manuscript status:** `manuscript_v1/` active.
+**Frozen science/manuscript SHA:** `d05a1e5d5f2f8b4c352f058de73194519c1015e1`.  
+**Internal verdict:** **GO — no further theorem broadening absent a concrete defect or external objection.**
 
 This file is the first operational file an automated contributor should read after the repository-level `AGENTS.md`.
 
@@ -21,15 +22,32 @@ Before every repository write:
 
 Repository provenance must be verifiable from the actual remote. Conversation history is not repository evidence.
 
-## 2. Experiment 01 is frozen
+## 2. Canonical recovery order
 
-`../01-causal-quantum-branch-information/` is the V7 publication project.
+Read:
 
-Do not alter its physics while working here unless Experiment 02 uncovers a concrete defect that directly affects V7. Shared formulas may be compared only after Experiment 02 has derived its own normalization independently.
+1. `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
+2. `CURRENT_STATE.md`
+3. `CLAIM_LEDGER.md`
+4. `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
+5. `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
+6. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+7. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
+8. `manuscript_v1/README.md`
 
-## 3. Current theorem
+For proof provenance, then read:
 
-Use the notation
+1. `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md`
+2. `GRAVITATIONAL_ENDPOINT_RESOURCE_DERIVATION.md`
+3. `TT_PROPAGATION_BOUND_DERIVATION.md`
+4. `NARROWBAND_NORMALIZATION_AUDIT.md`
+5. `FINITE_TWO_ENDED_INERTIA_BOUND.md`
+6. `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`
+7. `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`
+
+## 3. Frozen theorem
+
+Use
 
 ```text
 omega_0   absolute gravitational carrier angular frequency
@@ -38,7 +56,7 @@ B         envelope bandwidth, B/omega_0 << 1
 k_0       omega_0/c
 a_A,a_B   endpoint radii, k_0 a_A,k_0 a_B << 1
 R         separation, k_0 R >> 1
-Omega     upper frequency of retained endpoint modal sector,
+Omega     upper retained modal frequency,
           Omega=omega_0[1+O(B/omega_0)]
 I_2       int rho r^2 dV about endpoint COM
 ```
@@ -54,34 +72,16 @@ The established in-model statement is
 }
 ```
 
-for finite or countably infinite **bounded-port Markov** modal sectors satisfying the retained carrier-scale frequency assumption.
+for finite or countably infinite **bounded-port Markov** retained modal sectors satisfying the carrier-scale frequency assumption.
 
-This is a complex-envelope spectral-area theorem, not a capacity theorem.
+This is a complex-envelope coherent-transfer spectral-area theorem, not a capacity theorem.
 
-## 4. Load-bearing proof files
-
-Read in this order:
-
-1. `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md`
-2. `GRAVITATIONAL_ENDPOINT_RESOURCE_DERIVATION.md`
-3. `TT_PROPAGATION_BOUND_DERIVATION.md`
-4. `NARROWBAND_NORMALIZATION_AUDIT.md`
-5. `FINITE_TWO_ENDED_INERTIA_BOUND.md`
-6. `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`
-7. `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`
-8. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-9. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
-10. `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
-11. `CLAIM_LEDGER.md`
-12. `CURRENT_STATE.md`
-13. `manuscript_v1/README.md`
-
-## 5. What the theorem does not cover
+## 4. Scope that must not be dropped
 
 Do not silently broaden to
 
-- arbitrary broad absolute-frequency operation with one carrier coefficient;
-- higher-frequency endpoint modes far above the carrier whose off-resonant tails are not separately bounded;
+- broad absolute-frequency operation with one carrier coefficient;
+- uncontrolled high-frequency endpoint modes whose off-resonant tails are not separately bounded;
 - unbounded PDE boundary-control/observation ports;
 - genuinely non-Markov continua;
 - extended phased apertures;
@@ -90,7 +90,7 @@ Do not silently broaden to
 - active gain, pumping, inversion, or externally powered feedback;
 - relativistic, nonlinear, higher-multipole-dominated, or strong-field regimes.
 
-## 6. Historical / novelty boundary
+## 5. Historical / novelty boundary
 
 Most ingredients are historical. Do not claim novelty for
 
@@ -104,34 +104,29 @@ Most ingredients are historical. Do not claim novelty for
 - multiple-scattering composition;
 - the `20/3` or `4/3` intermediate lemmas as standalone results.
 
-The only plausible publication contribution is the **complete gravity-specific two-ended inertia closure**. No exact equivalent theorem was found in the inspected literature, but that negative result is not proof of priority.
+The only plausible publication contribution is the **complete gravity-specific two-ended inertia closure**. No exact equivalent theorem was found in the inspected literature; that negative result is not proof of priority.
 
 Do not use `first`, `new`, `unique`, `unprecedented`, or equivalent priority language.
 
-## 7. Validation state
+## 6. Validation state
 
-Canonical earlier passing gates are recorded in `CURRENT_STATE.md` and `CLAIM_LEDGER.md`.
+The frozen science/manuscript SHA `d05a1e5d5f2f8b4c352f058de73194519c1015e1` passed all six physics workflows plus the manuscript workflow. Exact run IDs and artifact digest are in `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`.
 
-The active manuscript has its own workflow:
+Documentation commits after that SHA do not supersede the validated science source unless they intentionally modify theorem/manuscript science and receive a new exact-head validation cycle.
 
-`.github/workflows/latex-experiment02.yml`
+## 7. Experiment 01 boundary
 
-and the theorem has dedicated passive-cut, endpoint-resource, TT-propagation, combined-bound, infinite-modal, and recurrence workflows.
+`../01-causal-quantum-branch-information/` remains the frozen V7 publication project. Do not alter its physics merely to align it with Experiment 02.
 
-After any manuscript/theorem scope edit, require fresh runs on the exact resulting `main` head before declaring the checkpoint frozen.
-
-## 8. Current research mode
-
-The AI-native derivation, hostile attack, prior-art collision, numerical falsification, infinite-modal, recurrence, significance, and first manuscript-scope stages have been completed.
+## 8. Current research mode — HARD STOP
 
 Do **not** add another theorem extension merely because one is imaginable.
 
-Current allowed work is:
+Allowed work:
 
-1. validate the current scope-hardening edits;
-2. final manuscript claim/notation/citation audit;
-3. final repository-state synchronization;
-4. manuscript compression/editorial polish only if it preserves the theorem;
-5. final external specialist/journal review.
+- submission metadata/editorial preparation;
+- external specialist/journal review;
+- response to a concrete external objection;
+- reopening only a proof layer implicated by a concrete new contradiction.
 
-If a new concrete technical defect appears, reopen only the affected proof layer and record the correction explicitly.
+Absent one of those triggers, preserve the frozen science/manuscript source.
