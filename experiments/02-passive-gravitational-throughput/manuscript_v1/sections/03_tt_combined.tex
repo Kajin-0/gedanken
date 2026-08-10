@@ -1,98 +1,48 @@
-\section{Compact transverse-traceless propagation and the combined bound}
+\section{Compact TT propagation and the closed theorem}
 \label{sec:ttcombined}
 
-\subsection{General compact quadrupole radiation}
+\subsection{Normalized compact quadrupole channel}
 
-Let $Q_{ij}$ be an arbitrary possibly complex symmetric trace-free quadrupole amplitude at angular frequency $\omega$. For propagation direction $\hat{\bm n}$ define
-\begin{equation}
-P_{ij}=\delta_{ij}-n_i n_j
-\end{equation}
-and the transverse-traceless projector
+For an STF quadrupole amplitude $Q_{ij}$ and direction $\hat{\bm n}$, let
 \begin{equation}
 \Lambda_{ij,kl}(\hat{\bm n})
-=\frac12\left(
-P_{ik}P_{jl}+P_{il}P_{jk}-P_{ij}P_{kl}
-\right).
+=\frac12(P_{ik}P_{jl}+P_{il}P_{jk}-P_{ij}P_{kl}),
+\qquad P_{ij}=\delta_{ij}-n_in_j,
 \label{eq:TTprojector}
 \end{equation}
-For unit-normalized polarization tensors, completeness gives
-\begin{equation}
-\sum_\lambda
-|Q_{ij}\epsilon_{ij}^{(\lambda)}|^2
-=Q_{ij}^*\Lambda_{ij,kl}Q_{kl}.
-\end{equation}
-In the quantum normalization the angular one-graviton rate is
-\begin{equation}
-\frac{\dd\kappa_g}{\dd\Omega}
-=
-\frac{G\omega^5}{4\pi\hbar c^5}
-Q^*:\Lambda(\hat{\bm n}):Q,
-\label{eq:differentialrate}
-\end{equation}
-but the normalized angular dependence below is identical for a classical monochromatic TT field. Rotational invariance and the fact that $\Lambda$ has rank two on the five-dimensional STF tensor space imply
+be the TT projector. Rotational invariance gives
 \begin{equation}
 \int\dd\Omega\,\Lambda(\hat{\bm n})
-=\frac{8\pi}{5}I_{\rm STF}.
+=\frac{8\pi}{5}I_{\rm STF},
 \label{eq:LambdaIntegral}
 \end{equation}
-Thus
-\begin{equation}
-\kappa_g
-=
-\frac{2G\omega^5}{5\hbar c^5}Q^*:Q,
-\end{equation}
-consistent with Eq.~\eqref{eq:gravitonrate}.
-
-The corresponding normalized directivity is
+so the normalized directivity is
 \begin{equation}
 D_Q(\hat{\bm n})
-=\frac52\frac{Q^*:\Lambda(\hat{\bm n}):Q}{Q^*:Q}.
-\end{equation}
-Because $\Lambda$ is an orthogonal projector,
-\begin{equation}
-\boxed{D_Q(\hat{\bm n})\le\frac52.}
+=\frac52\frac{Q^*:\Lambda(\hat{\bm n}):Q}{Q^*:Q}
+\le\frac52.
 \label{eq:Dmax}
 \end{equation}
-Equality occurs when $Q$ lies entirely in the two-dimensional TT tensor subspace associated with the line of sight. For real STF tensors this directivity functional is algebraically identical to the compact gravitational-antenna result of Hirakawa, Narihara, and Fujimoto \cite{HirakawaNariharaFujimoto1976}; neither the functional nor the value $5/2$ is claimed as new.
+The functional and its $5/2$ maximum are historical compact gravitational-antenna physics \cite{HirakawaNariharaFujimoto1976}.
 
-\subsection{Normalized TT propagation singular value}
-
-A convenient tensor-normalized angular radiation mode is
+For direct normalization of the propagation map, define the unit angular radiation mode
 \begin{equation}
- u_{Q,\lambda}(\hat{\bm n})
-=
-\sqrt{\frac{5}{8\pi}}
+u_{Q,\lambda}(\hat{\bm n})
+=\sqrt{\frac5{8\pi}}
 \frac{Q:\epsilon^{(\lambda)}(\hat{\bm n})}{\sqrt{Q^*:Q}},
 \label{eq:normalizedmode}
 \end{equation}
-which obeys
-\begin{equation}
-\sum_\lambda\int\dd\Omega\,
-|u_{Q,\lambda}|^2=1.
-\end{equation}
-The same normalized mode may be read as a one-graviton angular wavefunction or as an energy-normalized classical TT radiation pattern. For normalized source and receiver quadrupoles separated by $R\hat{\bm R}$, fixed-frequency translation gives
-\begin{equation}
-S_{BA}(z)
-=
-\sum_\lambda\int\dd\Omega\,
- u_{Q_B,\lambda}^*(\hat{\bm n})
- u_{Q_A,\lambda}(\hat{\bm n})
-\ee^{iz\hat{\bm n}\cdot\hat{\bm R}},
-\qquad z=kR.
-\label{eq:translatedoverlap}
-\end{equation}
-In the wave zone, the outgoing stationary point at $+\hat{\bm R}$ gives
+with $\sum_\lambda\int\dd\Omega\,|u_{Q,\lambda}|^2=1$. For source and receiver separated by $R\hat{\bm R}$, the outgoing stationary-phase contribution of the translated overlap is
 \begin{equation}
 \boxed{
-t_{BA}^{\rm TT}(z)
-=
--\frac{5i}{4z}\ee^{iz}
+t_{BA}^{\rm TT}
+=-\frac{5i}{4kR}\ee^{ikR}
 \frac{Q_B^*:\Lambda(\hat{\bm R}):Q_A}
 {\sqrt{Q_A^*:Q_A}\sqrt{Q_B^*:Q_B}}
-+O(z^{-2}).}
++O((kR)^{-2}).}
 \label{eq:TTamplitude}
 \end{equation}
-Cauchy--Schwarz and $\|\Lambda\|_{\op}=1$ therefore imply
+Therefore
 \begin{equation}
 \boxed{
 \|P_g(\omega)\|_{\op}^2
@@ -101,57 +51,45 @@ Cauchy--Schwarz and $\|\Lambda\|_{\op}=1$ therefore imply
 \left[1+O((kR)^{-1})\right].}
 \label{eq:TTpropbound}
 \end{equation}
-Matched source and receiver tensors in the same line-of-sight TT subspace saturate the leading projector inequality. For the aligned plus tensor $Q\propto\mathrm{diag}(1,-1,0)$, the complete normalized angular integral reduces to
-\begin{equation}
-S(z)=\frac5{32}
-\int_{-1}^{1}\dd x\,
-(1+6x^2+x^4)\ee^{izx},
-\end{equation}
-whose outgoing endpoint contribution is $-(5i/4z)\ee^{iz}+O(z^{-2})$. This independently fixes the coefficient in Eq.~\eqref{eq:TTamplitude}.
-
-The leading coefficient also has a purely classical reciprocal-antenna interpretation after the endpoint coupling magnitudes have been normalized out. Two matched compact quadrupoles have maximal directivities $D_A=D_B=5/2$, and the far-field normalized transfer factor is
+Matched tensors in the same line-of-sight TT subspace saturate the leading projector inequality. Appendix~\ref{app:TTcheck} gives an independent aligned-plus integral. The coefficient also equals the reciprocal far-field factor
 \begin{equation}
 D_AD_B\left(\frac{\lambda}{4\pi R}\right)^2
-=\frac{25}{16(kR)^2},
+=\frac{25}{16(kR)^2}
 \label{eq:FriisTT}
 \end{equation}
-using $\lambda=2\pi/k$. Equation~\eqref{eq:TTamplitude} is the direct TT-field normalization of the same leading propagation geometry; quantum mechanics is not required for the coefficient.
+for $D_A=D_B=5/2$, confirming that the TT normalization and classical antenna interpretation agree.
 
-\subsection{Passive recurrent returns}
+\subsection{Passive repeated returns}
 
-The one-hop factor in Eq.~\eqref{eq:TTpropbound} is sufficient for the leading wave-zone theorem even when passive reciprocal returns between the same two compact endpoints are retained. To see this without resolving either endpoint internally again, let $R_A(\omega)$ and $R_B(\omega)$ denote their exact gravitational reflection blocks. Passivity gives $\|R_A\|_{\op},\|R_B\|_{\op}\le1$. Let $P_{BA}$ and $P_{AB}$ be the forward and reverse free-propagation operators, with norms $p_+$ and $p_-$. Standard scattering-network composition \cite{Redheffer1962} sums all returns through
+Repeated scattering between the same two passive separated endpoints does not change the leading coefficient. Let $R_A,R_B$ be their exact gravitational reflection blocks and $P_{BA},P_{AB}$ the forward/reverse propagation maps. Standard scattering-network composition gives \cite{Redheffer1962}
 \begin{equation}
 P_{\rm eff}
-=\left(I-P_{BA}R_AP_{AB}R_B\right)^{-1}P_{BA},
+=(I-P_{BA}R_AP_{AB}R_B)^{-1}P_{BA}.
 \label{eq:Peff}
 \end{equation}
-whenever $p_+p_-<1$. The Neumann resolvent bound gives
+With $p_+=\|P_{BA}\|_{\op}$ and $p_-=\|P_{AB}\|_{\op}$, passivity implies
 \begin{equation}
 \boxed{
 \|P_{\rm eff}\|_{\op}
-\le
-\frac{p_+}{1-p_+p_-}.}
+\le\frac{p_+}{1-p_+p_-}.}
 \label{eq:Peffbound}
 \end{equation}
-For reciprocal separated propagation $p_+=p_-=p$ and $\eta=p^2$, so the exact recurrent power factor is bounded by
+For reciprocal propagation, $p_+=p_-=p$ and $\eta=p^2$, hence
 \begin{equation}
 \boxed{
-\eta_{\rm rec}
-\le
-\frac{\eta}{(1-\eta)^2}.}
+\eta_{\rm rec}\le\frac{\eta}{(1-\eta)^2}
+=\eta+O((kR)^{-4}).}
 \label{eq:etarec}
 \end{equation}
-Since Eq.~\eqref{eq:TTpropbound} has $\eta=O((kR)^{-2})$,
 \begin{equation}
-\eta_{\rm rec}
-=\eta+O((kR)^{-4}).
+\eta_{\rm rec}=\eta+O((kR)^{-4}).
 \label{eq:recurrentorder}
 \end{equation}
-Thus arbitrary passive repeated returns between these two separated endpoints cannot change the leading $1/R^2$ power coefficient. Their first possible contribution is parametrically smaller than the $O((kR)^{-3})$ power correction already allowed by the next one-hop far-zone term in Eq.~\eqref{eq:TTpropbound}. This statement does not cover additional relays or mirrors, an engineered extended cavity, near-field exchange, or nonseparable overlapping interaction regions.
+Thus recurrent two-endpoint scattering is subleading in power relative to the retained $O((kR)^{-2})$ term. Added relays, mirrors, external cavities, near-field exchange, and nonseparable common interaction regions are different architectures.
 
-\subsection{Passive compact-quadrupole throughput theorem}
+\subsection{Inertia-controlled throughput}
 
-We now combine the passive endpoint cut set, the classical cumulative quadrupole oscillator-strength bound, and normalized TT propagation. For a narrow band centered at $\omega$, assume
+Assume a narrow operating band centered at $\omega$ with
 \begin{equation}
 \frac{\omega L_A}{c}\ll1,
 \qquad
@@ -160,10 +98,8 @@ We now combine the passive endpoint cut set, the classical cumulative quadrupole
 kR=\frac{\omega R}{c}\gg1.
 \label{eq:regime}
 \end{equation}
-Then Eqs.~\eqref{eq:materialcutset} and \eqref{eq:TTpropbound} give the main result.
-
+Combining Eqs.~\eqref{eq:materialcutset} and \eqref{eq:TTpropbound} gives
 \begin{theorem}[Passive compact-quadrupole gravitational throughput]
-For direct separated wave-zone propagation between compact passive nonrelativistic linear endpoints in the regime \eqref{eq:regime},
 \begin{equation}
 \boxed{
 \Gamma_{\rm coh}
@@ -184,13 +120,9 @@ Equivalently,
 \end{equation}
 \end{theorem}
 
-The displayed coefficient is the leading separated wave-zone result. Equation~\eqref{eq:etarec} shows that including arbitrarily many passive reciprocal returns between the same two compact endpoints changes the propagation factor only at $O((kR)^{-4})$ in power and therefore leaves Eqs.~\eqref{eq:combined1}--\eqref{eq:combined2} unchanged at their retained order.
+The theorem is an upper bound, not a global saturability claim. Its physical content is that the leading integrated ceiling contains no endpoint quality factor, passive resonance count, coherent mixing parameter, or compact orientation. Equation~\eqref{eq:etarec} adds that arbitrary passive returns between the same two separated endpoints do not alter the leading coefficient.
 
-The headline inequality is a classical passive-wave bound within the stated linear-harmonic class: the H2 cut set, cumulative modal resource ceiling, and leading propagation bound all admit classical derivations. Quantization reproduces the same endpoint normalization and supplies the information-theoretic corollaries discussed later. The inequality is leading-order in the compact-source and wave-zone expansions and is an upper bound rather than a claim that all constituent inequalities can be saturated simultaneously.
-
-Its main structural feature is what no longer appears: endpoint quality factor, branching fraction, number of passive internal resonances, and the basis used to describe coherent internal mode mixing. Those quantities determine how closely a particular device approaches the ceiling, but they cannot increase the ceiling inside the stated class.
-
-For a finite band $\mathcal B=[\omega_-,\omega_+]$ lying entirely in the compact wave-zone regime, a conservative broad-band version keeps the two band edges distinct:
+For a finite band $\mathcal B=[\omega_-,\omega_+]$ entirely inside the compact wave-zone regime, the conservative edge-separated form is
 \begin{equation}
 \Gamma_{\rm coh}(\mathcal B)
 \lesssim
@@ -199,4 +131,4 @@ For a finite band $\mathcal B=[\omega_-,\omega_+]$ lying entirely in the compact
 \min(I_A,I_B).
 \label{eq:broadband}
 \end{equation}
-This form is intentionally loose; a sharper broadband response theory should retain the full frequency dependence inside the integral rather than combining separate suprema.
+The narrowband result is the sharper statement emphasized below.
