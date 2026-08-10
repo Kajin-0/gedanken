@@ -5,6 +5,7 @@ on:
     branches:
       - experiment-02-passive-gravitational-throughput
       - experiment-02-novelty-audit-2026-08-09
+      - experiment-02-manuscript-compression-2026-08-09
     paths:
       - 'experiments/02-passive-gravitational-throughput/**'
       - '.github/workflows/experiment02-throughput.yml'
