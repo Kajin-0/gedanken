@@ -1,0 +1,41 @@
+name: Compile Experiment 02 PRD submission
+
+on:
+  push:
+    paths:
+      - 'experiments/02-passive-gravitational-throughput/submission_prd/**'
+      - '.github/workflows/latex-experiment02-prd.yml'
+  pull_request:
+    paths:
+      - 'experiments/02-passive-gravitational-throughput/submission_prd/**'
+      - '.github/workflows/latex-experiment02-prd.yml'
+
+jobs:
+  latex:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install TeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk texlive-latex-extra texlive-fonts-recommended texlive-publishers
+
+      - name: Compile PRD submission copy
+        working-directory: experiments/02-passive-gravitational-throughput/submission_prd
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+
+      - name: Check unresolved references
+        working-directory: experiments/02-passive-gravitational-throughput/submission_prd
+        run: |
+          if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|There were undefined citations" main.log; then
+            echo "Unresolved references/citations found"
+            exit 1
+          fi
+
+      - name: Upload compiled PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment02-prd-submission
+          path: experiments/02-passive-gravitational-throughput/submission_prd/main.pdf
