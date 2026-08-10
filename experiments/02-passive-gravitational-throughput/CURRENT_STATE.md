@@ -1,13 +1,13 @@
 # Current State — Experiment 02
 
-**Checkpoint:** Stage A validated on real `main`.  
-**Status:** **FINITE-DIMENSIONAL GENERIC PASSIVE CUT ESTABLISHED; GRAVITY-SPECIFIC RESOURCE AND FINAL INERTIA THEOREM UNVERIFIED; NO MANUSCRIPT.**
+**Checkpoint:** Stage B independently derived on real `main`; endpoint-resource validation pending.  
+**Status:** **STAGE A ESTABLISHED; GRAVITY-SPECIFIC ENDPOINT RESOURCE RE-DERIVED WITH `4/3` COEFFICIENT, VALIDATION PENDING; TT PROPAGATION AND FINAL TWO-ENDED THEOREM UNVERIFIED; NO MANUSCRIPT.**
 
 ## 1. Project objective
 
 This project studies whether a separated compact passive gravitational link has a frequency-integrated throughput ceiling controlled by endpoint inertia.
 
-A previous conversation suggested the candidate relation
+The provisional conversation-origin target remains
 
 ```math
 \Gamma_{\rm coh}
@@ -15,40 +15,11 @@ A previous conversation suggested the candidate relation
 \frac{25G\omega^2}{12c^3R^2}\min(I_A,I_B),
 ```
 
-but none of the previous conversation-only validation claims are inherited. Every load-bearing step is being rebuilt as a real repository artifact.
+but no final coefficient is inherited from conversation history. Every load-bearing step is being reconstructed as a real repository artifact.
 
-## 2. Stage A — passive selected-port cut
+## 2. Stage A — established finite-dimensional passive cut
 
-For a finite-dimensional passive Markov realization with
-
-```math
-A=-iH-\frac12K^\dagger K
-```
-
-and disjoint strictly proper selected port groups `i -> o`, the Stage-A derivation establishes
-
-```math
-\boxed{
-\|H_{o\leftarrow i}\|_2^2
-\le
-\min\!\left[
-\operatorname{Tr}(K_i^\dagger K_i),
-\operatorname{Tr}(K_o^\dagger K_o)
-\right].
-}
-```
-
-The proof uses selected controllability/observability Gramians and the dissipativity identity. It is stored in
-
-`PASSIVE_SELECTED_PORT_CUT_DERIVATION.md`.
-
-For a separated source/receiver pair with normalized propagation operator `P(omega)` satisfying
-
-```math
-\|P(\omega)\|_{\rm op}^2\le\eta_{\max},
-```
-
-the same argument gives
+For finite-dimensional passive Markov realizations,
 
 ```math
 \boxed{
@@ -62,37 +33,11 @@ the same argument gives
 }
 ```
 
-No gravitational inertia formula is used in this step.
+Canonical derivation:
 
-### Stage-A scope
+`PASSIVE_SELECTED_PORT_CUT_DERIVATION.md`
 
-Established here:
-
-- finite-dimensional passive Markov realizations;
-- all physical loss channels retained in the passive dilation/dissipativity balance;
-- stable strictly proper selected cross-port transfer;
-- normalized propagation with a pointwise operator-norm ceiling.
-
-Not yet established:
-
-- countably infinite bounded-port sectors;
-- unbounded PDE boundary ports;
-- non-Markov continua;
-- any gravity-specific expression for `Tr(K_g^dagger K_g)`.
-
-### Stage-A prior art
-
-The passive realization and frequency-axis contractivity/unitarity structure are established systems machinery. Primary sources checked during reconstruction include Guta–Yamamoto (arXiv:1303.3771) and Gough–Zhang (arXiv:1311.1375). Stage A is not a novelty claim.
-
-## 3. Stage-A automated validation
-
-Files:
-
-- `numerics/verify_passive_selected_port_cut.py`
-- `numerics/requirements.txt`
-- `.github/workflows/experiment02-passive-cut.yml`
-
-Canonical first run on `main`:
+Canonical first validation:
 
 ```text
 run: 31391304791
@@ -100,26 +45,123 @@ job: 93463450929
 PASS
 ```
 
-Regression output:
+Stage A is generic passive-systems mathematics and is not a novelty claim.
 
-```text
-worst endpoint H2/resource ratio = 0.410127000961
-largest full-scattering singular value = 1
-worst two-ended Gamma/bound ratio = 0.089763188389
-PASS: finite-dimensional passive selected-port cut
+## 3. Stage B — independent gravitational endpoint derivation
+
+For mass-orthogonal displacement modes
+
+```math
+\langle w_n,w_m\rangle_\rho=\mu_n\delta_{nm},
 ```
 
-The regression generates random complex noncommuting passive realizations, checks the exact Lyapunov `H2` cut, verifies pointwise full-scattering contractivity, and numerically integrates random two-ended links against the structural bound.
+define the linear STF modal quadrupole
 
-The numerical regression supports but does not replace the analytic proof.
+```math
+q_{n,ij}
+=\int\rho\left(
+ w_{n,i}x_j+w_{n,j}x_i
+-\frac23\delta_{ij}\,w_n\cdot x
+\right)d^3x.
+```
 
-## 4. Current epistemic state
+The standard quadrupole radiation power gives the modal gravitational energy-decay rate
+
+```math
+\boxed{
+\kappa_{g,n}
+=\frac{G\omega_n^4}{5c^5}
+\frac{q_n:q_n}{\mu_n}.
+}
+```
+
+Introduce vector influence fields
+
+```math
+(g^{ij})_k
+=\delta_{ik}x_j+\delta_{jk}x_i
+-\frac23\delta_{ij}x_k.
+```
+
+Direct contraction gives
+
+```math
+\boxed{
+\sum_{ijk}|(g^{ij})_k|^2
+=\frac{20}{3}r^2.
+}
+```
+
+Bessel's inequality then yields
+
+```math
+\boxed{
+\sum_n\frac{q_n:q_n}{\mu_n}
+\le\frac{20}{3}I_2,
+\qquad
+I_2\equiv\int\rho r^2d^3x.
+}
+```
+
+For retained modes satisfying `omega_n <= Omega`,
+
+```math
+\boxed{
+\sum_n\kappa_{g,n}
+\le
+\frac{4G}{3c^5}I_2\Omega^4.
+}
+```
+
+Thus the inherited `4/3` coefficient has re-emerged from an independent derivation rather than being assumed.
+
+Canonical derivation:
+
+`GRAVITATIONAL_ENDPOINT_RESOURCE_DERIVATION.md`
+
+### Important notation
+
+`I_2 = int rho r^2 dV` is the scalar second mass moment about the center of mass. It is not a moment of inertia about one chosen axis. The trace of the conventional inertia tensor is `2 I_2`.
+
+## 4. Stage-B historical boundary
+
+Primary literature checked so far establishes that broad ingredients are historical:
+
+- Hirakawa, Narihara, and Fujimoto (JPSJ 41, 1093, 1976) treat gravitational antenna emission/reception using an eigenmode system and structure symmetry.
+- Lobo (Phys. Rev. D 52, 591, 1995; arXiv:gr-qc/0006102) develops a general response formalism for an arbitrary solid elastic body, including multimode transfer and absorption cross sections.
+
+Therefore eigenmode gravitational-antenna response and arbitrary-body multimode coupling are **not** novelty claims.
+
+The exact historical status of the `20/3` and `4/3` cumulative inequalities is still open. See:
+
+`STAGE_B_PRIOR_ART_BOUNDARY.md`
+
+## 5. Stage-B numerical adversary
+
+Added:
+
+- `numerics/verify_gravitational_endpoint_resource.py`
+- `.github/workflows/experiment02-endpoint-resource.yml`
+
+The regression is designed to test:
+
+1. the pointwise `20/3` tensor identity for random positions;
+2. exact Parseval saturation for complete discrete mass-weighted displacement bases;
+3. Bessel inequality for random truncated modal subspaces;
+4. invariance of total quadrupole strength under random orthogonal modal mixing;
+5. the cumulative `4/3` linewidth bound for random mode frequencies below `Omega`.
+
+The Stage-B result remains `DERIVED / VALIDATION PENDING` until this workflow passes on the actual `main` commit and the run/job IDs are recorded.
+
+## 6. Current epistemic state
 
 ```text
 spectral-area metric, finite stable cross block:      ESTABLISHED WITHIN MODEL
 finite-dimensional passive selected-port cut:         ESTABLISHED WITHIN MODEL
 finite-dimensional two-ended propagation cut:         ESTABLISHED WITHIN MODEL
-cumulative gravitational inertia resource:            UNVERIFIED
+20/3 modal quadrupole Bessel bound:                    DERIVED / VALIDATION PENDING
+4/3 cumulative gravitational endpoint resource:        DERIVED / VALIDATION PENDING
+Markov trace = sum gravitational energy linewidths:    DERIVED / VALIDATION PENDING
 25/16 TT propagation in this throughput normalization: UNVERIFIED
 25/12 final coefficient:                               UNVERIFIED
 countably infinite modal extension:                    OPEN
@@ -129,29 +171,12 @@ publication significance:                              UNKNOWN
 manuscript:                                             NONE
 ```
 
-## 5. Experiment 01 boundary
+## 7. Experiment 01 boundary
 
-`../01-causal-quantum-branch-information/` remains the frozen V7 publication project.
+`../01-causal-quantum-branch-information/` remains the frozen V7 publication project. Experiment 02 must not silently import V7's operational `25/16` normalization; Stage C will reconstruct the relevant TT propagation normalization independently.
 
-Do not modify its physics while developing Experiment 02 unless an explicit cross-check reveals a concrete defect relevant to V7. Shared formulas may be compared, but Experiment 02 must reconstruct its own operational normalization.
+## 8. Next action
 
-## 6. Next action — Stage B
-
-Derive the cumulative gravitational coupling resource
-
-```math
-\operatorname{Tr}(K_g^\dagger K_g)
-```
-
-from an explicit mass-weighted quadrupolar continuum/modal model and determine whether it can actually be bounded by a simple endpoint inertia functional.
-
-Stage B must answer, independently:
-
-1. what modal quadrupole variable couples to TT radiation;
-2. how its gravitational linewidth/coupling rate is normalized;
-3. whether completeness/Bessel arguments bound the sum over all passive modes;
-4. what inertia functional appears;
-5. whether the inherited `4/3` coefficient survives;
-6. which parts are established gravitational-antenna/modal prior art.
-
-Do not assume the inherited coefficient or the final `25/12` result.
+1. Push the Stage-B derivation/regression to `main` and record the real CI result.
+2. If Stage B passes, perform a second normalization audit of `Tr(K_g^dagger K_g)=sum kappa_g,n` and the literature collision search for the cumulative coefficient.
+3. Only then begin Stage C: independently derive the normalized compact TT propagation operator for the Experiment-02 spectral-throughput metric.
