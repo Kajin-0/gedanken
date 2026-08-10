@@ -1,9 +1,9 @@
 # Current State — Experiment 02
 
-**Checkpoint:** finite-dimensional narrowband inertia theorem assembled and validated on real `main`.  
-**Status:** **FINITE-DIMENSIONAL NARROWBAND TWO-ENDED INERTIA BOUND ESTABLISHED WITHIN MODEL; INFINITE-MODAL EXTENSION, PASSIVE RECURRENCE, AND PRIORITY REMAIN OPEN; NO MANUSCRIPT.**
+**Checkpoint:** countably infinite bounded-port extension validated on real `main`.  
+**Status:** **NARROWBAND TWO-ENDED INERTIA BOUND ESTABLISHED FOR FINITE OR COUNTABLY INFINITE BOUNDED-PORT MARKOV MODAL SECTORS; PASSIVE RECURRENCE AND PRIORITY REMAIN OPEN; NO MANUSCRIPT.**
 
-## 1. Current established theorem within model
+## 1. Current theorem within the declared model
 
 Let `omega_0` be the absolute carrier angular frequency and `nu` the complex-envelope detuning. Define
 
@@ -13,7 +13,7 @@ Let `omega_0` be the absolute carrier angular frequency and `nu` the complex-env
 \operatorname{Tr}[T^\dagger(\nu)T(\nu)]\,d\nu.
 ```
 
-For separated compact passive nonrelativistic linear-harmonic source and receiver systems, under the current **finite-dimensional Markov, narrowband, leading quadrupolar wave-zone** assumptions,
+For separated compact passive nonrelativistic linear-harmonic source and receiver systems in weak leading-quadrupolar wave-zone gravity, with finite or countably infinite **bounded-port Markov modal sectors**,
 
 ```math
 \boxed{
@@ -30,52 +30,47 @@ where
 I_2=\int\rho r^2d^3x
 ```
 
-is the scalar second mass moment about each endpoint center of mass.
+is the scalar second mass moment about the endpoint center of mass.
 
-This is a frequency-integrated coherent-transfer area with units `s^-1`, not an information capacity.
-
-The theorem has been reconstructed from scratch in the actual repository. It is not inherited from the earlier conversation-only Experiment 02 state.
+`Gamma_coh` has units `s^-1` and is a coherent-transfer spectral area, not an information capacity.
 
 ## 2. Proof spine
 
 ### A. Passive selected-port cut
 
-For a finite-dimensional passive Markov realization,
-
 ```math
-\boxed{
 \Gamma_{\rm coh}
 \le
 \eta_{\max}
-\min\!\left[
+\min[
 \operatorname{Tr}(K_{g,A}^\dagger K_{g,A}),
-\operatorname{Tr}(K_{g,B}^\dagger K_{g,B})
-\right].
-}
+\operatorname{Tr}(K_{g,B}^\dagger K_{g,B})].
 ```
 
-Canonical derivation:
+Finite-dimensional derivation:
 
 `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md`
 
-### B. Gravitational endpoint resource
+Countably infinite bounded-port extension:
 
-For mass-orthogonal compact quadrupolar modes,
+`INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`
+
+### B. Gravitational endpoint resource
 
 ```math
 \kappa_{g,n}
 =\frac{G\omega_n^4}{5c^5}
-\frac{q_n:q_n}{\mu_n}.
+\frac{q_n:q_n}{\mu_n},
 ```
 
-The STF influence-field identity and Bessel inequality give
+with
 
 ```math
 \sum_n\frac{q_n:q_n}{\mu_n}
-\le\frac{20}{3}I_2,
+\le\frac{20}{3}I_2.
 ```
 
-hence in the narrow retained carrier sector
+Thus in the narrow retained carrier sector
 
 ```math
 \boxed{
@@ -85,26 +80,23 @@ hence in the narrow retained carrier sector
 }
 ```
 
+For a countable modal sector the finite trace makes the gravitational port Hilbert–Schmidt, supplying the regularity needed by the operator-valued `H2` proof.
+
 Canonical derivation:
 
 `GRAVITATIONAL_ENDPOINT_RESOURCE_DERIVATION.md`
 
 ### C. Compact TT propagation
 
-Independent classical normalized-TT angular-mode analysis gives
+Normalized STF TT radiation has
 
 ```math
-\int d\Omega\,F_q
-=\frac{8\pi}{5}q^*:q,
-```
-
-and compact quadrupole directivity
-
-```math
+\int d\Omega\,F_q=\frac{8\pi}{5}q^*:q,
+\qquad
 D_q\le\frac52.
 ```
 
-Outgoing stationary phase then gives
+Outgoing stationary phase gives
 
 ```math
 \boxed{
@@ -118,21 +110,9 @@ Canonical derivation:
 
 `TT_PROPAGATION_BOUND_DERIVATION.md`
 
-This was derived before comparing with Experiment 01. The real V7 one-graviton audit then supplied an independent cross-check of the same leading `25/16` coefficient.
-
 ### D. Assembly
 
-Using `k_0=omega_0/c`, Stages A–C give
-
-```math
-\Gamma_{\rm coh}
-\lesssim
-\frac{25}{16(k_0R)^2}
-\frac{4G\omega_0^4}{3c^5}
-\min(I_{2,A},I_{2,B})
-```
-
-and therefore
+With `k_0=omega_0/c`, the three resources combine to
 
 ```math
 \boxed{
@@ -147,124 +127,122 @@ Canonical assembly:
 
 `FINITE_TWO_ENDED_INERTIA_BOUND.md`
 
-## 3. Narrowband normalization correction
+The filename is historical from the first proof stage; the passive cut has now been extended to countably infinite bounded-port modal sectors.
 
-A subtle notation issue was caught before theorem promotion: Stage A integrates **envelope detuning** `nu`, whereas Stages B/C use the **absolute carrier** `omega_0`.
+## 3. Infinite-dimensional bounded-port closure
 
-The active theorem therefore requires
+Let `X` be separable and `T(t)` a passive contraction semigroup with bounded total Markov port `K`. For selected input `K_u`,
+
+```math
+P_u(\tau)=\int_0^\tau
+T(t)K_u^\dagger K_uT^\dagger(t)dt
+```
+
+obeys
+
+```math
+\boxed{
+0\le P_u(\tau)
+\le I-T(\tau)T^\dagger(\tau)
+\le I.
+}
+```
+
+The monotone strong limit satisfies `0 <= P_u <= I`.
+
+Stage B gives
+
+```math
+\operatorname{Tr}(K_g^\dagger K_g)<\infty,
+```
+
+so `K_g` is Hilbert–Schmidt. Consequently
+
+```math
+\int_0^\infty
+\|K_gT(t)K_u^\dagger\|_{\rm HS}^2dt
+\le
+\operatorname{Tr}(K_g^\dagger K_g),
+```
+
+and Hilbert-space Plancherel gives the same frequency-domain cut.
+
+This does **not** cover arbitrary unbounded PDE boundary ports or non-Markov continua; those require separate admissibility/domain analysis.
+
+## 4. Narrowband and asymptotic discipline
+
+The integrated variable is envelope detuning `nu`; `omega_0` is the absolute carrier. The theorem requires
 
 ```math
 B/\omega_0\ll1.
 ```
 
-A broad absolute-frequency theorem with the same simple coefficient has not been proved.
+See `NARROWBAND_NORMALIZATION_AUDIT.md`.
 
-Canonical audit:
-
-`NARROWBAND_NORMALIZATION_AUDIT.md`
-
-## 4. Stage-C asymptotic correction
-
-The initial Stage-C draft was stronger than justified when it assigned a universal `O((kR)^-4)` power correction to arbitrary complex source/receiver quadrupoles.
-
-The corrected statement is only the leading limsup coefficient
-
-```math
-\limsup_{kR\to\infty}(kR)^2\|P_g\|_{\rm op}^2\le25/16.
-```
-
-The aligned plus-mode V7 specialization has an even-power finite-distance correction series, but Experiment 02 does not generalize that subleading structure without proof.
+The `25/16` propagation statement is a leading wave-zone limsup coefficient. Experiment 02 does not assign the aligned plus-mode V7 even-power finite-distance correction to arbitrary complex quadrupole pairs.
 
 ## 5. Real validation record
 
-### Stage A
-
 ```text
-workflow: .github/workflows/experiment02-passive-cut.yml
-first canonical run: 31391304791
-job: 93463450929
-PASS
+Stage A passive cut:
+  run 31391304791, job 93463450929 — PASS
+
+Stage B endpoint resource:
+  run 31392339989, job 93466817164 — PASS
+
+Stage C TT propagation:
+  run 31393020114, job 93469060678 — PASS
+
+Combined finite-dimensional theorem:
+  commit 8fc8da7cf5d51e3a56d7e0b15434407c7e493ecb
+  run 31393498572, job 93470648716 — PASS
+
+Countably infinite bounded-port extension:
+  commit 91566b4ccfb1488b54a403a79452b9dc67347181
+  run 31394415776, job 93473679179 — PASS
 ```
 
-It reran successfully on the assembled theorem commit as run `31393498735`.
-
-### Stage B
+Infinite-modal stress-test output:
 
 ```text
-workflow: .github/workflows/experiment02-endpoint-resource.yml
-first canonical run: 31392339989
-job: 93466817164
-PASS
+analytic infinite gravitational trace limit = 0.0789987925949
+N=64 gravitational trace = 0.0787012072883
+N=64 trace tail = 0.000297585306554
+largest lambda_max(P_u) = 0.733694365996
+worst H2/gravitational-resource ratio = 0.581912323912
+modal-mixing resource error = 4.16333634234e-17
+modal-mixing H2 error = 8.67361737988e-16
+PASS: countably-infinite bounded-port truncation stress test
 ```
 
-It reran successfully on the assembled theorem commit.
-
-### Stage C
-
-```text
-workflow: .github/workflows/experiment02-tt-propagation.yml
-first canonical run: 31393020114
-job: 93469060678
-PASS
-```
-
-Key output:
-
-```text
-aligned directivity saturation = 2.5
-aligned amplitude prefactor = 1.25
-aligned power prefactor = 1.5625
-PASS: compact TT propagation 25/16 bound
-```
-
-It reran successfully on the assembled theorem commit.
-
-### Combined theorem adversary
-
-```text
-workflow: .github/workflows/experiment02-combined-bound.yml
-commit: 8fc8da7cf5d51e3a56d7e0b15434407c7e493ecb
-run: 31393498572
-job: 93470648716
-PASS
-```
-
-Actual output:
-
-```text
-worst actual Gamma/(25 min(I2)/(12 R^2)) ratio = 0.0630906707807
-largest endpoint resource/budget fraction = 0.99023971892
-largest propagation/TT-ceiling fraction = 0.972827931667
-PASS: finite-dimensional narrowband two-ended 25/12 inertia bound
-```
-
-The numerical regressions support the analytic proof; they do not replace it.
+The truncation regression is a stress test. The operator semigroup/trace argument is the proof.
 
 ## 6. Historical boundary
 
-Broad ingredients are already established:
+Broad ingredients are established and are not novelty claims:
 
 - passive `H2`/lossless-bounded-real machinery;
+- infinite-dimensional `H2` realization/operator-Gramian methods;
 - gravitational antenna eigenmode emission/reception;
 - arbitrary-elastic-body multimode GW response;
 - quadrupole radiation;
 - TT projection and antenna directivity/reciprocity.
 
-Current primary anchors include Guta–Yamamoto, Gough–Zhang, Hirakawa–Narihara–Fujimoto (1976), and Lobo (1995).
+Current primary/system anchors include Guta–Yamamoto, Gough–Zhang, Hirakawa–Narihara–Fujimoto (1976), Lobo (1995), Baras–Brockett (1975), and Opmeer–Reis–Wollner (2013).
 
-The historical status of the exact cumulative `20/3`/`4/3` resource and the complete two-ended inertia closure is still **OPEN**. A negative search is not proof of priority.
+The exact historical status of the cumulative `20/3`/`4/3` resource and the complete two-ended closure remains **OPEN**. No priority language is permitted.
 
 ## 7. Current epistemic state
 
 ```text
-finite-dimensional passive selected-port cut:         ESTABLISHED WITHIN MODEL
+passive selected-port cut, finite dimension:           ESTABLISHED WITHIN MODEL
+countably infinite bounded-port passive extension:     ESTABLISHED WITHIN MODEL
 20/3 modal quadrupole resource:                        ESTABLISHED WITHIN MODEL
 4/3 gravitational endpoint trace resource:             ESTABLISHED WITHIN MODEL
 passive internal modal-mixing trace invariance:        ESTABLISHED WITHIN MODEL
 leading compact TT 25/16 propagation coefficient:      ESTABLISHED WITHIN MODEL
-finite-dimensional narrowband 25/12 two-ended bound:   ESTABLISHED WITHIN MODEL
+narrowband 25/12 two-ended bound:                      ESTABLISHED WITHIN MODEL
 broad absolute-frequency version:                      NOT ESTABLISHED
-countably infinite bounded-port modal extension:       OPEN
 passive two-endpoint recurrence:                       OPEN
 unbounded PDE / non-Markov continuum extension:        OUTSIDE CURRENT CLAIM
 complete historical prior-art boundary:                OPEN
@@ -274,19 +252,18 @@ manuscript:                                             NONE
 
 ## 8. Experiment 01 boundary
 
-`../01-causal-quantum-branch-information/` remains the frozen V7 publication project. No Experiment 01 physics was modified during this reconstruction.
+Experiment 01 / V7 remains frozen. No V7 physics has been modified by this reconstruction.
 
-## 9. Next action — strongest loophole
+## 9. Next action — passive recurrence
 
-The next mathematical task is to test whether the Stage-A passive cut survives a **countably infinite separable modal Hilbert space with bounded Markov port operators**.
+The strongest remaining internal physical loophole is repeated source↔receiver gravitational scattering between the same two passive compact endpoints.
 
-The desired route is not finite truncation extrapolation alone. It should prove, in operator form, that for a contraction semigroup `T(t)` and selected bounded port `K_u`,
+Next task:
 
-```math
-P_u(\tau)=\int_0^\tau
-T(t)K_u^\dagger K_uT^\dagger(t)dt
-```
+1. write the exact two-endpoint multiple-scattering/feedback resolvent;
+2. bound endpoint reflection blocks by passivity;
+3. determine whether recurrence can change the retained leading `1/R^2` power ceiling;
+4. distinguish an upper-bound asymptotic from an equality for actual transfer;
+5. add a random contractive-matrix recurrence adversary and record real CI.
 
-obeys a positive-operator ceiling `P_u <= I`, and then use the Stage-B trace bound to show the gravitational port is Hilbert–Schmidt so the operator-valued `H2` norm is finite.
-
-Only after that proof and an independent truncation stress test should the theorem be extended beyond finite-dimensional endpoints.
+After recurrence, the dominant remaining question should be historical priority/significance rather than another internal generalization.
