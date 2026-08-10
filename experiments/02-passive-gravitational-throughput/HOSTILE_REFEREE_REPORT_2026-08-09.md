@@ -2,11 +2,11 @@
 
 ## Recommendation
 
-**Technically promising, but publication significance is borderline and depends entirely on the final gravity-specific closure.**
+**Technically strong enough for specialist submission; publication significance remains the dominant risk.**
 
-If submitted as a broad claim about gravitational quantum transduction, efficiency--bandwidth tradeoffs, antenna reciprocity, modal sum rules, or singular-channel transfer, I would recommend rejection because those ingredients are established.
+If submitted as a broad claim about gravitational quantum transduction, efficiency--bandwidth tradeoffs, antenna reciprocity, modal sum rules, or generic scattering theory, I would recommend rejection because those ingredients are established.
 
-If submitted as a short, tightly scoped theorem paper whose contribution is explicitly
+If submitted as a tightly scoped theorem paper whose contribution is explicitly
 
 ```math
 \boxed{
@@ -17,13 +17,18 @@ If submitted as a short, tightly scoped theorem paper whose contribution is expl
 }
 ```
 
-for compact passive linear-harmonic source and receiver networks, with all historical ingredients credited, I would regard it as potentially publishable after specialist verification of the remaining subsystem/normalization assumptions.
+for separated compact passive linear-harmonic source and receiver networks, with all historical ingredients credited, I would now regard it as technically ready for specialist review.
 
-The present state is much stronger than the earlier quantum-first framing because the main result is now exposed as a classical physical bound with quantum-information corollaries rather than as a purportedly fundamental quantum theorem.
+Two of the strongest earlier technical objections have been closed rather than merely disclaimed:
+
+1. the passive H2 endpoint theorem now extends directly to countably infinite bounded-port modal Hilbert spaces; and
+2. arbitrary passive reciprocal returns between the same two separated endpoints are bounded and cannot modify the leading `1/R^2` coefficient.
+
+The remaining serious question is therefore primarily **priority/significance**, not an identified internal inconsistency.
 
 ---
 
-# 1. What I think the paper actually contributes
+# 1. What the paper actually contributes
 
 Almost every method in the derivation has identifiable prior art:
 
@@ -35,11 +40,13 @@ compact quadrupole directivity                 old
 gravity-specific material-response sum rules   old
 modal participation / effective modal mass     old
 passive H2 / Gramian identities                old
+infinite-dimensional H2 realization theory     old
 source-receiver singular wave channels         old
+multiple-scattering / Redheffer composition    old
 two-body response + propagation bounds         old
 ```
 
-The only potentially new object is the **closed gravitational consequence** obtained when these pieces are forced to coexist in the same passive direct-link problem:
+The candidate contribution remains the **closed gravitational consequence** obtained when these pieces are forced to coexist in the same passive separated-link problem:
 
 ```text
 source passive local-port network
@@ -53,17 +60,17 @@ receiver total gravitational coupling trace
 receiver passive local-port network
 ```
 
-with both endpoint traces eliminated in favor of the matter inertias.
+with both endpoint traces eliminated in favor of matter inertia.
 
-The result then states something that none of the individual ingredients states alone:
+The result states something that no inspected ingredient states alone:
 
-> Increasing passive quality factor, adding arbitrarily many passive resonances, coherently mixing them into bright modes, or rotating within the compact quadrupole channel cannot raise the frequency-integrated end-to-end transfer above one explicit inertia-controlled ceiling.
+> Increasing passive quality factor, adding arbitrarily many passive resonances, coherently mixing them into bright modes, rotating within the compact quadrupole channel, or allowing repeated passive returns between the same two separated endpoints cannot raise the leading frequency-integrated end-to-end transfer above the explicit inertia-controlled wave-zone ceiling.
 
 That is the publication case.
 
 ---
 
-# 2. Strongest aspect: the final parameter elimination
+# 2. Strongest aspect: final parameter elimination
 
 The best feature of the theorem is not the numerical coefficient `25/12`; it is the disappearance of phenomenological architecture parameters.
 
@@ -80,25 +87,23 @@ internal mixing matrices
 quadrupole orientation.
 ```
 
-The theorem removes all of them from the ceiling and leaves only
+The leading ceiling removes all of them and leaves only
 
 ```math
 G,\;c,\;\omega,\;R,\;I_A,\;I_B.
 ```
 
-That is genuinely useful if correct because it answers a practical theoretical question:
+This answers a practical theoretical question:
 
-> Can a cleverer **passive compact** architecture evade the terrible gravitational coupling merely by resonant engineering?
+> Can a cleverer **passive compact** architecture evade the weakness of gravitational coupling merely by resonant engineering?
 
 Inside the stated class the answer is no.
 
-This is more compelling than presenting the work as another gravitational antenna calculation.
-
 ---
 
-# 3. Strongest new intermediate statement
+# 3. Strongest material statement
 
-The cleanest material relation is
+The clean material relation is
 
 ```math
 \boxed{
@@ -106,14 +111,14 @@ The cleanest material relation is
 }
 ```
 
-However, I would not sell this as a new mathematical sum-rule method. Its proof is a generalized modal-participation/effective-mass completeness argument:
+This should not be sold as a new mathematical sum-rule method. Its proof is a quadrupole specialization of modal-participation/effective-mass completeness:
 
 ```math
 \sum_n\frac{|\langle w_n,g\rangle|^2}{\mu_n}
 \le\|g\|^2.
 ```
 
-The gravity-specific content is instead
+The gravity-specific content is
 
 ```math
 (g^{ij})_k
@@ -128,59 +133,154 @@ and
 =\frac{20}{3}r^2,
 ```
 
-which turns standard modal completeness into the gravitational effective-area bound.
-
-This is a respectable specialization, not a new completeness theorem.
+which turns standard completeness into the gravitational effective-area bound.
 
 ---
 
-# 4. Major technical question: finite H2 realization versus an infinite elastic spectrum
+# 4. Finite H2 realization versus infinite elastic spectrum — CLOSED
 
-The passive cut-set theorem is stated for a stable finite-dimensional passive realization, whereas an elastic continuum has an infinite normal-mode spectrum.
+The earlier manuscript used finite matrices even though an elastic body has a countably infinite normal-mode spectrum. This objection is now closed for the bounded-port Markov modal class actually needed by the theorem.
 
-I do not see a counterexample because every modal gravitational contribution is nonnegative and the cumulative modal resource is bounded. Nevertheless the manuscript should make the limiting logic explicit:
-
-1. apply the H2 theorem to any finite retained band-local modal sector;
-2. apply the modal-completeness bound to that same subset;
-3. the bound is uniform in the retained mode count;
-4. if an infinite-sector limit is required, take the monotone limit only when the corresponding passive transfer operator is well defined/trace class.
-
-Without such a sentence, “arbitrarily many modes” can sound stronger mathematically than the finite-dimensional theorem actually proves.
-
-**Assessment:** likely a clarification, not a fatal defect.
-
----
-
-# 5. Major physical question: one-way propagation versus a common gravitational bath
-
-The microscopic factorization
+Let the internal amplitudes lie in a separable Hilbert space `X`, let
 
 ```math
-G_B^\dagger U_R G_A
-=
-\Gamma_{g,B}^{1/2}P_g\Gamma_{g,A}^{1/2}
+A=-iH-\frac12K^\dagger K
 ```
 
-is clean, and the port-overlap numerics with nonorthogonal radiation patterns are useful.
+with `H` self-adjoint and bounded port operator `K`, and let
 
-The remaining conceptual question is the subsystem boundary. Two radiating matter systems coupled to the same gravitational continuum generally admit
+```math
+\mathcal T(t)=e^{At}
+```
 
-- reciprocal backaction;
-- collective damping;
-- multiple scattering;
-- coherent bath-mediated interactions.
+be the corresponding contraction semigroup. For the selected input block,
 
-The present theorem removes these by assuming a weak **one-way direct wave-zone channel**. That is a legitimate architecture class, but it must remain conspicuous. A referee should not be left to infer that the theorem also bounds the fully recurrent two-body scattering problem.
+```math
+P_u(\tau)
+=\int_0^\tau
+\mathcal T(t)K_u^\dagger K_u\mathcal T^\dagger(t)dt.
+```
 
-A useful sentence would state that the result is the first-Born/one-pass direct-link ceiling; recurrent propagation or strongly hybridized common-bath normal modes define a different network problem.
+Passivity gives directly
 
-**Assessment:** scope condition, not presently a contradiction.
+```math
+\boxed{
+0\le P_u(\tau)
+\le I-\mathcal T(\tau)\mathcal T^\dagger(\tau)
+\le I.
+}
+```
+
+The monotone strong limit therefore satisfies
+
+```math
+0\le P_u\le I.
+```
+
+If `K_g` is Hilbert--Schmidt,
+
+```math
+\boxed{
+\|S_{g\leftarrow u}\|_2^2
+\le
+\operatorname{Tr}(K_g^\dagger K_g).
+}
+```
+
+The material theorem supplies precisely that Hilbert--Schmidt condition because
+
+```math
+\operatorname{Tr}(K_g^\dagger K_g)
+=\sum_n\kappa_{g,n}
+\le\frac{4G}{3c^5}I\Omega^4<\infty.
+```
+
+Therefore **countably infinite passive resonance count is covered directly**; it is no longer shorthand for a sequence of finite truncations.
+
+The paper still does not claim arbitrary unbounded boundary-control operators or non-Markov continua.
+
+**Assessment:** objection closed within the declared class.
+
+Canonical audit: `INFINITE_DIMENSIONAL_PASSIVE_H2_AUDIT_2026-08-09.md`.
 
 ---
 
-# 6. The `25/16` factor is no longer a novelty risk
+# 5. One-pass propagation versus recurrent common-bath scattering — LEADING-ORDER OBJECTION CLOSED
 
-The wave-zone coefficient has unusually strong internal support:
+The earlier theorem displayed a one-pass propagation block. Passive reciprocal feedback between the same two separated endpoints can now be retained explicitly.
+
+Let `R_A` and `R_B` be their exact gravitational reflection blocks and let `P_BA`, `P_AB` be forward/reverse propagation. With
+
+```math
+L=P_{BA}R_AP_{AB}R_B,
+```
+
+passivity gives
+
+```math
+\|L\|_{\rm op}
+\le p_+p_-,
+\qquad
+p_+=\|P_{BA}\|,
+\quad
+p_-=\|P_{AB}\|.
+```
+
+The full repeated-return series is
+
+```math
+P_{\rm eff}
+=(I-L)^{-1}P_{BA},
+```
+
+so
+
+```math
+\boxed{
+\|P_{\rm eff}\|_{\rm op}
+\le\frac{p_+}{1-p_+p_-}.
+}
+```
+
+For reciprocal propagation, `p_+=p_-=p` and `eta=p^2`, giving
+
+```math
+\boxed{
+\eta_{\rm rec}
+\le\frac{\eta}{(1-\eta)^2}.
+}
+```
+
+Because compact TT propagation has
+
+```math
+\eta=O((kR)^{-2}),
+```
+
+we obtain
+
+```math
+\boxed{
+\eta_{\rm rec}
+=\eta+O((kR)^{-4}).
+}
+```
+
+Thus repeated passive returns cannot alter the retained leading `25/16` power coefficient. They enter at an order smaller than the first already-neglected one-hop far-zone correction.
+
+This was tested numerically for random noncommuting, non-normal contraction matrices; the exact matrix resolvent obeyed the predicted bound.
+
+This is not a universal common-bath theorem. Additional relays/mirrors, engineered extended cavities, near-field coupling, or nonseparable overlapping interaction regions still define different problems.
+
+**Assessment:** the leading-order recurrence objection is closed for two separated passive endpoints.
+
+Canonical audit: `RECURRENT_SCATTERING_WAVEZONE_AUDIT_2026-08-09.md`.
+
+---
+
+# 6. The `25/16` factor is strongly cross-checked
+
+The wave-zone coefficient has four independent supports:
 
 1. historical compact antenna directivity reaches `5/2`;
 2. reciprocal far-field transfer gives
@@ -193,15 +293,15 @@ D_AD_B\left(\frac{\lambda}{4\pi R}\right)^2
 3. the normalized TT angular-mode calculation gives the same coefficient;
 4. the aligned-plus exact outgoing polynomial reproduces the same leading term.
 
-I would not spend further manuscript space defending its novelty. Its value is as a normalization anchor.
+Passive recurrent scattering now provides a fifth consistency statement: it can change this coefficient only beyond retained order.
 
 **Assessment:** strong.
 
 ---
 
-# 7. Classical-to-quantum bridge is now cleaner
+# 7. Classical-to-quantum bridge
 
-The historical effective-area normalization and the one-quantum linewidth agree exactly:
+The historical effective-area normalization and one-quantum linewidth agree exactly:
 
 ```math
 \kappa_{g,n}
@@ -209,47 +309,37 @@ The historical effective-area normalization and the one-quantum linewidth agree 
 =\frac{2G\omega_n^5}{5\hbar c^5}Q^{01}:Q^{10}.
 ```
 
-This is an important consistency check.
+The headline bound therefore needs no intrinsically quantum resource. The genuinely quantum content begins when the same transfer matrix is interpreted as a bosonic channel and one asks about finite-use entanglement, antidegradability, and assisted/unassisted capacities.
 
-The manuscript is correct to remove “Quantum” from the title. The headline bound contains no intrinsically quantum resource and can be derived from classical passive linear systems, classical modal completeness, and classical reciprocal propagation.
-
-The genuinely quantum content begins when the same transfer matrix is interpreted as a bosonic channel and one asks about
-
-```text
-finite-use entanglement
-antidegradability
-unassisted quantum capacity
-two-way-assisted capacity.
-```
-
-**Assessment:** the revised scope is substantially more defensible.
+**Assessment:** clean and defensible.
 
 ---
 
-# 8. Novelty/significance objection remains serious
+# 8. Novelty/significance remains the central risk
 
-A skeptical expert can summarize the derivation as
+A skeptical expert can still summarize the derivation as
 
-> “Hirakawa effective area + standard modal participation + passive H2 + Friis/TT.”
+> “Hirakawa effective area + modal participation + passive H2 + TT/Friis + standard scattering feedback.”
 
-That summary is not entirely unfair.
+That summary is not unfair.
 
-The paper therefore needs to demonstrate why performing the closure is not trivial bookkeeping. The strongest answer is that no one ingredient implies the final no-go against **all four passive escape routes simultaneously**:
+The manuscript therefore succeeds only if the **closure itself** is judged useful. Its strongest claim is simultaneous exclusion of several passive escape routes:
 
 ```text
 high Q
-parallel resonances
+parallel/countably infinite resonances
 coherent bright-mode engineering
-compact quadrupole orientation.
+compact quadrupole orientation
+passive repeated returns between the same two endpoints.
 ```
 
-The cumulative theorem converts those separate observations into one architecture-independent spectral-area ceiling.
+All collapse to the same leading inertia-controlled ceiling.
 
-If the intended journal expects a new mathematical technique, I would not expect acceptance. If it values a clean physics bound that closes a long-standing engineering intuition into an explicit theorem, the paper is defensible.
+If a journal demands a new mathematical technique, the paper is weak. If it values a clean gravitational-physics no-go bound assembled from established tools in a previously unstated way, the case is substantially stronger.
 
 ---
 
-# 9. Sharpness: acceptable for a bound paper, but do not oversell the coefficient
+# 9. Sharpness
 
 The explicit compact plus realization
 
@@ -257,17 +347,13 @@ The explicit compact plus realization
 - saturates the compact TT geometry ceiling;
 - does not simultaneously saturate the complete end-to-end theorem.
 
-This is sufficient to show that the scaling is physically represented rather than purely formal.
+This is sufficient to represent the scaling physically, but not to claim that `25/12` is globally achievable.
 
-It is not sufficient to claim that `25/12` is globally optimal.
-
-The manuscript already avoids that claim and should continue to do so.
-
-**Assessment:** acceptable.
+**Assessment:** acceptable for an upper-bound paper.
 
 ---
 
-# 10. Quantum-capacity corollaries are useful but secondary
+# 10. Quantum-capacity corollaries
 
 For the vacuum pure-loss specialization,
 
@@ -285,21 +371,15 @@ Q_2
 {\ln2(1-\eta_{\max})}.
 ```
 
-These are conceptually useful because they explain why a nonzero finite-use entanglement signal does not imply nonzero asymptotic unassisted capacity.
-
-They should not be used to inflate the novelty of the classical throughput theorem.
-
-**Assessment:** retain as corollaries.
+These are conceptually useful but secondary. They should not be used to inflate the novelty of the classical theorem.
 
 ---
 
-# 11. Recommended final paper identity
-
-The manuscript should read as a short theorem paper in classical gravitational transduction with a quantum-information coda.
+# 11. Recommended paper identity
 
 Best one-sentence identity:
 
-> **Passive resonant engineering can redistribute compact gravitational oscillator strength in frequency and among modes, but for a direct wave-zone link the total integrated source-to-receiver transfer remains bounded by the smaller endpoint inertia resource and free-space quadrupole propagation.**
+> **Passive resonant engineering can redistribute compact gravitational oscillator strength in frequency and among modes, but for separated wave-zone endpoints the total integrated source-to-receiver transfer remains bounded by the smaller inertia resource and compact TT propagation; even countably infinite modal sectors and passive reciprocal returns do not evade the leading ceiling.**
 
 Best equation:
 
@@ -312,38 +392,34 @@ Best equation:
 }
 ```
 
-Everything else should support those two statements.
+Everything else should support those statements.
 
 ---
 
-# 12. Referee scores at the present checkpoint
+# 12. Referee scores after the two strongest technical attacks
 
 These are subjective publication-risk scores, not measurements.
 
 ```text
-internal mathematical consistency:       8.5 / 10
+internal mathematical consistency:       9.1 / 10
 normalization confidence:                9.0 / 10
-scope discipline:                        9.0 / 10
+scope discipline:                        9.3 / 10
 novelty of individual ingredients:       2.0 / 10
 novelty of exact closed inequality:      6.0 / 10
-physical usefulness of the closure:      7.5 / 10
+physical usefulness of the closure:      8.0 / 10
 broad-field significance:                5.5 / 10
-specialist gravitational-antenna value:  7.0 / 10
-publication readiness after current edits:
-                                          7.5 / 10
+specialist gravitational-antenna value:  7.5 / 10
+publication readiness:                   8.2 / 10
 ```
 
 ---
 
 # Final referee verdict
 
-**I would not reject this because the physics is obviously inconsistent.**
+**I would no longer request further internal generalization before submission.**
 
-I would challenge the paper on whether the final closure is sufficiently nontrivial relative to its established ingredients. If the authors maintain the present restrained positioning, explicitly close the finite-mode/infinite-mode wording, keep the one-way architecture boundary visible, and avoid priority rhetoric, I would support publication as a focused theoretical bound rather than as a fundamental new principle of gravity or quantum information.
+The two most obvious technical scope attacks have now been converted into explicit supporting results. I would challenge the paper primarily on whether the final gravity-specific closure is sufficiently nontrivial relative to its established ingredients and whether an older equivalent theorem exists under different antenna/network notation.
 
-The next useful epistemic step is an actual gravitational-antenna / passive-wave specialist trying to identify either
+The next genuinely informative attack is therefore external and historical: a specialist should try to identify an equivalent published inertia-closed two-ended theorem or a hidden failure of the bounded-port separated-scattering representation.
 
-1. an equivalent published inertia-closed two-ended theorem under different notation, or
-2. a hidden failure of the H2-to-gravitational-continuum interface.
-
-Absent one of those, further internal generalization is more likely to dilute the result than strengthen it.
+Absent such a collision, the paper is ready for specialist-level review rather than another internal derivation cycle.
