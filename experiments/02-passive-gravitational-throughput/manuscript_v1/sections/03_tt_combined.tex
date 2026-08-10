@@ -117,6 +117,38 @@ D_AD_B\left(\frac{\lambda}{4\pi R}\right)^2
 \end{equation}
 using $\lambda=2\pi/k$. Equation~\eqref{eq:TTamplitude} is the direct TT-field normalization of the same leading propagation geometry; quantum mechanics is not required for the coefficient.
 
+\subsection{Passive recurrent returns}
+
+The one-hop factor in Eq.~\eqref{eq:TTpropbound} is sufficient for the leading wave-zone theorem even when passive reciprocal returns between the same two compact endpoints are retained. To see this without resolving either endpoint internally again, let $R_A(\omega)$ and $R_B(\omega)$ denote their exact gravitational reflection blocks. Passivity gives $\|R_A\|_{\op},\|R_B\|_{\op}\le1$. Let $P_{BA}$ and $P_{AB}$ be the forward and reverse free-propagation operators, with norms $p_+$ and $p_-$. Standard scattering-network composition \cite{Redheffer1962} sums all returns through
+\begin{equation}
+P_{\rm eff}
+=\left(I-P_{BA}R_AP_{AB}R_B\right)^{-1}P_{BA},
+\label{eq:Peff}
+\end{equation}
+whenever $p_+p_-<1$. The Neumann resolvent bound gives
+\begin{equation}
+\boxed{
+\|P_{\rm eff}\|_{\op}
+\le
+\frac{p_+}{1-p_+p_-}.}
+\label{eq:Peffbound}
+\end{equation}
+For reciprocal separated propagation $p_+=p_-=p$ and $\eta=p^2$, so the exact recurrent power factor is bounded by
+\begin{equation}
+\boxed{
+\eta_{\rm rec}
+\le
+\frac{\eta}{(1-\eta)^2}.}
+\label{eq:etarec}
+\end{equation}
+Since Eq.~\eqref{eq:TTpropbound} has $\eta=O((kR)^{-2})$,
+\begin{equation}
+\eta_{\rm rec}
+=\eta+O((kR)^{-4}).
+\label{eq:recurrentorder}
+\end{equation}
+Thus arbitrary passive repeated returns between these two separated endpoints cannot change the leading $1/R^2$ power coefficient. Their first possible contribution is parametrically smaller than the $O((kR)^{-3})$ power correction already allowed by the next one-hop far-zone term in Eq.~\eqref{eq:TTpropbound}. This statement does not cover additional relays or mirrors, an engineered extended cavity, near-field exchange, or nonseparable overlapping interaction regions.
+
 \subsection{Passive compact-quadrupole throughput theorem}
 
 We now combine the passive endpoint cut set, the classical cumulative quadrupole oscillator-strength bound, and normalized TT propagation. For a narrow band centered at $\omega$, assume
@@ -131,7 +163,7 @@ kR=\frac{\omega R}{c}\gg1.
 Then Eqs.~\eqref{eq:materialcutset} and \eqref{eq:TTpropbound} give the main result.
 
 \begin{theorem}[Passive compact-quadrupole gravitational throughput]
-For direct weak one-way propagation between compact passive nonrelativistic linear endpoints in the regime \eqref{eq:regime},
+For direct separated wave-zone propagation between compact passive nonrelativistic linear endpoints in the regime \eqref{eq:regime},
 \begin{equation}
 \boxed{
 \Gamma_{\rm coh}
@@ -151,6 +183,8 @@ Equivalently,
 \label{eq:combined2}
 \end{equation}
 \end{theorem}
+
+The displayed coefficient is the leading separated wave-zone result. Equation~\eqref{eq:etarec} shows that including arbitrarily many passive reciprocal returns between the same two compact endpoints changes the propagation factor only at $O((kR)^{-4})$ in power and therefore leaves Eqs.~\eqref{eq:combined1}--\eqref{eq:combined2} unchanged at their retained order.
 
 The headline inequality is a classical passive-wave bound within the stated linear-harmonic class: the H2 cut set, cumulative modal resource ceiling, and leading propagation bound all admit classical derivations. Quantization reproduces the same endpoint normalization and supplies the information-theoretic corollaries discussed later. The inequality is leading-order in the compact-source and wave-zone expansions and is an upper bound rather than a claim that all constituent inequalities can be saturated simultaneously.
 
