@@ -1,0 +1,92 @@
+\section{Passive selected-port cut}
+\label{sec:passive}
+
+Consider first a finite-dimensional energy-normalized passive realization
+\begin{equation}
+A=-iH-\frac12K^\dagger K,
+\qquad H=H^\dagger,
+\label{eq:Apassive}
+\end{equation}
+where $K$ contains every physical radiation and loss port.  Let $K_i$ and $K_o$ select two disjoint port groups with no direct cross-feedthrough.  Their strictly proper transfer block is
+\begin{equation}
+H_{o\leftarrow i}(\nu)
+=-K_o(i\nu I-A)^{-1}K_i^\dagger .
+\label{eq:crossH}
+\end{equation}
+
+Define the selected-input Gramian
+\begin{equation}
+P_i(\tau)=\int_0^\tau
+ e^{At}K_i^\dagger K_i e^{A^\dagger t}\dd t .
+\end{equation}
+Since $K_i^\dagger K_i\le K^\dagger K=-(A+A^\dagger)$,
+\begin{equation}
+\boxed{
+0\le P_i(\tau)
+\le I-e^{A\tau}e^{A^\dagger\tau}
+\le I .
+}
+\label{eq:PiBound}
+\end{equation}
+For a stable realization, Plancherel gives
+\begin{align}
+\|H_{o\leftarrow i}\|_2^2
+&\equiv \frac{1}{2\pi}\int_{-\infty}^{\infty}\dd\nu\,
+\Tr(H_{o\leftarrow i}^\dagger H_{o\leftarrow i}) \\
+&=\Tr(K_oP_iK_o^\dagger)
+\le \Tr(K_o^\dagger K_o).
+\end{align}
+The dual output Gramian gives the complementary input bound.  Therefore
+\begin{equation}
+\boxed{
+\|H_{o\leftarrow i}\|_2^2
+\le
+\min\!\left[
+\Tr(K_i^\dagger K_i),
+\Tr(K_o^\dagger K_o)
+\right].
+}
+\label{eq:h2cut}
+\end{equation}
+This is generic passive-system mathematics, not a gravitational result.
+
+Now factor the separated gravitational link as
+\begin{equation}
+T(\nu)=H_B(\nu)P_g(\omega_0)H_A(\nu)
+\label{eq:factor}
+\end{equation}
+to retained narrowband order, where $H_A$ maps selected source inputs to gravitational outputs, $H_B$ maps gravitational inputs to selected receiver outputs, and $P_g$ is the normalized free-space gravitational propagation operator.  If
+\begin{equation}
+\|P_g(\omega_0)\|_{\op}^2\le\eta_{\max},
+\end{equation}
+then contractivity of the passive endpoint scattering blocks and Eq.~\eqref{eq:h2cut} give two cuts,
+\begin{equation}
+\Gamma_{\rm coh}
+\le
+\eta_{\max}\Tr(K_{g,A}^\dagger K_{g,A}),
+\end{equation}
+\begin{equation}
+\Gamma_{\rm coh}
+\le
+\eta_{\max}\Tr(K_{g,B}^\dagger K_{g,B}).
+\end{equation}
+Hence
+\begin{equation}
+\boxed{
+\Gamma_{\rm coh}
+\le
+\eta_{\max}
+\min\!\left[
+\Tr(K_{g,A}^\dagger K_{g,A}),
+\Tr(K_{g,B}^\dagger K_{g,B})
+\right].
+}
+\label{eq:gravcut}
+\end{equation}
+
+The same cut extends to a separable countably infinite modal Hilbert space when the Markov port operators are bounded and the gravitational port is Hilbert--Schmidt.  If $\mathcal T(t)$ is the passive contraction semigroup,
+\begin{equation}
+P_i(\tau)=\int_0^\tau
+\mathcal T(t)K_i^\dagger K_i\mathcal T^\dagger(t)\dd t
+\end{equation}
+obeys the operator inequality $0\le P_i(\tau)\le I$.  The monotone strong limit therefore satisfies $0\le P_i\le I$.  Section~\ref{sec:resource} shows that the gravitational matter resource itself implies $\Tr(K_g^\dagger K_g)<\infty$, making $K_g$ Hilbert--Schmidt and the operator-valued $H_2$ norm finite.  This covers countably infinite \emph{bounded-port} modal sectors; arbitrary unbounded boundary-control PDE ports require separate admissibility analysis \cite{BarasBrockett1975,Opmeer2013}.
