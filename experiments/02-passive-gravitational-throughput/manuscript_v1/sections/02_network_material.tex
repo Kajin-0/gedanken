@@ -1,9 +1,9 @@
-\section{Passive-network cut set and material resource}
+\section{Passive-network cut set and cumulative material resource}
 \label{sec:networkmaterial}
 
 \subsection{Passive linear endpoint}
 
-Consider a finite-dimensional bosonic endpoint with internal mode vector $\bm a$ and a stable completely passive input--output realization
+Consider an energy-normalized finite-dimensional passive linear endpoint with internal complex-envelope mode vector $\bm a$ and realization
 \begin{equation}
 \dot{\bm a}=A\bm a-K^\dagger\bm b_{\rm in},
 \qquad
@@ -17,7 +17,7 @@ A=-iH-\frac12K^\dagger K,
 \qquad H=H^\dagger.}
 \label{eq:Apassive}
 \end{equation}
-This is standard passive quantum input--output theory \cite{GutaYamamoto2014}. We partition the external channels into useful local ports $u$, gravitational ports $g$, and all remaining passive loss ports $\ell$,
+The same energy-normalized form describes classical passive coupled modes and passive bosonic quantum input--output systems; we use the latter literature for the standard realization and Gramian identities \cite{GutaYamamoto2014,TechakesariNurdin2017}. Partition the external channels into useful local ports $u$, gravitational ports $g$, and all remaining passive loss ports $\ell$,
 \begin{equation}
 K=\begin{pmatrix}K_u\\K_g\\K_\ell\end{pmatrix}.
 \end{equation}
@@ -37,7 +37,7 @@ For any strictly proper matrix transfer $S$, define
 \label{eq:H2def}
 \end{equation}
 
-For asymptotically stable completely passive systems the full-channel controllability Gramian is the identity, an established result in linear quantum-system theory \cite{TechakesariNurdin2017}. The selected-input Gramian
+For an asymptotically stable completely passive realization the full-channel controllability Gramian is the identity. The selected-input Gramian
 \begin{equation}
 P_u=\int_0^\infty \dd t\,
 \ee^{At}K_u^\dagger K_u\ee^{A^\dagger t}
@@ -51,7 +51,7 @@ therefore satisfies $0\le P_u\le I$. Consequently,
 \boxed{\Tr(K_g^\dagger K_g)}.
 \label{eq:endpointbound}
 \end{equation}
-The same inequality holds for the receiver transfer from gravitational input to useful local output.
+The same inequality holds for the receiver transfer from gravitational input to useful local output. The proof is a passive linear-systems identity; quantization is not required.
 
 Let $P_g(\omega)$ denote the normalized one-way gravitational propagation operator from the source gravitational output space to the receiver gravitational input space, and let
 \begin{equation}
@@ -72,7 +72,7 @@ S_{g\leftarrow u}^{(A)}(i\omega),
 passive scattering subblocks are contractions. Applying the Frobenius/operator-norm inequality on either side of the propagation cut gives the following result.
 
 \begin{theorem}[Passive gravitational cut set]
-For two stable finite-dimensional completely passive linear endpoints connected by a one-way contractive gravitational propagation operator,
+For two stable finite-dimensional passive linear endpoints connected by a one-way contractive gravitational propagation operator,
 \begin{equation}
 \boxed{
 \Gamma_{\rm coh}
@@ -86,11 +86,11 @@ For two stable finite-dimensional completely passive linear endpoints connected 
 \end{equation}
 \end{theorem}
 
-The theorem permits arbitrary coherent mode mixing and overlapping resonances inside each endpoint. The passive Gramian identities themselves are not new; their role here is to expose the gravitational coupling trace as an endpoint resource that an end-to-end link cannot exceed.
+The theorem permits arbitrary coherent mode mixing and overlapping resonances inside each endpoint. The passive Gramian identities themselves are established prior art; their role here is to expose the gravitational coupling trace as the endpoint resource that an end-to-end link cannot exceed.
 
 \subsection{Separating coupling magnitude from radiation geometry}
 
-To connect Eq.~\eqref{eq:cutset} to microscopic gravity without double counting angular coupling, consider the narrowband matter-to-graviton coupling operator
+To connect Eq.~\eqref{eq:cutset} to microscopic gravity without double counting angular coupling, consider the narrowband matter-to-radiation coupling operator
 \begin{equation}
 G_A:\mathcal H_{m,A}\rightarrow\mathcal H_g.
 \end{equation}
@@ -105,7 +105,7 @@ G_A=V_A\Gamma_{g,A}^{1/2},
 G_B=V_B\Gamma_{g,B}^{1/2},
 \label{eq:polar}
 \end{equation}
-where $V_A$ and $V_B$ are partial isometries into the normalized gravitationally bright radiation subspaces. If $U_R$ denotes free fixed-frequency graviton propagation, then
+where $V_A$ and $V_B$ are partial isometries into normalized gravitationally bright radiation subspaces. If $U_R$ denotes fixed-frequency free propagation, then
 \begin{equation}
 \boxed{
 G_B^\dagger U_RG_A
@@ -117,82 +117,145 @@ P_g
 P_g=V_B^\dagger U_RV_A.}
 \label{eq:microscopicfactor}
 \end{equation}
-Thus the endpoint linewidth resource and the normalized propagation geometry are distinct factors. Nonorthogonal radiation patterns are retained in the off-diagonal entries of $\Gamma_g$; no independent bath channel per matter mode is assumed.
+Thus endpoint coupling magnitude and normalized propagation geometry are distinct factors. Nonorthogonal radiation patterns remain encoded in the off-diagonal entries of $\Gamma_g$; no independent radiation channel per matter mode is assumed.
 
-\subsection{Mass-quadrupole spectral ceiling}
+\subsection{Classical modal oscillator-strength sum rule}
 
-We now specialize the endpoint resource to compact nonrelativistic linear matter. Diagonalizing the isolated quadratic matter Hamiltonian into normal modes gives, by unitary invariance,
+We now specialize the endpoint resource to compact nonrelativistic linear matter. Let $\rho(\bm r)$ be the mass density, choose the origin at the center of mass, and use the mass-weighted displacement inner product
+\begin{equation}
+\langle\bm u,\bm v\rangle_\rho
+=\int_V\rho\,\bm u\cdot\bm v\,dV.
+\label{eq:massinner}
+\end{equation}
+Let $\bm w_n$ be mutually orthogonal elastic normal modes with
+\begin{equation}
+\langle\bm w_n,\bm w_m\rangle_\rho
+=\mu_n\delta_{nm}.
+\end{equation}
+For a small displacement $\bm u$, the first-order STF quadrupole change is
+\begin{equation}
+\delta Q_{ij}[\bm u]
+=\int\rho\left(
+ u_i x_j+u_j x_i
+-\frac23\delta_{ij}\bm u\cdot\bm x
+\right)dV.
+\label{eq:linearQmap}
+\end{equation}
+Define displacement fields
+\begin{equation}
+(g^{ij})_k
+=\delta_{ik}x_j+\delta_{jk}x_i
+-\frac23\delta_{ij}x_k,
+\label{eq:gijfield}
+\end{equation}
+so that the dynamic quadrupole coefficient of mode $n$ is
+\begin{equation}
+q_{n,ij}
+=\langle\bm w_n,\bm g^{ij}\rangle_\rho.
+\label{eq:qmodal}
+\end{equation}
+A direct Cartesian contraction gives the pointwise identity
 \begin{equation}
 \boxed{
-\Tr(K_g^\dagger K_g)=\sum_n\kappa_{g,n}.}
-\label{eq:tracewidths}
+\sum_{i,j,k}|(g^{ij})_k|^2
+=\frac{20}{3}r^2.}
+\label{eq:gidentity}
 \end{equation}
-For a one-quantum mass-quadrupole transition of angular frequency $\omega_n$, weak linearized gravity gives \cite{BoughnRothman2006,PalessandroSloth2020}
+Applying Bessel's inequality to the normalized modes $\bm e_n=\bm w_n/\sqrt{\mu_n}$ and then summing over $i,j$ yields
 \begin{equation}
-\kappa_{g,n}
-=
-\frac{2G\omega_n^5}{5\hbar c^5}
-Q_{ij}^{0n}Q_{ij}^{n0}.
-\label{eq:gravitonrate}
+\boxed{
+\sum_n\frac{q_n:q_n}{\mu_n}
+\le
+\frac{20}{3}I,}
+\qquad
+I=\int\rho r^2dV.
+\label{eq:classicalqsum}
 \end{equation}
+Equality requires completeness of the retained displacement modes for the five quadrupole-gradient fields; any band truncation or constrained modal subspace preserves the upper-bound form.
 
-The normalization of Eq.~\eqref{eq:gravitonrate} can be cross-checked directly against classical compact-antenna theory. Hirakawa, Narihara, and Fujimoto define for an elastic mode $\bm u=x_n\bm w_n$ a modal mass $\mu_n=\int\rho|\bm w_n|^2dV$, a linearized STF quadrupole coefficient $q_{n,ij}$, and a gravitational effective area \cite{HirakawaNariharaFujimoto1976}
+Hirakawa, Narihara, and Fujimoto define the compact gravitational effective area of mode $n$ as \cite{HirakawaNariharaFujimoto1976}
 \begin{equation}
 A_{Gn}=\frac{2\,q_n:q_n}{M\mu_n}.
 \label{eq:HirakawaAG}
 \end{equation}
-Quantizing the same coordinate gives
+Therefore Eq.~\eqref{eq:classicalqsum} immediately gives the classical cumulative effective-area sum rule
 \begin{equation}
-Q_{ij}^{01}
-=q_{n,ij}\sqrt{\frac{\hbar}{2\mu_n\omega_n}},
-\qquad
-Q^{01}:Q^{10}
-=\frac{\hbar M A_{Gn}}{4\omega_n}.
+\boxed{
+\sum_n M A_{Gn}
+\le
+\frac{40}{3}I.}
+\label{eq:classicalAGsum}
 \end{equation}
-Equation~\eqref{eq:gravitonrate} therefore becomes
+This result contains no Planck constant.
+
+For a harmonic mode, Hirakawa's radiated-power normalization implies the gravitational energy-decay rate
 \begin{equation}
 \boxed{
 \kappa_{g,n}
 =\frac{GMA_{Gn}\omega_n^4}{10c^5}.}
 \label{eq:HirakawaKappa}
 \end{equation}
-This is the quantized form of the historical mode oscillator-strength normalization, rather than a separate convention. Hirakawa et al.'s quality-factor-independent short-pulse result may equivalently be written
+In a normal-mode basis the trace of the gravitational damping Gram matrix is therefore
+\begin{equation}
+\boxed{
+\Tr(K_g^\dagger K_g)=\sum_n\kappa_{g,n}.}
+\label{eq:tracewidths}
+\end{equation}
+For retained quadrupole-active modes with $0<\omega_n\le\Omega$,
+\begin{equation}
+\Tr(K_g^\dagger K_g)
+\le
+\frac{G\Omega^4}{10c^5}
+\sum_nMA_{Gn},
+\end{equation}
+and Eq.~\eqref{eq:classicalAGsum} gives
+\begin{equation}
+\boxed{
+\Tr(K_g^\dagger K_g)
+\le
+\frac{4G}{3c^5}I\Omega^4.}
+\label{eq:materialbound}
+\end{equation}
+This is the cumulative endpoint oscillator-strength ceiling. Adding passive resonances redistributes a finite gravitational resource rather than producing unlimited integrated response.
+
+\subsection{Equivalent quantum representation}
+
+Quantization is not needed for Eq.~\eqref{eq:materialbound}, but it provides an independent normalization check and the bridge to quantum-channel corollaries. For a one-quantum transition of angular frequency $\omega_n$, weak linearized gravity gives \cite{BoughnRothman2006,PalessandroSloth2020}
+\begin{equation}
+\kappa_{g,n}
+=\frac{2G\omega_n^5}{5\hbar c^5}
+Q_{ij}^{0n}Q_{ij}^{n0}.
+\label{eq:gravitonrate}
+\end{equation}
+Quantizing the same classical normal coordinate gives
+\begin{equation}
+Q_{ij}^{01}
+=q_{n,ij}\sqrt{\frac{\hbar}{2\mu_n\omega_n}},
+\qquad
+Q^{01}:Q^{10}
+=\frac{\hbar M A_{Gn}}{4\omega_n},
+\end{equation}
+which converts Eq.~\eqref{eq:gravitonrate} exactly into Eq.~\eqref{eq:HirakawaKappa}. Hirakawa et al.'s historical quality-factor-independent short-pulse result may correspondingly be written
 \begin{equation}
 \frac{E}{F(\nu_n)}
 =\frac{\pi}{2}\frac{\kappa_{g,n}}{k_n^2}f_n(\hat n),
 \label{eq:HirakawaPulseKappa}
 \end{equation}
-where $F(\nu)$ is incident gravitational pulse energy per unit area per hertz. We use these relations only as an independent normalization check; the single-mode oscillator-strength result is historical prior physics.
+where $F(\nu)$ is incident gravitational pulse energy per unit area per hertz.
 
-Let $Q_a$, $a=1,\ldots,5$, be an orthonormal STF basis for the internal mass-quadrupole operator, defined about the endpoint center of mass. Energy-weighted coordinate-multipole sum rules may be written as double commutators \cite{LuJohnson2018,Hinohara2019}. For the present mass quadrupole,
+The same modal completeness coefficient appears in the quantum mass-quadrupole EWSR. Let $Q_a$, $a=1,\ldots,5$, be an orthonormal STF basis for the internal quadrupole operator. Standard energy-weighted sum-rule identities give \cite{LuJohnson2018,Hinohara2019}
 \begin{equation}
 \sum_a\frac12
 \langle0|[Q_a,[H,Q_a]]|0\rangle
-=
-\frac{10}{3}\hbar^2\langle I\rangle,
+=\frac{10}{3}\hbar^2\langle I\rangle,
 \label{eq:EWSR}
 \end{equation}
-where
-\begin{equation}
-I=\sum_r m_r|\bm r_r-\bm R_{\rm CM}|^2
-\label{eq:inertia}
-\end{equation}
-is the internal inertia moment. Equivalently,
+or equivalently
 \begin{equation}
 \sum_{n,a}\omega_n|Q^a_{0n}|^2
-=
-\frac{10}{3}\hbar\langle I\rangle.
+=\frac{10}{3}\hbar\langle I\rangle.
 \end{equation}
-For all retained quadrupole-active modes with $0<\omega_n\le\Omega$, positivity and $\omega_n^5\le\Omega^4\omega_n$ yield
-\begin{equation}
-\boxed{
-\Tr(K_g^\dagger K_g)
-\le
-\frac{4G}{3c^5}
-\langle I\rangle\Omega^4.}
-\label{eq:materialbound}
-\end{equation}
-This is a cumulative oscillator-strength bound: adding passive resonances redistributes a finite gravitational coupling resource rather than producing unlimited integrated response.
+For the linear-harmonic class this is the quantized representation of Eq.~\eqref{eq:classicalqsum}; both routes reproduce Eq.~\eqref{eq:materialbound}. The EWSR remains useful for spectral-response generalizations, but the present endpoint ceiling is already classical.
 
 Combining Eqs.~\eqref{eq:cutset} and \eqref{eq:materialbound} gives
 \begin{equation}
@@ -201,10 +264,7 @@ Combining Eqs.~\eqref{eq:cutset} and \eqref{eq:materialbound} gives
 \le
 \eta_{\max}
 \frac{4G\Omega^4}{3c^5}
-\min\!\left(
-\langle I_A\rangle,
-\langle I_B\rangle
-\right).}
+\min(I_A,I_B).}
 \label{eq:materialcutset}
 \end{equation}
 The remaining task is to bound $\eta_{\max}$ for direct propagation between compact quadrupole radiation spaces.
