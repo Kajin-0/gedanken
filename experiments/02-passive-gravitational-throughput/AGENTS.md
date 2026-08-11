@@ -32,16 +32,19 @@ Read first:
 1. `RECOVERY_INDEX.md`
 2. `CURRENT_STATE.md`
 3. `CLAIM_LEDGER.md`
-4. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
-5. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
-6. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md`
-7. `CRITICAL_REVIEW_AUDIT_2026-08-10.md`
-8. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
-9. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-10. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
-11. `submission_prd/README.md`
+4. `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
+5. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
+6. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
+7. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md`
+8. `CRITICAL_REVIEW_AUDIT_2026-08-10.md`
+9. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
+10. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+11. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
+12. `submission_prd/README.md`
 
-For operator-scope provenance also read `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`. For recurrence details read `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`. Older derivation documents remain useful provenance, but any occurrence of the former scalar `25/12 * I_2` closure is superseded by the sector-resolved theorem below.
+For operator-scope provenance also read `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`. For recurrence details read `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`.
+
+Older derivation documents remain useful provenance. The former scalar `25/12 * I_2` closure is **not false**: it remains a valid looser compatibility corollary. It is superseded only as the strongest current leading theorem by the sector-resolved result below.
 
 The `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md` file records the earlier theorem-transition checkpoint `3bf26c...`; the current validated manuscript checkpoint is `bfae23af...` after the non-Markovian/continuum scope clarification. Do not mistake the older checkpoint SHA for the current manuscript state.
 
@@ -98,7 +101,21 @@ min(I_Rhat,A,I_Rhat,B).
 }
 ```
 
-This supersedes the older `25/12 * min(I_2A,I_2B)` headline.
+The older scalar leading form remains valid as the looser corollary
+
+```math
+Gamma_coh
+lesssim
+[25 G omega_0^2/(12 c^3 R^2)]
+min(I_2,A,I_2,B).
+```
+
+The logical relationship is refinement, not contradiction:
+
+```text
+25/12 * I_2   = valid scalar fallback obtained after discarding STF-sector information
+5/4  * I_Rhat = stronger directional leading closure retaining the propagating |m|=2 sector
+```
 
 ## 5. Essential proof facts
 
@@ -193,7 +210,24 @@ head SHA: bfae23af41aefb3104d639099299b3432b4a14fe
 
 The exact-head PDF is 9 pages, visually preflighted, with embedded fonts and no unresolved references/citations.
 
-## 10. Documentation discipline
+A later cross-version audit was triggered specifically because the longstanding `25/12` coefficient changed after a context-window handoff. That audit found a **test-coverage regression** in the theorem-transition workflow but no scientific contradiction in `5/4`. It added `numerics/verify_constant_regression.py` and a dedicated cross-version workflow. Read `CONSTANT_REGRESSION_AUDIT_2026-08-10.md` before changing any coefficient or normalization.
+
+## 10. Theorem change-control — mandatory
+
+Any future change to a theorem coefficient, normalization, endpoint resource, asymptotic order, or headline inequality must satisfy every gate below **before** the manuscript headline is modified:
+
+1. preserve and rerun all inherited regressions from the prior theorem state;
+2. add an independent regression targeted at the new mathematical step;
+3. include at least one numerical end-to-end composition test when the theorem is end-to-end;
+4. explicitly classify the new result relative to the old one: refinement, incompatible replacement, or correction;
+5. independently audit units, normalization conventions, polarization/sector degeneracies, and factors of two;
+6. record exact pre-change and post-change science states in a dedicated audit;
+7. never delete or narrow older regression coverage merely because the new proof uses a different decomposition;
+8. retain a documented fallback theorem whenever the previous result remains valid.
+
+A context reset, new agent, new reviewer prompt, or aesthetically cleaner derivation is **not** sufficient reason to change a validated theorem. New work must beat the inherited validation stack rather than replace it.
+
+## 11. Documentation discipline
 
 Whenever a future objection changes the scientific interpretation or theorem state, update **all four** handoff layers in the same work:
 
@@ -204,6 +238,6 @@ Whenever a future objection changes the scientific interpretation or theorem sta
 
 If the manuscript changes, also record the exact validated manuscript SHA and workflow/artifact state. Do not let a new result live only in conversation history.
 
-## 11. Current research mode
+## 12. Current research mode
 
 Do not add theorem extensions merely because they are imaginable. Reopen the science only for a concrete technical defect, a direct prior-art collision, or a substantive specialist/journal objection. Otherwise restrict work to submission preparation and verification.
