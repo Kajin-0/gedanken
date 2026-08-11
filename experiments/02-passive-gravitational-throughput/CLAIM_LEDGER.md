@@ -1,120 +1,91 @@
 # Claim Ledger — Experiment 02
 
-This ledger is authoritative for Experiment 02. Conversation history is a source of hypotheses, never proof.
+This ledger is authoritative for the current Experiment 02 theorem. Conversation history is hypothesis-generation, not proof.
 
 ## Status labels
 
-- `ESTABLISHED WITHIN MODEL` — derived and independently checked within explicit assumptions.
-- `FAILED AS A CURRENT CLAIM` — contradicted or outside the established scope.
-- `FAILED AS A NOVELTY CLAIM` — useful result/lemma, but not safe to present as an independent novelty contribution.
-- `HISTORICAL / PRIOR ART` — established ingredient; not a novelty claim.
-- `OPEN — NO EXACT COLLISION FOUND` — candidate contribution after hostile search; negative search is not proof of priority.
+- `ESTABLISHED WITHIN MODEL` — derived and independently checked under explicit assumptions.
+- `FAILED AS A CURRENT CLAIM` — contradicted or outside established scope.
+- `FAILED AS A NOVELTY CLAIM` — valid ingredient, unsafe as an independent novelty claim.
+- `HISTORICAL / PRIOR ART` — established ingredient.
+- `OPEN — NO EXACT COLLISION FOUND` — candidate contribution after targeted search; not proof of priority.
 
 ## Current ledger
 
 | Statement | Status | Evidence |
 |---|---|---|
-| Complex-envelope `H2` spectral-area metric for stable strictly proper selected cross-port blocks | ESTABLISHED WITHIN MODEL | `PASSIVE_SELECTED_PORT_CUT_DERIVATION.md` |
-| Passive selected-port transfer is cut by endpoint port traces | ESTABLISHED WITHIN MODEL | Stage-A derivation + CI |
-| Band-limited `Gamma_coh` is bounded by the corresponding full-line selected-port `H2` norm | ESTABLISHED WITHIN MODEL | positivity of `Tr(T^dag T)`; manuscript passive-cut section |
-| Separated passive transfer is cut by the smaller source/receiver gravitational trace | ESTABLISHED WITHIN MODEL | Stage-A derivation + random two-ended adversary |
-| `sum_n (q_n:q_n)/mu_n <= (20/3) I_2` | ESTABLISHED WITHIN MODEL | Stage-B derivation + CI |
-| `Tr(K_g^dag K_g) <= (4G/3c^5) I_2 Omega^4` for `omega_n <= Omega` | ESTABLISHED WITHIN MODEL | Stage-B derivation + CI |
-| Carrier replacement `Omega^4 -> omega_0^4` for `Omega=omega_0[1+O(B/omega_0)]` | ESTABLISHED WITHIN MODEL | `NARROWBAND_NORMALIZATION_AUDIT.md`; retained carrier-scale sector only |
-| Passive unitary internal mode mixing cannot increase gravitational coupling trace | ESTABLISHED WITHIN MODEL | trace invariance + Stage-B CI |
-| Compact TT propagation obeys `limsup (kR)^2 ||P_g||_op^2 <= 25/16` | ESTABLISHED WITHIN MODEL | Stage-C derivation + CI |
-| Narrowband two-ended bound `Gamma_coh lesssim [25 G omega_0^2/(12 c^3 R^2)] min(I_2A,I_2B)` | ESTABLISHED WITHIN MODEL | assembled proof + combined CI |
-| Countably infinite separable bounded-port Markov modal sectors obey the same passive cut | ESTABLISHED WITHIN MODEL | operator proof + infinite-modal CI |
-| Same-two-endpoint passive recurrence leaves the leading `1/R^2` upper coefficient unchanged | ESTABLISHED WITHIN MODEL | resolvent proof + recurrence CI |
-| The theorem applies without `k_0a_A,k_0a_B << 1` and `k_0R >> 1` | FAILED AS A CURRENT CLAIM | compact TT/stationary-phase derivation requires these conditions |
-| Uncontrolled endpoint modes `omega_n >> omega_0` are automatically bounded by the carrier-scale `omega_0^4` resource | FAILED AS A CURRENT CLAIM | gravitational rates scale with their own `omega_n^4`; off-resonant sectors require separate control |
-| Same simple theorem over arbitrary broad absolute frequency | FAILED AS A CURRENT CLAIM | `NARROWBAND_NORMALIZATION_AUDIT.md` |
-| Arbitrary unbounded PDE boundary ports are covered | FAILED AS A CURRENT CLAIM | separate admissibility/domain proof required |
+| Stable strictly proper passive selected cross-port blocks obey the `H2` Gramian cut | ESTABLISHED WITHIN MODEL | submission passive-cut derivation + passive-cut regression |
+| The weighted passive Gramian inequality `int ||L(i nu I-A)^-1 K_i^dag||_HS^2/(2pi) <= Tr(L^dag L)` holds for bounded `L` | ESTABLISHED WITHIN MODEL | `submission_prd/sections/02_passive_cut.tex` |
+| `Gamma_coh` is the band-limited coherent-transfer spectral area and is not capacity/bit rate | ESTABLISHED WITHIN MODEL | definition + dimensional check |
+| Scalar completeness `sum (q:q)/mu <= (20/3) I_2` | ESTABLISHED WITHIN MODEL | endpoint derivation + regression |
+| Sector completeness `sum Q_2^2/mu <= 4 I_Rhat` | ESTABLISHED WITHIN MODEL | sector Parseval/Bessel derivation + endpoint regression |
+| Sector completeness `sum Q_1^2/mu <= 2 I_Rhat + 4 Z_Rhat` | ESTABLISHED WITHIN MODEL | same |
+| Sector completeness `sum Q_0^2/mu <= (2/3)I_Rhat + (8/3)Z_Rhat` | ESTABLISHED WITHIN MODEL | same |
+| The three sector resources sum exactly to `(20/3) I_2` | ESTABLISHED WITHIN MODEL | algebra + regression |
+| For a complete displacement basis, the unweighted sector projection sums are Parseval equalities | ESTABLISHED WITHIN MODEL | Hilbert-space completeness |
+| On-shell modal gravitational linewidth is `G omega_n^4(q:q)/(5 c^5 mu)` | ESTABLISHED WITHIN MODEL | quadrupole power / mode-energy derivation |
+| For retained `omega_n <= Omega`, each sector fourth-frequency moment is bounded by `Omega^4` times its sector resource | ESTABLISHED WITHIN MODEL | monotonic frequency ceiling + sector completeness |
+| Completeness alone bounds an unrestricted fourth modal-frequency moment | FAILED AS A CURRENT CLAIM | square-summable projection sequence can have divergent fourth frequency moment |
+| A far-detuned mode may be assigned its on-shell `omega_n^4` linewidth unchanged at a low drive frequency | FAILED AS A CURRENT CLAIM | on-shell linewidth is outside validity of that far-detuned Markov substitution |
+| Exact outgoing compact-TT sector powers are `eta_2,eta_1,eta_0` given in the submission derivation | ESTABLISHED WITHIN MODEL | exact angular integrals + TT regression |
+| For `z>=3`, `eta_2 >= eta_1,eta_0` | ESTABLISHED WITHIN MODEL | direct subtraction + regression |
+| Propagation variation across the measured band can be retained through `sup_band eta_m(omega R/c)` rather than freezing at `omega_0` | ESTABLISHED WITHIN MODEL | finite-band theorem derivation |
+| Finite-band sector-resolved bound `Gamma_coh <= [G Omega^4/(5c^5)] min(G_A,G_B)` | ESTABLISHED WITHIN MODEL | weighted cut + sector resource + exact TT propagation + combined regression |
+| Far-zone theorem `limsup R^2 Gamma_coh <= [5G Omega^4/(4c^3 omega_-^2)] min(I_Rhat,A,I_Rhat,B)` | ESTABLISHED WITHIN MODEL | asymptotic sector hierarchy + combined regression |
+| Carrier-scale form `Gamma_coh lesssim [5G omega_0^2/(4c^3R^2)] min(I_Rhat,A,I_Rhat,B)` | ESTABLISHED WITHIN MODEL | narrowband reduction of rigorous theorem |
+| Former `25/12 * min(I_2A,I_2B)` expression is the strongest current closure | FAILED AS A CURRENT CLAIM | superseded by sector-resolved `5/4 * I_Rhat` closure |
+| The `5/4` chained coefficient is sharp at the abstract retained projection-sum level | ESTABLISHED WITHIN MODEL | sector Parseval equality + `|m|=2` propagation saturation |
+| A generic homogeneous elastic body necessarily realizes simultaneous `5/4` saturation | FAILED AS A CURRENT CLAIM | no constitutive realizability proof |
+| Ideal slender bar fundamental occupies `48/pi^4 ~= 0.493` of the leading `|m|=2` resource in its maximum-radiation direction | ESTABLISHED WITHIN MODEL | analytic bar check |
+| Countably infinite separable bounded-port Markov sectors obey the same weighted passive cut when the retained gravitational port is Hilbert--Schmidt | ESTABLISHED WITHIN MODEL | operator extension + infinite-modal regression |
+| Same-two-endpoint passive recurrence changes the leading `R^-2` coefficient | FAILED AS A CURRENT CLAIM | exact resolvent + propagation round-trip scaling |
+| Unbounded PDE boundary ports are automatically covered | FAILED AS A CURRENT CLAIM | admissibility/domain proof required |
 | Genuinely non-Markov continua are covered | FAILED AS A CURRENT CLAIM | outside declared model |
-| Added relays/external cavities/extended apertures/near-field exchange/active feedback are covered by the recurrence proof | FAILED AS A CURRENT CLAIM | those change the propagation architecture or passive class |
-| Eigenmode gravitational-antenna emission/reception/directivity theory is new here | HISTORICAL / PRIOR ART | Hirakawa--Narihara--Fujimoto 1976 |
-| Resonant-mass absorption/integrated response is new here | HISTORICAL / PRIOR ART | Paik--Wagoner 1976; Aguiar 2011 review |
-| General arbitrary-elastic-body multimode GW response is new here | HISTORICAL / PRIOR ART | Lobo 1995 |
-| Gravitational material-response sum-rule methodology is new here | HISTORICAL / PRIOR ART | Srivastava--Widom--Pizzella 2003 |
-| Complete generator--receiver/Hertz calculations are new here | HISTORICAL / PRIOR ART | Grishchuk--Sazhin lineage; Rudenko 2003 |
-| Generic source--receiver channel/coupling-limit mathematics is new here | HISTORICAL / PRIOR ART | Miller 2000 |
-| Generic two-body response-plus-propagation bound architecture is new here | HISTORICAL / PRIOR ART | Molesky et al. 2020 |
-| Infinite-dimensional `H2`/operator-Gramian machinery is new here | HISTORICAL / PRIOR ART | Baras--Brockett 1975; Opmeer--Reis--Wollner 2013 |
-| Multiple-scattering composition is new here | HISTORICAL / PRIOR ART | Redheffer 1962 |
-| `20/3` or `4/3` should be presented as standalone novelty | FAILED AS A NOVELTY CLAIM | short closure of historical modal/sum-rule ingredients |
-| Gravity as a communication mediator or the existence of gravity-mediated communication bounds is new here | HISTORICAL / PRIOR ART | Kafri--Milburn--Taylor 2015; Lami--Pedernales--Plenio 2024; Toccacelo--Andersen--Brask 2025; Mari--Zippilli--Vitali 2026 |
-| Classical-channel/noise, LOCC-simulation, or gravitational state-transfer benchmarks are new here | HISTORICAL / PRIOR ART | `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md` |
-| A narrowband gravity-induced optomechanical communication channel is new here | HISTORICAL / PRIOR ART | Mari--Zippilli--Vitali 2026 |
-| The complete gravity-specific two-ended inertia closure is an exact known theorem | OPEN — NO EXACT COLLISION FOUND | historical + recent collision audits; strong near-collisions, no exact inspected match |
-| Priority of the complete closure is proved | FAILED AS A CURRENT CLAIM | negative literature search is not proof of priority |
-| Conversation-only branches/commits/CI are repository evidence | FAILED AS A CURRENT CLAIM | only verified real remote artifacts count |
+| Added relays, external cavities, extended phased apertures, near-field exchange, or active feedback are covered | FAILED AS A CURRENT CLAIM | different architecture/physical class |
+| Generic passive `H2`, Fano/Bode matching, Chu--Harrington limits, resonant-mass GW theory, material-response sum rules, directivity, and multiple scattering are new here | HISTORICAL / PRIOR ART | cited literature |
+| The gravity-specific two-ended sector-resolved endpoint-resource + compact-TT closure is an exact known theorem | OPEN — NO EXACT COLLISION FOUND | targeted historical/recent collision audits; no exact inspected match |
+| Priority is proved | FAILED AS A CURRENT CLAIM | negative search is not proof of priority |
 
-## Authoritative validated checkpoint
-
-The literature-corrected theorem/manuscript SHA is
+## Authoritative validated science checkpoint
 
 ```text
-1ce596493073dbb49e6eb71f1a6df0566ff3c25b
+science/manuscript SHA: 3bf26c7535919597d711fdcd781e6098b76b5d68
 ```
 
-All seven gates passed on that exact SHA:
+Exact-head gates:
 
 ```text
-passive cut        run 31436799875 — PASS
-endpoint resource  run 31436799815 — PASS
-TT propagation     run 31436799906 — PASS
-combined bound     run 31436799849 — PASS
-infinite modal     run 31436799835 — PASS
-recurrence         run 31436799854 — PASS
-manuscript         run 31436799879, job 93612603414 — PASS
+passive cut        run 31452652657 — PASS
+endpoint resource  run 31452652672 — PASS
+TT propagation     run 31452652787 — PASS
+combined bound     run 31452652636 — PASS
+infinite modal     run 31452652694 — PASS
+recurrence         run 31452652697 — PASS
+PRD manuscript     run 31452652653 — PASS
 ```
 
-Manuscript artifact:
+Compiled artifact from that science SHA:
 
 ```text
-artifact ID: 9081319062
-ZIP size: 271138 bytes
-SHA256: 788801a0bb567b6ae9c559a1bfe1e70c45fc4ac86a041710568241abaf32ad2c
+artifact: experiment02-prd-submission
+artifact ID: 9086872919
+ZIP size: 352219 bytes
+SHA256: 675e6d67baaf6538f34602f0d3a48c81b3dccb07fe4fabd1caf0076db2945738
 ```
 
-The final LaTeX pass produced 10 pages and the workflow found no unresolved references/citations.
-
-## Frequency and geometry convention
+## Canonical conventions
 
 ```text
-omega_0   absolute gravitational carrier angular frequency
-nu        complex-envelope detuning
-B         envelope bandwidth, B/omega_0 << 1
-k_0       omega_0/c
-a_A,a_B   endpoint radii, k_0 a_A,k_0 a_B << 1
-R         separation, k_0 R >> 1
-Omega     upper physical frequency of retained modal sector,
-          Omega=omega_0[1+O(B/omega_0)]
+omega(nu) physical frequency omega_0+nu
+omega_-   minimum physical frequency in measured band
+Omega     upper retained modal frequency
+Rhat      source-receiver direction
+I_Rhat    int rho [r^2-(Rhat.x)^2] d^3x
+Z_Rhat    int rho (Rhat.x)^2 d^3x
+I_2       I_Rhat+Z_Rhat
 Gamma_coh (1/2pi) integral over nu of Tr[T^dag T]
-I_2       int rho r^2 dV about endpoint COM
 ```
-
-## Manuscript and audit status
-
-Active manuscript: `manuscript_v1/`.
-
-Read:
-
-- `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`
-- `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
-- `MANUSCRIPT_V1_ADVERSARIAL_AUDIT_2026-08-10.md`
-- `MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`
-- `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-- `META_REFEREE_SIGNIFICANCE_AUDIT.md`
-
-Current verdict:
-
-> **INTERNAL AI REVIEW: GO. PHYSICS AND LITERATURE-CORRECTED MANUSCRIPT ARE FROZEN AT `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`.**
-
-No theorem broadening is authorized.
 
 ## Priority discipline
 
-Do not use `first`, `new`, `unique`, `unprecedented`, or equivalent priority wording for the complete closure. In particular, do not claim to be the first gravity-mediated communication bound. The strongest accurate statement remains:
-
-> no exact equivalent of the complete passive wave-zone two-ended inertia theorem was found in the inspected primary literature.
+Do not use `first`, `new`, `unique`, `unprecedented`, or equivalent priority wording for the closure. The strongest defensible literature statement is that no exact equivalent was found in the inspected sources.
