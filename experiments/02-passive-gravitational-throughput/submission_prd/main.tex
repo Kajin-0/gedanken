@@ -1,7 +1,7 @@
 \documentclass[aps,prd,reprint,nofootinbib,superscriptaddress,longbibliography]{revtex4-2}
 
 \usepackage{amsmath,amssymb,mathtools,bm,amsthm}
-\usepackage{booktabs}
+\usepackage{array,booktabs,tabularx}
 
 \newcommand{\dd}{\mathrm d}
 \newcommand{\Tr}{\operatorname{Tr}}
@@ -46,7 +46,7 @@ for carrier frequency $\omega_0$, envelope bandwidth $B\ll\omega_0$, compact end
 \input{sections/appendices}
 
 \section*{Research workflow and use of artificial intelligence tools}
-OpenAI ChatGPT was used substantively during the development of this work for scientific reasoning and derivation exploration, literature synthesis, code generation and debugging, numerical cross-checks, adversarial review, and manuscript preparation. The final pre-submission revision used GPT-5.6 Sol. Earlier project sessions also used ChatGPT model configurations, but exact per-session model identifiers were not systematically archived in the repository; no more specific retrospective version list is asserted. The author directed the analyses and retains full responsibility for all scientific claims. AI-assisted outputs were checked through executable regression tests, separate algebraic and numerical cross-checks, and direct comparison with cited primary literature. These checks are internal verification procedures and are not presented as external peer review.
+OpenAI ChatGPT was used substantively during the development of this work for scientific reasoning and derivation exploration, literature synthesis, code generation and debugging, numerical cross-checks, adversarial review, and manuscript preparation. The final pre-submission revision used GPT-5.6 Sol. Earlier project sessions also used ChatGPT model configurations, but exact per-session model identifiers were not systematically archived in the repository; no more specific retrospective version list is asserted. The author directed the analyses and retains full responsibility for all scientific claims. AI-assisted outputs were checked using the repository's regression tests, separate algebraic and numerical cross-checks, and direct comparison with cited primary literature. These checks are internal verification procedures and are not presented as external peer review.
 
 \section*{Data availability}
 The code and computational materials supporting the numerical checks are publicly available in the project repository at the immutable scientific commit \texttt{1ce596493073dbb49e6eb71f1a6df0566ff3c25b}. A persistent archival identifier can be added if an archival release is deposited. No experimental data were created or analyzed in this work.

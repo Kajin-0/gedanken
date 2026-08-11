@@ -37,8 +37,11 @@ The Hilbert--Schmidt operators form a Hilbert space, so vector-valued Plancherel
 
 The repository contains independent numerical regressions designed to violate, rather than merely illustrate, the analytic inequalities.  They are not substitutes for proof.
 
-\begin{center}
-\begin{tabular}{p{0.27\linewidth}p{0.57\linewidth}}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.29\columnwidth}>{\raggedright\arraybackslash}X@{}}
 \toprule
 Check & Adversarial target \\
 \midrule
@@ -49,7 +52,7 @@ Combined theorem & Random passive source/receiver systems driven close to the al
 Infinite modal sector & Increasing truncations of fixed square-summable gravitational ports; Gramian ceiling; finite trace convergence; basis mixing. \\
 Recurrence & Random contractive endpoint reflections and propagation matrices; exact resolvent; scalar phase-aligned saturation. \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
+\endgroup
 
 The first canonical passing runs are recorded in the public repository state files. Two semantic corrections were made during reconstruction: the frequency integrated in $\Gamma_{\rm coh}$ was separated explicitly into envelope detuning $\nu$ versus absolute carrier $\omega_0$, and the TT propagation statement was restricted to a leading wave-zone limsup coefficient rather than assigning the aligned plus-mode subleading correction structure to arbitrary complex quadrupole pairs. A later manuscript adversarial audit further made the retained carrier-scale modal sector, compactness conditions, and band-integral-to-full-line-$H_2$ step explicit.
