@@ -5,6 +5,7 @@ This ledger is authoritative for the current Experiment 02 theorem. Conversation
 ## Status labels
 
 - `ESTABLISHED WITHIN MODEL` — derived and independently checked under explicit assumptions.
+- `ESTABLISHED CONDITIONALLY` — structurally valid if an explicitly stated realization/admissibility condition is supplied; not universal.
 - `FAILED AS A CURRENT CLAIM` — contradicted or outside established scope.
 - `FAILED AS A NOVELTY CLAIM` — valid ingredient, unsafe as an independent novelty claim.
 - `HISTORICAL / PRIOR ART` — established ingredient.
@@ -37,41 +38,48 @@ This ledger is authoritative for the current Experiment 02 theorem. Conversation
 | The `5/4` chained coefficient is sharp at the abstract retained projection-sum level | ESTABLISHED WITHIN MODEL | sector Parseval equality + `|m|=2` propagation saturation |
 | A generic homogeneous elastic body necessarily realizes simultaneous `5/4` saturation | FAILED AS A CURRENT CLAIM | no constitutive realizability proof |
 | Ideal slender bar fundamental occupies `48/pi^4 ~= 0.493` of the leading `|m|=2` resource in its maximum-radiation direction | ESTABLISHED WITHIN MODEL | analytic bar check |
-| Countably infinite separable bounded-port Markov sectors obey the same weighted passive cut when the retained gravitational port is Hilbert--Schmidt | ESTABLISHED WITHIN MODEL | operator extension + infinite-modal regression |
+| Countably infinite separable bounded-port retained sectors obey the same weighted passive cut when the gravitational observation is Hilbert--Schmidt | ESTABLISHED WITHIN MODEL | operator extension + infinite-modal regression |
+| Reduced non-Markovian dynamics automatically lie outside the theorem | FAILED AS A CURRENT CLAIM | memory may arise from eliminating passive harmonic degrees of freedom; see non-Markovian scope audit |
+| A reduced memory-kernel model can be handled by applying the passive cut to an enlarged local-in-time passive realization when the selected maps are admissible and the gravitational observation has finite trace | ESTABLISHED CONDITIONALLY | `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`; `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md` |
+| Every hereditary constitutive law or singular continuum bath admits the required passive admissible enlargement with finite gravitational trace | FAILED AS A CURRENT CLAIM | no universal realization/admissibility/trace proof |
+| A bounded finite crystal is excluded merely because continuum elasticity is used | FAILED AS A CURRENT CLAIM | bounded-domain linear elasticity has a discrete modal spectrum under standard boundary conditions |
+| Unbounded PDE boundary ports are automatically covered by the bounded-operator proof | FAILED AS A CURRENT CLAIM | system-node/admissibility proof required |
+| Unbounded distributed operators are intrinsically incompatible with scattering passivity | FAILED AS A CURRENT CLAIM | passive well-posed beam/Maxwell system-node examples exist in the cited systems literature |
 | Same-two-endpoint passive recurrence changes the leading `R^-2` coefficient | FAILED AS A CURRENT CLAIM | exact resolvent + propagation round-trip scaling |
-| Unbounded PDE boundary ports are automatically covered | FAILED AS A CURRENT CLAIM | admissibility/domain proof required |
-| Genuinely non-Markov continua are covered | FAILED AS A CURRENT CLAIM | outside declared model |
 | Added relays, external cavities, extended phased apertures, near-field exchange, or active feedback are covered | FAILED AS A CURRENT CLAIM | different architecture/physical class |
-| Generic passive `H2`, Fano/Bode matching, Chu--Harrington limits, resonant-mass GW theory, material-response sum rules, directivity, and multiple scattering are new here | HISTORICAL / PRIOR ART | cited literature |
+| Generic passive `H2`, Fano/Bode matching, Chu--Harrington limits, resonant-mass GW theory, material-response sum rules, directivity, generalized-Langevin reduction, passive infinite-dimensional systems, and multiple scattering are new here | HISTORICAL / PRIOR ART | cited literature |
 | The gravity-specific two-ended sector-resolved endpoint-resource + compact-TT closure is an exact known theorem | OPEN — NO EXACT COLLISION FOUND | targeted historical/recent collision audits; no exact inspected match |
 | Priority is proved | FAILED AS A CURRENT CLAIM | negative search is not proof of priority |
 
 ## Authoritative validated science checkpoint
 
 ```text
-science/manuscript SHA: 3bf26c7535919597d711fdcd781e6098b76b5d68
+science/manuscript SHA: bfae23af41aefb3104d639099299b3432b4a14fe
 ```
 
 Exact-head gates:
 
 ```text
-passive cut        run 31452652657 — PASS
-endpoint resource  run 31452652672 — PASS
-TT propagation     run 31452652787 — PASS
-combined bound     run 31452652636 — PASS
-infinite modal     run 31452652694 — PASS
-recurrence         run 31452652697 — PASS
-PRD manuscript     run 31452652653 — PASS
+TT propagation     run 31454245214 — PASS
+endpoint resource  run 31454245215 — PASS
+PRD manuscript     run 31454245216 — PASS
+infinite modal     run 31454245221 — PASS
+recurrence         run 31454245237 — PASS
+combined bound     run 31454245240 — PASS
+passive cut        run 31454245251 — PASS
 ```
 
 Compiled artifact from that science SHA:
 
 ```text
 artifact: experiment02-prd-submission
-artifact ID: 9086872919
-ZIP size: 352219 bytes
-SHA256: 675e6d67baaf6538f34602f0d3a48c81b3dccb07fe4fabd1caf0076db2945738
+artifact ID: 9087453835
+ZIP size: 355267 bytes
+SHA256: 5ef8720af89dd76d515adb852df951aa72d9bb439935638556b4ba4516df2e81
+head SHA: bfae23af41aefb3104d639099299b3432b4a14fe
 ```
+
+The exact-head PDF has 9 pages, embedded fonts, no unresolved references/citations, and passed visual preflight.
 
 ## Canonical conventions
 
