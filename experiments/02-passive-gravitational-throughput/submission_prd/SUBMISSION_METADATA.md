@@ -11,7 +11,7 @@
 ## Author fields — REQUIRED
 
 - Author name: Terence Fisher
-- Affiliation: [INSERT]
+- Affiliation: Brooks Photonics
 - Email: terence@brooks-photonics.com
 - ORCID: [INSERT IF USED]
 - Corresponding author: Terence Fisher
