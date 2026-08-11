@@ -4,19 +4,13 @@
 
 ## 1. Canonical state
 
-Current remote documentation head at creation of this index:
-
-```text
-b20ac0cd2b95fcc011406bc6a47097ccffe99875
-```
-
 Current validated **science/manuscript** checkpoint:
 
 ```text
 bfae23af41aefb3104d639099299b3432b4a14fe
 ```
 
-The later `b20ac0c...` commit is documentation-only. Do not confuse it with a new manuscript checkpoint.
+Later commits may change tests, audits, or recovery documentation without changing the manuscript checkpoint. Always fetch the live `main` head and distinguish documentation/test commits from a validated science/manuscript SHA.
 
 Submission theorem status: **GO / frozen unless a concrete technical defect, direct prior-art collision, or substantive external objection reopens it.**
 
@@ -62,13 +56,14 @@ Gamma_coh lesssim
 min(I_Rhat,A,I_Rhat,B).
 ```
 
-This **supersedes** the former scalar headline
+The former scalar headline remains a **valid looser corollary**:
 
 ```math
+Gamma_coh lesssim
 (25/12) [G omega_0^2/(c^3R^2)] min(I_2,A,I_2,B).
 ```
 
-Do not restore the older coefficient as the strongest theorem.
+It is superseded only as the strongest current leading closure. Do not call the scalar result false, and do not restore it as the strongest theorem unless the sector-resolved refinement fails a future audit.
 
 ## 3. Proof chain that has been independently checked
 
@@ -137,12 +132,13 @@ Relevant file:
 
 **Concern:** multiplying a scalar endpoint quadrupole ceiling by an independently optimized TT directivity ceiling was unnecessarily loose.
 
-**Accepted and materially strengthened.** Resolving STF quadrupole space into `m=0`, `|m|=1`, `|m|=2` before closing the passive trace replaced the old `25/12 * I_2` result with the stronger leading `5/4 * I_Rhat` result.
+**Accepted and materially strengthened.** Resolving STF quadrupole space into `m=0`, `|m|=1`, `|m|=2` before closing the passive trace produced the stronger leading `5/4 * I_Rhat` result while retaining the old `25/12 * I_2` result as a looser scalar corollary.
 
-This is the most important theorem improvement triggered by adversarial review.
+This is the most important theorem improvement triggered by adversarial review and, because it changed a longstanding constant after a context handoff, it is also subject to the dedicated cross-version audit in item L below.
 
-Relevant file:
+Relevant files:
 - `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
+- `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
 
 ### F. Tightness / resonant-bar comparison
 
@@ -199,6 +195,23 @@ Relevant file:
 
 **Accepted as presentation issue.** The introduction was narrowed toward passive resonant transduction, integrated response, and gain-bandwidth structure. Quantum-information papers remain only as contextual prior work; their criteria are not used in the proof.
 
+### L. Context-window continuity / theorem-constant regression audit
+
+**Concern:** the longstanding `25/12` coefficient changed to `5/4` soon after a new session resumed the project, raising the possibility of churn or an unnoticed normalization regression.
+
+**Concern accepted as a change-control issue and re-audited from the pre-change theorem.** The audit found one real process defect: when the sector-resolved theorem was introduced, shorter new sector regressions replaced some broader inherited randomized end-to-end and scalar-resource tests. That loss of coverage was not acceptable.
+
+The mathematical transition was then re-tested independently rather than trusted from the current derivation. The new self-contained regression checks both theorem generations: the original randomized `25/12` end-to-end link, scalar and sector Parseval/Bessel identities, modal mixing, weighted linewidth, TT kernels from direct projector integration, outgoing overlap formulas, and a randomized five-sector end-to-end passive link.
+
+**Disposition:** no scientific contradiction in `5/4` was found. The `25/12 * I_2` inequality still passes as a valid scalar fallback, while `5/4 * I_Rhat` survives as the tighter directional refinement. The important correction was to validation discipline: new theorem tests must accumulate on top of inherited regressions rather than replace them.
+
+Permanent infrastructure:
+- `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
+- `numerics/verify_constant_regression.py`
+- `.github/workflows/experiment02-constant-regression.yml`
+
+The dedicated cross-version workflow passed on documentation/test head `968718c0c96934e1eee44bdd09576ecd35b62c9b` as run `31455758548`. This does **not** create a new manuscript/science checkpoint; the validated manuscript remains `bfae23af...`.
+
 ## 5. Open questions — do not pretend these are solved
 
 1. **Whole-spectrum inertia closure:** remove the retained modal ceiling without an uncontrolled fourth-frequency moment.
@@ -212,7 +225,7 @@ Relevant file:
 Do not reintroduce any of the following as established claims:
 
 - generic passive `H2` mathematics as the novelty;
-- the former `25/12 * I_2` bound as the strongest theorem;
+- the former `25/12 * I_2` bound as the strongest theorem **or** describe it as invalid; it remains the scalar fallback;
 - carrier-frozen propagation as the preferred derivation;
 - an unrestricted all-frequency inertia bound from completeness alone;
 - the on-shell `omega_n^4` linewidth applied unchanged to far-detuned tails;
@@ -220,7 +233,8 @@ Do not reintroduce any of the following as established claims:
 - a numerical identification of `Gamma_coh` with historical absorption cross sections without normalization derivation;
 - a capacity, bit-rate, waiting-time, or noise interpretation of `Gamma_coh`;
 - near-unit endpoint reflectivity as a loophole in the separated far-zone recurrence proof;
-- priority language such as `first`, `unique`, `unprecedented`, or equivalent.
+- priority language such as `first`, `unique`, `unprecedented`, or equivalent;
+- replacement of inherited regressions with narrower tests tailored only to a new decomposition.
 
 ## 7. Validation record for current manuscript checkpoint
 
@@ -252,19 +266,26 @@ SHA256 5ef8720af89dd76d515adb852df951aa72d9bb439935638556b4ba4516df2e81
 
 The exact-head PDF was visually preflighted as 9 pages with embedded fonts and no unresolved references/citations.
 
+Post-checkpoint validation infrastructure additionally includes the cross-version theorem-constant regression. On documentation/test head `968718c0c96934e1eee44bdd09576ecd35b62c9b`, all seven triggered physics/test workflows completed without failure, including cross-version run `31455758548`. These later test/documentation commits do not alter the manuscript PDF.
+
 ## 8. Recovery reading order
 
 After this file, read:
 
 1. `CURRENT_STATE.md` — concise canonical theorem and current research mode.
 2. `CLAIM_LEDGER.md` — established / failed / historical / open claims.
-3. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md` — latest scope correction.
-4. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md` — derivation transition from scalar to sector-resolved theorem. Its recorded SHA is a historical checkpoint, not the current manuscript SHA.
-5. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md` and `CRITICAL_REVIEW_AUDIT_2026-08-10.md` — reviewer objections and independent dispositions.
-6. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`, `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`, `META_REFEREE_SIGNIFICANCE_AUDIT.md` — novelty/significance boundaries.
-7. `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`, `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`, and the endpoint/TT derivation files for proof detail.
-8. `submission_prd/README.md` and `submission_prd/HUMAN_SIGNOFF_CHECKLIST.md` for submission-only status.
+3. `CONSTANT_REGRESSION_AUDIT_2026-08-10.md` — mandatory cross-version audit of the `25/12 -> 5/4` transition and permanent theorem change-control rules.
+4. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md` — latest scope correction.
+5. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md` — derivation transition from scalar to sector-resolved theorem. Its recorded SHA is a historical checkpoint, not the current manuscript SHA.
+6. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md` and `CRITICAL_REVIEW_AUDIT_2026-08-10.md` — reviewer objections and independent dispositions.
+7. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`, `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`, `META_REFEREE_SIGNIFICANCE_AUDIT.md` — novelty/significance boundaries.
+8. `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`, `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`, and the endpoint/TT derivation files for proof detail.
+9. `submission_prd/README.md` and `submission_prd/HUMAN_SIGNOFF_CHECKLIST.md` for submission-only status.
 
 ## 9. Operating rule for the next agent
 
-Before changing science, identify the exact current objection and check whether it already appears in this index or the claim ledger. Do not repeat a dead-end path merely because an older derivation file predates the current theorem. If a new objection survives independent derivation/literature checking, update this index together with the relevant audit, claim ledger, current state, and manuscript checkpoint so handoff remains lossless.
+Before changing science, identify the exact current objection and check whether it already appears in this index or the claim ledger. Do not repeat a dead-end path merely because an older derivation file predates the current theorem.
+
+Any proposed change to a coefficient, normalization, endpoint resource, asymptotic order, or headline inequality must first preserve and pass inherited regressions, add an independent regression for the new step, include an end-to-end test for an end-to-end theorem, and document its exact relationship to the old theorem. A context reset or new reviewer prompt is not evidence that a validated result needs changing.
+
+If a new objection survives independent derivation/literature checking, update this index together with the relevant audit, claim ledger, current state, and manuscript checkpoint so handoff remains lossless.
