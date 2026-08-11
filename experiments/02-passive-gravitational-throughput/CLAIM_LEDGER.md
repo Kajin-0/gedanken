@@ -27,7 +27,7 @@ This ledger is authoritative for the current Experiment 02 theorem. Conversation
 | For retained `omega_n <= Omega`, the fourth-frequency sector moment is bounded by `Omega^4` times its sector resource | ESTABLISHED WITHIN MODEL | frequency ceiling + sector completeness |
 | Completeness alone bounds an unrestricted fourth modal-frequency moment | FAILED AS A CURRENT CLAIM | square-summable projections need not have finite fourth moment |
 | A far-detuned mode may be assigned its on-shell `omega_n^4` linewidth unchanged at a low drive frequency | FAILED AS A CURRENT CLAIM | on-shell linewidth is outside validity of that substitution |
-| Exact outgoing compact-TT sector powers are the current `eta_2,eta_1,eta_0` formulas | ESTABLISHED WITHIN MODEL | exact angular integrals + TT regression |
+| Exact outgoing compact-TT sector powers are the current `eta_2,eta_1,eta_0` formulas | ESTABLISHED WITHIN MODEL | exact angular integrals + TT regression + independent Appendix-C re-derivation |
 | For `z>=3`, `eta_2 >= eta_1,eta_0` | ESTABLISHED WITHIN MODEL | direct comparison + regression |
 | Leading compact-TT power normalization is `25/[16(kR)^2]` in the optimized `|m|=2` sector | ESTABLISHED WITHIN MODEL | stationary phase + exact sector formula |
 | The current finite-band theorem must freeze propagation at `omega_0` | FAILED AS A CURRENT CLAIM | propagation is retained as `P_g[omega(nu),R]` through measured-band sector suprema |
@@ -58,15 +58,25 @@ This ledger is authoritative for the current Experiment 02 theorem. Conversation
 
 ## Validation and continuity rule
 
-Validated science/manuscript checkpoint:
+Underlying validated science/theorem checkpoint:
 
 ```text
 bfae23af41aefb3104d639099299b3432b4a14fe
 ```
 
-The dedicated physics workflows and PRD manuscript build passed on that science state. The exact-head PDF was visually preflighted.
+Validated final PRD submission-manuscript checkpoint:
 
-A later cross-version audit found that some inherited broad regressions had been replaced during the sector transition. That was a **validation-process defect**, not a demonstrated physics defect. The inherited scalar/end-to-end checks were restored in `numerics/verify_constant_regression.py`, which now tests the `25/12` fallback and `5/4` refinement together. Future coefficient-sensitive changes must preserve that accumulated coverage.
+```text
+6f7a60b3b05dea9f288b1b07e6f2e55acaf34e83
+```
+
+The later checkpoint changes only Acknowledgments/Data Availability and internal submission-support documentation. It does not change any claim in the ledger.
+
+At `6f7a60b...`, the PRD manuscript compile and all seven physics/regression workflows passed, including the cross-version constant regression. The exact-head PDF was visually preflighted; pages 1-8 are pixel-identical to the prior validated PDF, and only page 9 changed in the final disclosure/data-availability region.
+
+A prior cross-version audit found that some inherited broad regressions had been replaced during the sector transition. That was a **validation-process defect**, not a demonstrated physics defect. The inherited scalar/end-to-end checks were restored in `numerics/verify_constant_regression.py`, which tests the `25/12` fallback and `5/4` refinement together. Future coefficient-sensitive changes must preserve that accumulated coverage.
+
+See `FINAL_SUBMISSION_PREFLIGHT_2026-08-11.md` for final run IDs, artifact/PDF hashes, policy checks, and human submission blockers.
 
 ## Canonical conventions
 

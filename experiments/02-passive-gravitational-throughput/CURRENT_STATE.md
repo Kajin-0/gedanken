@@ -1,12 +1,16 @@
 # Current State — Experiment 02
 
-**Status:** **SECTOR-RESOLVED THEOREM VALIDATED; REDUCED-MEMORY/CONTINUUM SCOPE CLARIFIED; SUBMISSION SCIENCE FROZEN AT `bfae23af41aefb3104d639099299b3432b4a14fe`.**
+**Status:** **SECTOR-RESOLVED THEOREM VALIDATED; REDUCED-MEMORY/CONTINUUM SCOPE CLARIFIED; SCIENCE FROZEN AT `bfae23af41aefb3104d639099299b3432b4a14fe`; FINAL PRD SUBMISSION MANUSCRIPT VALIDATED AT `6f7a60b3b05dea9f288b1b07e6f2e55acaf34e83`.**
+
+The later submission checkpoint changes only Acknowledgments/Data Availability and submission-support documentation for current APS policy. It does not change the theorem, equations, scientific sections, appendices, bibliography, or numerical regressions relative to the science checkpoint.
 
 Primary recovery records:
 
 - `RECOVERY_INDEX.md`
 - `CLAIM_LEDGER.md`
 - `ASSUMPTIONS.md`
+- `FINAL_SUBMISSION_PREFLIGHT_2026-08-11.md`
+- `THIRD_CRITICAL_REVIEW_AUDIT_2026-08-11.md`
 - `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
 - `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
 - `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
@@ -191,15 +195,45 @@ when `p_+p_-<1`. Since `p_+,p_-=O(R^-1)` in the separated far zone, recurrence d
 
 ## 9. Validation state
 
-Validated science/manuscript SHA:
+Underlying validated science/theorem SHA:
 
 ```text
 bfae23af41aefb3104d639099299b3432b4a14fe
 ```
 
-The dedicated physics workflows and PRD manuscript workflow passed on that exact science state, and the resulting 9-page PDF was visually preflighted with embedded fonts and no unresolved references/citations.
+Validated final submission-manuscript SHA:
 
-After the `25/12 -> 5/4` continuity concern, a separate cross-version audit restored the inherited scalar/end-to-end regressions that had been lost during the sector transition. The new independent regression checks both theorem generations together and has passed on subsequent documentation/test heads. This later validation infrastructure does not change the manuscript checkpoint.
+```text
+6f7a60b3b05dea9f288b1b07e6f2e55acaf34e83
+```
+
+The final submission checkpoint passed the PRD compile plus all seven physics/regression workflows on that exact head:
+
+```text
+PRD compile                run 31497750953
+cross-version constant     run 31497750922
+recurrence                 run 31497750907
+infinite modal             run 31497750904
+TT propagation             run 31497750892
+endpoint resource          run 31497750903
+combined bound             run 31497750916
+passive cut                run 31497750968
+```
+
+Exact-head artifact:
+
+```text
+experiment02-prd-submission
+artifact ID 9103729907
+artifact ZIP sha256 a31ee561019906b28e2e8ecb2ca25f9ce98b1ef0260e1f354198ce2a073b6b98
+PDF sha256 ea23e976ed9c1b3f210539c9310b4e4ad80e137eee7cbd82098fedbb9f3906bf
+```
+
+The 9-page PDF was visually preflighted with embedded fonts, no unresolved references/placeholders, and no internal project terminology. A pixel comparison with the previous validated PDF found pages 1-8 identical and only page 9 changed in the Acknowledgments/Data Availability region.
+
+After the `25/12 -> 5/4` continuity concern, a separate cross-version audit restored inherited scalar/end-to-end regressions that had been lost during the sector transition. The final submission checkpoint passes that accumulated test as well.
+
+See `FINAL_SUBMISSION_PREFLIGHT_2026-08-11.md` for the complete final package audit.
 
 ## 10. What survived / failed / remains open
 
@@ -213,4 +247,4 @@ After the `25/12 -> 5/4` continuity concern, a separate cross-version audit rest
 
 ## 11. Research mode
 
-The hostile reviews triggered legitimate reopenings only where concrete objections survived checking. Those reopenings are now closed at the declared model level. Further theorem work requires a new concrete technical issue, direct prior-art collision, or substantive external objection. Otherwise restrict work to submission preparation and verification.
+The hostile reviews triggered legitimate reopenings only where concrete objections survived checking. Those reopenings are now closed at the declared model level. The final package is technically submission-ready after direct human sign-off. Further theorem work requires a new concrete technical issue, direct prior-art collision, or substantive external objection; otherwise do not churn the manuscript.

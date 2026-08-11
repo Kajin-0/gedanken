@@ -1,9 +1,12 @@
 # AGENTS.md — Experiment 02 Recovery and Freeze Protocol
 
 **Experiment:** `02-passive-gravitational-throughput`  
-**Mode:** validated sector-resolved theorem / externally responsive submission track.  
-**Current validated science/manuscript SHA:** `bfae23af41aefb3104d639099299b3432b4a14fe`.  
-**Internal verdict:** **GO — preserve the sector-resolved theorem unless a concrete technical objection reopens it.**
+**Mode:** validated sector-resolved theorem / final PRD submission track.  
+**Underlying validated science/theorem SHA:** `bfae23af41aefb3104d639099299b3432b4a14fe`.  
+**Validated final submission-manuscript SHA:** `6f7a60b3b05dea9f288b1b07e6f2e55acaf34e83`.  
+**Internal verdict:** **GO — submission ready after human sign-off; preserve the sector-resolved theorem unless a concrete technical objection reopens it.**
+
+The later submission checkpoint changes only Acknowledgments/Data Availability and submission-support documentation. It does not alter the theorem or scientific derivation relative to the underlying science checkpoint.
 
 This file is the first operational file an automated contributor should read after the repository-level `AGENTS.md`.
 
@@ -32,16 +35,18 @@ Read current state in this order:
 1. `RECOVERY_INDEX.md`
 2. `CURRENT_STATE.md`
 3. `CLAIM_LEDGER.md`
-4. `ASSUMPTIONS.md`
-5. `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
-6. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
-7. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
-8. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md`
-9. `submission_prd/CRITICAL_REVIEW_AUDIT_2026-08-10.md`
-10. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
-11. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-12. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
-13. `submission_prd/README.md`
+4. `FINAL_SUBMISSION_PREFLIGHT_2026-08-11.md`
+5. `THIRD_CRITICAL_REVIEW_AUDIT_2026-08-11.md`
+6. `ASSUMPTIONS.md`
+7. `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
+8. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
+9. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
+10. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md`
+11. `submission_prd/CRITICAL_REVIEW_AUDIT_2026-08-10.md`
+12. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
+13. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+14. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
+15. `submission_prd/README.md`
 
 For operator-scope provenance also read `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`. For recurrence details read `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`.
 
@@ -153,6 +158,8 @@ Only `|m|=2` survives at order `R^-2`; hence the leading resource is `I_Rhat`, n
 
 The `5/4` coefficient is sharp at the abstract chained projection-sum level, but no claim is made that an unconstrained homogeneous elastic body realizes simultaneous saturation of every step.
 
+Appendix-C finite-distance formulas have been checked by two independent routes: the numerical TT regression and a later direct symbolic integration from the normalized sector kernels. Both recover the same outgoing amplitudes and `eta_m` closed forms.
+
 ## 6. High-frequency and reduced-memory boundary
 
 The modal rate above is an **on-shell linewidth at the mode's own frequency**. It must not be imported unchanged into a far-detuned low-frequency tail. Such tails require frequency-dependent elastic and radiative response.
@@ -186,17 +193,47 @@ The publication candidate is the gravity-specific **two-ended sector-resolved en
 
 ## 9. Validation state
 
-Science/manuscript SHA
+Underlying science/theorem SHA:
 
 ```text
 bfae23af41aefb3104d639099299b3432b4a14fe
 ```
 
-passed the dedicated physics workflows and the PRD manuscript compile workflow. The exact-head PDF is 9 pages, visually preflighted, with embedded fonts and no unresolved references/citations.
+Validated final submission-manuscript SHA:
 
-A later cross-version audit was triggered specifically because the longstanding `25/12` coefficient changed after a context-window handoff. It found a **test-coverage regression** in the theorem-transition workflow but no scientific contradiction in `5/4`. The audit restored inherited scalar/end-to-end coverage and added `numerics/verify_constant_regression.py` plus the dedicated cross-version workflow.
+```text
+6f7a60b3b05dea9f288b1b07e6f2e55acaf34e83
+```
+
+The final submission checkpoint passed the PRD compile and all seven physics/regression workflows on the exact head:
+
+```text
+PRD compile                run 31497750953
+cross-version constant     run 31497750922
+recurrence                 run 31497750907
+infinite modal             run 31497750904
+TT propagation             run 31497750892
+endpoint resource          run 31497750903
+combined bound             run 31497750916
+passive cut                run 31497750968
+```
+
+Artifact:
+
+```text
+experiment02-prd-submission
+artifact ID 9103729907
+artifact ZIP sha256 a31ee561019906b28e2e8ecb2ca25f9ce98b1ef0260e1f354198ce2a073b6b98
+PDF sha256 ea23e976ed9c1b3f210539c9310b4e4ad80e137eee7cbd82098fedbb9f3906bf
+```
+
+The exact-head PDF is 9 pages, visually preflighted, with embedded fonts, no unresolved references/placeholders, and no internal project terminology. Render comparison against the prior validated science PDF found pages 1-8 pixel-identical; only page 9 changed in Acknowledgments/Data Availability.
+
+A cross-version audit was triggered specifically because the longstanding `25/12` coefficient changed after a context-window handoff. It found a **test-coverage regression** in the theorem-transition workflow but no scientific contradiction in `5/4`. The audit restored inherited scalar/end-to-end coverage and added `numerics/verify_constant_regression.py` plus the dedicated cross-version workflow.
 
 The scalar theorem and sector refinement must now be tested together whenever coefficient-sensitive science changes.
+
+See `FINAL_SUBMISSION_PREFLIGHT_2026-08-11.md` for the package-level validation and remaining direct-human blockers.
 
 ## 10. Theorem change-control — mandatory
 
@@ -222,10 +259,10 @@ Whenever a future objection changes the scientific interpretation or theorem sta
 3. `CLAIM_LEDGER.md` — claim-level disposition;
 4. `ASSUMPTIONS.md` — current theorem class and exclusions;
 5. the relevant dedicated audit/checkpoint file — detailed reasoning and validation;
-6. current submission helper files if their theorem wording, scale example, or scope has become stale.
+6. current submission helper files if their theorem wording, scale example, scope, or submission-policy state has become stale.
 
-If the manuscript changes, also record the exact validated manuscript SHA and workflow/artifact state. Do not let a new result live only in conversation history.
+If the manuscript changes, also record the exact validated manuscript SHA and workflow/artifact state. Distinguish an editorial submission-manuscript checkpoint from the underlying science/theorem checkpoint when the scientific body is unchanged. Do not let a new result live only in conversation history.
 
 ## 12. Current research mode
 
-Do not add theorem extensions merely because they are imaginable. Reopen the science only for a concrete technical defect, a direct prior-art collision, or a substantive specialist/journal objection. Otherwise restrict work to submission preparation and verification.
+The project is now in **human sign-off / APS upload mode**. Do not add theorem extensions merely because they are imaginable. Reopen the science only for a concrete technical defect, a direct prior-art collision, or a substantive specialist/journal objection. Otherwise do not churn the scientific manuscript.
