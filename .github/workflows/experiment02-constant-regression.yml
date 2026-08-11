@@ -1,0 +1,33 @@
+name: Experiment 02 cross-version constant regression
+
+on:
+  push:
+    paths:
+      - 'experiments/02-passive-gravitational-throughput/**'
+      - '.github/workflows/experiment02-constant-regression.yml'
+  pull_request:
+    paths:
+      - 'experiments/02-passive-gravitational-throughput/**'
+      - '.github/workflows/experiment02-constant-regression.yml'
+
+jobs:
+  constant-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/02-passive-gravitational-throughput/numerics/requirements.txt
+
+      - name: Install pinned dependencies
+        working-directory: experiments/02-passive-gravitational-throughput/numerics
+        run: python -m pip install -r requirements.txt
+
+      - name: Verify old and new theorem constants together
+        working-directory: experiments/02-passive-gravitational-throughput/numerics
+        run: python verify_constant_regression.py
