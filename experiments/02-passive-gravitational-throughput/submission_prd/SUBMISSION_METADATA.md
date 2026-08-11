@@ -10,11 +10,11 @@
 
 ## Author fields — REQUIRED
 
-- Author name: [INSERT]
+- Author name: Terence Fisher
 - Affiliation: [INSERT]
-- Email: [INSERT]
+- Email: terence@brooks-photonics.com
 - ORCID: [INSERT IF USED]
-- Corresponding author: [INSERT]
+- Corresponding author: Terence Fisher
 
 ## Suggested subject framing
 
