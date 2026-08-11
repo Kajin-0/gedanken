@@ -5,7 +5,7 @@
 **Current validated science/manuscript SHA:** `bfae23af41aefb3104d639099299b3432b4a14fe`.  
 **Internal verdict:** **GO — preserve the sector-resolved theorem unless a concrete technical objection reopens it.**
 
-This file is the first operational file an automated contributor should read after the repository-level `AGENTS.md`.
+This file is the first operational file an automated contributor should read after the repository-level `AGENTS.md`. Immediately after this file, read `RECOVERY_INDEX.md`; it is the single-entry map of the theorem history, attempted angles, rejected claims, validation state, and open fronts.
 
 ## 1. Live-state discipline
 
@@ -29,17 +29,21 @@ The physics article itself must **never mention the repository, GitHub, commit h
 
 Read first:
 
-1. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
-2. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
-3. `CURRENT_STATE.md`
-4. `CLAIM_LEDGER.md`
-5. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md`
-6. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
-7. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-8. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
-9. `submission_prd/README.md`
+1. `RECOVERY_INDEX.md`
+2. `CURRENT_STATE.md`
+3. `CLAIM_LEDGER.md`
+4. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
+5. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
+6. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md`
+7. `CRITICAL_REVIEW_AUDIT_2026-08-10.md`
+8. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
+9. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+10. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
+11. `submission_prd/README.md`
 
-For operator-scope provenance also read `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`. Older derivation documents remain useful provenance, but any occurrence of the former scalar `25/12 * I_2` closure is superseded by the sector-resolved theorem below.
+For operator-scope provenance also read `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`. For recurrence details read `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`. Older derivation documents remain useful provenance, but any occurrence of the former scalar `25/12 * I_2` closure is superseded by the sector-resolved theorem below.
+
+The `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md` file records the earlier theorem-transition checkpoint `3bf26c...`; the current validated manuscript checkpoint is `bfae23af...` after the non-Markovian/continuum scope clarification. Do not mistake the older checkpoint SHA for the current manuscript state.
 
 ## 4. Canonical theorem
 
@@ -189,6 +193,17 @@ head SHA: bfae23af41aefb3104d639099299b3432b4a14fe
 
 The exact-head PDF is 9 pages, visually preflighted, with embedded fonts and no unresolved references/citations.
 
-## 10. Current research mode
+## 10. Documentation discipline
+
+Whenever a future objection changes the scientific interpretation or theorem state, update **all four** handoff layers in the same work:
+
+1. `RECOVERY_INDEX.md` — chronology, tried/rejected/open angles;
+2. `CURRENT_STATE.md` — concise canonical state;
+3. `CLAIM_LEDGER.md` — claim-level disposition;
+4. the relevant dedicated audit/checkpoint file — detailed reasoning and validation.
+
+If the manuscript changes, also record the exact validated manuscript SHA and workflow/artifact state. Do not let a new result live only in conversation history.
+
+## 11. Current research mode
 
 Do not add theorem extensions merely because they are imaginable. Reopen the science only for a concrete technical defect, a direct prior-art collision, or a substantive specialist/journal objection. Otherwise restrict work to submission preparation and verification.
