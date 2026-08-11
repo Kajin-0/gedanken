@@ -1,9 +1,13 @@
 # Current State — Experiment 02
 
-**Status:** **SECTOR-RESOLVED THEOREM VALIDATED; NON-MARKOVIAN/CONTINUUM SCOPE CLARIFIED; SUBMISSION SCIENCE FROZEN AT `bfae23af41aefb3104d639099299b3432b4a14fe`.**
+**Status:** **SECTOR-RESOLVED THEOREM VALIDATED; REDUCED-MEMORY/CONTINUUM SCOPE CLARIFIED; SUBMISSION SCIENCE FROZEN AT `bfae23af41aefb3104d639099299b3432b4a14fe`.**
 
 Primary recovery records:
 
+- `RECOVERY_INDEX.md`
+- `CLAIM_LEDGER.md`
+- `ASSUMPTIONS.md`
+- `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
 - `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
 - `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
 
@@ -15,9 +19,9 @@ Primary recovery records:
 \operatorname{Tr}[T^\dagger(\nu)T(\nu)]\,d\nu.
 ```
 
-`Gamma_coh` is a coherent-transfer spectral area with units `s^-1`, not an information capacity or bit rate.
+`Gamma_coh` is a coherent-transfer spectral area with units `s^-1`, not an information capacity, bit rate, detector sensitivity, waiting time, or noise PSD.
 
-Use physical band frequency `omega(nu)=omega_0+nu`, lower band edge `omega_->0`, retained modal ceiling `Omega`, compact endpoint radii `a_A,a_B`, and separation axis `Rhat`.
+Use physical frequency `omega(nu)=omega_0+nu`, lower and upper measured-band physical frequencies `omega_-`,`omega_+`, retained modal ceiling `Omega`, compact endpoint radii `a_A,a_B`, and separation axis `Rhat`.
 
 Define
 
@@ -52,7 +56,7 @@ where `etambar` is the supremum over the actual measured band of the exact outgo
 
 This form retains propagation variation over the measured band; it does not freeze the propagator at `omega_0`.
 
-## 3. Far-zone theorem
+## 3. Far-zone theorem and scalar fallback
 
 The exact outgoing sector powers are
 
@@ -62,7 +66,7 @@ eta_1(z)=25(z^6-3z^4+36)/(4 z^10),
 eta_0(z)=225(z^4+3z^2+9)/(4 z^10),
 ```
 
-with `z=omega R/c`. Their leading orders are `R^-2`, `R^-4`, and `R^-6`, respectively. Therefore only `|m|=2` survives at leading far-zone power order.
+with `z=omega R/c`. Their leading orders are `R^-2`, `R^-4`, and `R^-6` in power. Therefore only `|m|=2` survives at leading far-zone power order.
 
 The rigorous asymptotic theorem is
 
@@ -85,11 +89,32 @@ min(I_Rhat,A,I_Rhat,B).
 }
 ```
 
-This replaces the older `25/12 * min(I_2A,I_2B)` headline.
+The former scalar leading result remains a valid looser corollary:
 
-## 4. Sector-resolved endpoint completeness
+```math
+Gamma_coh
+lesssim
+[25 G omega_0^2/(12 c^3 R^2)]
+min(I_2,A,I_2,B).
+```
 
-For STF quadrupole projections relative to `Rhat`,
+Thus the theorem history is **refinement, not contradiction**. If a future defect is found specifically in the sector-weighted closure, the independently preserved scalar theorem is the fallback.
+
+## 4. Endpoint resource
+
+The on-shell gravitational energy linewidth is
+
+```math
+kappa_g,n=[G omega_n^4/(5 c^5)](q_n:q_n)/mu_n.
+```
+
+Scalar completeness:
+
+```math
+sum_n (q_n:q_n)/mu_n <= (20/3) I_2.
+```
+
+Sector completeness relative to `Rhat`:
 
 ```math
 sum_n Q_2,n^2/mu_n <= 4 I_Rhat,
@@ -97,9 +122,9 @@ sum_n Q_1,n^2/mu_n <= 2 I_Rhat + 4 Z_Rhat,
 sum_n Q_0,n^2/mu_n <= (2/3) I_Rhat + (8/3) Z_Rhat.
 ```
 
-The three right-hand sides sum to `(20/3) I_2`. For a complete displacement basis each unweighted sector projection sum is a Parseval equality.
+The three sector resources sum to `(20/3) I_2`. For a complete displacement basis each unweighted sector projection sum is a Parseval equality.
 
-This resolves the earlier concern that the final constant multiplied independently optimized endpoint and propagation ceilings. The leading `5/4` coefficient arises after projecting the endpoint resource into the actually propagating `|m|=2` sector.
+Resolving the endpoint resource before the propagation cut removes the unnecessary independent maximization that produced the looser scalar headline.
 
 ## 5. Tightness checks
 
@@ -126,25 +151,19 @@ so
 Gamma_coh lesssim G omega_0^2 M a^2/(2 c^3 R^2).
 ```
 
-At `M=1000 kg`, `a=1 m`, `f_0=1 kHz`, and `k_0R=100`, the leading value is approximately `2.15e-39 s^-1`; the exact finite-`z` sector assembly differs by about `+0.020%` before finite-source multipole corrections.
+At `M=1000 kg`, `a=1 m`, `f_0=1 kHz`, and `k_0R=100`, the leading value is approximately `2.15e-39 s^-1`.
 
 ## 6. High-frequency/off-resonant boundary
 
-The modal expression
+The modal linewidth above is on shell at `omega_n`. It cannot be assigned unchanged to the low-frequency tail of a far-detuned mode.
 
-```math
-kappa_g,n=[G omega_n^4/(5 c^5)](q_n:q_n)/mu_n
-```
+The retained-modal ceiling remains a real mathematical assumption: scalar or sector completeness controls an unweighted modal projection sum, not its fourth frequency moment. A whole-spectrum inertia-only theorem therefore needs additional constitutive regularity, microscopic cutoff information, or a different frequency-domain argument.
 
-is an on-shell linewidth at `omega_n`. It cannot be assigned unchanged to the low-frequency tail of a far-detuned mode. Such tails require the frequency-dependent elastic/radiative response.
+This is currently the strongest unresolved mathematical frontier.
 
-However, the retained-modal ceiling remains a real mathematical assumption: scalar or sector completeness controls an unweighted modal projection sum, not its fourth frequency moment. A whole-spectrum inertia-only theorem therefore needs additional constitutive regularity, microscopic cutoff information, or a different frequency-domain argument.
+## 7. Reduced-memory / continuum boundary
 
-## 7. Non-Markovian / continuum boundary
-
-The earlier blanket phrase `genuinely non-Markov continua are excluded` is superseded.
-
-A bounded finite crystal is not automatically a frequency continuum: at harmonic atomistic level it has finitely many degrees of freedom, and standard bounded-domain linear elasticity has a discrete normal-mode spectrum. Moreover, exact memory kernels can be generated by eliminating passive harmonic degrees of freedom from a larger local-in-time system.
+A bounded finite crystal is not automatically a frequency continuum, and a reduced memory kernel can arise by eliminating passive degrees of freedom from a larger local-in-time system.
 
 Therefore:
 
@@ -152,15 +171,23 @@ Therefore:
 reduced memory / non-Markovianity alone != escape from the passive cut
 ```
 
-If the eliminated degrees of freedom can be restored to a well-posed passive enlarged state realization, and selected drive/readout maps are admissible and the gravitational observation has the required finite trace, the Gramian cut can be applied on that enlarged state space.
+If the eliminated degrees of freedom can be restored to a well-posed passive enlarged realization, the selected maps are bounded or otherwise admissible, and the gravitational observation has the required finite trace, the Gramian cut can be applied on the enlarged state space.
 
 What is not proved is universal applicability to arbitrary hereditary constitutive laws, singular continuum baths, or unbounded distributed systems without an explicit passive realization, admissibility proof, and gravity-specific finite-trace/resource closure.
 
 This clarification changes no theorem coefficient and does not remove the independent retained-frequency limitation in Sec. 6.
 
-## 8. Generic finite-band fallback
+## 8. Infinite retained sectors and recurrence
 
-Even without the inertia closure, retained compact-TT propagation has rank at most five and passive endpoint scattering blocks are contractions, so a finite measured band cannot acquire an unbounded transfer area merely from uncontrolled internal complexity. The resulting generic bound is much looser and contains no useful endpoint material resource.
+Countably infinite separable retained modal spaces are covered under the stated well-posed passive / admissible selected-map / finite gravitational-trace hypotheses.
+
+Repeated passive returns between the same two separated compact endpoints satisfy the exact resolvent estimate
+
+```math
+||P_eff|| <= p_+/(1-p_+p_-)
+```
+
+when `p_+p_-<1`. Since `p_+,p_-=O(R^-1)` in the separated far zone, recurrence does not modify the leading `R^-2` power coefficient. The first possible correction to the upper ceiling is `O(R^-4)` in power.
 
 ## 9. Validation state
 
@@ -170,30 +197,20 @@ Validated science/manuscript SHA:
 bfae23af41aefb3104d639099299b3432b4a14fe
 ```
 
-All six physics workflows and the PRD manuscript workflow passed on that exact SHA:
+The dedicated physics workflows and PRD manuscript workflow passed on that exact science state, and the resulting 9-page PDF was visually preflighted with embedded fonts and no unresolved references/citations.
 
-```text
-TT propagation     run 31454245214 — PASS
-endpoint resource  run 31454245215 — PASS
-PRD manuscript     run 31454245216 — PASS
-infinite modal     run 31454245221 — PASS
-recurrence         run 31454245237 — PASS
-combined bound     run 31454245240 — PASS
-passive cut        run 31454245251 — PASS
-```
+After the `25/12 -> 5/4` continuity concern, a separate cross-version audit restored the inherited scalar/end-to-end regressions that had been lost during the sector transition. The new independent regression checks both theorem generations together and has passed on subsequent documentation/test heads. This later validation infrastructure does not change the manuscript checkpoint.
 
-Artifact:
+## 10. What survived / failed / remains open
 
-```text
-name: experiment02-prd-submission
-artifact ID: 9087453835
-ZIP size: 355267 bytes
-SHA256: 5ef8720af89dd76d515adb852df951aa72d9bb439935638556b4ba4516df2e81
-head SHA: bfae23af41aefb3104d639099299b3432b4a14fe
-```
+**Survived:** passive Gramian cut, correct quadrupole linewidth, scalar and sector completeness, `25/16` TT leading normalization, exact outgoing sector powers, two-ended minimum cut, infinite retained-sector extension under stated operator conditions, recurrence leading-order result.
 
-The exact-head manuscript is 9 pages. It was rendered and visually preflighted after compilation; fonts are embedded and the workflow reported no unresolved references/citations.
+**Superseded but still valid:** scalar `25/12 * I_2` headline; carrier-frozen propagation derivation; older blanket reduced-memory scope wording.
 
-## 10. Research mode
+**Rejected:** reviewer second-derivative quadrupole power, universal `1/Q` integrated Paik-Wagoner claim, bar-axis maximum-radiation claim, recurrence blow-up from endpoint reflectivity alone, generic ingredient novelty/priority claims.
 
-The hostile reviews triggered two legitimate reopenings: first the sector-resolved geometry tightening, then the reduced-memory/continuum scope clarification. Both are now closed at the declared model level. Further theorem work requires a new concrete technical issue, direct prior-art collision, or substantive external objection.
+**Open:** whole-spectrum fourth-frequency closure, constitutive realizability/joint saturation, broader unbounded distributed-system admissibility, practical engineering relevance, and any noise/information-theory layer.
+
+## 11. Research mode
+
+The hostile reviews triggered legitimate reopenings only where concrete objections survived checking. Those reopenings are now closed at the declared model level. Further theorem work requires a new concrete technical issue, direct prior-art collision, or substantive external objection. Otherwise restrict work to submission preparation and verification.

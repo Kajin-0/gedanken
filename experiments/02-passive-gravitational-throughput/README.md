@@ -1,10 +1,10 @@
 # Experiment 02 — Passive Gravitational Throughput
 
-**Status:** internally frozen theorem and literature-corrected manuscript; external specialist/journal review pending.  
-**Authoritative validated science/manuscript SHA:** `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`.  
+**Status:** validated sector-resolved theorem; PRD submission science frozen unless a concrete technical defect, direct prior-art collision, or substantive external objection reopens it.  
+**Authoritative validated science/manuscript SHA:** `bfae23af41aefb3104d639099299b3432b4a14fe`.  
 **Current submission target:** Physical Review D Research Article.
 
-## Result
+## Current result
 
 For two separated compact passive nonrelativistic linear-harmonic matter systems in weak leading mass-quadrupole gravity, define
 
@@ -14,71 +14,116 @@ For two separated compact passive nonrelativistic linear-harmonic matter systems
 \operatorname{Tr}[T^\dagger(\nu)T(\nu)]\,d\nu.
 ```
 
-Within the declared retained-sector model,
+`Gamma_coh` has units `s^-1`. It is a coherent-transfer spectral area / band-limited squared `H2` norm, not an information capacity, bit rate, detector sensitivity, waiting time, or strain-noise PSD.
+
+Choose the source-receiver direction `Rhat` and define
+
+```math
+I_Rhat = \int \rho [r^2-(Rhat\cdot x)^2] d^3x,
+Z_Rhat = \int \rho (Rhat\cdot x)^2 d^3x,
+I_2 = I_Rhat+Z_Rhat.
+```
+
+Within the retained passive endpoint realization and outgoing compact-quadrupole TT propagation model, the strongest finite-band closure is
+
+```math
+\Gamma_{\rm coh}
+\le
+\frac{G\Omega^4}{5c^5}
+\min[\mathcal G_A(R),\mathcal G_B(R)],
+```
+
+with the exact measured-band `m=0,|m|=1,|m|=2` propagation weights contained in `mathcal G_X`.
+
+The rigorous far-zone coefficient is
+
+```math
+\boxed{
+\limsup_{R\to\infty}R^2\Gamma_{\rm coh}
+\le
+\frac{5G\Omega^4}{4c^3\omega_-^2}
+\min(I_{\hat R,A},I_{\hat R,B}).
+}
+```
+
+For a retained carrier-scale narrow band,
 
 ```math
 \boxed{
 \Gamma_{\rm coh}
 \lesssim
-\frac{25G\omega_0^2}{12c^3R^2}
-\min(I_{2,A},I_{2,B})
+\frac{5G\omega_0^2}{4c^3R^2}
+\min(I_{\hat R,A},I_{\hat R,B}).
 }
 ```
 
-with
+The former scalar result remains a **valid looser corollary**, not a failed theorem:
 
 ```math
-I_2=\int\rho r^2\,d^3x.
+\Gamma_{\rm coh}
+\lesssim
+\frac{25G\omega_0^2}{12c^3R^2}
+\min(I_{2,A},I_{2,B}).
 ```
 
-`Gamma_coh` has units `s^-1`. It is a coherent-transfer spectral area, not an information capacity, bit rate, or detector strain-noise spectral density.
+The transition `25/12 * I_2 -> 5/4 * I_Rhat` is a directional refinement obtained by retaining the STF propagation sectors before closing the endpoint resource. The dedicated cross-version regression preserves the older scalar theorem as a fallback and independently tests the newer refinement.
 
-## Physical interpretation
+## What survived the derivation chain
 
-The theorem is a passive resource/no-go statement. Resonances, high `Q`, additional retained modes, passive unitary mode mixing, endpoint matching, and repeated passive returns can reshape the transfer spectrum, but they cannot raise its leading integrated ceiling beyond the smaller endpoint gravitational resource and the compact transverse-traceless propagation channel.
+The following remain load-bearing:
 
-The intended significance is conceptual rather than near-term experimental. For ordinary macroscopic mechanical frequencies, simultaneously satisfying compact endpoints and `k_0R >> 1` can require very large separations, while the resulting gravitational transfer is extremely weak. The manuscript therefore does **not** present the theorem as a practical detector-sensitivity result or a near-term measurement proposal.
+- the passive selected-port `H2`/Gramian cut;
+- the on-shell quadrupole linewidth `kappa_g,n = G omega_n^4(q_n:q_n)/(5c^5 mu_n)`;
+- scalar completeness `sum (q:q)/mu <= (20/3) I_2`;
+- sector completeness about `Rhat`;
+- the compact TT leading coefficient `25/16` and exact outgoing finite-distance sector powers;
+- the two-ended minimum endpoint cut;
+- countably infinite retained realizations under the stated well-posed/admissible finite-trace conditions;
+- same-two-endpoint passive recurrence leaving the leading `R^-2` coefficient unchanged.
 
-Do not interpret `1/Gamma_coh` as a waiting time for one bit; no information-capacity theorem or signaling protocol has been derived here.
+## What was superseded or rejected
+
+- Carrier-frozen propagation is no longer the strongest finite-band derivation; the current theorem retains `P_g[omega(nu),R]` over the measured band.
+- `25/12 * I_2` is no longer the strongest leading closure, but remains valid as the scalar fallback.
+- Reduced non-Markovianity is not by itself an exclusion: an admissible enlarged passive realization may remain covered.
+- A universal whole-spectrum inertia-only closure is **not** established; completeness does not control the unrestricted fourth modal-frequency moment.
+- Reviewer claims based on a second time derivative of the quadrupole, a universal `1/Q` integrated Paik-Wagoner scaling, bar-axis maximum radiation, or near-unit endpoint reflectivity defeating the far-zone recurrence bound were rejected after independent checks.
+- Generic passive gain-bandwidth theory, resonant-mass response, material sum rules, directivity, multiple scattering, and gravity-mediated communication are historical ingredients, not novelty claims.
 
 ## Scope
 
-The established theorem requires
+The current theorem requires weak linearized gravity, nonrelativistic leading mass-quadrupole matter, passive linear endpoint dynamics, a retained modal ceiling `omega_n <= Omega`, compact endpoints across the measured band, and separated outgoing propagation with `omega_- R/c >> 1`.
 
-```text
-B/omega_0 << 1
-k_0 a_A, k_0 a_B << 1
-k_0 R >> 1
-omega_n <= Omega = omega_0[1+O(B/omega_0)]
-finite or countably infinite bounded-port Markov retained modal sectors
+The direct operator proof covers finite or countably infinite well-posed passive retained realizations with the required bounded/admissible selected maps and finite gravitational observation trace. Reduced memory can remain inside the logic after lifting to such an enlarged passive realization. Arbitrary hereditary media, singular continuum baths, or unbounded distributed control/observation models are not universally covered without a separate realization/admissibility/trace proof.
+
+Still outside scope are uncontrolled whole-spectrum endpoint dynamics, active gain/pumping/feedback, extended phased apertures, added relays or external cavities, reactive near-field exchange, relativistic/nonlinear matter, higher-multipole-dominated operation, and strong-field/curved-background focusing.
+
+## Scale and interpretation
+
+For a uniform sphere, `I_Rhat=2Ma^2/5` and `Z_Rhat=Ma^2/5`, so the leading equal-endpoint form is
+
+```math
+\Gamma_{\rm coh}\lesssim
+\frac{G\omega_0^2Ma^2}{2c^3R^2}.
 ```
 
-It explicitly excludes uncontrolled high-frequency off-resonant sectors, broad absolute-frequency operation represented by one carrier coefficient, active gain/pumping/feedback, extended phased apertures, added gravitational relays or external cavities, reactive near-field exchange, arbitrary unbounded PDE boundary ports, genuinely non-Markov continua, and relativistic/nonlinear/higher-multipole-dominated regimes.
+For `M=1000 kg`, `a=1 m`, `f_0=1 kHz`, and `k_0R=100`, this is approximately `2.15e-39 s^-1`. The result is therefore primarily a structural passive-resource theorem, not a near-term detector-performance claim.
 
-## Validation status
+## Recovery order
 
-The theorem/manuscript SHA above passed the six dedicated physics regressions and the manuscript build on that exact head. The repository also contains hostile prior-art, normalization, recurrence, infinite-modal, and manuscript-scope audits.
+Read current state in this order:
 
-This is **internal validation**, not external verification. The next epistemic step is specialist/journal peer review. A clean internal pipeline cannot establish priority or substitute for independent expert review.
+1. `AGENTS.md`
+2. `RECOVERY_INDEX.md`
+3. `CURRENT_STATE.md`
+4. `CLAIM_LEDGER.md`
+5. `ASSUMPTIONS.md`
+6. `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
+7. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
+8. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
+9. reviewer and prior-art audits listed in `RECOVERY_INDEX.md`
+10. `submission_prd/README.md`
 
-## Start here
+`INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`, `FINITE_TWO_ENDED_INERTIA_BOUND.md`, `NARROWBAND_NORMALIZATION_AUDIT.md`, and other dated derivation/audit files preserve earlier validated stages. Their older coefficients or scope language are historical checkpoints and must not be mistaken for the current theorem.
 
-1. `INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md` — frozen theorem/manuscript checkpoint and exact-head validation.
-2. `CURRENT_STATE.md` — current theorem, proof spine, exclusions, and research stop condition.
-3. `CLAIM_LEDGER.md` — established, failed, historical, and open claims.
-4. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md` — recent gravity-communication near-collision audit.
-5. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md` — broader historical collision audit.
-6. `META_REFEREE_SIGNIFICANCE_AUDIT.md` — significance/referee-risk analysis.
-7. `manuscript_v1/` — authoritative frozen manuscript source.
-8. `SUBMISSION_STRATEGY_2026-08-10.md` — journal-fit and submission strategy.
-9. `submission_prd/` — PRD-specific submission copy and submission materials.
-10. `external_review/` — blind-first Stage-A and Stage-B/C packets for independent scrutiny.
-11. `AGENTS.md` — repository recovery and freeze protocol.
-
-`QUESTION.md`, `HYPOTHESES.md`, and early derivation files preserve the research history. Their provisional language should not be mistaken for the current claim state.
-
-## Provenance
-
-Conversation history is not repository evidence. Only files, commits, workflow results, and primary literature actually verified against the repository/remote count as provenance.
-
-The complete two-ended closure is the only plausible publication contribution. No exact equivalent was found in the inspected literature, but that negative search is not proof of priority.
+The physics article itself must never mention repository infrastructure, commit hashes, source control, CI, or internal project bookkeeping.

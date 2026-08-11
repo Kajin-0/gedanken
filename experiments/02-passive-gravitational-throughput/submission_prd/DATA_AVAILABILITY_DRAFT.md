@@ -1,17 +1,19 @@
 # Data Availability Draft — Physical Review D
 
-APS treats code/software needed to verify or replicate reported results as research data and requires a Data Availability Statement.
+## Current manuscript statement
 
-## Preferred final statement after archival DOI exists
+Use the scientific statement already carried by the PRD manuscript:
 
-> The code and computational materials that support the numerical checks reported in this article are openly available in [ARCHIVE NAME] at [DOI]. The scientific manuscript and verification state correspond to repository commit `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`. No experimental data were created or analyzed in this work.
+> No experimental data were created or analyzed in this work. Numerical calculations reported in Appendix C are verification checks of the analytic results rather than a data set.
 
-## Interim statement if submitted before a DOI is minted
+This wording matches what the paper actually reports. The work is analytic; the numerical calculations are regression/verification checks rather than a research data set on which the conclusions depend.
 
-> The code and computational materials that support the numerical checks reported in this article are publicly available in the project repository at immutable commit `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`. A persistent archival identifier will be added when available. No experimental data were created or analyzed in this work.
+## Submission-style rule
 
-## Recommended action
+Do **not** place GitHub, repository names, commit hashes, source-control state, CI/workflow identifiers, internal experiment labels, or other project bookkeeping in the physics article's Data Availability statement.
 
-Before final submission, archive the exact submission source and verification materials in Zenodo, OSF, Figshare, or another persistent repository and cite the resulting DOI in the manuscript/reference list and APS submission form.
+If the journal submission portal separately asks for code, software, or reproducibility information beyond the manuscript Data Availability statement, answer that portal field deliberately at submission time after checking the current APS requirement. Keep such administrative information separate from the scientific article unless the journal explicitly requires otherwise.
 
-Do not cite moving `main` as the reproducibility target when an immutable commit or DOI is available.
+## Human check before submission
+
+Confirm that the final compiled manuscript contains the statement above and no internal project identifiers.

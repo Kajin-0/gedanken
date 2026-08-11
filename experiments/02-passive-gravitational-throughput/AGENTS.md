@@ -5,7 +5,7 @@
 **Current validated science/manuscript SHA:** `bfae23af41aefb3104d639099299b3432b4a14fe`.  
 **Internal verdict:** **GO — preserve the sector-resolved theorem unless a concrete technical objection reopens it.**
 
-This file is the first operational file an automated contributor should read after the repository-level `AGENTS.md`. Immediately after this file, read `RECOVERY_INDEX.md`; it is the single-entry map of the theorem history, attempted angles, rejected claims, validation state, and open fronts.
+This file is the first operational file an automated contributor should read after the repository-level `AGENTS.md`.
 
 ## 1. Live-state discipline
 
@@ -27,26 +27,25 @@ The physics article itself must **never mention the repository, GitHub, commit h
 
 ## 3. Canonical recovery order
 
-Read first:
+Read current state in this order:
 
 1. `RECOVERY_INDEX.md`
 2. `CURRENT_STATE.md`
 3. `CLAIM_LEDGER.md`
-4. `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
-5. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
-6. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
-7. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md`
-8. `CRITICAL_REVIEW_AUDIT_2026-08-10.md`
-9. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
-10. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
-11. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
-12. `submission_prd/README.md`
+4. `ASSUMPTIONS.md`
+5. `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`
+6. `NON_MARKOVIAN_CONTINUUM_SCOPE_AUDIT_2026-08-10.md`
+7. `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md`
+8. `SECOND_CRITICAL_REVIEW_AUDIT_2026-08-10.md`
+9. `submission_prd/CRITICAL_REVIEW_AUDIT_2026-08-10.md`
+10. `RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`
+11. `HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`
+12. `META_REFEREE_SIGNIFICANCE_AUDIT.md`
+13. `submission_prd/README.md`
 
 For operator-scope provenance also read `INFINITE_DIMENSIONAL_BOUNDED_PORT_EXTENSION.md`. For recurrence details read `PASSIVE_TWO_ENDPOINT_RECURRENCE.md`.
 
-Older derivation documents remain useful provenance. The former scalar `25/12 * I_2` closure is **not false**: it remains a valid looser compatibility corollary. It is superseded only as the strongest current leading theorem by the sector-resolved result below.
-
-The `SECTOR_RESOLVED_THEOREM_CHECKPOINT_2026-08-10.md` file records the earlier theorem-transition checkpoint `3bf26c...`; the current validated manuscript checkpoint is `bfae23af...` after the non-Markovian/continuum scope clarification. Do not mistake the older checkpoint SHA for the current manuscript state.
+Older derivation and checkpoint files remain useful provenance. Their older theorem statements are historical states, not instructions to restore them. In particular, the scalar `25/12 * I_2` closure is **not false**; it remains a valid looser compatibility corollary. It is superseded only as the strongest current leading theorem by the sector-resolved result below.
 
 ## 4. Canonical theorem
 
@@ -55,6 +54,7 @@ Use
 ```text
 omega(nu) = omega_0 + nu        physical frequency over measured band
 omega_-                         infimum physical frequency in measured band
+omega_+                         supremum physical frequency in measured band
 Omega                           upper retained endpoint modal frequency
 R                               endpoint separation
 a_A,a_B                         compact endpoint radii
@@ -110,16 +110,28 @@ lesssim
 min(I_2,A,I_2,B).
 ```
 
-The logical relationship is refinement, not contradiction:
+Logical relationship:
 
 ```text
-25/12 * I_2   = valid scalar fallback obtained after discarding STF-sector information
+25/12 * I_2   = valid scalar fallback after discarding STF-sector information
 5/4  * I_Rhat = stronger directional leading closure retaining the propagating |m|=2 sector
 ```
 
 ## 5. Essential proof facts
 
-Sector-resolved endpoint completeness about the propagation axis gives
+The generic passive selected-port Gramian cut survives unchanged. The on-shell gravitational linewidth is
+
+```math
+kappa_g,n = [G omega_n^4/(5 c^5)] (q_n:q_n)/mu_n.
+```
+
+Scalar completeness is
+
+```math
+sum_n (q_n:q_n)/mu_n <= (20/3) I_2.
+```
+
+Sector-resolved completeness about the propagation axis is
 
 ```math
 sum_n Q_2,n^2/mu_n <= 4 I_Rhat,
@@ -127,7 +139,7 @@ sum_n Q_1,n^2/mu_n <= 2 I_Rhat + 4 Z_Rhat,
 sum_n Q_0,n^2/mu_n <= (2/3) I_Rhat + (8/3) Z_Rhat.
 ```
 
-The three sums recover `(20/3) I_2`. For a complete displacement basis the unweighted sector projection sums are Parseval equalities.
+The three sector resources recover `(20/3) I_2`. For a complete displacement basis the unweighted projection sums are Parseval equalities.
 
 Exact outgoing compact-TT sector power singular values, `z=omega R/c`, are
 
@@ -139,30 +151,24 @@ eta_0 = 225(z^4+3z^2+9)/(4 z^10).
 
 Only `|m|=2` survives at order `R^-2`; hence the leading resource is `I_Rhat`, not scalar `I_2`.
 
-The final coefficient `5/4` is sharp at the abstract chained projection-sum level, but no claim is made that an unconstrained homogeneous elastic body realizes the simultaneously saturating modal arrangement.
+The `5/4` coefficient is sharp at the abstract chained projection-sum level, but no claim is made that an unconstrained homogeneous elastic body realizes simultaneous saturation of every step.
 
 ## 6. High-frequency and reduced-memory boundary
 
-The modal rate
-
-```math
-kappa_g,n = [G omega_n^4/(5 c^5)] (q_n:q_n)/mu_n
-```
-
-is an **on-shell linewidth at the mode's own frequency**. It must not be imported unchanged into a far-detuned low-frequency tail. Such tails require frequency-dependent elastic and radiative response.
+The modal rate above is an **on-shell linewidth at the mode's own frequency**. It must not be imported unchanged into a far-detuned low-frequency tail. Such tails require frequency-dependent elastic and radiative response.
 
 Completeness alone does not remove the retained-frequency ceiling: an unweighted square-summable projection sequence need not have a finite fourth frequency moment. A genuine all-spectrum inertia-only theorem requires additional elastic/constitutive regularity, a microscopic cutoff, or a different frequency-domain closure.
 
-Do **not** interpret `Markov` as a claim that every reduced coordinate must have memoryless dynamics. A nonlocal memory kernel generated by eliminating passive harmonic degrees of freedom can be lifted back to a larger local-in-time passive realization. If that enlarged realization is well posed and the relevant drive/readout maps are admissible and the gravitational observation has the required finite trace, the passive-cut argument applies on the enlarged state space.
+Do **not** interpret `Markov` as a claim that every reduced coordinate must have memoryless dynamics. A memory kernel generated by eliminating passive harmonic degrees of freedom can be lifted back to a larger local-in-time passive realization. If that enlarged realization is well posed, the selected maps are bounded or otherwise admissible, and the gravitational observation has the required finite trace, the passive-cut argument applies on the enlarged state space.
 
-Therefore reduced non-Markovianity by itself is **not** an escape from the theorem. What remains unproved is a universal extension to arbitrary hereditary constitutive laws, singular continuum baths, or unbounded distributed systems for which no admissible passive realization and finite gravitational-trace/resource closure has been established.
+Therefore reduced non-Markovianity by itself is **not** an escape. What remains unproved is a universal extension to arbitrary hereditary constitutive laws, singular continuum baths, or unbounded distributed systems for which no admissible passive realization and finite gravitational-trace/resource closure has been established.
 
 ## 7. Scope that must not be dropped
 
 Do not silently broaden to:
 
-- uncontrolled whole-spectrum endpoint dynamics under the same on-shell retained trace;
-- arbitrary hereditary or singular continuum reduced models without an admissible passive state realization and finite gravitational trace;
+- uncontrolled whole-spectrum endpoint dynamics under the same inertia-only trace;
+- arbitrary hereditary or singular continuum reduced models without an admissible passive realization and finite gravitational trace;
 - unbounded PDE boundary-control/observation ports without system-node/admissibility analysis;
 - extended phased apertures;
 - added gravitational relays or external cavities;
@@ -186,31 +192,11 @@ Science/manuscript SHA
 bfae23af41aefb3104d639099299b3432b4a14fe
 ```
 
-passed all six physics workflows and the PRD manuscript compile workflow:
+passed the dedicated physics workflows and the PRD manuscript compile workflow. The exact-head PDF is 9 pages, visually preflighted, with embedded fonts and no unresolved references/citations.
 
-```text
-TT propagation     run 31454245214 — PASS
-endpoint resource  run 31454245215 — PASS
-PRD manuscript     run 31454245216 — PASS
-infinite modal     run 31454245221 — PASS
-recurrence         run 31454245237 — PASS
-combined bound     run 31454245240 — PASS
-passive cut        run 31454245251 — PASS
-```
+A later cross-version audit was triggered specifically because the longstanding `25/12` coefficient changed after a context-window handoff. It found a **test-coverage regression** in the theorem-transition workflow but no scientific contradiction in `5/4`. The audit restored inherited scalar/end-to-end coverage and added `numerics/verify_constant_regression.py` plus the dedicated cross-version workflow.
 
-Compiled PRD artifact:
-
-```text
-artifact: experiment02-prd-submission
-artifact ID: 9087453835
-ZIP size: 355267 bytes
-SHA256: 5ef8720af89dd76d515adb852df951aa72d9bb439935638556b4ba4516df2e81
-head SHA: bfae23af41aefb3104d639099299b3432b4a14fe
-```
-
-The exact-head PDF is 9 pages, visually preflighted, with embedded fonts and no unresolved references/citations.
-
-A later cross-version audit was triggered specifically because the longstanding `25/12` coefficient changed after a context-window handoff. That audit found a **test-coverage regression** in the theorem-transition workflow but no scientific contradiction in `5/4`. It added `numerics/verify_constant_regression.py` and a dedicated cross-version workflow. Read `CONSTANT_REGRESSION_AUDIT_2026-08-10.md` before changing any coefficient or normalization.
+The scalar theorem and sector refinement must now be tested together whenever coefficient-sensitive science changes.
 
 ## 10. Theorem change-control — mandatory
 
@@ -229,12 +215,14 @@ A context reset, new agent, new reviewer prompt, or aesthetically cleaner deriva
 
 ## 11. Documentation discipline
 
-Whenever a future objection changes the scientific interpretation or theorem state, update **all four** handoff layers in the same work:
+Whenever a future objection changes the scientific interpretation or theorem state, update all current handoff layers in the same work:
 
 1. `RECOVERY_INDEX.md` — chronology, tried/rejected/open angles;
 2. `CURRENT_STATE.md` — concise canonical state;
 3. `CLAIM_LEDGER.md` — claim-level disposition;
-4. the relevant dedicated audit/checkpoint file — detailed reasoning and validation.
+4. `ASSUMPTIONS.md` — current theorem class and exclusions;
+5. the relevant dedicated audit/checkpoint file — detailed reasoning and validation;
+6. current submission helper files if their theorem wording, scale example, or scope has become stale.
 
 If the manuscript changes, also record the exact validated manuscript SHA and workflow/artifact state. Do not let a new result live only in conversation history.
 
