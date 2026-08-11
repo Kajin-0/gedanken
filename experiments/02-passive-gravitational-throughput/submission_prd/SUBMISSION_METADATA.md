@@ -5,7 +5,7 @@
 - Journal: Physical Review D
 - Article type: Research Article
 - Title: *An Inertia-Controlled Spectral-Area Bound for Passive Far-Zone Gravitational Transduction*
-- Validated science/manuscript checkpoint: `bfae23af41aefb3104d639099299b3432b4a14fe` **(internal tracking only; do not place source-control identifiers in the physics article or cover letter)**
+- Validated science/manuscript checkpoint: **pending final editorial-policy compile at submission preflight** (internal tracking only; do not place source-control identifiers in the physics article or cover letter)
 - Submission-layer source: this `submission_prd/` directory
 
 ## Author
@@ -13,7 +13,7 @@
 - Author name: Terence Fisher
 - Affiliation: Brooks Photonics
 - Email: terence@brooks-photonics.com
-- ORCID: [INSERT IF USED]
+- ORCID: [REQUIRED FOR CORRESPONDING AUTHOR — PROVIDE/AUTHENTICATE IN APS SYSTEM]
 - Corresponding author: Terence Fisher
 
 ## Suggested subject framing
@@ -71,10 +71,14 @@ Recommended referees: [OPTIONAL — HUMAN SELECTION]
 
 Excluded referees: [OPTIONAL — HUMAN SELECTION WITH REASON]
 
+## Data/software availability
+
+The manuscript states that no experimental data were created or analyzed and that numerical verification code supporting Appendix D is available from the author upon reasonable request. Do not place project source-control identifiers in the article.
+
 ## Internal reproducibility record
 
 Internal source-control and workflow identifiers may be kept here for project recovery, but must not be copied into the physics manuscript or cover letter. The current recovery record is `RECOVERY_INDEX.md`; theorem-constant compatibility is recorded in `CONSTANT_REGRESSION_AUDIT_2026-08-10.md`.
 
 ## Disclosure
 
-The manuscript contains a substantive-AI disclosure. It identifies OpenAI ChatGPT, identifies GPT-5.6 Sol for the final pre-submission revision, and states transparently that exact earlier per-session model identifiers were not systematically archived rather than inventing a retrospective list.
+The manuscript contains a substantive-AI disclosure in the Acknowledgments. It identifies OpenAI ChatGPT, identifies GPT-5.6 Sol for the final pre-submission revision, describes the scientific and manuscript tasks assisted, and explains author direction and verification. Exact earlier per-session model identifiers were not systematically archived; no retrospective list is invented.
