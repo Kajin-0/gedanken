@@ -31,17 +31,17 @@ The theorem is internally frozen, but actual submission requires direct human re
 
 - [ ] Re-run the dedicated physics verification scripts from a clean checkout/environment.
 - [ ] Run the cross-version theorem-constant regression that simultaneously preserves the `25/12` fallback and tests the `5/4` refinement.
-- [ ] Confirm the checks pass on the intended submission science state or on a documentation-only descendant whose manuscript source is byte-identical.
+- [ ] Confirm the checks pass on the intended submission science state or on a documentation-only descendant whose scientific source is byte-identical.
 - [ ] Verify that no newer theorem test replaced or narrowed inherited regression coverage.
-- [ ] Confirm the manuscript Data Availability statement says that no experimental data were created or analyzed and that Appendix-C numerics are verification checks rather than a data set.
+- [ ] Confirm the manuscript Data Availability statement says that no experimental data were created or analyzed and that numerical verification code supporting Appendix D is available from the author upon reasonable request.
 - [ ] Confirm the compiled physics article contains no repository, commit, source-control, CI, or internal experiment identifiers.
 
 ## AI disclosure
 
-- [ ] Verify that the manuscript disclosure accurately states the substantive uses of ChatGPT.
+- [ ] Verify that the manuscript Acknowledgments accurately states the substantive uses of ChatGPT.
 - [ ] Verify `GPT-5.6 Sol` is correct for the final pre-submission revision.
 - [ ] If additional earlier model identifiers can be recovered reliably, add them; otherwise retain the explicit statement that exact earlier per-session identifiers were not systematically archived.
-- [ ] Verify the disclosure accurately states how outputs were checked.
+- [ ] Verify the disclosure states how the author directed and checked AI-assisted outputs.
 - [ ] Do not describe automated self-checks as external peer review.
 
 ## Submission metadata
@@ -49,7 +49,7 @@ The theorem is internally frozen, but actual submission requires direct human re
 - [x] Author: Terence Fisher.
 - [x] Affiliation: Brooks Photonics.
 - [x] Email: terence@brooks-photonics.com.
-- [ ] Add ORCID if desired/required.
+- [ ] Provide and authenticate the corresponding-author ORCID in the APS submission system (required by current APS policy).
 - [ ] Confirm the manuscript is not simultaneously under consideration elsewhere.
 - [ ] Confirm any preprint/submission history.
 - [ ] Select recommended/excluded referees only after deliberate human consideration, if desired.
