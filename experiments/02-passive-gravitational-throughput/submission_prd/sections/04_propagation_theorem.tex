@@ -26,7 +26,7 @@ obeys $w_q\le5/(8\pi)$. The corresponding directivity is therefore
 \boxed{D_q=4\pi w_q\le\frac52 .}
 \label{eq:Dmax}
 \end{equation}
-The maximum is attained by a plus quadrupole observed along its symmetry-normal direction. Gravitational-antenna directivity itself is historical \cite{Hirakawa1976}; Eq.~\eqref{eq:Dmax} is used only to fix the present normalized propagation coefficient.
+The maximum is attained by a plus quadrupole observed along its symmetry-normal direction \cite{Hirakawa1976}.
 
 Choose unit-norm TT polarization tensors $\epsilon^\lambda(\hat n)$ and define normalized angular amplitudes by
 \begin{equation}
@@ -48,7 +48,7 @@ Cauchy--Schwarz together with $w_q\le5/(8\pi)$ yields
 (kR)^2|t_{BA}|^2\le\frac{25}{16} .
 }
 \end{equation}
-Optimizing over normalized compact source and receiver superpositions gives the operator form
+The stationary-phase step is uniform over normalized compact quadrupoles: the complex STF quadrupole space is finite dimensional, its unit sphere is compact, and the normalized angular amplitudes and their required angular derivatives are uniformly bounded on that sphere. A coherent superposition of compact source modes produces another STF quadrupole in the same finite-dimensional space. The same estimate therefore holds before optimization over source and receiver superpositions, giving the operator form
 \begin{equation}
 \boxed{
 \limsup_{kR\rightarrow\infty}
@@ -89,10 +89,11 @@ As subblocks of passive scattering matrices, $\|R_A\|_{\op},\|R_B\|_{\op}\le1$. 
 whenever $p_+p_-<1$. For reciprocal propagation, $p_+=p_-=p$ and $\eta=p^2$, so
 \begin{equation}
 \|P_{\rm eff}\|_{\op}^2
-\le\frac{\eta}{(1-\eta)^2} .
+\le\frac{\eta}{(1-\eta)^2}
+=\eta+2\eta^2+O(\eta^3).
 \end{equation}
-Since $\eta=O[(kR)^{-2}]$, recurrence changes the \emph{upper ceiling} only at subleading power order and
+Thus constructive recurrence can raise the finite-distance transfer above its single-pass value while remaining passive, but the first possible increase in the upper ceiling is $O(\eta^2)=O[(kR)^{-4}]$. Since the single-pass term is $O[(kR)^{-2}]$, recurrence cannot alter the leading coefficient, and
 \begin{equation}
 \limsup_{kR\rightarrow\infty}(kR)^2\|P_{\rm eff}\|_{\op}^2\le\frac{25}{16} .
 \end{equation}
-This is not an equality for the actual recurrent transfer: destructive interference may reduce it. The scattering composition is established network theory \cite{Redheffer1962}; its role here is only to close a potential passive gravitational loophole.
+Destructive interference may instead reduce the actual recurrent transfer. The scattering composition is established network theory \cite{Redheffer1962}; the point here is only that same-two-endpoint passive recurrence does not open a leading-order loophole.

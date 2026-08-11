@@ -4,11 +4,11 @@
 
 - Journal: Physical Review D
 - Article type: Research Article
-- Title: *An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction*
-- Scientific source SHA: `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`
+- Title: *An Inertia-Controlled Spectral-Area Bound for Passive Far-Zone Gravitational Transduction*
+- Frozen theorem/source SHA: `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`
 - Submission-layer source: this `submission_prd/` directory
 
-## Author fields — REQUIRED
+## Author
 
 - Author name: Terence Fisher
 - Affiliation: Brooks Photonics
@@ -26,11 +26,15 @@ Do not classify the paper primarily as quantum information or detector instrumen
 
 ## One-sentence significance
 
-Within a compact narrowband passive wave-zone class, arbitrary passive resonant complexity cannot increase the frequency-integrated gravitational transfer beyond a two-ended ceiling fixed by endpoint scalar second mass moments and transverse-traceless propagation.
+Within a compact narrowband passive wave-zone class, arbitrary passive resonant complexity can reshape but cannot increase the frequency-integrated gravitational power-transmission spectral area beyond a two-ended ceiling fixed by the smaller endpoint scalar second mass moment and transverse-traceless propagation.
+
+## Metric discipline
+
+`Gamma_coh` is a band-limited squared `H2` norm / power-transmissivity spectral area with units `s^-1`. It is not a bit rate, information capacity, detector sensitivity, or strain-noise PSD.
 
 ## Novelty boundary
 
-Claim only the complete two-ended closure. Do not claim novelty for resonant-mass integrated response, gravitational-antenna modal theory, material sum rules, passive `H2` methods, multiple scattering, gravity-mediated communication in general, or the intermediate `20/3`, `4/3`, and `25/16` ingredients in isolation.
+Present the contribution as the complete two-ended far-zone inertia closure. Historical ingredients include resonant-mass integrated response, gravitational-antenna modal theory, material sum rules, passive `H2` methods, multiple scattering, and gravity-mediated communication in general. Do not make a priority claim from a negative literature search.
 
 ## Submission-history fields
 
@@ -48,9 +52,9 @@ Excluded referees: [OPTIONAL — HUMAN SELECTION WITH REASON]
 ## Reproducibility
 
 - Public repository: `Kajin-0/gedanken`
-- Frozen science SHA: `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`
-- Archival DOI: [INSERT AFTER DEPOSITION]
+- Frozen theorem/source SHA: `1ce596493073dbb49e6eb71f1a6df0566ff3c25b`
+- Archival DOI: [INSERT AFTER DEPOSITION, IF USED]
 
 ## Disclosure
 
-The substantive-AI disclosure is mandatory under current APS policy. Complete `AI_DISCLOSURE_DRAFT.md` before submission.
+The manuscript now contains a non-placeholder substantive-AI disclosure. It identifies OpenAI ChatGPT, identifies GPT-5.6 Sol for the final pre-submission revision, and states transparently that exact earlier per-session model identifiers were not systematically archived rather than inventing a retrospective list.

@@ -22,17 +22,29 @@ q_{n,ij}
 \right)\dd^3x .
 \label{eq:qn}
 \end{equation}
-For a harmonic mode of physical frequency $\omega_n$, the standard quadrupole power formula gives the gravitational energy-decay rate
+For a real normal mode with $\xi_n(t)=\Re[\xi_{0,n}e^{-i\omega_nt}]$, the time-averaged quadrupole power is
+\begin{equation}
+\overline P_{g,n}
+=\frac{G}{5c^5}\overline{\dddot Q_{ij}\dddot Q_{ij}}
+=\frac{G\omega_n^6}{10c^5}|\xi_{0,n}|^2(q_n:q_n),
+\end{equation}
+while the conserved harmonic-mode energy is
+\begin{equation}
+E_n=\frac12\mu_n\omega_n^2|\xi_{0,n}|^2.
+\end{equation}
+Their ratio therefore gives the gravitational energy-decay rate
 \begin{equation}
 \boxed{
 \kappa_{g,n}
+=\frac{\overline P_{g,n}}{E_n}
 =\frac{G\omega_n^4}{5c^5}
 \frac{q_n:q_n}{\mu_n} .
 }
 \label{eq:kappan}
 \end{equation}
+For a complex modal basis the same expression uses the corresponding Hermitian contraction $q_n^*:q_n$.
 
-The cumulative resource follows from one elementary completeness bound. Introduce the vector influence fields
+The cumulative resource follows from one completeness bound. Introduce the vector influence fields
 \begin{equation}
 (g^{ij})_k
 =\delta_{ik}x_j+\delta_{jk}x_i
@@ -45,14 +57,14 @@ so that $q_{n,ij}=\langle w_n,g^{ij}\rangle_\rho$. Direct contraction gives
 }
 \label{eq:20over3}
 \end{equation}
-For the normalized modes $\phi_n=w_n/\sqrt{\mu_n}$, Bessel's inequality applied componentwise yields
+For the normalized orthonormal modes $\phi_n=w_n/\sqrt{\mu_n}$, Bessel's inequality is applied separately to each fixed influence field $g^{ij}$:
 \begin{align}
 \sum_n\frac{q_n:q_n}{\mu_n}
 &\le
 \int_V\rho\sum_{i,j,k}|(g^{ij})_k|^2\dd^3x \\
 &=\frac{20}{3}I_2 .
 \end{align}
-Therefore
+No orthogonality among the different $g^{ij}$ fields is required. For a complete displacement basis the corresponding Parseval relation saturates this unweighted projection sum; truncating the retained modal set can only decrease it. Therefore
 \begin{equation}
 \boxed{
 \sum_n\frac{q_n:q_n}{\mu_n}\le\frac{20}{3}I_2 .
@@ -84,4 +96,4 @@ The theorem uses the retained carrier-scale sector of Eq.~\eqref{eq:retainedsect
 \end{equation}
 This replacement is not a statement about arbitrary endpoint modes at all physical frequencies. In particular, modes with $\omega_n\gg\omega_0$ can have off-resonant tails inside the measured envelope band while carrying gravitational rates proportional to their own $\omega_n^4$. Such sectors are outside the simple carrier-scale closure unless their contribution is separately bounded.
 
-Neither the existence of an integrated gravitational response nor the general modal/sum-rule philosophy is new. Paik and Wagoner calculated resonant-mass absorption cross sections \cite{PaikWagoner1976}; Aguiar's review explicitly discusses the integrated cross section and notes that adding a resonant transducer produces two normal modes while retaining a finite mass/material scaling \cite{Aguiar2011}; and gravitational material-response dispersion and sum rules have been derived microscopically \cite{Srivastava2003}. Accordingly, Eqs.~\eqref{eq:20over3}--\eqref{eq:kappasum} are used here as proof lemmas, not as standalone novelty claims.
+The integrated-response and modal ingredients have close precedents in resonant-mass antenna theory and gravitational material-response sum rules \cite{PaikWagoner1976,Aguiar2011,Srivastava2003}. Their role here is to reduce the retained gravitational coupling trace of either endpoint to the same scalar matter resource $I_2$ before the two-ended propagation cut is applied.

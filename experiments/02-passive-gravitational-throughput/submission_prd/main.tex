@@ -12,7 +12,7 @@
 
 \begin{document}
 
-\title{An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction}
+\title{An Inertia-Controlled Spectral-Area Bound for Passive Far-Zone Gravitational Transduction}
 
 \author{Terence Fisher}
 \email{terence@brooks-photonics.com}
@@ -25,7 +25,7 @@ We derive a frequency-integrated upper bound on coherent transfer between two se
 \begin{equation}
 \Gamma_{\rm coh}=\frac{1}{2\pi}\int_{\mathcal B_\nu}\dd\nu\,\Tr[T^\dagger(\nu)T(\nu)].
 \end{equation}
-Passivity bounds this spectral area by the smaller total gravitational coupling trace of the two endpoints. For compact nonrelativistic linear-harmonic matter, mass-weighted modal completeness gives a cumulative quadrupole resource bounded by the scalar second mass moment $I_2=\int\rho r^2\dd^3x$. Normalized transverse-traceless quadrupole radiation has maximum directivity $5/2$, which gives the leading separated-wave-zone propagation ceiling $25/[16(k_0R)^2]$. Combining these results yields
+For energy-normalized ports this is the band-limited $H_2$ spectral area: the integral of power transmissivity over detuning. It therefore measures cumulative transfer strength across the operating band rather than peak resonant height, and it is not an information capacity or bit rate. Passivity bounds this spectral area by the smaller total gravitational coupling trace of the two endpoints. For compact nonrelativistic linear-harmonic matter, mass-weighted modal completeness bounds the retained cumulative quadrupole resource by the scalar second mass moment $I_2=\int\rho r^2\dd^3x$. Normalized transverse-traceless quadrupole radiation has maximum directivity $5/2$, giving the leading separated-wave-zone propagation ceiling $25/[16(k_0R)^2]$. Combining these results yields
 \begin{equation}
 \boxed{
 \Gamma_{\rm coh}
@@ -33,7 +33,7 @@ Passivity bounds this spectral area by the smaller total gravitational coupling 
 \frac{25G\omega_0^2}{12c^3R^2}\min(I_{2,A},I_{2,B})
 }
 \end{equation}
-for carrier frequency $\omega_0$, envelope bandwidth $B\ll\omega_0$, compact endpoints with $k_0a_A,k_0a_B\ll1$, separation $k_0R\gg1$, and a finite or countably infinite bounded-port Markov modal sector retained at the carrier scale. Higher-frequency off-resonant sectors are not absorbed into the simple $\omega_0^4$ endpoint resource without a separate bound. Passive internal mode mixing and repeated passive returns between the same two compact endpoints do not change the retained leading ceiling. Integrated resonant-mass response, gravitational-antenna modal theory, material-response sum rules, generator--receiver calculations, and generic passive-wave bounds are historical ingredients. The claimed contribution is only their gravity-specific cumulative two-ended inertia closure; no priority claim is made.
+for carrier frequency $\omega_0$, envelope bandwidth $B\ll\omega_0$, compact endpoints with $k_0a_A,k_0a_B\ll1$, separation $k_0R\gg1$, and a finite or countably infinite bounded-port Markov modal sector retained at the carrier scale. Higher-frequency off-resonant sectors require separate control and are not included in the simple carrier-scale resource. Passive internal mode mixing and repeated passive returns between the same two compact endpoints do not change the retained leading coefficient. The result is a two-ended passive spectral-area ceiling controlled only by endpoint mass distribution and far-zone TT propagation within this explicitly restricted class.
 \end{abstract}
 
 \maketitle
@@ -46,10 +46,10 @@ for carrier frequency $\omega_0$, envelope bandwidth $B\ll\omega_0$, compact end
 \input{sections/appendices}
 
 \section*{Research workflow and use of artificial intelligence tools}
-Substantive AI-assisted tools were used during the development of this work for scientific reasoning and derivation exploration, literature synthesis, code generation and debugging, numerical cross-checks, adversarial review, and manuscript preparation. Before submission, this statement must be completed with the exact tool names and model/version information from the project records: [INSERT COMPLETE TOOL/MODEL/VERSION RECORD]. The author directed the analyses and retains full responsibility for all claims. AI-assisted outputs were checked through executable regression tests, separate algebraic and numerical cross-checks, and direct comparison with cited primary literature; a final human line-by-line scientific review is required before submission.
+OpenAI ChatGPT was used substantively during the development of this work for scientific reasoning and derivation exploration, literature synthesis, code generation and debugging, numerical cross-checks, adversarial review, and manuscript preparation. The final pre-submission revision used GPT-5.6 Sol. Earlier project sessions also used ChatGPT model configurations, but exact per-session model identifiers were not systematically archived in the repository; no more specific retrospective version list is asserted. The author directed the analyses and retains full responsibility for all scientific claims. AI-assisted outputs were checked through executable regression tests, separate algebraic and numerical cross-checks, and direct comparison with cited primary literature. These checks are internal verification procedures and are not presented as external peer review.
 
 \section*{Data availability}
-The code and computational materials supporting the numerical checks are publicly available in the project repository at the immutable scientific commit \texttt{1ce596493073dbb49e6eb71f1a6df0566ff3c25b}. Before submission, this statement should be updated with a persistent archival identifier, preferably a DOI, if an archival release is deposited. No experimental data were created or analyzed in this work.
+The code and computational materials supporting the numerical checks are publicly available in the project repository at the immutable scientific commit \texttt{1ce596493073dbb49e6eb71f1a6df0566ff3c25b}. A persistent archival identifier can be added if an archival release is deposited. No experimental data were created or analyzed in this work.
 
 \bibliographystyle{apsrev4-2}
 \bibliography{references}

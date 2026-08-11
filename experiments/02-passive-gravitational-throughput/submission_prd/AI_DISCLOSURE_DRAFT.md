@@ -1,18 +1,9 @@
-# APS AI Disclosure Draft
+# AI Disclosure Record — Experiment 02
 
-Current APS policy requires disclosure of substantive AI use and asks authors to state the AI tool name/version, how it assisted, and how the authors directed and verified its output.
+The PRD manuscript currently discloses substantive use of OpenAI ChatGPT for scientific reasoning and derivation exploration, literature synthesis, code generation and debugging, numerical cross-checks, adversarial review, and manuscript preparation.
 
-Experiment 02 clearly crosses the substantive-use threshold because AI assistance included scientific reasoning, derivation exploration, literature synthesis, code generation/debugging, numerical analysis, adversarial review, and manuscript drafting.
+The final pre-submission revision used GPT-5.6 Sol. Earlier project sessions also used ChatGPT model configurations, but exact per-session model identifiers were not systematically archived in the repository. The submission therefore states that limitation explicitly instead of inventing a retrospective version list.
 
-## Draft disclosure
+The author directed the analyses and retains responsibility for the scientific claims. AI-assisted outputs were checked through executable regression tests, separate algebraic and numerical cross-checks, and comparison with cited primary literature. These are internal verification procedures, not external peer review.
 
-Substantive AI-assisted tools were used during the development of this work for scientific reasoning and derivation exploration, literature synthesis, code generation and debugging, numerical cross-checks, adversarial review, and manuscript preparation. The exact tools and model/version identifiers used were: **[INSERT COMPLETE VERIFIED TOOL/MODEL/VERSION RECORD]**. The author directed the analyses and retains full responsibility for all scientific claims. AI-assisted outputs were checked through executable regression tests, separate algebraic and numerical cross-checks, comparison with cited primary literature, and final human review before submission.
-
-## Do not submit until
-
-- the exact tool/model/version list is recovered from project records;
-- the wording accurately distinguishes research use from manuscript-editing use;
-- the human author has reviewed every scientific claim and reference;
-- the disclosure is placed where current APS policy requires at the actual submission date.
-
-Do not minimize the AI role as mere copyediting. Do not claim independent human verification where none occurred. The repository's automated and adversarial checks should be described as verification procedures, not as external peer review.
+If additional earlier model identifiers are recovered reliably before submission, they may be added to the disclosure. Otherwise the present wording should remain explicit about what is and is not recoverable from the project record.
