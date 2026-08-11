@@ -40,5 +40,5 @@ Thank you for your consideration.
 Sincerely,
 
 Terence Fisher  
-[AFFILIATION]  
+Brooks Photonics  
 terence@brooks-photonics.com
