@@ -1,71 +1,85 @@
 \section{Interpretation, scale, and limitations}
 \label{sec:interpretation}
 
-Equation~\eqref{eq:headline} is a passive spectral-area statement. Resonances can redistribute gravitational response in frequency, internal hybridization can create bright and dark combinations, and matching choices can determine how much of a particular resonance is accessible from a selected local port. What they cannot do, within the retained modal class, is create additional cumulative gravitational coupling trace beyond the endpoint second-moment resource. Free-space propagation then imposes the separate compact TT channel ceiling.
+Equation~\eqref{eq:finitegeometry} changes the interpretation of the endpoint resource. The leading far-zone ceiling is not controlled by the total scalar second moment alone. Only the $|m|=2$ quadrupole sector survives at order $R^{-2}$, and its complete modal oscillator strength is bounded by $4I_{\hat R}$. Geometry therefore enters the leading theorem through the ordinary moment of inertia about the line joining the endpoints.
 
-The minimum in Eqs.~\eqref{eq:asymptotic-headline} and \eqref{eq:headline} is physically important. Either endpoint is a cut: a large source resource cannot compensate for a receiver whose total retained gravitational coupling trace is smaller, and vice versa. Elastic constants, quality factors, and internal modal structure can change where the response appears in frequency, but after optimization they do not survive in the leading cumulative ceiling; only the endpoint mass distributions through $I_2$ and the separated TT channel remain.
+The minimum over endpoints remains physically important. Either endpoint is a cut: increasing the available source resource cannot compensate for a receiver with a smaller allowed sector resource, and vice versa. Passive quality factor, modal count, and internal hybridization can redistribute response in frequency but do not create new sector oscillator strength.
 
-\subsection{Scale and a resonant-bar tightness check}
+\subsection{Scale and a resonant-bar check}
 
 For a uniform sphere of mass $M$ and radius $a$,
 \begin{equation}
-I_2=\frac35Ma^2,
+I_{\hat R}=\frac25Ma^2,\qquad
+Z_{\hat R}=\frac15Ma^2,
 \end{equation}
-so Eq.~\eqref{eq:headline} becomes, for equal endpoints,
+for every direction. The leading narrowband far-zone result becomes
 \begin{equation}
+\boxed{
 \Gamma_{\rm coh}
 \lesssim
-\frac{5G\omega_0^2Ma^2}{4c^3R^2}.
+\frac{G\omega_0^2Ma^2}{2c^3R^2}.
+}
 \label{eq:spherebound}
 \end{equation}
-As an intentionally generous macroscopic illustration, take $M=10^3\,\mathrm{kg}$, $a=1\,\mathrm{m}$, and $f_0=\omega_0/(2\pi)=1\,\mathrm{kHz}$. The compactness condition is then extremely well satisfied, $k_0a\simeq2.1\times10^{-5}$. Choosing $k_0R=100$ requires $R\simeq4.77\times10^6\,\mathrm{m}$ and gives
+Take $M=10^3\,\mathrm{kg}$, $a=1\,\mathrm{m}$, and $f_0=\omega_0/(2\pi)=1\,\mathrm{kHz}$. The compactness parameter is $\omega_0a/c\simeq2.1\times10^{-5}$. Choosing $k_0R=100$ gives $R\simeq4.77\times10^6\,\mathrm{m}$ and the leading result
 \begin{equation}
-\Gamma_{\rm coh}\lesssim5.4\times10^{-39}\,\mathrm{s}^{-1}.
+\Gamma_{\rm coh}\lesssim2.15\times10^{-39}\,\mathrm{s}^{-1}.
 \end{equation}
-Equation~\eqref{eq:finiteTT} shows that at $k_0R=100$ the finite-distance correction to the compact TT propagation power coefficient is about $0.020\%$; the example therefore does not rely on an unquantified propagation asymptotic. The separate compact-source and narrowband approximations remain part of the stated model.
+Using the exact sector expression in Eq.~\eqref{eq:finitegeometry} at the same single frequency gives a factor $1.00020009$ relative to this leading value. Thus the finite-$kR$ outgoing compact-TT correction for the spherical example is about $0.020\%$ in the opposite direction from the isolated $\eta_2$ correction because the subleading $|m|=1$ and $m=0$ sectors contribute positively. Finite-source multipole corrections remain separately controlled by compactness.
 
-A simple bar calculation also tests whether the endpoint $20/3$ closure is vacuous by many orders of magnitude. Consider an ideal slender free--free uniform bar of length $L$ and mass $M$, neglecting transverse dimensions, with fundamental longitudinal displacement $w_x(x)=\sin(\pi x/L)$ for $-L/2\le x\le L/2$. Then
+A simple bar calculation tests the leading directional resource. Consider an ideal slender free--free uniform bar of length $L$ and mass $M$, neglecting transverse dimensions, with fundamental longitudinal displacement $w_x(x)=\sin(\pi x/L)$ for $-L/2\le x\le L/2$. For propagation perpendicular to the bar axis,
 \begin{equation}
-\mu=\frac{M}{2},\qquad I_2=\frac{ML^2}{12},
+\mu=\frac{M}{2},\qquad
+I_{\hat R}=\frac{ML^2}{12},
 \end{equation}
-and direct evaluation of Eq.~\eqref{eq:qn} gives
+and direct evaluation gives
 \begin{equation}
 \frac{q:q}{\mu}=\frac{64ML^2}{3\pi^4}.
 \end{equation}
-Consequently this single idealized mode occupies the fraction
+The bar quadrupole has $F_q/(q:q)=3/4$ in its maximum-radiation direction, so the same single mode occupies
 \begin{equation}
 \boxed{
-\frac{(q:q)/\mu}{(20/3)I_2}
-=\frac{192}{5\pi^4}
-\simeq0.394
+\frac{F_q/\mu}{4I_{\hat R}}
+=\frac{48}{\pi^4}
+\simeq0.493
 }
 \label{eq:barfraction}
 \end{equation}
-of the complete unweighted endpoint sum-rule ceiling. Its axisymmetric quadrupole has maximum directivity $15/8$, below the unrestricted STF ceiling $5/2$. Thus the endpoint and angular constants are not loose by dozens of orders of magnitude even for the canonical resonant-bar geometry. This calculation does \emph{not} imply that an existing resonant-mass detector approaches the complete two-ended $\Gamma_{\rm coh}$ ceiling: local-port accessibility, nongravitational losses, matching, omitted modal sectors, and the second endpoint can all reduce the realized transfer. The bound is therefore not claimed to be the active engineering constraint for present detectors. Classic cylindrical-bar cross-section theory provides the relevant historical comparison class \cite{PaikWagoner1976}.
+of the complete leading $|m|=2$ endpoint resource. This is a factor-of-two-level gap, not an orders-of-magnitude looseness generated by the completeness step. It still does not imply that a physical two-ended device approaches the full $\Gamma_{\rm coh}$ ceiling: local-port accessibility, nongravitational loss, matching, the second endpoint, and the retained-sector approximation can all reduce the realized transfer.
 
-The sphere number is not a waiting time for an event or a bit: $\Gamma_{\rm coh}$ is a spectral area. It makes the scale of the passive far-zone ceiling concrete. In ordinary macroscopic mechanical regimes, the simultaneous compactness and wave-zone assumptions place the theorem in an extraordinarily weak-coupling domain. Its value is therefore primarily structural: it identifies what passive resonance complexity cannot change once the model's endpoint resources and propagation class have been fixed.
+The sphere number is not a waiting time for an event or a bit. It is a spectral area. The simultaneous compactness and far-zone assumptions place ordinary macroscopic mechanical examples in an extraordinarily weak gravitational-coupling regime. The theorem is therefore primarily structural: it identifies a resource that passive resonance engineering cannot exceed within the stated class.
 
 \subsection{Relation to prior work and scope}
 
-The ingredients have substantial precedents. Resonant-mass absorption cross sections and integrated response are historical \cite{PaikWagoner1976,Aguiar2011}; arbitrary-body multimode gravitational response is established \cite{Lobo1995}; material-response dispersion and sum-rule methods have been developed \cite{Srivastava2003}; and complete gravitational generator--receiver analyses exist \cite{Rudenko2003}. Generic wave-channel decompositions, response-plus-propagation bounds, passive $H_2$ methods, and multiple-scattering composition are likewise established \cite{Miller2000,Molesky2020,BarasBrockett1975,Opmeer2013,Redheffer1962}.
+The ingredients have substantial precedents. Resonant-mass absorption cross sections and integrated response are historical \cite{PaikWagoner1976,Aguiar2011}; arbitrary-body multimode gravitational response is established \cite{Lobo1995}; material-response dispersion and sum-rule methods have been developed \cite{Srivastava2003}; and complete gravitational generator--receiver analyses exist \cite{Rudenko2003}. In particular, broad-frequency material sum rules can close integrated response in terms of constitutive high- and low-frequency elastic quantities \cite{Srivastava2003}; that is a different resource from the mass-moment closure derived here. Generic wave-channel decompositions, passive $H_2$ methods, and multiple-scattering composition are likewise established \cite{Miller2000,Molesky2020,BarasBrockett1975,Opmeer2013,Redheffer1962}.
 
-The closest classical engineering analogy is gain--bandwidth theory, but the correspondence is not identity. Fano's broadband-matching limits constrain the achievable reflection coefficient of a prescribed load through logarithmic integral relations \cite{Fano1950}; Chu and Harrington constrain antenna stored energy, $Q$, directivity, gain, efficiency, and electrical size \cite{Chu1948,Harrington1960}. Those results establish that passive matching or superdirectivity cannot evade generic bandwidth and size tradeoffs. The passive $H_2$ cut in Sec.~\ref{sec:passive} belongs to that broad family of ideas and is not the gravity-specific contribution. What is added here is the closure of each retained gravitational port trace to the same mechanical scalar $I_2$, followed by the compact TT propagation coefficient and the two-ended minimum over source and receiver resources. The historical resonant-mass integrated cross sections are not identified numerically with $\Gamma_{\rm coh}$ because they use different response normalizations.
+The closest classical engineering analogy is gain--bandwidth theory, but the correspondence is not identity. Fano's broadband-matching limits constrain reflection through logarithmic integral relations \cite{Fano1950}; Chu and Harrington constrain antenna size, stored energy, directivity, gain, and bandwidth \cite{Chu1948,Harrington1960}. Those results establish that passive matching and superdirectivity cannot evade generic bandwidth and size tradeoffs. The passive selected-port cut in Sec.~\ref{sec:passive} belongs to that broad family and is not the gravity-specific contribution. The present closure instead combines a gravitational quadrupole oscillator-strength relation, its STF-sector decomposition relative to the source--receiver axis, and compact TT propagation at both endpoints.
 
-Recent gravity-communication work addresses different performance criteria and often different interaction regimes: Newtonian communication/noise constraints \cite{KafriMilburnTaylor2015}, LOCC simulation bounds \cite{LamiPedernalesPlenio2024}, state-transfer benchmarks for gravitationally interacting oscillators \cite{ToccaceloAndersenBrask2025}, and an optomechanical gravity-induced thermal-attenuator channel \cite{MariZippilliVitali2026}. These works motivate the broader question of gravity as a mediator, but their quantum-information criteria are not used in the proof. The present quantity is a classical coherent-transfer spectral area, not a channel capacity, entanglement rate, or usability criterion. No equivalent complete passive wave-zone two-ended inertia closure was found in the inspected literature; this is a statement about the search performed, not a priority proof.
+Recent gravity-communication work addresses different performance criteria and often different interaction regimes: Newtonian communication/noise constraints \cite{KafriMilburnTaylor2015}, LOCC simulation bounds \cite{LamiPedernalesPlenio2024}, state-transfer benchmarks for gravitationally interacting oscillators \cite{ToccaceloAndersenBrask2025}, and an optomechanical gravity-induced thermal-attenuator channel \cite{MariZippilliVitali2026}. These works motivate gravity as a mediator, but their information-theoretic criteria are not used here. $\Gamma_{\rm coh}$ remains a classical coherent-transfer spectral area.
 
-The retained-sector restriction is consequential. A finite elastic body has a countable spectrum in the continuum model, while microscopic solids also contain increasingly high-frequency lattice modes beyond that approximation. The present theorem does not prove that high-frequency off-resonant tails are negligible in a chosen operating band. That is a material- and device-specific question. If such a tail cannot be bounded separately, Eq.~\eqref{eq:headline} applies only to the declared retained carrier-scale sector and not to the complete physical endpoint.
+The retained-sector restriction is consequential but should be interpreted precisely. Equation~\eqref{eq:kappan} is an on-shell linewidth. It is not a license to assign a far-detuned high-frequency mode its resonance-frequency $\omega_n^4$ coupling unchanged when evaluating a low-frequency tail. Such a mode lies outside the near-resonant Markov reduction and requires the full frequency-dependent elastodynamic and radiative response. At the same time, the unweighted completeness relation alone cannot produce an all-frequency $I_2$ bound on the formal Markov trace, because it does not control the fourth spectral moment. A genuinely whole-body inertia theorem would therefore require additional material regularity or a different frequency-domain argument.
 
-The theorem deliberately excludes active gain, inversion, parametric pumping, externally powered feedback, extended phased apertures, added gravitational relays or external cavities, higher-multipole-dominated operation, relativistic or nonlinear matter, arbitrary unbounded PDE boundary ports without admissibility analysis, genuinely non-Markov continua, curved-background focusing, and uncontrolled higher-frequency modal sectors whose off-resonant tails enter the operating band. It is also a compact narrowband carrier-envelope result: $k_0a_{A,B}\ll1$, $k_0R\gg1$, and $B/\omega_0\ll1$. In the near field, $k_0R\lesssim1$, reactive and nonradiative Green-function terms change the distance and frequency structure, so Eq.~\eqref{eq:headline} should not be extrapolated there. A broad absolute-frequency theorem would likewise have to retain the explicit frequency dependence of the matter and propagation resources inside the integral.
+The retained-sector assumption is needed only for the inertia-controlled strengthening. Even without it, a finite-band passive compact-quadrupole link cannot have unbounded transfer: at each frequency $\operatorname{rank}P_g\le5$ and the endpoint scattering blocks are contractions, so
+\begin{equation}
+\Gamma_{\rm coh}
+\le
+\frac{5}{2\pi}\int_{\mathcal B_\nu}
+\|P_g[\omega(\nu),R]\|_{\op}^2\,\dd\nu .
+\label{eq:genericbandbound}
+\end{equation}
+This generic bound is usually far looser and contains no material resource; it only shows that uncontrolled internal modes do not create a mathematical divergence in a finite measured band.
 
-Within these limits, the result answers a specific structural question: passive resonant complexity can reshape the gravitational transfer spectrum, but it cannot raise the retained far-zone spectral area above the smaller endpoint inertia resource multiplied by the TT propagation ceiling. Whether that ceiling is the active limitation for any particular device requires a separate device-level coupling and loss model.
+The theorem deliberately excludes active gain, inversion, parametric pumping, externally powered feedback, extended phased apertures, added gravitational relays or external cavities, higher-multipole-dominated operation, relativistic or nonlinear matter, arbitrary unbounded PDE boundary ports without admissibility analysis, genuinely non-Markov continua, curved-background focusing, and reactive near-field exchange. These are changes of physical class, not corrections to a passive compact-TT theorem.
 
 \section{Conclusion}
 
-For a separated compact passive gravitational link, passivity reduces the frequency-integrated coherent spectral area to the smaller gravitational coupling trace of the two endpoints. Mass-weighted quadrupole completeness bounds each retained trace by $(4G/3c^5)I_2\Omega^4$, while normalized compact TT propagation supplies the asymptotic coefficient $25/[16(k_0R)^2]$ and an explicit finite-$kR$ correction within the outgoing compact angular model. Their combination gives the precise asymptotic statement Eq.~\eqref{eq:asymptotic-headline}, whose carrier-scale form is
+For a separated compact passive gravitational link, the strongest closure is obtained by preserving angular information rather than multiplying a total endpoint quadrupole sum by a worst-case propagation directivity. Decomposing STF quadrupole space into $m=0$, $|m|=1$, and $|m|=2$ sectors gives exact sectorwise completeness resources. Combined with the finite-$kR$ outgoing TT singular values, this yields Eq.~\eqref{eq:finitegeometry}, a finite-band propagation bound within the retained compact model that does not freeze the propagator at the carrier.
+
+In the far zone the $|m|=1$ and $m=0$ sectors fall as $R^{-4}$ and $R^{-6}$ in power, leaving only the $|m|=2$ resource. The resulting leading narrowband ceiling is
 \begin{equation}
 \Gamma_{\rm coh}
 \lesssim
-\frac{25G\omega_0^2}{12c^3R^2}
-\min(I_{2,A},I_{2,B}).
+\frac{5G\omega_0^2}{4c^3R^2}
+\min(I_{\hat R,A},I_{\hat R,B}).
 \end{equation}
-The same endpoint cut extends to countably infinite bounded-port Markov modal sectors satisfying the retained-sector assumptions, and same-two-endpoint passive recurrence alters only subleading wave-zone orders. The result is deliberately narrower than a general statement about gravitational communication or arbitrary material spectra: within its compact, narrowband, passive far-zone class, adding resonances, increasing passive $Q$, or hybridizing modes can redistribute response but cannot manufacture additional cumulative two-ended gravitational spectral area beyond the endpoint mass-distribution resource.
+Thus the surviving endpoint quantity is the moment of inertia about the separation axis. Passive resonance count, passive $Q$, internal unitary mode mixing, and same-two-endpoint recurrence can redistribute response but cannot manufacture additional leading two-ended spectral area within the declared retained modal class.

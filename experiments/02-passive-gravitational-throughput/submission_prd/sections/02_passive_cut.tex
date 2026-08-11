@@ -13,12 +13,12 @@ H_{o\leftarrow i}(\nu)
 =-K_o(i\nu I-A)^{-1}K_i^\dagger .
 \label{eq:crossH}
 \end{equation}
-The strict-properness condition has a direct physical meaning in the application below: a selected local drive first excites endpoint dynamical degrees of freedom before gravitational radiation is emitted, and a separated receiver is driven by the retarded TT field. There is no instantaneous selected-input-to-selected-output bypass. Models containing a direct feedthrough term lie outside the present $H_2$ statement.
+A selected local drive therefore excites endpoint dynamics before gravitational radiation is emitted, and a separated receiver is driven by the retarded TT field. Models containing a direct selected-input-to-selected-output bypass lie outside the present $H_2$ statement.
 
 Define the selected-input Gramian
 \begin{equation}
 P_i(\tau)=\int_0^\tau
- e^{At}K_i^\dagger K_i e^{A^\dagger t}\dd t .
+e^{At}K_i^\dagger K_i e^{A^\dagger t}\dd t .
 \end{equation}
 Since $K_i^\dagger K_i\le K^\dagger K=-(A+A^\dagger)$,
 \begin{equation}
@@ -33,11 +33,11 @@ For a stable realization, Plancherel gives
 \begin{align}
 \|H_{o\leftarrow i}\|_2^2
 &\equiv \frac{1}{2\pi}\int_{-\infty}^{\infty}\dd\nu\,
-\Tr(H_{o\leftarrow i}^\dagger H_{o\leftarrow i}) \\
+\Tr(H_{o\leftarrow i}^\dagger H_{o\leftarrow i})\\
 &=\Tr(K_oP_iK_o^\dagger)
 \le \Tr(K_o^\dagger K_o).
 \end{align}
-The dual output Gramian gives the complementary input bound. Therefore
+The dual output Gramian gives the complementary input bound, so
 \begin{equation}
 \boxed{
 \|H_{o\leftarrow i}\|_2^2
@@ -49,39 +49,49 @@ The dual output Gramian gives the complementary input bound. Therefore
 }
 \label{eq:h2cut}
 \end{equation}
-This is generic passive-system mathematics, not a gravitational result. It is conceptually related to classical gain--bandwidth restrictions, but its $H_2$ selected-port form is not the same functional as Fano's reflection-coefficient matching integrals \cite{Fano1950}.
+This is generic passive-system mathematics, not a gravitational result.
 
-Now factor the separated gravitational link as
+A weighted form of the same inequality will be useful below. For any bounded map $L$ acting on the endpoint state,
 \begin{equation}
-T(\nu)=H_B(\nu)P_g(\omega_0)H_A(\nu)
+\frac{1}{2\pi}\int_{-\infty}^{\infty}\dd\nu\,
+\left\|L(i\nu I-A)^{-1}K_i^\dagger\right\|_{\HS}^2
+=\Tr(LP_iL^\dagger)
+\le\Tr(L^\dagger L).
+\label{eq:weightedcut}
+\end{equation}
+No assumption that $L$ itself is a physical loss port is needed; Eq.~\eqref{eq:weightedcut} follows directly from $P_i\le I$.
+
+For the separated gravitational link retain the physical propagation frequency rather than freezing it at the carrier:
+\begin{equation}
+T(\nu)=H_B(\nu)P_g[\omega(\nu),R]H_A(\nu).
 \label{eq:factor}
 \end{equation}
-to retained carrier-frozen narrowband order. Here $H_A$ maps the selected source inputs to the complete retained set of gravitational output ports, $H_B$ maps the complete retained gravitational input set to selected receiver outputs, and $P_g$ is the normalized free-space gravitational propagation operator evaluated at the carrier. Nongravitational loss ports remain in the total operator $K$; such losses can make the final ceiling very loose, but cannot increase the allowed transfer. The strict inequalities below therefore apply to the carrier-frozen retained model; replacement of the exact frequency-dependent propagator by $P_g(\omega_0)$ is part of the separately declared narrowband approximation. Let
+Here $H_A$ maps selected source inputs to the retained gravitational output space, $H_B$ maps retained gravitational input channels to selected receiver outputs, and $P_g$ is the free-space propagation operator. Pointwise passivity gives $\|H_A(\nu)\|_{\op},\|H_B(\nu)\|_{\op}\le1$.
+
+For later comparison define
 \begin{equation}
-\|P_g(\omega_0)\|_{\op}^2\le\eta_{\max}.
+\bar\eta(R)
+=\sup_{\nu\in\mathcal B_\nu}
+\|P_g[\omega(\nu),R]\|_{\op}^2 .
 \end{equation}
-Because the integrand in Eq.~\eqref{eq:gamma} is nonnegative, the band-limited spectral area is no larger than the corresponding full-line integral. Pointwise passivity gives $\|H_A(\nu)\|_{\op},\|H_B(\nu)\|_{\op}\le1$ for the selected scattering blocks. Hence
-\begin{align}
-\Gamma_{\rm coh}
-&\le \frac{1}{2\pi}\int_{-\infty}^{\infty}\dd\nu\,
-\|H_B P_g H_A\|_{\HS}^2 \\
-&\le \eta_{\max}\|H_A\|_2^2
-\le \eta_{\max}\Tr(K_{g,A}^\dagger K_{g,A}),
-\label{eq:sourcecut}
-\end{align}
-where the last inequality is Eq.~\eqref{eq:h2cut} applied to the source local-to-gravitational cross block. Interchanging the roles of source and receiver gives independently
+Then positivity of the integrand, extension of the band integral to the full line only for the endpoint $H_2$ block, and Eq.~\eqref{eq:h2cut} give
 \begin{equation}
 \Gamma_{\rm coh}
-\le \eta_{\max}\|H_B\|_2^2
-\le \eta_{\max}\Tr(K_{g,B}^\dagger K_{g,B}).
-\label{eq:receivercut}
+\le
+\bar\eta(R)\Tr(K_{g,A}^\dagger K_{g,A}),
 \end{equation}
-Therefore
+and independently
+\begin{equation}
+\Gamma_{\rm coh}
+\le
+\bar\eta(R)\Tr(K_{g,B}^\dagger K_{g,B}).
+\end{equation}
+Thus the familiar scalar cut is
 \begin{equation}
 \boxed{
 \Gamma_{\rm coh}
 \le
-\eta_{\max}
+\bar\eta(R)
 \min\!\left[
 \Tr(K_{g,A}^\dagger K_{g,A}),
 \Tr(K_{g,B}^\dagger K_{g,B})
@@ -89,10 +99,8 @@ Therefore
 }
 \label{eq:gravcut}
 \end{equation}
+Unlike a carrier-frozen factorization, Eq.~\eqref{eq:gravcut} already retains the propagation variation across the measured band.
 
-The same cut extends to a separable countably infinite modal Hilbert space when the Markov port operators are bounded and the gravitational port is Hilbert--Schmidt. If $\mathcal T(t)$ is the passive contraction semigroup,
-\begin{equation}
-P_i(\tau)=\int_0^\tau
-\mathcal T(t)K_i^\dagger K_i\mathcal T^\dagger(t)\dd t
-\end{equation}
-obeys the operator inequality $0\le P_i(\tau)\le I$. The monotone strong limit therefore satisfies $0\le P_i\le I$. Section~\ref{sec:resource} shows that the retained gravitational matter resource itself implies $\Tr(K_g^\dagger K_g)<\infty$, making $K_g$ Hilbert--Schmidt and the operator-valued $H_2$ norm finite. This covers countably infinite \emph{bounded-port} modal sectors; arbitrary unbounded boundary-control PDE ports require separate admissibility analysis \cite{BarasBrockett1975,Opmeer2013}.
+More importantly, Eq.~\eqref{eq:weightedcut} permits the propagation operator to weight different gravitational angular sectors before the endpoint trace is taken. Section~\ref{sec:propagation} uses this stronger matrix form to avoid multiplying a total quadrupole-strength ceiling by an independently optimized directivity ceiling.
+
+The same Gramian inequalities extend to a separable countably infinite modal Hilbert space when the Markov port operators are bounded and the retained gravitational port is Hilbert--Schmidt. The retained resource in Sec.~\ref{sec:resource} supplies the required finite trace. Arbitrary unbounded boundary-control PDE ports require a separate admissibility analysis \cite{BarasBrockett1975,Opmeer2013}.

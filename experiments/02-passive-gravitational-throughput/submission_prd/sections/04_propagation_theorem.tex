@@ -1,67 +1,27 @@
 \section{Compact TT propagation and two-ended closure}
 \label{sec:propagation}
 
-Let $q_{ij}$ be a complex STF quadrupole amplitude and $\Lambda(\hat n)$ the transverse-traceless projector for direction $\hat n$. Define the angular power form
+Let $q_{ij}$ be a complex STF quadrupole amplitude and $\Lambda(\hat n)$ the TT projector for direction $\hat n$. Define
 \begin{equation}
 F_q(\hat n)=q^*:\Lambda(\hat n):q .
 \end{equation}
-Since $\Lambda$ is an orthogonal projector, $0\le F_q\le q^*:q$. For an STF tensor,
+For an STF tensor,
 \begin{equation}
 F_q=q^*:q-2(q^*\hat n)\cdot(q\hat n)
-+\frac12|\hat n\cdot q\hat n|^2 .
++\frac12|\hat n\cdot q\hat n|^2,
 \end{equation}
-Using the standard isotropic second and fourth angular moments gives
+and isotropic angular integration gives
 \begin{equation}
-\boxed{
 \int\dd\Omega\,F_q(\hat n)=\frac{8\pi}{5}q^*:q .
-}
 \label{eq:Fint}
 \end{equation}
-Hence the normalized angular density
+Thus the normalized quadrupole radiation patterns form a five-dimensional angular Hilbert space isometric to STF tensor space. The usual directivity ceiling follows as
 \begin{equation}
-w_q(\hat n)=\frac{F_q(\hat n)}{(8\pi/5)q^*:q}
+D_q\le\frac52,
 \end{equation}
-obeys $w_q\le5/(8\pi)$. The corresponding directivity is therefore
-\begin{equation}
-\boxed{D_q=4\pi w_q\le\frac52 .}
-\label{eq:Dmax}
-\end{equation}
-The maximum is attained by a plus quadrupole observed along its symmetry-normal direction \cite{Hirakawa1976}. The resulting propagation coefficient is an optimized ceiling over compact quadrupole orientation and polarization; a fixed or mismatched antenna geometry can only reduce the realized transfer.
+but the final bound below does not multiply this maximum by the total endpoint quadrupole resource.
 
-Choose unit-norm TT polarization tensors $\epsilon^\lambda(\hat n)$ and define normalized angular amplitudes by
-\begin{equation}
-a_{q,\lambda}(\hat n)
-=\frac{q:\epsilon^\lambda(\hat n)}
-{\sqrt{(8\pi/5)q^*:q}}.
-\end{equation}
-Translation by a separation $R$ adds phase $\exp(ik\hat n\cdot\bm R)$. In the outgoing wave zone, stationary phase at $\hat n=\hat R$ gives
-\begin{equation}
-t_{BA}
-\sim
-\frac{2\pi e^{ikR}}{ikR}
-\sum_\lambda a^*_{B,\lambda}(\hat R)a_{A,\lambda}(\hat R).
-\end{equation}
-Cauchy--Schwarz together with $w_q\le5/(8\pi)$ yields
-\begin{equation}
-\boxed{
-\limsup_{kR\rightarrow\infty}
-(kR)^2|t_{BA}|^2\le\frac{25}{16} .
-}
-\end{equation}
-The stationary-phase step is uniform over normalized compact quadrupoles: the complex STF quadrupole space is finite dimensional, its unit sphere is compact, and the normalized angular amplitudes and their required angular derivatives are uniformly bounded on that sphere. A coherent superposition of compact source modes produces another STF quadrupole in the same finite-dimensional space. The same estimate therefore holds before optimization over source and receiver superpositions, giving the operator form
-\begin{equation}
-\boxed{
-\limsup_{kR\rightarrow\infty}
-(kR)^2\|P_g\|_{\op}^2\le\frac{25}{16} .
-}
-\label{eq:25over16}
-\end{equation}
-The same leading coefficient follows from reciprocal effective area, $D_AD_B(\lambda/4\pi R)^2$, with $D_A,D_B\le5/2$ \cite{Hirakawa1976}.
-
-\subsection{Finite-distance outgoing TT correction}
-\label{sec:finiteTT}
-
-The propagation asymptotic can be sharpened within the same normalized compact-quadrupole angular model. Set $z=kR$ and choose the separation as the quantization axis. Axial symmetry decomposes the five-dimensional STF space into $m=0$, $|m|=1$, and $|m|=2$ sectors. Exact angular integration and separation of the outgoing $e^{iz}$ component give squared sector singular values
+Choose the separation along $\hat z=\hat R$ and set $z=kR=\omega R/c$. Axial rotations diagonalize translation on the compact STF angular subspace into $m=0$, $|m|=1$, and $|m|=2$ sectors. Exact angular integration and separation of the outgoing $e^{iz}$ component give the squared sector singular values
 \begin{align}
 \eta_2(z)
 &=\frac{25}{16z^{10}}
@@ -74,52 +34,110 @@ The propagation asymptotic can be sharpened within the same normalized compact-q
 \left(z^4+3z^2+9\right).
 \label{eq:finite-sector-eigenvalues}
 \end{align}
-The $|m|=1$ and $|m|=2$ sectors are each doubly degenerate. Direct comparison shows $\eta_2\ge\eta_1,\eta_0$ for $z\ge3$, so throughout the clearly separated branch one may use
+The $|m|=1$ and $|m|=2$ sectors are doubly degenerate. For $z\ge3$, $\eta_2\ge\eta_1,\eta_0$. Appendix~\ref{app:finiteTT} gives the normalized kernels and outgoing amplitudes from which Eq.~\eqref{eq:finite-sector-eigenvalues} follows.
+
+The key point is to retain these sector weights through the passive cut. Across the measured band define
+\begin{equation}
+\bar\eta_m(R)
+=\sup_{\nu\in\mathcal B_\nu}
+\eta_m\!\left(\frac{\omega(\nu)R}{c}\right).
+\label{eq:etamaxband}
+\end{equation}
+The STF projectors $\Pi_m$ are fixed by the separation axis and do not vary with frequency. Therefore, within the outgoing compact-quadrupole model,
+\begin{equation}
+P_g^\dagger(\nu)P_g(\nu)
+\le
+\sum_{m=0}^{2}\bar\eta_m(R)\Pi_m
+\end{equation}
+throughout the band.
+
+Apply Eq.~\eqref{eq:weightedcut} on the source side with the gravitational output coupling projected into each STF sector. In the elastic eigenmode basis,
+\begin{equation}
+\Tr\!\left[
+K_{g,A}^\dagger\Pi_m K_{g,A}
+\right]
+=
+\frac{G}{5c^5}
+\sum_n\omega_n^4
+\frac{Q_{m,n}^2}{\mu_n}.
+\label{eq:sectortrace}
+\end{equation}
+Using Eq.~\eqref{eq:weightedsector} gives the finite-band inequality
+\begin{align}
+\Gamma_{\rm coh}
+\le\frac{G\Omega^4}{5c^5}
+\Bigg[
+&4\bar\eta_2 I_{\hat R,A}
++\bar\eta_1(2I_{\hat R,A}+4Z_{\hat R,A})\nonumber\\
+&+\bar\eta_0\left(\frac23I_{\hat R,A}
++\frac83Z_{\hat R,A}\right)
+\Bigg].
+\label{eq:finitegeometryA}
+\end{align}
+The receiver-side weighted Gramian gives the same expression with $A\rightarrow B$. Hence
 \begin{equation}
 \boxed{
-\|P_g(z)\|_{\op}^2
-=\frac{25}{16z^2}
-\left(
-1-\frac{2}{z^2}+\frac{3}{z^4}
--\frac{9}{z^6}+\frac{9}{z^8}
-\right)
-}
-\label{eq:finiteTT}
-\end{equation}
-for the outgoing compact TT angular propagator. Appendix~\ref{app:finiteTT} gives the corresponding angular kernels and outgoing amplitudes. At $z=100$, the parenthetical correction is $0.99980003$, so the leading $25/(16z^2)$ power coefficient differs from Eq.~\eqref{eq:finiteTT} by only about $0.020\%$. This quantifies the propagation part of the wave-zone approximation used in the worked example. It does not quantify finite-source multipole corrections or the carrier-freezing error across a nonzero bandwidth.
-
-Combining Eqs.~\eqref{eq:gravcut}, \eqref{eq:kappasum}, and \eqref{eq:25over16} gives the rigorous asymptotic coefficient
-\begin{equation}
-\limsup_{k_0R\rightarrow\infty}
-(k_0R)^2\Gamma_{\rm coh}
+\Gamma_{\rm coh}
 \le
-\frac{25G\Omega^4}{12c^5}
-\min(I_{2,A},I_{2,B}),
+\frac{G\Omega^4}{5c^5}
+\min\!\left[\mathcal G_A(R),\mathcal G_B(R)\right],
+}
+\label{eq:finitegeometry}
 \end{equation}
-which is Eq.~\eqref{eq:asymptotic-headline}. In the carrier-frozen compact TT model, Eq.~\eqref{eq:finiteTT} may instead be inserted directly into Eq.~\eqref{eq:gravcut} to retain the displayed finite-$z$ propagation correction. Only after this step is $\Omega=\omega_0[1+O(B/\omega_0)]$ used to obtain the leading form Eq.~\eqref{eq:headline}.
+where
+\begin{equation}
+\mathcal G_X
+=
+4\bar\eta_2 I_{\hat R,X}
++\bar\eta_1(2I_{\hat R,X}+4Z_{\hat R,X})
++\bar\eta_0\left(\frac23I_{\hat R,X}+\frac83Z_{\hat R,X}\right).
+\end{equation}
+Equation~\eqref{eq:finitegeometry} is a strict finite-band inequality within the retained bounded-port Markov endpoint model and the outgoing compact-quadrupole propagation model. It does not freeze $P_g$ at $\omega_0$. Its remaining approximations are the compact mass-quadrupole description and the retained endpoint model itself.
+
+The large-$z$ behavior separates cleanly:
+\begin{align}
+\eta_2(z)&=\frac{25}{16z^2}\left[1+O(z^{-2})\right],\\
+\eta_1(z)&=\frac{25}{4z^4}\left[1+O(z^{-2})\right],\\
+\eta_0(z)&=\frac{225}{4z^6}\left[1+O(z^{-2})\right].
+\end{align}
+Uniformly on a fixed measured band with $\omega_->0$,
+\begin{align}
+\lim_{R\to\infty}R^2\bar\eta_2(R)
+&=\frac{25c^2}{16\omega_-^2},\\
+\lim_{R\to\infty}R^2\bar\eta_1(R)
+&=\lim_{R\to\infty}R^2\bar\eta_0(R)=0.
+\end{align}
+Equation~\eqref{eq:finitegeometry} therefore gives
+\begin{equation}
+\boxed{
+\limsup_{R\rightarrow\infty}
+R^2\Gamma_{\rm coh}
+\le
+\frac{5G\Omega^4}{4c^3\omega_-^2}
+\min(I_{\hat R,A},I_{\hat R,B}),
+}
+\end{equation}
+which is Eq.~\eqref{eq:asymptotic-headline}. The coefficient $5/4$ results from projecting the endpoint completeness relation into the propagating $|m|=2$ sector before optimization. It is therefore not the product of an independently saturated $20/3$ scalar resource and a separately optimized $5/2$ directivity.
+
+For reference, if one discards the sector information and uses only $\eta_2\ge\eta_1,\eta_0$ together with Eq.~\eqref{eq:qsum}, Eq.~\eqref{eq:finitegeometry} reduces to the looser scalar estimate
+\begin{equation}
+\Gamma_{\rm coh}
+\le
+\frac{4G\Omega^4}{3c^5}\bar\eta_2(R)
+\min(I_{2,A},I_{2,B}).
+\end{equation}
+The sector-resolved result is always at least as strong and is strictly stronger in the leading far zone.
 
 \subsection{Repeated passive returns}
 
-Let $P_+$ and $P_-$ be forward and reverse separated propagation, and let $R_A,R_B$ be the gravitational reflection blocks of the passive endpoints. Repeated returns sum to the exact resolvent
+Let $P_+$ and $P_-$ be forward and reverse separated propagation, and let $R_A,R_B$ be the gravitational reflection blocks of the passive endpoints. Repeated returns sum to
 \begin{equation}
 P_{\rm eff}
 =(I-P_+R_AP_-R_B)^{-1}P_+ .
 \end{equation}
 As subblocks of passive scattering matrices, $\|R_A\|_{\op},\|R_B\|_{\op}\le1$. With $p_\pm=\|P_\pm\|_{\op}$,
 \begin{equation}
-\boxed{
 \|P_{\rm eff}\|_{\op}
 \le\frac{p_+}{1-p_+p_-}
-}
 \end{equation}
-whenever $p_+p_-<1$. This inequality is not a small-$p$ expansion. Even perfectly reflecting passive endpoints cannot by themselves make the loop gain approach unity in the separated wave zone, because every round trip still contains both weak propagation factors and therefore has norm at most $p_+p_-$. For reciprocal propagation, $p_+=p_-=p$ and $\eta=p^2$, so
-\begin{equation}
-\|P_{\rm eff}\|_{\op}^2
-\le\frac{\eta}{(1-\eta)^2}
-=\eta+2\eta^2+O(\eta^3).
-\end{equation}
-The expansion is used only to identify the far-zone order: constructive recurrence can raise the finite-distance transfer above its single-pass value while remaining passive, but the first possible increase in the upper ceiling is $O(\eta^2)=O[(kR)^{-4}]$. Since the single-pass term is $O[(kR)^{-2}]$, recurrence cannot alter the leading coefficient, and
-\begin{equation}
-\limsup_{kR\rightarrow\infty}(kR)^2\|P_{\rm eff}\|_{\op}^2\le\frac{25}{16} .
-\end{equation}
-Destructive interference may instead reduce the actual recurrent transfer. The scattering composition is established network theory \cite{Redheffer1962}; the point here is only that same-two-endpoint passive recurrence does not open a leading-order loophole.
+whenever $p_+p_-<1$. This is an exact resolvent estimate, not a small-$p$ expansion. In the far zone $p_\pm=O(R^{-1})$, so the round-trip loop is $O(R^{-2})$ in amplitude and the first possible correction to single-pass power is $O(R^{-4})$. Endpoint reflections may mix STF sectors at finite distance, but they cannot modify the leading $R^{-2}$ single-pass coefficient in Eq.~\eqref{eq:asymptotic-headline}. Destructive interference may instead reduce the realized transfer. The scattering composition is standard network theory \cite{Redheffer1962}.

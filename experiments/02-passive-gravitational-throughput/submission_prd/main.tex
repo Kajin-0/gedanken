@@ -1,7 +1,6 @@
 \documentclass[aps,prd,reprint,nofootinbib,superscriptaddress,longbibliography]{revtex4-2}
 
 \usepackage{amsmath,amssymb,mathtools,bm,amsthm}
-\usepackage{array,booktabs,tabularx}
 
 \newcommand{\dd}{\mathrm d}
 \newcommand{\Tr}{\operatorname{Tr}}
@@ -25,15 +24,16 @@ We derive a frequency-integrated upper bound on coherent transfer between two se
 \begin{equation}
 \Gamma_{\rm coh}=\frac{1}{2\pi}\int_{\mathcal B_\nu}\dd\nu\,\Tr[T^\dagger(\nu)T(\nu)].
 \end{equation}
-For energy-normalized ports this is the band-limited $H_2$ spectral area: the integral of power transmissivity over detuning. It therefore measures cumulative transfer strength across the operating band rather than peak resonant height, and it is not an information capacity or bit rate. Passivity bounds this spectral area by the smaller total gravitational coupling trace of the two endpoints. For compact nonrelativistic linear-harmonic matter, mass-weighted modal completeness bounds the retained cumulative quadrupole resource by the scalar second mass moment $I_2=\int\rho r^2\dd^3x$. Normalized transverse-traceless quadrupole radiation has maximum directivity $5/2$, giving the leading separated-wave-zone propagation coefficient $25/[16(k_0R)^2]$. The propagation coefficient also admits an explicit finite-$kR$ correction in the compact quadrupole model. Combining the ingredients yields the asymptotic narrowband form
+For energy-normalized ports this is the band-limited $H_2$ spectral area: the integral of power transmissivity over detuning. Passivity reduces the problem to gravitational output couplings of either endpoint. Instead of bounding the complete quadrupole strength and propagation directivity separately, we resolve the five-dimensional symmetric-trace-free quadrupole space into the $m=0$, $|m|=1$, and $|m|=2$ sectors defined by the separation axis. Mass-weighted completeness then gives sectorwise endpoint resources. Combining them with the exact outgoing compact-quadrupole propagation singular values yields a finite-band, finite-$kR$ inequality within that compact angular model, without freezing the propagator at the carrier. In the far zone only the $|m|=2$ sector survives at order $R^{-2}$, giving
 \begin{equation}
 \boxed{
 \Gamma_{\rm coh}
 \lesssim
-\frac{25G\omega_0^2}{12c^3R^2}\min(I_{2,A},I_{2,B})
+\frac{5G\omega_0^2}{4c^3R^2}
+\min(I_{\hat R,A},I_{\hat R,B})
 }
 \end{equation}
-for carrier frequency $\omega_0$, envelope bandwidth $B\ll\omega_0$, compact endpoints with $k_0a_A,k_0a_B\ll1$, separation $k_0R\gg1$, and a finite or countably infinite bounded-port Markov modal sector retained at the carrier scale. Higher-frequency off-resonant sectors require separate control and are not included in the simple carrier-scale resource. Passive internal mode mixing and repeated passive returns between the same two compact endpoints do not change the retained leading coefficient. The result is a two-ended passive spectral-area ceiling controlled only by endpoint mass distribution and far-zone TT propagation within this explicitly restricted class.
+in the leading narrowband form, where $I_{\hat R}=\int\rho |\hat R\times\bm x|^2\dd^3x$ is the ordinary moment of inertia about the line joining the endpoints. The rigorous asymptotic statement retains the upper modal frequency $\Omega$ and the lowest physical frequency in the measured band. The result applies to a finite or countably infinite bounded-port Markov modal sector retained near the carrier. Completeness alone cannot control an unrestricted all-frequency Markov trace; far-detuned sectors require a frequency-dependent treatment or additional material regularity. Passive internal mode mixing and repeated passive returns between the same compact endpoints do not change the leading coefficient.
 \end{abstract}
 
 \maketitle

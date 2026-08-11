@@ -1,4 +1,4 @@
-\section{Cumulative gravitational endpoint resource}
+\section{Sector-resolved gravitational endpoint resource}
 \label{sec:resource}
 
 Let a compact elastic body have equilibrium density $\rho(\bm x)$ and center of mass at the origin. Expand a small displacement field as
@@ -17,83 +17,110 @@ To first order in displacement, define the STF modal quadrupole
 \begin{equation}
 q_{n,ij}
 =\int_V\rho\left(
- w_{n,i}x_j+w_{n,j}x_i
+w_{n,i}x_j+w_{n,j}x_i
 -\frac23\delta_{ij}\bm w_n\cdot\bm x
 \right)\dd^3x .
 \label{eq:qn}
 \end{equation}
-For a real normal mode with $\xi_n(t)=\Re[\xi_{0,n}e^{-i\omega_nt}]$, the time-averaged quadrupole power is
-\begin{equation}
+For a real normal mode with $\xi_n(t)=\Re[\xi_{0,n}e^{-i\omega_nt}]$, the standard quadrupole power and harmonic-mode energy are
+\begin{align}
 \overline P_{g,n}
-=\frac{G}{5c^5}\overline{\dddot Q_{ij}\dddot Q_{ij}}
-=\frac{G\omega_n^6}{10c^5}|\xi_{0,n}|^2(q_n:q_n),
-\end{equation}
-while the conserved harmonic-mode energy is
-\begin{equation}
-E_n=\frac12\mu_n\omega_n^2|\xi_{0,n}|^2.
-\end{equation}
-Their ratio therefore gives the gravitational energy-decay rate
+&=\frac{G\omega_n^6}{10c^5}|\xi_{0,n}|^2(q_n:q_n),\\
+E_n&=\frac12\mu_n\omega_n^2|\xi_{0,n}|^2,
+\end{align}
+so the on-shell gravitational energy-decay rate is
 \begin{equation}
 \boxed{
 \kappa_{g,n}
-=\frac{\overline P_{g,n}}{E_n}
 =\frac{G\omega_n^4}{5c^5}
-\frac{q_n:q_n}{\mu_n} .
+\frac{q_n:q_n}{\mu_n}.
 }
 \label{eq:kappan}
 \end{equation}
-For a complex modal basis the same expression uses the corresponding Hermitian contraction $q_n^*:q_n$.
 
-The cumulative resource follows from one completeness bound. Introduce the vector influence fields
+The scalar completeness relation follows from the vector influence fields
 \begin{equation}
 (g^{ij})_k
 =\delta_{ik}x_j+\delta_{jk}x_i
 -\frac23\delta_{ij}x_k,
 \end{equation}
-so that $q_{n,ij}=\langle w_n,g^{ij}\rangle_\rho$. Direct contraction gives
+for which $q_{n,ij}=\langle w_n,g^{ij}\rangle_\rho$ and
 \begin{equation}
-\boxed{
 \sum_{i,j,k}|(g^{ij})_k|^2=\frac{20}{3}r^2 .
-}
-\label{eq:20over3}
 \end{equation}
-For the normalized orthonormal modes $\phi_n=w_n/\sqrt{\mu_n}$, Bessel's inequality is applied separately to each fixed influence field $g^{ij}$:
-\begin{align}
-\sum_n\frac{q_n:q_n}{\mu_n}
-&\le
-\int_V\rho\sum_{i,j,k}|(g^{ij})_k|^2\dd^3x \\
-&=\frac{20}{3}I_2 .
-\end{align}
-No orthogonality among the different $g^{ij}$ fields is required. For a complete displacement basis the corresponding Parseval relation saturates this unweighted projection sum; truncating the retained modal set can only decrease it. The theorem does not require the retained carrier-scale subset to saturate the complete-basis value: the retained fraction depends on the body's elastic spectrum and geometry, and no tightness claim for the $20/3$ coefficient within a particular operating band is made here. Therefore
+For $\phi_n=w_n/\sqrt{\mu_n}$, Bessel's inequality therefore gives
 \begin{equation}
 \boxed{
-\sum_n\frac{q_n:q_n}{\mu_n}\le\frac{20}{3}I_2 .
+\sum_n\frac{q_n:q_n}{\mu_n}
+\le\frac{20}{3}I_2 .
 }
 \label{eq:qsum}
 \end{equation}
+For a complete displacement basis this unweighted projection sum is a Parseval equality.
 
-If the retained modal sector satisfies $\omega_n\le\Omega$, Eqs.~\eqref{eq:kappan} and \eqref{eq:qsum} imply
+The propagation problem contains more structure than Eq.~\eqref{eq:qsum} uses. Choose an orthonormal triad $(\bm e_1,\bm e_2,\hat R)$ and an orthonormal real STF tensor basis adapted to rotations about $\hat R$:
+\begin{align}
+E_{2,+}&=\frac{\bm e_1\bm e_1-\bm e_2\bm e_2}{\sqrt2},
+&
+E_{2,\times}&=\frac{\bm e_1\bm e_2+\bm e_2\bm e_1}{\sqrt2},\\
+E_{1,1}&=\frac{\bm e_1\hat R+\hat R\bm e_1}{\sqrt2},
+&
+E_{1,2}&=\frac{\bm e_2\hat R+\hat R\bm e_2}{\sqrt2},\\
+E_0&=\frac{2\hat R\hat R-\bm e_1\bm e_1-\bm e_2\bm e_2}{\sqrt6}.
+\end{align}
+These span the $|m|=2$, $|m|=1$, and $m=0$ sectors respectively. Because every $E$ is traceless and symmetric,
 \begin{equation}
+q_n:E=\left\langle w_n,\,2E\bm x\right\rangle_\rho .
+\label{eq:Einfluence}
+\end{equation}
+Applying Bessel separately to these five influence fields gives sector-resolved oscillator-strength bounds. Writing
+\begin{equation}
+Q_{m,n}^2=\|\Pi_m q_n\|^2
+\end{equation}
+for the squared STF norm in each sector,
+\begin{align}
 \boxed{
-\sum_n\kappa_{g,n}
-\le
-\frac{4G}{3c^5}I_2\Omega^4 .
+\sum_n\frac{Q_{2,n}^2}{\mu_n}
+\le 4I_{\hat R},
 }
-\label{eq:kappasum}
-\end{equation}
-In an energy-normalized Markov modal representation this is
-\begin{equation}
-\Tr(K_g^\dagger K_g)=\sum_n\kappa_{g,n}.
-\end{equation}
-The trace is invariant under unitary internal modal mixing. For a countable retained modal sector, Eq.~\eqref{eq:kappasum} also proves that $K_g$ is Hilbert--Schmidt.
+\label{eq:m2resource}\\
+\boxed{
+\sum_n\frac{Q_{1,n}^2}{\mu_n}
+\le 2I_{\hat R}+4Z_{\hat R},
+}
+\label{eq:m1resource}\\
+\boxed{
+\sum_n\frac{Q_{0,n}^2}{\mu_n}
+\le \frac23I_{\hat R}+\frac83Z_{\hat R}.
+}
+\label{eq:m0resource}
+\end{align}
+The three right-hand sides sum to $(20/3)I_2$, recovering Eq.~\eqref{eq:qsum}. The leading far-zone resource is therefore not the complete scalar $I_2$: it is the $|m|=2$ projection controlled by the conventional inertia $I_{\hat R}$ about the propagation axis.
 
-The theorem uses the retained carrier-scale sector of Eq.~\eqref{eq:retainedsector}, for which $\Omega=\omega_0[1+O(B/\omega_0)]$. Therefore
+If the retained modal sector satisfies $\omega_n\le\Omega$, Eqs.~\eqref{eq:kappan} and \eqref{eq:qsum} still give the useful scalar corollary
 \begin{equation}
 \Tr(K_g^\dagger K_g)
-\lesssim
-\frac{4G}{3c^5}I_2\omega_0^4 .
-\label{eq:narrowresource}
+=\sum_n\kappa_{g,n}
+\le
+\frac{4G}{3c^5}I_2\Omega^4 .
+\label{eq:kappasum}
 \end{equation}
-This replacement is not a statement about arbitrary endpoint modes at all physical frequencies. In particular, modes with $\omega_n\gg\omega_0$ can have off-resonant tails inside the measured envelope band while carrying gravitational rates proportional to their own $\omega_n^4$. Such sectors are outside the simple carrier-scale closure unless their contribution is separately bounded.
+The stronger sectorwise form is
+\begin{equation}
+\sum_n\omega_n^4\frac{Q_{m,n}^2}{\mu_n}
+\le
+\Omega^4\mathcal I_m,
+\label{eq:weightedsector}
+\end{equation}
+with
+\begin{equation}
+\mathcal I_2=4I_{\hat R},\qquad
+\mathcal I_1=2I_{\hat R}+4Z_{\hat R},\qquad
+\mathcal I_0=\frac23I_{\hat R}+\frac83Z_{\hat R}.
+\end{equation}
 
-The integrated-response and modal ingredients have close precedents in resonant-mass antenna theory and gravitational material-response sum rules \cite{PaikWagoner1976,Aguiar2011,Srivastava2003}. Their role here is to reduce the retained gravitational coupling trace of either endpoint to the same scalar matter resource $I_2$ before the two-ended propagation cut is applied.
+The frequency ceiling in Eq.~\eqref{eq:retainedsector} cannot be removed using completeness alone. Equation~\eqref{eq:qsum} controls only the zeroth spectral moment of the modal quadrupole projections. Abstractly, a square-summable sequence of projection amplitudes can have a divergent fourth frequency moment; for example $a_n\propto n^{-1}$ and $\omega_n\propto n$ give $\sum_n|a_n|^2<\infty$ but $\sum_n\omega_n^4|a_n|^2=\infty$. Any whole-spectrum replacement of Eq.~\eqref{eq:kappasum} therefore requires additional elastic regularity, a microscopic cutoff, or a frequency-dependent treatment of far-detuned modes.
+
+This last point also fixes the interpretation of Eq.~\eqref{eq:kappan}. It is an \emph{on-shell} modal linewidth evaluated at $\omega_n$. A carrier-scale Markov envelope may freeze that coupling for retained near-resonant modes. A far-detuned mode oscillating in response to a drive near $\omega_0$ must instead be treated with the frequency-dependent elastic and radiative response; assigning its on-shell $\omega_n^4$ linewidth unchanged to a low-frequency tail would exceed the validity of the Markov reduction rather than establish a physical enhancement.
+
+The integrated-response and modal ingredients have close precedents in resonant-mass antenna theory and gravitational material-response sum rules \cite{PaikWagoner1976,Aguiar2011,Srivastava2003}. Their use here is to obtain the sector resources required by the two-ended TT propagation cut.
