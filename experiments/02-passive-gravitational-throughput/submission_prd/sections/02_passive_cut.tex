@@ -49,14 +49,14 @@ The dual output Gramian gives the complementary input bound. Therefore
 }
 \label{eq:h2cut}
 \end{equation}
-This is generic passive-system mathematics, not a gravitational result.
+This is generic passive-system mathematics, not a gravitational result. It is conceptually related to classical gain--bandwidth restrictions, but its $H_2$ selected-port form is not the same functional as Fano's reflection-coefficient matching integrals \cite{Fano1950}.
 
 Now factor the separated gravitational link as
 \begin{equation}
 T(\nu)=H_B(\nu)P_g(\omega_0)H_A(\nu)
 \label{eq:factor}
 \end{equation}
-to retained narrowband order. Here $H_A$ maps the selected source inputs to the complete retained set of gravitational output ports, $H_B$ maps the complete retained gravitational input set to selected receiver outputs, and $P_g$ is the normalized free-space gravitational propagation operator. Nongravitational loss ports remain in the total operator $K$; such losses can make the final ceiling very loose, but cannot increase the allowed transfer. Let
+to retained carrier-frozen narrowband order. Here $H_A$ maps the selected source inputs to the complete retained set of gravitational output ports, $H_B$ maps the complete retained gravitational input set to selected receiver outputs, and $P_g$ is the normalized free-space gravitational propagation operator evaluated at the carrier. Nongravitational loss ports remain in the total operator $K$; such losses can make the final ceiling very loose, but cannot increase the allowed transfer. The strict inequalities below therefore apply to the carrier-frozen retained model; replacement of the exact frequency-dependent propagator by $P_g(\omega_0)$ is part of the separately declared narrowband approximation. Let
 \begin{equation}
 \|P_g(\omega_0)\|_{\op}^2\le\eta_{\max}.
 \end{equation}

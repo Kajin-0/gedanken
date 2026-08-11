@@ -26,7 +26,7 @@ obeys $w_q\le5/(8\pi)$. The corresponding directivity is therefore
 \boxed{D_q=4\pi w_q\le\frac52 .}
 \label{eq:Dmax}
 \end{equation}
-The maximum is attained by a plus quadrupole observed along its symmetry-normal direction \cite{Hirakawa1976}. The resulting propagation coefficient is therefore an optimized ceiling over compact quadrupole orientation and polarization; a fixed or mismatched antenna geometry can only reduce the realized transfer.
+The maximum is attained by a plus quadrupole observed along its symmetry-normal direction \cite{Hirakawa1976}. The resulting propagation coefficient is an optimized ceiling over compact quadrupole orientation and polarization; a fixed or mismatched antenna geometry can only reduce the realized transfer.
 
 Choose unit-norm TT polarization tensors $\epsilon^\lambda(\hat n)$ and define normalized angular amplitudes by
 \begin{equation}
@@ -56,21 +56,47 @@ The stationary-phase step is uniform over normalized compact quadrupoles: the co
 }
 \label{eq:25over16}
 \end{equation}
-The same coefficient follows from reciprocal effective area, $D_AD_B(\lambda/4\pi R)^2$, with $D_A,D_B\le5/2$ \cite{Hirakawa1976}. An independent canonical one-graviton calculation in companion Experiment 01 reproduces the same leading coefficient and, for an aligned plus-mode specialization, supplies finite-distance corrections; those subleading corrections are not assumed to be universal here.
+The same leading coefficient follows from reciprocal effective area, $D_AD_B(\lambda/4\pi R)^2$, with $D_A,D_B\le5/2$ \cite{Hirakawa1976}.
 
-Combining Eqs.~\eqref{eq:gravcut}, \eqref{eq:narrowresource}, and \eqref{eq:25over16}, with $k_0=\omega_0/c$, gives
+\subsection{Finite-distance outgoing TT correction}
+\label{sec:finiteTT}
+
+The propagation asymptotic can be sharpened within the same normalized compact-quadrupole angular model. Set $z=kR$ and choose the separation as the quantization axis. Axial symmetry decomposes the five-dimensional STF space into $m=0$, $|m|=1$, and $|m|=2$ sectors. Exact angular integration and separation of the outgoing $e^{iz}$ component give squared sector singular values
 \begin{align}
-\Gamma_{\rm coh}
-&\lesssim
-\frac{25}{16(k_0R)^2}
-\frac{4G\omega_0^4}{3c^5}
-\min(I_{2,A},I_{2,B}) \\
-&=
-\boxed{
-\frac{25G\omega_0^2}{12c^3R^2}
-\min(I_{2,A},I_{2,B})} .
+\eta_2(z)
+&=\frac{25}{16z^{10}}
+\left(z^8-2z^6+3z^4-9z^2+9\right),\\
+\eta_1(z)
+&=\frac{25}{4z^{10}}
+\left(z^6-3z^4+36\right),\\
+\eta_0(z)
+&=\frac{225}{4z^{10}}
+\left(z^4+3z^2+9\right).
+\label{eq:finite-sector-eigenvalues}
 \end{align}
-This proves Eq.~\eqref{eq:headline} within the declared narrowband leading-wave-zone class.
+The $|m|=1$ and $|m|=2$ sectors are each doubly degenerate. Direct comparison shows $\eta_2\ge\eta_1,\eta_0$ for $z\ge3$, so throughout the clearly separated branch one may use
+\begin{equation}
+\boxed{
+\|P_g(z)\|_{\op}^2
+=\frac{25}{16z^2}
+\left(
+1-\frac{2}{z^2}+\frac{3}{z^4}
+-\frac{9}{z^6}+\frac{9}{z^8}
+\right)
+}
+\label{eq:finiteTT}
+\end{equation}
+for the outgoing compact TT angular propagator. Appendix~\ref{app:finiteTT} gives the corresponding angular kernels and outgoing amplitudes. At $z=100$, the parenthetical correction is $0.99980003$, so the leading $25/(16z^2)$ power coefficient differs from Eq.~\eqref{eq:finiteTT} by only about $0.020\%$. This quantifies the propagation part of the wave-zone approximation used in the worked example. It does not quantify finite-source multipole corrections or the carrier-freezing error across a nonzero bandwidth.
+
+Combining Eqs.~\eqref{eq:gravcut}, \eqref{eq:kappasum}, and \eqref{eq:25over16} gives the rigorous asymptotic coefficient
+\begin{equation}
+\limsup_{k_0R\rightarrow\infty}
+(k_0R)^2\Gamma_{\rm coh}
+\le
+\frac{25G\Omega^4}{12c^5}
+\min(I_{2,A},I_{2,B}),
+\end{equation}
+which is Eq.~\eqref{eq:asymptotic-headline}. In the carrier-frozen compact TT model, Eq.~\eqref{eq:finiteTT} may instead be inserted directly into Eq.~\eqref{eq:gravcut} to retain the displayed finite-$z$ propagation correction. Only after this step is $\Omega=\omega_0[1+O(B/\omega_0)]$ used to obtain the leading form Eq.~\eqref{eq:headline}.
 
 \subsection{Repeated passive returns}
 
@@ -86,13 +112,13 @@ As subblocks of passive scattering matrices, $\|R_A\|_{\op},\|R_B\|_{\op}\le1$. 
 \le\frac{p_+}{1-p_+p_-}
 }
 \end{equation}
-whenever $p_+p_-<1$. For reciprocal propagation, $p_+=p_-=p$ and $\eta=p^2$, so
+whenever $p_+p_-<1$. This inequality is not a small-$p$ expansion. Even perfectly reflecting passive endpoints cannot by themselves make the loop gain approach unity in the separated wave zone, because every round trip still contains both weak propagation factors and therefore has norm at most $p_+p_-$. For reciprocal propagation, $p_+=p_-=p$ and $\eta=p^2$, so
 \begin{equation}
 \|P_{\rm eff}\|_{\op}^2
 \le\frac{\eta}{(1-\eta)^2}
 =\eta+2\eta^2+O(\eta^3).
 \end{equation}
-Thus constructive recurrence can raise the finite-distance transfer above its single-pass value while remaining passive, but the first possible increase in the upper ceiling is $O(\eta^2)=O[(kR)^{-4}]$. Since the single-pass term is $O[(kR)^{-2}]$, recurrence cannot alter the leading coefficient, and
+The expansion is used only to identify the far-zone order: constructive recurrence can raise the finite-distance transfer above its single-pass value while remaining passive, but the first possible increase in the upper ceiling is $O(\eta^2)=O[(kR)^{-4}]$. Since the single-pass term is $O[(kR)^{-2}]$, recurrence cannot alter the leading coefficient, and
 \begin{equation}
 \limsup_{kR\rightarrow\infty}(kR)^2\|P_{\rm eff}\|_{\op}^2\le\frac{25}{16} .
 \end{equation}

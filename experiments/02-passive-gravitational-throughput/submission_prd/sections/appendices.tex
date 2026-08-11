@@ -3,7 +3,7 @@
 \section{Countably infinite bounded-port extension}
 \label{app:infinite}
 
-Let $\mathcal X$ be a separable modal Hilbert space and $K:\mathcal X\rightarrow\mathcal Y$ a bounded total Markov port operator.  Let $\mathcal T(t)$ be a passive contraction semigroup satisfying the energy inequality
+Let $\mathcal X$ be a separable modal Hilbert space and $K:\mathcal X\rightarrow\mathcal Y$ a bounded total Markov port operator. Let $\mathcal T(t)$ be a passive contraction semigroup satisfying the energy inequality
 \begin{equation}
 \mathcal T(\tau)\mathcal T^\dagger(\tau)
 +\int_0^\tau
@@ -23,36 +23,58 @@ therefore obeys
 \end{equation}
 The monotone strong limit $P_i$ exists and satisfies $0\le P_i\le I$.
 
-Equation~\eqref{eq:kappasum} gives $\Tr(K_g^\dagger K_g)<\infty$ for the retained countable gravitational modal sector, so $K_g$ is Hilbert--Schmidt.  Consequently
+Equation~\eqref{eq:kappasum} gives $\Tr(K_g^\dagger K_g)<\infty$ for the retained countable gravitational modal sector, so $K_g$ is Hilbert--Schmidt. Consequently
 \begin{align}
 \int_0^\infty
 \|K_g\mathcal T(t)K_i^\dagger\|_{\HS}^2\dd t
 &=\Tr(K_gP_iK_g^\dagger)\\
 &\le\Tr(K_g^\dagger K_g).
 \end{align}
-The Hilbert--Schmidt operators form a Hilbert space, so vector-valued Plancherel supplies the same frequency-domain $H_2$ cut as in finite dimension.  The dual argument gives the receiver-side cut.  This proof intentionally excludes unbounded boundary-control/observation operators; such systems require separate admissibility analysis \cite{BarasBrockett1975,Opmeer2013}.
+The Hilbert--Schmidt operators form a Hilbert space, so vector-valued Plancherel supplies the same frequency-domain $H_2$ cut as in finite dimension. The dual argument gives the receiver-side cut. This proof intentionally excludes unbounded boundary-control/observation operators; such systems require separate admissibility analysis \cite{BarasBrockett1975,Opmeer2013}.
+
+\section{Exact finite-distance compact TT sectors}
+\label{app:finiteTT}
+
+Choose the separation along $\hat z$ and write $\mu=\cos\theta$. Axial rotations diagonalize the normalized compact-STF angular overlap into $m=0$, $|m|=1$, and $|m|=2$ sectors. After azimuthal integration, unit-normalized sector kernels are
+\begin{align}
+K_2(\mu)&=\frac{5}{32}(1+6\mu^2+\mu^4),\\
+K_1(\mu)&=\frac58(1-\mu^2)(1+\mu^2),\\
+K_0(\mu)&=\frac{15}{16}(1-\mu^2)^2,
+\end{align}
+with $\int_{-1}^{1}K_m(\mu)\dd\mu=1$. Their fixed-frequency overlaps are
+\begin{equation}
+S_m(z)=\int_{-1}^{1}K_m(\mu)e^{iz\mu}\dd\mu,
+\qquad z=kR.
+\end{equation}
+Separating the outgoing $e^{iz}$ part gives
+\begin{align}
+S_{+,2}(z)&=-\frac{5i}{4z^5}
+\left(z^4+2iz^3-3z^2-3iz+3\right)e^{iz},\\
+S_{+,1}(z)&=-\frac{5}{2z^5}
+\left(z^3+3iz^2-6z-6i\right)e^{iz},\\
+S_{+,0}(z)&=\frac{15i}{2z^5}
+\left(z^2+3iz-3\right)e^{iz}.
+\end{align}
+Their squared magnitudes are exactly the three quantities in Eq.~\eqref{eq:finite-sector-eigenvalues}. For $z\ge3$, direct subtraction gives $\eta_2-\eta_1\ge0$ and $\eta_2-\eta_0\ge0$, so Eq.~\eqref{eq:finiteTT} follows. The separated outgoing component is the retarded source-to-receiver branch used in the wave-zone link. No near-zone channel interpretation of the isolated outgoing component is required or asserted.
 
 \section{Validation and falsification checks}
 \label{app:validation}
 
-The repository contains independent numerical regressions designed to violate, rather than merely illustrate, the analytic inequalities.  They are not substitutes for proof.
+Independent numerical regressions were used to challenge, rather than merely illustrate, the analytic inequalities. They are not substitutes for proof.
 
-\begingroup
-\small
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.08}
-\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.29\columnwidth}>{\raggedright\arraybackslash}X@{}}
+\begin{center}
+\begin{tabularx}{\columnwidth}{>{\raggedright\arraybackslash}p{0.29\columnwidth}>{\raggedright\arraybackslash}X}
 \toprule
 Check & Adversarial target \\
 \midrule
 Passive cut & Random complex noncommuting passive realizations; Lyapunov $H_2$ identity; full-scattering contractivity; random two-ended links. \\
 Endpoint resource & Random discrete mass distributions; exact $20/3$ tensor contraction; complete-basis Parseval saturation; truncated Bessel bounds; random modal mixing. \\
-TT propagation & Random complex STF quadrupoles; numerical sphere integration; directivity ceiling; polarization-overlap bound; aligned $25/16$ saturation. \\
+TT propagation & Random complex STF quadrupoles; numerical sphere integration; directivity ceiling; polarization-overlap bound; aligned $25/16$ saturation; exact finite-$z$ $m$-sector overlaps. \\
 Combined theorem & Random passive source/receiver systems driven close to the allowed endpoint-resource and propagation ceilings. \\
 Infinite modal sector & Increasing truncations of fixed square-summable gravitational ports; Gramian ceiling; finite trace convergence; basis mixing. \\
 Recurrence & Random contractive endpoint reflections and propagation matrices; exact resolvent; scalar phase-aligned saturation. \\
 \bottomrule
 \end{tabularx}
-\endgroup
+\end{center}
 
-The first canonical passing runs are recorded in the public repository state files. Two semantic corrections were made during reconstruction: the frequency integrated in $\Gamma_{\rm coh}$ was separated explicitly into envelope detuning $\nu$ versus absolute carrier $\omega_0$, and the TT propagation statement was restricted to a leading wave-zone limsup coefficient rather than assigning the aligned plus-mode subleading correction structure to arbitrary complex quadrupole pairs. A later manuscript adversarial audit further made the retained carrier-scale modal sector, compactness conditions, and band-integral-to-full-line-$H_2$ step explicit.
+Two semantic corrections were made during development: the frequency integrated in $\Gamma_{\rm coh}$ was separated explicitly into envelope detuning $\nu$ versus absolute carrier $\omega_0$, and the TT propagation statement was restricted to the outgoing compact-quadrupole sector rather than assigning one aligned subleading correction structure to arbitrary geometries. The finite-distance STF decomposition above subsequently makes the operator-level outgoing correction explicit. The retained carrier-scale modal sector, compactness conditions, and band-integral-to-full-line-$H_2$ step are stated explicitly in the main text.
