@@ -39,6 +39,6 @@ Thank you for your consideration.
 
 Sincerely,
 
-[AUTHOR NAME]  
+Terence Fisher  
 [AFFILIATION]  
-[EMAIL]
+terence@brooks-photonics.com
