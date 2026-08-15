@@ -37,11 +37,11 @@ Relevant results:
 - a graphene hybrid Josephson junction detects absorbed 1550-nm photons through low Dirac-electron heat capacity and thermally triggered Josephson switching;
 - intrinsic quantum efficiency is about 87% with dark count below 1 s^-1 and about 75% with dark count below one per week;
 - graphene active area is approximately 4 µm × 25 µm = 100 µm^2;
-- thermal fitting gives T_1p ≈ 2.5 K and tau_ep ≈ 75 ns at a 20 mK base temperature;
-- measured single-photon response is compatible with escape over a Josephson barrier of order Delta U/k_B ≈ 8 K;
+- thermal fitting gives `T_1p ≈ 2.5 K` and `tau_ep ≈ 75 ns` at a 20 mK base temperature;
+- measured single-photon response is compatible with escape over a Josephson barrier of order `Delta U/k_B ≈ 8 K`;
 - dark switching in the lowest-temperature regime is dominated by MQT;
 - the junction channel is 600 nm long and 1.7 µm wide, with MoRe electrodes; the paper quotes a MoRe gap scale around 1.3 meV;
-- the heat-diffusion length is reported near 230 µm, much longer than the sample, supporting rapid spatial thermalization;
+- the heat-diffusion length is reported near 230 µm;
 - measured switching-current scale decreases by about 30% between 20 mK and 1.2 K.
 
 Collision implication: `photon -> hot graphene electrons -> Josephson escape` is explicit prior art.
@@ -51,18 +51,16 @@ Collision implication: `photon -> hot graphene electrons -> Josephson escape` is
 **Title:** Proximity SQUID single photon detector via temperature-to-voltage conversion  
 **arXiv:** 1711.10846
 
-A superconducting interferometer with SNS weak links was proposed as a single-photon calorimeter: one weak link is antenna-coupled and photon heating exponentially suppresses its critical current, creating SQUID asymmetry and a measurable voltage pulse. The proposal used realistic parameters and targeted photon frequencies above about 5 THz.
+A superconducting interferometer with SNS weak links was proposed as a single-photon calorimeter: one weak link is antenna-coupled and photon heating suppresses its critical current, creating SQUID asymmetry and a measurable voltage pulse.
 
-**Collision implication:** `photon heating -> suppression of a proximity-JJ critical current -> SQUID-level electrical detection` is also prior art. Experiment 03 must obtain its distinction from persistent flux capture, the fold/dark-stability closure, LWIR-specific operating regime, or a self-directed mechanism—not from thermal modulation of SQUID critical current itself.
+**Collision implication:** `photon heating -> suppression of a proximity-JJ critical current -> SQUID-level electrical detection` is prior art.
 
 ### Jung et al., Phys. Rev. Applied 26, 014078 (2026)
 
 **Title:** Engineering Andreev bound states for thermal sensing in proximity Josephson junctions  
 **DOI:** 10.1103/9lsg-mdb8
 
-Temperature sensitivity of graphene Josephson critical current can be engineered through channel length, transparency, carrier density and superconducting material. The Al-based threshold-readout sensitivity reaches width-normalized |dJ_c/dT| ≈ 0.2 µA K^-1 µm^-1 at 0.1 K; Ti devices reach maximum relative |(dI_c/dT)/I_c| ≈ 0.6 K^-1 at 50 mK. The work explicitly analyzes the short-to-long ballistic-junction crossover through the Andreev spectrum and notes increasing thermal sensitivity as the ABS spectrum becomes denser in longer junctions.
-
-Implication: an engineered thermal CPR response is plausible background physics, not a novelty claim.
+Temperature sensitivity of graphene Josephson critical current can be engineered through channel length, transparency, carrier density and superconducting material. The work explicitly analyzes the short-to-long ballistic-junction crossover through the Andreev spectrum.
 
 ## C. Single-photon / optical conversion into persistent superconducting flux
 
@@ -97,7 +95,7 @@ SFQ pulses magnetically coupled to an rf-SQUID junction were proposed to transie
 
 **Major collision:** transient `I_c` suppression as an rf-SQUID tipping/freeze mechanism is prior art.
 
-## E. Graphene current-phase relation and arbitrary-length physics
+## E. Graphene current-phase relation, arbitrary length, interfaces and self-consistency
 
 ### Titov and Beenakker, Phys. Rev. B 74, 041401(R) (2006)
 
@@ -111,22 +109,62 @@ Use in Experiment 03: sensitivity benchmark only unless the final device satisfi
 
 **Title:** Josephson current in ballistic superconductor-graphene systems
 
-The paper derives a Matsubara/secular-equation method valid for arbitrary junction length and explicitly distinguishes the closed-form short-junction limit `L << xi` from the general problem. It is a more appropriate theoretical route for an intermediate-length graphene weak link than blindly using the Titov–Beenakker short formula.
+The paper derives a Matsubara/secular-equation method valid for arbitrary junction length and explicitly distinguishes the closed-form short-junction limit `L << xi` from the general problem. This is the basis of the current ideal arbitrary-length Experiment-03 CPR calculation.
+
+Important limitation: the superconducting pair potential is still treated through rigid boundary conditions rather than self-consistently.
+
+### Black-Schaffer and Linder, Phys. Rev. B 82, 184522 (2010)
+
+**Title:** Strongly anharmonic current-phase relation in ballistic graphene Josephson junctions  
+**DOI:** 10.1103/PhysRevB.82.184522  
+**arXiv:** 1008.2619
+
+This is a major model-boundary source for Experiment 03.
+
+The paper solves the graphene Josephson problem self-consistently with tight-binding Bogoliubov–de Gennes theory and contrasts it with non-self-consistent rigid-boundary treatments. Relevant findings:
+
+- rigid boundary conditions ignore suppression of the superconducting order parameter near the SG interface, inverse-proximity depletion in the superconductors, and current depairing;
+- self-consistency significantly lowers the current relative to rigid-boundary calculations;
+- for short `L < xi` junctions, current depairing can alter the CPR enough that the critical phase becomes smaller than `pi/2`, producing negative skewness over substantial parameter ranges;
+- for longer `L > xi` junctions, positive or only weakly negative skewness survives more readily, but self-consistent CPRs approach harmonic form more rapidly with temperature;
+- proximity depletion remains relevant even when depairing is less severe.
+
+**Implication:** the favorable steep near-`pi` tail of the current rigid-boundary arbitrary-length Experiment-03 model may be substantially rounded or qualitatively altered by self-consistency. High-doping stability conclusions are conditional until this is tested.
 
 ### Nanda et al., Nano Letters 17, 3396–3401 (2017)
 
 **Title:** Current-Phase Relation of Ballistic Graphene Josephson Junctions  
 **DOI:** 10.1021/acs.nanolett.7b00097
 
-Direct asymmetric-SQUID measurements show a strongly forward-skewed, gate-tunable graphene CPR at low temperature. The skewness is suppressed as temperature increases, becoming approximately sinusoidal by 4.2 K. Their tight-binding calculations go beyond the short-junction limit and identify junction length and graphene–superconductor interface properties as important CPR controls.
+Direct asymmetric-SQUID measurements on ballistic MoRe/graphene JJs show a forward-skewed, gate-tunable CPR at low temperature. They define
 
-**Implication for Experiment 03:** the sinusoidal fold threshold is not a reliable final design number. The full measured or microscopic `I_s(phi,T)` must enter the load-line tangency conditions.
+```math
+S=(2\phi_{max}-\pi)/\pi.
+```
+
+Relevant quantitative results:
+
+```text
+strong p doping: average S ~0.23
+strong n doping: average S ~0.27
+near charge-neutrality point: measured S ~0.1
+```
+
+Their realistic-interface tight-binding calculation explicitly includes graphene–superconductor interface/contact effects. The paper reports that:
+
+- skewness depends sensitively on the number of graphene channels and SG interface transparency/contact resistance;
+- decreasing interface transparency reduces skewness;
+- higher temperature suppresses higher harmonics, and the CPR is approximately sinusoidal by 4.2 K;
+- the realistic-interface model still overestimates measured `I_c` by about a factor of 2.5, plausibly because self-consistency/current-depairing effects are not fully captured;
+- earlier self-consistent theory predicted approximately `S~0.15` for n-doped `L<xi` junctions, versus roughly `S~0.42` from a non-self-consistent ABS-only calculation.
+
+**Implication for Experiment 03:** global skewness itself is prior-art characterization, but more importantly the measured realistic CPR is much less sawtooth-like than the current high-doping rigid-boundary model. Full CPR tail information is required for the rf-SQUID fold.
 
 ### Borzenets et al., Phys. Rev. Lett. 117, 237002 (2016)
 
 **Title:** Ballistic Graphene Josephson Junctions from the Short to the Long Junction Regimes
 
-Relevant boundary: ballistic graphene JJs have been experimentally studied across the short/long crossover; junction length relative to coherence/Thouless scales materially changes `I_c(T)` and the CPR.
+Ballistic graphene JJs have been experimentally studied across the short/long crossover; junction length relative to coherence/Thouless scales materially changes `I_c(T)` and the CPR.
 
 ## F. Superconducting photogalvanic / phase-battery theory
 
@@ -154,7 +192,7 @@ NbSe2/Nb3Br8/NbSe2 heterostructures exhibit field-free nonreciprocal Josephson c
 
 Substantial supercurrent rectification was demonstrated in few-layer NbSe2 under symmetry-breaking conditions.
 
-## H. Remaining collision categories
+## H. Remaining collision / validation categories
 
 A full audit must still search at least:
 
@@ -167,7 +205,8 @@ A full audit must still search at least:
 7. antenna/cavity coupling into micron-scale graphene absorbers at 8–14 µm;
 8. reset/readout architectures for persistent-flux photon counters;
 9. prior patents covering calorimetric Josephson-to-flux latching;
-10. any prior theory deriving an explicit photon-energy / fold / MQT / capacitance / damping feasibility closure.
+10. any prior theory deriving an explicit photon-energy / fold / MQT / capacitance / damping feasibility closure;
+11. measured or self-consistent CPR **tail slope near `phi=pi`**, not only conventional skewness `S`.
 
 ## Current literature verdict
 
@@ -183,17 +222,20 @@ transient I_c suppression -> lowered rf-SQUID barrier -> frozen flux state
 field-free Josephson directionality
 illumination-driven superconducting phase batteries / vorticity switching
 non-sinusoidal and thermally evolving graphene CPRs
+interface- and self-consistency-induced modification of graphene CPR skewness.
 ```
+
+The current ideal high-doping arbitrary-length model is now known to be an aggressive CPR-shape limit. Its very low fold relies on a steep near-`pi` tail that is substantially more sawtooth-like than representative realistic-interface measurements.
 
 The research branch remains justified only if something survives in the narrower conjunction or mathematics:
 
 ```text
 single absorbed LWIR photon
--> engineered thermal evolution of a full proximity-JJ CPR
+-> realistic thermal evolution of the full proximity-JJ CPR tail
 -> directional rf-SQUID fold crossing
 -> persistent superconducting readout state
 ```
 
-and/or a genuinely new performance closure relating photon heat capacity, CPR/load-line fold, cold barrier/MQT, capacitance, damping, stored signal and reset/readout cost.
+and/or a genuinely new performance closure relating photon heat capacity, CPR-tail/load-line fold, cold barrier/MQT, capacitance, damping, stored signal and reset/readout cost.
 
 No priority claim is authorized.
