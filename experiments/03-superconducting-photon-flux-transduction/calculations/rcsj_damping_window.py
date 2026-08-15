@@ -51,11 +51,19 @@ def infer_kappa(barrier_K: float, Cmin: float, L: float) -> float:
 
 
 def slow_time(R: float, L: float, C: float, kappa: float) -> float:
-    """Slowest linearized e-fold time for positive scalar Ohmic R."""
+    """Slowest linearized e-fold time for positive scalar Ohmic R.
+
+    Critical damping is handled explicitly.  The overdamped expression has a
+    square-root cusp at r=R/R*=1, so evaluating an r that differs from unity by
+    roundoff can amplify floating-point error even though the limiting value is
+    exactly 1/omega0.
+    """
     omega0 = math.sqrt(kappa / (L * C))
     Rstar = 0.5 * math.sqrt(L / (C * kappa))
     r = R / Rstar
-    if r >= 1.0:  # underdamped, envelope
+    if math.isclose(r, 1.0, rel_tol=1.0e-12, abs_tol=1.0e-15):
+        return 1.0 / omega0
+    if r > 1.0:  # underdamped, envelope
         return r / omega0
     q = 1.0 / r   # overdamped
     return (q + math.sqrt(q * q - 1.0)) / omega0
