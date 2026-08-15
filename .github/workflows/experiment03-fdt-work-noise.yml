@@ -1,0 +1,26 @@
+name: Experiment 03 FDT work noise
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/causal_phase_work_noise.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/causal_two_pole_environment.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/two_pole_cold_variance.py'
+      - '.github/workflows/experiment03-fdt-work-noise.yml'
+
+jobs:
+  work-noise:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Run FDT stochastic-work diagnostic
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python causal_phase_work_noise.py
