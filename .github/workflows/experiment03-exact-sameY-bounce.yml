@@ -1,0 +1,34 @@
+name: Experiment 03 exact same-Y nonlocal bounce
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/sameY_exact_nonlocal_bounce.py'
+      - '.github/workflows/experiment03-exact-sameY-bounce.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  bounce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Solve nonlocal dissipative Euclidean bounce
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python sameY_exact_nonlocal_bounce.py
+      - name: Commit exact-bounce snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add experiments/03-superconducting-photon-flux-transduction/RESULTS_EXACT_SAMEY_BOUNCE_2026-08-15.md
+          git diff --cached --quiet || git commit -m "Persist Experiment 03 exact same-Y bounce results"
+          git push
