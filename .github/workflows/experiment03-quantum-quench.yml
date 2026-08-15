@@ -1,0 +1,29 @@
+name: Experiment 03 exact quantum quench benchmark
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/quantum_quench_benchmark.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/full_dynamic_rfsquid.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/quantum_initial_capture.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/quench_energy_bound.py'
+      - '.github/workflows/experiment03-quantum-quench.yml'
+
+jobs:
+  quench-quantum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - name: Install pinned dependencies
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Compare exact quantum and classical-Wigner quench evolution
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python quantum_quench_benchmark.py --quick --offset-K 0.030
