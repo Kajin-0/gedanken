@@ -223,7 +223,7 @@ Detailed derivation: `FEASIBILITY_CLOSURE_2026-08-15.md`.
 
 ## Step 30: arbitrary-length graphene CPR implemented and validated
 
-The short-junction simplification was replaced with the Titov–Beenakker secular equation **before** its short-junction approximation, evaluated at finite temperature with the Hagymási–Kormányos–Cserti Matsubara method.
+The short-junction simplification was replaced with the Titov–Beenakker secular equation **before** its short-junction approximation, evaluated at finite temperature with the Hagymasi–Kormanyos–Cserti Matsubara method.
 
 Dimensionless model:
 
@@ -267,25 +267,210 @@ state separation           ~0.2535 Phi0
 current-state gap          ~5.97 uA.
 ```
 
-This is substantially more favorable than the short-junction toy result at similar beta (`T_fold~2.17 K`, provisional `C_min,Q~0.52 pF`).
-
-Doping produces a particularly useful model trend: at `beta_cold=0.8`, `T_fold` remains near `1.1 K` from `mu/Delta0=0` to `20`, while the cold barrier rises from about `7.0 K` to `16.7 K` and provisional `C_min,Q` falls from about `262 fF` to `71 fF`. In the ideal model, doping primarily improves **cold-state stability**, not optical threshold.
-
 Detailed record: `ARBITRARY_LENGTH_CPR_CHECKPOINT_2026-08-15.md`.
+
+## Step 31: intermediate-length CPR validation strengthened
+
+The arbitrary-length implementation was tested against the exact intermediate parameter family used by Hagymasi et al. rather than only against the analytic short limit:
+
+```text
+xi/L=0.91
+mu/Delta0=0,20
+T/Tc=0,0.18,0.35.
+```
+
+Using `T/Tc=0.01` as the numerical low-T proxy, the solver gives approximately
+
+```text
+mu=0:  S=0.329, 0.196, 0.063
+mu=20: S=0.546, 0.250, 0.077
+```
+
+as temperature increases. This reproduces the published trend structure including the strongly sawtooth-like high-doping low-T CPR. The values are stable across enlarged transverse and Matsubara cutoffs.
+
+Record: `HAGYMASI_CPR_VALIDATION_2026-08-15.md`.
+
+## Step 32: realistic-interface CPR skewness cuts the ideal stability margin
+
+Nanda et al. realistic interface calculations/measurements put representative low-T skewness near `S~0.19–0.28`, well below the ideal `S~0.55` high-doping result.
+
+A shape-only interpolation toward those empirical scales was applied while holding the ideal `Ic(T)` amplitude ratio fixed. At `beta=0.8`, `Ic=3 uA`:
+
+```text
+S~0.27 -> T_fold~0.905 K, barrier~9.12 K, Cmin~160 fF
+S~0.22 -> T_fold~0.841 K, barrier~7.14 K, Cmin~230 fF
+S~0.19 -> T_fold~0.794 K, barrier~5.89 K, Cmin~307 fF.
+```
+
+The fold survives, but cold stability is weakened by roughly a factor of two to three relative to the ideal barrier. State separation is much less sensitive and remains around `0.22–0.24 Phi0`.
+
+Record: `INTERFACE_SKEWNESS_SENSITIVITY_2026-08-15.md`.
+
+## Step 33: reduced induced gap exposes a fixed-loop fragility threshold
+
+The gap entering the graphene ABS spectrum was reduced while holding physical junction length, physical gate doping and loop inductance fixed. This changes `ell`, `mu/Delta`, physical `Ic` and `beta_L` self-consistently inside the equilibrium model.
+
+With realistic-skewness shape stress and `L=87.76 pH`:
+
+```text
+r_Delta=1.0 -> barrier~9.10 K
+0.6 -> ~3.29 K
+0.4 -> ~0.94 K
+0.3 -> ~0.21 K
+0.24 -> ~0.002 K
+0.22 -> selected metastable well absent.
+```
+
+Formal bistability disappears near `r_Delta~0.23–0.24` in this fixed-loop sensitivity calculation, but useful cold stability collapses much earlier.
+
+Record: `INDUCED_GAP_SENSITIVITY_2026-08-15.md`.
+
+## Step 34: inductance retuning rescues topology but not barrier energy
+
+If `Ic` is reduced, restoring a chosen cold screening parameter requires
+
+```math
+L=\beta\Phi_0/(2\pi I_c)\propto I_c^{-1}.
+```
+
+At fixed normalized CPR shape, the physical barrier obeys
+
+```math
+\Delta U=E_Lu_b\propto L^{-1}\propto I_c.
+```
+
+Therefore inductance is a compensation knob but not a free cure.
+
+For the realistic-skewness family retuned to `beta=0.8`:
+
+```text
+r=1.0: L~87.8 pH, barrier~9.10 K, Cmin~161 fF
+r=0.6: L~111.5 pH, barrier~6.87 K, Cmin~215 fF
+r=0.4: L~140.3 pH, barrier~5.22 K, Cmin~287 fF.
+```
+
+The fixed-L topology threshold is therefore not an architecture-level impossibility. Retuning preserves the fold while consuming barrier, current-readout and dynamic margin.
+
+Record: `INDUCTANCE_RETUNING_CLOSURE_2026-08-15.md`.
+
+## Step 35: finite dwell simplifies to a local relaxation-time criterion
+
+For clean graphene
+
+```math
+C_e=\gamma AT,
+\qquad P_{e-ph}=\Sigma A(T^4-T_0^4),
+```
+
+the local small-signal E-Ph time is
+
+```math
+\tau_{ep}(T)=\gamma/(4\Sigma T^2).
+```
+
+The exact infinite-photon-energy maximum dwell above the fold reduces for `T0 << Tf` to
+
+```math
+\boxed{t_{>,max}\simeq2\tau_{ep}(T_f).}
+```
+
+Hence a clean necessary dynamic condition is
+
+```math
+\boxed{
+\max[t_{diff},g\sqrt{LC_{min,Q}},2R_{hot}C_{min,Q}]
+<2\tau_{ep}(T_f).
+}
+```
+
+or, on the damping branch,
+
+```math
+R_{hot}C_{min,Q}<\tau_{ep}(T_f).
+```
+
+Record: `RETUNED_DWELL_CLOSURE_2026-08-15.md`.
+
+## Step 36: fast graphene diffusion was reinterpreted correctly
+
+The earlier `~22 ps` cross-device diffusion estimate is **not** a 22-ps energy-decay time. Huang et al. explicitly use the fact that `l_D~230 um` is much larger than the sample to argue that diffusion rapidly homogenizes the electron temperature before E-Ph dissipation.
+
+They identify direct heat leakage into MoRe contacts when `k_BT_e` exceeds the parent superconducting gap `Delta_s~1.3 meV`. At the reference `T_pk~2.5 K`, `k_BT_pk~0.215 meV`, so the present MoRe geometry is far below that leakage threshold.
+
+This strengthens the lumped E-Ph dwell picture in the current temperature regime and removes the tentative idea that ordinary contact diffusion must dominate the cooling just because spatial diffusion is fast.
+
+## Step 37: induced gap and parent-electrode gap were separated
+
+A crucial design distinction is now explicit:
+
+```text
+Delta_ind -> ABS/CPR spectrum, Ic(T), thermal fold
+Delta_s   -> parent-electrode quasiparticle escape threshold / thermal confinement.
+```
+
+Nanda et al. already indicate that the induced graphene gap can be smaller than bulk MoRe, so `Delta_ind < Delta_s` is physically plausible.
+
+For graphene heat capacity, the simultaneous fold and conservative contact-confinement conditions
+
+```math
+T_f\le T_{pk}\lesssim \Delta_s/k_B
+```
+
+give the absorber-area window
+
+```math
+\frac{2\eta E_\gamma}{\gamma[(\Delta_s/k_B)^2-T_0^2]}
+\le A\le
+\frac{2\eta E_\gamma}{\gamma(T_f^2-T_0^2)}.
+```
+
+A nonempty conservative window requires simply
+
+```math
+\boxed{\Delta_s>k_BT_f.}
+```
+
+and its width ratio is approximately
+
+```math
+A_{max}/A_{min}\simeq(\Delta_s/k_BT_f)^2.
+```
+
+For the MoRe-parent baseline `Delta_s~1.3 meV`, `T_Delta~15.1 K`; at `Tf~0.905 K` the area margin is about `278x`. Parent-gap confinement is therefore not close to limiting the baseline.
+
+This points toward a preferred **gap hierarchy**: engineer a thermally responsive smaller `Delta_ind` while retaining a high `Delta_s` parent electrode for calorimetric confinement, subject to enough `Ic` and cold barrier.
+
+Record: `THERMAL_CONFINEMENT_GAP_CLOSURE_2026-08-15.md`.
+
+## Step 38: recent ABS-engineering work closes another broad novelty route
+
+Jung et al., Phys. Rev. Applied 26, 014078 (2026), systematically engineer proximity-JJ thermal sensitivity through channel length, transparency, carrier density and superconducting material, explicitly identifying the proximity-induced gap as a key variable.
+
+Therefore Experiment 03 cannot claim novelty for optimizing ABS/Josephson thermal sensitivity or induced gap itself. The remaining research target is the narrower persistent-flux-capture feasibility/optimality/impossibility closure combining trigger, confinement, cold stability, dynamics and readout.
 
 ## Current interpretation
 
-The ideal static circuit/thermal feasibility is now stronger than at the start of the branch. Simple photon energy is no longer the leading concern in the idealized model.
+The branch has survived increasingly realistic static stresses but with much smaller margins than the ideal model suggested.
 
-The dominant unresolved physics is now:
+The current preferred materials picture is no longer a single-gap graphene/MoRe parameter sweep. It is a **two-gap design problem**:
 
 ```text
-nonideal SG interface transparency / contact doping
-self-consistent or calibrated arbitrary-length CPR
-nonequilibrium electron distribution during the early photon pulse
+smaller engineered Delta_ind for thermal CPR response
++
+high parent Delta_s for calorimetric confinement
++
+retuned L/C for cold stability and write dynamics.
+```
+
+The dominant unresolved physics is now
+
+```text
+quantitative two-gap feasible-region map
+realistic contact/transparency model for Ic(T) and CPR
+nonequilibrium distribution during the photon pulse
 dissipative MQT for the full CPR potential
-finite-rate stochastic fold passage and retrapping
+stochastic fold passage/retrapping
 real 8–14 um optical coupling and reset/readout.
 ```
 
-Broad architecture novelty has repeatedly collided with prior art. The most plausible surviving paper route is increasingly a **quantitative feasibility/optimality or impossibility closure**, if it survives the next nonideal/dynamical calculations and a dedicated patent/paper audit.
+Broad architecture novelty has repeatedly collided with prior art. The plausible paper route remains a **quantitative feasibility/optimality or impossibility closure** if it survives these next calculations and a dedicated patent/paper audit.
