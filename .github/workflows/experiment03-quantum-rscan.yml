@@ -1,0 +1,28 @@
+name: Experiment 03 quantum capture damping scan
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/quantum_capture_rscan.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/quantum_basin_integral.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/full_dynamic_rfsquid.py'
+      - '.github/workflows/experiment03-quantum-rscan.yml'
+
+jobs:
+  rscan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - name: Install pinned dependencies
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Scan scalar-R target-basin probability
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python quantum_capture_rscan.py
