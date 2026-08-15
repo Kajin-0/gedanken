@@ -1,0 +1,25 @@
+name: Experiment 03 FDT work convergence
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/causal_phase_work_convergence.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/causal_phase_work_noise.py'
+      - '.github/workflows/experiment03-fdt-work-convergence.yml'
+
+jobs:
+  convergence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Run work-noise window convergence
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python causal_phase_work_convergence.py
