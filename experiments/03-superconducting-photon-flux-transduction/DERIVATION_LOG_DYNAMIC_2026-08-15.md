@@ -278,23 +278,200 @@ The first workflow failed because the deliberately coarse `quick` CPR grid was i
 
 The smoke test was separated into `calculations/full_dynamic_smoke.py`, which now guards numerical invariants rather than fine bifurcation locations. High-resolution crossover values remain scientific checkpoint outputs.
 
-The workflow must be rechecked on the final current head before declaring the dynamic numerical stack validated.
+## Step 52 — deterministic basin topology is folded, not a single threshold
 
-## Current frontier after Step 51
+The recovered cold separatrix was pulled back through the full finite pulse dynamics. At fixed cold coordinate `x=x_c`, the initial-velocity section contains multiple alternating left/right strips rather than one monotonic edge.
 
-The highest-value next work is no longer static materials optimization.
-
-The theory now needs:
+Representative full-resolution topology:
 
 ```text
-1. dimensionless full-dynamic capture map;
-2. spatial electronic heat transport into the Josephson-sensitive region;
-3. causal Y(omega,T) instead of scalar R;
-4. same environment in fluctuation-dissipation noise and dissipative MQT;
-5. stochastic basin probabilities and timing;
-6. only then detailed optical absorptance/readout/reset.
+rDelta=.8, rise=5 ps, R=185 ohm:
+  edges u=v/omega_c near
+  -2.45, -2.01, -1.12, -0.82, +0.0148, +0.190, +0.774, +0.983, +1.67, +2.02.
+
+rDelta=.6, rise=20 ps, R=75 ohm:
+  edges near
+  -2.28, +0.0922, +0.439, +1.47, +1.80.
 ```
 
-The exact parametric-work identity is the preferred reduction for analyzing the next full trajectories.
+The deterministic physical point `u=0` crosses one of these strips as R changes, but the rest of the folded structure matters once the initial state has finite width.
+
+Canonical scripts/workflow:
+
+```text
+calculations/finite_time_basin_slice.py
+calculations/finite_time_basin_topology.py
+.github/workflows/experiment03-basin-topology.yml
+```
+
+## Step 53 — first quantum initial-state calculation
+
+The cold phase mode was approximated harmonically and its thermal Wigner distribution propagated through the exact deterministic pulse map. Define
+
+```math
+u=\dot x/\omega_c.
+```
+
+The harmonic covariance gives exactly
+
+```math
+\sigma_u=\sigma_x.
+```
+
+Current cases are deep in the quantum regime:
+
+```text
+rDelta=.8: sigma_x~0.11559 rad, hbar omega_c/(kBT0)~76.9
+rDelta=.6: sigma_x~0.11499 rad, hbar omega_c/(kBT0)~65.4.
+```
+
+Thus the width is predominantly zero-point rather than thermal.
+
+A first tensor Gauss-Hermite integral showed material deterministic-boundary smearing, but strong quadrature-order dependence in the folded `.8` family. This identified a numerical-method problem: a smooth Gaussian quadrature was sampling a discontinuous multistrip basin indicator.
+
+## Step 54 — barrier/action and quantum blur collapse to one identity
+
+For cold dimensionless barrier `u_b`, curvature `kappa_c`, and
+
+```math
+S=\Delta U_c/(\hbar\omega_c),
+```
+
+the harmonic covariance obeys
+
+```math
+\boxed{
+\sigma_x^2 S
+=\frac{u_b}{2\kappa_c}
+\coth\left(\frac{\hbar\omega_c}{2k_BT_0}\right).
+}
+```
+
+At low temperature,
+
+```math
+\boxed{\sigma_x^2 S=u_b/(2\kappa_c).}
+```
+
+This is independent of `L` and `C` separately. The same action scale that suppresses cold quantum escape also controls how tightly the initial state is localized relative to the normalized capture geometry.
+
+For a locally planar pulled-back basin boundary in `(x,u)`, signed normal distance `d_n` gives
+
+```math
+\boxed{P_{cap}^{local}=\Phi(d_n/\sigma_x).}
+```
+
+Thus the deterministic boundary `d_n=0` is locally a 50% quantum-capture contour. High detector efficiency requires several zero-point widths of inward basin margin, not merely deterministic success.
+
+Detailed record:
+
+```text
+QUANTUM_CAPTURE_MARGIN_CLOSURE_2026-08-15.md
+```
+
+## Step 55 — geometry-aware Wigner integration resolves most of the quadrature failure
+
+A second probability algorithm conditions on x, explicitly finds every relevant velocity-basin transition, analytically integrates Gaussian velocity probability over each right-basin strip, and only then integrates over x.
+
+Canonical code/workflow:
+
+```text
+calculations/quantum_basin_integral.py
+.github/workflows/experiment03-quantum-basin-integral.yml
+```
+
+The workflow succeeded. Representative x-order sequences:
+
+```text
+rDelta=.6, rise=20 ps, R=75 ohm:
+  nx=3  0.81745
+  nx=5  0.80985
+  nx=7  0.81226
+
+rDelta=.8, rise=5 ps, R=185 ohm:
+  nx=3  0.61812
+  nx=5  0.62681
+  nx=7  0.63333
+
+rDelta=.8, R=300 ohm:
+  0.84500, 0.81923, 0.80646
+
+rDelta=.6, R=120 ohm:
+  0.98670, 0.98409, 0.96726.
+```
+
+The first two are substantially more stable than the raw tensor quadrature. The latter two still show x-integration drift, indicating that basin topology can change sharply with x as well as velocity.
+
+Therefore a nested uniform standard-normal x-grid with explicit Gaussian-tail bounds has been added as the next convergence test:
+
+```text
+calculations/quantum_basin_xgrid.py
+.github/workflows/experiment03-quantum-xgrid.yml
+```
+
+## Step 56 — exact deterministic phase-space contraction
+
+For the scalar-R deterministic flow
+
+```math
+\dot x=v,
+\qquad
+\dot v=-\frac{v}{RC}-\frac{F(x,t)}{LC},
+```
+
+the phase-space divergence is exactly
+
+```math
+\boxed{\nabla\cdot\dot{\mathbf z}=-1/(RC).}
+```
+
+Hence an infinitesimal phase-space area evolves as
+
+```math
+\boxed{J(t)=\exp[-t/(RC)].}
+```
+
+The alternating pulled-back basin strips are therefore naturally interpreted as folding under a dissipatively contracting nonlinear flow, not as numerical noise.
+
+This also sharpens the physical limitation of the scalar-R model: a real dissipative environment that contracts trajectories must enter the fluctuation-dissipation noise and dissipative-MQT calculations consistently.
+
+## Current frontier after Step 56
+
+The design objective has changed again. It is no longer
+
+```text
+make the center trajectory capture.
+```
+
+It is
+
+```math
+\boxed{
+\text{maximize }P_{cap}^{init}
+=\iint_{\Omega_R^0}\rho_W(x,u)\,dx\,du,
+}
+```
+
+where `Omega_R^0` is the finite-time pulled-back target basin.
+
+For locally simple geometry this reduces to the quantum basin margin
+
+```math
+\mathcal M_Q=d_n/\sigma_x,
+\qquad
+P=\Phi(\mathcal M_Q),
+```
+
+but the strongly folded `.8` family requires the full basin probability volume.
+
+The next decisive steps are:
+
+```text
+1. finish nested x-grid convergence and identify the probability-optimal scalar-R region;
+2. replace scalar-R deterministic contraction with a causal noisy Y(omega,T) environment;
+3. use the same environment for pulse noise, FDT and dissipative MQT;
+4. add spatial thermal stochasticity;
+5. only then quote detector efficiency/dark-count performance.
+```
 
 **GO for continued theory. NO-GO for manuscript.**
