@@ -145,7 +145,8 @@ def tangent_case(model,R,alpha,lambda_um):
 def main():
     print('Experiment 03 initial quantum tangent amplification scan')
     print('rDelta=.6, R=250 ohm, rise=20 ps; phase-only initial covariance')
-    model=DynamicForce(0.6,quick=False)
+    print('CPR interpolation extended to 0.95 K for the 8-um point')
+    model=DynamicForce(0.6,quick=False,Tmax=0.95)
     for alpha in (0.20,0.35,0.50):
         print(f'\nalpha={alpha:.2f}')
         for lam in (8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0):
