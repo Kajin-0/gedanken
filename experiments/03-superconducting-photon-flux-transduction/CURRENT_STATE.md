@@ -38,11 +38,7 @@ Define
 I_* = \frac{\Phi_0}{2\pi L},
 \qquad
 \mathcal I(x,T)=\frac{I_s(x,T)}{I_*},
-```
-
-and
-
-```math
+\qquad
 F(x,T)=x-\delta-\mathcal I(x,T).
 ```
 
@@ -53,8 +49,6 @@ A static fold satisfies
 \qquad
 \boxed{\partial_x\mathcal I(x_f,T_f)=1.}
 ```
-
-Geometrically the temperature-dependent Josephson CPR becomes tangent to the inductive load line.
 
 For any smooth nondegenerate one-parameter fold,
 
@@ -68,26 +62,9 @@ For any smooth nondegenerate one-parameter fold,
 
 This is the core trigger-vs-dark-stability tradeoff.
 
-The old sinusoidal checkpoint remains useful only as a regression:
+## 4. Arbitrary-length ballistic graphene CPR — validated ideal baseline
 
-```text
-delta=0.05, beta_cold=1.5, Ic=3 uA
-beta_fold=1.14712
-required scalar Ic drop=23.53 %
-L=164.55 pH
-cold barrier/k_B=9.443 K
-state separation=0.4753 Phi0=5.97 uA.
-```
-
-## 4. Arbitrary-length ballistic graphene CPR — current preferred static model
-
-The current CPR calculation uses:
-
-1. the Titov–Beenakker ballistic graphene SNS secular equation before its short-junction reduction;
-2. the Hagymási–Kormányos–Cserti Matsubara-current construction, which is applicable to arbitrary junction length within the ideal ballistic/rigid-boundary model;
-3. a wide-junction continuum integral over `Q=qL`.
-
-Dimensionless variables:
+The current ideal CPR uses the Titov–Beenakker ballistic graphene SNS secular equation before its short-junction reduction and the Hagymasi–Kormanyos–Cserti Matsubara-current construction for arbitrary junction length.
 
 ```math
 \ell=\frac{L_{JJ}}{\xi_0}=\frac{\Delta_0L_{JJ}}{\hbar v_F},
@@ -95,7 +72,7 @@ Dimensionless variables:
 \mu_r=\mu/\Delta_0.
 ```
 
-Current checkpoint:
+Current baseline:
 
 ```text
 Delta0 = 1.3 meV
@@ -105,176 +82,180 @@ T0     = 20 mK
 mu/Delta0 = 0, 10, 20.
 ```
 
-### Validation
-
-- In the controlled `ell -> 0`, `mu=0` limit, the normalized Matsubara CPR converges to the Titov–Beenakker Dirac-point short-junction form; at `ell=0.01` the current finite-grid calculation is at the sub-percent-to-percent normalized-CPR level.
-- At `ell~1.1`, the model develops a strongly forward-skewed low-temperature CPR and thermal softening qualitatively consistent with arbitrary-length graphene-JJ theory.
-- `Qmax~30` is needed for stable finite-doping cold-fold values around `mu/Delta0=20`; smaller transverse cutoffs bias the fold downward.
-
-Canonical script:
+Canonical code:
 
 ```text
 calculations/arbitrary_length_graphene_cpr.py
+calculations/validate_hagymasi_intermediate_cpr.py
 ```
 
-Detailed checkpoint:
+Detailed records:
 
 ```text
 ARBITRARY_LENGTH_CPR_CHECKPOINT_2026-08-15.md
+HAGYMASI_CPR_VALIDATION_2026-08-15.md
 ```
 
-## 5. Arbitrary-length fold results
+### Validation state
 
-At `ell=1.1`, `delta=0.05`, the cold normalized fold is approximately
+1. At `ell=0.01`, `mu=0`, the normalized CPR converges to the Titov–Beenakker analytic short-junction result at the sub-percent-to-percent level on the retained grids.
+2. The implementation has now been benchmarked at the exact intermediate-length parameter set of Hagymasi et al. Fig. 1(c,d): `xi/L=0.91`, `mu/Delta0=0,20`, `T/Tc=0,0.18,0.35`.
+3. Using `T/Tc=0.01` as the numerical low-T proxy gives skewness values approximately
 
-| `mu/Delta0` | cold `beta_fold,norm` |
+| mu/Delta0 | T/Tc | S |
+|---:|---:|---:|
+| 0 | 0.01 | 0.329 |
+| 0 | 0.18 | 0.196 |
+| 0 | 0.35 | 0.063 |
+| 20 | 0.01 | 0.546 |
+| 20 | 0.18 | 0.250 |
+| 20 | 0.35 | 0.077 |
+
+This reproduces the published trend structure: positive low-T forward skewness, much stronger low-T skewness at high doping, rounded-sawtooth behavior around `L/xi~1.1`, and rapid suppression of skewness with temperature.
+
+The values are stable across `(qmax,nq,wmax)=(25,400,15),(30,500,20),(35,700,25)` to the retained phase-grid resolution. This is a parameter-level validation, not a digitized point-by-point reproduction of the figure.
+
+## 5. Ideal fold result
+
+At `ell=1.1`, `delta=0.05`, the ideal cold normalized fold is approximately
+
+| mu/Delta0 | cold beta_fold,norm |
 |---:|---:|
 | 0 | 0.463 |
 | 10 | 0.325 |
 | 20 | 0.200 |
 
-For `mu/Delta0=20`:
-
-| `beta_cold` | `T_fold` | reference heat fraction* | cold barrier/k_B | provisional `C_min,Q` |
-|---:|---:|---:|---:|---:|
-| 0.30 | 0.197 K | 0.006 | 1.14 K | 19.9 pF |
-| 0.40 | 0.390 K | 0.024 | 3.41 K | 2.11 pF |
-| 0.50 | 0.587 K | 0.055 | 6.34 K | 0.571 pF |
-| 0.60 | 0.776 K | 0.096 | 9.65 K | 0.233 pF |
-| 0.70 | 0.954 K | 0.145 | 13.14 K | 0.120 pF |
-| 0.80 | 1.118 K | 0.200 | 16.70 K | 0.071 pF |
-| 0.90 | 1.271 K | 0.258 | 20.23 K | 0.0465 pF |
-| 1.00 | 1.413 K | 0.319 | 23.70 K | 0.0328 pF |
-| 1.20 | 1.668 K | 0.445 | 30.31 K | 0.0188 pF |
-
-*Reference heat fraction uses the earlier equal-area graphene `C_e ∝ T` scaling relative to a `2.5 K` peak. It is not system absorption efficiency.
-
-### Strong illustrative point
-
-At
+The strong illustrative ideal point remains
 
 ```text
 ell=1.1
 mu/Delta0=20
 beta_cold=0.8
-Ic,0 physical scale=3 uA
+Ic physical scale=3 uA
+T_fold~1.118 K
+cold barrier/k_B~16.70 K
+L~87.76 pH
+provisional C_min,Q~71 fF
+state separation~0.2535 Phi0
+circulating-current gap~5.97 uA.
 ```
 
-the ideal model gives
+Within the rigid-boundary ideal model, increasing doping mainly improves cold-state stability rather than strongly reducing the optical fold temperature.
+
+## 6. Empirically anchored interface/skewness stress — new current uncertainty envelope
+
+Nanda et al. measured ballistic MoRe/graphene CPRs and used tight-binding BdG calculations with explicit graphene-superconductor interfaces. Their realistic models show that interface hopping, contact-doping profile, transition smoothness and quasiparticle broadening materially change CPR skewness. Representative reported low-T scales are roughly
 
 ```text
-T_fold                     ~1.118 K
-reference retained heat    ~0.200
-cold barrier/k_B           ~16.70 K
-L                           87.76 pH
-provisional C_min,Q        ~71 fF
-state separation           ~0.2535 Phi0
-circulating-current gap    ~5.97 uA.
+hard-gap nn'n calculation: S~0.27
+soft-gap nn'n calculation: S~0.22
+soft-gap npn calculation:  S~0.19
+measured nn'n:             S~0.28
+measured npn:              S~0.20.
 ```
 
-This is materially more favorable than the short-junction sensitivity model, which gave `T_fold~2.17 K` and `C_min,Q~0.52 pF` at a superficially similar beta.
+The ideal Experiment-03 high-doping CPR has `S~0.55`, so its shape is clearly optimistic relative to these realistic-interface scales.
 
-### Doping lesson
+A controlled shape-only sensitivity envelope was therefore introduced:
 
-At `beta_cold=0.8`, changing `mu/Delta0` from 0 to 20 changes `T_fold` only from about `1.154 K` to `1.118 K`, but raises the cold barrier from about `7.0 K` to `16.7 K` and lowers the provisional `C_min,Q` from about `262 fF` to `71 fF`.
+```math
+f_\lambda(\phi,T)=
+\operatorname{norm}[(1-\lambda)\sin\phi+\lambda f_{ideal}(\phi,T)].
+```
 
-Within this ideal model, doping primarily buys **cold-state stability**, not a dramatically smaller photon threshold.
+This is **not a microscopic interface model**. It deliberately changes only harmonic/skewness shape while retaining the ideal `Ic(T)` amplitude ratio.
 
-## 6. Model boundary — still not a calibrated device
+Canonical record:
 
-The arbitrary-length model assumes ballistic graphene, rigid step-function superconducting boundaries, highly doped ideal superconducting electrodes, ideal interfaces, equilibrium Fermi distributions and no self-consistent inverse proximity effect.
+```text
+INTERFACE_SKEWNESS_SENSITIVITY_2026-08-15.md
+calculations/interface_skewness_sensitivity.py
+```
 
-The 2026 MoRe/graphene detector has a `600 nm` channel. With the quoted `Delta~1.3 meV` and `v_F~1e6 m/s`, `xi0~0.5 um`, so `ell~O(1)` is a reasonable **regime** but `ell=1.1`, `mu/Delta0=10–20` are not calibrated device parameters.
+At `beta_cold=0.8`, `Ic=3 uA`:
 
-The next model must attack interface transparency/contact doping and nonequilibrium CPR evolution rather than treating the present table as a fabricated-device prediction.
+| cold S scale | cold beta_fold | T_fold | cold barrier/kB | state separation | provisional C_min,Q |
+|---:|---:|---:|---:|---:|---:|
+| 0.548 ideal | 0.201 | 1.118 K | 16.70 K | 0.2535 Phi0 | 71 fF |
+| 0.270 | 0.298 | 0.905 K | 9.12 K | 0.2401 Phi0 | 160 fF |
+| 0.220 | 0.335 | 0.841 K | 7.14 K | 0.2303 Phi0 | 230 fF |
+| 0.190 | 0.364 | 0.794 K | 5.89 K | 0.2225 Phi0 | 307 fF |
 
-## 7. Optical fold-energy closure
+### Strongest current interpretation
+
+Realistic CPR-shape suppression does **not** eliminate the fold at this illustrative circuit point, but it materially weakens cold stability:
+
+- `T_fold` falls by about 19–29%;
+- the cold barrier falls by about 45–65%;
+- the provisional MQT capacitance floor increases about 2.3–4.3x;
+- stored-state separation changes much less, remaining about `0.22–0.24 Phi0`.
+
+Thus interface-induced harmonic suppression primarily attacks **dark-state stability**, not readout-state separation.
+
+The defensible barrier statement is no longer simply `16.7 K`. Until a microscopic interface model exists, the empirically anchored shape envelope is closer to roughly **6–9 K** for realistic skewness scales at this circuit point.
+
+## 7. Model boundary — still not a calibrated detector
+
+The ideal arbitrary-length model assumes ballistic graphene, rigid superconducting boundaries, highly doped ideal electrodes, equilibrium Fermi distributions and no self-consistent inverse proximity effect.
+
+The shape-only stress still holds the ideal `Ic(T)` amplitude ratio fixed. A real interface changes simultaneously
+
+```text
+absolute Ic
+Ic(T)
+induced superconducting gap
+CPR harmonics
+normal resistance/damping
+contact heat diffusion
+quasiparticle spectrum.
+```
+
+Nanda et al. explicitly report that the induced superconducting gap in graphene can be smaller than the bulk MoRe gap and that realistic contacts are needed to reproduce measured temperature behavior. That reduced induced-gap scale is now the highest-value next stress parameter.
+
+## 8. Optical fold-energy and finite-dwell closure
 
 For arbitrary electronic heat capacity,
 
 ```math
-\eta_{th}E_\gamma=\int_{T_0}^{T_{pk}}C_e(T)dT.
+\eta_{th}E_\gamma=\int_{T_0}^{T_{pk}}C_e(T)dT,
+\qquad
+\boxed{E_{fold}=\frac1{\eta_{th}}\int_{T_0}^{T_f}C_e(T)dT.}
 ```
-
-Static fold energy:
-
-```math
-\boxed{
-E_{fold}=\frac1{\eta_{th}}\int_{T_0}^{T_f}C_e(T)dT.
-}
-```
-
-For `C_e=gamma_S A T`:
-
-```math
-E_{fold}=\frac{\gamma_SA}{2\eta_{th}}(T_f^2-T_0^2).
-```
-
-`T_f` now comes from the **full arbitrary-length CPR/load-line fold**, not an assumed scalar `I_c(T)`.
-
-## 8. Finite dwell above the fold
 
 For lumped monotonic cooling,
 
 ```math
-\boxed{
-t_>(E_\gamma)=
-\int_{T_f}^{T_{pk}(E_\gamma)}
-\frac{C_e(T)}{P_{cool}(T)}dT.
-}
+\boxed{t_>(E_\gamma)=\int_{T_f}^{T_{pk}(E_\gamma)}\frac{C_e(T)}{P_{cool}(T)}dT.}
 ```
 
 Necessary write-time condition:
 
 ```math
-\boxed{
-t_>(E_\gamma)\ge
-\max[t_{diff},\ g\sqrt{LC},\ 2R_{hot}C].
-}
+\boxed{t_>(E_\gamma)\ge\max[t_{diff},g\sqrt{LC},2R_{hot}C].}
 ```
 
-Using published graphene characteristic scales `l_D~230 um`, `tau_ep~75 ns`, the inferred cross-device diffusivity is about `0.705 m^2/s`; a `15.5 um^2` square absorber has an `L^2/D` scale near `22 ps`.
-
-For the idealized clean-graphene laws
+For idealized clean graphene `C_e=gamma_S A T`, `P_e-ph=Sigma A(T^4-T_0^4)`, the above-fold interval has a finite maximum
 
 ```math
-C_e=\gamma_SAT,
-\qquad
-P_{e-ph}=\Sigma A(T^4-T_0^4),
+\boxed{t_{>,max}=\frac{\gamma_S}{4\Sigma T_0^2}
+\ln\left(\frac{T_f^2+T_0^2}{T_f^2-T_0^2}\right).}
 ```
 
-the above-fold interval has a finite maximum even as photon energy tends to infinity:
-
-```math
-\boxed{
-t_{>,max}
-=\frac{\gamma_S}{4\Sigma T_0^2}
-\ln\left(\frac{T_f^2+T_0^2}{T_f^2-T_0^2}\right).
-}
-```
-
-Thus `t_req >= t_>,max` is a model-level **impossibility condition**.
+Thus `t_req >= t_>,max` is a model-level impossibility condition.
 
 ## 9. Cold stability / capacitance closure
 
-The current provisional cubic-MQT model gives a Lambert-W capacitance floor
+Inside the current provisional cubic-MQT rate model,
 
 ```math
 \boxed{
 C_{min,Q}
-=\frac{\hbar^2\kappa_c}
-{\alpha_Q^2\Delta U_c^2L}
-\left[
-W\left(
-\frac{\alpha_Q\Delta U_c}{2\pi\hbar D}
-\right)
-\right]^2.
+=\frac{\hbar^2\kappa_c}{\alpha_Q^2\Delta U_c^2L}
+\left[W\left(\frac{\alpha_Q\Delta U_c}{2\pi\hbar D}\right)\right]^2.
 }
 ```
 
-This is exact algebra **inside the assumed MQT rate**, not exact dissipative rf-SQUID escape physics.
-
-Write dynamics gives
+Write dynamics requires
 
 ```math
 C<C_{max,R}=t_>/(2R_{hot}),
@@ -282,45 +263,22 @@ C<C_{max,R}=t_>/(2R_{hot}),
 C<C_{max,\phi}=t_>^2/(g^2L).
 ```
 
-Necessary nonempty capacitance window:
+Necessary nonempty window:
 
 ```math
-\boxed{
-C_{min,Q}<C<\min(C_{max,R},C_{max,\phi}).
-}
+\boxed{C_{min,Q}<C<\min(C_{max,R},C_{max,\phi}).}
 ```
 
-Define
-
-```math
-\boxed{
-t_{req}^*=\max[t_{diff},g\sqrt{LC_{min,Q}},2R_{hot}C_{min,Q}].}
-```
-
-The compact necessary chain remains
-
-```math
-\boxed{E_\gamma\ge E_{fold},}
-```
-
-```math
-\boxed{t_>(E_\gamma)\ge t_{req}^*,}
-```
-
-```math
-\boxed{\Delta U_c\gtrsim k_BT_0\ln(\Omega_T/D).}
-```
-
-Detailed derivation: `FEASIBILITY_CLOSURE_2026-08-15.md`.
+This remains a diagnostic, not exact dissipative rf-SQUID MQT theory.
 
 ## 10. Prior-art boundary
 
-Broad novelty claims already closed include:
+No novelty claim is authorized. Broad routes already collided with prior art, including
 
 ```text
 LWIR superconducting single-photon detection
 infrared photon -> hot graphene -> Josephson switching
-photon heating -> proximity-JJ Ic suppression -> SQUID voltage detection
+photon heating -> proximity-JJ Ic suppression -> SQUID detection
 single photon -> persistent superconducting single-flux memory
 optical heating -> permanent superconducting flux/vortices
 transient Ic suppression -> rf-SQUID tipping/freeze
@@ -329,22 +287,20 @@ illumination-driven superconducting phase battery/vorticity
 non-sinusoidal temperature-dependent graphene CPR.
 ```
 
-No novelty claim is authorized.
+The possible paper route remains a quantitative feasibility/optimality or impossibility closure if a nontrivial result survives realistic nonideal and dynamical modeling plus a dedicated paper/patent collision audit.
 
 ## 11. Immediate next falsification step
 
-The arbitrary-length ideal CPR problem has now been implemented. The next priority is **nonideality and dynamics**, not more short-junction algebra:
+The ideal CPR implementation has passed both short-limit and intermediate-length parameter checks. The next priority is now specifically the **induced-gap/interface temperature scale**, not more ideal CPR algebra.
 
-1. validate the arbitrary-length implementation quantitatively against published CPR/skewness curves;
-2. introduce finite/nonideal SG interface transparency and realistic contact doping;
-3. calibrate `ell`, `mu/Delta0`, `Delta(T)` and `Ic` to a plausible photon-sensitive weak link;
-4. replace equilibrium `T` with the early-time nonequilibrium electron distribution or justify rapid local thermalization;
-5. compute dissipative MQT for the full-CPR cold potential;
-6. solve stochastic time-dependent fold passage/retrapping with `R_hot(T)`;
-7. add 8–14-um antenna/cavity absorptance and reset/readout.
+1. Introduce `r_Delta=Delta_ind(0)/Delta_bulk(0)` over a realistic range while retaining the empirically anchored CPR-shape envelope.
+2. Recompute `Ic(T)`, `T_fold`, barrier, state separation and provisional capacitance window.
+3. Determine whether modest `r_Delta<1` collapses the fold/dwell/stability corridor.
+4. If the corridor survives, proceed to a microscopic contact-doping/transparency model or calibrated TB-BdG calculation.
+5. Then address early-time nonequilibrium distribution, dissipative full-CPR MQT, stochastic fold passage/retrapping, and real 8–14-um optical coupling/reset/readout.
 
 ## 12. Current verdict
 
 **GO for continued theory. NO-GO for manuscript.**
 
-The arbitrary-length ideal calculation strengthens physical feasibility substantially relative to the short-junction toy model. The remaining possible paper contribution is increasingly a quantitative feasibility/optimality or impossibility closure, not the broad device concept.
+The current result is stronger than the ideal-model checkpoint because it has survived a first empirically anchored CPR-shape nonideality stress. However, the ideal high-doping stability advantage was reduced substantially. The next decisive question is whether a reduced induced superconducting gap destroys the remaining 6–9-K-class cold barrier / sub-kelvin fold corridor.
