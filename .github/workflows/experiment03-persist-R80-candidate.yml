@@ -1,0 +1,34 @@
+name: Experiment 03 persist R80 14um candidate
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/persist_R80_candidate.py'
+      - '.github/workflows/experiment03-persist-R80-candidate.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  persist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Recompute and persist R80 candidate
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python persist_R80_candidate.py
+      - name: Commit candidate snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add experiments/03-superconducting-photon-flux-transduction/RESULTS_R80_14UM_CANDIDATE_2026-08-15.md
+          git diff --cached --quiet || git commit -m "Persist Experiment 03 R80 14um candidate results"
+          git push
