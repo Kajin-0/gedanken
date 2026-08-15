@@ -1,6 +1,6 @@
 # Gedanken
 
-First-principles theoretical physics and quantum-information thought experiments, developed through explicit derivations, conservation checks, normalization audits, numerical falsification, adversarial review, and prior-art comparison.
+First-principles theoretical physics thought experiments developed through explicit derivations, conservation checks, numerical falsification, adversarial review, and prior-art comparison.
 
 ## Research tracks
 
@@ -8,142 +8,98 @@ First-principles theoretical physics and quantum-information thought experiments
 
 **A Source-Resolved Quantum Link Budget for Propagating Linearized Gravity**
 
-Directory:
+Directory: [`experiments/01-causal-quantum-branch-information/`](experiments/01-causal-quantum-branch-information/)
 
-[`experiments/01-causal-quantum-branch-information/`](experiments/01-causal-quantum-branch-information/)
+Active manuscript: [`manuscript_v7/`](experiments/01-causal-quantum-branch-information/manuscript_v7/)
 
-Active manuscript:
+Canonical state: [`CURRENT_STATE_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md)
 
-[`manuscript_v7/`](experiments/01-causal-quantum-branch-information/manuscript_v7/)
+Status: frozen except for submission/editorial work or a concrete technical defect. The publication claim is the source-resolved physical normalization/capability chain, not a new standalone Gaussian-channel theorem.
 
-Canonical scientific state:
-
-[`CURRENT_STATE_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_REVIEW_CLOSED_V7.md)
-
-Current internal assessment:
-
-> No known publication-critical structural physics gap remains within the manuscript's stated weak-field, nonrelativistic, narrowband linear regime.
-
-Experiment 01 is frozen except for submission/editorial work or a concrete technical defect.
-
-Its post-handoff coherent transfer is
-
-```math
-\tau_c(t)
-=\beta_{g,A}\,\eta_{\rm store}(R)\,\beta_{g,B}\,\mathcal T_f(t),
-```
-
-with leading compact wave-zone storage
-
-```math
-\eta_{\rm store}(R)=\frac{25\mathcal O}{16(kR)^2}.
-```
-
-The Experiment-01 publication claim is the **source-resolved physical normalization and capability accounting**, not a new Gaussian-channel theorem.
-
-### Experiment 02 — internally frozen theorem / manuscript track
+### Experiment 02 — submission-ready frozen theorem track
 
 **An Inertia-Controlled Throughput Bound for Passive Gravitational Transduction**
 
-Directory:
+Directory: [`experiments/02-passive-gravitational-throughput/`](experiments/02-passive-gravitational-throughput/)
 
-[`experiments/02-passive-gravitational-throughput/`](experiments/02-passive-gravitational-throughput/)
+Final PRD package: [`submission_prd/`](experiments/02-passive-gravitational-throughput/submission_prd/)
 
-Manuscript:
+Canonical state: [`CURRENT_STATE.md`](experiments/02-passive-gravitational-throughput/CURRENT_STATE.md)
 
-[`manuscript_v1/`](experiments/02-passive-gravitational-throughput/manuscript_v1/)
+Final submission preflight: [`FINAL_SUBMISSION_PREFLIGHT_2026-08-11.md`](experiments/02-passive-gravitational-throughput/FINAL_SUBMISSION_PREFLIGHT_2026-08-11.md)
 
-Canonical freeze record:
-
-[`INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md)
-
-Canonical state:
-
-[`CURRENT_STATE.md`](experiments/02-passive-gravitational-throughput/CURRENT_STATE.md)
-
-Authoritative validated science/manuscript SHA:
+Underlying validated science/theorem checkpoint:
 
 ```text
-1ce596493073dbb49e6eb71f1a6df0566ff3c25b
+bfae23af41aefb3104d639099299b3432b4a14fe
 ```
 
-Internal verdict:
+Validated final submission-manuscript checkpoint:
 
-> **INTERNAL AI REVIEW: GO — THEORY AND LITERATURE-CORRECTED MANUSCRIPT FROZEN.**
+```text
+6f7a60b3b05dea9f288b1b07e6f2e55acaf34e83
+```
 
-Current in-model result:
+Status: **GO / submission ready after human sign-off.** The science is frozen unless a concrete defect, prior-art collision, or substantive external objection appears.
+
+The current sector-resolved result includes
 
 ```math
-\boxed{
 \Gamma_{\rm coh}
 \lesssim
-\frac{25G\omega_0^2}{12c^3R^2}
-\min(I_{2,A},I_{2,B})
-}
+\frac{5G\omega_0^2}{4c^3R^2}I_{\hat R}
+\le
+\frac{25G\omega_0^2}{12c^3R^2}I_2,
 ```
 
-where
+within the retained compact, narrowband, separated-wave-zone, bounded-port Markov modal sector recorded in Experiment 02's canonical files.
 
-```math
-\Gamma_{\rm coh}
-=\frac1{2\pi}\int_{\mathcal B_\nu}
-\operatorname{Tr}[T^\dagger(\nu)T(\nu)]\,d\nu,
-\qquad
-I_2=\int\rho r^2d^3x.
-```
+### Experiment 03 — active exploratory theory track
 
-The established scope is deliberately narrow:
+**Superconducting Photon-to-Flux Transduction**
+
+Directory: [`experiments/03-superconducting-photon-flux-transduction/`](experiments/03-superconducting-photon-flux-transduction/)
+
+Canonical state: [`CURRENT_STATE.md`](experiments/03-superconducting-photon-flux-transduction/CURRENT_STATE.md)
+
+Logical trail: [`DERIVATION_LOG.md`](experiments/03-superconducting-photon-flux-transduction/DERIVATION_LOG.md)
+
+Claim status: [`CLAIM_LEDGER.md`](experiments/03-superconducting-photon-flux-transduction/CLAIM_LEDGER.md)
+
+Literature boundary: [`LITERATURE_LEDGER.md`](experiments/03-superconducting-photon-flux-transduction/LITERATURE_LEDGER.md)
+
+Manuscript gate: [`NOVELTY_GATES.md`](experiments/03-superconducting-photon-flux-transduction/NOVELTY_GATES.md)
+
+Current question: can a single absorbed LWIR photon transiently alter a Josephson phase-escape landscape so that one direction is selected and the event is captured as a persistent superconducting fluxoid state, while intrinsic false switching remains very low?
+
+Current working chain:
 
 ```text
-B/omega_0 << 1                         narrow complex-envelope operation
-k_0 a_A, k_0 a_B << 1                 compact endpoints
-k_0 R >> 1                             separated wave zone
-omega_n <= Omega
-Omega = omega_0[1+O(B/omega_0)]        retained carrier-scale endpoint modal sector
-finite or countably infinite
-bounded-port Markov modal sectors      passive endpoint model
+LWIR photon
+ -> low-heat-capacity photon-sensitive Josephson element
+ -> transient barrier / phase-potential modification
+ -> directionally favored phase escape
+ -> fluxoid transition n -> n+1
+ -> relaxation of the hot/quasiparticle state
+ -> persistent superconducting flux/current memory
 ```
 
-Higher-frequency off-resonant endpoint sectors are not automatically controlled by the simple carrier-scale `omega_0^4` resource and require separate treatment.
+The initial constant-barrier analysis produced a provisional photon-efficiency / MQT feasibility window, but it is **not yet a theorem**. The immediate task is to recompute the time-dependent escape problem from the actual rf-SQUID/Josephson potential, damping regime, and `T_e(t)`.
 
-The proof combines passive selected-port spectral-area cuts, two endpoint gravitational coupling traces, an `I_2`-controlled cumulative quadrupole resource, the compact TT `25/16` propagation ceiling, and same-two-endpoint passive recurrence control.
+Known prior-art boundaries already include superconducting MIR/LWIR single-photon detection, graphene Josephson calorimetric switching, field-free superconducting/Josephson diode effects, and illumination-driven superconducting phase batteries and vorticity switching. Experiment 03 currently makes **no novelty claim**.
 
-Most ingredients are historical. The literature boundary now explicitly includes modern gravity-as-communication work: Newtonian communication/noise bounds, LOCC simulation bounds, gravitational oscillator state-transfer benchmarks, and gravity-induced optomechanical channels are not novelty claims here. The dedicated recent collision audit found major conceptual near-collisions but no inspected primary source stating the exact passive far-zone TT two-ended `I_2` spectral-area closure. That negative search is **not** a priority claim.
-
-Start with:
-
-1. [`INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/INTERNAL_FREEZE_CHECKPOINT_2026-08-10.md)
-2. [`CURRENT_STATE.md`](experiments/02-passive-gravitational-throughput/CURRENT_STATE.md)
-3. [`CLAIM_LEDGER.md`](experiments/02-passive-gravitational-throughput/CLAIM_LEDGER.md)
-4. [`RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/RECENT_GRAVITY_COMMUNICATION_COLLISION_AUDIT_2026-08-10.md)
-5. [`MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md`](experiments/02-passive-gravitational-throughput/MANUSCRIPT_V1_FINAL_FREEZE_AUDIT_2026-08-10.md)
-6. [`HOSTILE_PRIOR_ART_COLLISION_AUDIT.md`](experiments/02-passive-gravitational-throughput/HOSTILE_PRIOR_ART_COLLISION_AUDIT.md)
-7. [`META_REFEREE_SIGNIFICANCE_AUDIT.md`](experiments/02-passive-gravitational-throughput/META_REFEREE_SIGNIFICANCE_AUDIT.md)
-8. [`manuscript_v1/README.md`](experiments/02-passive-gravitational-throughput/manuscript_v1/README.md)
-
-Earlier conversation-only descriptions of branches, commits, CI runs, or files are not repository provenance. Only artifacts verified on the actual remote count.
-
----
-
-## Automated checks
-
-Pinned scientific Python environment:
-
-- Python `3.12.13`
-- NumPy `2.5.1`
-- SciPy `1.18.0`
-
-Experiment 01 workflows cover manuscript compilation, TT normalization, broader scientific regressions, and isolated submission-package validation.
-
-Experiment 02 has dedicated workflows for passive selected-port cut, endpoint quadrupole resource, compact TT propagation, the combined `25/12` theorem, countably infinite bounded-port truncations, same-endpoint passive recurrence, and manuscript compilation/reference checks.
-
-The final literature-corrected Experiment-02 science/manuscript SHA passed all seven dedicated gates. Exact run IDs and artifact digest are recorded in the freeze checkpoint rather than inferred from conversation history.
+Status: **GO for continued theory; NO-GO for manuscript until quantitative and hostile collision-audit gates are passed.**
 
 ---
 
 ## Current work
 
-- **Experiment 01:** submission/editorial work only unless a concrete technical defect appears.
-- **Experiment 02:** internal theory and literature-corrected manuscript are frozen. Further technical changes require a concrete new contradiction or external specialist/journal objection; otherwise work is limited to submission-oriented metadata/editorial tasks and external review.
+- **Experiment 01:** frozen publication/submission track.
+- **Experiment 02:** submission-ready after human sign-off; science frozen.
+- **Experiment 03:** active exploratory theory. Important advances, failures, architecture changes, and literature collisions must be recorded in the experiment's recovery files rather than left only in conversation history.
 
-Repository editing/recovery rules are in the root [`AGENTS.md`](AGENTS.md).
+## Repository continuity
+
+Start with [`AGENTS.md`](AGENTS.md) and [`CONTEXT_HANDOFF.md`](CONTEXT_HANDOFF.md).
+
+Live remote repository state overrides conversation history. Conversation-only branches, commits, equations, or validation claims are not repository provenance.
