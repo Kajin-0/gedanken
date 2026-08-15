@@ -4,51 +4,68 @@
 **Mode:** active exploratory theory / falsification-first  
 **Manuscript status:** none; do not create one until `NOVELTY_GATES.md` is passed.
 
-Conversation history is non-authoritative when it conflicts with repository state.
+> Conversation history is non-authoritative when it conflicts with live repository state. Fetch `main` before every write.
 
-## Recovery order — current
-
-Read in order:
+## Recovery order — read this first
 
 1. `CURRENT_STATE.md`
-2. `DYNAMIC_FOLD_GHOST_2026-08-15.md`
-3. `RCSJ_DAMPING_WINDOW_2026-08-15.md`
-4. `DARK_CAPTURE_ELIMINATION_2026-08-15.md`
-5. `HUANG_THERMAL_DWELL_CALIBRATION_2026-08-15.md`
-6. `SPECTRAL_STABILITY_PARETO_2026-08-15.md`
-7. `THERMAL_CONFINEMENT_GAP_CLOSURE_2026-08-15.md`
-8. `RETUNED_DWELL_CLOSURE_2026-08-15.md`
-9. `INDUCTANCE_RETUNING_CLOSURE_2026-08-15.md`
-10. `INDUCED_GAP_SENSITIVITY_2026-08-15.md`
-11. `INTERFACE_SKEWNESS_SENSITIVITY_2026-08-15.md`
-12. `HAGYMASI_CPR_VALIDATION_2026-08-15.md`
-13. `ARBITRARY_LENGTH_CPR_CHECKPOINT_2026-08-15.md`
-14. `DERIVATION_LOG.md`
-15. `DERIVATION_LOG_CONTINUATION_2026-08-15.md`
-16. `CLAIM_LEDGER.md`
-17. `CLAIM_LEDGER_CONTINUATION_2026-08-15.md`
-18. `LITERATURE_LEDGER.md`
-19. `LITERATURE_LEDGER_CONTINUATION_2026-08-15.md`
-20. `ASSUMPTIONS.md`
-21. `NOVELTY_GATES.md`
-22. `calculations/`.
+2. `FULL_DYNAMIC_RCSJ_CHECKPOINT_2026-08-15.md`
+3. `SUDDEN_QUENCH_BOUND_2026-08-15.md`
+4. `PARAMETRIC_PHASE_WORK_2026-08-15.md`
+5. `THERMAL_RISE_GEOMETRY_CLOSURE_2026-08-15.md`
+6. `RATE_INDUCED_TIPPING_COLLISION_2026-08-15.md`
+7. `DARK_CAPTURE_ELIMINATION_2026-08-15.md`
+8. `RCSJ_DAMPING_WINDOW_2026-08-15.md`
+9. `HUANG_THERMAL_DWELL_CALIBRATION_2026-08-15.md`
+10. `SPECTRAL_STABILITY_PARETO_2026-08-15.md`
+11. `THERMAL_CONFINEMENT_GAP_CLOSURE_2026-08-15.md`
+12. `DERIVATION_LOG_DYNAMIC_2026-08-15.md`
+13. `CLAIM_LEDGER_DYNAMIC_2026-08-15.md`
+14. `DERIVATION_LOG_CONTINUATION_2026-08-15.md`
+15. `CLAIM_LEDGER_CONTINUATION_2026-08-15.md`
+16. `LITERATURE_LEDGER_CONTINUATION_2026-08-15.md`
+17. `DERIVATION_LOG.md`, `CLAIM_LEDGER.md`, `LITERATURE_LEDGER.md`
+18. `ASSUMPTIONS.md`
+19. `NOVELTY_GATES.md`
+20. `calculations/`.
 
-Until consolidation, each continuation file is part of the authoritative trail.
+Earlier static/short-junction checkpoints are regression/provenance records, not the current preferred model.
 
-## Current objective
+## Current physical objective
 
-Determine whether a **single absorbed LWIR photon** can drive a realistic proximity-JJ/rf-SQUID through a finite-rate directionally tilted saddle-node, reach the favored basin before cooling restores the original metastable well, and retain persistent superconducting flux with very low cold false switching.
+Determine whether a **single absorbed LWIR photon** can rapidly reshape a proximity-Josephson/rf-SQUID metastable potential so that the phase is transferred into a directionally favored basin and retained as persistent superconducting flux, while cold false switching remains extremely low.
 
-Generation A uses external flux tilt and is not photovoltaic. Generation B remains reserved for zero-external-flux directionality.
+Current internal description:
 
-## Canonical static fold
+```text
+photon-triggered nonadiabatic metastable superconducting flux latch
+```
+
+Generation A uses external flux tilt and is **not photovoltaic**. Generation B remains reserved for later zero-external-flux directionality.
+
+## Mechanism — current
+
+```text
+LWIR photon
+ -> electronic thermalization + spatial delivery near weak link
+ -> temperature-dependent full CPR changes rapidly
+ -> phase coordinate is displaced / accelerated
+ -> trajectory may cross a finite barrier OR a vanished fold
+ -> potential recovers during cooling
+ -> phase is captured in favored basin
+ -> persistent superconducting flux remains.
+```
+
+The rf-SQUID saddle-node/fold is the quasistatic organizing limit. **Static fold disappearance is neither necessary nor sufficient for the fast-pulse regime.**
+
+## Static fold regression
 
 ```math
 I_* = \Phi_0/(2\pi L),
 \qquad
 \mathcal I=I_s/I_*,
 \qquad
-F=x-\delta-\mathcal I.
+F=x-\delta-\mathcal I,
 ```
 
 ```math
@@ -65,237 +82,250 @@ Near a smooth fold:
 \omega_m\propto|p-p_f|^{1/4}.
 ```
 
-Static fold crossing is **not sufficient** for detection.
-
-## Current two-gap rule
+## Two-gap rule — mandatory
 
 Never collapse
 
 ```text
-Delta_ind  weak-link induced/minigap controlling ABS/CPR/Ic(T)/fold
+Delta_ind  induced/minigap controlling ABS/CPR/Ic(T)/thermal sensitivity
 Delta_s    parent-electrode gap controlling hot-carrier escape/confinement.
 ```
 
-Current materials picture:
+Current plausible direction:
 
 ```text
-moderately reduced Delta_ind for thermal CPR sensitivity
-+
-high parent Delta_s for confinement
-+
-retuned L/C for cold stability
-+
-dynamical admittance compatible with finite-rate capture.
+moderately reduced Delta_ind
++ high parent Delta_s
++ retuned L/C
++ localized optical energy delivery within a few micrometres of the JJ
++ causal dynamical admittance compatible with capture and cold stability.
 ```
 
-## Current static family
+## Retained static family
 
-Realistic-skewness, retuned `beta~0.8`, `A~100 um^2` family:
+Realistic-skewness, retuned `beta~0.8`, `A=100 um^2`:
 
 ```text
-rDelta  Tf[K]  L[pH]  barrier/kB[K]  Cmin,Q[fF]  static thermal reach
-1.0     0.905   87.8      9.10          161          11.8 um
-0.8     0.813   96.8      8.12          181          14.7 um
-0.6     0.695  111.5      6.87          215          20.1 um
-0.5     0.623  123.1      6.10          244          25.0 um
-0.4     0.540  140.3      5.22          287          33.3 um.
+rDelta  Tf[K]  L[pH]  barrier/kB[K]  Cmin,Q[fF]  lambda_fold
+1.0     0.905   87.8      9.10          161         11.8 um
+0.8     0.813   96.8      8.12          181         14.7 um
+0.6     0.695  111.5      6.87          215         20.1 um
+0.5     0.623  123.1      6.10          244         25.0 um
+0.4     0.540  140.3      5.22          287         33.3 um.
 ```
 
-The wavelength column is a **static absorbed-photon upper envelope**, not a detector cutoff.
+`lambda_fold` is only the quasistatic well-disappearance scale.
 
-## Strongest algebraic reduction
+## Full deterministic dynamics — strongest current calculation
 
-Inside the provisional MQT diagnostic define
+Canonical solver:
+
+```text
+calculations/full_dynamic_rfsquid.py
+```
+
+It integrates
+
+```math
+\boxed{LC\ddot x+\frac{L}{R}\dot x+F[x,T_e(t)]=0}
+```
+
+with full interpolated arbitrary-length CPR, current interface-skewness envelope, inertia, finite energy-deposition rise, cooling, barrier reformation and basin classification.
+
+At `A=100 um^2`, one absorbed `14 um` photon:
+
+```text
+instantaneous deposition:
+  rDelta=0.8 -> lower scalar-R capture boundary ~111 ohm
+  rDelta=0.6 -> lower boundary ~32.7 ohm; upper oscillatory/retrapping boundary ~1.13 kOhm in current classification.
+
+finite rise:
+  rDelta=0.8 -> ordinary capture survives through ~9 ps; becomes weak-damping/settling sensitive by ~9.5–10 ps
+  rDelta=0.6 -> capture survives through ~30 ps; broadly absent around ~32 ps.
+```
+
+Successful trajectories can have `T_peak<T_f`. Do not use `T_peak>=T_f` as a detection criterion.
+
+## Sudden-quench energy scale
+
+Let `x_c` be the cold metastable coordinate and `x_s(T)` the hot saddle. Define
+
+```math
+\boxed{
+\mathcal B_q(T)
+=U[x_s(T),T]-U(x_c,T)
+=\int_{x_c}^{x_s(T)}F(x,T)dx.
+}
+```
+
+The fixed-hot conservative quench threshold is
+
+```math
+\boxed{\mathcal B_q(T_q)=0.}
+```
+
+Current values:
+
+```text
+rDelta=0.8: Tq~0.718 K, Tf~0.812 K, lambda_fold~14.7 um, lambda_quench~18.8 um
+rDelta=0.6: Tq~0.615 K, Tf~0.694 K, lambda_fold~20.1 um, lambda_quench~25.6 um.
+```
+
+Current model hierarchy:
+
+```math
+\boxed{\lambda_{fold}<\lambda_{dynamic}<\lambda_{quench}.}
+```
+
+This is a model organization, not a universal theorem.
+
+## Exact parametric phase-work identity
+
+For scalar-R dynamics,
+
+```math
+\boxed{
+\frac{d}{dt}\left[\frac12LC\dot x^2+U(x,T)\right]
+=U_T(x,T)\dot T-\frac{L}{R}\dot x^2.
+}
+```
+
+While a saddle exists,
+
+```math
+\mathcal E_s
+=\frac12LC\dot x^2+U(x,T)-U[x_s(T),T],
+```
+
+```math
+\boxed{
+\dot{\mathcal E}_s
+=[U_T(x,T)-U_T(x_s,T)]\dot T
+-\frac{L}{R}\dot x^2.
+}
+```
+
+This is the preferred accounting language for the next dynamic reduction.
+
+Damping has two conflicting roles:
+
+```text
+launch/crossing -> excessive dissipation suppresses useful phase energy
+capture/retrapping -> sufficient dissipation helps trap the target basin.
+```
+
+Hence a single broadband scalar `R` is unlikely to be the physical optimum; any causal `Y(omega,T)` must be used consistently in FDT noise and dissipative MQT.
+
+## Provisional dark-stability reduction
+
+Inside the **non-dissipative/cubic diagnostic only**:
 
 ```math
 \boxed{
 \tau_Q(D)
 =\frac{\hbar\sqrt{\kappa_c}}
 {\alpha_Q\Delta U_c}
-W\!\left(
-\frac{\alpha_Q\Delta U_c}{2\pi\hbar D}
-\right).
+W\!\left(\frac{\alpha_Q\Delta U_c}{2\pi\hbar D}\right),
 }
 ```
-
-Then
 
 ```math
 \boxed{LC_{min,Q}=\tau_Q^2.}
 ```
 
-A phase-limited provisional dark/capture relation can therefore be written without explicit `L,C` and gives the conditional low-`T0` scaling
+Do not treat `alpha_Q~7.2` as exact dissipative rf-SQUID MQT.
+
+## Thermal-rise / geometry requirement
+
+Primary graphene literature contains sub-ps to few-ps electronic response regimes, but a cryogenic GJJ calibration is missing.
+
+Using Huang's characteristic `l_D~230 um`, `tau~75 ns` gives only the cross-device scale
 
 ```math
-\boxed{
-\lambda_{max}
-\propto
-\left[
-\frac{t_c}{\ln(1/Dt_c)}
-\right]^{4/3}.
-}
+D_{char}\sim0.705\;m^2/s.
 ```
 
-Do not call this novel until exact dynamics survive and the narrow collision audit is complete.
-
-## Exact scalar-R damping correction
-
-Linearized recovered-basin dynamics:
-
-```math
-LC\ddot y+\frac{L}{R}\dot y+\kappa y=0.
-```
-
-Critical damping:
-
-```math
-\boxed{R_*=\frac12\sqrt{\frac{L}{C\kappa}}.}
-```
-
-Fastest scalar-Ohmic e-fold time:
-
-```math
-\boxed{\tau_{min}=\sqrt{LC/\kappa}.}
-```
-
-For `a=omega0 t_avail>=1`:
-
-```math
-\boxed{
-\frac{2a}{a^2+1}
-\le\frac{R}{R_*}\le a.
-}
-```
-
-The old `R<t/(2C)` result is only the high-R edge. Very small `R` is overdamped and slow.
-
-## Dynamic saddle-node correction — current decisive point
-
-Let
-
-```math
-q=x-x_f,
-\qquad
-\theta=T-T_f.
-```
-
-Locally
-
-```math
--F\simeq A\theta+(B/2)q^2.
-```
-
-Any finite damping becomes asymptotically overdamped because
-
-```math
-\zeta\propto\theta^{-1/4}\to\infty.
-```
-
-The full local ghost-passage scale is
-
-```math
- t_{ghost}^{full}
-\simeq
-\frac{2\pi L}{R\kappa_c}
-\sqrt{\frac{T_f-T_0}{T_{pk}-T_f}}.
-```
-
-Balancing this with recovered-basin underdamped damping gives the optimistic dynamic diagnostic
-
-```math
-\boxed{
- t_{dyn,min}
-=2\sqrt{\frac{\pi}{\kappa_c}}\tau_Q
-\left(
-\frac{T_f-T_0}{T_{pk}-T_f}
-\right)^{1/4}.
-}
-```
-
-Therefore `T_pk >= T_f` is only a static threshold; finite thermal overshoot is required.
-
-Under the explicitly conditional Huang dwell mapping at `A=100 um^2`, one absorbed 14-um photon gives:
+Simple `d^2/D` gives approximately
 
 ```text
-rDelta~0.8: static crossing, but conditional dynamic margin <<1
-rDelta~0.6: first retained coarse point with conditional dynamic margin slightly >1.
+0.6 um ->0.5 ps
+1.7 um ->4 ps
+4 um   ->23 ps
+25 um  ->0.9 ns.
 ```
 
-Do not promote these numbers to spectral cutoffs before full dynamic integration.
+Current conditional rise windows therefore correspond roughly to energy delivery within
 
-## Mandatory discipline
+```text
+rDelta~0.8 -> few-micrometre scale (~2.5 um)
+rDelta~0.6 -> few-micrometre scale (~4.6 um).
+```
 
-1. Separate established background, derivation, extrapolation, conditional calibration and novelty.
-2. Every major result/correction/collision goes to the derivation trail and claim ledger/continuation.
-3. Add primary literature to the literature ledger/continuation.
-4. Do not use priority language before a dedicated paper-and-patent audit.
-5. Do not equate zero DC resistance with zero total noise/dark counts.
-6. Do not treat the cubic `7.2 DeltaU/(hbar omega)` MQT expression as exact dissipative MQT.
-7. Do not treat Huang's fitted `75 ns` as a temperature-independent hot-state lifetime.
-8. Do not use the short-junction graphene CPR for final design.
-9. Do not identify `Delta_ind` with parent `Delta_s`.
-10. Do not use static wavelength reach as the detection cutoff.
-11. Do not model write damping as a freely adjustable noiseless resistor.
-12. Do not call Generation A photovoltaic.
-13. Do not start a manuscript because a model corridor remains open.
+Large optical aperture is acceptable only if optical coupling localizes the useful electronic heating near the Josephson-sensitive region.
 
-## Major novelty collisions already closed
+## Novelty discipline
 
-Do not claim novelty for:
+Broad novelty is closed for:
 
 ```text
 superconducting MIR/LWIR single-photon detection
-photon-heated graphene -> Josephson switching
-thermal proximity-JJ Ic suppression -> SQUID detection
+photon-heated graphene Josephson switching
+thermal Ic suppression -> SQUID detection
 single photon -> persistent superconducting flux memory
 optically written persistent flux/vortices
 transient Ic suppression -> rf-SQUID tipping/freeze
 field-free Josephson directionality
-illumination-driven superconducting phase battery/vorticity switching
-non-sinusoidal temperature-dependent graphene CPR
-engineering proximity ABS / induced-gap thermal sensitivity
+illumination-driven phase batteries/vorticity
+engineered proximity ABS / induced-gap thermal sensitivity
+graphene thermal-transport optimization
 generic dark-count vs timing/dead-time tradeoffs
-graphene thermal-propagation optimization.
+generic rate-induced tipping / loss of attractor tracking under fast parameter change.
 ```
+
+The only plausible publication route is a **detector-specific nonadiabatic persistent-flux feasibility/optimality/impossibility closure** that survives the remaining dynamics and a narrow paper/patent audit.
+
+## Numerical regression state
+
+Workflow:
+
+```text
+.github/workflows/experiment03-dynamic-rfsquid.yml
+```
+
+Pinned environment:
+
+```text
+Python 3.12.13
+NumPy 2.5.1
+SciPy 1.18.0.
+```
+
+The initial dynamic CI failed because a deliberately coarse smoke grid was asked to reproduce fine-grid capture brackets. This was a test-design error, not a scientific contradiction. `full_dynamic_smoke.py` now tests numerical invariants; **recheck the latest workflow before declaring the dynamic stack validated.**
 
 ## Immediate work queue
 
-**Do not do more equilibrium Pareto scanning first.**
+Do not return to static parameter scanning first.
 
-1. Build full deterministic time-dependent CPR/RCSJ trajectory with realistic `T_e(t)` and scalar `R`.
-2. Compute exact dynamic overshoot and basin entry; compare against the local ghost diagnostic.
-3. Replace scalar `R` with causal `Y(omega,T_e)` / memory kernel.
-4. Use the same environment for fluctuation-dissipation noise and dissipative MQT; do not optimize them independently.
-5. Add stochastic thermal/quantum force and compute `P_capture`, `P_wrong`, `P_return`, capture-time distribution.
-6. Only after dynamics survive, restore wavelength-dependent 8–14-um absorptance and readout/reset.
-7. Then perform a narrow paper + patent collision audit for the surviving closure.
-
-## Reproducible calculations
-
-Current high-value scripts:
-
-```text
-arbitrary_length_graphene_cpr.py
-validate_hagymasi_intermediate_cpr.py
-interface_skewness_sensitivity.py
-induced_gap_sensitivity.py
-eliminated_dark_capture_closure.py
-rcsj_damping_window.py
-dynamic_fold_ghost.py
-```
-
-Older sinusoidal/short-junction scripts remain regressions only.
+1. Extend full trajectories with exact phase-work diagnostics: `W_T`, `Q_R`, separatrix-energy margin, first crossing and final basin.
+2. Build a dimensionless deterministic map in pulse energy/rise time/damping and test collapse across material points.
+3. Build a minimal spatial electronic heat equation and compare on-junction vs far-from-junction absorption.
+4. Replace scalar `R` with causal `Y(omega,T_e)` / memory kernel.
+5. Use that same environmental spectral density for FDT noise and dissipative MQT.
+6. Compute stochastic `P_capture`, `P_wrong`, `P_return` and timing distributions.
+7. Only then restore detailed 8–14-um absorptance, readout and reset.
+8. If a compact result survives, perform the narrow paper + patent collision audit.
 
 ## Stop / reformulate conditions
 
-Stop or reformulate if robust analysis shows any of:
+Stop or reformulate if robust work shows any of:
 
-- full dynamic capture requires more overshoot than one desired LWIR photon can supply;
-- no causal damping environment supports capture without unacceptable cold noise/MQT;
-- realistic thermal transport makes the dynamic fold margin negative across the cold-stable region;
-- dissipative MQT closes the dark-rate window;
-- wrong-basin/retrapping probability remains unacceptable;
-- reset/readout removes the operating distinction;
-- narrow prior art contains the same mechanism and no independent mathematical closure survives.
+- physically credible energy-delivery rise is too slow for the desired LWIR range;
+- no causal environment permits launch + capture without unacceptable cold noise/MQT;
+- spatial thermal transport removes the local heating advantage;
+- stochastic wrong-basin/retrapping probabilities are unacceptable;
+- reset/readout erases the operating distinction;
+- narrow prior art already contains the same mechanism and no independent closure survives.
 
-A negative bound is a valid result. Do not force the device to survive.
+A negative bound is a valid result. Do not force the architecture to survive.
+
+**Current verdict: GO for continued theory. NO-GO for manuscript.**
