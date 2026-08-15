@@ -20,6 +20,7 @@ ordinary coarse-grid movement of a bifurcation boundary.
 from __future__ import annotations
 
 import math
+import traceback
 import numpy as np
 
 from full_dynamic_rfsquid import DynamicForce, simulate
@@ -63,4 +64,12 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exc:
+        # Surface the actual exception through the Checks API even when raw
+        # workflow logs are unavailable to the connector.
+        message = f"{type(exc).__name__}: {exc}".replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+        print(f"::error title=Experiment 03 dynamic smoke failure::{message}")
+        traceback.print_exc()
+        raise
