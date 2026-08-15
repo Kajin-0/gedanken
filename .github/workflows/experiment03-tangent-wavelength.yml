@@ -1,0 +1,25 @@
+name: Experiment 03 tangent wavelength scan
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/initial_quantum_tangent_scan.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/two_pole_cold_variance.py'
+      - '.github/workflows/experiment03-tangent-wavelength.yml'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Run tangent wavelength scan
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python initial_quantum_tangent_scan.py
