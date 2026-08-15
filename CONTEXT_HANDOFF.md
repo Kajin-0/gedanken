@@ -1,60 +1,67 @@
 # CONTEXT_HANDOFF.md — Live Agent Continuity Pointer
 
 **Repository:** `Kajin-0/gedanken`  
-**Active experiment:** `experiments/01-causal-quantum-branch-information/`  
-**Updated:** 2026-08-08  
-**Mode:** **V7 submission / repository consolidation**
+**Active research experiment:** `experiments/03-superconducting-photon-flux-transduction/`  
+**Updated:** 2026-08-15  
+**Mode:** Experiment 03 exploratory theory / falsification-first
 
 > **LIVE `main` ALWAYS WINS.** Other agents may edit concurrently. Before every write, fetch current HEAD, inspect relevant intervening commits, fetch the exact current target blob, and never write from a stale SHA.
 
-This file is intentionally short. The previous long-form handoff duplicated rapidly changing research state and became stale. Current recovery is now centralized.
+## Recovery order
 
-## Read in this order
+1. root `AGENTS.md` — repository-wide integrity and frozen-track rules;
+2. `experiments/03-superconducting-photon-flux-transduction/AGENTS.md`;
+3. `experiments/03-superconducting-photon-flux-transduction/CURRENT_STATE.md`;
+4. `experiments/03-superconducting-photon-flux-transduction/DERIVATION_LOG.md`;
+5. `experiments/03-superconducting-photon-flux-transduction/CLAIM_LEDGER.md`;
+6. `experiments/03-superconducting-photon-flux-transduction/ASSUMPTIONS.md`;
+7. `experiments/03-superconducting-photon-flux-transduction/LITERATURE_LEDGER.md`;
+8. `experiments/03-superconducting-photon-flux-transduction/NOVELTY_GATES.md`.
 
-1. [`AGENTS.md`](AGENTS.md) — authoritative operational protocol, STOP/GO boundaries, and allowed next work;
-2. [`README.md`](README.md) — public-facing project state and canonical navigation;
-3. [`CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md`](experiments/01-causal-quantum-branch-information/CURRENT_STATE_EXTERNAL_REVIEW_CLOSED_V7.md) — canonical scientific state;
-4. [`ARCHIVE_STATUS.md`](experiments/01-causal-quantum-branch-information/ARCHIVE_STATUS.md) — active vs historical/superseded artifact map;
-5. [`manuscript_v7/`](experiments/01-causal-quantum-branch-information/manuscript_v7/) — active paper source.
+## One-sentence current state
 
-## One-sentence project state
+Experiment 03 asks whether a single absorbed LWIR photon can transiently modify a Josephson phase-escape landscape so that one direction is selected and the event is stored as a persistent superconducting fluxoid state, with ordinary Johnson noise absent from the ideal storage channel and false events instead governed by phase escape, MQT, quasiparticles, vortices, stray photons and readout/reset physics.
 
-The active paper constructs a locally prepared, finite-support conserved quadrupolar source, normalizes its selected propagating gravitational mode, loads a distant noisy receiver, and tracks accessible source-reference quantum capability through the serial link
+## Current strongest mathematical checkpoint
 
-$$
-\boxed{
-\tau_c(t)
-=\beta_{g,A}\eta_{\rm store}(R)\beta_{g,B}\mathcal T_f(t).
-}
-$$
+The provisional constant-barrier model produced the exploratory window
 
-The publication-critical external-review physics items have been closed to the manuscript's stated approximation order. Do not reopen them without a new concrete objection.
+```math
+\frac{\hbar\omega_p}{7.2}\ln\frac{\Gamma_0}{D}
+<\Delta U<
+k_BT_{\rm pk}\ln\left[\frac{\Gamma_0\tau}{-\ln(1-\eta)}\right],
+```
 
-## Current publication boundary
+but this is **not a theorem for the device**. Its prefactors and validity must be recomputed from the actual rf-SQUID/Josephson potential, damping regime, and time-dependent `T_e(t)`.
 
-Do **not** claim novelty for
+## Immediate next task
 
-- the standalone Gaussian survival theorems;
-- branch-conditioned coherent graviton radiation or $N_\Delta$ itself;
-- generic propagating-graviton entanglement;
-- graviton transduction as a concept;
-- the critical $l=2$ absorption bound;
-- the generic Gaussian non-EB criterion.
+Replace constant barriers with the actual time-dependent model
 
-The surviving candidate contribution is the **source-resolved end-to-end normalization/capability construction**.
+```text
+T_e(t)
+ -> I_c[T_e(t)]
+ -> U(phi,T_e)
+ -> Delta U_+(t), Delta U_-(t), omega_p(t)
+ -> competing escape hazards
+ -> P_+, P_-, P_0 and dark-count channels.
+```
 
-## Current allowed work
+Then map realistic `(L, C, I_c, A, T_0, lambda, bias)` to efficiency, directionality, dark rate, persistent signal and reset/readout constraints.
 
-1. final manuscript prose/bibliography/metadata polish;
-2. clean PRD submission packaging and cover letter;
-3. numerical/reproducibility CI;
-4. archive/navigation hygiene;
-5. final submission snapshot/tag.
+## Prior-art boundary already known
 
-Do not start another theoretical branch merely because context rolled over.
+Do not claim novelty for:
 
-## Key active validation
+- superconducting single-photon detection in the MIR/LWIR;
+- graphene Josephson calorimetric single-photon switching;
+- field-free Josephson/superconducting diode effects;
+- electromagnetic-illumination-driven superconducting phase batteries, circulating supercurrent, or vorticity switching.
 
-The $25/16$ propagation coefficient has three independent derivations, including a canonical TT one-graviton angular-mode overlap that reproduces the full radial polynomial. The TT regression and broader scientific regression suite are automated under the pinned numerical environment.
+The exact single-LWIR-photon -> directional fluxoid capture -> persistent superconducting memory conjunction and any derived performance bound remain **un-audited**, not novel by default.
 
-For details, use the canonical state and audits linked from `AGENTS.md`; do not expand this handoff into another competing state document.
+## Publication state
+
+**NO manuscript yet.** `experiments/03-superconducting-photon-flux-transduction/NOVELTY_GATES.md` is the manuscript gate.
+
+Experiments 01 and 02 remain frozen/submission tracks; do not modify their science while working Experiment 03.
