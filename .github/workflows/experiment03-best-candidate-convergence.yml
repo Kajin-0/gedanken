@@ -1,0 +1,30 @@
+name: Experiment 03 best passive candidate convergence
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/nonlinear_fdt_best_candidate_convergence.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/nonlinear_fdt_twa_screen.py'
+      - '.github/workflows/experiment03-best-candidate-convergence.yml'
+
+jobs:
+  best:
+    strategy:
+      fail-fast: false
+      matrix:
+        alpha: ['0.70','0.80']
+        dt_ps: ['0.50','0.25']
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Run high-statistics best-candidate convergence
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python nonlinear_fdt_best_candidate_convergence.py --alpha ${{ matrix.alpha }} --dt-ps ${{ matrix.dt_ps }} --ntraj 4096 --seed 424242
