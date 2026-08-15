@@ -172,12 +172,17 @@ class DynamicForce:
             self.Tgrid, self.xgrid, self.Ftab, kx=3, ky=3
         )
 
+    @staticmethod
+    def _scalar(value: np.ndarray | float) -> float:
+        """Extract one spline value robustly under NumPy 2.5 scalar rules."""
+        return float(np.asarray(value).reshape(-1)[0])
+
     def force(self, T: float, x: float) -> float:
         Tuse = min(max(float(T), float(self.Tgrid[0])), float(self.Tgrid[-1]))
-        return float(self.spline.ev(Tuse, float(x)))
+        return self._scalar(self.spline.ev(Tuse, float(x)))
 
     def roots(self, T: float) -> list[tuple[float, float]]:
-        y = self.spline(T, self.xgrid, grid=False)
+        y = np.asarray(self.spline(T, self.xgrid, grid=False)).reshape(-1)
         roots: list[float] = []
         for xa, xb, ya, yb in zip(
             self.xgrid[:-1], self.xgrid[1:], y[:-1], y[1:]
@@ -187,7 +192,7 @@ class DynamicForce:
                 if not roots or abs(root - roots[-1]) > 1.0e-6:
                     roots.append(root)
         return [
-            (r, float(self.spline.ev(T, r, dx=0, dy=1))) for r in roots
+            (r, self._scalar(self.spline.ev(T, r, dx=0, dy=1))) for r in roots
         ]
 
     def cold_states(self) -> tuple[float, float]:
