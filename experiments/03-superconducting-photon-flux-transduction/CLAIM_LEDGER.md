@@ -39,8 +39,17 @@ This ledger is authoritative for claim status. A derivation is not a novelty cla
 | Titov-Beenakker short-junction CPR is controlled for the 600-nm MoRe/Huang device | REJECTED / MODEL LIMIT | `L_JJ/xi` is order unity using quoted gap scale; arbitrary-length theory required |
 | Short ballistic Dirac CPR calculation is a valid final prediction for Experiment 03 | REJECTED | sensitivity model only |
 | Short-Dirac sensitivity model shows an interior trigger-vs-stability tradeoff as `beta_cold` is varied | DERIVED MODEL RESULT | optical threshold rises with beta while cold barrier grows |
-| In short-Dirac sensitivity model, beta=0.8 gives `T_fold~2.17 K`, cold barrier ~4.41 K, `C_min,Q~0.52 pF` | PROVISIONAL MODEL RESULT | assumes short-junction CPR + provisional MQT rate |
-| In same toy model beta=0.7 gives lower fold energy but `C_min,Q~2.1 pF`; beta=0.9 exceeds the 15.5-um^2 10-um energy scaling | PROVISIONAL MODEL RESULT | demonstrates interior corridor, not real-device design |
+| In short-Dirac sensitivity model, beta=0.8 gives `T_fold~2.17 K`, cold barrier ~4.41 K, `C_min,Q~0.52 pF` | SUPERSEDED SENSITIVITY RESULT | arbitrary-length model gives materially different values |
+| In same short toy model beta=0.7 gives lower fold energy but `C_min,Q~2.1 pF`; beta=0.9 exceeds the 15.5-um^2 10-um energy scaling | SUPERSEDED SENSITIVITY RESULT | preserved only as evidence CPR regime matters |
+| Hagymasi-type Matsubara evaluation of the Titov-Beenakker secular equation is valid for arbitrary junction length within the ideal ballistic/rigid-boundary model | ESTABLISHED PRIOR THEORY | primary theoretical basis of current model |
+| The implemented arbitrary-length solver converges toward Titov-Beenakker Eq.20 in the controlled short-junction Dirac-point limit | NUMERICAL VALIDATION | normalized CPR sub-percent-to-percent agreement at ell=0.01 with finite grids |
+| At ell=1.1, delta=0.05, the ideal cold normalized fold decreases from ~0.463 at mu/Delta0=0 to ~0.200 at mu/Delta0=20 | DERIVED NUMERICAL MODEL RESULT | reflects strongly skewed doped CPR |
+| At ell=1.1, mu/Delta0=20, beta_cold=0.8, ideal equilibrium fold occurs near 1.118 K | DERIVED NUMERICAL MODEL RESULT | ballistic rigid-boundary model, not calibrated device |
+| The same beta=0.8, mu/Delta0=20 ideal point has cold barrier ~16.70 `k_B K`, `L~87.76 pH`, and state separation ~0.2535 Phi0 / 5.97 uA for Ic0=3 uA | DERIVED NUMERICAL MODEL RESULT | exact full-CPR cold potential within model |
+| The same point gives provisional `C_min,Q~71 fF` for D=1e-6 s^-1 | PROVISIONAL MODEL RESULT | relies on cubic MQT diagnostic; not exact DCR |
+| At beta=0.8, increasing mu/Delta0 from 0 to 20 leaves ideal T_fold near 1.1 K but raises cold barrier from ~7.0 K to ~16.7 K | DERIVED NUMERICAL MODEL RESULT | doping buys cold stability more than threshold reduction in this model |
+| The arbitrary-length ideal model is materially more favorable than the short-junction toy model for the same broad parameter region | DERIVED MODEL COMPARISON | supports continuing; does not imply fabricated-device feasibility |
+| The arbitrary-length ballistic/rigid-boundary model is calibrated to the 2026 MoRe/graphene photon detector | REJECTED | interface transparency, contact doping, disorder, inverse proximity and nonequilibrium distribution are not calibrated |
 | For arbitrary heat capacity, static photon fold energy is `E_fold=eta_th^-1 int C_e dT` up to `T_f` | DERIVED GENERAL NECESSARY CONDITION | `T_f` determined by full CPR fold |
 | Time above fold for lumped monotonic cooling is `int_{T_f}^{T_pk} C_e/P_cool dT` | DERIVED GENERAL NECESSARY CONDITION | finite-rate capture must use this, not just peak T |
 | Clean-graphene model `C_e=gamma A T`, `P=Sigma A(T^4-T0^4)` gives an analytic above-fold dwell time | DERIVED WITHIN THERMAL MODEL | recorded in `FEASIBILITY_CLOSURE_2026-08-15.md` |
