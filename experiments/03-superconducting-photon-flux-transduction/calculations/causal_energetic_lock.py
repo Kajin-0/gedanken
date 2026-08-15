@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Causal-environment separatrix-energy and energetic-lock diagnostic.
 
-After the metastable left well/saddle reform, position on the favored side is
-not by itself a sufficient deterministic trapping criterion if phase kinetic
-energy or reactive filter energy can drive a return crossing.
+After the metastable left well/saddle reform on the *cooling side* of the
+photon pulse, position on the favored side is not by itself a sufficient
+deterministic trapping criterion if phase kinetic energy or reactive filter
+energy can drive a return crossing.
 
 For the passive two-pole environment define the dimensionless total energy
 (relative to E_L=Phi_bar^2/L)
@@ -11,19 +12,18 @@ For the passive two-pole environment define the dimensionless total energy
   e = 1/2 L C v^2 + U(x,T)
       + 1/2 (L_f/L) d^2 + 1/2 L C_f w^2.
 
-While the separating saddle x_s(T) exists, define
+While the separating saddle x_s(T) exists after cooling-side reformation,
 
-  e_s = e - U[x_s(T),T].
+  e_s = e - U[x_s(T),T]
 
-Because F=U_x and F(x_s,T)=0,
+obeys
 
   d e_s/dt = [U_T(x,T)-U_T(x_s,T)] Tdot - (L/R) w^2.
 
-This script follows e_s along the deterministic causal-filter trajectory and
-reports the final downward zero crossing after which e_s stays negative over
-the simulated recovery interval.  That is called the *energetic lock time* in
-this checkpoint.  It is a deterministic sufficient-energy diagnostic, not a
-stochastic or quantum capture theorem.
+The final downward zero crossing after cooling-side reformation, after which
+`e_s` stays negative over the simulated recovery interval, is called the
+*energetic lock time*.  It is a deterministic sufficient-energy diagnostic,
+not a stochastic or quantum capture theorem.
 """
 
 from __future__ import annotations
@@ -32,7 +32,6 @@ import math
 
 import numpy as np
 from scipy.integrate import quad, solve_ivp
-from scipy.optimize import brentq
 
 from causal_two_pole_environment import filter_components
 from finite_time_basin_slice import cold_phase_scale
@@ -48,7 +47,6 @@ from directional_recovery_barriers import kelvin_scale
 
 
 def phase_potential_difference(model: DynamicForce, T: float, xa: float, xb: float) -> float:
-    """U(xb,T)-U(xa,T) in dimensionless E_L units."""
     return float(quad(lambda xx: model.force(T, xx), xa, xb,
                       epsabs=2e-10, epsrel=2e-8, limit=100)[0])
 
@@ -95,8 +93,6 @@ def trace_lock(model: DynamicForce,R: float,alpha: float,*,r_delta: float=0.6,
                   atol=np.array([1e-10,2e2,1e-13,1e-10,2e2]),
                   max_step=0.15e-12,dense_output=True)
 
-    # Resolve the important first 500 ps densely; a coarser tail is enough to
-    # verify that no later positive excursion reappears.
     t1=np.linspace(0,min(0.5e-9,tend_ns*1e-9),2501)
     if tend_ns>0.5:
         t2=np.linspace(0.5e-9,tend_ns*1e-9,1501)[1:]
@@ -105,25 +101,31 @@ def trace_lock(model: DynamicForce,R: float,alpha: float,*,r_delta: float=0.6,
         ts=t1
     ys=sol.sol(ts)
     temps=np.sqrt(np.maximum(ys[2],u0))
+    ipeak=int(np.argmax(temps))
+    if temps[ipeak] <= Tf:
+        raise RuntimeError('pulse never removes the left well; no cooling-side reformation')
+
+    # Cooling-side reformation is the first post-peak sample below Tf.
+    post=np.where(temps[ipeak:] < Tf)[0]
+    if not len(post):
+        raise RuntimeError('left well does not reform in simulated interval')
+    ireform=ipeak+int(post[0])
 
     erel=np.full_like(ts,np.nan,dtype=float)
-    saddles=np.full_like(ts,np.nan,dtype=float)
-    for i,(t,T) in enumerate(zip(ts,temps)):
-        xs=separating_saddle(model,float(T))
+    for i in range(ireform,len(ts)):
+        T=float(temps[i])
+        xs=separating_saddle(model,T)
         if xs is None:
             continue
         x,v,_,d,w=[float(q) for q in ys[:,i]]
-        dU=phase_potential_difference(model,float(T),xs,x)
+        dU=phase_potential_difference(model,T,xs,x)
         erel[i]=(0.5*L*C*v*v+dU
                  +0.5*(Lf/L)*d*d+0.5*L*Cf*w*w)
-        saddles[i]=xs
 
-    valid=np.where(np.isfinite(erel))[0]
-    if not len(valid): raise RuntimeError('saddle never reforms')
+    valid=np.where(np.isfinite(erel) & (np.arange(len(ts))>=ireform))[0]
+    if not len(valid): raise RuntimeError('no post-reformation saddle samples')
     ireform=int(valid[0])
 
-    # Find the final positive->negative sign transition, and verify all later
-    # sampled values stay <=0. If already negative at reformation, lock=reform.
     if erel[ireform] <= 0 and np.nanmax(erel[ireform:]) <= 0:
         ilock=ireform
     else:
@@ -136,32 +138,36 @@ def trace_lock(model: DynamicForce,R: float,alpha: float,*,r_delta: float=0.6,
     tlock=float(ts[ilock]) if ilock is not None else math.nan
 
     EK=kelvin_scale(r_delta)
-    out={
+    return {
+        't_peak':float(ts[ipeak]),
+        'T_peak':float(temps[ipeak]),
         't_reform':float(ts[ireform]),
         'x_reform':float(ys[0,ireform]),
         'u_reform':float(ys[1,ireform]/omega_c),
         'e_reform_K':float(erel[ireform]*EK),
         't_lock':tlock,
+        'lock_delay':tlock-float(ts[ireform]) if math.isfinite(tlock) else math.nan,
         'x_lock':float(sol.sol(tlock)[0]) if math.isfinite(tlock) else math.nan,
         'e_min_after_K':float(np.nanmin(erel[ireform:])*EK),
         'e_max_after_K':float(np.nanmax(erel[ireform:])*EK),
         'e_final_K':float(erel[valid[-1]]*EK),
         'omega_c':omega_c,
     }
-    return out
 
 
 def main():
     print('Experiment 03 causal separatrix energetic lock')
+    print('cooling-side reformation only')
     model=DynamicForce(0.6,quick=False)
     for R,alpha in [(250.0,0.20),(250.0,0.35),(250.0,0.50)]:
         o=trace_lock(model,R,alpha)
         msg=(
             f'R={R:g} alpha={alpha:.2f}: '
-            f't_reform={o["t_reform"]*1e12:.3f} ps, '
+            f'Tpeak={o["T_peak"]:.5f} K, t_reform={o["t_reform"]*1e12:.3f} ps, '
             f'x_reform={o["x_reform"]:+.5f}, u_reform={o["u_reform"]:+.5f}, '
             f'Esep_reform/kB={o["e_reform_K"]:.5f} K, '
-            f't_lock={o["t_lock"]*1e12:.3f} ps, x_lock={o["x_lock"]:+.5f}, '
+            f't_lock={o["t_lock"]*1e12:.3f} ps, '
+            f'lock_delay={o["lock_delay"]*1e12:.3f} ps, x_lock={o["x_lock"]:+.5f}, '
             f'Esep_max_after/kB={o["e_max_after_K"]:.5f} K, '
             f'Esep_final/kB={o["e_final_K"]:.5f} K'
         )
