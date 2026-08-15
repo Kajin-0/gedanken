@@ -1,43 +1,60 @@
 # Experiment 03 — CLAIM_LEDGER
 
-This ledger is authoritative for claim status. Do not infer novelty from the existence of a derivation.
+This ledger is authoritative for claim status. A derivation is not a novelty claim.
 
 | Claim | Status | Notes |
 |---|---|---|
-| An ideal superconducting storage channel with Re Z = 0 lacks the ordinary finite-frequency resistive Johnson contribution | ESTABLISHED BACKGROUND | fluctuation-dissipation statement; not novel |
+| An ideal cold superconducting storage channel with `Re Z = 0` lacks the ordinary finite-frequency resistive Johnson contribution | ESTABLISHED BACKGROUND | fluctuation-dissipation statement; not novel |
 | Zero resistance implies zero total detector noise | REJECTED | photon statistics, quasiparticles, phase slips, MQT, vortices, stray photons, readout and reset remain |
-| A strictly lossless photon-current response naturally accumulates state rather than passively resetting | DERIVED / ELEMENTARY | motivates a latching/integrating architecture |
+| A strictly lossless photon-current response naturally accumulates state rather than passively resetting | DERIVED / ELEMENTARY | motivates latching/integrating architecture |
 | Internal superconducting gain alone cannot beat Poisson photon-arrival NEP | DERIVED / STANDARD CONSEQUENCE | signal and photon noise scale together |
-| One 10-µm photon has ~124 meV energy | ESTABLISHED | numerical constant |
-| Photon-only ideal loop energetic scale L >= Phi0^2/(2 eta_E h nu) is about 108 pH at 10 µm for eta_E=1 | DERIVED SCALE | not a switching criterion; exact rf-SQUID well energies differ |
-| Practical 10-µm absorption is generally above the pair-breaking threshold of conventional superconductors | ESTABLISHED PHYSICAL REGIME | weak-coupling sub-gap requirement would demand unrealistically high Tc |
-| Brief dissipative absorption followed by persistent superconducting storage is preferable to requiring dissipationless LWIR absorption | WORKING DESIGN CONCLUSION | subject to exact-device analysis |
-| A graphene-like calorimeter area near 15.5 µm^2 preserves the simple 100-µm^2-at-1.55-µm heat-capacity scaling | EXTRAPOLATION | ignores wavelength-dependent absorption, heat capacity, doping and diffusion |
-| Graphene Josephson single-photon switching can reach ~87% intrinsic efficiency at <1 s^-1 dark count and ~75% at <1/week in the published 1550-nm device | ESTABLISHED PRIOR ART | Huang et al. 2026; corrects earlier one-per-hour statement |
-| Photon -> hot graphene -> Josephson escape is a new transduction principle | COLLIDED / PRIOR ART | demonstrated by Huang et al. 2026; earlier GJJ detector proposals also exist |
-| Single photon -> persistent superconducting single-flux memory is a new architecture | COLLIDED / PRIOR ART | Onen et al. 2020 experimentally demonstrated single-photon-to-single-flux conversion with multilevel superconducting memory |
-| Optical heating -> persistent quantized superconducting flux is new in broad form | COLLIDED / PRIOR ART | Rochet et al. 2020 generated permanent optically written single vortices |
-| Transient I_c suppression -> lower rf-SQUID barrier -> refreeze flux state is new in broad form | COLLIDED / PRIOR ART | rf-SQUID tipping-pulse scheme proposed in 2001 |
-| For u=0.5(x-delta)^2+beta cos x, the metastable saddle-node obeys delta=tan(a)-a and beta_c=sec(a) | DERIVED WITHIN SINUSOIDAL RF-SQUID MODEL | exact static bifurcation condition |
-| Small-delta saddle-node scaling beta_c-1 ~ 0.5(3 delta)^(2/3) | DERIVED ASYMPTOTIC | follows from tan(a)-a expansion |
-| Photon-trigger condition beta_cold > beta_c > beta_hot converts the hot event from barrier hopping to metastable-well annihilation | DERIVED DESIGN CONDITION | deterministic only in quasistatic/noiseless idealization |
-| Required fractional I_c suppression exceeds 1-beta_c/beta_cold | DERIVED WITHIN MODEL | static threshold; dynamic finite-rate effects remain |
-| Near the saddle node Delta U_- ~ (2^(5/2)/3) E_L sin(a) sqrt(cos(a)) (beta-beta_c)^(3/2) | DERIVED ASYMPTOTIC | numerically checked against exact potential near threshold |
-| Near the saddle node omega_m scales as (beta-beta_c)^(1/4) and Delta U/(hbar omega_m) as (beta-beta_c)^(5/4) | DERIVED ASYMPTOTIC | exposes cold-stability penalty of operating too close to threshold |
-| Benchmark delta=0.05, beta_cold=1.5, I_c=3 uA requires ~23.5% I_c suppression | DERIVED NUMERICAL | gives L=164.6 pH in the sinusoidal model |
-| Benchmark cold metastable barrier is ~9.44 k_B K and favored-well reverse barrier ~16.57 k_B K | DERIVED NUMERICAL | exact stationary-point calculation |
-| Adjacent rf-SQUID fluxoid wells necessarily differ in measured loop flux by exactly Phi0 | REJECTED | benchmark separation is ~0.475 Phi0; early Phi0/L estimate was only an idealized scale |
-| Benchmark measured-state separation is ~0.475 Phi0 or ~5.97 uA circulating-current difference | DERIVED NUMERICAL | for L=164.6 pH |
-| With C=200 fF the benchmark metastable-well plasma frequency is ~24.8 GHz | DERIVED NUMERICAL | local small-oscillation value |
-| Cubic-form MQT diagnostic exponent is ~57 at the benchmark | PROVISIONAL DIAGNOSTIC | not an absolute DCR; exact dissipative bounce/prefactor still required |
-| A beta_hot=1.05 pulse drives deterministic phase crossing on ~20-ps scale in the benchmark RCSJ diagnostic | NUMERICAL MODEL RESULT | robust across tested weak/moderate damping; not yet a device prediction |
-| Phase tipping can be much faster than the ~75-ns graphene hot-electron pulse benchmark | PLAUSIBILITY RESULT | conditional on realistic I_c(T_e) crossing beta_c |
-| Hot quasiparticle conductance could provide write-time damping while cold storage remains low-loss | RESEARCH HYPOTHESIS | must be modeled/validated; no permanent shunt assumed |
-| Lowering plasma frequency through larger C can suppress MQT while remaining fast compared with ns thermal dynamics | PROVISIONAL DESIGN INSIGHT | quantitative optimum not established |
-| A small external flux tilt is the cleanest Generation-A proof architecture | WORKING DESIGN CHOICE | not a novelty claim |
-| A phi0 / Josephson-diode element could replace external flux bias for self-directed capture | RESEARCH HYPOTHESIS | requires independent collision and quantitative audit |
-| The exact single-LWIR calorimetric bifurcation architecture is novel | UNKNOWN / DO NOT CLAIM | several major components already collide; dedicated audit not complete |
-| A new general bifurcation/dark-count performance bound exists | UNKNOWN / ACTIVE TARGET | possible surviving theory route |
-| The architecture is superior to SNSPDs, KIDs or existing single-photon single-flux detectors | UNKNOWN / DO NOT CLAIM | requires matched performance comparison |
-| The architecture is legitimately photovoltaic at zero external bias | UNKNOWN | terminology depends on final physical mechanism |
-| A publishable theorem or paper exists | NO-GO AT PRESENT | see NOVELTY_GATES.md |
+| One 10-um photon carries about 124 meV | ESTABLISHED | numerical constant |
+| Brief dissipative absorption followed by persistent superconducting storage is physically allowed | WORKING DESIGN CONCLUSION | LWIR photon need not be sub-gap |
+| Graphene Josephson single-photon switching can reach ~87% intrinsic efficiency at <1 s^-1 dark count and ~75% at <1/week | ESTABLISHED PRIOR ART | Huang et al. 2026 |
+| Photon -> hot graphene -> Josephson escape is new | COLLIDED / PRIOR ART | Walsh et al. 2021 / Huang et al. 2026 |
+| Photon heating -> proximity-JJ `I_c` suppression -> SQUID electrical detection is new | COLLIDED / PRIOR ART | Solinas, Giazotto, Pepe 2017/2018 proposal |
+| Single photon -> persistent superconducting single-flux memory is new | COLLIDED / PRIOR ART | Onen et al. 2020 |
+| Optical heating -> persistent quantized superconducting flux is new in broad form | COLLIDED / PRIOR ART | Rochet et al. 2020 |
+| Transient `I_c` suppression -> lower rf-SQUID barrier -> refreeze flux state is new | COLLIDED / PRIOR ART | Zhou/Habif/Bocko/Feldman 2001 |
+| Field-free Josephson directionality / superconducting diode effect is new | COLLIDED / PRIOR ART | established before this project |
+| Illumination-driven superconducting phase battery / loop vorticity switching is new | COLLIDED / PRIOR ART | Mironov et al. 2024 |
+| For sinusoidal `u=0.5(x-delta)^2+beta cos x`, the metastable fold obeys `delta=tan(a)-a`, `beta_c=sec(a)` | DERIVED WITHIN MODEL | exact static bifurcation condition |
+| Small-delta sinusoidal fold scaling `beta_c-1 ~ 0.5(3 delta)^(2/3)` | DERIVED ASYMPTOTIC | local expansion |
+| General CPR fold satisfies `Ical(x_f,T_f)=x_f-delta`, `dIcal/dx=1` | DERIVED / STANDARD LOAD-LINE FOLD | preferred formulation; not assumed novel |
+| General smooth-fold barrier scales as distance-to-fold^(3/2) | DERIVED / STANDARD CATASTROPHE STRUCTURE | coefficient written explicitly for current model |
+| Near fold, local mode frequency scales as distance^(1/4) and basic quantum-action scale as distance^(5/4) | DERIVED ASYMPTOTIC | exposes trigger-vs-MQT tradeoff |
+| Sinusoidal benchmark `delta=0.05`, `beta_cold=1.5`, `I_c=3 uA` needs 23.53% scalar `I_c` suppression | DERIVED NUMERICAL | gives L=164.55 pH |
+| Sinusoidal benchmark cold metastable barrier is 9.443 `k_B K` | DERIVED NUMERICAL | exact stationary-point calculation |
+| Adjacent rf-SQUID fluxoid labels imply measured flux difference exactly `Phi0` | REJECTED | benchmark separation is 0.4753 Phi0 |
+| Sinusoidal benchmark readout separation is ~0.4753 Phi0 or 5.97 uA | DERIVED NUMERICAL | for L=164.55 pH |
+| With C=200 fF sinusoidal benchmark local plasma frequency is ~24.8 GHz | DERIVED NUMERICAL | small oscillation value |
+| Cubic-form MQT exponent ~57 at sinusoidal benchmark is an absolute DCR prediction | REJECTED | only provisional diagnostic; dissipative bounce/prefactor absent |
+| `beta_hot=1.05` gives ~20-ps deterministic central phase crossing in the sinusoidal RCSJ diagnostic | NUMERICAL MODEL RESULT | not device prediction |
+| Published graphene thermal scales imply `D ~0.705 m^2/s` from `l_D~230 um`, `tau_ep~75 ns` | DERIVED CROSS-DEVICE SCALE | inference from Huang et al. characteristic values |
+| A 15.5-um^2 square absorber has `L^2/D ~22 ps` under that cross-device diffusion scale | DERIVED CROSS-DEVICE SCALE | comparable to current phase-tipping time |
+| The simple damping envelope requires `R_hot < t_hot/(2C)` | DERIVED WITHIN RCSJ ENVELOPE | necessary, not sufficient |
+| A graphene-like 15.5-um^2 absorber reproduces the simple 100-um^2-at-1.55-um equal-peak-temperature scaling at 10 um | EXTRAPOLATION | ignores actual optical absorption, proximity effects and diffusion |
+| Conditional sinusoidal thermal benchmark gives `eta_th,min ~0.23` to reach 1.2 K at 10 um | CONDITIONAL PLAUSIBILITY | assumes comparable monotonic nonequilibrium `I_c(T_e)` |
+| Graphene/proximity CPR can be treated as sinusoidal for final design | REJECTED | measured ballistic graphene CPR is forward-skewed and temperature dependent |
+| Titov-Beenakker short-junction CPR is controlled for the 600-nm MoRe/Huang device | REJECTED / MODEL LIMIT | `L_JJ/xi` is order unity using quoted gap scale; arbitrary-length theory required |
+| Short ballistic Dirac CPR calculation is a valid final prediction for Experiment 03 | REJECTED | sensitivity model only |
+| Short-Dirac sensitivity model shows an interior trigger-vs-stability tradeoff as `beta_cold` is varied | DERIVED MODEL RESULT | optical threshold rises with beta while cold barrier grows |
+| In short-Dirac sensitivity model, beta=0.8 gives `T_fold~2.17 K`, cold barrier ~4.41 K, `C_min,Q~0.52 pF` | PROVISIONAL MODEL RESULT | assumes short-junction CPR + provisional MQT rate |
+| In same toy model beta=0.7 gives lower fold energy but `C_min,Q~2.1 pF`; beta=0.9 exceeds the 15.5-um^2 10-um energy scaling | PROVISIONAL MODEL RESULT | demonstrates interior corridor, not real-device design |
+| For arbitrary heat capacity, static photon fold energy is `E_fold=eta_th^-1 int C_e dT` up to `T_f` | DERIVED GENERAL NECESSARY CONDITION | `T_f` determined by full CPR fold |
+| Time above fold for lumped monotonic cooling is `int_{T_f}^{T_pk} C_e/P_cool dT` | DERIVED GENERAL NECESSARY CONDITION | finite-rate capture must use this, not just peak T |
+| Clean-graphene model `C_e=gamma A T`, `P=Sigma A(T^4-T0^4)` gives an analytic above-fold dwell time | DERIVED WITHIN THERMAL MODEL | recorded in `FEASIBILITY_CLOSURE_2026-08-15.md` |
+| The same `T^4` cooling model has a finite maximum dwell time above a fixed fold even as `T_pk -> infinity` | DERIVED MODEL RESULT | `t_max=gamma/(4 Sigma T0^2) ln[(Tf^2+T0^2)/(Tf^2-T0^2)]` |
+| If required settling time exceeds that `t_max`, no photon energy can satisfy the dwell condition within the lumped `T^4` model | DERIVED MODEL IMPOSSIBILITY CONDITION | model-specific, potentially useful negative bound |
+| Thermal cold stability requires approximately `Delta U_c >= k_B T0 ln(Omega_T/D)` | STANDARD APPROXIMATION | prefactor must be justified for final device |
+| Within the provisional cubic MQT model, target DCR gives a closed Lambert-W minimum capacitance `C_min,Q` | DERIVED WITHIN PROVISIONAL MODEL | exact algebra for assumed rate, not exact rf-SQUID MQT physics |
+| Dynamic latching gives upper capacitance scales `C<t_>/(2R_hot)` and `C<t_>^2/(g^2 L)` | DERIVED NECESSARY CONDITIONS | damping and phase-passage approximations |
+| A necessary capacitance window is `C_min,Q < min(C_max,R,C_max,phi)` | DERIVED MODEL CLOSURE | combines cold quantum stability with write dynamics |
+| Subject only to these monotonic constraints, choosing `C~C_min,Q` minimizes write-time burden | DERIVED CONDITIONAL OPTIMUM | readout/parasitic constraints can shift optimum |
+| A compact necessary feasibility chain couples photon fold energy, above-fold dwell, cold thermal stability and the capacitance window | DERIVED EXPLORATORY CLOSURE | strongest current theory object; novelty untested |
+| The exact single-LWIR calorimetric fold architecture is novel | UNKNOWN / DO NOT CLAIM | major component collisions already found |
+| The feasibility closure above is publication-novel | UNKNOWN / ACTIVE COLLISION TARGET | must audit papers and patents after realistic model survives |
+| The architecture is superior to SNSPDs, KIDs, graphene-JJ or existing single-photon single-flux detectors | UNKNOWN / DO NOT CLAIM | matched benchmark required |
+| Generation A is legitimately photovoltaic | REJECTED TERMINOLOGY | externally flux tilted |
+| A zero-external-flux Generation B can be legitimately photovoltaic/photogalvanic | UNKNOWN | depends on final mechanism |
+| A publishable paper exists | NO-GO AT PRESENT | see `NOVELTY_GATES.md` |
