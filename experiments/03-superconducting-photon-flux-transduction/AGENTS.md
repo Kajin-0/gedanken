@@ -6,104 +6,127 @@
 
 ## Recovery order
 
-Read, in order:
+Read in order:
 
 1. `CURRENT_STATE.md`
-2. `DERIVATION_LOG.md`
-3. `CLAIM_LEDGER.md`
-4. `ASSUMPTIONS.md`
-5. `LITERATURE_LEDGER.md`
-6. `NOVELTY_GATES.md`
-7. `README.md`
-8. reproducible scripts in `calculations/`
+2. `FEASIBILITY_CLOSURE_2026-08-15.md`
+3. `DERIVATION_LOG.md`
+4. `CLAIM_LEDGER.md`
+5. `ASSUMPTIONS.md`
+6. `LITERATURE_LEDGER.md`
+7. `NOVELTY_GATES.md`
+8. `THERMAL_DYNAMIC_CHECKPOINT_2026-08-15.md`
+9. `README.md`
+10. `calculations/`
 
-Conversation history is not authoritative when it conflicts with repository state.
+Conversation history is non-authoritative when it conflicts with repository state.
 
 ## Current objective
 
-Determine whether a **single absorbed LWIR photon** can calorimetrically drive a Josephson/rf-SQUID fold transition with high capture probability, low wrong-way capture and extremely low cold false-switch probability, while producing a persistent superconducting readout state.
+Determine whether a **single absorbed LWIR photon** can drive a full temperature-dependent Josephson CPR through a directionally tilted rf-SQUID fold, settle into the favored flux basin, and retain a persistent superconducting readout state while meeting a very low cold false-switch target.
 
-Generation A uses a small external flux tilt. Generation B may later seek zero-external-flux directionality through a `phi0`, Josephson-diode or other symmetry-breaking element.
+Generation A uses external flux tilt and is not photovoltaic. Generation B is reserved for later zero-external-flux directionality.
 
-## Current strongest checkpoints
+## Strongest current closure
 
-### General fold criterion
-
-Use the dimensionless phase force
+General CPR/load-line fold:
 
 ```math
 F(x,T)=x-\delta-\mathcal I(x,T),
 \qquad
 \mathcal I=I_s/I_*,
 \qquad
-I_*=\Phi_0/(2\pi L).
+I_*=\Phi_0/(2\pi L),
 ```
 
-A static fold satisfies
-
 ```math
-\mathcal I(x_c,T_c)=x_c-\delta,
+\boxed{\mathcal I(x_f,T_f)=x_f-\delta,}
 \qquad
-\partial_x\mathcal I(x_c,T_c)=1.
+\boxed{\partial_x\mathcal I(x_f,T_f)=1.}
 ```
 
-For a separable CPR `mathcal I=beta(T) f(x)`, this becomes
+Static optical fold energy:
 
 ```math
-\beta_c=1/f'(x_c),
+\boxed{
+E_{fold}=\eta_{th}^{-1}\int_{T_0}^{T_f}C_e(T)dT.
+}
+```
+
+Time above fold:
+
+```math
+\boxed{
+t_>(E_\gamma)=
+\int_{T_f}^{T_{pk}(E_\gamma)}
+\frac{C_e(T)}{P_{cool}(T)}dT.
+}
+```
+
+Provisional MQT capacitance floor:
+
+```math
+\boxed{
+C_{min,Q}
+=\frac{\hbar^2\kappa_c}{\alpha_Q^2\Delta U_c^2L}
+\left[
+W\left(\frac{\alpha_Q\Delta U_c}{2\pi\hbar D}\right)
+\right]^2.
+}
+```
+
+Optimized necessary settling scale:
+
+```math
+\boxed{
+t_{req}^*=
+\max[t_{diff},\ g\sqrt{LC_{min,Q}},\ 2R_{hot}C_{min,Q}].
+}
+```
+
+Necessary chain:
+
+```math
+E_\gamma\ge E_{fold},
 \qquad
-\delta=x_c-f(x_c)/f'(x_c).
+t_>(E_\gamma)\ge t_{req}^*,
+\qquad
+\Delta U_c\gtrsim k_BT_0\ln(\Omega_T/D).
 ```
 
-The sinusoidal benchmark gives `delta=tan(a)-a`, `beta_c=sec(a)`.
-
-### Benchmark
-
-```text
-delta       = 0.05
-beta_cold   = 1.5
-Ic,cold     = 3 uA
-C           = 200 fF
-beta_c      = 1.14712
-Ic drop     = 23.53 %
-L           = 164.55 pH
-cold barrier= 9.443 k_B K
-readout gap = 0.4753 Phi0 = 5.97 uA
-local fp    = 24.80 GHz
-```
-
-A deterministic square pulse below the fold crosses the phase barrier on a ~20-ps scale in the current RCSJ diagnostic, far faster than the ~75-ns graphene thermal benchmark.
-
-### Thermal threshold closure
-
-In the scalar-amplitude approximation,
+Inside the idealized clean-graphene `T^4` cooling model,
 
 ```math
-I_c(T_{crit})/I_c(T_0)=\beta_c/\beta_{cold}.
+\boxed{
+t_{>,max}
+=\frac{\gamma_S}{4\Sigma T_0^2}
+\ln\left(\frac{T_f^2+T_0^2}{T_f^2-T_0^2}\right),
+}
 ```
 
-For `C_e=gamma_S A T`,
+so `t_req >= t_>,max` is a model-level impossibility condition regardless of photon energy.
 
-```math
-\eta_{th}h\nu\ge\frac{\gamma_S A}{2}(T_{crit}^2-T_0^2).
-```
+## Current quantitative lessons
 
-Conditionally using the published graphene thermal scale and `Tcrit<=1.2 K`, a 10-um photon in a 15.5-um^2 absorber has an estimated heat-capacity margin of ~4.34x and requires ~23% retained electronic energy. This is not a validated nonequilibrium `I_c(T_e)` model.
+- Sinusoidal benchmark: `delta=0.05`, `beta=1.5`, `I_c=3 uA` gives 23.53% scalar suppression, `L=164.55 pH`, cold barrier `9.443 k_B K`, state separation `0.4753 Phi0`, ~20-ps deterministic phase passage.
+- Cross-device graphene thermal diffusion estimate for a 15.5-um^2 square absorber is ~22 ps using Huang's `l_D~230 um`, `tau_ep~75 ns` characteristic scales.
+- A measured/microscopic CPR is mandatory. The 600-nm MoRe/graphene device is not safely in the Titov-Beenakker short-junction limit (`L_JJ/xi~1.2` using the quoted gap scale).
+- The short-Dirac calculation is only a sensitivity model. It nevertheless exposes an interior optical-trigger / MQT-capacitance corridor rather than a monotonic optimum.
+- Example toy point `beta=0.8`: `T_fold~2.17 K`, cold barrier `~4.41 K`, provisional `C_min,Q~0.52 pF`; a 10-ns useful hot interval then requires `R_hot<~9.6 kOhm` under the simple damping envelope.
 
 ## Mandatory discipline
 
-1. Separate established background, derived model results, numerical extrapolations and novelty hypotheses.
-2. Update `DERIVATION_LOG.md` after every important logical step, failed path, correction or collision.
-3. Synchronize strengthened/weakened/falsified/collision-tested claims to `CLAIM_LEDGER.md`.
-4. Synchronize preferred equations, architecture and immediate next task to `CURRENT_STATE.md`.
-5. Add primary literature to `LITERATURE_LEDGER.md`; do not use conversation memory as prior-art evidence.
-6. Do not use priority language before a dedicated paper-and-patent collision audit.
-7. Do not equate zero DC resistance with zero total fluctuations or zero dark counts.
-8. Do not treat the cubic `7.2 DeltaU/(hbar omega)` MQT form as an exact DCR for this device.
-9. Do not assume a sinusoidal CPR for the final graphene/proximity design; use measured or microscopic `I_s(phi,T)`.
-10. Do not assume adjacent fluxoid states differ by exactly `Phi0` in measured loop flux.
-11. Do not call Generation A photovoltaic; it is externally flux tilted.
-12. Do not create a manuscript because a parameter window looks promising.
+1. Separate established background, model derivation, extrapolation and novelty.
+2. Every important advance/correction/collision goes into `DERIVATION_LOG.md`.
+3. Synchronize claim status to `CLAIM_LEDGER.md` and live equations/next task to `CURRENT_STATE.md`.
+4. Add primary literature to `LITERATURE_LEDGER.md`; do not cite conversation memory as evidence.
+5. Do not use priority language before a dedicated paper-and-patent collision audit.
+6. Do not equate zero DC resistance with zero total noise/dark counts.
+7. Do not treat the cubic `7.2 DeltaU/(hbar omega)` MQT form as an exact DCR.
+8. Do not use a sinusoidal or short-junction graphene CPR for the final design without justification.
+9. Do not assume measured flux-state separation equals `Phi0`.
+10. Do not call Generation A photovoltaic.
+11. Do not start a manuscript because an idealized corridor is nonempty.
 
 ## Major prior-art collisions already found
 
@@ -111,51 +134,51 @@ Do not claim novelty for:
 
 ```text
 LWIR superconducting single-photon detection
-photon -> hot graphene -> Josephson switching
+infrared photon -> hot graphene -> Josephson switching
+photon heating -> proximity-JJ Ic suppression -> SQUID electrical detection
 single photon -> persistent superconducting single-flux memory
 optically generated persistent superconducting flux/vortices
 transient Ic suppression -> rf-SQUID barrier lowering/freeze
 field-free Josephson/superconducting diode effects
 illumination-driven superconducting phase battery/vorticity switching
+non-sinusoidal temperature-dependent graphene CPRs.
 ```
 
-Particularly important: Onen et al. 2020 closes the broad photon-to-persistent-flux-memory route; Zhou/Habif/Bocko/Feldman 2001 closes generic transient-`I_c` rf-SQUID tipping as a novelty route.
+Particularly important: Walsh/Huang, Solinas-Giazotto-Pepe, Onen, Rochet, Zhou/Habif/Bocko/Feldman, Mironov/Mel'nikov/Buzdin, Nanda et al.
 
 ## Immediate work queue
 
-1. Obtain or derive a physically defensible `I_s(phi,T_e)` / `I_c(T_e)` for a realistic photon-sensitive proximity junction.
-2. Solve the 8–14-um photon thermal pulse including electronic heat capacity, diffusion to contacts and electron-phonon cooling.
-3. Drive the **full CPR** through the fold conditions rather than only scaling a sinusoidal `I_c`.
-4. Solve finite-rate stochastic RCSJ passage through the fold, including damping and hot-state conductance, to obtain `P_capture`, `P_wrong`, `P_no-switch`.
-5. Compute cold thermal escape and **dissipative** MQT from the exact metastable potential.
-6. Add optical coupling / absorptance and readout/backaction to obtain system-level rather than absorbed-photon metrics.
-7. Quantify reset energy, dead time and stored-state SNR.
-8. Search narrower paper/patent collisions only after a realistic nonempty region survives.
+1. Build an arbitrary-length `I_s(phi,T)` for a realistic graphene/SNS photon-sensitive weak link using the Hagymasi/Kormanyos/Cserti-type secular/Matsubara route or equivalent validated theory.
+2. Obtain the exact fold curve `T_f(delta,L,geometry,doping,interfaces)`.
+3. Compute cold barrier/curvature from that CPR and replace the provisional MQT model with dissipative escape theory.
+4. Couple the fold to a spatial/thermal pulse with diffusion to contacts and E-Ph cooling.
+5. Solve finite-rate stochastic fold passage, damping, retrapping and basin selection to obtain `P_capture`, `P_wrong`, `P_no-switch`.
+6. Add realistic 8–14-um optical coupling, readout/backaction and reset.
+7. Only after a realistic region survives, perform the narrow paper-and-patent collision audit of the feasibility closure.
 
 ## Reproducible calculations
 
 ```text
-calculations/rfsquid_bifurcation_scan.py
-    exact sinusoidal roots/barriers, fold benchmark, RCSJ tipping diagnostic
-
-calculations/general_cpr_fold.py
-    general CPR fold equations and second-harmonic sensitivity
-
-calculations/thermal_bifurcation_margin.py
-    photon-energy / heat-capacity threshold margin
+rfsquid_bifurcation_scan.py       exact sinusoidal roots/barriers + tipping diagnostic
+general_cpr_fold.py               general fold + CPR-shape sensitivity
+thermal_bifurcation_margin.py     static photon-energy threshold scaling
+thermal_diffusion_margin.py       diffusion timescale cross-check
+dynamic_margin.py                 phase/damping write-time margins
+short_dirac_cpr_fold.py           short-graphene CPR sensitivity only
+capacitance_stability_window.py   provisional Lambert-W MQT capacitance floor
 ```
 
-These scripts are exploratory regressions, not a validated CI suite.
+These are exploratory regressions, not validated CI.
 
 ## Stop conditions
 
-Stop or reformulate if any of the following is robustly established:
+Stop or reformulate if robust analysis shows any of:
 
-- realistic `I_s(phi,T_e)` cannot be driven through the fold by one LWIR photon at usable optical efficiency;
-- required optical perturbation destroys the ability to re-form and retain the intended flux state;
-- exact thermal/MQT dark rates close the operating window for all plausible parameters;
-- finite-rate capture produces unacceptable wrong-way/retrapping probability;
-- reset/readout burden removes the claimed operating distinction;
-- prior art contains the same narrow architecture and no independent theorem/performance result survives.
+- one LWIR photon cannot drive a realistic CPR through the fold at usable absorption;
+- `t_req >= t_>,max` for all plausible thermal/circuit parameters;
+- dissipative MQT/thermal dark rates close the capacitance/operating window;
+- finite-rate capture gives unacceptable wrong-way/retrapping probability;
+- reset/readout removes the operating distinction;
+- narrow prior art contains the same mechanism and no independent closure survives.
 
-A negative result remains valuable if it produces a clean bound. Record it rather than forcing the architecture to survive.
+A negative bound is a valid research result. Do not force the device to survive.
