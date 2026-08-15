@@ -36,11 +36,10 @@ NUMBERS, not physical detector efficiencies or dark-count rates.
 The cold x/u covariance regression is mandatory.  If it fails, pulse results
 must be ignored.
 
-For paired wavelength comparisons, run_case intentionally uses the same random
-seed independent of wavelength.  Since the cold preparation and bath spectrum
-do not depend on photon wavelength, this makes different pulse energies use the
-same bath-history ensemble and removes unnecessary Monte Carlo noise from their
-difference.
+For paired wavelength/thermal comparisons, run_case intentionally uses a random
+seed independent of wavelength, area and rise.  If the circuit/bath parameters
+are unchanged, cases can therefore reuse the same stationary bath-history
+ensemble and reduce Monte Carlo error in their differences.
 """
 
 from __future__ import annotations
@@ -102,14 +101,7 @@ def noise_psd_n(omega: np.ndarray,L: float,R: float,omega_d: float) -> np.ndarra
 
 def gaussian_noise_batch(rng: np.random.Generator,nb: int,n: int,dt: float,
                          L: float,R: float,omega_d: float) -> np.ndarray:
-    """Generate nb real periodic histories with target two-sided PSD S_n(omega).
-
-    For numpy's DFT convention, interior complex coefficients satisfy
-
-        E|X_k|^2 = N S_omega(omega_k)/dt,
-
-    because the real-process one-sided PSD in Hz is 2*S_omega(2pi f).
-    """
+    """Generate nb real periodic histories with target two-sided PSD S_n(omega)."""
     freq=np.fft.rfftfreq(n,dt)
     omega=2.0*math.pi*freq
     S=noise_psd_n(omega,L,R,omega_d)
@@ -173,7 +165,7 @@ def nonlinear_step_heun(model,x,v,d,w,n0,n1,T0s,T1s,dt,L,C,Lf,Cf,R):
 
 def run_case(model: DynamicForce,lambda_um: float,*,alpha: float=0.50,R: float=250.0,
              ntraj: int=256,batch: int=64,dt_ps: float=0.5,tpost_ns: float=0.50,
-             seed: int=12345) -> dict[str,float]:
+             seed: int=12345,area_um2: float=100.0,rise_ps: float=20.0) -> dict[str,float]:
     L,C,_=CASES[0.6]
     cov=quantum_covariance(model,0.6)
     x_c=cov['x_c']; kappa=cov['kappa_c']; omega_c=cov['omega_c']
@@ -188,7 +180,7 @@ def run_case(model: DynamicForce,lambda_um: float,*,alpha: float=0.50,R: float=2
     tpost=tpost_ns*1e-9
     npost=int(round(tpost/dt))+1
     ntotal=npre+npost
-    _,Tarr=thermal_trace(lambda_um,dt,tpost)
+    _,Tarr=thermal_trace(lambda_um,dt,tpost,area_um2=area_um2,rise_ps=rise_ps)
     Tf=model.fold_temperature()
     imax=int(np.argmax(Tarr))
     ids=np.where(Tarr[imax:]<Tf)[0]
@@ -198,8 +190,6 @@ def run_case(model: DynamicForce,lambda_um: float,*,alpha: float=0.50,R: float=2
     saddle=directional_barriers(model,Tf-2e-5)['saddle']
     left,right=model.cold_states()
 
-    # Deliberately independent of lambda_um: wavelength cases are paired on the
-    # same stationary bath histories for lower-variance comparisons.
     rng=np.random.default_rng(seed)
     x0_all=[]; u0_all=[]; xr_all=[]; ur_all=[]; xf_all=[]
     right_reform=0; right_final=0
@@ -239,6 +229,8 @@ def run_case(model: DynamicForce,lambda_um: float,*,alpha: float=0.50,R: float=2
     xr=np.concatenate(xr_all); ur=np.concatenate(ur_all); xf=np.concatenate(xf_all)
     return {
         'lambda_um':lambda_um,
+        'area_um2':area_um2,
+        'rise_ps':rise_ps,
         'ntraj':float(total),
         'dt_ps':dt_ps,
         'tpre_ns':tpre*1e9,
@@ -271,15 +263,18 @@ def main() -> None:
     p.add_argument('--ntraj',type=int,default=256)
     p.add_argument('--dt-ps',type=float,default=0.5)
     p.add_argument('--seed',type=int,default=12345)
+    p.add_argument('--area-um2',type=float,default=100.0)
+    p.add_argument('--rise-ps',type=float,default=20.0)
     args=p.parse_args()
 
     print('Experiment 03 nonlinear causal-FDT TWA/GLE screen')
-    print('rDelta=.6, R=250 ohm, alpha=.50, rise=20 ps, A=100 um^2')
+    print(f'rDelta=.6, R=250 ohm, alpha=.50, rise={args.rise_ps:g} ps, A={args.area_um2:g} um^2')
     print('symmetrized quantum FDT used as Wigner/TWA stochastic field; NOT exact quantum efficiency')
-    print('paired bath histories are reused across wavelength cases')
+    print('paired bath histories are reused across thermal cases with the same circuit')
     model=DynamicForce(0.6,quick=False,Tmax=0.95)
     for lam in (8.0,10.0,11.0,14.0):
-        o=run_case(model,lam,ntraj=args.ntraj,dt_ps=args.dt_ps,seed=args.seed)
+        o=run_case(model,lam,ntraj=args.ntraj,dt_ps=args.dt_ps,seed=args.seed,
+                   area_um2=args.area_um2,rise_ps=args.rise_ps)
         msg=(
             f'lambda={lam:.1f} um: N={int(o["ntraj"])}, dt={o["dt_ps"]:.3f} ps, '
             f'pre={o["tpre_ns"]:.2f} ns, coldReg(x,u)=({o["cold_reg_x"]:.3f},{o["cold_reg_u"]:.3f}), '
