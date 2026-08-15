@@ -1,0 +1,25 @@
+name: Experiment 03 Mahalanobis basin 14um
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/mahalanobis_basin_margin14.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/history_fdt_reformation_margin.py'
+      - '.github/workflows/experiment03-mahalanobis-basin14.yml'
+
+jobs:
+  basin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Run conditional Mahalanobis basin scan
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python mahalanobis_basin_margin14.py
