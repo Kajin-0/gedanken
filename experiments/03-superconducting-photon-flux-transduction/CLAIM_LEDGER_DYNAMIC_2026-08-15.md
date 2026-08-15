@@ -32,6 +32,19 @@ This ledger covers the full-nonlinear / nonadiabatic stage after `CLAIM_LEDGER_C
 | A single broadband constant resistor is the likely optimal environment | UNKNOWN / CURRENTLY DISFAVORED | full dynamics points toward stage/frequency/state-dependent admittance; FDT/MQT must be included |
 | Frequency/state-dependent dissipation can be optimized without added fluctuations | REJECTED | fluctuation-dissipation and dissipative MQT must use the same environment |
 | Generic rate-induced tipping is novel to Experiment 03 | COLLIDED / PRIOR ART | Ashwin, Wieczorek and subsequent theory |
-| The detector-specific three-threshold / phase-work / dark-stability closure is novel | UNKNOWN / ACTIVE COLLISION TARGET | no priority language authorized |
-| Current full nonlinear deterministic model is a calibrated device prediction | REJECTED | CPR interfaces, thermal rise, spatial transport, causal admittance, stochastic noise and dissipative MQT remain incomplete |
+| The cold harmonic initial Wigner state is isotropic in normalized phase coordinates `(x,u=xdot/omega_c)` | DERIVED EXACTLY WITHIN HARMONIC APPROXIMATION | `sigma_u=sigma_x` |
+| For the current rDelta=.8/.6 cases at 20 mK, the cold mode is deep in the quantum regime with `hbar omega_c/(kBT)~77/65` and zero-point phase width `sigma_x~0.115 rad` | DERIVED NUMERICAL MODEL RESULT | based on current provisional C family |
+| Cold harmonic width and simple barrier action obey `sigma_x^2 [DeltaU/(hbar omega_c)] = (u_b/(2 kappa_c)) coth(hbar omega_c/2kBT)` | DERIVED EXACTLY WITHIN HARMONIC COLD-WELL APPROXIMATION | eliminates L and C separately |
+| A deterministic center-state capture boundary is automatically a high-efficiency quantum detector boundary | REJECTED | locally it is a 50% contour for a centered Gaussian crossing a smooth boundary |
+| For a locally planar single pulled-back basin boundary, `Pcap=Phi(d_n/sigma_x)` | DERIVED LOCAL APPROXIMATION | fails when nearby folded/multistrip basin branches carry material probability |
+| Initial zero-point spread materially smears the deterministic capture boundary | NUMERICAL MODEL RESULT | first Wigner workflow gives left-center points with nonzero capture and right-center points below unity |
+| Tensor Gauss-Hermite on the raw discontinuous basin indicator is numerically adequate for folded basins | REJECTED / POOR METHOD | strong order dependence in first quantum workflow |
+| Geometry-aware velocity-strip integration materially improves initial-Wigner convergence | NUMERICAL VALIDATION | integrates Gaussian u mass analytically between resolved basin edges then integrates over x |
+| At rDelta=.6, rise=20 ps, R=75 ohm, current geometry-aware initial-state probability is about 0.81 | DERIVED NUMERICAL MODEL RESULT | nx=3,5,7 gives 0.817,0.810,0.812 |
+| At rDelta=.8, rise=5 ps, R=185 ohm, current geometry-aware initial-state probability is about 0.63 | DERIVED NUMERICAL MODEL RESULT / X-CONVERGENCE STILL BEING REFINED | nx=3,5,7 gives 0.618,0.627,0.633 |
+| At rDelta=.8, rise=5 ps, R=300 ohm, initial-state capture probability is exactly established near 0.81 | PROVISIONAL NUMERICAL RESULT | geometry-aware nx=3,5,7 drifts 0.845,0.819,0.806; nested x-grid convergence required |
+| At rDelta=.6, rise=20 ps, R=120 ohm, initial-state capture probability is exactly established above 0.98 | PROVISIONAL NUMERICAL RESULT | geometry-aware nx=3,5,7 drifts 0.987,0.984,0.967; nested x-grid convergence required |
+| Deterministic scalar-R flow contracts infinitesimal phase-space area as `exp[-t/(RC)]` | DERIVED EXACTLY | divergence of `(xdot,vdot)` is `-1/(RC)`; folded strips arise from contracting nonlinear flow |
+| The detector-specific three-threshold / phase-work / dark-stability / quantum-basin closure is novel | UNKNOWN / ACTIVE COLLISION TARGET | no priority language authorized |
+| Current full nonlinear deterministic + initial-Wigner model is a calibrated device prediction | REJECTED | pulse/environment noise, spatial thermal stochasticity, causal admittance, dissipative MQT, readout remain incomplete |
 | A publishable manuscript is justified now | NO-GO | novelty and quantitative gates remain open |
