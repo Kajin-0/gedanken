@@ -1,0 +1,25 @@
+name: Experiment 03 nonlinear FDT 14um area-rise
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/nonlinear_fdt_rise_area_scan.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/nonlinear_fdt_twa_screen.py'
+      - '.github/workflows/experiment03-nonlinear-fdt-rise-area.yml'
+
+jobs:
+  rise-area:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - name: Run 14-um area/rise nonlinear robustness
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python nonlinear_fdt_rise_area_scan.py --ntraj 512 --dt-ps 0.5 --seed 112233
