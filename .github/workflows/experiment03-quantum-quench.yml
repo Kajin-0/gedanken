@@ -26,4 +26,4 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Compare exact quantum and classical-Wigner quench evolution
         working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
-        run: python quantum_quench_benchmark.py --quick --offset-K 0.030
+        run: python quantum_quench_benchmark.py --offset-K 0.030
