@@ -19,7 +19,7 @@ Primary result relevant to Experiment 03:
 
 **Collision implication:** generic graphene thermal-propagation optimization, absorber/readout spacing tradeoffs and timing-jitter optimization are prior art. Experiment 03 cannot claim novelty merely from coupling a graphene heat-transport model to a superconducting readout.
 
-Experiment-03 distinction, if any, must come from the persistent-flux fold capture / cold-stability / dynamic closure rather than graphene thermal transport itself.
+Experiment-03 distinction, if any, must come from persistent-flux metastable capture / cold-stability / dynamic closure rather than graphene thermal transport itself.
 
 ## J. Huang thermal-fit interpretation clarification
 
@@ -57,17 +57,89 @@ faster response / shorter dead time <-> increased dark-count cost
 
 is not available as an Experiment-03 novelty claim.
 
-The remaining possible theoretical contribution must be more specific, for example a superconducting-fold/calorimetric relation that connects wavelength, metastable barrier, MQT, dynamic saddle-node passage and persistent flux capture with explicit constitutive coefficients.
+## L. Ultrafast electronic thermalization relevant to the new rise-time constraint
 
-## L. Updated collision target
+### Mihnev et al., Nature Communications 7, 11617 (2016)
+
+**Title:** Microscopic origins of the terahertz carrier relaxation and cooling dynamics in graphene  
+**DOI:** 10.1038/ncomms11617
+
+The combined ultrafast experiment and microscopic theory finds:
+
+- efficient carrier-carrier scattering maintains a thermalized hot-carrier distribution;
+- electron and hole quasi-Fermi distributions merge into a single uniform hot Fermi-Dirac distribution on roughly `100–200 fs` timescales in the studied regimes;
+- carrier cooling then proceeds through carrier-optical-phonon scattering continuously rethermalized by carrier-carrier collisions;
+- highly doped samples show approximately `1–3 ps` relaxation in the reported room-temperature THz experiments, while lightly doped/cryogenic behavior can be much slower.
+
+**Experiment-03 implication:** a scalar electronic temperature can become meaningful much faster than the current `~9–30 ps` deterministic rise thresholds in some graphene regimes, but these data are not a cryogenic low-energy GJJ calibration.
+
+### Yadav, Trushin, and Pauly, Phys. Rev. B 99, 155410 (2019)
+
+**Title:** Photocarrier thermalization bottleneck in graphene  
+**DOI:** 10.1103/PhysRevB.99.155410
+
+First-principles electron-phonon calculations show that reducing excitation energy from eV scale toward approximately `100 meV` can increase photocarrier thermalization time by orders of magnitude. The paper reports femtosecond thermalization when optical-phonon emission is efficient but picosecond-scale thermalization once excitation energies approach the optical-phonon energy scale, with strong temperature dependence in that regime.
+
+**Experiment-03 implication:** LWIR photon energies (`~89 meV` at 14 um, `~124 meV` at 10 um) lie precisely in the regime where assuming instantaneous conversion into a thermal electron distribution deserves explicit scrutiny.
+
+This work does not directly specify the rise time of a proximity-Josephson CPR after single-photon absorption.
+
+### Pettinger et al., arXiv:2603.13457 (2026 preprint)
+
+**Title:** Ultrafast photo-thermoelectric currents in graphene junctions in the mid-infrared
+
+The 2026 primary preprint reports room-temperature mid-IR graphene-junction pump-probe photocurrent relaxation around
+
+```text
+~2 ps below 8–9 um
+~3 ps at longer mid-IR wavelength.
+```
+
+The authors find no pronounced loss of ultrafast response when moving below the graphene optical-phonon energy in their room-temperature junctions.
+
+**Experiment-03 discipline:** this is useful evidence that few-ps mid-IR response is physically plausible, but it is a preprint and not a low-temperature superconducting-GJJ calibration.
+
+## M. Current transport/rise-time interpretation
+
+Combining the primary literature above with the Huang characteristic scale gives a useful hierarchy:
+
+```text
+intrinsic carrier redistribution / thermalization: potentially sub-ps to few ps
+spatial delivery from absorption site to weak link: geometry dependent
+low-temperature energy decay: much slower in the Huang bolometric device.
+```
+
+The new full dynamic solver is sensitive to the first two quantities through an effective `tau_rise`.
+
+The current cross-device estimate
+
+```text
+D_char ~0.705 m^2/s
+```
+
+from `l_D~230 um` and `tau~75 ns` gives characteristic `d^2/D` times of approximately
+
+```text
+0.6 um ->0.5 ps
+1.7 um ->4 ps
+4 um   ->23 ps
+25 um  ->0.9 ns.
+```
+
+Therefore optical absorption location relative to the Josephson transducer is now a first-order design issue.
+
+## N. Updated collision target
 
 The next literature search should focus narrowly on whether prior work already derives any of the following **specific conjunctions**:
 
-1. saddle-node critical slowing as a single-photon detection threshold in an rf-SQUID / Josephson calorimeter;
-2. an explicit photon-wavelength / MQT-dark-rate / finite-fold-passage bound;
-3. elimination of junction capacitance into a dark-stability timescale of the `tau_Q` type in a detector optimization;
-4. a finite scalar-admittance window for photon-triggered persistent-flux capture;
-5. frequency-selective damping jointly optimized for capture and dissipative MQT in a calorimetric flux latch;
-6. patents claiming the same persistent-fold operating principle with a graphene/SNS absorber.
+1. nonadiabatic / rate-induced sub-fold switching as a single-photon threshold in an rf-SQUID or Josephson calorimeter;
+2. an explicit photon-wavelength / MQT-dark-rate / finite-pulse metastable-capture bound;
+3. the sudden-quench energy threshold `U(x_cold,T)=U(x_saddle,T)` as an optical detector design criterion;
+4. elimination of junction capacitance into a dark-stability timescale of the `tau_Q` type in detector optimization;
+5. a finite scalar-admittance window for photon-triggered persistent-flux capture;
+6. frequency-selective damping jointly optimized for capture and dissipative MQT in a calorimetric flux latch;
+7. patents claiming the same persistent-flux metastable switching principle with a graphene/SNS absorber.
+
+The general mathematical literature on **rate-induced tipping / basin instability under fast parameter change** also needs a dedicated collision pass. Do not present rapid sub-fold tipping itself as new before that is completed.
 
 No priority claim is authorized.
