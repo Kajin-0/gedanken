@@ -4,134 +4,107 @@ No manuscript directory should be created until these gates are explicitly revie
 
 ## Gate 1 — quantitative survival
 
-The coupled thermal + stochastic circuit model must produce a physically plausible nonempty parameter region where all of the following can hold simultaneously:
+A realistic arbitrary-length CPR + thermal + stochastic circuit model must produce a physically plausible region with all of:
 
 ```text
-single-photon capture probability       high (initial target > 0.9)
-preferred-direction capture             high (initial target > 0.9)
-intrinsic false-switch rate             low (exploratory target < 1e-6 s^-1)
-persistent post-event flux state        stable over useful readout time
-reset/readout                            physically consistent
-LWIR absorption                         realistic for 8–14 µm coupling
+single-photon capture probability       >0.9 target
+preferred-direction capture             >0.9 target
+intrinsic false-switch rate             <1e-6 s^-1 exploratory target
+persistent state                        stable for useful readout
+8–14 um system absorption               realistic
+reset/readout                            physically consistent.
 ```
 
-For Generation A the preferred trigger is now a photon-driven saddle-node:
+The current necessary closure is
 
 ```math
-\beta_{\rm cold}>\beta_c(\delta)>\beta_{\rm hot},
-\qquad
-\delta=\tan a-a,
-\qquad
-\beta_c=\sec a.
+E_\gamma\ge E_{fold},
 ```
 
-The gate is not passed until a realistic `T_e(t)` and `I_c[T_e(t)]` actually drive this condition with adequate settling and cold-state dark stability.
+```math
+t_>(E_\gamma)\ge
+\max[t_{diff},g\sqrt{LC_{min,Q}},2R_{hot}C_{min,Q}],
+```
 
-If the region vanishes when exact barrier actions, damping, quasiparticles, vortices, optical coupling and readout are included, the architecture fails unless the failure itself yields a general bound.
+with thermal cold stability and a nonempty MQT/dynamic capacitance window.
 
-## Gate 2 — architecture collision audit
+The gate fails if a realistic CPR/thermal model gives `t_req >= t_>,max`, if dissipative MQT closes the window, or if capture/retrapping remains poor for all plausible parameters.
 
-Several initially plausible novelty routes are already closed:
+## Gate 2 — collision audit
+
+Already closed novelty routes:
 
 ```text
-LWIR superconducting single-photon detection                     PRIOR ART
-photon -> hot graphene -> Josephson switching                    PRIOR ART
-single photon -> persistent superconducting single-flux memory   PRIOR ART
-optical heating -> permanent superconducting flux/vortex         PRIOR ART
-transient I_c suppression -> rf-SQUID barrier lowering/freeze    PRIOR ART
-field-free Josephson/superconducting diode directionality        PRIOR ART
-illumination -> superconducting phase battery/vorticity          PRIOR ART
+LWIR superconducting single-photon detection
+infrared photon -> hot graphene -> Josephson switching
+photon heating -> proximity-JJ Ic suppression -> SQUID electrical detection
+single photon -> persistent superconducting single-flux memory
+optical heating -> persistent superconducting flux/vortex
+transient Ic suppression -> rf-SQUID barrier lowering/freeze
+field-free Josephson/superconducting diode directionality
+illumination -> superconducting phase battery/vorticity
+non-sinusoidal temperature-dependent graphene CPR.
 ```
 
-Particularly important collisions are Onen et al. 2020 for single-photon-to-single-flux persistent memory and Zhou/Habif/Bocko/Feldman 2001 for rf-SQUID control through transient critical-current suppression.
+Important direct collisions include Walsh/Huang, Solinas-Giazotto-Pepe, Onen, Rochet, Zhou/Habif/Bocko/Feldman, Mironov/Mel'nikov/Buzdin and measured graphene-CPR work.
 
-The remaining architecture audit must search papers **and patents** for the narrower conjunction:
+The remaining audit must search papers **and patents** for the narrow conjunction:
 
 ```text
 single absorbed LWIR photon
-+ calorimetric modulation of Josephson I_c
-+ saddle-node / bifurcation flux capture
-+ directional basin selection
-+ persistent superconducting readout/storage
++ arbitrary-length thermal evolution of a proximity-JJ CPR
++ directional rf-SQUID fold capture
++ persistent superconducting storage
 ```
 
-and separately for the Generation-B zero-external-flux version using a phi0/diode/inversion-breaking element.
+and for any existing theorem/optimization law equivalent to the current photon/fold/MQT/capacitance/damping closure.
 
 ## Gate 3 — theoretical contribution
 
-At least one nontrivial theoretical result must survive beyond standard rf-SQUID/Josephson formulas and their direct combination.
+The sinusoidal fold equations and generic `3/2` saddle-node barrier exponent are not enough.
 
-The exact saddle-node relation
+Candidate surviving theory objects are now:
 
-```math
-\delta=\tan a-a,
-\qquad
-\beta_c=\sec a
-```
+1. a realistic closed feasibility region connecting photon heat capacity, **full CPR/load-line fold**, cold barrier, dissipative MQT, capacitance and write dynamics;
+2. the finite-maximum-above-fold-dwell impossibility bound under superlinear electron-phonon cooling, if it survives more realistic thermal modeling;
+3. a true optimization law for the interior optical-trigger / quantum-stability / damping corridor;
+4. a finite-rate stochastic capture law for photon-driven fold passage;
+5. a zero-external-flux optimality/impossibility result.
 
-is useful but is standard bifurcation mathematics applied to the rf-SQUID potential; do **not** assume it is publication novelty.
-
-Current candidate theory routes are:
-
-- a closed absorbed-photon-energy threshold connecting calorimeter heat capacity and `I_c(T)` to `beta_c(delta)`;
-- a rigorous efficiency/dark-count closure combining bifurcation threshold with the cold metastable barrier and dissipative MQT;
-- a scaling law optimizing distance from bifurcation, capacitance, heat capacity, flux tilt and readout-state separation;
-- a finite-rate stochastic saddle-node capture law specific to photon-triggered persistent flux storage;
-- an impossibility or optimality bound for zero-external-flux self-directed operation.
-
-The near-threshold static results
-
-```math
-\Delta U_-\propto(\beta-\beta_c)^{3/2},
-\qquad
-\omega_m\propto(\beta-\beta_c)^{1/4},
-\qquad
-\Delta U_-/\hbar\omega_m\propto(\beta-\beta_c)^{5/4}
-```
-
-are presently **derived model structure, not a novelty claim**.
-
-Rewriting standard Kramers/MQT formulas with detector symbols is insufficient.
+The Lambert-W `C_min,Q` expression is exact only inside the current provisional cubic MQT rate model and is not by itself sufficient for publication.
 
 ## Gate 4 — matched benchmark
 
 Compare against at least:
 
-- WSi/MoSi/NbN-family SNSPDs in relevant MIR/LWIR wavelengths;
-- KIDs/MKIDs with single-photon sensitivity;
-- graphene/SNS Josephson bolometers/calorimeters;
-- Onen-type single-photon single-flux coupled detectors;
-- Josephson escape detectors / photomultipliers;
-- TES/calorimetric infrared photon detectors where relevant.
+- MIR/LWIR SNSPDs;
+- single-photon KIDs/MKIDs;
+- graphene/SNS Josephson photon detectors and proximity-SQUID calorimeters;
+- Onen-type single-photon single-flux memory devices;
+- Josephson escape/threshold detectors;
+- TES/calorimetric IR detectors where relevant.
 
-Use comparable metrics: absorbed-photon efficiency, system efficiency, DCR, timing jitter, reset/dead time, energy resolution, operating temperature, optical bandwidth, dynamic range, stored-state lifetime and readout burden.
+Use matched metrics: system/absorbed efficiency, DCR, timing, dead time, energy resolution, operating temperature, optical bandwidth, dynamic range, stored-state lifetime, reset energy and readout burden.
 
 ## Gate 5 — terminology
 
-Generation A is externally flux tilted and should not be called photovoltaic.
+Generation A is externally flux tilted and **must not** be called photovoltaic.
 
-Only call a later device `photovoltaic`, `photogalvanic`, or equivalent if the modeled mechanism really produces a directed zero-external-bias electrical/phase response attributable to optical excitation rather than merely a biased threshold latch.
-
-Conservative working terminology remains:
-
-```text
-superconducting photon-to-flux transducer
-calorimetric rf-SQUID photon latch
-persistent photon-triggered flux transducer
-```
+Only a later zero-external-bias mechanism may earn `photovoltaic` / `photogalvanic` terminology after its microscopic mechanism and prior-art boundary are established.
 
 ## Manuscript GO criterion
 
-A paper becomes justified only if **both** of the following are true:
+A paper becomes justified only if:
 
-1. the model survives quantitative falsification with realistic parameters; and
-2. a hostile literature/patent audit leaves either a genuinely distinct architecture or a genuinely new theorem/performance result.
+1. realistic arbitrary-length CPR + thermal + dissipative escape + capture calculations leave a nonempty operating region or a strong impossibility bound;
+2. a hostile paper/patent audit leaves a distinct theorem/performance result or architecture;
+3. the result is materially more than standard formulas assembled around a hypothetical device.
 
 Current status:
 
 ```text
-QUANTITATIVE GATE: OPEN — static bifurcation survives; thermal/dynamic/DCR closure incomplete
-COLLISION AUDIT:    MAJOR COLLISIONS FOUND; narrower audit still incomplete
+QUANTITATIVE GATE: PARTIAL — idealized nonempty corridor found; real CPR/dissipative DCR/capture incomplete
+COLLISION AUDIT:    MAJOR COLLISIONS FOUND; narrow theorem/patent audit not yet done
 THEORY NOVELTY:     UNKNOWN
 MANUSCRIPT:         NO-GO
 ```
