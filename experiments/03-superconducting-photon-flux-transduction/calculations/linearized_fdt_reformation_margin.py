@@ -120,7 +120,7 @@ def fdt_psd(omega: np.ndarray,R: float,omega_d: float,Tbath: float=T0)->np.ndarr
     return out
 
 
-def sensitivity_variance(model,R,alpha,cvec,*,dt_ps=0.02):
+def sensitivity_variance(model,R,alpha,cvec,*,dt_ps=0.02,pad_factor=32):
     L,C,_=CASES[0.6]
     sol,tf,yf,omega_c,omega_d,Lf,Cf,Tf=deterministic_to_reform(model,R,alpha)
 
@@ -143,15 +143,21 @@ def sensitivity_variance(model,R,alpha,cvec,*,dt_ps=0.02):
     dt=dt_ps*1e-12
     n=int(math.ceil(tf/dt))+1
     t=np.linspace(0.0,tf,n)
+    actual_dt=t[1]-t[0]
     lam=adj.sol(t)
     # B=[0,-1/(C Phi_bar),0,0]
     h=-lam[1]/(C*PHI_BAR)
 
-    H=np.fft.rfft(h)* (t[1]-t[0])
-    freq=np.fft.rfftfreq(n,t[1]-t[0])
+    # The sensitivity kernel is finite-time supported. Zero padding does not
+    # change h(t); it only samples its continuous Fourier transform more finely
+    # so the colored FDT weighting is numerically resolved even when tf~60 ps.
+    base=1 << int(math.ceil(math.log2(n)))
+    nfft=pad_factor*base
+    H=np.fft.rfft(h,n=nfft)*actual_dt
+    freq=np.fft.rfftfreq(nfft,actual_dt)
     omega=2.0*math.pi*freq
     weights=np.full_like(freq,2.0); weights[0]=1.0
-    if n%2==0: weights[-1]=1.0
+    if nfft%2==0: weights[-1]=1.0
     S=fdt_psd(omega,R,omega_d)
     var=float(np.sum(weights*S*np.abs(H)**2)*(freq[1]-freq[0]))
     return var,tf,yf,omega_c,omega_d,Tf
@@ -159,6 +165,7 @@ def sensitivity_variance(model,R,alpha,cvec,*,dt_ps=0.02):
 
 def main():
     print('Experiment 03 linearized FDT reformation margin')
+    print('32x zero-padded finite-time sensitivity spectrum')
     model=DynamicForce(0.6,quick=False)
     for R,alpha in [(250.0,0.20),(250.0,0.35),(250.0,0.50)]:
         varx,tf,yf,omega_c,omega_d,Tf=sensitivity_variance(model,R,alpha,[1,0,0,0])
