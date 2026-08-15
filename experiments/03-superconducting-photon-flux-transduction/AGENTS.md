@@ -6,34 +6,30 @@
 
 > Conversation history is non-authoritative when it conflicts with live repository state. Fetch `main` before every write.
 
-## Recovery order — read this first
+## Recovery order — current frontier
 
 1. `CURRENT_STATE.md`
-2. `FULL_DYNAMIC_RCSJ_CHECKPOINT_2026-08-15.md`
-3. `SUDDEN_QUENCH_BOUND_2026-08-15.md`
-4. `PARAMETRIC_PHASE_WORK_2026-08-15.md`
-5. `THERMAL_RISE_GEOMETRY_CLOSURE_2026-08-15.md`
-6. `RATE_INDUCED_TIPPING_COLLISION_2026-08-15.md`
-7. `DARK_CAPTURE_ELIMINATION_2026-08-15.md`
-8. `RCSJ_DAMPING_WINDOW_2026-08-15.md`
-9. `HUANG_THERMAL_DWELL_CALIBRATION_2026-08-15.md`
-10. `SPECTRAL_STABILITY_PARETO_2026-08-15.md`
-11. `THERMAL_CONFINEMENT_GAP_CLOSURE_2026-08-15.md`
-12. `DERIVATION_LOG_DYNAMIC_2026-08-15.md`
-13. `CLAIM_LEDGER_DYNAMIC_2026-08-15.md`
-14. `DERIVATION_LOG_CONTINUATION_2026-08-15.md`
-15. `CLAIM_LEDGER_CONTINUATION_2026-08-15.md`
-16. `LITERATURE_LEDGER_CONTINUATION_2026-08-15.md`
-17. `DERIVATION_LOG.md`, `CLAIM_LEDGER.md`, `LITERATURE_LEDGER.md`
-18. `ASSUMPTIONS.md`
-19. `NOVELTY_GATES.md`
-20. `calculations/`.
+2. `INITIAL_WIGNER_CAPTURE_CHECKPOINT_2026-08-15.md`
+3. `QUANTUM_CAPTURE_MARGIN_CLOSURE_2026-08-15.md`
+4. `QUANTUM_SPEED_SIGNAL_CLOSURE_2026-08-15.md`
+5. `CAUSAL_ENVIRONMENT_REQUIREMENTS_2026-08-15.md`
+6. `FULL_DYNAMIC_RCSJ_CHECKPOINT_2026-08-15.md`
+7. `SUDDEN_QUENCH_BOUND_2026-08-15.md`
+8. `PARAMETRIC_PHASE_WORK_2026-08-15.md`
+9. `THERMAL_RISE_GEOMETRY_CLOSURE_2026-08-15.md`
+10. `DERIVATION_LOG_DYNAMIC_2026-08-15.md`
+11. `CLAIM_LEDGER_DYNAMIC_2026-08-15.md`
+12. `LITERATURE_LEDGER_DYNAMIC_2026-08-15.md`
+13. `RATE_INDUCED_TIPPING_COLLISION_2026-08-15.md`
+14. older closure/ledger files linked from `CURRENT_STATE.md`
+15. `NOVELTY_GATES.md`
+16. `calculations/`.
 
-Earlier static/short-junction checkpoints are regression/provenance records, not the current preferred model.
+Earlier static/short-junction checkpoints remain provenance/regression records, not the current preferred model.
 
 ## Current physical objective
 
-Determine whether a **single absorbed LWIR photon** can rapidly reshape a proximity-Josephson/rf-SQUID metastable potential so that the phase is transferred into a directionally favored basin and retained as persistent superconducting flux, while cold false switching remains extremely low.
+Determine whether one absorbed LWIR photon can rapidly reshape a proximity-Josephson/rf-SQUID metastable potential and produce a **high-probability** transfer into a directionally favored persistent-flux basin while the same physical environment keeps cold false switching acceptably low.
 
 Current internal description:
 
@@ -43,80 +39,148 @@ photon-triggered nonadiabatic metastable superconducting flux latch
 
 Generation A uses external flux tilt and is **not photovoltaic**. Generation B remains reserved for later zero-external-flux directionality.
 
-## Mechanism — current
+## Current design criterion — probability, not one trajectory
 
-```text
-LWIR photon
- -> electronic thermalization + spatial delivery near weak link
- -> temperature-dependent full CPR changes rapidly
- -> phase coordinate is displaced / accelerated
- -> trajectory may cross a finite barrier OR a vanished fold
- -> potential recovers during cooling
- -> phase is captured in favored basin
- -> persistent superconducting flux remains.
-```
-
-The rf-SQUID saddle-node/fold is the quasistatic organizing limit. **Static fold disappearance is neither necessary nor sufficient for the fast-pulse regime.**
-
-## Static fold regression
+The deterministic center trajectory is no longer the detector criterion. Let `Omega_R^0` be the target final basin pulled back to the initial phase plane and `rho_W` the cold initial phase-state distribution. The present probability object is
 
 ```math
-I_* = \Phi_0/(2\pi L),
-\qquad
-\mathcal I=I_s/I_*,
-\qquad
-F=x-\delta-\mathcal I,
+\boxed{
+P_{cap}^{init}
+=\iint_{\Omega_R^0}\rho_W(x,u)\,dx\,du,
+\qquad u=\dot x/\omega_c.
+}
 ```
+
+A physically meaningful future operating set must combine capture and dark stability:
 
 ```math
-\boxed{\mathcal I(x_f,T_f)=x_f-\delta,}
-\qquad
-\boxed{\partial_x\mathcal I(x_f,T_f)=1.}
+\boxed{
+\mathcal O(p_*,D_*)
+=\{\theta:P_{cap}(\theta)\ge p_*,\ \Gamma_{dark}(\theta)\le D_*\}.
+}
 ```
 
-Near a smooth fold:
+`theta` includes photon energy/rise/spatial delivery, CPR/material parameters, `L`, `C`, flux tilt and the causal electromagnetic environment.
+
+## Initial-state quantum checkpoint
+
+The cold harmonic Wigner distribution has
 
 ```math
-\Delta U\propto|p-p_f|^{3/2},
+\sigma_x^2
+=\frac{\hbar}{2C\bar\Phi^2\omega_c}
+\coth\!\left(\frac{\hbar\omega_c}{2k_BT_0}\right),
 \qquad
-\omega_m\propto|p-p_f|^{1/4}.
+\sigma_{u}=\sigma_x,
 ```
 
-## Two-gap rule — mandatory
-
-Never collapse
+with current values near
 
 ```text
-Delta_ind  induced/minigap controlling ABS/CPR/Ic(T)/thermal sensitivity
-Delta_s    parent-electrode gap controlling hot-carrier escape/confinement.
+rDelta=.8: sigma_x~0.11559 rad, hbar omega_c/(kBT0)~76.9
+rDelta=.6: sigma_x~0.11499 rad, hbar omega_c/(kBT0)~65.4.
 ```
 
-Current plausible direction:
+Thus the cold phase width is predominantly zero-point.
+
+The finite-time basin is folded into multiple alternating strips. Raw tensor Gauss-Hermite on the discontinuous basin indicator is rejected as numerically poor. Current preferred integration:
 
 ```text
-moderately reduced Delta_ind
-+ high parent Delta_s
-+ retuned L/C
-+ localized optical energy delivery within a few micrometres of the JJ
-+ causal dynamical admittance compatible with capture and cold stability.
+calculations/quantum_basin_integral.py   resolve all velocity strips and integrate Gaussian u mass analytically
+calculations/quantum_basin_xgrid.py      nested standard-normal x grid with explicit Gaussian-tail bound
 ```
 
-## Retained static family
-
-Realistic-skewness, retuned `beta~0.8`, `A=100 um^2`:
+Validated x-grid workflow:
 
 ```text
-rDelta  Tf[K]  L[pH]  barrier/kB[K]  Cmin,Q[fF]  lambda_fold
-1.0     0.905   87.8      9.10          161         11.8 um
-0.8     0.813   96.8      8.12          181         14.7 um
-0.6     0.695  111.5      6.87          215         20.1 um
-0.5     0.623  123.1      6.10          244         25.0 um
-0.4     0.540  140.3      5.22          287         33.3 um.
+.github/workflows/experiment03-quantum-xgrid.yml
+run 31908931322
 ```
 
-`lambda_fold` is only the quasistatic well-disappearance scale.
+Current results for one absorbed `14 um` photon:
 
-## Full deterministic dynamics — strongest current calculation
+```text
+rDelta=.6, rise=20 ps, R=75 ohm:
+  Pcap(init)=0.813771–0.813778
+
+rDelta=.6, rise=20 ps, R=120 ohm:
+  current nx=33 value 0.966397, Gaussian-tail upper 0.966404;
+  one further x refinement desired because nx17->33 moved ~0.0034
+
+rDelta=.8, rise=5 ps, R=300 ohm:
+  Pcap(init)=0.767736–0.767743
+
+rDelta=.8, rise=5 ps, R=185 ohm:
+  x-grid not yet converged; nx=9,17,33 -> 0.634,0.669,0.684.
+```
+
+The `rDelta=.6` family is currently much more robust to initial zero-point spread than the `.8` family at representative interior points.
+
+**Critical quantum caveat:** this calculation uses the exact harmonic Wigner distribution at `t=0` but propagates each sample by the classical nonlinear RCSJ flow. It is a truncated-Wigner / semiclassical initial-state treatment, not exact nonlinear open-system quantum evolution.
+
+## Quantum localization / action closure
+
+Let
+
+```math
+\Delta U_c=(\bar\Phi^2/L)u_b,
+\qquad
+S=\Delta U_c/(\hbar\omega_c).
+```
+
+Then exactly inside the harmonic cold-well approximation,
+
+```math
+\boxed{
+\sigma_x^2S
+=\frac{u_b}{2\kappa_c}
+\coth\!\left(\frac{\hbar\omega_c}{2k_BT_0}\right).
+}
+```
+
+At low T:
+
+```math
+\boxed{\sigma_x^2S=u_b/(2\kappa_c).}
+```
+
+For a locally planar pulled-back basin boundary at signed normal distance `d_n`,
+
+```math
+\boxed{P_{cap}^{local}=\Phi(d_n/\sigma_x).}
+```
+
+Thus a deterministic boundary is locally a 50% probability contour, not a high-efficiency boundary.
+
+## Quantum localization / speed / current identity
+
+For intrinsic harmonic timescale `tau_0=1/omega_c` and persistent-state flux separation `DeltaPhi=zeta Phi0`, `DeltaI=zeta Phi0/L`,
+
+```math
+\boxed{
+\sigma_x^2\tau_0\Delta I
+=\frac{2\pi e\zeta}{\kappa_c}
+\coth\!\left(\frac{\hbar\omega_c}{2k_BT_0}\right).
+}
+```
+
+At low T the `coth` factor is one.
+
+For local target probability `p`, basin distance `d_n`, and available time `t_avail>=g tau_0`, a necessary local condition is
+
+```math
+\boxed{
+\Delta I\,t_{avail}
+\ge
+\frac{2\pi e\zeta g z_p^2}{\kappa_c d_n^2}
+\coth\!\left(\frac{\hbar\omega_c}{2k_BT_0}\right),
+\qquad z_p=\Phi^{-1}(p).
+}
+```
+
+This identity does not use the provisional MQT ansatz. Do not claim novelty before collision audit.
+
+## Full deterministic mechanism retained underneath probability map
 
 Canonical solver:
 
@@ -127,145 +191,82 @@ calculations/full_dynamic_rfsquid.py
 It integrates
 
 ```math
-\boxed{LC\ddot x+\frac{L}{R}\dot x+F[x,T_e(t)]=0}
+LC\ddot x+\frac{L}{R}\dot x+F[x,T_e(t)]=0.
 ```
 
-with full interpolated arbitrary-length CPR, current interface-skewness envelope, inertia, finite energy-deposition rise, cooling, barrier reformation and basin classification.
-
-At `A=100 um^2`, one absorbed `14 um` photon:
+At 14 um the current deterministic finite-rise scales are roughly
 
 ```text
-instantaneous deposition:
-  rDelta=0.8 -> lower scalar-R capture boundary ~111 ohm
-  rDelta=0.6 -> lower boundary ~32.7 ohm; upper oscillatory/retrapping boundary ~1.13 kOhm in current classification.
-
-finite rise:
-  rDelta=0.8 -> ordinary capture survives through ~9 ps; becomes weak-damping/settling sensitive by ~9.5–10 ps
-  rDelta=0.6 -> capture survives through ~30 ps; broadly absent around ~32 ps.
+rDelta=.8: capture survives through ~9 ps; becomes weak-damping/settling sensitive near 9.5–10 ps
+rDelta=.6: capture survives through ~30 ps; broadly absent near ~32 ps.
 ```
 
-Successful trajectories can have `T_peak<T_f`. Do not use `T_peak>=T_f` as a detection criterion.
+Successful trajectories can have `T_peak<T_f`; static fold disappearance is neither necessary nor sufficient.
 
-## Sudden-quench energy scale
-
-Let `x_c` be the cold metastable coordinate and `x_s(T)` the hot saddle. Define
-
-```math
-\boxed{
-\mathcal B_q(T)
-=U[x_s(T),T]-U(x_c,T)
-=\int_{x_c}^{x_s(T)}F(x,T)dx.
-}
-```
-
-The fixed-hot conservative quench threshold is
-
-```math
-\boxed{\mathcal B_q(T_q)=0.}
-```
-
-Current values:
-
-```text
-rDelta=0.8: Tq~0.718 K, Tf~0.812 K, lambda_fold~14.7 um, lambda_quench~18.8 um
-rDelta=0.6: Tq~0.615 K, Tf~0.694 K, lambda_fold~20.1 um, lambda_quench~25.6 um.
-```
-
-Current model hierarchy:
-
-```math
-\boxed{\lambda_{fold}<\lambda_{dynamic}<\lambda_{quench}.}
-```
-
-This is a model organization, not a universal theorem.
-
-## Exact parametric phase-work identity
-
-For scalar-R dynamics,
+The exact scalar-R phase-work identity is
 
 ```math
 \boxed{
 \frac{d}{dt}\left[\frac12LC\dot x^2+U(x,T)\right]
-=U_T(x,T)\dot T-\frac{L}{R}\dot x^2.
+=U_T\dot T-\frac{L}{R}\dot x^2.
 }
 ```
 
-While a saddle exists,
+Damping hurts launch but helps final trapping, producing folded basin geometry rather than a monotonic capture threshold.
+
+## Causal environment — mandatory next physical correction
+
+A scalar resistor may remain a diagnostic, but the final environment must be one causal admittance `Y(omega)` used consistently in real-time damping, fluctuations and cold dissipative quantum escape.
+
+For coordinate `q=barPhi x`, the linear open-system equation is
 
 ```math
-\mathcal E_s
-=\frac12LC\dot x^2+U(x,T)-U[x_s(T),T],
+C\ddot q(t)
++\int_{-\infty}^{t}y(t-t')\dot q(t')dt'
++\partial_qU
+=I_N(t).
 ```
+
+Using a two-sided symmetrized PSD convention,
 
 ```math
 \boxed{
-\dot{\mathcal E}_s
-=[U_T(x,T)-U_T(x_s,T)]\dot T
--\frac{L}{R}\dot x^2.
+S_I^{sym}(\omega)
+=\hbar|\omega|
+\coth\!\left(\frac{\hbar|\omega|}{2k_BT_b}\right)
+\operatorname{Re}Y(\omega).
 }
 ```
 
-This is the preferred accounting language for the next dynamic reduction.
+The current phase frequencies are about `27–32 GHz`, so `h f/k_B~1.3–1.5 K`, comparable with the `~0.6–0.8 K` transient/fold temperatures. A purely classical white-Johnson bath is not a controlled approximation over the phase-mode band.
 
-Damping has two conflicting roles:
+Caldeira–Leggett / AES physics also means dissipation modifies quantum escape itself. Do not optimize `R` for capture and then assign an independent MQT rate as if the knobs were unrelated.
 
-```text
-launch/crossing -> excessive dissipation suppresses useful phase energy
-capture/retrapping -> sufficient dissipation helps trap the target basin.
-```
+## Static two-gap/material baseline retained
 
-Hence a single broadband scalar `R` is unlikely to be the physical optimum; any causal `Y(omega,T)` must be used consistently in FDT noise and dissipative MQT.
-
-## Provisional dark-stability reduction
-
-Inside the **non-dissipative/cubic diagnostic only**:
-
-```math
-\boxed{
-\tau_Q(D)
-=\frac{\hbar\sqrt{\kappa_c}}
-{\alpha_Q\Delta U_c}
-W\!\left(\frac{\alpha_Q\Delta U_c}{2\pi\hbar D}\right),
-}
-```
-
-```math
-\boxed{LC_{min,Q}=\tau_Q^2.}
-```
-
-Do not treat `alpha_Q~7.2` as exact dissipative rf-SQUID MQT.
-
-## Thermal-rise / geometry requirement
-
-Primary graphene literature contains sub-ps to few-ps electronic response regimes, but a cryogenic GJJ calibration is missing.
-
-Using Huang's characteristic `l_D~230 um`, `tau~75 ns` gives only the cross-device scale
-
-```math
-D_{char}\sim0.705\;m^2/s.
-```
-
-Simple `d^2/D` gives approximately
+Never collapse
 
 ```text
-0.6 um ->0.5 ps
-1.7 um ->4 ps
-4 um   ->23 ps
-25 um  ->0.9 ns.
+Delta_ind -> weak-link ABS/CPR/Ic(T)/thermal sensitivity
+Delta_s   -> parent-electrode hot-carrier escape/confinement.
 ```
 
-Current conditional rise windows therefore correspond roughly to energy delivery within
+Representative retuned `A=100 um^2`, realistic-skewness family:
 
 ```text
-rDelta~0.8 -> few-micrometre scale (~2.5 um)
-rDelta~0.6 -> few-micrometre scale (~4.6 um).
+rDelta  Tf[K]  L[pH]  barrier/kB[K]  Cmin,Q[fF]  lambda_fold
+1.0     0.905   87.8      9.10          161         11.8 um
+0.8     0.813   96.8      8.12          181         14.7 um
+0.6     0.695  111.5      6.87          215         20.1 um
+0.5     0.623  123.1      6.10          244         25.0 um
+0.4     0.540  140.3      5.22          287         33.3 um.
 ```
 
-Large optical aperture is acceptable only if optical coupling localizes the useful electronic heating near the Josephson-sensitive region.
+`lambda_fold` is only the quasistatic well-disappearance scale. The full dynamic spectral boundary can lie above it but below the ideal sudden-quench scale.
 
 ## Novelty discipline
 
-Broad novelty is closed for:
+Do not claim novelty for any of:
 
 ```text
 superconducting MIR/LWIR single-photon detection
@@ -278,53 +279,35 @@ field-free Josephson directionality
 illumination-driven phase batteries/vorticity
 engineered proximity ABS / induced-gap thermal sensitivity
 graphene thermal-transport optimization
-generic dark-count vs timing/dead-time tradeoffs
-generic rate-induced tipping / loss of attractor tracking under fast parameter change.
+generic rate-induced tipping
+quantum/classical probability of Josephson basin capture
+noisy graphene-JJ metastable switching
+frequency-dependent environment affecting Josephson retrapping
+dissipation modifying macroscopic quantum tunneling.
 ```
 
-The only plausible publication route is a **detector-specific nonadiabatic persistent-flux feasibility/optimality/impossibility closure** that survives the remaining dynamics and a narrow paper/patent audit.
-
-## Numerical regression state
-
-Workflow:
-
-```text
-.github/workflows/experiment03-dynamic-rfsquid.yml
-```
-
-Pinned environment:
-
-```text
-Python 3.12.13
-NumPy 2.5.1
-SciPy 1.18.0.
-```
-
-The initial dynamic CI failed because a deliberately coarse smoke grid was asked to reproduce fine-grid capture brackets. This was a test-design error, not a scientific contradiction. `full_dynamic_smoke.py` now tests numerical invariants; **recheck the latest workflow before declaring the dynamic stack validated.**
+The only plausible publication route is a detector-specific **single-LWIR-photon -> nonadiabatic proximity-JJ dynamics -> persistent flux** feasibility/optimality/impossibility closure with simultaneous capture/dark/environment constraints, if it survives the full open-system treatment and narrow paper/patent audit.
 
 ## Immediate work queue
 
-Do not return to static parameter scanning first.
-
-1. Extend full trajectories with exact phase-work diagnostics: `W_T`, `Q_R`, separatrix-energy margin, first crossing and final basin.
-2. Build a dimensionless deterministic map in pulse energy/rise time/damping and test collapse across material points.
-3. Build a minimal spatial electronic heat equation and compare on-junction vs far-from-junction absorption.
-4. Replace scalar `R` with causal `Y(omega,T_e)` / memory kernel.
-5. Use that same environmental spectral density for FDT noise and dissipative MQT.
-6. Compute stochastic `P_capture`, `P_wrong`, `P_return` and timing distributions.
-7. Only then restore detailed 8–14-um absorptance, readout and reset.
-8. If a compact result survives, perform the narrow paper + patent collision audit.
+1. Finish the probability-optimal scalar-R scouting scan and refine only the best points with nested x-grid integration.
+2. Benchmark the semiclassical/truncated-Wigner propagation against an explicitly quantum nonlinear phase calculation.
+3. Add a fluctuation-dissipation-consistent Ohmic bath to quantify the incremental effect of pulse-time bath fluctuations at fixed `R,L,C`.
+4. Replace Ohmic `R` with a low-order causal `Y(omega)` and use the same spectral density for real-time noise and dissipative MQT.
+5. Add spatial electronic heat stochasticity / weak-link-weighted local state.
+6. Only after a nonempty `O(p_*,D_*)` survives, restore detailed optical absorptance, readout and reset.
+7. Then perform the narrow paper + patent collision audit.
 
 ## Stop / reformulate conditions
 
 Stop or reformulate if robust work shows any of:
 
-- physically credible energy-delivery rise is too slow for the desired LWIR range;
-- no causal environment permits launch + capture without unacceptable cold noise/MQT;
+- physically credible energy delivery is too slow for useful LWIR operation;
+- no causal environment yields high target-basin probability while satisfying cold dark constraints;
+- exact/open-system quantum evolution closes the apparent semiclassical capture corridor;
 - spatial thermal transport removes the local heating advantage;
-- stochastic wrong-basin/retrapping probabilities are unacceptable;
 - reset/readout erases the operating distinction;
-- narrow prior art already contains the same mechanism and no independent closure survives.
+- narrow prior art already contains the same detector-specific mechanism/closure.
 
 A negative bound is a valid result. Do not force the architecture to survive.
 
