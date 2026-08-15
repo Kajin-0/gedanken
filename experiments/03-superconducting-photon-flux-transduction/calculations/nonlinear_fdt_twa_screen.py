@@ -35,6 +35,12 @@ NUMBERS, not physical detector efficiencies or dark-count rates.
 
 The cold x/u covariance regression is mandatory.  If it fails, pulse results
 must be ignored.
+
+For paired wavelength comparisons, run_case intentionally uses the same random
+seed independent of wavelength.  Since the cold preparation and bath spectrum
+do not depend on photon wavelength, this makes different pulse energies use the
+same bath-history ensemble and removes unnecessary Monte Carlo noise from their
+difference.
 """
 
 from __future__ import annotations
@@ -110,7 +116,6 @@ def gaussian_noise_batch(rng: np.random.Generator,nb: int,n: int,dt: float,
     nk=len(freq)
     X=np.empty((nb,nk),dtype=np.complex128)
 
-    # DC real coefficient.
     X[:,0]=rng.normal(size=nb)*np.sqrt(n*S[0]/dt)
     last=nk-1
     stop=last if n%2==0 else nk
@@ -143,7 +148,6 @@ def linear_step_heun(dx,v,d,w,n0,n1,dt,L,C,kappa,Lf,Cf,R):
 
 
 def nonlinear_step_heun(model,x,v,d,w,n0,n1,T0s,T1s,dt,L,C,Lf,Cf,R):
-    # RectBivariateSpline.ev accepts vector x/T arrays.
     Tarr0=np.full_like(x,float(T0s))
     F0=np.asarray(model.spline.ev(Tarr0,x)).reshape(-1)
     kx=v
@@ -194,12 +198,13 @@ def run_case(model: DynamicForce,lambda_um: float,*,alpha: float=0.50,R: float=2
     saddle=directional_barriers(model,Tf-2e-5)['saddle']
     left,right=model.cold_states()
 
-    rng=np.random.default_rng(seed+int(round(lambda_um*100)))
+    # Deliberately independent of lambda_um: wavelength cases are paired on the
+    # same stationary bath histories for lower-variance comparisons.
+    rng=np.random.default_rng(seed)
     x0_all=[]; u0_all=[]; xr_all=[]; ur_all=[]; xf_all=[]
     right_reform=0; right_final=0
     total=0
 
-    # Analytic reduced cold reference.
     _rq,_rv,sxratio,svratio,_=variance_ratios(model,0.6,R,alpha)
     sx_ref=cov['sigma_x']*sxratio
     su_ref=cov['sigma_x']*svratio
@@ -208,14 +213,12 @@ def run_case(model: DynamicForce,lambda_um: float,*,alpha: float=0.50,R: float=2
         nb=min(batch,ntraj-start)
         noise=gaussian_noise_batch(rng,nb,ntotal,dt,L,R,omega_d)
         dx=np.zeros(nb); v=np.zeros(nb); d=np.zeros(nb); w=np.zeros(nb)
-        # Cold linear stationary preparation.
         for i in range(npre-1):
             dx,v,d,w=linear_step_heun(dx,v,d,w,noise[:,i],noise[:,i+1],dt,
                                       L,C,kappa,Lf,Cf,R)
         x=x_c+dx
         x0_all.append(x.copy()); u0_all.append((v/omega_c).copy())
 
-        # Same colored history continues through nonlinear pulse.
         base=npre-1
         xr=None; ur=None
         for j in range(npost-1):
@@ -229,7 +232,6 @@ def run_case(model: DynamicForce,lambda_um: float,*,alpha: float=0.50,R: float=2
         xr_all.append(xr); ur_all.append(ur)
         xf_all.append(x.copy())
         right_reform += int(np.count_nonzero(xr>saddle))
-        # Existing finite-time convention: nearest cold stored state at endpoint.
         right_final += int(np.count_nonzero(np.abs(x-right)<np.abs(x-left)))
         total += nb
 
@@ -252,6 +254,8 @@ def run_case(model: DynamicForce,lambda_um: float,*,alpha: float=0.50,R: float=2
         'saddle_reform':saddle,
         'P_xright_reform':right_reform/total,
         'P_right_final':right_final/total,
+        'n_right_reform':float(right_reform),
+        'n_right_final':float(right_final),
         'mean_x_reform':float(np.mean(xr)),
         'sigma_x_reform':float(np.std(xr,ddof=1)),
         'mean_u_reform':float(np.mean(ur)),
@@ -266,14 +270,16 @@ def main() -> None:
     p=argparse.ArgumentParser()
     p.add_argument('--ntraj',type=int,default=256)
     p.add_argument('--dt-ps',type=float,default=0.5)
+    p.add_argument('--seed',type=int,default=12345)
     args=p.parse_args()
 
     print('Experiment 03 nonlinear causal-FDT TWA/GLE screen')
     print('rDelta=.6, R=250 ohm, alpha=.50, rise=20 ps, A=100 um^2')
     print('symmetrized quantum FDT used as Wigner/TWA stochastic field; NOT exact quantum efficiency')
+    print('paired bath histories are reused across wavelength cases')
     model=DynamicForce(0.6,quick=False,Tmax=0.95)
     for lam in (8.0,10.0,11.0,14.0):
-        o=run_case(model,lam,ntraj=args.ntraj,dt_ps=args.dt_ps)
+        o=run_case(model,lam,ntraj=args.ntraj,dt_ps=args.dt_ps,seed=args.seed)
         msg=(
             f'lambda={lam:.1f} um: N={int(o["ntraj"])}, dt={o["dt_ps"]:.3f} ps, '
             f'pre={o["tpre_ns"]:.2f} ns, coldReg(x,u)=({o["cold_reg_x"]:.3f},{o["cold_reg_u"]:.3f}), '
