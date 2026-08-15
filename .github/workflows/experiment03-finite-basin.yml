@@ -5,19 +5,21 @@ on:
     paths:
       - 'experiments/03-superconducting-photon-flux-transduction/calculations/finite_time_basin_slice.py'
       - 'experiments/03-superconducting-photon-flux-transduction/calculations/finite_time_basin_validation.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/finite_time_basin_topology.py'
       - 'experiments/03-superconducting-photon-flux-transduction/calculations/full_dynamic_rfsquid.py'
       - '.github/workflows/experiment03-finite-basin.yml'
   pull_request:
     paths:
       - 'experiments/03-superconducting-photon-flux-transduction/calculations/finite_time_basin_slice.py'
       - 'experiments/03-superconducting-photon-flux-transduction/calculations/finite_time_basin_validation.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/finite_time_basin_topology.py'
       - 'experiments/03-superconducting-photon-flux-transduction/calculations/full_dynamic_rfsquid.py'
       - '.github/workflows/experiment03-finite-basin.yml'
 
 jobs:
   finite-basin:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -35,3 +37,7 @@ jobs:
       - name: Validate full-resolution pulled-back basin section
         working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
         run: python finite_time_basin_validation.py
+
+      - name: Trace all local basin edges on the physical initial section
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python finite_time_basin_topology.py
