@@ -4,47 +4,57 @@
 **Mode:** exploratory theory / falsification-first  
 **Publication status:** **NO-GO for manuscript**.
 
-## 1. Current question
+## 1. Current physical question
 
-Can one absorbed LWIR photon drive a proximity-Josephson/rf-SQUID circuit through a directionally selected **dynamic** fold transition, after which the phase is captured in a persistent superconducting flux state, while cold false switching remains extremely low?
+Can one absorbed LWIR photon rapidly reshape a proximity-Josephson/rf-SQUID metastable potential so that the phase is transferred into a directionally favored basin and retained as persistent superconducting flux, while cold false switching remains extremely low?
 
-Generation A uses a small external flux tilt and is **not photovoltaic**. Generation B remains reserved for a later zero-external-flux mechanism.
+Generation A uses a small external flux tilt and is **not photovoltaic**. Generation B remains reserved for a future zero-external-flux mechanism if one survives collision review.
 
-Current chain:
+The preferred internal description is now
 
 ```text
-absorbed 8–14 um photon
- -> rapid electronic thermalization/spreading
- -> temperature-dependent full CPR changes
- -> metastable CPR/load-line fold is crossed
- -> saddle-node bottleneck must be traversed before cooling restores the well
- -> phase enters favored basin
- -> CPR recovers
+photon-triggered nonadiabatic metastable superconducting flux latch
+```
+
+rather than a purely quasistatic “fold latch.”
+
+## 2. Mechanism hierarchy
+
+Current sequence:
+
+```text
+absorbed LWIR photon
+ -> electronic thermalization / spatial energy delivery to the weak link
+ -> full Josephson CPR and metastable phase potential change rapidly
+ -> phase is displaced and accelerated
+ -> trajectory may cross a finite transient barrier or a vanished fold
+ -> thermal recovery reforms the cold double-well landscape
+ -> trajectory is captured in the favored basin
  -> persistent superconducting flux remains.
 ```
 
-A static fold crossing is now treated only as the zero-rate limit of the problem.
+The rf-SQUID fold is still the organizing catastrophe and controls the slow/quasistatic limit, but **static fold disappearance is neither necessary nor sufficient for fast-pulse switching**.
 
-## 2. Noise / dissipation interpretation
+## 3. Noise / dissipation interpretation
 
-An ideal cold superconducting storage channel with `Re Z -> 0` lacks the ordinary finite-frequency resistive Johnson contribution of that channel. This does **not** imply zero detector noise or zero dark counts.
+An ideal cold superconducting storage channel with `Re Z -> 0` lacks the ordinary finite-frequency resistive Johnson contribution of that channel. This does not imply zero detector noise or zero dark counts.
 
-Relevant limits include
+Relevant limits remain
 
 ```text
 thermal phase escape
 macroscopic quantum tunneling (MQT)
-quasiparticles and vortices
-stray/background photons
-write-state damping noise
+quasiparticles / vortices
+stray and background photons
+write-state dissipation and fluctuation-dissipation noise
 readout backaction
 reset errors
 photon statistics.
 ```
 
-Any dissipative admittance introduced to improve phase capture must ultimately be treated with fluctuation-dissipation. The long-term objective is not zero total fluctuation; it is low detector-added noise with a persistent superconducting storage state.
+A damping environment cannot be optimized independently of its noise or dissipative-MQT effect.
 
-## 3. Canonical static fold
+## 4. Static fold retained as quasistatic limit
 
 Define
 
@@ -64,21 +74,21 @@ A static fold satisfies
 \boxed{\partial_x\mathcal I(x_f,T_f)=1.}
 ```
 
-For a smooth nondegenerate fold,
+Near a smooth nondegenerate fold,
 
 ```math
 \Delta U\propto|p-p_f|^{3/2},
 \qquad
-\omega_m\propto|p-p_f|^{1/4},
-\qquad
-\Delta U/(\hbar\omega_m)\propto|p-p_f|^{5/4}.
+\omega_m\propto|p-p_f|^{1/4}.
 ```
 
-## 4. Static material model retained
+These remain useful asymptotic checks, but the full detector must be solved dynamically.
 
-The ideal graphene CPR baseline uses the Titov–Beenakker secular equation plus the Hagymasi–Kormanyos–Cserti arbitrary-length Matsubara construction. It has been checked both in the controlled short-junction limit and at the intermediate `L/xi~1.1` parameter family used in the published arbitrary-length theory.
+## 5. Static material baseline
 
-Realistic-interface CPR skewness from Nanda-type graphene/MoRe devices substantially reduces the ideal cold barrier. The useful static envelope at the illustrative `beta_cold=0.8`, `Ic~3 uA` scale is closer to
+The graphene CPR baseline uses the Titov–Beenakker secular equation plus the Hagymasi–Kormanyos–Cserti arbitrary-length Matsubara construction. It has passed both the controlled short-limit regression and an intermediate `L/xi~1.1` trend check.
+
+Realistic interface/skewness stress reduces the ideal high-doping static result to an illustrative envelope near
 
 ```text
 T_f ~0.79–0.91 K
@@ -87,52 +97,42 @@ state separation ~0.22–0.24 Phi0
 provisional C_min,Q ~0.16–0.31 pF.
 ```
 
-The ideal `16.7 K` barrier is retained only as a regression, not as the defensible realistic value.
+The old ideal `16.7 K` barrier is regression-only.
 
-## 5. Two-gap model — mandatory
+## 6. Two-gap model — mandatory
 
-Do not identify the induced weak-link gap with the parent-electrode gap:
-
-```text
-Delta_ind -> ABS spectrum, Ic(T), CPR harmonics and fold temperature
-Delta_s   -> parent-electrode quasiparticle escape / calorimetric confinement.
-```
-
-The preferred materials direction is potentially
+Do not identify
 
 ```text
-smaller engineered Delta_ind for thermal CPR sensitivity
-+
-high parent Delta_s for hot-electron confinement
-+
-retuned L/C for cold phase stability and write dynamics.
+Delta_ind  weak-link induced/minigap controlling ABS spectrum, Ic(T), CPR and thermal sensitivity
+Delta_s    parent-electrode gap controlling hot-carrier escape / calorimetric confinement.
 ```
 
-For graphene-like `C_e=gamma A T`, conservative parent-gap confinement and fold crossing require
+A plausible design direction is
+
+```text
+moderately reduced Delta_ind for thermal sensitivity
++
+high parent Delta_s for confinement
++
+retuned L/C for cold stability
++
+localized fast optical-to-electronic energy delivery near the weak link.
+```
+
+For graphene-like `C_e=gamma A T`, the conservative quasistatic fold/confinement screen is
 
 ```math
-\boxed{T_f\le T_{pk}\lesssim\Delta_s/k_B,}
+T_f\le T_{pk}\lesssim\Delta_s/k_B,
 ```
 
-which gives
+but `T_pk>=T_f` is no longer a necessary condition for the nonadiabatic mechanism.
 
-```math
-\boxed{
-\frac{2\eta E_\gamma}
-{\gamma[(\Delta_s/k_B)^2-T_0^2]}
-\le A\le
-\frac{2\eta E_\gamma}
-{\gamma(T_f^2-T_0^2)}.
-}
-```
+## 7. Retuned static family
 
-A nonempty interval requires `Delta_s > k_B T_f`.
+Realistic-skewness, retuned `beta~0.8`, `A=100 um^2` family:
 
-## 6. Retuned induced-gap Pareto family
-
-With realistic-skewness shape stress and inductance retuned to keep the illustrative cold screening point near `beta=0.8`:
-
-| `r_Delta` | `T_f` | `L` | cold barrier/kB | provisional `C_min,Q` | static thermal reach for `A=100 um^2` |
+| `r_Delta` | `T_f` | `L` | cold barrier/kB | provisional `C_min,Q` | quasistatic thermal reach |
 |---:|---:|---:|---:|---:|---:|
 | 1.0 | 0.905 K | 87.8 pH | 9.10 K | 161 fF | 11.8 um |
 | 0.8 | 0.813 K | 96.8 pH | 8.12 K | 181 fF | 14.7 um |
@@ -140,21 +140,27 @@ With realistic-skewness shape stress and inductance retuned to keep the illustra
 | 0.5 | 0.623 K | 123.1 pH | 6.10 K | 244 fF | 25.0 um |
 | 0.4 | 0.540 K | 140.3 pH | 5.22 K | 287 fF | 33.3 um |
 
-These wavelengths are **static absorbed-photon thermal limits only**. They are no longer considered sufficient detection cutoffs.
+The wavelength column is now explicitly only
 
-## 7. Capacitance elimination: quantum-stability time
+```text
+lambda_fold = quasistatic well-disappearance scale.
+```
 
-Inside the current provisional cubic MQT diagnostic,
+It is not the detector cutoff.
+
+## 8. Provisional quantum-stability time
+
+Inside the retained cubic-MQT diagnostic,
 
 ```math
 \Gamma_Q
 =\frac{\omega}{2\pi}
-\exp\left[-\alpha_Q\frac{\Delta U_c}{\hbar\omega}\right],
+\exp[-\alpha_Q\Delta U_c/(\hbar\omega)],
 \qquad
-\omega=\sqrt{\frac{\kappa_c}{LC}},
+\omega=\sqrt{\kappa_c/(LC)},
 ```
 
-with target dark rate `D`, define
+define
 
 ```math
 \boxed{
@@ -170,309 +176,310 @@ W\!\left(
 Then exactly inside this diagnostic,
 
 ```math
-\boxed{LC_{min,Q}=\tau_Q^2,}
-\qquad
-\boxed{C_{min,Q}=\tau_Q^2/L.}
+\boxed{LC_{min,Q}=\tau_Q^2.}
 ```
 
-This removes explicit capacitance from several dynamic constraints.
+This reduction remains useful, but the `alpha_Q~7.2` expression is not exact dissipative rf-SQUID MQT.
 
-For the old `g sqrt(LC)` phase-time convention,
+## 9. Exact scalar-R recovered-basin damping result
 
-```math
-\boxed{t_{\phi,Q}=g\tau_Q.}
-```
-
-A phase-limited target capture interval `t_c` gives the provisional dark-rate floor
+Linearized cold/recovered dynamics obey
 
 ```math
-\boxed{
-D_{min,\phi}(t_c)
-=\frac{g\sqrt{\kappa_c}}{2\pi t_c}
-\exp\!\left[-
-\frac{\alpha_Q\Delta U_c t_c}
-{\hbar g\sqrt{\kappa_c}}
-\right].
-}
-```
-
-Near a smooth thermal fold, combining the `3/2` barrier law with graphene `E~T^2` calorimetry yields the conditional low-`T0` scaling
-
-```math
-\boxed{
-\lambda_{max}
-\propto
-\left[
-\frac{t_c}{\ln(1/Dt_c)}
-\right]^{4/3}.
-}
-```
-
-This is a candidate mathematical object for later novelty audit, not a novelty claim.
-
-Canonical record: `DARK_CAPTURE_ELIMINATION_2026-08-15.md`.
-
-## 8. Clean-graphene dwell ceiling
-
-For the retained idealized cooling law
-
-```math
-C_e=\gamma AT,
-\qquad
-P_{e-ph}=\Sigma A(T^4-T_0^4),
-```
-
-the time above a fixed fold is
-
-```math
-\boxed{
-t_>(T_{pk},T_f)
-=\frac{\gamma}{4\Sigma T_0^2}
-\ln\!\left[
-\frac{(T_{pk}^2-T_0^2)(T_f^2+T_0^2)}
-{(T_{pk}^2+T_0^2)(T_f^2-T_0^2)}
-\right].
-}
-```
-
-Even `T_pk -> infinity` gives a finite ceiling
-
-```math
-\boxed{
-t_{>,max}
-=\frac{\gamma}{4\Sigma T_0^2}
-\ln\!\left(
-\frac{T_f^2+T_0^2}{T_f^2-T_0^2}
-\right).
-}
-```
-
-For `T0 << Tf`,
-
-```math
-\boxed{t_{>,max}\simeq2\tau_{ep}^{loc}(T_f).}
-```
-
-If the required write time exceeds this ceiling, no larger photon energy rescues the design **within this cooling model**.
-
-### Huang calibration is conditional
-
-Huang et al. fit `tau_ep~75 ns` at `T0=20 mK` in their clean-graphene thermal model and use `tau_ep propto T0^-2` for the base-temperature dependence. Identifying that fitted quantity directly with the local coefficient `gamma/(4 Sigma T^2)` is an explicit modeling assumption, not a measured hot-state lifetime.
-
-Under that conditional identification, the sub-kelvin fold dwell ceiling falls into the `~70–200 ps` range across the retuned family. These numbers are useful as a stress test but are **not promoted as calibrated device lifetimes**.
-
-Canonical record: `HUANG_THERMAL_DWELL_CALIBRATION_2026-08-15.md`.
-
-## 9. Exact scalar-R RCSJ damping window
-
-The earlier `2RC` damping envelope was only the underdamped branch.
-
-Linearizing about a recovered stable basin gives
-
-```math
-\boxed{
 LC\ddot y+\frac{L}{R}\dot y+\kappa y=0.
-}
 ```
 
-Define
+Critical damping:
 
 ```math
-\omega_0=\sqrt{\frac{\kappa}{LC}},
-\qquad
-R_*=\frac12\sqrt{\frac{L}{C\kappa}}.
+\boxed{R_*=\frac12\sqrt{\frac{L}{C\kappa}}.}
 ```
 
-`R=R_*` is critical damping and gives the fastest possible linearized scalar-Ohmic relaxation:
+Fastest scalar-Ohmic e-fold time:
 
 ```math
-\boxed{
-\tau_{settle,min}=\sqrt{\frac{LC}{\kappa}}.
-}
+\boxed{\tau_{min}=\sqrt{LC/\kappa}.}
 ```
 
-Very large `R` is weakly damped; very small `R` is overdamped and also slow.
-
-For an allowed settling time `t_avail`, let
-
-```math
-a=\omega_0t_{avail}.
-```
-
-A scalar resistance solution exists only if `a>=1`, and then
+For `a=omega_0 t_avail>=1`, the exact linearized scalar-resistance interval is
 
 ```math
 \boxed{
-\frac{2a}{a^2+1}
-\le\frac{R}{R_*}\le a.
+\frac{2a}{a^2+1}\le\frac{R}{R_*}\le a.
 }
 ```
 
-The previous `R<t/(2C)` condition is exactly the high-`R` edge; a missing low-`R` edge also exists.
+The old one-sided `R<t/(2C)` criterion was only the high-R underdamped edge. Too-small `R` is overdamped and slow.
 
-Under the conditional Huang dwell mapping and current provisional `C_min,Q` values, the retained family gives roughly
+## 10. Full nonlinear deterministic RCSJ checkpoint — current strongest dynamics
+
+Canonical solver:
 
 ```text
-R_* ~13–14 ohm
-R_- ~1–2 ohm
-R_+ ~0.23–0.36 kOhm.
+calculations/full_dynamic_rfsquid.py
+FULL_DYNAMIC_RCSJ_CHECKPOINT_2026-08-15.md
 ```
 
-These are model diagnostics, not a shunt recommendation. A real GJJ has frequency-dependent admittance.
-
-Canonical record: `RCSJ_DAMPING_WINDOW_2026-08-15.md`.
-
-## 10. Dynamic fold / saddle-node bottleneck — current frontier
-
-Static fold crossing is insufficient because the local curvature vanishes at a saddle-node.
-
-Write
-
-```math
-q=x-x_f,
-\qquad
-\theta=T-T_f.
-```
-
-Locally beyond the fold,
-
-```math
--F\simeq A\theta+\frac{B}{2}q^2.
-```
-
-For any finite Ohmic damping the local damping ratio diverges as the fold is approached:
-
-```math
-\boxed{\zeta\propto\theta^{-1/4}\to\infty.}
-```
-
-Thus the asymptotically near-fold passage is overdamped even if the recovered basin is underdamped.
-
-For a fixed step overshoot, the full local ghost-passage estimate is
+It directly integrates
 
 ```math
 \boxed{
-t_{ghost}^{full}
-=\frac{\pi\sqrt2\,L/R}{\sqrt{AB\theta}}
-\propto\theta^{-1/2}.
+LC\ddot x+\frac{L}{R}\dot x+F[x,T_e(t)]=0
 }
 ```
 
-Using the cold curvature to estimate the local normal-form product,
+using the arbitrary-length temperature-dependent CPR, the realistic-skewness envelope, inertia, barrier re-formation and a finite photon-energy deposition rise.
 
-```math
-\boxed{
-t_{ghost}^{full}
-\simeq
-\frac{2\pi L}{R\kappa_c}
-\sqrt{\frac{T_f-T_0}{T_{pk}-T_f}}.
-}
-```
+### Static regression
 
-Balancing this against the recovered-basin underdamped envelope gives the optimistic optimized diagnostic
-
-```math
-\boxed{
-R_{opt}
-=\sqrt{\frac{\pi L}{C\kappa_c}}
-\left(
-\frac{T_f-T_0}{T_{pk}-T_f}
-\right)^{1/4},
-}
-```
-
-```math
-\boxed{
-t_{dyn,min}
-=2\sqrt{\frac{\pi LC}{\kappa_c}}
-\left(
-\frac{T_f-T_0}{T_{pk}-T_f}
-\right)^{1/4}.
-}
-```
-
-At `C=C_min,Q`,
-
-```math
-\boxed{
-t_{dyn,min}
-=2\sqrt{\frac{\pi}{\kappa_c}}\tau_Q
-\left(
-\frac{T_f-T_0}{T_{pk}-T_f}
-\right)^{1/4}.
-}
-```
-
-Therefore a finite temperature overshoot above the fold is required. The static relation `T_pk>=T_f` is only an upper-envelope criterion.
-
-### Conditional 14-um stress
-
-For `A=100 um^2`, the retained Huang energy scaling gives `T_pk(14 um)~0.832 K`.
-
-Inside the **conditional** Huang dwell mapping and local fold diagnostic:
+The interpolated force reproduces
 
 ```text
-rDelta=1.0: no static 14-um crossing
-rDelta=0.8: theta~0.019 K, t_>~4.1 ps, optimized dynamic scale~44.7 ps -> strongly fails stress
-rDelta=0.6: theta~0.137 K, t_>~37.6 ps, dynamic scale~30.9 ps -> marginally passes stress
-rDelta=0.5: substantially larger margin.
+rDelta=0.8 -> Tf ~0.812 K
+rDelta=0.6 -> Tf ~0.694 K,
 ```
 
-This does **not** establish a detector cutoff. The order-one ghost prefactor, the conditional thermal calibration, evolving CPR, inertia away from the fold, noise-assisted capture and retrapping remain unresolved.
+consistent with the retained static family.
 
-But it does establish the strongest current falsification lesson:
+### 14-um instantaneous-deposition result
+
+For `A=100 um^2`:
 
 ```text
-A point that barely crosses the static fold can be dynamically unusable.
+rDelta=0.8: deterministic capture begins near R~111 ohm.
+
+rDelta=0.6: deterministic capture begins near R~32.7 ohm;
+            an upper oscillatory/retrapping boundary appears near ~1.13 kOhm
+            under the retained finite-time classification.
 ```
 
-Canonical record: `DYNAMIC_FOLD_GHOST_2026-08-15.md`.
+Thus full capture is again a dynamical window, not monotonic in scalar damping.
 
-## 11. Prior-art boundary
+## 11. Finite rise time — decisive new control parameter
 
-No novelty claim is authorized. Broad ingredients already collided with prior work, including
+The photon deposition was generalized in `u=T_e^2` using an exponential energy source and the retained conditional clean-graphene cooling model.
+
+At `14 um`, the current scalar-R model gives approximately
+
+### `rDelta=0.8`
+
+```text
+rise 0 ps   -> lower capture R ~111 ohm
+rise 5 ps   -> lower capture R ~166 ohm
+rise 9 ps   -> lower capture R ~1.14 kOhm
+rise 9.5–10 ps -> capture becomes very-high-R/settling sensitive or disappears from ordinary tested range.
+```
+
+### `rDelta=0.6`
+
+```text
+rise 0 ps   -> lower capture R ~32.7 ohm
+rise 20 ps  -> lower capture R ~64 ohm
+rise 30 ps  -> lower capture R ~559 ohm
+rise ~32 ps -> no capture across a broad tested R range up to many kOhm.
+```
+
+Some successful finite-rise trajectories have
+
+```math
+\boxed{T_{peak}<T_f.}
+```
+
+Therefore static fold disappearance is **not necessary** for fast switching.
+
+The mechanism is a nonadiabatic potential quench / metastable barrier-crossing process, with the fold as its quasistatic limit.
+
+## 12. Sudden-quench energy threshold
+
+Let `x_c` be the cold metastable minimum and `x_s(T)` the hot saddle below `T_f`. Define
+
+```math
+\boxed{
+\mathcal B_q(T)
+=U[x_s(T),T]-U[x_c,T]
+=\int_{x_c}^{x_s(T)}F(x,T)dx.
+}
+```
+
+The conservative held-hot sudden-quench threshold satisfies
+
+```math
+\boxed{\mathcal B_q(T_q)=0.}
+```
+
+Current full-CPR values:
+
+```text
+rDelta=0.8: Tq~0.718 K < Tf~0.812 K
+rDelta=0.6: Tq~0.615 K < Tf~0.694 K.
+```
+
+For the same 100-um2 energy calibration:
+
+```text
+rDelta=0.8: lambda_fold~14.7 um; ideal lambda_quench~18.8 um
+rDelta=0.6: lambda_fold~20.1 um; ideal lambda_quench~25.6 um.
+```
+
+This creates three conceptually different regimes:
+
+```text
+lambda < lambda_fold:
+  quasistatic well disappearance energetically available.
+
+lambda_fold < lambda < lambda_quench:
+  well remains, but nonadiabatic inertial barrier crossing can be possible.
+
+lambda > lambda_quench:
+  cold phase point lies below the saddle in the fixed-hot conservative sudden-quench model.
+```
+
+`lambda_quench` is not a universal time-dependent detector impossibility bound.
+
+Full finite-cooling scalar-R capture lies between `lambda_fold` and `lambda_quench`. Coarse scans give approximately
+
+```text
+rDelta=0.8: capture with R<=1 kOhm survives to ~16.2 um;
+            very-weak-damping tested capture to ~16.7 um.
+
+rDelta=0.6: capture with R<=1 kOhm survives to ~22.5 um;
+            very-weak-damping tested capture to ~23.0 um.
+```
+
+These are model frontiers, not final spectral specifications.
+
+Canonical records:
+
+```text
+SUDDEN_QUENCH_BOUND_2026-08-15.md
+calculations/quench_energy_bound.py
+```
+
+## 13. Thermalization / geometry constraint
+
+The finite-rise result makes the electronic rise time a first-order quantity.
+
+Primary graphene literature gives useful scales:
+
+```text
+single hot Fermi-Dirac distribution can form on ~100–200 fs scales in established ultrafast regimes;
+~100-meV excitation can enter a picosecond electron-phonon thermalization bottleneck;
+2026 mid-IR graphene preprint reports ~2–3 ps photocurrent relaxation at room temperature.
+```
+
+These are not direct cryogenic GJJ rise-time calibrations.
+
+Using the Huang characteristic `l_D~230 um`, `tau~75 ns` gives the cross-device scale
+
+```math
+D_{char}\sim0.705\;m^2/s.
+```
+
+Then
+
+```text
+0.6 um -> d^2/D ~0.5 ps
+1.7 um -> ~4 ps
+4 um   -> ~23 ps
+25 um  -> ~0.9 ns.
+```
+
+If diffusion dominates the effective CPR rise,
+
+```math
+d_{max}\sim\sqrt{D\tau_{rise,max}}.
+```
+
+Current conditional design scales are roughly
+
+```text
+rDelta~0.8: tau_rise,max~9 ps  -> d_max~2.5 um
+rDelta~0.6: tau_rise,max~30 ps -> d_max~4.6 um.
+```
+
+Thus a large optical collection area is compatible with the mechanism only if absorbed energy is delivered within a few micrometres of the Josephson-sensitive region, e.g. by localized antenna/cavity coupling.
+
+Canonical record: `THERMAL_RISE_GEOMETRY_CLOSURE_2026-08-15.md`.
+
+## 14. Prior-art boundary
+
+No novelty claim is authorized.
+
+Broad collisions already include
 
 ```text
 superconducting MIR/LWIR single-photon detection
 photon-heated graphene Josephson switching
-thermal Ic suppression used as SQUID readout
-single-photon -> persistent superconducting flux memory
+thermal Ic suppression -> SQUID detection
+single photon -> persistent superconducting flux memory
 optically written persistent flux/vortices
 transient Ic suppression -> rf-SQUID tipping/freeze
 field-free Josephson directionality
-illumination-driven superconducting phase batteries/vorticity
-engineering ABS / induced-gap thermal sensitivity
-generic detector dark-count vs timing/dead-time tradeoffs.
+illumination-driven phase batteries/vorticity
+engineered proximity ABS / induced-gap thermal sensitivity
+graphene thermal-transport optimization
+generic dark-count vs timing/dead-time tradeoffs.
 ```
 
-The remaining possible publication route is a narrower quantitative superconducting-fold feasibility/optimality/impossibility closure if it survives the full dynamic and dissipative model plus paper/patent collision audit.
+The general fast-parameter-change / rate-induced-tipping literature also needs a dedicated collision check before treating sub-fold nonadiabatic switching as mathematically new.
 
-## 12. Immediate next calculation
+The only plausible paper route is a **specific superconducting photon-to-persistent-flux dynamic feasibility/optimality/impossibility closure** that survives the remaining physics and narrow patent/paper audit.
 
-Stop expanding the static Pareto map.
+## 15. Immediate next work
 
-The next decisive model is the full time-dependent phase equation
+Do not return to equilibrium material scans first.
+
+### A. Deterministic dimensionless phase diagram
+
+Use `full_dynamic_rfsquid.py` to map
+
+```text
+pulse rise time
+x
+pulse energy / wavelength
+x
+scalar damping
+-> final basin.
+```
+
+Test whether different material points collapse when expressed through
+
+```text
+quench-energy margin M_q
+rho = tau_rise/tau_phi
+zeta = damping ratio
+chi = cooling time/tau_phi.
+```
+
+### B. Spatial thermal model
+
+Replace instantaneously uniform `T_e(t)` by at least a minimal heat equation and couple the phase to the weak-link-weighted local electronic state. Compare on-junction and far-from-junction absorption.
+
+### C. Causal electromagnetic environment
+
+Replace scalar `R` with
 
 ```math
-LC\ddot x
-+\int_{-\infty}^{t}K(t-t';T_e)\dot x(t')dt'
-+F[x,T_e(t)]
-=\xi(t),
+Y(\omega,T_e)
 ```
 
-with the same causal environmental admittance controlling both damping and fluctuation noise.
+and use the same environmental spectral density for classical damping, fluctuation-dissipation noise and dissipative MQT.
 
-Work sequence:
+### D. Stochastic capture
 
-1. deterministic full-CPR trajectory with scalar `R` and realistic `T_e(t)`;
-2. extract exact dynamic overshoot and capture basin instead of the local ghost approximation;
-3. replace scalar `R` by `Y(omega,T_e)` / damping kernel;
-4. compute dissipative MQT using that same environment;
-5. add stochastic thermal/quantum force and obtain `P_capture`, `P_wrong`, `P_return` and capture-time distribution;
-6. only then restore 8–14-um optical absorptance and readout/reset constraints.
+Compute
 
-## 13. Current verdict
+```text
+P_capture
+P_wrong
+P_return
+capture-time distribution
+```
+
+before restoring detailed optical absorptance/readout/reset.
+
+## 16. Verdict
 
 **GO for continued theory. NO-GO for manuscript.**
 
-The dominant uncertainty has moved from photon energy and static fold existence to **finite-rate saddle-node passage plus dissipative phase dynamics**. The branch is still alive, but the static 14-um margin is substantially less informative than it appeared one checkpoint ago.
+The architecture remains theoretically alive. The dominant uncertainty has moved from photon energy and fold existence to **nonadiabatic energy delivery, spatial thermalization, damping/admittance and stochastic metastable capture**.
