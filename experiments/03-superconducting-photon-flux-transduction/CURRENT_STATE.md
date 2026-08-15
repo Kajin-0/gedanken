@@ -2,170 +2,74 @@
 
 **Updated:** 2026-08-15  
 **Mode:** exploratory theory / falsification-first  
-**Publication status:** **NO-GO for manuscript** until quantitative and novelty gates are passed.
+**Publication status:** **NO-GO for manuscript**.
 
-## 1. Preferred physical architecture
+## 1. Current physical question
 
-Generation A is now a **calorimetrically triggered rf-SQUID bifurcation**:
+Can one absorbed LWIR photon drive a Josephson/rf-SQUID circuit through a directionally selected fold, after which the circuit recovers into a persistent superconducting flux state, while cold false-switching remains extremely low?
+
+Generation A deliberately uses a small external flux tilt. It is **not photovoltaic**. Generation B may later test intrinsic zero-external-flux directionality.
+
+Preferred write sequence:
 
 ```text
-single absorbed 8–14 um photon
+8–14 um photon
  -> hot-electron / quasiparticle pulse
- -> transient change of the Josephson current-phase relation
- -> metastable flux well reaches a saddle-node and disappears
- -> phase moves toward the flux-favored surviving basin
- -> Josephson coupling recovers
- -> persistent superconducting flux state is latched
+ -> temperature-dependent Josephson CPR changes
+ -> metastable load-line intersection reaches a fold and disappears
+ -> phase moves to favored basin
+ -> CPR recovers
+ -> persistent flux state remains
 ```
 
-This is stronger than the initial fixed-barrier thermal-hopping picture. The optical write may be dissipative; the stored state can subsequently be superconducting and nondissipative.
+The optical write may be dissipative. The stored state can be superconducting and nondissipative.
 
-This architecture is **not yet novel by default**. Important pieces already exist in prior art: photon-triggered Josephson switching, single-photon-to-single-flux memory, optically written persistent flux, and transient critical-current suppression of an rf-SQUID barrier. See `LITERATURE_LEDGER.md`.
+## 2. Noise statement
 
-## 2. Noise statement retained from the original question
+For an ideal cold storage channel with `Re Z -> 0`, the ordinary finite-frequency resistive Johnson contribution vanishes. This does **not** imply zero total noise or zero dark counts.
 
-For an ideal cold superconducting storage channel with `Re Z -> 0`, the ordinary finite-frequency resistive Johnson contribution vanishes. This does not imply zero total detector noise or zero dark events.
-
-The relevant false-event channels are instead
+Relevant limits now are
 
 ```text
 thermal phase escape
 macroscopic quantum tunneling (MQT)
-quasiparticles
+residual quasiparticles
 vortices / trapped flux
 stray photons
-flux/readout backaction
+readout backaction
 reset errors
+photon statistics.
 ```
 
-The device should therefore be judged primarily by `P_capture`, `P_wrong`, DCR, stored-state SNR, dead time and reset cost, not by Johnson noise alone.
+The important detector metrics are therefore `P_capture`, `P_wrong`, DCR, stored-state SNR, reset time/energy and system optical efficiency.
 
-## 3. Exact sinusoidal Generation-A model
+## 3. Preferred general CPR formulation
 
-For the benchmark sinusoidal current-phase relation,
-
-```math
-U(\phi,T_e)=\frac{E_L}{2}(\phi-\phi_x)^2-E_J(T_e)\cos\phi,
-```
-
-where
+Define
 
 ```math
-E_L=\frac1L\left(\frac{\Phi_0}{2\pi}\right)^2,
+I_* = \frac{\Phi_0}{2\pi L},
 \qquad
-\beta(T_e)=\frac{2\pi L I_c(T_e)}{\Phi_0}.
+\mathcal I(x,T)=\frac{I_s(x,T)}{I_*},
 ```
 
-Choose an external directional tilt
+with phase force
 
 ```math
-\phi_x=\pi+\delta,
+F(x,T)=x-\delta-\mathcal I(x,T).
+```
+
+A static fold obeys
+
+```math
+\boxed{\mathcal I(x_f,T_f)=x_f-\delta,}
 \qquad
-x=\phi-\pi.
+\boxed{\partial_x\mathcal I(x_f,T_f)=1.}
 ```
 
-Then
+Geometrically, the temperature-dependent CPR is tangent to the loop-inductance load line.
 
-```math
-\boxed{
-u(x)=\frac{U}{E_L}=\frac12(x-\delta)^2+\beta\cos x.}
-```
-
-Stationary points satisfy
-
-```math
-x-\delta-\beta\sin x=0,
-```
-
-with curvature
-
-```math
-\nu''(x)=1-\beta\cos x.
-```
-
-For `delta>0`, the left well is metastable and the right well is energetically favored.
-
-## 4. Exact saddle-node threshold
-
-At disappearance of the metastable well,
-
-```math
-\nu'(x_c)=\nu''(x_c)=0.
-```
-
-Writing `x_c=-a`, `a>0`, gives the exact fold equations
-
-```math
-\boxed{\delta=\tan a-a,}
-\qquad
-\boxed{\beta_c=\sec a.}
-```
-
-For small `delta`,
-
-```math
-\boxed{\beta_c-1\sim\frac12(3\delta)^{2/3}.}
-```
-
-The static photon-trigger criterion is
-
-```math
-\boxed{\beta_{cold}>\beta_c>\beta_{hot}.}
-```
-
-If only the amplitude `I_c` changes,
-
-```math
-\boxed{
-q_{req}>1-\frac{\beta_c}{\beta_{cold}}
-}
-```
-
-is the required fractional `I_c` suppression.
-
-## 5. General current-phase-relation fold — preferred formulation
-
-A graphene/proximity junction need not have a sinusoidal CPR. Define the current scale
-
-```math
-I_* = \frac{\Phi_0}{2\pi L}
-```
-
-and choose the loop-current sign convention so that
-
-```math
-\mathcal I(x,T)=\frac{I_s(x,T)}{I_*}.
-```
-
-The dimensionless potential and phase force can be written
-
-```math
-u(x,T)
-=\frac12(x-\delta)^2
--\int^x \mathcal I(\theta,T)d\theta,
-```
-
-```math
-F(x,T)=\partial_x\nu=x-\delta-\mathcal I(x,T).
-```
-
-A completely general static saddle-node satisfies
-
-```math
-\boxed{
-\mathcal I(x_c,T_c)=x_c-\delta,
-}
-```
-
-```math
-\boxed{
-\partial_x\mathcal I(x_c,T_c)=1.
-}
-```
-
-Geometrically: the temperature-dependent Josephson CPR becomes tangent to the inductive load line.
-
-If the CPR is separable,
+If
 
 ```math
 \mathcal I(x,T)=\beta(T)f(x),
@@ -174,319 +78,335 @@ If the CPR is separable,
 then
 
 ```math
-\boxed{
-\beta_c=\frac1{f'(x_c)},
+\boxed{\beta_c=1/f'(x_f),}
 \qquad
-\delta=x_c-\frac{f(x_c)}{f'(x_c)}.
-}
+\boxed{\delta=x_f-f(x_f)/f'(x_f).}
 ```
 
-The sinusoidal result is recovered with `f(x)=sin x`.
-
-### Universal fold scaling
-
-For any smooth one-parameter crossing of a nondegenerate fold,
+The old sinusoidal result is the special case `f(x)=sin x`:
 
 ```math
-F\simeq F_p\Delta p+\frac12F_{xx}(x-x_c)^2.
+\delta=\tan a-a,
+\qquad
+\beta_c=\sec a.
 ```
 
-Therefore the disappearing-well barrier has the universal local scaling
-
-```math
-\boxed{
-\Delta U
-\simeq
-\frac{4\sqrt2}{3}E_L
-\frac{|F_p\Delta p|^{3/2}}{\sqrt{|F_{xx}|}}.
-}
-```
-
-For a separable amplitude control `p=beta`, this becomes
-
-```math
-\boxed{
-\Delta U
-\simeq
-\frac{4\sqrt2}{3}E_L
-\frac{|f_c|^{3/2}}{\sqrt{|\beta_c f''_c|}}
-|\beta-\beta_c|^{3/2}.
-}
-```
-
-The minimum curvature scales as `|beta-beta_c|^(1/2)`, hence
-
-```math
-\omega_m\propto|\beta-\beta_c|^{1/4},
-```
-
-and the basic quantum-action scale behaves as
-
-```math
-\Delta U/(\hbar\omega_m)\propto|\beta-\beta_c|^{5/4}.
-```
-
-This produces the central design conflict: moving cold operation closer to the photon-trigger threshold lowers the required optical perturbation but rapidly weakens cold-state quantum stability.
-
-### CPR-shape sensitivity
-
-A normalized illustrative family
-
-```math
-f_r(x)\propto\sin x+r\sin2x
-```
-
-shows that the threshold is materially CPR-dependent. For `delta=0.05`, `beta_cold=1.5`:
+A sinusoidal benchmark with `delta=0.05`, `beta_cold=1.5`, `I_c=3 uA` gives
 
 ```text
-r       beta_c      required beta suppression
--0.10   1.40065       6.62 %
- 0.00   1.14712      23.53 %
-+0.10   0.99269      33.82 %
-+0.20   0.90225      39.85 %
-+0.30   0.84584      43.61 %
-```
-
-These are sensitivity examples, not a graphene CPR model. They establish that a measured or microscopic CPR is mandatory before treating `23.5%` as a real device threshold.
-
-Reproducible calculation: `calculations/general_cpr_fold.py`.
-
-## 6. Sinusoidal numerical benchmark
-
-Exploratory parameters:
-
-```text
-delta       = 0.05 rad
-beta_cold   = 1.5
-I_c,cold    = 3.0 uA
-C           = 200 fF
-```
-
-Exact results:
-
-```text
-a                         = 0.512040 rad
-beta_c                    = 1.147122
-required I_c suppression  = 23.53 %
+beta_c                    = 1.14712
+required scalar Ic drop   = 23.53 %
 L                         = 164.55 pH
-E_L/k_B                   = 47.67 K
-x_left                    = -1.436492
-x_saddle                  = -0.100507
-x_right                   = +1.549665
-Delta U_left/k_B          = 9.443 K
-Delta U_right/k_B         = 16.570 K
-well bias/k_B             = 7.127 K
-f_p,left                  = 24.80 GHz
+cold barrier / k_B        = 9.443 K
+local fp at C=200 fF      = 24.80 GHz
+state separation          = 0.4753 Phi0 = 5.97 uA.
 ```
 
-The earlier cubic MQT expression gives a diagnostic exponent near 57, but this is **not** an absolute DCR until the dissipative bounce and prefactor are treated correctly.
+This is a benchmark only, not the preferred physical CPR.
 
-### Readout-state correction
+## 4. Universal near-fold structure
 
-Fluxoid labels do not imply measured loop-flux separation exactly equal to `Phi0`. For this benchmark,
+For any smooth one-parameter nondegenerate fold,
+
+```math
+F\simeq F_p\Delta p+\frac12F_{xx}(x-x_f)^2.
+```
+
+The disappearing barrier is
 
 ```math
 \boxed{
-\Delta\Phi
-=\frac{\Phi_0}{2\pi}(x_R-x_L)
-=0.47526\Phi_0,
+\Delta U
+\simeq
+\frac{4\sqrt2}{3}E_L
+\frac{|F_p\Delta p|^{3/2}}
+{\sqrt{|F_{xx}|}}.
 }
 ```
 
-so
+Therefore
 
 ```math
-\boxed{\Delta I=5.97\,\mu\mathrm A.}
-```
-
-Future readout/SNR calculations must use the actual stationary points.
-
-Reproducible calculation: `calculations/rfsquid_bifurcation_scan.py`.
-
-## 7. Deterministic phase timescale
-
-A minimal RCSJ diagnostic gives
-
-```math
-x''+\alpha x'+x-\delta-\beta(s)\sin x=0,
+\Delta U\propto|p-p_f|^{3/2},
 \qquad
-s=t/\sqrt{LC},
+\omega_m\propto|p-p_f|^{1/4},
+\qquad
+\Delta U/(\hbar\omega_m)\propto|p-p_f|^{5/4}.
 ```
 
-with
+This is the central physical tradeoff: moving cold operation closer to the fold reduces the photon perturbation needed but rapidly damages cold quantum stability.
+
+## 5. Optical fold-energy condition
+
+For arbitrary electronic heat capacity,
 
 ```math
-\alpha=\sqrt{L/C}/R_{eff}.
+\eta_{th}E_\gamma
+=\int_{T_0}^{T_{pk}}C_e(T)dT.
 ```
 
-For the benchmark,
-
-```text
-sqrt(LC)=5.74 ps.
-```
-
-A square pulse from `beta=1.5` to `beta_hot=1.05<beta_c` crosses `x=0` in roughly `20 ps` over representative weak-to-moderate damping used in the diagnostic.
-
-This is orders of magnitude shorter than the `~75 ns` electron-phonon relaxation scale extracted in the 2026 graphene single-photon experiment. Thus phase motion is unlikely to be the bottleneck if the optical pulse genuinely drives the CPR through the fold.
-
-Capture is not yet proved: finite-rate fold passage, damping, retrapping and noise must still be solved.
-
-## 8. Optical-to-bifurcation thermal closure
-
-Define the critical electron temperature by the **actual CPR fold condition**. In the scalar-amplitude approximation this reduces to
+The static optical threshold is
 
 ```math
 \boxed{
-I_c(T_{crit})
-=I_c(T_0)\frac{\beta_c}{\beta_{cold}}.
+E_{fold}
+=\frac1{\eta_{th}}
+\int_{T_0}^{T_f}C_e(T)dT.
 }
 ```
 
-For a graphene-like electronic calorimeter with
-
-```math
-C_e=\gamma_S A T,
-```
-
-the absorbed-energy threshold is
+For `C_e=gamma_S A T`,
 
 ```math
 \boxed{
-\eta_{th}h\nu
-\ge
-\frac{\gamma_S A}{2}
-(T_{crit}^2-T_0^2).
+E_{fold}
+=\frac{\gamma_S A}{2\eta_{th}}(T_f^2-T_0^2).
 }
 ```
 
-Equivalently,
+`T_f` must come from the **full CPR fold**, not an assumed `I_c(T)` unless the CPR is shape-invariant.
+
+## 6. Finite dwell time above the fold
+
+Static peak temperature is insufficient. For lumped monotonic cooling
+
+```math
+C_e(T)\dot T=-P_{cool}(T),
+```
+
+the available write interval is
 
 ```math
 \boxed{
-A_{max}
-=\frac{2\eta_{th}h\nu}
-{\gamma_S(T_{crit}^2-T_0^2)}.
+t_>(E_\gamma)
+=\int_{T_f}^{T_{pk}(E_\gamma)}
+\frac{C_e(T)}{P_{cool}(T)}dT.
 }
 ```
 
-Using a reference calorimeter eliminates `gamma_S`:
+A minimal necessary settling budget is
 
 ```math
 \boxed{
-\eta_{th,min}
-=\frac{A}{A_{ref}}
-\frac{E_{ref}}{E_\gamma}
-\frac{T_{crit}^2-T_0^2}
-{T_{pk,ref}^2-T_0^2}.
+t_{req}(C)=
+\max\left[t_{diff},\ g\sqrt{LC},\ 2R_{hot}C\right].
 }
 ```
 
-### Conditional 10-µm margin
+The detector requires
 
-The published 2026 MoRe/graphene device reports an approximately 30% decrease in switching-current scale between `20 mK` and `1.2 K`. If a comparable monotonic equilibrium `I_c(T)` were applicable to the proposed nonequilibrium hot-electron pulse, the sinusoidal benchmark's `23.53%` threshold would occur at some
-
-```text
-T_crit <= 1.2 K.
+```math
+\boxed{t_>(E_\gamma)\ge t_{req}(C).}
 ```
 
-Using the same published thermal reference
+For the published graphene characteristic values `l_D~230 um`, `tau_ep~75 ns`, the inferred scale is `D~0.705 m^2/s`. A 15.5-um^2 square absorber then has `L_abs^2/D~22 ps`, comparable to the current ~20-ps phase-passage benchmark and far shorter than the quoted E-Ph scale.
 
-```text
-A_ref       = 100 um^2
-lambda_ref  = 1.55 um
-T_pk,ref    = 2.5 K
-T0          = 0.020 K
+## 7. Clean-graphene cooling closure
+
+For the idealized lumped laws
+
+```math
+C_e=\gamma_SAT,
+\qquad
+P_{e-ph}=\Sigma A(T^4-T_0^4),
 ```
 
-and a `10 um` photon gives at `T_crit=1.2 K`:
-
-```text
-E_gamma                          = 123.98 meV
-A_max at eta_th=1                = 67.29 um^2
-energy-scaled target area        = 15.50 um^2
-heat-capacity area margin        = 4.34 x
-eta_th,min for A=15.5 um^2       = 0.230
-required retained electronic heat= 28.56 meV
+```math
+\boxed{
+t_>
+=\frac{\gamma_S}{4\Sigma T_0^2}
+\ln\left[
+\frac{(T_{pk}^2-T_0^2)(T_f^2+T_0^2)}
+{(T_{pk}^2+T_0^2)(T_f^2-T_0^2)}
+\right].
+}
 ```
 
-So simple heat capacity does not presently kill the idea. Under this **conditional** benchmark, only about 23% of a 10-µm photon's absorbed energy would need to remain in the electronic system to reach 1.2 K in a 15.5-µm^2 absorber.
+A nontrivial consequence is a finite maximum dwell time even for `T_pk -> infinity`:
 
-The caveat is substantial: equilibrium switching current versus bath temperature is not automatically the nonequilibrium `I_s(phi,T_e)` of a single-photon pulse.
-
-Reproducible calculation: `calculations/thermal_bifurcation_margin.py`.
-
-## 9. Published thermal/Josephson benchmarks retained
-
-Huang et al. 2026:
-
-```text
-100 um^2 graphene active area
-T_1p ~ 2.5 K in fitted thermal model
-tau_ep ~ 75 ns
-eta ~ 0.87 at dark count < 1/s
-eta ~ 0.75 at dark count < 1/week
+```math
+\boxed{
+t_{>,max}
+=\frac{\gamma_S}{4\Sigma T_0^2}
+\ln\left(\frac{T_f^2+T_0^2}{T_f^2-T_0^2}\right)
+\simeq\frac{\gamma_S}{2\Sigma T_f^2}
+}
 ```
 
-Jung et al. 2026 shows that proximity-JJ thermal critical-current sensitivity is engineerable, with reported examples around
+for `T_0 << T_f`.
 
-```text
-|dJ_c/dT| ~ 0.2 uA K^-1 um^-1 at 0.1 K  (Al platform)
-max |(dI_c/dT)/I_c| ~ 0.6 K^-1 at 50 mK (Ti platform).
+Thus
+
+```math
+\boxed{t_{req}\ge t_{>,max}}
 ```
 
-These are plausibility benchmarks, not direct parameters for Experiment 03.
+is an impossibility condition **within this lumped `T^4` cooling model**: increasing photon energy cannot overcome an intrinsically too-slow write circuit because high-temperature cooling accelerates strongly.
 
-## 10. Prior-art boundary
+## 8. Cold stability and capacitance window
 
-The following broad claims are closed:
+Thermal false switching requires approximately
 
-```text
-LWIR superconducting single-photon detection                     PRIOR ART
-photon -> hot graphene -> Josephson switching                    PRIOR ART
-single photon -> persistent superconducting single-flux memory   PRIOR ART
-optical heating -> permanent superconducting flux/vortex         PRIOR ART
-transient I_c suppression -> rf-SQUID barrier lowering/freeze    PRIOR ART
-field-free Josephson/superconducting diode directionality        PRIOR ART
-illumination -> superconducting phase battery/vorticity          PRIOR ART
+```math
+\Delta U_c\gtrsim k_BT_0\ln(\Omega_T/D).
 ```
 
-The strongest direct collisions are:
+For the present provisional cubic-form quantum-escape model,
 
-- Onen et al. 2020: single-photon-to-single-flux conversion with superconducting multilevel memory;
-- Rochet et al. 2020: optically written permanent single vortices;
-- Zhou/Habif/Bocko/Feldman 2001: transient `I_c` suppression as an rf-SQUID tipping/freeze mechanism.
-
-No novelty claim is authorized.
-
-## 11. Surviving research corridor
-
-The branch remains worth pursuing only if one of these survives quantitative and collision review:
-
-1. realistic **single-LWIR-photon calorimetric bifurcation** with high capture and exceptionally low cold DCR;
-2. a new general closure connecting photon heat capacity, full CPR, fold threshold, cold barrier/MQT, damping and stored readout signal;
-3. a genuinely self-directed zero-external-flux implementation not already covered by diode / phase-battery prior art;
-4. a matched performance consequence not already achieved by SNSPD, KID, graphene-JJ or single-photon-single-flux platforms;
-5. a useful impossibility/optimality bound if the device itself fails.
-
-## 12. Immediate next calculation
-
-The static fold problem is now solved both for sinusoidal and general CPRs. The decisive next problem is
-
-```text
-absorbed 8–14 um photon
- -> nonequilibrium T_e(t), including diffusion and e-ph loss
- -> physically defensible I_s(phi,T_e)
- -> time-dependent fold crossing
- -> stochastic/damped basin capture
- -> P_capture, P_wrong, P_no-switch
+```math
+\Gamma_Q(C)
+=\frac{\omega(C)}{2\pi}
+\exp\left[-\alpha_Q\frac{\Delta U_c}{\hbar\omega(C)}\right],
+\qquad
+\omega(C)=\sqrt{\frac{\kappa_c}{LC}},
 ```
 
-Cold-state dark rates must be treated separately from the exact metastable potential using thermal activation plus **dissipative** MQT.
+with `alpha_Q~7.2`, target DCR `D` gives
 
-Priority data need: measured or microscopic `I_s(phi,T)` / `I_c(T)` for the actual proposed junction, not an assumed scalar temperature law.
+```math
+\boxed{
+C_{min,Q}
+=
+\frac{\hbar^2\kappa_c}
+{\alpha_Q^2\Delta U_c^2L}
+\left[
+W\left(
+\frac{\alpha_Q\Delta U_c}{2\pi\hbar D}
+\right)
+\right]^2.
+}
+```
 
-## 13. Current verdict
+This Lambert-W result is exact algebra **inside the provisional MQT rate model**, not an exact dissipative rf-SQUID DCR.
+
+Write dynamics gives
+
+```math
+C<C_{max,R}=\frac{t_>}{2R_{hot}},
+```
+
+```math
+C<C_{max,\phi}=\frac{t_>^2}{g^2L}.
+```
+
+Therefore
+
+```math
+\boxed{
+C_{min,Q}<C<\min(C_{max,R},C_{max,\phi}).
+}
+```
+
+Subject only to these monotonic constraints, the smallest write burden occurs near `C=C_min,Q`.
+
+## 9. Current compact feasibility closure
+
+Define
+
+```math
+\boxed{
+t_{req}^*=
+\max\left[
+t_{diff},\ g\sqrt{LC_{min,Q}},\ 2R_{hot}C_{min,Q}
+\right].
+}
+```
+
+A candidate device must at minimum satisfy
+
+```math
+\boxed{E_\gamma\ge E_{fold},}
+```
+
+```math
+\boxed{t_>(E_\gamma)\ge t_{req}^*,}
+```
+
+```math
+\boxed{\Delta U_c\gtrsim k_BT_0\ln(\Omega_T/D).}
+```
+
+This is the strongest current theoretical object. It links photon energy, heat capacity, the full CPR/load-line fold, cold metastability, provisional MQT suppression, capacitance and write dynamics.
+
+Detailed derivation: `FEASIBILITY_CLOSURE_2026-08-15.md`.
+
+## 10. Graphene CPR model boundary
+
+Measured ballistic graphene CPRs are strongly forward-skewed at low temperature and evolve toward sinusoidal at higher temperature. Junction length and interface properties matter.
+
+The Huang 2026 MoRe/graphene photon detector has a 600-nm junction. Using the quoted MoRe gap scale `Delta~1.3 meV` and `v_F~1e6 m/s` gives
+
+```math
+\xi\sim\hbar v_F/\Delta\approx0.51\,\mu m,
+```
+
+so `L_JJ/xi~1.2`.
+
+Therefore the Titov-Beenakker short-junction closed form is **not controlled** for that device. Arbitrary-length CPR theory or measured `I_s(phi,T)` is required.
+
+The short-junction Dirac calculation is retained only as a sensitivity study.
+
+## 11. Toy short-Dirac optimization
+
+For the current 15.5-um^2 thermal scaling and provisional `D=1e-6 s^-1` MQT target:
+
+| beta_cold | T_fold | eta_th,min | cold barrier/k_B | C_min,Q |
+|---:|---:|---:|---:|---:|
+| 0.60 | 0.787 K | 0.099 | 0.454 K | 30.3 pF |
+| 0.70 | 1.506 K | 0.363 | 2.048 K | 2.10 pF |
+| 0.80 | 2.172 K | 0.755 | 4.409 K | 0.520 pF |
+| 0.85 | 2.480 K | 0.984 | 5.805 K | 0.314 pF |
+| 0.90 | 2.769 K | 1.227 | 7.309 K | 0.206 pF |
+
+This illustrates an **interior operating corridor**:
+
+- too close to the fold: optical trigger easy, quantum stability expensive in capacitance;
+- too far: cold state robust, but the fixed photon energy cannot reach the fold.
+
+At `beta=0.8`, if `t_>=10 ns`, `C_min,Q~0.52 pF` implies the simple damping requirement
+
+```math
+R_{hot}\lesssim9.6\,k\Omega.
+```
+
+The numbers are not transferable to the intermediate-length real junction.
+
+## 12. Prior-art boundary
+
+Do **not** claim novelty for:
+
+```text
+LWIR superconducting single-photon detection
+infrared photon -> hot graphene -> Josephson switching
+photon heating -> proximity-JJ Ic suppression -> SQUID voltage detection
+single photon -> persistent superconducting single-flux memory
+optical heating -> permanent superconducting flux/vortices
+transient Ic suppression -> rf-SQUID tipping/freeze
+field-free Josephson directionality
+illumination-driven superconducting phase batteries/vorticity
+non-sinusoidal temperature-dependent graphene CPRs.
+```
+
+Important direct collisions include Walsh/Huang, Solinas-Giazotto-Pepe, Onen, Rochet, Zhou/Habif/Bocko/Feldman, and Mironov/Mel'nikov/Buzdin. See `LITERATURE_LEDGER.md`.
+
+## 13. Immediate next calculation
+
+The static theory is sufficiently developed. The decisive remaining chain is
+
+```text
+arbitrary-length realistic I_s(phi,T)
+ -> exact fold curve T_f
+ -> exact cold barrier/curvature
+ -> C_min,Q using improved dissipative MQT
+ -> thermal pulse with diffusion/contact/e-ph loss
+ -> stochastic finite-rate fold passage
+ -> P_capture, P_wrong, P_no-switch.
+```
+
+The most urgent physics input is a defensible arbitrary-length proximity-JJ CPR for a realistic 8–14-um absorber/Josephson geometry.
+
+## 14. Current verdict
 
 **GO for continued theory. NO-GO for manuscript.**
 
-Physical feasibility has strengthened: the exact circuit admits a fold trigger and the first thermal-energy margin is nonempty. Simultaneously, the literature audit has eliminated several broad novelty routes. The next work must therefore become more quantitative, not more speculative.
+A nonempty idealized operating corridor exists, but broad architectural novelty has collided repeatedly with prior art. The remaining possible contribution is increasingly the **quantitative feasibility/optimality closure**, not the mere device concept.
