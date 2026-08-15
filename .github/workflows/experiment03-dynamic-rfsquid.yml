@@ -30,7 +30,7 @@ jobs:
 
       - name: Run full nonlinear CPR-RCSJ smoke regression
         working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
-        run: python full_dynamic_rfsquid.py --quick
+        run: python full_dynamic_smoke.py
 
       - name: Run sudden-quench threshold regression
         working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
