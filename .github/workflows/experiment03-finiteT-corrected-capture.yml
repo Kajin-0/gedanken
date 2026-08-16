@@ -1,0 +1,28 @@
+name: Experiment 03 corrected finite-T capture frontier
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/finiteT_corrected_capture_frontier.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/nonlinear_fdt_twa_screen.py'
+      - '.github/workflows/experiment03-finiteT-corrected-capture.yml'
+
+jobs:
+  capture:
+    strategy:
+      fail-fast: false
+      matrix:
+        delta: ['0.180','0.190','0.200','0.210']
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python finiteT_corrected_capture_frontier.py --delta ${{ matrix.delta }}
