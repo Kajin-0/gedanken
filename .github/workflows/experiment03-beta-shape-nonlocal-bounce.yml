@@ -1,0 +1,24 @@
+name: Experiment 03 shaped nonlocal bounce
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/beta_shape_nonlocal_bounce.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/R80_nonlocal_bounce_spectral.py'
+      - '.github/workflows/experiment03-beta-shape-nonlocal-bounce.yml'
+
+jobs:
+  bounce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python beta_shape_nonlocal_bounce.py
