@@ -1,0 +1,32 @@
+name: Experiment 03 staged harmonic HEOM probe
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_harmonic_port_probe.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_harmonic_port_validation.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/direct_port_bath_correlation.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt'
+      - '.github/workflows/experiment03-heom-harmonic-probe.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [base, depth, mats, basis, noct, deep]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
+      - run: python -m pip install -r requirements-heom.txt
+      - run: python heom_harmonic_port_probe.py --case ${{ matrix.case }}
