@@ -1,0 +1,25 @@
+name: Experiment 03 correlated Drude equilibrium
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/drude_equilibrium_covariance.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/drude_bath_variance.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/full_dynamic_rfsquid.py'
+      - '.github/workflows/experiment03-drude-equilibrium.yml'
+
+jobs:
+  covariance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python drude_equilibrium_covariance.py
