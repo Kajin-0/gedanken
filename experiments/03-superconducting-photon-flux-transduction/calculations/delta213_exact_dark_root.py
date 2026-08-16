@@ -29,9 +29,9 @@ def total(r,nb=64,ng=8192,verbose=False):
     gt=fo.thermal_rate(s['st'])
     G=s['Gamma']+gt['Gamma']
     if verbose:
-        print(f'r={r:.10f} Bper={s["B"]:.10f} Aper={s["A1"]:.9e}/s '
+        print(f'r={r:.10f} Bper={s["B"]:.10f} Aper={s["A"]:.9e}/s '
               f'Gper={s["Gamma"]:.9e}/s Gth={gt["Gamma"]:.9e}/s Gtot={G:.9e}/s '
-              f'T0/Tx={fd.T0/s["Tx"]:.8f} nneg={s["nneg"]} zero={s["zero"]:.10f}')
+              f'T0/Tx={fd.T0/s["Tx"]:.8f} nneg={s["nneg"]} zero={s["zero_overlap"]:.10f}')
     return G,s,gt
 
 
