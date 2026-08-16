@@ -1,0 +1,26 @@
+name: Experiment 03 finite-pulse unitary phase benchmark
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/time_dependent_unitary_phase.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/phase_dvr_basis_convergence.py'
+      - '.github/workflows/experiment03-finite-pulse-unitary-phase.yml'
+  workflow_dispatch:
+
+jobs:
+  unitary-phase:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - run: python -m pip install -r requirements.txt
+      - run: python time_dependent_unitary_phase.py --delta 0.212 --area 490 --nx 2048 --dt-ps 0.05 --tmax-ps 1000 --ntemp 241
