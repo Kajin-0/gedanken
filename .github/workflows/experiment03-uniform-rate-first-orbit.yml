@@ -1,0 +1,28 @@
+name: Experiment 03 first-orbit uniform rate probe
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/uniform_rate_first_orbit_probe.py'
+      - '.github/workflows/experiment03-uniform-rate-first-orbit.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        delta: ['0.210','0.211','0.212','0.213','0.214']
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - run: python -m pip install -r requirements.txt
+      - run: python uniform_rate_first_orbit_probe.py --delta ${{ matrix.delta }}
