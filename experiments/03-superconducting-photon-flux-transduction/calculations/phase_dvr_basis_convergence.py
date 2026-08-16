@@ -42,8 +42,11 @@ import full_dynamic_rfsquid as fd
 from quantum_initial_capture import HBAR, KB, PHI_BAR
 
 L0=111.5e-12; C0=215e-15
+# Exact/current fixed-dark electrical scales for the safe plateau.  In
+# particular, .212 is the total-dark root used by the N=8192 certification,
+# not the older periodic-only/stale value 10.62175909.
 ROOTS={
-    .21200:10.62175909,
+    .21200:10.6229699624,
     .21225:10.749111487,
     .21250:10.885578211,
     .21275:11.035674041,
@@ -73,7 +76,7 @@ def spectrum(model,T,C,xmin,xmax,n,k):
     U,F=potential_J(model,T,x)
     H,t=hamiltonian(U,x,C)
     # Shift-invert is essential here: the finite-difference kinetic diagonal is
-    # O(10-100 K), while the target spectrum is O(0.1 K).  sigma=0 returns the
+    # O(10-100 K), while the target spectrum is O(0.1 K). sigma=0 returns the
     # eigenvalues closest to the physical potential minimum.
     ev,vec=eigsh(H,k=k,sigma=0.0,which='LM',tol=2e-12,maxiter=100000)
     ii=np.argsort(ev); ev=ev[ii]; vec=vec[:,ii]
@@ -105,7 +108,7 @@ def run(delta):
         wm=math.sqrt(km/(L0*C)); harmK=HBAR*wm/KB
         Tf=model.fold_temperature(hi=.98); Tad=fd.adiabatic_photon_temperature(14.,500.)
         nbar=1/(math.exp(HBAR*wm/(KB*fd.T0))-1)
-        print(f'delta={delta:.5f} r={r:.9f} C={C*1e12:.6f}pF '
+        print(f'delta={delta:.5f} r={r:.10f} C={C*1e12:.6f}pF '
               f'xm={xm:+.8f} xs={xs:+.8f} xr={xr:+.8f} '
               f'fm={wm/(2*math.pi)*1e-9:.7f}GHz hbarwm/kB={harmK:.8f}K '
               f'nbar20mK={nbar:.8e} Tf={Tf:.8f}K Tad14umA500={Tad:.8f}K')
