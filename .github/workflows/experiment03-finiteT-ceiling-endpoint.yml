@@ -1,0 +1,23 @@
+name: Experiment 03 finite-T ceiling electrical endpoint
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/finiteT_ceiling_endpoint_scale.py'
+      - '.github/workflows/experiment03-finiteT-ceiling-endpoint.yml'
+
+jobs:
+  endpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python finiteT_ceiling_endpoint_scale.py
