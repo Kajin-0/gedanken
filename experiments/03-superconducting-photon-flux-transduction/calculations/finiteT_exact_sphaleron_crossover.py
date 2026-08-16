@@ -41,17 +41,17 @@ def main():
             fd.DELTA_TILT=delta
             model=fd.DynamicForce(.6,quick=False,Tmax=.98)
             b=directional_barriers(model,fd.T0)
-            xs=b['saddle']
-            Fs=float(model.spline.ev(fd.T0,xs,dx=0,dy=1))
+            xs=model._scalar(b['saddle'])
+            Fs=model._scalar(model.spline.ev(fd.T0,xs,dx=0,dy=1))
             roots=model.roots(fd.T0)
             xm=max(x for x,kap in roots if x<0 and kap>0)
-            km=float(model.spline.ev(fd.T0,xm,dx=0,dy=1))
+            km=model._scalar(model.spline.ev(fd.T0,xm,dx=0,dy=1))
             r=B_TARGET/B0
             C=C0*r*r; R=R0/r
             wc=math.sqrt(km/(L*C)); wd=ALPHA*wc
             def lam(T):
                 nu=2*math.pi*KB*T/HBAR
-                Y=float(Y_laplace(nu,R,wd))
+                Y=model._scalar(Y_laplace(nu,R,wd))
                 return C*nu*nu + nu*Y + Fs/L
             # At T->0 the saddle curvature term is negative.  At high T the
             # inertial term is positive, so a root must occur while the reduced
@@ -59,8 +59,6 @@ def main():
             Tx=brentq(lam,1e-5,.5,xtol=1e-13,rtol=1e-12,maxiter=300)
             lam20=lam(fd.T0)
             nu20=2*math.pi*KB*fd.T0/HBAR
-            # Normalize Lambda by the magnitude of saddle curvature for a
-            # transparent sign/margin diagnostic.
             norm=abs(Fs/L)
             msg=(f'delta={delta:.3f}: r={r:.7f} C={C*1e15:.3f}fF R={R:.4f}ohm '
                  f'fc={wc/(2*math.pi)*1e-9:.5f}GHz Fs={Fs:+.7f} '
