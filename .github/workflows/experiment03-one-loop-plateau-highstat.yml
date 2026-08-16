@@ -1,0 +1,28 @@
+name: Experiment 03 one-loop plateau high statistics
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/one_loop_rate_plateau_highstat.py'
+      - '.github/workflows/experiment03-one-loop-plateau-highstat.yml'
+  workflow_dispatch:
+
+jobs:
+  plateau:
+    strategy:
+      fail-fast: false
+      matrix:
+        delta: ['0.210','0.211','0.212']
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - run: python -m pip install -r requirements.txt
+      - run: python one_loop_rate_plateau_highstat.py --delta ${{ matrix.delta }}
