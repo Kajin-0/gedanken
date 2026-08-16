@@ -6,7 +6,7 @@ and .212, the last Gaussian one-loop points before the soft-mode-provisional
 region begins at .213.
 
 Capture remains a symmetrized-FDT TWA screening quantity, not an exact quantum
-efficiency.
+efficiency.  N=2048 is used here to sharpen the final boundary comparison.
 """
 from __future__ import annotations
 
