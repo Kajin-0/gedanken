@@ -1,0 +1,27 @@
+name: Experiment 03 self-consistent one-loop rate manifold
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/finiteT_one_loop_rate_manifold.py'
+      - '.github/workflows/experiment03-one-loop-rate-manifold.yml'
+
+jobs:
+  solve:
+    strategy:
+      fail-fast: false
+      matrix:
+        delta: ['0.1800','0.2000','0.2025','0.2050','0.2075','0.2100']
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python finiteT_one_loop_rate_manifold.py --delta ${{ matrix.delta }}
