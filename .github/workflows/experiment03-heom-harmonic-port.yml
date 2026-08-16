@@ -1,0 +1,27 @@
+name: Experiment 03 harmonic direct-port HEOM validation
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_harmonic_port_validation.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/direct_port_bath_correlation.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt'
+      - '.github/workflows/experiment03-heom-harmonic-port.yml'
+  workflow_dispatch:
+
+jobs:
+  harmonic-heom:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
+      - run: python -m pip install -r requirements-heom.txt
+      - run: python heom_harmonic_port_validation.py
