@@ -1,0 +1,24 @@
+name: Experiment 03 beta0.85 capture screen
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/beta085_capture_screen.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/nonlinear_fdt_twa_screen.py'
+      - '.github/workflows/experiment03-beta085-capture.yml'
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python beta085_capture_screen.py
