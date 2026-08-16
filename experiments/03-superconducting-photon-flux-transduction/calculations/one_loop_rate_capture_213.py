@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""2-ns capture screen for delta=.213 on the calibrated Gaussian one-loop rate root.
+"""2-ns capture screen for delta=.213 at the exact calibrated total-dark-rate root.
 
 The crossover branch-topology analysis shows that the production finite-T saddle
 is a finite-amplitude one-negative-mode branch distinct from the tiny branch
-that merges into the sphaleron.  The .213 rate root lies at T0/T_local=.9615,
-well below the local Matsubara bifurcation, so it is restored as an accepted
-Gaussian one-loop dark point.
+that merges into the sphaleron. The exact total-rate solve gives
+r_Gamma=.213 = 11.2051409652 for Gamma_per + Gamma_th ~= 1e-6/s. This capture
+screen must use that exact root; the older 11.19986413 value is superseded.
 
 Capture remains a symmetrized-FDT TWA screening quantity.
 """
@@ -16,7 +16,7 @@ import nonlinear_fdt_twa_screen as nf
 from nonlinear_fdt_twa_convergence import wilson
 from quantum_initial_capture import quantum_covariance
 
-D=.213; RSC=11.19986413
+D=.213; RSC=11.2051409652
 AREAS=(455.,465.,475.,485.,495.,505.)
 C0=215e-15; R0=80.; L0=111.5e-12; ALPHA=.90; N=4096
 
@@ -28,7 +28,7 @@ try:
     model=fd.DynamicForce(.6,quick=False,Tmax=1.02)
     fold=model.fold_temperature(hi=.98)
     wc=quantum_covariance(model,.6)['omega_c']
-    print(f'delta=.213 r_rate={RSC:.9f} C={C*1e15:.3f}fF R={R:.6f}ohm fold={fold:.6f}K fc={wc/(2*math.pi)*1e-9:.6f}GHz N={N}')
+    print(f'delta=.213 r_rate={RSC:.10f} C={C*1e15:.3f}fF R={R:.6f}ohm fold={fold:.6f}K fc={wc/(2*math.pi)*1e-9:.6f}GHz N={N}')
     for A in AREAS:
         o=nf.run_case(model,14.,R=R,alpha=ALPHA,ntraj=N,dt_ps=.125,tpost_ns=2.0,
                       seed=5210212,area_um2=A,rise_ps=20.)
