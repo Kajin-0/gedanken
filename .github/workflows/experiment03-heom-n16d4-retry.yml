@@ -1,0 +1,25 @@
+name: Experiment 03 harmonic HEOM N16 depth4 retry
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_harmonic_n16d4_retry.py'
+      - '.github/workflows/experiment03-heom-n16d4-retry.yml'
+  workflow_dispatch:
+
+jobs:
+  retry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
+      - run: python -m pip install -r requirements-heom.txt
+      - run: python heom_harmonic_n16d4_retry.py --dim 8
