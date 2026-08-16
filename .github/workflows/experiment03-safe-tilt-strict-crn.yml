@@ -1,0 +1,28 @@
+name: Experiment 03 strict paired safe-tilt CRN
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/safe_tilt_strict_crn_pairwise.py'
+      - '.github/workflows/experiment03-safe-tilt-strict-crn.yml'
+  workflow_dispatch:
+
+jobs:
+  compare:
+    strategy:
+      fail-fast: false
+      matrix:
+        area: ['490','495','500']
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - run: python -m pip install -r requirements.txt
+      - run: python safe_tilt_strict_crn_pairwise.py --area ${{ matrix.area }}
