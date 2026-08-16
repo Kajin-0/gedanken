@@ -1,12 +1,12 @@
 # Experiment 03 — CURRENT_STATE
 
-**Updated:** 2026-08-15  
+**Updated:** 2026-08-15 late-session checkpoint  
 **Mode:** exploratory theory / falsification-first  
 **Publication status:** **NO-GO for manuscript**.
 
 ## 1. Current physical question
 
-Can one absorbed LWIR photon drive a proximity-Josephson/rf-SQUID phase into a directionally favored metastable basin with high probability, leave a persistent superconducting flux state after recovery, and simultaneously satisfy a very low dark-switch target under **one physically consistent passive environment**?
+Can one absorbed LWIR photon drive a proximity-Josephson/rf-SQUID phase coordinate into a directionally favored metastable basin with high probability, leave a persistent superconducting flux state after recovery, and simultaneously satisfy a very low dark-switch target under **one physically consistent passive environment**?
 
 Current internal description:
 
@@ -14,38 +14,30 @@ Current internal description:
 photon-triggered nonadiabatic metastable superconducting flux latch
 ```
 
-Generation A uses a small external flux tilt and is **not photovoltaic**. Generation B remains reserved for a later zero-external-flux / intrinsic-directionality mechanism if the theory survives.
+Generation A uses external flux tilt and is **not photovoltaic**. Generation B remains reserved for a later zero-external-flux / intrinsic-directionality mechanism if this theory survives.
 
-## 2. Live canonical force parameters
+## 2. Canonical reduced model
 
-The current model in `calculations/full_dynamic_rfsquid.py` uses
+Static / CPR parameters:
 
 ```text
-DELTA_TILT = 0.05
 BETA_COLD  = 0.80
 LAMBDA_MIX = 0.590
+L           = 111.5 pH
+T0          = 20 mK
 ```
 
-and for the favored `rDelta=.6` family
+The design coordinate now being optimized is positive directional tilt `delta`.
+
+Electrical reference:
 
 ```text
-L = 111.5 pH
-C = 215 fF
-static Tf checkpoint ~= 0.695 K.
+C0 = 215 fF
+R0 = 80 ohm
+alpha = omega_D / omega_c = 0.90
 ```
 
-Any older handoff carrying `DELTA_TILT=.35` or `LAMBDA_MIX=.50` is stale.
-
-Never collapse
-
-```text
-Delta_ind -> induced/minigap controlling ABS spectrum, Ic(T), CPR and fold
-Delta_s   -> parent-electrode gap controlling hot-carrier escape/confinement.
-```
-
-## 3. Current strongest passive capture environment
-
-The leading environment is the passive two-pole network
+Passive bath topology:
 
 ```text
 phase port -- Lf -- node -- (R || Cf) -- ground
@@ -54,497 +46,317 @@ phase port -- Lf -- node -- (R || Cf) -- ground
 with
 
 \[
-L_f=\frac{\sqrt2R}{\omega_D},
-\qquad
+L_f=\frac{\sqrt2R}{\omega_D},\qquad
 C_f=\frac{1}{\sqrt2R\omega_D},
 \]
 
 and
 
 \[
-\boxed{
-\operatorname{Re}Y(\omega)
-=\frac{1/R}{1+(\omega/\omega_D)^4}.
-}
+\boxed{\operatorname{Re}Y(\omega)=\frac{1/R}{1+(\omega/\omega_D)^4}}.
 \]
 
-The principal baseline is
+The same positive-real two-pole environment is used for photon capture, the Euclidean dark saddle, and the fluctuation determinant.
+
+## 3. Capture probabilities remain screening quantities
+
+Photon-capture Monte Carlo uses a real Gaussian force with the **symmetrized** quantum-FDT spectrum plus a cold harmonic Wigner initial state. This is a truncated-Wigner / semiclassical stress model.
+
+Therefore
 
 ```text
-R = 80 ohm
-alpha = omega_D/omega_c = .90.
+P_final from sym-FDT TWA != exact physical quantum efficiency.
 ```
 
-The exact deterministic passive-network energy balance is
-
-\[
-\boxed{
-\frac{d(E/E_L)}{dt}
-=U_T\dot T-\frac{L}{R}w^2.
-}
-\]
-
-The environment suppresses launch less strongly than it damps capture/recovery in the strong-capture regime. Generic selective/frequency-dependent Josephson damping is prior art; only the detector-specific finite-pulse closure remains of interest.
-
-## 4. Capture probabilities are still screening quantities
-
-The current nonlinear Monte Carlo capture workflow uses a real Gaussian force with the **symmetrized** quantum-FDT spectrum. It is a truncated-Wigner / semiclassical stress model.
-
-It does **not** preserve nonsymmetrized quantum detailed balance in a nonlinear metastable system. Therefore
+The current comparison uses
 
 ```text
-P_final from sym-FDT TWA != exact physical quantum efficiency
-zero-photon sym-TWA switching != physical quantum DCR.
+lambda = 14 um
+rise   = 20 ps
+post-pulse classification horizon = 2 ns
+Ntraj  = 1024 per coarse area point
+dt     = 0.125 ps
 ```
 
-See `QUANTUM_DETAILED_BALANCE_CORRECTION_2026-08-15.md`.
-
-The cold harmonic Wigner state and causal linear-bath covariance have been independently regression-tested; the unresolved quantum issue is the nonlinear/open-system crossing itself.
-
-## 5. Exact optical/capture similarity of the reduced thermal model
-
-For `Ce=gamma A T`, fixed normalized rise/cooling law, fixed material and fixed circuit/bath,
+The reduced thermal model has the exact similarity
 
 \[
-\boxed{
-P_{cap}(\lambda,A,\eta_{abs})
-=\mathcal P\!\left(
-\frac{\eta_{abs}}{A\lambda}
-\right).
-}
+\boxed{P_{cap}(\lambda,A,\eta_{abs})=\mathcal P(\eta_{abs}/(A\lambda))},
 \]
 
-At fixed absorption efficiency,
+so at fixed absorption model
 
 \[
-\boxed{A_p\lambda=\mathrm{constant}}
+\boxed{A_p\lambda=\text{constant}}.
 \]
 
-for a target screening probability `p`.
+Any equivalent wavelength inferred from this relation is a **reduced-model similarity result**, not a realistic broadband optical prediction.
 
-Define the thermal headroom
+## 4. Major rejected approximations / closed rescue branches
+
+### Cubic MQT surrogate — rejected
+
+At the original live neighborhood the old cubic formula gave roughly `B~38`, but the exact isolated zero-energy bounce is
 
 \[
-\chi_E
-=\frac{T_{ad}^2-T_0^2}{T_f^2-T_0^2}.
+\boxed{B_{iso}=25.033050}.
 \]
 
-Then at fixed geometry
+The full same-environment zero-temperature nonlocal bounce at `delta=.05, C=215 fF, R=80 ohm` is
 
 \[
-\boxed{
-\lambda_p/\lambda_{fold}=1/\chi_p.
-}
+\boxed{B_{diss}=29.765636}.
 \]
 
-Thus the static fold wavelength is not the high-fidelity dynamic wavelength.
+The original electrical point is therefore dark-unstable under the current model.
 
-## 6. Baseline 14-um capture scale before dark-action rescue
+### Low-tilt rescue — rejected
 
-At the unscaled `C=215 fF`, `R=80 ohm`, `alpha=.90`, 20-ps-rise point, high-stat sym-FDT/TWA screens place the 14-um `P~.99` area transition near
+Lower tilt increases dark action but destroys one-sided stochastic photon capture. Example: at `delta=.035`, even `A=80 um^2` gave only `P_final~0.922` in the relevant screen.
 
-```text
-A ~ 86–87.5 um^2.
-```
+### Beta/barrier-shape rescue — rejected in the current neighborhood
 
-The statistically defensible current statement is:
+Mild shaping such as `beta=.825` raises the Euclidean action but increases the photon-trigger fold enough that its equal-dark-action capture frontier is substantially worse than the `beta=.80` family.
 
-```text
-A=86 um^2 is supported above P=.99 when independent high-stat runs are combined;
-A>=87.5 um^2 is supported below P=.99 in the current screen.
-```
+### Dominant rescue direction
 
-By optical similarity, a fixed `A=100 um^2` absorber therefore has a dynamic 99%-screening wavelength of roughly
+Increase directional tilt, then compensate the lost dark stability electrically. This simultaneously lowers the photon-trigger fold and strengthens directional basin bias while the added capacitance restores dark suppression at the cost of slower phase dynamics.
 
-```text
-~12.0–12.3 um,
-```
+## 5. Exact electrical similarity
 
-not the static fold-only scale near `20 um`.
-
-## 7. Dimensionless finite-pulse controls
-
-For the current two-pole model define
+At fixed loop inductance, static CPR, tilt, and normalized two-pole bath topology,
 
 \[
-\boxed{g=\frac1{RC\omega_c}},
-\qquad
-\boxed{\alpha=\frac{\omega_D}{\omega_c}},
-\qquad
-\boxed{\rho=\omega_c\tau_{rise}}.
-\]
-
-Let `t_c` be first favored-side crossing and `t_r` the cooling-side competing-well reformation. Then
-
-\[
-\Delta s_C=\omega_c(t_r-t_c).
-\]
-
-The simple cross-then-trap mechanism requires
-
-\[
-\boxed{\Delta s_C>0.}
-\]
-
-Define stage-conditioned dissipative factors
-
-\[
-H_{eff,L}^2=\frac{\int_0^{t_c}w^2dt}{\int_0^{t_c}v^2dt},
-\qquad
-H_{eff,C}^2=\frac{\int_{t_c}^{t_r}w^2dt}{\int_{t_c}^{t_r}v^2dt},
-\]
-
-and capture exposure
-
-\[
-\boxed{
-\Lambda_C=gH_{eff,C}^2\Delta s_C.
-}
-\]
-
-Across the current cross-parameter screen, `Lambda_C` is the strongest one-dimensional organizer found so far:
-
-\[
-\rho_{Spearman}(\Lambda_C,1-P)\approx-0.85.
-\]
-
-But it is not sufficient. A simple rectangular threshold rule in `(chi_E,Lambda_C,Lambda_L)` failed an independent holdout with six false negatives. Do not promote fitted scalar thresholds into a theorem.
-
-## 8. Exact deterministic energetic-lock criterion
-
-Once a separating saddle exists, define the extended-system energy relative to it:
-
-\[
-\boxed{
-e_s(t)
-=\frac12LCv^2+[U(x,T)-U(x_s,T)]
-+\frac12\frac{L_f}{L}d^2
-+\frac12LC_fw^2.
-}
-\]
-
-and
-
-\[
-\boxed{
-\dot e_s
-=[U_T(x,T)-U_T(x_s,T)]\dot T
--\frac{L}{R}w^2.
-}
-\]
-
-`e_s<0` on the favored side is a deterministic trapping certificate.
-
-At the baseline R80 point the mean deterministic trajectory is already deeply trapped at reformation for absorber areas where stochastic capture is degrading; therefore the high-fidelity failure is primarily a **distribution/basin-selection problem**, not failure of the mean trajectory to dissipate enough energy.
-
-## 9. Critical correction: the old cubic MQT estimate is rejected
-
-For the live cold `rDelta=.6` R80 point:
-
-```text
-metastable minimum x_m  = -0.6841796
-central saddle          = -0.0204310
-right minimum           = +0.8173092
-zero-energy turning     = +0.3453114
-cold fc                 ~= 27.2559 GHz
-barrier/kB               ~= 6.9097 K
-DeltaU/(hbar omega_c)    ~= 5.2833.
-```
-
-The old cubic approximation
-
-\[
-B_{cubic}\approx7.2\Delta U/(\hbar\omega_c)
-\]
-
-gives
-
-\[
-B_{cubic}\approx38.04.
-\]
-
-This is **not valid for the actual barrier shape**.
-
-The exact isolated zero-energy bounce gives
-
-\[
-\boxed{B_{iso}=25.033050.}
-\]
-
-Thus
-
-\[
-B_{iso}/B_{cubic}\approx0.658.
-\]
-
-The exact shape factor
-
-\[
-\beta_U
-=\frac{B_{iso}}
-       {\Delta U/(\hbar\omega_c)}
-\]
-
-is only
-
-\[
-\boxed{\beta_U\approx4.74.}
-\]
-
-This is one of the most important corrections in Experiment 03.
-
-## 10. Full same-environment nonlocal dissipative bounce
-
-The authoritative zero-temperature dark-action calculation is
-
-```text
-calculations/R80_nonlocal_bounce_spectral.py
-workflow run 31919134623.
-```
-
-It solves the full nonlocal stationary Euclidean equation for the **same passive two-pole environment** used in the capture model.
-
-Convergence:
-
-```text
-Nbasis=24 -> B = 29.77046
-Nbasis=36 -> B = 29.76566
-Nbasis=48 -> B = 29.76564.
-```
-
-Final current result:
-
-\[
-\boxed{B_{R80}=29.765636.}
-\]
-
-The environment adds only
-
-\[
-\boxed{\Delta B_{env}\approx4.7283.}
-\]
-
-over the exact isolated action.
-
-The converged Hessian has exactly one negative even-parity mode.
-
-Therefore the original `C=215 fF, R=80 ohm` point is **NO-GO as a final dark-stable candidate under the current zero-temperature action model**.
-
-Do not quote a physical DCR yet: the properly normalized fluctuation determinant/prefactor and finite-temperature crossover remain open.
-
-## 11. Prefactor status
-
-A finite-box determinant screen has been run on the same nonlocal bounce. It finds no evidence for the enormous suppressive prefactor that would be needed to rescue `B=29.77`; the raw determinant ratio is instead large.
-
-However the translation zero mode requires a proper collective-coordinate normalization, so the raw `Abar` from that screen is **not yet a physical rate prefactor**.
-
-Robust conclusion only:
-
-```text
-no evidence that the prefactor erases the many-action-unit deficit of the unscaled point.
-```
-
-## 12. Exact electrical dark-action similarity
-
-At fixed loop inductance, static CPR and normalized two-pole topology, apply
-
-\[
-\boxed{
-C'=r^2C,
-\qquad
-R'=R/r,
-\qquad
-\omega_D'=\omega_D/r.
-}
+\boxed{C'=r^2C,\qquad R'=R/r,\qquad \omega_D'=\omega_D/r}.
 \]
 
 Then
 
 \[
 \omega_c'=\omega_c/r,
-\qquad
-g'=g,
-\qquad\alpha'=\alpha,
+\qquad g'=g,
+\qquad \alpha'=\alpha.
 \]
 
-and the full zero-temperature Euclidean action functional scales exactly:
+At zero temperature the entire Euclidean action scales exactly:
 
 \[
-\boxed{S_E'=rS_E.}
+\boxed{B'=rB}.
 \]
 
-Therefore
+At finite temperature the stronger exact identity is
 
 \[
-\boxed{B'=rB.}
+\boxed{B(T;r)=rB_0(rT)}.
 \]
 
-The persistent-current signal is unchanged because `L` is fixed.
-
-With fixed physical rise time,
+The local sphaleron Matsubara-instability temperature obeys
 
 \[
-\rho'=\rho/r,
+\boxed{T_\times(r)=T_{\times,0}/r}.
 \]
 
-so
+For the calibrated periodic-instanton one-loop prefactor away from a branch singularity,
 
 \[
-\boxed{B\rho=\text{constant}}
+\boxed{A_{1\ell}(T;r)=r^{-1/2}A_{1\ell,0}(rT)}.
 \]
 
-along this pure electrical-rescaling family.
+This similarity is central to all current dark optimization.
 
-This exposes an exact dark-action / electrical-speed tradeoff.
+## 6. Finite-temperature dissipative instanton and determinant are numerically controlled
 
-## 13. Electrical rescue scale and focused capture result
-
-A `10^-6 /s` target with an attempt scale in the broad `10^9–10^11 /s` range corresponds roughly to
+The physical Euclidean period is
 
 \[
-34.5\lesssim B_{req}\lesssim39.1
+P_s=\frac{\hbar\omega_c}{k_BT}.
 \]
 
-before exact prefactor normalization. Against `B0=29.7656`, pure electrical similarity therefore needs approximately
+The finite-period solver retains the constant mode plus cosine Matsubara modes and uses the exact two-pole nonlocal kernel. Accepted periodic saddles have exactly one negative even mode.
+
+The full fluctuation Hessian includes:
+
+- even constant/cosine sector;
+- odd sine sector;
+- one negative even mode;
+- one odd translation zero mode.
+
+The translation zero-mode overlap is numerically unity.
+
+The determinant has an analytic high-frequency curvature tail. After UV correction, representative `N=80 -> 96` changes in `log D` are only a few parts in `10^-6`.
+
+### Cubic normalization calibration
+
+For the canonical cubic metastable benchmark,
+
+\[
+D_{op}^{exact}=\sqrt{60}=7.74596669,
+\]
+
+while the numerical calculation gives
+
+\[
+D_{op}^{num}=7.74565249,
+\]
+
+with relative error about `4.1e-5`.
+
+The correct conversion from dimensionless-action Hessians is
+
+\[
+\boxed{D_{op}=D_{raw}/\sqrt{A_k}}.
+\]
+
+The resulting calibrated periodic-instanton one-loop prefactor is
+
+\[
+\boxed{A_{1\ell}=\omega_c\sqrt{\frac{I_s}{2\pi}}D_{raw,corr}},
+\]
+
+and
+
+\[
+\boxed{\Gamma_{1\ell}=A_{1\ell}e^{-B}}.
+\]
+
+## 7. Current dark-design constraint
+
+The former fixed exponent `B=37.61` is obsolete as a final design criterion.
+
+The current reduced-model constraint is
+
+\[
+\boxed{\Gamma_{1\ell}(T_0=20\,\mathrm{mK};\delta,r)=10^{-6}\ \mathrm{s}^{-1}}.
+\]
+
+Regular Gaussian periodic-instanton roots already obtained:
+
+| delta | r_rate | C | R | fc | B20 | T0/Tx |
+|---:|---:|---:|---:|---:|---:|---:|
+| .200 | 7.60969 | 12.450 pF | 10.513 ohm | 2.884 GHz | 39.482 | 0.588 |
+| .205 | ~8.55 | 15.7 pF | 9.36 ohm | 2.53 GHz | ~39.35 | ~0.71 |
+| .2075 | 9.09670 | 17.791 pF | 8.794 ohm | 2.355 GHz | 39.269 | 0.775 |
+| .210 | 9.82570 | 20.757 pF | 8.142 ohm | 2.161 GHz | 39.184 | 0.839 |
+| .211 | 10.18791 | 22.316 pF | 7.852 ohm | 2.077 GHz | 39.149 | 0.871 |
+| .212 | 10.62176 | 24.257 pF | 7.532 ohm | 1.985 GHz | 39.115 | 0.910 |
+
+The old solver found a formal `.213` Gaussian root but at `T0/Tx=0.962`, so that result is not canonical. It found no root at `.214` before the local Matsubara instability. Those statements are now superseded by the first-order-crossover correction in Sec. 9 below.
+
+## 8. One-loop-rate-constrained 2-ns capture frontier
+
+On the self-consistent `Gamma_1loop=1e-6/s` manifold, the coarse 14-um / 2-ns screens give approximately
 
 ```text
-r ~1.16–1.31.
+delta=.200   A99 ~ 420 um^2
+delta=.205   A99 ~ 458 um^2
+delta=.2075  A99 ~ 472 um^2
+delta=.210   A99 ~ 485 um^2
 ```
 
-A convenient screening-scale point is
+The frontier is still increasing through `.210`.
 
-```text
-r = 1.263542
-C = 343.3 fF
-R = 63.3 ohm
-fc = 21.57 GHz
-B = 37.61
-alpha = .90.
-```
+Active workflow `experiment03-one-loop-edge-capture.yml` is resolving `.211` and `.212`, the last points that were clean under the pre-correction Gaussian classification.
 
-At this point, keeping the physical graphene thermal pulse unchanged, the focused `N=4096`, `dt=.125 ps` sym-FDT/TWA screen gives at `14 um`:
+No final Generation-A optimum is declared yet.
 
-```text
-A=76 um^2 -> P_final = 0.999512
-A=78       -> P_final = 0.999268
-A=80       -> P_final = 0.998047
-A=82       -> P_final = 0.996338
-A=84       -> P_final = 0.989502.
-```
+## 9. CRITICAL NEW CORRECTION: the local Matsubara instability is not the physical crossover
 
-Thus the electrical dark-action rescue **does not collapse photon capture**.
-
-The point-estimate 99%-screening area moves from roughly `86–87 um^2` before rescue to roughly `83–84 um^2` after rescue. By optical similarity, a fixed `100 um^2` absorber has a current post-rescue dynamic 99%-screening wavelength near
-
-```text
-~11.6–11.8 um.
-```
-
-This is only a few-percent spectral-reach cost for approximately a 26% increase in the zero-temperature dark action.
-
-Hence the architecture family remains alive.
-
-## 14. Static tilt is an exact dark-action tradeoff
-
-For a linearly tilted potential
+The finite-T solver originally assumed that the sphaleron's first nonzero Matsubara eigenvalue crossing,
 
 \[
-V(x;\delta)=V_0(x)-E_L\delta x,
+\Lambda_1(T_\times)=0,
 \]
 
-positive tilt toward the favored state simultaneously
+was also the physical quantum-to-thermal crossover.
 
-- increases the right-well energetic preference;
-- lowers the left metastable barrier;
-- lowers the exact isolated bounce action;
-- and, for any tilt-independent linear passive environment, lowers the stationary dissipative bounce action.
+A direct O(2) quartic center-manifold test has **falsified that assumption** for the relevant high-tilt branch.
 
-For the dissipative bounce,
+At `.212` and `.213`, as `T -> T_x^-`, the accepted lowest-action one-negative-mode periodic instanton does **not** shrink continuously into the sphaleron. Instead:
+
+- the periodic first-harmonic amplitude remains finite;
+- `B_sph - B_per` remains finite (of order 0.4–0.5 even at `0.996 Tx`);
+- an effective quartic coefficient inferred from `lambda^2/(4 DeltaB)` collapses rather than converging;
+- the simple second-order soft-mode formula fails badly.
+
+Therefore the proposed quartic uniform correction
 
 \[
-\boxed{
-\frac{dB_{diss}}{d\delta}
-=-\frac{E_L}{\hbar}
-\int d\tau\,[x_b(\tau)-x_m]<0
-}
+\frac12\left[1+\operatorname{erf}\sqrt{B_{sph}-B_{per}}\right]
 \]
 
-for escape toward larger phase.
+is **rejected for the physical finite-amplitude branch**.
 
-Therefore static directional tilt and dark-action protection are antagonistic objectives. A passive shunt cannot reverse this sign if its admittance is tilt-independent.
+This behavior is consistent with a **first-order quantum-to-thermal escape crossover**: a finite-amplitude periodic branch remains relevant through the sphaleron's local linear-instability temperature, and the physical crossover must be found from the competing actions/rates rather than by setting `T=Tx`.
 
-## 15. Barrier-shape rescue is the current competing design lever
+The current finite-T solver is therefore incomplete above `Tx` because it automatically switches to the sphaleron there.
 
-The exact dark failure is partly a **shape** failure: the live barrier has `beta_U~4.74`, much thinner than the old cubic surrogate.
-
-The competing rescue route is therefore to change normalized rf-SQUID / CPR topology so the metastable barrier is wider in phase space at acceptable fold and directionality, rather than buying all dark action through capacitance and slower dynamics.
-
-Critical live baseline:
+Active workflow:
 
 ```text
-beta_cold = .80
-tilt      = .05
+experiment03-first-order-crossover-branch.yml
 ```
 
-An earlier exploratory scan around tilt `.2–.4` was based on stale context and is invalid for the live design. The corrected live-neighborhood scan must reproduce `B_iso=25.03305` at `(beta=.80, tilt=.05)` before any shape ranking is accepted.
-
-That corrected scan is the immediate static-design task.
-
-## 16. Open-system quantum requirements still blocking a paper
-
-Even after the exact zero-temperature action advance, a publication-grade detector prediction still requires
-
-1. properly normalized dissipative fluctuation determinant / prefactor;
-2. finite-temperature tunneling crossover;
-3. a detailed-balance-preserving nonlinear quantum/open-system capture calculation;
-4. competing dark channels: quasiparticles, vortices, stray photons, etc.;
-5. restoration of wavelength-dependent optical coupling / absorption and spatial thermalization.
-
-No absolute efficiency or dark-count rate is authorized yet.
-
-## 17. Prior-art boundary
-
-No novelty claim is authorized.
-
-Known collisions include superconducting MIR/LWIR SPDs, graphene Josephson photon heating/switching, persistent flux memory, optically written vortices/flux, phase batteries, field-free Josephson directionality, frequency-dependent damping/retrapping, selective dissipation, generic rate-induced tipping, quantum/classical Josephson basin capture, and dissipative MQT.
-
-The possible surviving contribution is increasingly narrow:
-
-```text
-single-LWIR-photon calorimetric drive
-+ nonadiabatic proximity-JJ basin transfer
-+ persistent superconducting flux
-+ one passive environment used for capture and dark action
-+ exact thermal/electrical similarity closures
-+ a simultaneous dark-action / dynamic-spectral-reach bound or Pareto law.
-```
-
-## 18. Immediate work queue
-
-1. Finish the **corrected live low-tilt barrier-shape scan** and compare shape rescue against the electrical `r~1.26` benchmark.
-2. Finish/normalize the nonlocal bounce fluctuation determinant; do not use the current raw finite-box prefactor as a physical DCR.
-3. Map the joint dark-action / 14-um capture Pareto surface around the electrically rescaled family.
-4. Replace symmetrized-noise TWA capture with a detailed-balance-preserving nonlinear open-system calculation or a systematically controlled benchmark.
-5. Add finite-temperature tunneling crossover and other dark channels.
-6. Restore real `eta_abs(lambda)`, antenna/cavity collection, spatial thermalization and area-dependent parasitics.
-7. Only after a simultaneous region survives, run the narrow paper/patent collision audit.
-
-## 19. Verdict
+continues the same one-negative-mode periodic branch through and above `Tx` and searches for
 
 \[
-\boxed{
-\text{original R80/C215 point: dark-action NO-GO}
-}
+\boxed{B_{per}(T_c)=B_{sph}(T_c)}.
 \]
 
-but
+The corresponding electrical scale is
 
 \[
-\boxed{
-\text{electrically rescaled architecture family: still GO for theory}
-}
+\boxed{r_c=T_c/T_0}.
 \]
 
-because the exact action can be raised into the desired exponent range while the current harsh capture screen remains high for realistic thermal headroom.
+Until this branch continuation finishes, `.213/.214` cannot be classified as physical dark-rate NO-GO points.
 
-**Manuscript remains NO-GO.**
+## 10. Second correction: sphaleron action is an exponent ceiling, not an absolute rate ceiling
+
+Earlier notes sometimes treated
+
+\[
+B_{sph}=\Delta U/(k_BT)
+\]
+
+as implying that capacitance cannot further reduce the dark **rate** once thermal activation dominates. That statement is too strong.
+
+For linear memory friction the classical barrier-crossing rate has the generalized Kramers/Grote-Hynes structure
+
+\[
+\boxed{\Gamma_{th}=\frac{\omega_m}{2\pi}\frac{\lambda_b}{\omega_b}e^{-\Delta U/k_BT}},
+\]
+
+with positive unstable growth rate
+
+\[
+\boxed{C\lambda_b^2+\lambda_bY_L(\lambda_b)+F_s/L=0}.
+\]
+
+Under the electrical similarity, the exponent stops increasing in the thermal regime but the dynamical prefactor continues to scale approximately as `1/r`. Thus additional electrical inertia can still reduce the thermal rate **algebraically**.
+
+The prior `delta_ceiling=0.215024` should therefore be interpreted as an exponent/action landmark, not an absolute physical rate termination.
+
+## 11. Immediate recovery queue
+
+1. Finish `experiment03-one-loop-edge-capture.yml` and determine the `.211/.212` coarse `A99` frontier.
+2. Finish `experiment03-first-order-crossover-branch.yml` and establish whether the finite-amplitude one-negative-mode periodic branch persists above local `Tx`, where it crosses the sphaleron action, and whether it folds first.
+3. Replace the current `finiteT_bounce()` hard switch at `T>=Tx` with branch-aware selection.
+4. Recompute the physical dark-rate manifold across the actual first-order crossover, including both periodic and generalized thermal rates.
+5. Only then extend photon-capture optimization beyond `.212`.
+6. After the dark topology is fixed, return to the larger unresolved requirement: a detailed-balance-preserving nonlinear quantum/open-system capture model.
+
+## 12. Publication / claim boundary
+
+**GO for continued theory. NO-GO for manuscript.**
+
+Do not claim:
+
+- exact physical quantum efficiency;
+- complete physical dark-count rate;
+- novelty of a superconducting photon/flux latch;
+- a final optimized detector;
+- a room-temperature or broadband detector result.
+
+The current strongest legitimate statement is narrower:
+
+> Within the reduced same-environment model, high directional tilt plus electrical inertia produces a strong photon-threshold / dark-stability trade that substantially outperforms the original low-tilt design. Finite-temperature instanton and one-loop calculations are numerically controlled away from crossover, but the high-tilt dark frontier has exposed a first-order quantum-to-thermal branch topology that must be resolved before a final operating point is selected.
