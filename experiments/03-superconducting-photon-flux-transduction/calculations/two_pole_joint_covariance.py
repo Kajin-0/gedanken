@@ -14,7 +14,7 @@ where
     s  = V_C/(Phi_bar omega_c).
 
 For the cold harmonic network every augmented variable is a linear transfer of
-x(omega).  From
+x(omega). From
 
     L C xddot + d + kappa x = 0
 
@@ -27,13 +27,19 @@ From the filter inductor relation,
     s(omega) = i(omega/omega_c)
                [1-(L_f/L)(L C omega^2-kappa)] x(omega).
 
-Together with u=i(omega/omega_c)x, this gives the complete equal-time
-symmetrized covariance from the same quantum-FDT phase spectrum used in the
-marginal calculation.
+Together with u=i(omega/omega_c)x, this gives the equal-time symmetrized
+covariance from the same quantum-FDT phase spectrum used in the marginal
+calculation.
 
-This is still a linear reduced/open-system Gaussian object.  It is useful for
-initial-state screening, but nonlinear pulse evolution with quantum bath noise
-requires a stronger open-system treatment.
+IMPORTANT UV BOUNDARY
+---------------------
+The effective phase variables are UV convergent because ReY~omega^-4.  The
+internal filter-capacitor *velocity* s is different: an ideal Ohmic residual
+resistor produces the familiar logarithmic zero-point momentum/voltage variance
+of quantum Brownian motion.  Therefore covariance_matrix exposes the upper
+log-frequency cutoff explicitly.  The historical default y_max=22 is retained
+only for reproducibility; s must not be interpreted as cutoff-independent until
+a physical residual-bath cutoff is specified.
 """
 
 from __future__ import annotations
@@ -54,7 +60,11 @@ def covariance_matrix(
     r_delta: float,
     R: float,
     alpha: float,
+    *,
+    y_min: float = -22.0,
+    y_max: float = 22.0,
 ) -> np.ndarray:
+    """Return covariance integrated over omega/omega0 in [exp(y_min),exp(y_max)]."""
     L, C, _ = CASES[r_delta]
     cov0 = quantum_covariance(model, r_delta)
     omega0 = cov0["omega_c"]
@@ -63,8 +73,6 @@ def covariance_matrix(
     omega_d = alpha * omega0
     Lf, _Cf = filter_components(R, omega_d)
 
-    # Accumulate the six nonzero covariance elements expected from the real,
-    # time-stationary spectrum: even block (x,d), odd block (u,s).
     def pieces(y: float) -> tuple[float, float, float, float, float, float]:
         r = math.exp(y)
         omega = omega0 * r
@@ -73,7 +81,7 @@ def covariance_matrix(
         chi2 = 1.0 / (den.real * den.real + den.imag * den.imag)
         SI = HBAR * omega * coth_stable(HBAR * omega / (2.0 * KB * T0)) * Y.real
         Sx = chi2 * SI / (PHI_BAR * PHI_BAR)
-        jac = omega / math.pi  # positive-frequency integral, d omega=omega dy
+        jac = omega / math.pi
 
         Hd = L * C * omega * omega - kappa
         hu = r
@@ -81,23 +89,23 @@ def covariance_matrix(
 
         base = Sx * jac
         return (
-            base,              # xx
-            hu * hu * base,    # uu
-            Hd * Hd * base,    # dd
-            hs * hs * base,    # ss
-            Hd * base,         # xd
-            hu * hs * base,    # us
+            base,
+            hu * hu * base,
+            Hd * Hd * base,
+            hs * hs * base,
+            Hd * base,
+            hu * hs * base,
         )
 
     vals = []
     for idx in range(6):
         vals.append(
-            quad(lambda y, i=idx: pieces(y)[i], -22.0, 22.0,
+            quad(lambda y, i=idx: pieces(y)[i], y_min, y_max,
                  epsabs=0.0, epsrel=5.0e-7, limit=1000)[0]
         )
 
     xx, uu, dd, ss, xd, us = vals
-    M = np.array(
+    return np.array(
         [
             [xx, 0.0, xd, 0.0],
             [0.0, uu, 0.0, us],
@@ -106,7 +114,6 @@ def covariance_matrix(
         ],
         dtype=float,
     )
-    return M
 
 
 def corr(a: float, b: float, ab: float) -> float:
@@ -129,14 +136,14 @@ def main() -> None:
                 f"R={R:g} ohm, alpha={alpha:.2f}: "
                 f"sigx={math.sqrt(M[0,0]):.6f} rad ({math.sqrt(M[0,0])/sig0:.6f} iso), "
                 f"sigu={math.sqrt(M[1,1]):.6f}, "
-                f"sigd={math.sqrt(M[2,2]):.6f}, sigs={math.sqrt(M[3,3]):.6f}, "
-                f"rho_xd={rho_xd:+.6f}, rho_us={rho_us:+.6f}, "
+                f"sigd={math.sqrt(M[2,2]):.6f}, sigs(ymax22)={math.sqrt(M[3,3]):.6f}, "
+                f"rho_xd={rho_xd:+.6f}, rho_us(ymax22)={rho_us:+.6f}, "
                 f"eigmin={float(np.min(eig)):.3e}"
             )
             print(msg)
             print(f"::notice title=Experiment 03 joint filter covariance::{msg}")
 
-    print("PASS")
+    print("PASS (phase/filter-coordinate moments only are cutoff-independent; audit s separately)")
 
 
 if __name__ == "__main__":
