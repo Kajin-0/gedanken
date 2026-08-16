@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 """Refine the crossover-independent delta=.213 dark-rate root.
 
-At this tilt the 1e-6/s crossing lies well below the local Matsubara instability,
-so the ordinary one-negative periodic instanton is valid.  We solve
+At this tilt the 1e-6/s crossing lies below the local Matsubara instability and,
+more importantly, below the first-order action crossing and periodic-instanton
+fold.  The old rule rejecting T0/Tx > .94 is obsolete: direct continuation has
+shown that the physical finite-amplitude one-negative branch survives through
+local Tx and becomes singular only at its later saddle-node fold.
+
+We solve
 
     Gamma_per(r) + Gamma_th(r) = 1e-6 /s
 
-with the same cubic-calibrated UV-corrected periodic prefactor and the independent
-same-environment memory-friction thermal rate.  This replaces the coarse
-log-interpolated r~=11.20596 used for the first capture screen.
+with the cubic-calibrated UV-corrected periodic prefactor and independent
+same-environment memory-friction thermal rate.  A separate fold-continuation
+workflow supplies the actual distance from this root to the periodic fold.
 """
 from __future__ import annotations
 
@@ -25,7 +30,7 @@ TARGET=1e-6
 
 def total(r,nb=64,ng=8192,verbose=False):
     s=rm.rate_state(DELTA,r,nb,ng)
-    if s['kind']!='periodic': raise RuntimeError('root left periodic regime')
+    if s['kind']!='periodic': raise RuntimeError('root left pre-Tx implementation domain')
     gt=fo.thermal_rate(s['st'])
     G=s['Gamma']+gt['Gamma']
     if verbose:
@@ -44,7 +49,6 @@ def main():
         if flo*fhi>0: raise RuntimeError(f'bad bracket f(lo)={flo} f(hi)={fhi}')
         root=brentq(f,lo,hi,xtol=2e-9,rtol=2e-10,maxiter=80)
         G,s,gt=total(root,72,9216,True)
-        # One final high-basis consistency point at the same r.
         G2,s2,gt2=total(root,88,11264,True)
         rel=abs(G2-G)/TARGET
         C=s2['st']['C']; R=s2['st']['R']; fc=s2['st']['wc']/(2*math.pi)
@@ -54,7 +58,9 @@ def main():
              f'basis_rate_shift_over_target={rel:.3e} T0/Tx={fd.T0/s2["Tx"]:.7f}')
         print(msg); print(f'::notice title=Experiment 03 delta213 exact dark root::{msg}')
         if abs(math.log(G2/TARGET))>2e-3: raise RuntimeError('high-basis root moved >0.2% in rate')
-        if fd.T0/s2['Tx']>.94: raise RuntimeError('root too close to local crossover for safe classification')
+        if s2['nneg']!=1 or s2['zero_overlap']<.999999:
+            raise RuntimeError('periodic saddle mode regression failed')
+        print('NOTE: local T0/Tx is diagnostic only; physical Gaussian-validity margin is set by the later periodic fold.')
         print('PASS')
     finally:
         fd.BETA_COLD=ob; fd.DELTA_TILT=ot
