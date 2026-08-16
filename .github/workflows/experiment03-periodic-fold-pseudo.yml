@@ -1,0 +1,28 @@
+name: Experiment 03 periodic fold pseudo-arclength
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/periodic_fold_pseudo_arclength.py'
+      - '.github/workflows/experiment03-periodic-fold-pseudo.yml'
+  workflow_dispatch:
+
+jobs:
+  fold:
+    strategy:
+      fail-fast: false
+      matrix:
+        delta: ['0.214','0.215','0.216','0.217','0.218']
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - run: python -m pip install -r requirements.txt
+      - run: python periodic_fold_pseudo_arclength.py --delta ${{ matrix.delta }}
