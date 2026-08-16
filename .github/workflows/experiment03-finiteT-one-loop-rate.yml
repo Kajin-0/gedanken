@@ -1,0 +1,27 @@
+name: Experiment 03 calibrated finite-T one-loop rate
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/finiteT_one_loop_rate_calibrated.py'
+      - '.github/workflows/experiment03-finiteT-one-loop-rate.yml'
+
+jobs:
+  rate:
+    strategy:
+      fail-fast: false
+      matrix:
+        delta: ['0.180','0.200','0.210']
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python finiteT_one_loop_rate_calibrated.py --delta ${{ matrix.delta }}
