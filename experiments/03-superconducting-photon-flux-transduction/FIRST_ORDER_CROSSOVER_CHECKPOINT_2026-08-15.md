@@ -1,74 +1,71 @@
 # Experiment 03 — First-Order Quantum/Thermal Crossover Checkpoint
 
-**Date:** 2026-08-15 / late-session continuation  
+**Date:** 2026-08-15 late-session continuation  
 **Status:** canonical correction; publication remains **NO-GO**
 
-## 1. Why this checkpoint exists
+## 1. Core correction
 
-The finite-temperature dissipative instanton program originally identified the
-temperature where the sphaleron's first nonzero Matsubara eigenvalue vanishes,
+The finite-temperature dissipative instanton program originally identified the temperature where the sphaleron's first nonzero Matsubara eigenvalue vanishes,
 
 \[
 \Lambda_1(T_\times)=0,
 \]
 
-with the physical quantum-to-thermal crossover.  That identification has now
-been falsified in the high-directional-tilt region relevant to the current
-photon-capture optimum.
+with the physical quantum-to-thermal crossover. That identification is **rejected** in the high-directional-tilt region relevant to the current detector optimum.
 
-The actual reduced model exhibits a **first-order-like escape crossover**: a
-finite-amplitude one-negative-mode periodic instanton survives through and
-above the local sphaleron instability.  The leading exponential crossover is
-instead determined by the intersection of the periodic and static Euclidean
-actions.
+The reduced model exhibits a finite-amplitude **first-order periodic-instanton topology**:
 
-This is consistent with the classic metastable-decay literature in which a
-first-order quantum/classical crossover is identified from the crossing of the
-low-temperature periodic-instanton action and high-temperature sphaleron action,
-not from a perturbative instability of the sphaleron alone.
+- a one-negative-mode periodic decay saddle survives through and above local `T_x`;
+- its action crosses the static sphaleron action at a later scale `T_c`;
+- the finite-amplitude periodic branch then terminates at a still later saddle-node/fold `T_f` where it collides with a two-negative companion branch.
 
-## 2. Rejected second-order soft-mode model
+Thus
 
-A direct test was made of the O(2) quartic center-manifold normal form
+\[
+\boxed{T_x\neq T_c\neq T_f}
+\]
+
+and equivalently along the electrical similarity family
+
+\[
+\boxed{r_x\neq r_c\neq r_f}.
+\]
+
+This structure is consistent with established periodic-instanton bifurcation / negative-mode theory, but the detector-specific numbers below are model results.
+
+## 2. Rejected continuous sphaleron soft-mode model
+
+The physical branch was tested against an O(2) quartic center-manifold ansatz
 
 \[
 B=B_{sph}+\frac{\lambda}{2}(a^2+b^2)+\frac{g}{4}(a^2+b^2)^2+\cdots.
 \]
 
-If the physical periodic branch merged continuously into the sphaleron at
-`T_x`, then as `T -> T_x^-` one would require
+If the physical branch merged continuously into the sphaleron at `T_x`, then
 
 \[
 B_{sph}-B_{per}\to0,
 \qquad
-\sqrt{a^2+b^2}\to0,
+\sqrt{a^2+b^2}\to0
 \]
 
-with finite limiting `g`.
+as `T -> T_x^-`, with finite limiting `g`.
 
-Workflow:
+Workflow `experiment03-soft-mode-uniform-landau.yml` falsified these requirements at `.212` and `.213`:
 
-```text
-experiment03-soft-mode-uniform-landau.yml
-```
+- `B_sph-B_per` remains finite close to `T_x`;
+- the periodic first harmonic remains finite;
+- `g_eff=lambda^2/[4(B_sph-B_per)]` collapses rather than converging.
 
-falsified all three expectations at `delta=.212` and `.213`:
-
-- `B_sph-B_per` remains finite near `.996 T_x`;
-- the first harmonic remains finite;
-- `g_eff=lambda^2/[4(B_sph-B_per)]` collapses instead of converging.
-
-Therefore the proposed continuous-crossover correction
+Therefore the proposed continuous-crossover factor
 
 \[
 \frac12\left[1+\operatorname{erf}\sqrt{B_{sph}-B_{per}}\right]
 \]
 
-is **rejected** for the relevant physical periodic branch.
+is **rejected for the physical finite-amplitude branch**.
 
-Do not resurrect this formula without a new branch-topology argument.
-
-## 3. Direct continuation proves a first-order action crossing
+## 3. First-order action crossing
 
 Workflow:
 
@@ -77,10 +74,9 @@ experiment03-first-order-crossover-branch.yml
 run 31924930674
 ```
 
-continues the same finite-amplitude, one-negative-mode periodic instanton above
-`T_x` rather than hard-switching to the sphaleron.
+continues the same finite-amplitude one-negative periodic saddle above local `T_x`.
 
-The physical leading-exponent crossover is defined by
+Define the leading-exponent crossing by
 
 \[
 \boxed{B_{per}(T_c)=B_{sph}(T_c)}.
@@ -88,39 +84,98 @@ The physical leading-exponent crossover is defined by
 
 Results:
 
-| delta | local `r_x=T_x/T0` | action-crossing `r_c=T_c/T0` | `T_c/T_x` |
+| delta | `r_x=T_x/T0` | `r_c=T_c/T0` | `T_c/T_x` |
 |---:|---:|---:|---:|
 | .212 | 11.6766035 | 12.1820793 | 1.04329 |
 | .213 | 11.6482372 | 12.0334859 | 1.03307 |
 | .214 | 11.6110848 | 11.8853808 | 1.02362 |
 | .215 | 11.5648468 | 11.7373599 | 1.01492 |
 
-At every crossing the periodic path retains finite amplitude of order `0.10` in
-the normalized L2 measure.  This is not a nearly continuous bifurcation hidden
-by discretization.
+At every action crossing the periodic path retains finite amplitude of order `0.1`; this is not a numerically blurred continuous bifurcation.
 
-The finite-amplitude branch subsequently terminates/folds slightly above the
-action crossing.  Near that fold direct continuation in `r` fails and an
-additional even Hessian mode approaches zero.
+## 4. Periodic saddle-node/fold is established
 
-## 4. Important distinction among three scales
+The prior checkpoint treated the finite-amplitude fold as a hypothesis. It is now numerically established.
 
-Future work must distinguish:
+### Pseudo-arclength topology
 
-1. **Local sphaleron instability** `T_x` / `r_x`:
-   first nonzero Matsubara sphaleron eigenvalue crosses zero.
-2. **First-order action crossing** `T_c` / `r_c`:
-   `B_per=B_sph`; this determines the dominant exponential in the usual
-   semiclassical first-order classification.
-3. **Finite-amplitude periodic-branch fold** `T_fold` / `r_fold`:
-   the physical one-negative periodic branch coalesces with another periodic
-   stationary branch and ordinary Gaussian determinants become singular.
+Workflow:
 
-They are not interchangeable.
+```text
+experiment03-periodic-fold-pseudo.yml
+run 31925235420
+```
 
-## 5. Branch-aware absolute-rate screen
+promotes the electrical scale to a continuation unknown and passes through the turning point.
 
-The calibrated periodic-instanton one-loop rate is
+Across the fold:
+
+- the physical periodic branch has one negative even mode;
+- an additional even Hessian mode tends to zero;
+- after the turn, the companion finite-amplitude periodic branch has two negative even modes;
+- the odd translation zero mode is separate and remains the expected collective-coordinate mode.
+
+This is the expected Morse-index exchange for a fold of periodic stationary paths.
+
+### Universal fold scaling
+
+Fine workflow:
+
+```text
+experiment03-fold-scaling.yml
+```
+
+uses an orthonormal cosine-coordinate Hessian and matched points on the one- and two-negative branches.
+
+Let
+
+\[
+\mu=p_f-p,\qquad p=r/r_x.
+\]
+
+A saddle-node catastrophe requires
+
+\[
+\Delta B_{12}\propto\mu^{3/2},
+\qquad
+|\lambda_f|\propto\mu^{1/2}.
+\]
+
+Measured results:
+
+| delta | `r_f` | action exponent | soft-eigenvalue exponent |
+|---:|---:|---:|---:|
+| .213 | 12.16227131 | 1.5060 | 0.4859 |
+| .214 | 12.0069623 | 1.5022 | 0.4840 |
+| .215 | 11.85159085 | 1.5125 | 0.5284 |
+
+The `.213` action-splitting prefactor varies only ~1.4% over the fitted near-fold range; the eigenvalue prefactor varies ~4.6%. Neighboring `.214` is similarly clean.
+
+Thus the finite-amplitude high-tilt singularity is quantitatively in the **fold universality class** within the reduced Euclidean model.
+
+For canonical phase
+
+\[
+\Phi(q)=q^3/3-\zeta q,
+\]
+
+the stationary-action splitting is
+
+\[
+\Delta B=\frac{4}{3}\zeta^{3/2},
+\]
+
+so the measured saddle pair defines a natural fold coordinate
+
+\[
+\boxed{\zeta=(3\Delta B/4)^{2/3}}.
+\]
+
+This does **not** by itself determine the metastable imaginary-part contour or absolute uniform rate.
+
+## 5. Consequence for the Gaussian prefactor
+
+The calibrated regular periodic-instanton rate is
 
 \[
 \Gamma_{per}=A_{1\ell}e^{-B_{per}},
@@ -128,103 +183,85 @@ The calibrated periodic-instanton one-loop rate is
 A_{1\ell}=\omega_c\sqrt{\frac{I_s}{2\pi}}D_{raw,corr}.
 \]
 
-The independent thermal memory-friction screen is
+As `r -> r_f^-`, the additional stable fold eigenvalue tends to zero. The isolated Gaussian integral over that mode therefore diverges.
+
+This divergence is **not a physical divergent DCR**. It is a nonuniform saddle approximation at coalescing stationary points.
+
+Likewise, simply continuing and adding a higher-action two-negative periodic saddle to the thermal sphaleron after the first-order action crossing is not justified without the correct steepest-descent / thimble structure.
+
+The `.214+` region therefore remains a separate upside branch requiring a fold-uniform or model-specific center-manifold treatment.
+
+## 6. Thermal channel correction
+
+The static thermal action
 
 \[
+B_{sph}=\Delta U/(k_BT_0)
+\]
+
+is an exponent ceiling, **not an absolute rate ceiling**.
+
+The same-environment generalized memory-friction thermal screen is
+
+\[
+\boxed{
 \Gamma_{th}
 =\frac{\omega_m}{2\pi}\frac{\lambda_b}{\omega_b}
- e^{-\Delta U/(k_BT_0)},
+ e^{-\Delta U/(k_BT_0)}
+}
 \]
 
 with
 
 \[
-C\lambda_b^2+\lambda_bY_L(\lambda_b)+F_s/L=0.
+\boxed{C\lambda_b^2+\lambda_bY_L(\lambda_b)+F_s/L=0}.
 \]
 
-Workflow:
+Under electrical similarity, the thermal exponent is fixed by the static barrier at fixed bath temperature while dynamical frequencies continue to fall with increasing inertia. Hence electrical scaling can still reduce the thermal rate algebraically.
 
-```text
-experiment03-first-order-total-rate.yml
-run 31925043718
-```
+Any earlier statement that no capacitance can help once `B_sph` reaches the target exponent is too strong and is retired.
 
-shows the following qualitative split.
+## 7. Exact safe-side delta=.213 dark root
 
-### delta=.213 — crossover-independent target
+The `.213` target is reached before the periodic fold and can therefore be calculated without fold uniformization.
 
-The first descending `1e-6 /s` crossing occurs at approximately
+High-basis result:
 
 \[
-\boxed{r_{target}\simeq11.206},
+\boxed{r_\Gamma=11.2051409652}.
 \]
 
-well below both
-
 ```text
-r_x = 11.648
-r_c = 12.034.
+C = 26.994365 pF
+R = 7.1395800 ohm
+fc = 1.8741430 GHz
+B_per = 39.114084737
+Gamma_per = 9.926942995e-7 /s
+Gamma_th  = 7.328188266e-9 /s
+Gamma_total = 1.000022488e-6 /s
 ```
 
-The thermal rate there is only of order `7e-9 /s`.  Therefore `.213` can be
-screened without any first-order-crossover uniformization.
+The 72->88 basis change in total rate is only `3.6e-6` of the target.
 
-### delta=.214 and above — fold-controlled absolute rate
+The correct Gaussian-validity margin is distance to the periodic fold:
 
-For `.214` the regular periodic Gaussian rate reaches a minimum of only about
-`1.7e-6 /s`, then rises as the finite-amplitude periodic branch approaches its
-fold.  The independent thermal rate is already only about `2e-8 /s`.
+\[
+\boxed{r_f(.213)=12.16227131}
+\]
 
-At still larger tilts this separation becomes stronger.  Examples near the
-first-order region:
+so
 
-```text
-delta=.215: thermal ~ 8e-8 /s, periodic Gaussian ~ several e-6 /s
-delta=.216: thermal ~ 2.5e-7 /s, periodic Gaussian ~ 2e-5 /s
-delta=.217: thermal ~ 8e-7 /s, periodic Gaussian ~ 1e-4 /s
-delta=.218: thermal ~ 2.5e-6 /s, periodic Gaussian ~ 2e-4 /s
-```
+\[
+\boxed{r_\Gamma/r_f\approx0.9213}.
+\]
 
-The large periodic prefactor close to the fold must **not** be interpreted as a
-physical divergent dark rate.  Gaussian steepest descent is failing because an
-additional fluctuation eigenvalue is approaching zero.
+The operating root is therefore about 7.9% below the actual fold in electrical scale. The old heuristic rejection criterion based on `T0/Tx~.962` is obsolete.
 
-Likewise, blindly adding the continued periodic Gaussian saddle to the thermal
-saddle after the first-order action crossing is not yet justified: saddle
-selection / steepest-descent contour topology changes in a first-order
-transition.
+## 8. Safe-side photon capture has already turned over
 
-## 6. Current mathematical task at the high-tilt boundary
+All values below are 14-um, 20-ps-rise, 2-ns, N=1024 sym-FDT/TWA screening results at their corresponding reduced dark-rate designs.
 
-A periodic-instanton bifurcation should possess an additional zero mode beyond
-time translation.  The current hypothesis is that the finite-amplitude physical
-periodic saddle undergoes a saddle-node/fold collision with a companion periodic
-stationary solution carrying one additional negative mode.
-
-Active workflow:
-
-```text
-experiment03-periodic-fold-pseudo.yml
-```
-
-uses pseudo-arclength continuation in cosine-coefficient space plus electrical
-scale `r/r_x` to pass through the fold.
-
-Acceptance requires:
-
-- turning point in `r`;
-- an additional even Hessian eigenvalue approaching zero;
-- recovery of a companion finite-amplitude periodic branch;
-- negative-mode count changing from one to two.
-
-If confirmed, the local coalescing-saddle contribution should be treated with a
-fold/Airy uniform approximation rather than two independent Gaussian
-prefactors.
-
-## 7. Current capture frontier
-
-On dark-rate-constrained, crossover-independent designs, the 14-um, 2-ns,
-N=1024 sym-FDT/TWA screen currently gives approximately
+Approximate point-estimate `P=.99` area frontier:
 
 ```text
 delta=.200   A99 ~420 um^2
@@ -233,41 +270,81 @@ delta=.2075  A99 ~472 um^2
 delta=.210   A99 ~485 um^2
 delta=.211   A99 ~485 um^2
 delta=.212   A99 ~500 um^2
+delta=.213   A99 ~489 um^2
 ```
 
-A dedicated `.213` screen is active at the branch-aware target locator
-`r~=11.20596`.  If it exceeds the `.212` frontier, `.213` becomes the strongest
-**crossover-independent** reduced-model candidate.
+At `.213` specifically:
 
-Do not optimize photon capture at `.214+` until the periodic fold contribution
-has been uniformized or otherwise rigorously bounded.
+```text
+A=480 um^2 -> P=0.993164
+A=500       -> P=0.986328
+A=510       -> P=0.979492
+```
 
-## 8. Claim boundary
+Thus the capture screen begins to degrade between `.212` and `.213` **before** the dark fold is approached.
 
-The following are now supported **within the reduced model**:
+This is an important simplification: the leading reduced-model operating point is an interior photon-dynamics optimum, not a design artificially pinned to the unresolved instanton catastrophe.
 
-- the high-tilt finite-T escape topology is first-order-like rather than the
-  previously assumed continuous sphaleron bifurcation;
-- `T_x`, `T_c`, and the periodic-branch fold are distinct scales;
-- `.213` reaches the provisional absolute dark target before entering the
-  first-order crossover region;
-- `.214+` cannot be ranked by the current separate Gaussian periodic and thermal
-  prefactors.
+Active workflow:
 
-Still not supported:
+```text
+experiment03-safe-tilt-optimum.yml
+```
 
-- a complete physical dark-count rate;
-- exact quantum photon efficiency;
-- a final optimized device;
-- any novelty or manuscript claim.
+is resolving `.21225`, `.21250`, `.21275`; every point solves its own `Gamma_per+Gamma_th=1e-6/s` dark root before capture.
 
-## 9. Recovery instruction
+## 9. Statistical interpretation of current A99 values
 
-If resuming from this file:
+The quoted `A99` values are point-estimate crossings from coarse binomial screens, not yet confidence-qualified efficiency boundaries.
 
-1. read the `experiment03-periodic-fold-pseudo.yml` logs;
-2. read the `.213` capture workflow;
-3. if the fold topology is confirmed, derive/validate the coalescing-saddle
-   uniform contribution before ranking `.214+`;
-4. keep `.213` as the safe optimization frontier until that is done;
-5. update `CURRENT_STATE.md`, `agent.md`, the claim ledger and derivation log.
+For `N=1024`, four failures gives
+
+\[
+\hat P=0.99609375
+\]
+
+but the 95% Wilson lower bound is only approximately
+
+\[
+0.9899994.
+\]
+
+Thus a coarse `N=1024` point needs at most three failures for the Wilson lower bound itself to exceed 0.99.
+
+After the narrow optimum is located, the winner must receive a higher-stat focused screen and report at least two quantities separately:
+
+1. point-estimate `A_99`;
+2. confidence-qualified maximum area for which the chosen lower confidence bound remains `>=.99`.
+
+## 10. Current claim boundary
+
+Supported within the reduced model:
+
+- finite-T electrical action similarity;
+- calibrated regular periodic-instanton determinant and one-loop prefactor away from folds;
+- first-order high-tilt periodic-instanton topology;
+- distinct local instability, action crossing and periodic-fold scales;
+- one-negative -> two-negative Morse-index exchange at the periodic fold;
+- canonical `3/2` action-splitting and `1/2` soft-eigenvalue fold scaling across `.213-.215`;
+- exact `.213` reduced dark-rate root and its finite margin to the fold;
+- a capture turnover between `.212` and `.213` before the fold.
+
+Not supported:
+
+- complete physical DCR;
+- exact nonlinear quantum photon efficiency;
+- absolute fold-uniform dark rate in `.214+` region;
+- broadband optical reach inferred from the lumped thermal similarity;
+- final optimized device;
+- novelty or manuscript claim.
+
+## 11. Recovery instruction
+
+If resuming here:
+
+1. read `AGENTS.md` and `CURRENT_STATE.md`;
+2. read `experiment03-safe-tilt-optimum.yml` run and select the best `.212-.213` point;
+3. run a high-stat focused capture refinement at that point's exact dark root;
+4. update `CURRENT_STATE.md` and `CLAIM_LEDGER.md`/finite-T ledger extension;
+5. keep `.214+` separate until the fold's metastable thimble/uniform rate is derived;
+6. after safe reduced optimization, return to the major physics blocker: detailed-balance-preserving nonlinear open-system quantum capture plus realistic spatial thermal/optical physics.
