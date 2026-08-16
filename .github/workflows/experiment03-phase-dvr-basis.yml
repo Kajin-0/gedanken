@@ -10,6 +10,11 @@ on:
 jobs:
   dvr:
     runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        delta: ['0.21200', '0.21250', '0.21300']
     defaults:
       run:
         working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
@@ -21,4 +26,4 @@ jobs:
           cache: pip
           cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
       - run: python -m pip install -r requirements.txt
-      - run: python phase_dvr_basis_convergence.py --delta 0.21250
+      - run: python phase_dvr_basis_convergence.py --delta ${{ matrix.delta }}
