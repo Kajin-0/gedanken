@@ -12,19 +12,21 @@ This regression asks a narrower and safer question than "find a formal root":
     Does the regular, one-negative, dominant periodic contribution reach
     Gamma_per = 1e-6/s before the first-order action crossing?
 
-If yes, report the root. If no, report NO_SAFE_ROOT_BEFORE_ACTION_CROSSOVER and
-PASS the regression provided a high-basis evaluation just below r_c still has
-Gamma_per > 1e-6/s with the correct one-negative/translation-zero-mode anatomy.
-In that case any putative delta=.214 target solution necessarily enters the
-multi-saddle/Stokes/fold-uniform regime and is not a canonical Gaussian design.
+If a direct crossing exists, it is reported. Otherwise the code resolves the
+interior minimum of Gamma_per on the regular pre-crossover branch with a bounded
+scalar minimization, re-evaluates that minimum at high basis/grid resolution,
+and reports NO_SAFE_ROOT_BEFORE_ACTION_CROSSOVER when the verified minimum still
+exceeds the target.
 
-We deliberately do not naively add the separate sphaleron and periodic Gaussian
-rates through the first-order crossover.
+This avoids an invalid monotonicity assumption: the determinant softens near the
+first-order region, so Gamma_per can decrease and then turn upward before r_c.
+We deliberately do not naively add separate sphaleron and periodic Gaussian rates
+through the first-order crossover.
 """
 from __future__ import annotations
 import math
 import numpy as np
-from scipy.optimize import brentq
+from scipy.optimize import brentq, minimize_scalar
 
 import full_dynamic_rfsquid as fd
 import finiteT_nonlocal_periodic_bounce as ft
@@ -92,8 +94,6 @@ def main():
         rsafe=raction*SAFE_ACTION_FRAC
         print(f'delta=.214 r_local={rlocal:.9f} r_action_cross_est={raction:.9f} r_safe_edge={rsafe:.9f}')
 
-        # Dense enough to detect a crossing on the regular dominant branch while
-        # remaining just below the independently measured first-order action crossing.
         grid=np.linspace(11.45,rsafe,13)
         rows=[]
         for r in grid:
@@ -126,24 +126,49 @@ def main():
             print('PASS')
             return
 
-        # A no-root result is scientifically meaningful. Re-evaluate the safe edge
-        # at substantially higher basis/grid resolution before promoting it.
-        sf=state(rsafe,80,10240)
         vals=np.array([s['Gamma'] for s in rows])
-        monotone_nonincreasing=bool(np.all(np.diff(vals)<=0.0))
+        j=int(np.argmin(vals))
+        # Bracket the observed interior minimum using adjacent coarse points. The
+        # endpoint case is retained defensively but is not expected for this branch.
+        if 0 < j < len(rows)-1:
+            lo,hi=rows[j-1]['r'],rows[j+1]['r']
+        elif j==0:
+            lo,hi=rows[0]['r'],rows[1]['r']
+        else:
+            lo,hi=rows[-2]['r'],rows[-1]['r']
+
+        cache_min={}
+        def objective(r):
+            k=round(float(r),8)
+            if k not in cache_min:
+                cache_min[k]=state(float(r),40,5120)
+            return cache_min[k]['logGamma']
+
+        opt=minimize_scalar(objective,bounds=(lo,hi),method='bounded',
+                            options={'xatol':2e-4,'maxiter':24})
+        if not opt.success:
+            raise RuntimeError(f'bounded rate-minimum solve failed: {opt.message}')
+        rmin=float(opt.x)
+        smin=state(rmin,80,10240)
+        ssafe=state(rsafe,80,10240)
+
         msg=(f'delta=.214 NO_SAFE_ROOT_BEFORE_ACTION_CROSSOVER '
-             f'r_safe={rsafe:.9f} Gamma_safe={sf["Gamma"]:.6e}/s Bsafe={sf["B"]:.9f} '
-             f'A1safe={sf["A"]:.6e}/s amp={sf["amp"]:.8f} nneg={sf["nneg"]} '
-             f'zeroOverlap={sf["zero"]:.9f} r_safe/r_action={rsafe/raction:.9f} '
-             f'scan_min_Gamma={float(np.min(vals)):.6e}/s monotone_nonincreasing={monotone_nonincreasing}')
+             f'r_min={rmin:.9f} Gamma_min={smin["Gamma"]:.6e}/s Bmin={smin["B"]:.9f} '
+             f'A1min={smin["A"]:.6e}/s amp_min={smin["amp"]:.8f} '
+             f'nneg_min={smin["nneg"]} zero_min={smin["zero"]:.9f} '
+             f'r_min/r_action={rmin/raction:.9f} '
+             f'r_safe={rsafe:.9f} Gamma_safe={ssafe["Gamma"]:.6e}/s '
+             f'scan_min_Gamma={float(np.min(vals)):.6e}/s target_margin={smin["Gamma"]/TARGET:.6f}x')
         print(msg); print(f'::notice title=Experiment 03 delta .214 safe-side gate::{msg}')
-        if sf['nneg']!=1 or sf['zero']<.999:
-            raise RuntimeError('safe-edge branch anatomy regression failed')
-        if sf['Gamma']<=TARGET or np.min(vals)<=TARGET:
-            raise RuntimeError('target crossing exists but bracket detection failed')
-        if not monotone_nonincreasing:
-            raise RuntimeError('safe-side scan is nonmonotone; refine before interpreting no-root gate')
-        print('PASS: target not reached on regular dominant periodic branch before first-order action crossover.')
+
+        for tag,s in [('min',smin),('safe-edge',ssafe)]:
+            if s['nneg']!=1 or s['zero']<.999:
+                raise RuntimeError(f'{tag} branch anatomy regression failed')
+        if smin['Gamma']<=TARGET or ssafe['Gamma']<=TARGET or np.min(vals)<=TARGET:
+            raise RuntimeError('target crossing exists but direct bracket detection failed')
+        if not (lo <= rmin <= hi):
+            raise RuntimeError('rate-minimum solve left its coarse bracket')
+        print('PASS: verified interior Gamma_per minimum remains above target before first-order action crossover.')
     finally:
         fd.BETA_COLD=ob; fd.DELTA_TILT=ot
 
