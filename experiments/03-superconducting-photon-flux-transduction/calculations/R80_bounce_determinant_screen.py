@@ -89,7 +89,7 @@ def matrices(nbasis:int,ngrid:int,R=80.0,alpha=.90):
     Hbo=Kko+Keo+Av*(Bo.T@(Wb[:,None]*Bo))*ds
 
     # Metastable Hessian at constant xm.
-    km=float(model.spline.ev(T0,xm,dx=0,dy=1))
+    km=model._scalar(model.spline.ev(T0,xm,dx=0,dy=1))
     Hme=Kke+Kee+Av*km*(Be.T@Be)*ds
     Hmo=Kko+Keo+Av*km*(Bo.T@Bo)*ds
 
