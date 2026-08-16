@@ -142,4 +142,54 @@ The next literature search should focus narrowly on whether prior work already d
 
 The general mathematical literature on **rate-induced tipping / basin instability under fast parameter change** also needs a dedicated collision pass. Do not present rapid sub-fold tipping itself as new before that is completed.
 
+## O. Selective dissipation / frequency-dependent Josephson damping — direct collision
+
+### Hassel, Seppä, and Helistö, arXiv:cond-mat/0510189; related DOI 10.1063/1.2382733 (2005/2006)
+
+**Title:** RSFQ devices with selective dissipation for quantum information processing
+
+Primary result relevant to Experiment 03:
+
+- explicitly proposes **frequency-dependent/selective dissipation** in Josephson/RSFQ circuits;
+- replaces a plain resistive shunt with an RC shunt;
+- shows stable RSFQ switching can coexist with reduced dissipation/decoherence;
+- derives stability criteria and discusses optimization of the frequency-selective environment.
+
+**Major collision:** Experiment 03 cannot claim novelty for the generic proposition
+
+```text
+engineer a frequency-dependent Josephson environment so that useful switching remains stable while unwanted dissipation is reduced
+```
+
+or for the term/concept `selective dissipation` itself.
+
+### Männik et al., Phys. Rev. B 71, 220509(R) (2005)
+
+**Title:** Crossover from Kramers to phase-diffusion switching in moderately damped Josephson junctions
+
+Relevant result:
+
+- switching statistics in hysteretic dc SQUIDs are strongly modified by **retrapping**;
+- the retrapping process depends on the **frequency-dependent impedance of the environment**.
+
+### Stornaiuolo et al., Phys. Rev. B 87, 134517 (2013)
+
+**Title:** Resolving the effects of frequency-dependent damping and quantum phase diffusion in YBaCuO Josephson junctions
+
+Relevant result:
+
+- fits Josephson phase dynamics using a two-quality-factor / frequency-dependent damping model;
+- combines transport data with Monte Carlo phase-dynamics simulations;
+- shows that frequency-dependent damping and quantum phase diffusion materially modify switching behavior.
+
+**Experiment-03 surviving distinction, if any:** the current candidate contribution is narrower than selective dissipation itself. It concerns a **photon-triggered metastable flux latch with explicitly time-separated launch and capture/reformation stages**, where the environment's stage-resolved dissipation allocation can be computed from a passive energy identity and combined with a calorimetric drive-similarity law, persistent-flux requirement, and dark-stability/open-quantum constraints.
+
+The newly observed near-coincidence between a high-fidelity capture boundary and the deterministic crossover
+
+```text
+H_eff,launch^2 / H_eff,capture^2 ~ 1
+```
+
+is **not** a novelty claim. It must first survive a cross-parameter stress test and a dedicated literature/patent search for analogous stage-resolved damping criteria.
+
 No priority claim is authorized.
