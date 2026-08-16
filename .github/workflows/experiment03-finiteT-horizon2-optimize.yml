@@ -1,0 +1,27 @@
+name: Experiment 03 matched 2ns finite-T tilt optimizer
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/finiteT_horizon2_optimize_worker.py'
+      - '.github/workflows/experiment03-finiteT-horizon2-optimize.yml'
+
+jobs:
+  optimize:
+    strategy:
+      fail-fast: false
+      matrix:
+        delta: ['0.2000','0.2025','0.2050','0.2075','0.2100']
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python finiteT_horizon2_optimize_worker.py --delta ${{ matrix.delta }}
