@@ -97,9 +97,18 @@ def corr_series(t: float, nmats: int) -> complex:
 def corr_quad(t: float) -> complex:
     """Independent dimensionless oscillatory quadrature of the defining integral."""
     def reamp(x):
+        # The product J*coth has a finite classical low-frequency limit even
+        # though coth itself diverges. QUADPACK evaluates the endpoint x=0
+        # explicitly for long-time Fourier integrals, so impose that limit
+        # before forming either singular factor:
+        #   lim_{w->0} J(w)coth(beta hbar w/2)=2G/beta.
+        if x == 0.0:
+            return 2*G*WD/(BETA*math.pi)
         w=WD*x
         return J(w)*coth(BETA*HBAR*w/2)*WD/math.pi
     def imamp(x):
+        if x == 0.0:
+            return 0.0
         w=WD*x
         return J(w)*WD/math.pi
     if t == 0:
