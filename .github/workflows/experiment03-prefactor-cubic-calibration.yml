@@ -1,0 +1,23 @@
+name: Experiment 03 cubic prefactor calibration
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/prefactor_cubic_local_calibration.py'
+      - '.github/workflows/experiment03-prefactor-cubic-calibration.yml'
+
+jobs:
+  calibration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+          cache: 'pip'
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python -m pip install -r requirements.txt
+      - working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+        run: python prefactor_cubic_local_calibration.py
