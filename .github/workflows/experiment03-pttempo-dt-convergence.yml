@@ -1,0 +1,31 @@
+name: Experiment 03 PT-TEMPO timestep convergence
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/pttempo_dephasing_dt_convergence.py'
+      - '.github/workflows/experiment03-pttempo-dt-convergence.yml'
+  workflow_dispatch:
+
+jobs:
+  dt-convergence:
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        case: [dt100, dt050, dt025]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
+      - run: python -m pip install -r requirements-heom.txt
+      - run: python -m pip install oqupy==0.5.0
+      - run: python pttempo_dephasing_dt_convergence.py --case '${{ matrix.case }}'
