@@ -1,0 +1,33 @@
+name: Experiment 03 HEOM exact-Gaussian eigenspectrum
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_harmonic_eigenspectrum.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_harmonic_pade_depth.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/direct_port_bath_pade.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt'
+      - '.github/workflows/experiment03-heom-eigenspectrum.yml'
+  workflow_dispatch:
+
+jobs:
+  spectrum:
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [p4d7_spec, p5d5_dim10_spec]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
+      - run: python -m pip install -r requirements-heom.txt
+      - run: python heom_harmonic_eigenspectrum.py --case ${{ matrix.case }}
