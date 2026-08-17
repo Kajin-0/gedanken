@@ -1,0 +1,25 @@
+name: Experiment 03 frequency-weighted physical-cone fit
+
+on:
+  push:
+    paths:
+      - '.github/workflows/experiment03-frequency-weighted-physical-fit.yml'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/frequency_weighted_physical_fit.py'
+  workflow_dispatch:
+
+jobs:
+  weighted-physical:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q -r requirements-heom.txt
+      - run: python -m pip install -q 'cvxpy>=1.6,<2'
+      - name: Run frozen frequency-weighted physical fit
+        run: python frequency_weighted_physical_fit.py
