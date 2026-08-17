@@ -8,7 +8,7 @@ This checkpoint continues `NONLINEAR_HEOM_GATE_C_PILOT_2026-08-16.md`.
 Gate A: PASS
 Gate B: PASS — harmonic HEOM method validation
 Gate C.0: PASS — restricted left-well phase-DVR construction
-Gate C.1: ACTIVE — nonlinear cold left-well HEOM convergence
+Gate C.1: ACTIVE — raw hierarchy failed depth-seven discriminator; closure path active
 Gate C.2: BLOCKED
 Gate D: BLOCKED ON C
 Gate E: BLOCKED
@@ -34,6 +34,10 @@ The growth is therefore not explained by a large adaptive ODE step.  Together
 with the converged DVR residuals and earlier Padé/domain controls, the leading
 classification is a finite-tier HEOM generator/truncation instability whose
 onset depends on system-basis dimension.
+
+The attempted dim=10 LSODA control is not a physical counterexample: LSODA
+failed during solver setup with a `MemoryError` while attempting an approximately
+63.6-GiB work allocation.  No LSODA trajectory was produced.
 
 ## Depth-six basis matrix
 
@@ -93,8 +97,8 @@ Delta sigma_y   = +2.6395e-08
 Delta bare-H0 E = +1.56336e-07
 ```
 
-That agreement is encouraging but is not sufficient to establish system-basis
-convergence because dim=10 does not remain physical at the same hierarchy depth.
+That agreement is now explicitly known to be a false convergence signal for the
+raw hierarchy: depth seven destabilizes dim=9.
 
 ### dim=10
 
@@ -118,7 +122,7 @@ Thus depth 6 stabilizes dim=9 but not dim=10.  The instability is delayed relati
 to depth 5, which is consistent with hierarchy-depth dependence rather than a
 physical instability of the nonlinear well.
 
-## Active depth-seven discriminator
+## Depth-seven discriminator
 
 Files:
 
@@ -150,16 +154,98 @@ ADO estimate=1716
 same physical model, domain, time grid, counterterm, and solver tolerances
 ```
 
-Interpretation rule:
+The acceptance/disposition rule was frozen separately in
+`NONLINEAR_HEOM_GATE_C1_ACCEPTANCE_RULE_2026-08-17.md` at commit
+`67e13cc0f58e0a164a11d3488c7dc38614d3b6b8`, before either depth-seven result
+was read.
 
-1. If dim=10 becomes stationary/physical and agrees with dim=9 while the
-   depth-6 -> depth-7 changes are small, hierarchy truncation was the limiting
-   axis and Gate C.1 can be assessed against an explicit acceptance threshold.
-2. If dim=10 remains unstable while dim=9 remains stable, do not promote C.1 and
-   do not infer that dim=9 is a converged physical basis.  Stop blind basis
-   extrapolation and evaluate a controlled hierarchy terminator/closure.
-3. If both dim=9 and dim=10 become unstable at depth 7, treat the raw hard-cutoff
-   hierarchy as non-monotone and return immediately to closure/stability analysis.
+### dim=9 result — decisive non-monotone failure
 
-The positivity criterion is not to be relaxed merely because low-order moments
-appear converged.
+Job `95288972802` completed after 859.624 s.  DVR basis residual remained
+`5.335e-14 K`, so the instability is not a loss of the restricted-well basis
+solution.
+
+```text
+tau=0
+  eigmin   = +3.923755752e-16
+  negmass  = 0
+
+tau=10
+  eigmin   = -7.980838472e-07
+  negmass  = 1.112668159e-06
+
+tau=20
+  eigmin   = -9.422160182e-07
+  negmass  = 1.133892458e-06
+
+tau=40
+  eigmin   = -2.837679057e-06
+  negmass  = 3.491257709e-06
+
+tau=80
+  eigmin   = -1.127755439e-04
+  negmass  = 1.453198877e-04
+
+tau=120
+  eigmin   = -4.175887342e-03
+  negmass  = 5.861670700e-03
+
+tau=160
+  eigmin   = -1.543265832e-01
+  negmass  = 2.199325372e-01
+```
+
+Final diagnostics:
+
+```text
+trace                  = 1.000000000000 - 9.14e-18 i
+anti-Hermitian residual= 5.620e-15
+<y>                    = +1.9759349760e-02
+sigma_y                = 5.3526298014e-02
+bare-H0 energy         = 7.1409851433e-02
+top retained population= 8.243826365e-02
+late absolute drift    = 3.984810846e-02
+```
+
+This is decisive under the frozen rule.  Dim=9 was stationary at raw depth 6 but
+becomes strongly nonphysical at raw depth 7.  Therefore the hard-cutoff hierarchy
+is **non-monotone in depth** for this nonlinear restricted-well problem.  The
+apparently excellent dim8/dim9 depth-six moment agreement cannot be promoted to a
+convergence claim.
+
+The dim=10 depth-seven job may still be retained as provenance when it finishes,
+but it cannot reverse this disposition: the predeclared raw-depth route has
+already failed because its nominally stable dim=9 control destabilized when depth
+was increased.
+
+## Consequence for Gate C.1
+
+Per the frozen acceptance rule:
+
+```text
+DO NOT run raw dim10/depth8 as an acceptance search.
+DO NOT relax positivity because low-order moments looked converged at depth6.
+DO NOT select the apparently stable raw depth6 state as the physical answer.
+```
+
+The next authorized route is a controlled hierarchy closure/terminator benchmark,
+first in the harmonic problem where an exact FDT state is available as an oracle,
+and only then in the nonlinear restricted-well problem.
+
+The active harmonic closure implementation is a Schur-complement-type boundary
+correction assembled directly from QuTiP's own depth-(d+1) HEOM generator blocks,
+so no bath coefficient/scaling convention is re-derived by hand.  Its retained
+block has been verified to reproduce QuTiP's native depth-d generator exactly.
+
+Current disposition:
+
+```text
+Gate A: PASS
+Gate B: PASS — original raw harmonic HEOM method validation
+Gate C.0: PASS — restricted left-well phase-DVR construction
+Gate C.1: ACTIVE — raw hierarchy rejected as a converged nonlinear solver;
+                  controlled closure validation active
+Gate C.2: BLOCKED
+Gate D: BLOCKED ON C
+Gate E: BLOCKED
+```
