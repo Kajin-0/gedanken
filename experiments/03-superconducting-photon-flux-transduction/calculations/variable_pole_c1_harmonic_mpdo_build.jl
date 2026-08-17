@@ -12,6 +12,11 @@ using ITensorMPS
 const SIGMA0 = Ref(0.0)
 const LAMBDA_CT = Ref(0.0)
 
+# Compatibility helper used here and by the runner which imports this file.
+# Julia LinearAlgebra exposes eigvals(Hermitian(...)); unlike NumPy it has no
+# eigvalsh symbol.
+eigvalsh(A::Hermitian)=eigvals(A)
+
 function hilbert_dim(superdim::Int)
   h = round(Int, sqrt(superdim))
   h*h == superdim || error("Liouville site dimension $superdim is not a square")
@@ -56,12 +61,8 @@ ITensors.op(::OpName"LX",   ::SiteType"Qudit", d::Int) = leftop(sys_x(hilbert_di
 ITensors.op(::OpName"RX",   ::SiteType"Qudit", d::Int) = rightop(sys_x(hilbert_dim(d)))
 
 function readcomplex(path, shape)
-  # Solver-neutral exporter stores two real-valued columns: real,imag.
-  # Parse them as Float64 first; parsing each cell as ComplexF64 is invalid in
-  # DelimitedFiles for ordinary scientific-notation real literals.
   z=readdlm(path,',',Float64;header=true)[1]
   vals=ComplexF64.(z[:,1]) .+ 1im.*ComplexF64.(z[:,2])
-  # Python exporter flattened matrices in C order.
   if length(shape)==1
     return reshape(vals,shape[1])
   end
@@ -85,7 +86,6 @@ function build_liouvillian(Hb,Gamma,g; high=false)
   os=OpSum()
   os += (-1im,"LSYS",1); os += (1im,"RSYS",1)
 
-  # Bath Hamiltonian, preserving every numerically nonzero accepted entry.
   for j in 1:16, k in 1:16
     h=Hb[j,k]
     iszero(h) && continue
@@ -98,7 +98,6 @@ function build_liouvillian(Hb,Gamma,g; high=false)
     end
   end
 
-  # Exact system-bath coupling, including tiny accepted g tail entries.
   for j in 1:16
     gj=g[j]; sj=j+1
     iszero(gj) && continue
@@ -108,7 +107,6 @@ function build_liouvillian(Hb,Gamma,g; high=false)
     os += ( 1im*conj(gj),"RX",1,"RB", sj)
   end
 
-  # Full dense Kossakowski matrix; no diagonal/nearest-neighbor approximation.
   for j in 1:16, k in 1:16
     gam=Gamma[j,k]
     iszero(gam) && continue
