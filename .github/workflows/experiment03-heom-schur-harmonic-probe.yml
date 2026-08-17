@@ -23,4 +23,4 @@ jobs:
           cache: pip
           cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
       - run: python -m pip install -r requirements-heom.txt
-      - run: python heom_schur_terminator_harmonic_probe.py --case p4d2
+      - run: python heom_schur_terminator_harmonic_probe.py --case p4d3
