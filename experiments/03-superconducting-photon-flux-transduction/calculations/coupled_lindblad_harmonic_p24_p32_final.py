@@ -30,7 +30,7 @@ def main():
         r['numin'] >= 0.5 - 1e-9 and
         r['grec']['recerr'] < 1e-7 and
         r['bath']['Yev'].min() > 0.0 and
-        r['bath']['relSDP'] >= 0.0
+        r['bath']['relsdp'] >= 0.0
         for r in rows
     )
 
@@ -45,8 +45,8 @@ def main():
     # not a new post-hoc threshold in the harmonic acceptance rule, but a
     # reversal is reported explicitly because it would weaken interpretation.
     monotone_bath = (
-        p24['bath']['relSDP'] < p16['bath']['relSDP'] and
-        p32['bath']['relSDP'] < p24['bath']['relSDP']
+        p24['bath']['relsdp'] < p16['bath']['relsdp'] and
+        p32['bath']['relsdp'] < p24['bath']['relsdp']
     )
 
     finalpass = (
@@ -58,7 +58,7 @@ def main():
     )
 
     for r in rows:
-        print(f'FINAL_ORDER p{r["N"]} relSDP={r["bath"]["relSDP"]:.12e} '
+        print(f'FINAL_ORDER p{r["N"]} relSDP={r["bath"]["relsdp"]:.12e} '
               f'maxwidth={r["maxwidth"]:.12e} nuclear={r["nuclear"]:.12e} '
               f'crossnorm={r["crossnorm"]:.12e} maxRe={r["maxRe"]:+.12e} '
               f'numin={r["numin"]:.12e}', flush=True)
