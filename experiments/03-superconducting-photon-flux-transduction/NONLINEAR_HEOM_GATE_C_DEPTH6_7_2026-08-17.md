@@ -18,7 +18,7 @@ No detector-capture or efficiency claim is authorized by this checkpoint.
 
 ## Dimension-stability diagnosis at depth 5
 
-Run `31986105536` tested integration-step and system-basis alternatives.  The
+Run `31986105536` tested integration-step and system-basis alternatives. The
 capped-BDF dim=10, Npade=4, depth=5 trajectory reproduces the same delayed
 nonphysical growth seen in the original pilot even with `max_step=0.1`:
 
@@ -30,14 +30,14 @@ tau=50  eigmin=-6.876219358e-01  negmass=9.110850781e-01
 tau=60  eigmin=-7.493240721e+00  negmass=1.513858470e+01
 ```
 
-The growth is therefore not explained by a large adaptive ODE step.  Together
+The growth is therefore not explained by a large adaptive ODE step. Together
 with the converged DVR residuals and earlier Padé/domain controls, the leading
 classification is a finite-tier HEOM generator/truncation instability whose
 onset depends on system-basis dimension.
 
 The attempted dim=10 LSODA control is not a physical counterexample: LSODA
 failed during solver setup with a `MemoryError` while attempting an approximately
-63.6-GiB work allocation.  No LSODA trajectory was produced.
+63.6-GiB work allocation. No LSODA trajectory was produced.
 
 ## Depth-six basis matrix
 
@@ -118,7 +118,7 @@ final bare-H0 energy = -7.7066483568e-01
 late absolute drift = 7.999787770e-01
 ```
 
-Thus depth 6 stabilizes dim=9 but not dim=10.  The instability is delayed relative
+Thus depth 6 stabilizes dim=9 but not dim=10. The instability is delayed relative
 to depth 5, which is consistent with hierarchy-depth dependence rather than a
 physical instability of the nonlinear well.
 
@@ -131,17 +131,12 @@ calculations/heom_nonlinear_depth7_basis.py
 .github/workflows/experiment03-heom-nonlinear-depth7-basis.yml
 ```
 
-Commits:
+Commits and run:
 
 ```text
 1e48a85fcbf0142793734969b807d12da4b58c9f  add calculation
 b5f4211e2dd7b6bdfa9c752fefa4c0968de4f24a  add/run workflow
-```
-
-Workflow run:
-
-```text
-31996495432
+run 31996495432
 ```
 
 Predeclared matrix:
@@ -159,66 +154,100 @@ The acceptance/disposition rule was frozen separately in
 `67e13cc0f58e0a164a11d3488c7dc38614d3b6b8`, before either depth-seven result
 was read.
 
-### dim=9 result — decisive non-monotone failure
+### dim=9 — decisive non-monotone failure
 
-Job `95288972802` completed after 859.624 s.  DVR basis residual remained
-`5.335e-14 K`, so the instability is not a loss of the restricted-well basis
-solution.
+Job `95288972802`, runtime `859.624 s`, DVR residual `5.335e-14 K`:
 
 ```text
-tau=0
-  eigmin   = +3.923755752e-16
-  negmass  = 0
-
-tau=10
-  eigmin   = -7.980838472e-07
-  negmass  = 1.112668159e-06
-
-tau=20
-  eigmin   = -9.422160182e-07
-  negmass  = 1.133892458e-06
-
-tau=40
-  eigmin   = -2.837679057e-06
-  negmass  = 3.491257709e-06
-
-tau=80
-  eigmin   = -1.127755439e-04
-  negmass  = 1.453198877e-04
-
-tau=120
-  eigmin   = -4.175887342e-03
-  negmass  = 5.861670700e-03
-
-tau=160
-  eigmin   = -1.543265832e-01
-  negmass  = 2.199325372e-01
+tau=0    eigmin=+3.923755752e-16  negmass=0
+tau=10   eigmin=-7.980838472e-07  negmass=1.112668159e-06
+tau=20   eigmin=-9.422160182e-07  negmass=1.133892458e-06
+tau=40   eigmin=-2.837679057e-06  negmass=3.491257709e-06
+tau=80   eigmin=-1.127755439e-04  negmass=1.453198877e-04
+tau=120  eigmin=-4.175887342e-03  negmass=5.861670700e-03
+tau=160  eigmin=-1.543265832e-01  negmass=2.199325372e-01
 ```
 
 Final diagnostics:
 
 ```text
-trace                  = 1.000000000000 - 9.14e-18 i
-anti-Hermitian residual= 5.620e-15
-<y>                    = +1.9759349760e-02
-sigma_y                = 5.3526298014e-02
-bare-H0 energy         = 7.1409851433e-02
-top retained population= 8.243826365e-02
-late absolute drift    = 3.984810846e-02
+trace                   = 1.000000000000 - 9.14e-18 i
+anti-Hermitian residual = 5.620e-15
+<y>                     = +1.9759349760e-02
+sigma_y                 = 5.3526298014e-02
+bare-H0 energy          = 7.1409851433e-02
+top retained population = 8.243826365e-02
+late absolute drift     = 3.984810846e-02
 ```
 
-This is decisive under the frozen rule.  Dim=9 was stationary at raw depth 6 but
-becomes strongly nonphysical at raw depth 7.  Therefore the hard-cutoff hierarchy
-is **non-monotone in depth** for this nonlinear restricted-well problem.  The
-apparently excellent dim8/dim9 depth-six moment agreement cannot be promoted to a
-convergence claim.
+Dim=9 was stationary at raw depth 6 but becomes strongly nonphysical at raw
+depth 7. This alone satisfies the frozen non-monotone failure rule.
 
-The dim=10 depth-seven job may still be retained as provenance when it finishes,
-but it cannot reverse this disposition: the predeclared raw-depth route has
-already failed because its nominally stable dim=9 control destabilized when depth
-was increased.
+### dim=10 — catastrophic confirmation
 
-## Consequence for Gate C.1
+Job `95288972738`, runtime `1000.664 s`, DVR residual `6.930e-14 K`:
+
+```text
+tau=0
+  eigmin   = +6.942941857e-18
+  negmass  = 0
+
+tau=10
+  eigmin   = -8.930296266e-07
+  negmass  = 1.247876967e-06
+
+tau=20
+  eigmin   = -5.545820040e-06
+  negmass  = 6.443690869e-06
+
+tau=40
+  eigmin   = -2.897561349e-03
+  negmass  = 3.935245004e-03
+
+tau=80
+  eigmin   = -8.204060114e+02
+  negmass  = 1.128212361e+03
+  <y>      = 1.1003250420e+02
+  max|rho| = 4.432364671e+02
+
+tau=120
+  eigmin   = -2.322691038e+08
+  negmass  = 3.194360190e+08
+
+tau=160
+  eigmin   = -6.575914609e+13
+  negmass  = 9.043753802e+13
+```
+
+Final diagnostics:
+
+```text
+trace                   = 0.98046875 - 2.00e-03 i
+anti-Hermitian residual = 7.762e-15
+<y>                     = 8.8169951844e+12
+sigma_y                 = 0
+bare-H0 energy          = 1.2501966895e+13
+top retained population = 2.877153258e+13
+late absolute drift     = 1.250192274e+13
+```
+
+By tau=80 the dim=10 trajectory has already left any physically meaningful
+reduced-state regime, and by tau=160 even numerical trace conservation is lost
+because the unstable mode has amplified the state by many orders of magnitude.
+This is not interpreted as physical nonlinear detector dynamics.
+
+## Final raw-hierarchy disposition
+
+Both predeclared depth-seven controls fail. Therefore:
+
+```text
+RAW HARD-CUTOFF HEOM FOR NONLINEAR C.1: REJECTED AS A CONVERGED PRODUCTION SOLVER
+```
+
+The key falsification is non-monotonicity: increasing hierarchy depth from 6 to
+7 destabilizes dim=9, despite the apparently converged dim8/dim9 depth-six
+moments. The dim10 explosion independently confirms that the problem is not a
+small residual positivity defect.
 
 Per the frozen acceptance rule:
 
@@ -234,7 +263,7 @@ and only then in the nonlinear restricted-well problem.
 
 The active harmonic closure implementation is a Schur-complement-type boundary
 correction assembled directly from QuTiP's own depth-(d+1) HEOM generator blocks,
-so no bath coefficient/scaling convention is re-derived by hand.  Its retained
+so no bath coefficient/scaling convention is re-derived by hand. Its retained
 block has been verified to reproduce QuTiP's native depth-d generator exactly.
 
 Current disposition:
@@ -243,8 +272,7 @@ Current disposition:
 Gate A: PASS
 Gate B: PASS — original raw harmonic HEOM method validation
 Gate C.0: PASS — restricted left-well phase-DVR construction
-Gate C.1: ACTIVE — raw hierarchy rejected as a converged nonlinear solver;
-                  controlled closure validation active
+Gate C.1: ACTIVE — raw hierarchy rejected; controlled closure validation active
 Gate C.2: BLOCKED
 Gate D: BLOCKED ON C
 Gate E: BLOCKED
