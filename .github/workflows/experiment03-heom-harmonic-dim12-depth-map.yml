@@ -1,0 +1,30 @@
+name: Experiment 03 harmonic dim12 HEOM depth map
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_harmonic_dim12_depth_map.py'
+      - '.github/workflows/experiment03-heom-harmonic-dim12-depth-map.yml'
+  workflow_dispatch:
+
+jobs:
+  depth-map:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [dim12_p4d4, dim12_p4d5]
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
+      - run: python -m pip install -r requirements-heom.txt
+      - run: python heom_harmonic_dim12_depth_map.py --case '${{ matrix.case }}'
