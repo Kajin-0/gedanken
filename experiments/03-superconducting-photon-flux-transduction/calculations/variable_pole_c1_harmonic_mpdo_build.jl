@@ -56,8 +56,11 @@ ITensors.op(::OpName"LX",   ::SiteType"Qudit", d::Int) = leftop(sys_x(hilbert_di
 ITensors.op(::OpName"RX",   ::SiteType"Qudit", d::Int) = rightop(sys_x(hilbert_dim(d)))
 
 function readcomplex(path, shape)
-  z=readdlm(path,',',ComplexF64;header=true)[1]
-  vals=ComplexF64.(real.(z[:,1])) .+ 1im.*ComplexF64.(real.(z[:,2]))
+  # Solver-neutral exporter stores two real-valued columns: real,imag.
+  # Parse them as Float64 first; parsing each cell as ComplexF64 is invalid in
+  # DelimitedFiles for ordinary scientific-notation real literals.
+  z=readdlm(path,',',Float64;header=true)[1]
+  vals=ComplexF64.(z[:,1]) .+ 1im.*ComplexF64.(z[:,2])
   # Python exporter flattened matrices in C order.
   if length(shape)==1
     return reshape(vals,shape[1])
