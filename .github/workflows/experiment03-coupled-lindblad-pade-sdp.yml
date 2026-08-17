@@ -1,0 +1,27 @@
+name: Experiment 03 coupled-Lindblad Padé SDP feasibility
+
+on:
+  push:
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/coupled_lindblad_pade_sdp.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/run_coupled_lindblad_pade_sdp.py'
+      - '.github/workflows/experiment03-coupled-lindblad-pade-sdp.yml'
+  workflow_dispatch:
+
+jobs:
+  coupled-lindblad-sdp:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
+      - run: python -m pip install -r requirements-heom.txt
+      - run: python -m pip install 'cvxpy>=1.6,<2'
+      - run: python run_coupled_lindblad_pade_sdp.py
