@@ -78,11 +78,67 @@ distance unless both compared matrices are valid density operators.
 Do not clip, project, renormalize away negative eigenvalues, or otherwise repair
 the HEOM reduced state before comparison.
 
-## Gate disposition at commit time
+## Gate disposition at rule-commit time
 
 ```text
 Gate A: PASS
 Gate B: ACTIVE — depth 9 pending
+Gate C: BLOCKED ON B
+Gate D: BLOCKED
+Gate E: BLOCKED
+```
+
+## Post-result addendum — depth 9 completed
+
+The predeclared raw-depth matrix completed successfully. The previously unknown
+`N_Pade=4, depth=9, dim=8` result is:
+
+```text
+workflow run = 31983405446
+job          = 95254099060
+nexp         = 6
+ADO estimate = 5005
+
+rel sigma_x     = -3.417485e-09
+rel sigma_u     = -5.033266e-07
+max FDT error   =  5.033266e-07
+late drift      =  4.768779e-07
+trace           =  1.000000000000
+min eig(rho)    = -9.172453e-09
+top basis pop   = -8.416506e-09
+runtime         = 713.786 s
+```
+
+Thus the raw hierarchy trend did **not** reverse:
+
+```text
+d7 min eig = -4.249847e-7
+d8 min eig = -1.504870e-8
+d9 min eig = -9.172453e-9
+```
+
+Depth 9 also remains inside the predeclared `1e-6` FDT-width tolerance. It
+therefore earns the conditional full-state gate; it does **not** by itself pass
+Gate B.
+
+The final comparator is now:
+
+```text
+calculations/heom_harmonic_final_state_gate.py
+.github/workflows/experiment03-heom-final-state-gate.yml
+run 31984071458
+```
+
+That workflow reruns the unmodified `N_Pade=4, depth=9, dim=8` HEOM state and
+compares it directly against the exact finite-dimensional squeezed thermal FDT
+state under the thresholds fixed above. No clipping or positivity repair is
+performed.
+
+Current disposition after reading depth 9:
+
+```text
+Gate A: PASS
+Gate B: ACTIVE — final full-state comparator pending
 Gate C: BLOCKED ON B
 Gate D: BLOCKED
 Gate E: BLOCKED
