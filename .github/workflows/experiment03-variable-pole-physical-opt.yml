@@ -1,0 +1,28 @@
+name: Experiment 03 variable-pole physical coupled-mode optimization
+
+on:
+  push:
+    paths:
+      - '.github/workflows/experiment03-variable-pole-physical-opt.yml'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_physical_opt.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/run_variable_pole_physical_opt.py'
+  workflow_dispatch:
+
+jobs:
+  variable-pole:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q -r requirements-heom.txt
+      - name: Install pinned CPU PyTorch
+        run: python -m pip install -q torch==2.12.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -q 'cvxpy>=1.6,<2'
+      - name: Run frozen variable-pole physical optimization
+        run: python run_variable_pole_physical_opt.py
