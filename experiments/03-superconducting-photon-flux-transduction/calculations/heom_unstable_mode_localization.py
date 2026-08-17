@@ -55,9 +55,10 @@ def run_case(name):
     dim=cfg["dim"]
     s=dim*dim
     nado=len(solver.ados.labels)
+    nexp=len(solver.ados.labels[0])
     print(
         f"CASE={name} kind={cfg['kind']} dim={dim} Npade={cfg['npade']} depth={cfg['depth']} "
-        f"nexp={len(solver.ados.exponents)} nado={nado} full_dim={L.shape[0]} nnz={L.nnz} "
+        f"nexp={nexp} nado={nado} full_dim={L.shape[0]} nnz={L.nnz} "
         f"wc/2pi={wc/(2*math.pi)*1e-9:.9f}GHz",flush=True,
     )
 
