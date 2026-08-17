@@ -1,0 +1,43 @@
+name: Experiment 03 variable-pole C1 harmonic preflight
+
+on:
+  push:
+    paths:
+      - '.github/workflows/experiment03-variable-pole-c1-harmonic-preflight.yml'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_preflight.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_physical_opt.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/run_variable_pole_physical_opt.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/VARIABLE_POLE_NONLINEAR_C1_ACCEPTANCE_2026-08-17.md'
+  workflow_dispatch:
+
+jobs:
+  harmonic-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q -r requirements-heom.txt
+      - name: Install pinned CPU PyTorch
+        run: python -m pip install -q torch==2.12.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -q 'cvxpy>=1.6,<2'
+      - name: Regenerate accepted baths and run harmonic-only C1 preflight
+        run: >-
+          python variable_pole_c1_harmonic_preflight.py
+          --npz variable_pole_c1_baths.npz
+          --json variable_pole_c1_preflight.json
+      - name: Upload accepted bath matrices and preflight metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment03-variable-pole-c1-preflight
+          path: |
+            experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_baths.npz
+            experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_preflight.json
+          if-no-files-found: warn
+          retention-days: 90
