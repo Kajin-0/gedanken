@@ -15,11 +15,21 @@ OQuPy TEMPO begins from a factorized system-bath state.  The system is therefore
 initialized in the oscillator vacuum and allowed to relax.  The coupled exact
 FDT state is an asymptotic oracle, not a t=0 expectation.  The script reports
 late-time state error and drift; no clipping or positivity repair is applied.
+
+OQuPy 0.5 pins NumPy <2, while the repository's reference builder uses the
+NumPy-2 spelling `np.trapezoid`.  A local compatibility alias to `np.trapz` is
+installed before importing the repository physics modules.  This changes no
+quadrature formula or physical parameter.
 """
 from __future__ import annotations
 
 import math
 import numpy as np
+
+# Compatibility only: NumPy 1.26 supplies trapz, NumPy 2 supplies trapezoid.
+if not hasattr(np, "trapezoid"):
+    np.trapezoid = np.trapz
+
 from scipy.linalg import svdvals
 import oqupy
 from qutip import basis
