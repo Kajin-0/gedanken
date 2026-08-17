@@ -1,0 +1,37 @@
+name: Experiment 03 variable-pole C1 harmonic one-step TDVP smoke
+
+on:
+  push:
+    paths:
+      - '.github/workflows/experiment03-variable-pole-c1-harmonic-one-step.yml'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_one_step.jl'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_mpdo_run.jl'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_mpdo_build.jl'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_solver_export.py'
+  workflow_dispatch:
+
+jobs:
+  one-step:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q -r requirements-heom.txt
+      - run: python -m pip install -q torch==2.12.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -q 'cvxpy>=1.6,<2'
+      - run: python variable_pole_c1_harmonic_solver_export.py
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+      - uses: julia-actions/cache@v2
+      - name: Install pinned MPDO dependencies
+        run: |
+          julia --project=. -e 'using Pkg; Pkg.add([PackageSpec(name="ITensorMPS", version="0.4.1"), PackageSpec(name="ITensors"), PackageSpec(name="JSON3")]); Pkg.status()'
+      - name: Run one frozen H0 TDVP step
+        run: julia --project=. variable_pole_c1_harmonic_one_step.jl variable_pole_c1_harmonic_input
