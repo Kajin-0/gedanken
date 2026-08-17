@@ -23,4 +23,10 @@ jobs:
           cache: pip
           cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
       - run: python -m pip install -r requirements-heom.txt
-      - run: python heom_schur_terminator_harmonic_probe.py --case p4d3
+      - name: Run depth-four Schur probe
+        run: |
+          python - <<'PY'
+          import heom_schur_terminator_harmonic_probe as m
+          m.CASES['p4d4'] = dict(dim=8, npade=4, depth=4)
+          m.run_case('p4d4')
+          PY
