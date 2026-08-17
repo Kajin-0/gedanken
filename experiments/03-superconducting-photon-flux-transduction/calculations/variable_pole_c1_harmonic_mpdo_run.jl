@@ -14,14 +14,14 @@ src=read(buildpath,String)
 src=replace(src,r"\nmain\(\)\s*$"=>"\n")
 include_string(Main,src,buildpath*"[definitions-only]")
 
-ITensors.state(::StateName"VacL", ::SiteType"Qudit", d::Int) = vcat(ComplexF64[1],zeros(ComplexF64,d-1))
-function ITensors.state(::StateName"TraceL", ::SiteType"Qudit", d::Int)
-  h=hilbert_dim(d); v=zeros(ComplexF64,d)
+ITensors.state(::StateName"VacL", ::SiteType"Qudit", s::Index) = vcat(ComplexF64[1],zeros(ComplexF64,dim(s)-1))
+function ITensors.state(::StateName"TraceL", ::SiteType"Qudit", s::Index)
+  d=dim(s); h=hilbert_dim(d); v=zeros(ComplexF64,d)
   for n in 0:(h-1); v[1+n+h*n]=1; end
   return v
 end
-function ITensors.state(::StateName"TopL", ::SiteType"Qudit", d::Int)
-  h=hilbert_dim(d); v=zeros(ComplexF64,d); n=h-1; v[1+n+h*n]=1; return v
+function ITensors.state(::StateName"TopL", ::SiteType"Qudit", s::Index)
+  d=dim(s); h=hilbert_dim(d); v=zeros(ComplexF64,d); n=h-1; v[1+n+h*n]=1; return v
 end
 
 function reduced_system(psi,sites)
