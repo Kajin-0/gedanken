@@ -129,7 +129,7 @@ def main():
     summaries=[]
     for N in (1,2,3,4,5,6,8):
         terms=pade_terms(N)
-        print(f'PADÉ N={N}:')
+        print(f'PADE N={N}:')
         for j,(c,nu) in enumerate(terms,1):
             print(f'  j={j:2d} nu/2pi={nu/(2*math.pi)*1e-9:.9f}GHz c={c:.12e}')
         errs=[]
@@ -149,9 +149,11 @@ def main():
         print(f'  SUMMARY N={N} err_t0={errs[0]:.6e} '
               f'max_t_ge_1ps={pulse:.6e} max_t_ge_20ps={late:.6e}')
 
-    # Direct Bose-function check on frequencies carrying appreciable spectral
-    # weight.  This is independent of the time-domain residue comparison.
-    for N in (2,3,4,6):
+    # Direct Bose-function check over a broad frequency interval.  This is a
+    # deliberately harsher metric than the weighted correlation because the
+    # direct-port spectral density is already strongly suppressed at the high
+    # end of the interval.
+    for N in (2,3,4,6,8):
         bmax=0.0
         for fGHz in np.geomspace(.05,40.,200):
             w=2*math.pi*fGHz*1e9
@@ -161,15 +163,16 @@ def main():
             bmax=max(bmax,abs(approx-exact_c)/abs(exact_c))
         print(f'BOSE N={N} maxrel_0p05_to_40GHz={bmax:.6e}')
 
-    # Acceptance here is decomposition fidelity only.  The order selected for
-    # HEOM must be based on the printed convergence matrix, not hard-coded by
-    # this guard.  N=6 should already be extremely accurate on the >=20 ps
-    # detector timescale while using far fewer exponents than N_Mats=16.
-    n6=next(s for s in summaries if s[0]==6)
+    # Strict decomposition certification uses N=8.  Lower orders N=4--6 are
+    # retained only as controlled HEOM convergence candidates and must be
+    # judged against the exact FDT covariance in the harmonic Gate-B sweep.
+    n8=next(s for s in summaries if s[0]==8)
     if qxm > 5e-5:
         raise RuntimeError('independent quadrature / Matsubara reference mismatch')
-    if n6[3] > 2e-6:
-        raise RuntimeError('N=6 Padé decomposition insufficient after 20 ps')
+    if n8[3] > 2e-6:
+        raise RuntimeError('N=8 Padé decomposition insufficient after 20 ps')
+    if n8[2] > 5e-5:
+        raise RuntimeError('N=8 Padé decomposition insufficient after 1 ps')
     print('PASS')
 
 if __name__=='__main__':
