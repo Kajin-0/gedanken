@@ -1,0 +1,28 @@
+name: Experiment 03 variable-pole C1 MPDO cutoff audit
+
+on:
+  push:
+    paths:
+      - '.github/workflows/experiment03-variable-pole-c1-mpdo-cutoff-audit.yml'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_mpdo_cutoff_audit.jl'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_mpdo_oracle.jl'
+  workflow_dispatch:
+
+jobs:
+  cutoff-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+      - uses: julia-actions/cache@v2
+      - name: Install frozen tensor-network backend
+        run: |
+          julia --project=. -e 'using Pkg; Pkg.add([PackageSpec(name="ITensorMPS", version="0.4.1"), PackageSpec(name="ITensors")]); Pkg.status()'
+      - name: Run frozen cutoff audit
+        run: julia --project=. variable_pole_c1_mpdo_cutoff_audit.jl
