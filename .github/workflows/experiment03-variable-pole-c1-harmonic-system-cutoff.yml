@@ -1,0 +1,31 @@
+name: Experiment 03 variable-pole C1 harmonic system cutoff
+
+on:
+  push:
+    paths:
+      - '.github/workflows/experiment03-variable-pole-c1-harmonic-system-cutoff.yml'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_system_cutoff.py'
+  workflow_dispatch:
+
+jobs:
+  harmonic-system-cutoff:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-variable-pole.txt
+      - run: python -m pip install -r requirements-variable-pole.txt
+      - name: Run harmonic-only system cutoff preflight
+        run: python variable_pole_c1_harmonic_system_cutoff.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: experiment03-variable-pole-c1-harmonic-system-cutoff
+          path: experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_system_cutoff.json
+          retention-days: 90
