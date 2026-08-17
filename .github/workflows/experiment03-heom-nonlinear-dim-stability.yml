@@ -1,0 +1,38 @@
+name: Experiment 03 nonlinear HEOM dimension stability
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_nonlinear_dim_stability.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_nonlinear_leftwell_pilot.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/phase_dvr_basis_convergence.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_harmonic_pade_depth.py'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt'
+      - '.github/workflows/experiment03-heom-nonlinear-dim-stability.yml'
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        case:
+          - dim9_p4d5_bdf
+          - dim10_p4d4_bdf
+          - dim10_p4d5_bdf_cap
+          - dim10_p4d5_lsoda_cap
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
+      - run: python -m pip install -r requirements-heom.txt
+      - run: python heom_nonlinear_dim_stability.py --case '${{ matrix.case }}'
