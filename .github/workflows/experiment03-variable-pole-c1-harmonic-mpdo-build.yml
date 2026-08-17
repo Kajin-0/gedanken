@@ -1,0 +1,58 @@
+name: Experiment 03 variable-pole C1 harmonic MPDO build
+
+on:
+  push:
+    paths:
+      - '.github/workflows/experiment03-variable-pole-c1-harmonic-mpdo-build.yml'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_mpdo_build.jl'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_solver_export.py'
+  workflow_dispatch:
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q -r requirements-heom.txt
+      - run: python -m pip install -q torch==2.12.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -q 'cvxpy>=1.6,<2'
+      - run: python variable_pole_c1_harmonic_solver_export.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: harmonic-input
+          path: experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_input
+          retention-days: 30
+
+  build:
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        class: [primary, high]
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: harmonic-input
+          path: experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_input
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+      - uses: julia-actions/cache@v2
+      - name: Install pinned MPDO construction dependencies
+        run: |
+          julia --project=. -e 'using Pkg; Pkg.add([PackageSpec(name="ITensorMPS", version="0.4.1"), PackageSpec(name="ITensors"), PackageSpec(name="JSON3")]); Pkg.status()'
+      - name: Build exact physical rank16 Liouvillian MPO
+        run: julia --project=. variable_pole_c1_harmonic_mpdo_build.jl variable_pole_c1_harmonic_input ${{ matrix.class }}
