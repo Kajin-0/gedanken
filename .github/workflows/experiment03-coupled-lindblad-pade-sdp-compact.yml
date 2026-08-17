@@ -3,6 +3,7 @@ name: Experiment 03 coupled-Lindblad Padé SDP compact summary
 on:
   push:
     paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/run_coupled_lindblad_pade_sdp.py'
       - '.github/workflows/experiment03-coupled-lindblad-pade-sdp-compact.yml'
   workflow_dispatch:
 
