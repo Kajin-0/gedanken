@@ -10,7 +10,7 @@ on:
 jobs:
   harmonic-system-cutoff:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 180
     defaults:
       run:
         working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
@@ -19,13 +19,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: pip
-          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-variable-pole.txt
-      - run: python -m pip install -r requirements-variable-pole.txt
+      - run: python -m pip install -q -r requirements-heom.txt
+      - name: Install pinned CPU PyTorch
+        run: python -m pip install -q torch==2.12.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -q 'cvxpy>=1.6,<2'
       - name: Run harmonic-only system cutoff preflight
         run: python variable_pole_c1_harmonic_system_cutoff.py
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: experiment03-variable-pole-c1-harmonic-system-cutoff
           path: experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_harmonic_system_cutoff.json
+          if-no-files-found: warn
           retention-days: 90
