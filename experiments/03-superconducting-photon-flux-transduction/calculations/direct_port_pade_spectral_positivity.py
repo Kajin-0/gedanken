@@ -57,7 +57,6 @@ def terms(N):
 
 def sfit_dimless(x,c,gam):
     w=np.asarray(x,dtype=float)*WC
-    # broadcasting: final axis runs exponential terms
     val=2*np.real(np.sum(c/(gam-1j*w[...,None]),axis=-1))
     return val/S0
 
@@ -74,20 +73,16 @@ def exact_dimless(x):
         w=wabs[nz]
         J=HBAR*G*w*WD**4/(w**4+WD**4)
         y=BETA*HBAR*w
-        # positive-frequency spectrum 2J/(1-exp(-y))
         sp=2*J/(-np.expm1(-np.minimum(y,700.0)))
         sign=xa[nz]>=0
         vals=np.empty_like(w)
         vals[sign]=sp[sign]
-        # detailed balance; exp(-y) safely underflows to zero.
         vals[~sign]=sp[~sign]*np.exp(-np.minimum(y[~sign],745.0))
         out[nz]=vals/S0
     return out
 
 
 def signed_grid():
-    # Dense linear core catches narrow structures around the physical poles;
-    # logarithmic wings probe the rational UV tail to 1e6 omega_c.
     core=np.linspace(-20,20,40001)
     wing=np.geomspace(20.001,1e6,24000)
     return np.concatenate((-wing[::-1],core,wing))
@@ -111,8 +106,6 @@ def audit(N):
     c,gam=terms(N)
     x=signed_grid(); y=sfit_dimless(x,c,gam)
     j=int(np.argmin(y)); xmin=float(x[j]); ymin=float(y[j])
-
-    # Refine the global grid minimum locally if it is not on the boundary.
     if 0<j<len(x)-1:
         a=float(x[j-1]); b=float(x[j+1])
         opt=minimize_scalar(lambda q: float(sfit_dimless(q,c,gam)),
@@ -127,7 +120,6 @@ def audit(N):
           f'at_w_over_wc={xmin:+.15e} negative_grid_fraction={negfrac:.6e}',flush=True)
     print('ROOTS p%d '%N + (' '.join(f'{r:+.15e}' for r in roots) if roots else 'NONE'),flush=True)
 
-    # Values at diagnostic frequencies on both sides.
     probes=np.array([0,.1,.5,1,2,4,8,12,16,20,40,100,1e3,1e4,1e5,1e6],float)
     for q in probes:
         sfp=float(sfit_dimless(q,c,gam)); sfm=float(sfit_dimless(-q,c,gam))
@@ -135,17 +127,15 @@ def audit(N):
         print(f'PROBE p{N} x={q:.6g} Sfit+={sfp:+.12e} Sfit-={sfm:+.12e} '
               f'Sexact+={sep:+.12e} Sexact-={sem:+.12e}',flush=True)
 
-    # Correlation moments controlling the rational high-frequency expansion.
     for m in range(5):
         M=np.sum(c*gam**m)
         print(f'MOMENT p{N} m={m} M=({M.real:+.15e}{M.imag:+.15e}j)',flush=True)
 
-    # Resolve agreement only where exact spectrum is not exponentially tiny.
     mask=np.abs(x)<=20
     ex=exact_dimless(x[mask]); fit=y[mask]
     useful=ex>1e-10
     maxrel=float(np.max(np.abs(fit[useful]-ex[useful])/ex[useful])) if np.any(useful) else math.nan
-    maxabs=float(np.max(np.abs(fit[mask]-ex)))
+    maxabs=float(np.max(np.abs(fit-ex)))
     print(f'COMPARE p{N} |x|<=20 exact>1e-10 maxrel={maxrel:.12e} maxabs_S0={maxabs:.12e}',flush=True)
 
     positive=(ymin >= -1e-12)
@@ -163,8 +153,5 @@ def main():
     else:
         bad=[N for N,v in results.items() if not v[0]]
         print('FAIL_FINITE_PADE_SPECTRAL_POSITIVITY orders=' + ','.join(map(str,bad)))
-        # Do not make the Actions job itself fail: a negative spectrum is the
-        # scientific result this audit is designed to detect and must remain
-        # visible as a completed workflow rather than look like infrastructure.
 
 if __name__=='__main__': main()
