@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/experiment03-variable-pole-c1-mpdo-oracle.yml'
       - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_mpdo_oracle.jl'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/variable_pole_c1_mpdo_oracle_krylov.jl'
   workflow_dispatch:
 
 jobs:
@@ -23,5 +24,5 @@ jobs:
       - name: Install frozen tensor-network backend
         run: |
           julia --project=. -e 'using Pkg; Pkg.add([PackageSpec(name="ITensorMPS", version="0.4.1"), PackageSpec(name="ITensors")]); Pkg.status()'
-      - name: Run MPDO/MPO dense oracle
-        run: julia --project=. variable_pole_c1_mpdo_oracle.jl
+      - name: Run Krylov-expanded MPDO/MPO dense oracle
+        run: julia --project=. variable_pole_c1_mpdo_oracle_krylov.jl
