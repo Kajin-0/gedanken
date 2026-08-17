@@ -121,25 +121,84 @@ Depth 9 also remains inside the predeclared `1e-6` FDT-width tolerance. It
 therefore earns the conditional full-state gate; it does **not** by itself pass
 Gate B.
 
-The final comparator is now:
+The final comparator is:
 
 ```text
 calculations/heom_harmonic_final_state_gate.py
 .github/workflows/experiment03-heom-final-state-gate.yml
 run 31984071458
+job 95255893597
 ```
 
-That workflow reruns the unmodified `N_Pade=4, depth=9, dim=8` HEOM state and
-compares it directly against the exact finite-dimensional squeezed thermal FDT
-state under the thresholds fixed above. No clipping or positivity repair is
+That workflow reran the unmodified `N_Pade=4, depth=9, dim=8` HEOM state and
+compared it directly against the exact finite-dimensional squeezed thermal FDT
+state under the thresholds fixed above. No clipping or positivity repair was
 performed.
 
-Current disposition after reading depth 9:
+## Post-result addendum — final full-state comparator passed
+
+The final comparator completed successfully with workflow verdict
+`PASS_GATE_B_HARMONIC`.
+
+```text
+exact reference:
+  nbar                          = 2.868486916938e-02
+  squeeze r                     = 2.564969052866e-01
+  finite-basis width error      = 5.036745981981e-09
+
+HEOM state:
+  used bath exponents           = 6
+  trace                         = 0.9999999999999999
+  Hermiticity residual          = 0
+  rel sigma_x                   = -5.031023973393e-07
+  rel sigma_u                   = -4.821318535816e-07
+  max FDT width error           = 5.031023973393e-07
+  min eig(rho)                  = -9.172285230002e-09
+  total negative mass           = 9.172285230002e-09
+  ||rho_HEOM-rho_exact||_1      = 7.570074952352e-07
+  0.5 nuclear-norm discrepancy = 3.785037476176e-07
+```
+
+The corresponding HEOM eigenvalue spectrum was:
+
+```text
+[ 9.72112713e-01,
+  2.71159608e-02,
+  7.50880084e-04,
+  2.09235710e-05,
+  6.06564864e-07,
+ -4.31574376e-10,
+ -6.28960329e-10,
+ -8.11290953e-09 ]
+```
+
+All predeclared checks passed:
+
+```text
+basis error        5.04e-09 < 1.00e-07   PASS
+FDT width error    5.03e-07 < 1.00e-06   PASS
+0.5 nuclear norm   3.79e-07 < 5.00e-06   PASS
+negative mass      9.17e-09 < 5.00e-08   PASS
+trace residual                  <1e-10   PASS
+Hermiticity residual            <1e-10   PASS
+d8 -> d9 sign trend                       PASS
+```
+
+No acceptance threshold was changed after the depth-9 or full-state results were
+known.
+
+## Final Gate-B disposition
 
 ```text
 Gate A: PASS
-Gate B: ACTIVE — final full-state comparator pending
-Gate C: BLOCKED ON B
-Gate D: BLOCKED
+Gate B: PASS — harmonic open-system HEOM solver validated against exact FDT state
+Gate C: AUTHORIZED — nonlinear/metastable validation may begin
+Gate D: BLOCKED ON C
 Gate E: BLOCKED
 ```
+
+Scope discipline is essential: this Gate-B pass validates the harmonic
+open-system numerical method for the certified two-pole bath representation. It
+does **not** establish nonlinear metastable equilibrium, interwell escape,
+photon-triggered capture, dark rate, or detector performance. Those remain Gate-C
+and later questions.
