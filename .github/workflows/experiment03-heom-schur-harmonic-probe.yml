@@ -11,7 +11,7 @@ on:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     defaults:
       run:
         working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
@@ -23,10 +23,10 @@ jobs:
           cache: pip
           cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
       - run: python -m pip install -r requirements-heom.txt
-      - name: Run depth-four Schur probe
+      - name: Run depth-five Schur probe
         run: |
           python - <<'PY'
           import heom_schur_terminator_harmonic_probe as m
-          m.CASES['p4d4'] = dict(dim=8, npade=4, depth=4)
-          m.run_case('p4d4')
+          m.CASES['p4d5'] = dict(dim=8, npade=4, depth=5)
+          m.run_case('p4d5')
           PY
