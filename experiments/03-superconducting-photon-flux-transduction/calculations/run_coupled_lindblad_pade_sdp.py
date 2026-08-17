@@ -1,35 +1,45 @@
 #!/usr/bin/env python3
 """Launch the coupled-Lindblad Padé SDP probe with numerical PSD enforcement.
 
-Two launch-only compatibility steps are applied without changing the published
+Three launch-only compatibility steps are applied without changing the published
 SDP objective or physical bath parameters:
 
 1. bind the canonical HBAR symbol used only by the detailed-balance diagnostic;
-2. after the conic solver returns, enforce the *already requested* strict PSD
-   floors by a minimal positive identity shift if solver tolerance leaves tiny
-   negative eigenvalues.
+2. enforce the already requested PSD floors after conic-solver tolerance by a
+   minimal positive identity shift;
+3. put the exact bath correlation/spectrum into the *same dimensionless
+   coupling convention* as the FP-HEOM Padé coefficients before comparing the
+   physical coupled BCF to the exact bath.
 
-For Lambda_k=-i z_k with Re z_k>0,
+The third item corrects reporting only.  `heom_fp_harmonic_oracle.harmonic_setup`
+returns coefficients
 
-    Q(Y)=i(Y Lambda-Lambda^dag Y),
-    Q(Y+delta I)=Q(Y)+delta i(Lambda-Lambda^dag),
+    d_k = c_k (Phi_bar/hbar)^2 / omega_c^2,
 
-and
+so the exact comparison in tau=omega_c t units is
 
-    i(Lambda-Lambda^dag)=2 diag(Re z_k) > 0.
+    C_exact,dim(tau) = C_exact(tau/omega_c)
+                       (Phi_bar/hbar)^2 / omega_c^2,
 
-Therefore delta I monotonically improves both Y>0 and Q>=0.  The shift is
-chosen from rigorous minimum-eigenvalue lower bounds, is reported explicitly,
-and the SDP residual/objective are recomputed after the shift.  This is a
-numerical enforcement of the original constraints, not a relaxation.
+and its dimensionless-frequency spectrum is
+
+    S_exact,dim(x) = S_exact(omega_c x)
+                     (Phi_bar/hbar)^2 / omega_c.
+
+Earlier probe output compared these dimensionless quantities to C/(S0 omega_c)
+and S/S0, creating a spurious ~56x normalization discrepancy even while the
+coupled BCF differed from the Padé BCF by only ~1e-3.  The SDP itself was
+unchanged.
 """
 import numpy as np
 
-from direct_port_bath_correlation import HBAR
+from direct_port_bath_correlation import HBAR, BETA, G, corr_series
+from quantum_initial_capture import PHI_BAR
 import coupled_lindblad_pade_sdp as probe
 
 probe.fp.HBAR = HBAR
 _original_solve = probe.solve_sdp
+_physical_exact_s_over_S0 = probe.exact_dimless
 
 
 def solve_sdp_with_psd_floor(Lam, l, r):
@@ -49,8 +59,6 @@ def solve_sdp_with_psd_floor(Lam, l, r):
     y_floor = 1.0e-9
     q_floor = 1.0e-12
     delta = max(0.0, y_floor - ymin, (q_floor - qmin) / qimin)
-    # Add a tiny guard above the mathematical lower bound so a subsequent
-    # eigensolve cannot fall back below the floor through roundoff.
     if delta > 0:
         delta += 1.0e-12
         Y = Y + delta * np.eye(len(r))
@@ -75,7 +83,23 @@ def solve_sdp_with_psd_floor(Lam, l, r):
     return Y, status + "+PSD_SHIFT", obj2, residual2, rel2, solver
 
 
+def exact_corr_same_convention(tau, wc):
+    cscale = (PHI_BAR / HBAR) ** 2 / (wc * wc)
+    return corr_series(float(tau) / wc, 10000) * cscale
+
+
+def exact_s_same_convention(x):
+    # omega_c is fixed by the physical harmonic operating point and does not
+    # depend on Padé order.  Obtain it once from the same harmonic setup.
+    wc = probe.fp.harmonic_setup(2, 4)[0]
+    cscale = (PHI_BAR / HBAR) ** 2 / (wc * wc)
+    S0 = 2 * G / BETA
+    return _physical_exact_s_over_S0(x) * (S0 * cscale * wc)
+
+
 probe.solve_sdp = solve_sdp_with_psd_floor
+probe.exact_corr_norm = exact_corr_same_convention
+probe.exact_dimless = exact_s_same_convention
 
 if __name__ == "__main__":
     probe.main()
