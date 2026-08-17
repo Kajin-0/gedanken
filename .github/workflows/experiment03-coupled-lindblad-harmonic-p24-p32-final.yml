@@ -1,0 +1,25 @@
+name: Experiment 03 final coupled-Lindblad harmonic p24 p32
+
+on:
+  push:
+    paths:
+      - '.github/workflows/experiment03-coupled-lindblad-harmonic-p24-p32-final.yml'
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/coupled_lindblad_harmonic_p24_p32_final.py'
+  workflow_dispatch:
+
+jobs:
+  final-p24-p32:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q -r requirements-heom.txt
+      - run: python -m pip install -q 'cvxpy>=1.6,<2'
+      - name: Run final p16 p24 p32 harmonic matrix
+        run: python coupled_lindblad_harmonic_p24_p32_final.py
