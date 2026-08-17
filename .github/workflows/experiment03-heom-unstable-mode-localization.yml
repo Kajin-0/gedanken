@@ -1,0 +1,32 @@
+name: Experiment 03 HEOM unstable-mode localization
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/03-superconducting-photon-flux-transduction/calculations/heom_unstable_mode_localization.py'
+      - '.github/workflows/experiment03-heom-unstable-mode-localization.yml'
+  workflow_dispatch:
+
+jobs:
+  localize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        case:
+          - harmonic_dim12_p4d3
+          - nonlinear_dim10_p4d5
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: experiments/03-superconducting-photon-flux-transduction/calculations/requirements-heom.txt
+      - run: python -m pip install -r requirements-heom.txt
+      - run: python heom_unstable_mode_localization.py --case '${{ matrix.case }}'
