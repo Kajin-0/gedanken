@@ -1,0 +1,28 @@
+name: Experiment 03 coupled-Lindblad Padé SDP compact summary
+
+on:
+  push:
+    paths:
+      - '.github/workflows/experiment03-coupled-lindblad-pade-sdp-compact.yml'
+  workflow_dispatch:
+
+jobs:
+  compact-summary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: experiments/03-superconducting-photon-flux-transduction/calculations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q -r requirements-heom.txt
+      - run: python -m pip install -q 'cvxpy>=1.6,<2'
+      - name: Run probe and emit compact metrics
+        shell: bash
+        run: |
+          set -euo pipefail
+          python run_coupled_lindblad_pade_sdp.py > sdp_full.log 2>&1
+          grep -E '^(PSD_ENFORCEMENT|SDP p|PHYSICAL p|COUPLED_LINDBLAD_SDP|SUMMARY|p[458] |COUPLED_LINDBLAD_PAD)' sdp_full.log
